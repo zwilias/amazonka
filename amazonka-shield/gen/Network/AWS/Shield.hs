@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Shield
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,182 +15,141 @@
 -- This is the /AWS Shield Advanced API Reference/ . This guide is for developers who need detailed information about the AWS Shield Advanced API actions, data types, and errors. For detailed information about AWS WAF and AWS Shield Advanced features and an overview of how to use the AWS WAF and AWS Shield Advanced APIs, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF and AWS Shield Developer Guide> .
 --
 module Network.AWS.Shield
-    (
     -- * Service Configuration
-      shield
-
+  ( shield
     -- * Errors
     -- $errors
-
     -- ** InvalidResourceException
-    , _InvalidResourceException
-
+  , _InvalidResourceException
     -- ** InvalidParameterException
-    , _InvalidParameterException
-
+  , _InvalidParameterException
     -- ** LimitsExceededException
-    , _LimitsExceededException
-
+  , _LimitsExceededException
     -- ** InternalErrorException
-    , _InternalErrorException
-
+  , _InternalErrorException
     -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
+  , _ResourceAlreadyExistsException
     -- ** OptimisticLockException
-    , _OptimisticLockException
-
+  , _OptimisticLockException
     -- ** InvalidOperationException
-    , _InvalidOperationException
-
+  , _InvalidOperationException
     -- ** LockedSubscriptionException
-    , _LockedSubscriptionException
-
+  , _LockedSubscriptionException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** CreateSubscription
-    , module Network.AWS.Shield.CreateSubscription
-
+  , module Network.AWS.Shield.CreateSubscription
     -- ** ListProtections (Paginated)
-    , module Network.AWS.Shield.ListProtections
-
+  , module Network.AWS.Shield.ListProtections
     -- ** DeleteSubscription
-    , module Network.AWS.Shield.DeleteSubscription
-
+  , module Network.AWS.Shield.DeleteSubscription
     -- ** DescribeAttack
-    , module Network.AWS.Shield.DescribeAttack
-
+  , module Network.AWS.Shield.DescribeAttack
     -- ** DescribeProtection
-    , module Network.AWS.Shield.DescribeProtection
-
+  , module Network.AWS.Shield.DescribeProtection
     -- ** ListAttacks
-    , module Network.AWS.Shield.ListAttacks
-
+  , module Network.AWS.Shield.ListAttacks
     -- ** CreateProtection
-    , module Network.AWS.Shield.CreateProtection
-
+  , module Network.AWS.Shield.CreateProtection
     -- ** DeleteProtection
-    , module Network.AWS.Shield.DeleteProtection
-
+  , module Network.AWS.Shield.DeleteProtection
     -- ** GetSubscriptionState
-    , module Network.AWS.Shield.GetSubscriptionState
-
+  , module Network.AWS.Shield.GetSubscriptionState
     -- ** DescribeSubscription
-    , module Network.AWS.Shield.DescribeSubscription
-
+  , module Network.AWS.Shield.DescribeSubscription
     -- * Types
-
     -- ** AttackLayer
-    , AttackLayer (..)
-
+  , AttackLayer(..)
     -- ** AttackPropertyIdentifier
-    , AttackPropertyIdentifier (..)
-
+  , AttackPropertyIdentifier(..)
     -- ** SubResourceType
-    , SubResourceType (..)
-
+  , SubResourceType(..)
     -- ** SubscriptionState
-    , SubscriptionState (..)
-
+  , SubscriptionState(..)
     -- ** Unit
-    , Unit (..)
-
+  , Unit(..)
     -- ** AttackDetail
-    , AttackDetail
-    , attackDetail
-    , adAttackId
-    , adStartTime
-    , adSubResources
-    , adMitigations
-    , adAttackProperties
-    , adAttackCounters
-    , adResourceARN
-    , adEndTime
-
+  , AttackDetail
+  , attackDetail
+  , adAttackId
+  , adStartTime
+  , adSubResources
+  , adMitigations
+  , adAttackProperties
+  , adAttackCounters
+  , adResourceARN
+  , adEndTime
     -- ** AttackProperty
-    , AttackProperty
-    , attackProperty
-    , apAttackLayer
-    , apTopContributors
-    , apAttackPropertyIdentifier
-    , apTotal
-    , apUnit
-
+  , AttackProperty
+  , attackProperty
+  , apAttackLayer
+  , apTopContributors
+  , apAttackPropertyIdentifier
+  , apTotal
+  , apUnit
     -- ** AttackSummary
-    , AttackSummary
-    , attackSummary
-    , asAttackVectors
-    , asAttackId
-    , asStartTime
-    , asResourceARN
-    , asEndTime
-
+  , AttackSummary
+  , attackSummary
+  , asAttackVectors
+  , asAttackId
+  , asStartTime
+  , asResourceARN
+  , asEndTime
     -- ** AttackVectorDescription
-    , AttackVectorDescription
-    , attackVectorDescription
-    , avdVectorType
-
+  , AttackVectorDescription
+  , attackVectorDescription
+  , avdVectorType
     -- ** Contributor
-    , Contributor
-    , contributor
-    , cValue
-    , cName
-
+  , Contributor
+  , contributor
+  , cValue
+  , cName
     -- ** Mitigation
-    , Mitigation
-    , mitigation
-    , mMitigationName
-
+  , Mitigation
+  , mitigation
+  , mMitigationName
     -- ** Protection
-    , Protection
-    , protection
-    , pResourceARN
-    , pName
-    , pId
-
+  , Protection
+  , protection
+  , pResourceARN
+  , pName
+  , pId
     -- ** SubResourceSummary
-    , SubResourceSummary
-    , subResourceSummary
-    , srsCounters
-    , srsAttackVectors
-    , srsId
-    , srsType
-
+  , SubResourceSummary
+  , subResourceSummary
+  , srsCounters
+  , srsAttackVectors
+  , srsId
+  , srsType
     -- ** Subscription
-    , Subscription
-    , subscription
-    , sTimeCommitmentInSeconds
-    , sStartTime
-
+  , Subscription
+  , subscription
+  , sTimeCommitmentInSeconds
+  , sStartTime
     -- ** SummarizedAttackVector
-    , SummarizedAttackVector
-    , summarizedAttackVector
-    , savVectorCounters
-    , savVectorType
-
+  , SummarizedAttackVector
+  , summarizedAttackVector
+  , savVectorCounters
+  , savVectorType
     -- ** SummarizedCounter
-    , SummarizedCounter
-    , summarizedCounter
-    , scMax
-    , scAverage
-    , scN
-    , scName
-    , scSum
-    , scUnit
-
+  , SummarizedCounter
+  , summarizedCounter
+  , scMax
+  , scAverage
+  , scN
+  , scName
+  , scSum
+  , scUnit
     -- ** TimeRange
-    , TimeRange
-    , timeRange
-    , trFromInclusive
-    , trToExclusive
-    ) where
+  , TimeRange
+  , timeRange
+  , trFromInclusive
+  , trToExclusive
+  ) where
 
 import Network.AWS.Shield.CreateProtection
 import Network.AWS.Shield.CreateSubscription
@@ -205,14 +163,12 @@ import Network.AWS.Shield.ListAttacks
 import Network.AWS.Shield.ListProtections
 import Network.AWS.Shield.Types
 import Network.AWS.Shield.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Shield'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -229,7 +185,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

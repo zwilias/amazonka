@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ServiceCatalog
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,599 +15,469 @@
 -- <https://aws.amazon.com/servicecatalog/ AWS Service Catalog> enables organizations to create and manage catalogs of IT services that are approved for use on AWS. To get the most out of this documentation, you should be familiar with the terminology discussed in <http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html AWS Service Catalog Concepts> .
 --
 module Network.AWS.ServiceCatalog
-    (
     -- * Service Configuration
-      serviceCatalog
-
+  ( serviceCatalog
     -- * Errors
     -- $errors
-
     -- ** InvalidParametersException
-    , _InvalidParametersException
-
+  , _InvalidParametersException
     -- ** DuplicateResourceException
-    , _DuplicateResourceException
-
+  , _DuplicateResourceException
     -- ** TagOptionNotMigratedException
-    , _TagOptionNotMigratedException
-
+  , _TagOptionNotMigratedException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- ** InvalidStateException
-    , _InvalidStateException
-
+  , _InvalidStateException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- ** ResourceInUseException
-    , _ResourceInUseException
-
+  , _ResourceInUseException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** DeleteConstraint
-    , module Network.AWS.ServiceCatalog.DeleteConstraint
-
+  , module Network.AWS.ServiceCatalog.DeleteConstraint
     -- ** UpdateConstraint
-    , module Network.AWS.ServiceCatalog.UpdateConstraint
-
+  , module Network.AWS.ServiceCatalog.UpdateConstraint
     -- ** CreateProvisionedProductPlan
-    , module Network.AWS.ServiceCatalog.CreateProvisionedProductPlan
-
+  , module Network.AWS.ServiceCatalog.CreateProvisionedProductPlan
     -- ** CreateProduct
-    , module Network.AWS.ServiceCatalog.CreateProduct
-
+  , module Network.AWS.ServiceCatalog.CreateProduct
     -- ** DescribeCopyProductStatus
-    , module Network.AWS.ServiceCatalog.DescribeCopyProductStatus
-
+  , module Network.AWS.ServiceCatalog.DescribeCopyProductStatus
     -- ** TerminateProvisionedProduct
-    , module Network.AWS.ServiceCatalog.TerminateProvisionedProduct
-
+  , module Network.AWS.ServiceCatalog.TerminateProvisionedProduct
     -- ** UpdateProvisionedProduct
-    , module Network.AWS.ServiceCatalog.UpdateProvisionedProduct
-
+  , module Network.AWS.ServiceCatalog.UpdateProvisionedProduct
     -- ** DescribeProvisioningArtifact
-    , module Network.AWS.ServiceCatalog.DescribeProvisioningArtifact
-
+  , module Network.AWS.ServiceCatalog.DescribeProvisioningArtifact
     -- ** ListRecordHistory
-    , module Network.AWS.ServiceCatalog.ListRecordHistory
-
+  , module Network.AWS.ServiceCatalog.ListRecordHistory
     -- ** DescribeProvisionedProductPlan
-    , module Network.AWS.ServiceCatalog.DescribeProvisionedProductPlan
-
+  , module Network.AWS.ServiceCatalog.DescribeProvisionedProductPlan
     -- ** AssociateTagOptionWithResource
-    , module Network.AWS.ServiceCatalog.AssociateTagOptionWithResource
-
+  , module Network.AWS.ServiceCatalog.AssociateTagOptionWithResource
     -- ** CreateTagOption
-    , module Network.AWS.ServiceCatalog.CreateTagOption
-
+  , module Network.AWS.ServiceCatalog.CreateTagOption
     -- ** DisassociateProductFromPortfolio
-    , module Network.AWS.ServiceCatalog.DisassociateProductFromPortfolio
-
+  , module Network.AWS.ServiceCatalog.DisassociateProductFromPortfolio
     -- ** ListConstraintsForPortfolio (Paginated)
-    , module Network.AWS.ServiceCatalog.ListConstraintsForPortfolio
-
+  , module Network.AWS.ServiceCatalog.ListConstraintsForPortfolio
     -- ** DescribeRecord
-    , module Network.AWS.ServiceCatalog.DescribeRecord
-
+  , module Network.AWS.ServiceCatalog.DescribeRecord
     -- ** DescribeConstraint
-    , module Network.AWS.ServiceCatalog.DescribeConstraint
-
+  , module Network.AWS.ServiceCatalog.DescribeConstraint
     -- ** CreateProvisioningArtifact
-    , module Network.AWS.ServiceCatalog.CreateProvisioningArtifact
-
+  , module Network.AWS.ServiceCatalog.CreateProvisioningArtifact
     -- ** ListPortfolios (Paginated)
-    , module Network.AWS.ServiceCatalog.ListPortfolios
-
+  , module Network.AWS.ServiceCatalog.ListPortfolios
     -- ** DescribeProductView
-    , module Network.AWS.ServiceCatalog.DescribeProductView
-
+  , module Network.AWS.ServiceCatalog.DescribeProductView
     -- ** CreatePortfolioShare
-    , module Network.AWS.ServiceCatalog.CreatePortfolioShare
-
+  , module Network.AWS.ServiceCatalog.CreatePortfolioShare
     -- ** ListProvisioningArtifacts
-    , module Network.AWS.ServiceCatalog.ListProvisioningArtifacts
-
+  , module Network.AWS.ServiceCatalog.ListProvisioningArtifacts
     -- ** SearchProducts
-    , module Network.AWS.ServiceCatalog.SearchProducts
-
+  , module Network.AWS.ServiceCatalog.SearchProducts
     -- ** SearchProvisionedProducts
-    , module Network.AWS.ServiceCatalog.SearchProvisionedProducts
-
+  , module Network.AWS.ServiceCatalog.SearchProvisionedProducts
     -- ** DescribeProduct
-    , module Network.AWS.ServiceCatalog.DescribeProduct
-
+  , module Network.AWS.ServiceCatalog.DescribeProduct
     -- ** DeleteProvisionedProductPlan
-    , module Network.AWS.ServiceCatalog.DeleteProvisionedProductPlan
-
+  , module Network.AWS.ServiceCatalog.DeleteProvisionedProductPlan
     -- ** CreateConstraint
-    , module Network.AWS.ServiceCatalog.CreateConstraint
-
+  , module Network.AWS.ServiceCatalog.CreateConstraint
     -- ** ListProvisionedProductPlans
-    , module Network.AWS.ServiceCatalog.ListProvisionedProductPlans
-
+  , module Network.AWS.ServiceCatalog.ListProvisionedProductPlans
     -- ** ListPortfolioAccess
-    , module Network.AWS.ServiceCatalog.ListPortfolioAccess
-
+  , module Network.AWS.ServiceCatalog.ListPortfolioAccess
     -- ** DisassociatePrincipalFromPortfolio
-    , module Network.AWS.ServiceCatalog.DisassociatePrincipalFromPortfolio
-
+  , module Network.AWS.ServiceCatalog.DisassociatePrincipalFromPortfolio
     -- ** DescribeTagOption
-    , module Network.AWS.ServiceCatalog.DescribeTagOption
-
+  , module Network.AWS.ServiceCatalog.DescribeTagOption
     -- ** DisassociateTagOptionFromResource
-    , module Network.AWS.ServiceCatalog.DisassociateTagOptionFromResource
-
+  , module Network.AWS.ServiceCatalog.DisassociateTagOptionFromResource
     -- ** DescribePortfolio
-    , module Network.AWS.ServiceCatalog.DescribePortfolio
-
+  , module Network.AWS.ServiceCatalog.DescribePortfolio
     -- ** AssociateProductWithPortfolio
-    , module Network.AWS.ServiceCatalog.AssociateProductWithPortfolio
-
+  , module Network.AWS.ServiceCatalog.AssociateProductWithPortfolio
     -- ** ListAcceptedPortfolioShares (Paginated)
-    , module Network.AWS.ServiceCatalog.ListAcceptedPortfolioShares
-
+  , module Network.AWS.ServiceCatalog.ListAcceptedPortfolioShares
     -- ** ExecuteProvisionedProductPlan
-    , module Network.AWS.ServiceCatalog.ExecuteProvisionedProductPlan
-
+  , module Network.AWS.ServiceCatalog.ExecuteProvisionedProductPlan
     -- ** AcceptPortfolioShare
-    , module Network.AWS.ServiceCatalog.AcceptPortfolioShare
-
+  , module Network.AWS.ServiceCatalog.AcceptPortfolioShare
     -- ** ScanProvisionedProducts
-    , module Network.AWS.ServiceCatalog.ScanProvisionedProducts
-
+  , module Network.AWS.ServiceCatalog.ScanProvisionedProducts
     -- ** ListPrincipalsForPortfolio (Paginated)
-    , module Network.AWS.ServiceCatalog.ListPrincipalsForPortfolio
-
+  , module Network.AWS.ServiceCatalog.ListPrincipalsForPortfolio
     -- ** DeleteProduct
-    , module Network.AWS.ServiceCatalog.DeleteProduct
-
+  , module Network.AWS.ServiceCatalog.DeleteProduct
     -- ** UpdateProduct
-    , module Network.AWS.ServiceCatalog.UpdateProduct
-
+  , module Network.AWS.ServiceCatalog.UpdateProduct
     -- ** ProvisionProduct
-    , module Network.AWS.ServiceCatalog.ProvisionProduct
-
+  , module Network.AWS.ServiceCatalog.ProvisionProduct
     -- ** RejectPortfolioShare
-    , module Network.AWS.ServiceCatalog.RejectPortfolioShare
-
+  , module Network.AWS.ServiceCatalog.RejectPortfolioShare
     -- ** DeleteTagOption
-    , module Network.AWS.ServiceCatalog.DeleteTagOption
-
+  , module Network.AWS.ServiceCatalog.DeleteTagOption
     -- ** UpdateTagOption
-    , module Network.AWS.ServiceCatalog.UpdateTagOption
-
+  , module Network.AWS.ServiceCatalog.UpdateTagOption
     -- ** ListTagOptions (Paginated)
-    , module Network.AWS.ServiceCatalog.ListTagOptions
-
+  , module Network.AWS.ServiceCatalog.ListTagOptions
     -- ** SearchProductsAsAdmin (Paginated)
-    , module Network.AWS.ServiceCatalog.SearchProductsAsAdmin
-
+  , module Network.AWS.ServiceCatalog.SearchProductsAsAdmin
     -- ** DeletePortfolio
-    , module Network.AWS.ServiceCatalog.DeletePortfolio
-
+  , module Network.AWS.ServiceCatalog.DeletePortfolio
     -- ** UpdatePortfolio
-    , module Network.AWS.ServiceCatalog.UpdatePortfolio
-
+  , module Network.AWS.ServiceCatalog.UpdatePortfolio
     -- ** ListPortfoliosForProduct (Paginated)
-    , module Network.AWS.ServiceCatalog.ListPortfoliosForProduct
-
+  , module Network.AWS.ServiceCatalog.ListPortfoliosForProduct
     -- ** DescribeProductAsAdmin
-    , module Network.AWS.ServiceCatalog.DescribeProductAsAdmin
-
+  , module Network.AWS.ServiceCatalog.DescribeProductAsAdmin
     -- ** DescribeProvisioningParameters
-    , module Network.AWS.ServiceCatalog.DescribeProvisioningParameters
-
+  , module Network.AWS.ServiceCatalog.DescribeProvisioningParameters
     -- ** AssociatePrincipalWithPortfolio
-    , module Network.AWS.ServiceCatalog.AssociatePrincipalWithPortfolio
-
+  , module Network.AWS.ServiceCatalog.AssociatePrincipalWithPortfolio
     -- ** DescribeProvisionedProduct
-    , module Network.AWS.ServiceCatalog.DescribeProvisionedProduct
-
+  , module Network.AWS.ServiceCatalog.DescribeProvisionedProduct
     -- ** CopyProduct
-    , module Network.AWS.ServiceCatalog.CopyProduct
-
+  , module Network.AWS.ServiceCatalog.CopyProduct
     -- ** UpdateProvisioningArtifact
-    , module Network.AWS.ServiceCatalog.UpdateProvisioningArtifact
-
+  , module Network.AWS.ServiceCatalog.UpdateProvisioningArtifact
     -- ** DeletePortfolioShare
-    , module Network.AWS.ServiceCatalog.DeletePortfolioShare
-
+  , module Network.AWS.ServiceCatalog.DeletePortfolioShare
     -- ** DeleteProvisioningArtifact
-    , module Network.AWS.ServiceCatalog.DeleteProvisioningArtifact
-
+  , module Network.AWS.ServiceCatalog.DeleteProvisioningArtifact
     -- ** CreatePortfolio
-    , module Network.AWS.ServiceCatalog.CreatePortfolio
-
+  , module Network.AWS.ServiceCatalog.CreatePortfolio
     -- ** ListLaunchPaths (Paginated)
-    , module Network.AWS.ServiceCatalog.ListLaunchPaths
-
+  , module Network.AWS.ServiceCatalog.ListLaunchPaths
     -- ** ListResourcesForTagOption (Paginated)
-    , module Network.AWS.ServiceCatalog.ListResourcesForTagOption
-
+  , module Network.AWS.ServiceCatalog.ListResourcesForTagOption
     -- * Types
-
     -- ** AccessLevelFilterKey
-    , AccessLevelFilterKey (..)
-
+  , AccessLevelFilterKey(..)
     -- ** ChangeAction
-    , ChangeAction (..)
-
+  , ChangeAction(..)
     -- ** CopyOption
-    , CopyOption (..)
-
+  , CopyOption(..)
     -- ** CopyProductStatus
-    , CopyProductStatus (..)
-
+  , CopyProductStatus(..)
     -- ** EvaluationType
-    , EvaluationType (..)
-
+  , EvaluationType(..)
     -- ** PrincipalType
-    , PrincipalType (..)
-
+  , PrincipalType(..)
     -- ** ProductSource
-    , ProductSource (..)
-
+  , ProductSource(..)
     -- ** ProductType
-    , ProductType (..)
-
+  , ProductType(..)
     -- ** ProductViewFilterBy
-    , ProductViewFilterBy (..)
-
+  , ProductViewFilterBy(..)
     -- ** ProductViewSortBy
-    , ProductViewSortBy (..)
-
+  , ProductViewSortBy(..)
     -- ** ProvisionedProductPlanStatus
-    , ProvisionedProductPlanStatus (..)
-
+  , ProvisionedProductPlanStatus(..)
     -- ** ProvisionedProductPlanType
-    , ProvisionedProductPlanType (..)
-
+  , ProvisionedProductPlanType(..)
     -- ** ProvisionedProductStatus
-    , ProvisionedProductStatus (..)
-
+  , ProvisionedProductStatus(..)
     -- ** ProvisionedProductViewFilterBy
-    , ProvisionedProductViewFilterBy (..)
-
+  , ProvisionedProductViewFilterBy(..)
     -- ** ProvisioningArtifactPropertyName
-    , ProvisioningArtifactPropertyName (..)
-
+  , ProvisioningArtifactPropertyName(..)
     -- ** ProvisioningArtifactType
-    , ProvisioningArtifactType (..)
-
+  , ProvisioningArtifactType(..)
     -- ** RecordStatus
-    , RecordStatus (..)
-
+  , RecordStatus(..)
     -- ** Replacement
-    , Replacement (..)
-
+  , Replacement(..)
     -- ** RequestStatus
-    , RequestStatus (..)
-
+  , RequestStatus(..)
     -- ** RequiresRecreation
-    , RequiresRecreation (..)
-
+  , RequiresRecreation(..)
     -- ** ResourceAttribute
-    , ResourceAttribute (..)
-
+  , ResourceAttribute(..)
     -- ** SortOrder
-    , SortOrder (..)
-
+  , SortOrder(..)
     -- ** AccessLevelFilter
-    , AccessLevelFilter
-    , accessLevelFilter
-    , alfValue
-    , alfKey
-
+  , AccessLevelFilter
+  , accessLevelFilter
+  , alfValue
+  , alfKey
     -- ** CloudWatchDashboard
-    , CloudWatchDashboard
-    , cloudWatchDashboard
-    , cwdName
-
+  , CloudWatchDashboard
+  , cloudWatchDashboard
+  , cwdName
     -- ** ConstraintDetail
-    , ConstraintDetail
-    , constraintDetail
-    , cdConstraintId
-    , cdOwner
-    , cdType
-    , cdDescription
-
+  , ConstraintDetail
+  , constraintDetail
+  , cdConstraintId
+  , cdOwner
+  , cdType
+  , cdDescription
     -- ** ConstraintSummary
-    , ConstraintSummary
-    , constraintSummary
-    , csType
-    , csDescription
-
+  , ConstraintSummary
+  , constraintSummary
+  , csType
+  , csDescription
     -- ** LaunchPathSummary
-    , LaunchPathSummary
-    , launchPathSummary
-    , lpsConstraintSummaries
-    , lpsName
-    , lpsId
-    , lpsTags
-
+  , LaunchPathSummary
+  , launchPathSummary
+  , lpsConstraintSummaries
+  , lpsName
+  , lpsId
+  , lpsTags
     -- ** ListRecordHistorySearchFilter
-    , ListRecordHistorySearchFilter
-    , listRecordHistorySearchFilter
-    , lrhsfValue
-    , lrhsfKey
-
+  , ListRecordHistorySearchFilter
+  , listRecordHistorySearchFilter
+  , lrhsfValue
+  , lrhsfKey
     -- ** ListTagOptionsFilters
-    , ListTagOptionsFilters
-    , listTagOptionsFilters
-    , ltofValue
-    , ltofActive
-    , ltofKey
-
+  , ListTagOptionsFilters
+  , listTagOptionsFilters
+  , ltofValue
+  , ltofActive
+  , ltofKey
     -- ** ParameterConstraints
-    , ParameterConstraints
-    , parameterConstraints
-    , pcAllowedValues
-
+  , ParameterConstraints
+  , parameterConstraints
+  , pcAllowedValues
     -- ** PortfolioDetail
-    , PortfolioDetail
-    , portfolioDetail
-    , pdARN
-    , pdCreatedTime
-    , pdId
-    , pdDisplayName
-    , pdDescription
-    , pdProviderName
-
+  , PortfolioDetail
+  , portfolioDetail
+  , pdARN
+  , pdCreatedTime
+  , pdId
+  , pdDisplayName
+  , pdDescription
+  , pdProviderName
     -- ** Principal
-    , Principal
-    , principal
-    , pPrincipalType
-    , pPrincipalARN
-
+  , Principal
+  , principal
+  , pPrincipalType
+  , pPrincipalARN
     -- ** ProductViewAggregationValue
-    , ProductViewAggregationValue
-    , productViewAggregationValue
-    , pvavValue
-    , pvavApproximateCount
-
+  , ProductViewAggregationValue
+  , productViewAggregationValue
+  , pvavValue
+  , pvavApproximateCount
     -- ** ProductViewDetail
-    , ProductViewDetail
-    , productViewDetail
-    , pvdStatus
-    , pvdProductViewSummary
-    , pvdCreatedTime
-    , pvdProductARN
-
+  , ProductViewDetail
+  , productViewDetail
+  , pvdStatus
+  , pvdProductViewSummary
+  , pvdCreatedTime
+  , pvdProductARN
     -- ** ProductViewSummary
-    , ProductViewSummary
-    , productViewSummary
-    , pvsOwner
-    , pvsSupportURL
-    , pvsShortDescription
-    , pvsHasDefaultPath
-    , pvsDistributor
-    , pvsName
-    , pvsId
-    , pvsType
-    , pvsSupportEmail
-    , pvsProductId
-    , pvsSupportDescription
-
+  , ProductViewSummary
+  , productViewSummary
+  , pvsOwner
+  , pvsSupportURL
+  , pvsShortDescription
+  , pvsHasDefaultPath
+  , pvsDistributor
+  , pvsName
+  , pvsId
+  , pvsType
+  , pvsSupportEmail
+  , pvsProductId
+  , pvsSupportDescription
     -- ** ProvisionedProductAttribute
-    , ProvisionedProductAttribute
-    , provisionedProductAttribute
-    , ppaIdempotencyToken
-    , ppaStatus
-    , ppaProvisioningArtifactId
-    , ppaARN
-    , ppaCreatedTime
-    , ppaUserARN
-    , ppaStatusMessage
-    , ppaName
-    , ppaLastRecordId
-    , ppaUserARNSession
-    , ppaId
-    , ppaType
-    , ppaPhysicalId
-    , ppaProductId
-    , ppaTags
-
+  , ProvisionedProductAttribute
+  , provisionedProductAttribute
+  , ppaIdempotencyToken
+  , ppaStatus
+  , ppaProvisioningArtifactId
+  , ppaARN
+  , ppaCreatedTime
+  , ppaUserARN
+  , ppaStatusMessage
+  , ppaName
+  , ppaLastRecordId
+  , ppaUserARNSession
+  , ppaId
+  , ppaType
+  , ppaPhysicalId
+  , ppaProductId
+  , ppaTags
     -- ** ProvisionedProductDetail
-    , ProvisionedProductDetail
-    , provisionedProductDetail
-    , ppdIdempotencyToken
-    , ppdStatus
-    , ppdARN
-    , ppdCreatedTime
-    , ppdStatusMessage
-    , ppdName
-    , ppdLastRecordId
-    , ppdId
-    , ppdType
-
+  , ProvisionedProductDetail
+  , provisionedProductDetail
+  , ppdIdempotencyToken
+  , ppdStatus
+  , ppdARN
+  , ppdCreatedTime
+  , ppdStatusMessage
+  , ppdName
+  , ppdLastRecordId
+  , ppdId
+  , ppdType
     -- ** ProvisionedProductPlanDetails
-    , ProvisionedProductPlanDetails
-    , provisionedProductPlanDetails
-    , pppdStatus
-    , pppdProvisionProductId
-    , pppdProvisioningArtifactId
-    , pppdProvisionProductName
-    , pppdCreatedTime
-    , pppdNotificationARNs
-    , pppdPlanId
-    , pppdPlanName
-    , pppdStatusMessage
-    , pppdUpdatedTime
-    , pppdPathId
-    , pppdProvisioningParameters
-    , pppdPlanType
-    , pppdProductId
-    , pppdTags
-
+  , ProvisionedProductPlanDetails
+  , provisionedProductPlanDetails
+  , pppdStatus
+  , pppdProvisionProductId
+  , pppdProvisioningArtifactId
+  , pppdProvisionProductName
+  , pppdCreatedTime
+  , pppdNotificationARNs
+  , pppdPlanId
+  , pppdPlanName
+  , pppdStatusMessage
+  , pppdUpdatedTime
+  , pppdPathId
+  , pppdProvisioningParameters
+  , pppdPlanType
+  , pppdProductId
+  , pppdTags
     -- ** ProvisionedProductPlanSummary
-    , ProvisionedProductPlanSummary
-    , provisionedProductPlanSummary
-    , pppsProvisionProductId
-    , pppsProvisioningArtifactId
-    , pppsProvisionProductName
-    , pppsPlanId
-    , pppsPlanName
-    , pppsPlanType
-
+  , ProvisionedProductPlanSummary
+  , provisionedProductPlanSummary
+  , pppsProvisionProductId
+  , pppsProvisioningArtifactId
+  , pppsProvisionProductName
+  , pppsPlanId
+  , pppsPlanName
+  , pppsPlanType
     -- ** ProvisioningArtifact
-    , ProvisioningArtifact
-    , provisioningArtifact
-    , paCreatedTime
-    , paName
-    , paId
-    , paDescription
-
+  , ProvisioningArtifact
+  , provisioningArtifact
+  , paCreatedTime
+  , paName
+  , paId
+  , paDescription
     -- ** ProvisioningArtifactDetail
-    , ProvisioningArtifactDetail
-    , provisioningArtifactDetail
-    , padCreatedTime
-    , padActive
-    , padName
-    , padId
-    , padType
-    , padDescription
-
+  , ProvisioningArtifactDetail
+  , provisioningArtifactDetail
+  , padCreatedTime
+  , padActive
+  , padName
+  , padId
+  , padType
+  , padDescription
     -- ** ProvisioningArtifactParameter
-    , ProvisioningArtifactParameter
-    , provisioningArtifactParameter
-    , pIsNoEcho
-    , pParameterKey
-    , pParameterType
-    , pParameterConstraints
-    , pDefaultValue
-    , pDescription
-
+  , ProvisioningArtifactParameter
+  , provisioningArtifactParameter
+  , pIsNoEcho
+  , pParameterKey
+  , pParameterType
+  , pParameterConstraints
+  , pDefaultValue
+  , pDescription
     -- ** ProvisioningArtifactProperties
-    , ProvisioningArtifactProperties
-    , provisioningArtifactProperties
-    , papName
-    , papType
-    , papDescription
-    , papInfo
-
+  , ProvisioningArtifactProperties
+  , provisioningArtifactProperties
+  , papName
+  , papType
+  , papDescription
+  , papInfo
     -- ** ProvisioningArtifactSummary
-    , ProvisioningArtifactSummary
-    , provisioningArtifactSummary
-    , pasProvisioningArtifactMetadata
-    , pasCreatedTime
-    , pasName
-    , pasId
-    , pasDescription
-
+  , ProvisioningArtifactSummary
+  , provisioningArtifactSummary
+  , pasProvisioningArtifactMetadata
+  , pasCreatedTime
+  , pasName
+  , pasId
+  , pasDescription
     -- ** ProvisioningParameter
-    , ProvisioningParameter
-    , provisioningParameter
-    , ppValue
-    , ppKey
-
+  , ProvisioningParameter
+  , provisioningParameter
+  , ppValue
+  , ppKey
     -- ** RecordDetail
-    , RecordDetail
-    , recordDetail
-    , rdStatus
-    , rdRecordTags
-    , rdProvisionedProductName
-    , rdProvisioningArtifactId
-    , rdCreatedTime
-    , rdRecordType
-    , rdRecordId
-    , rdProvisionedProductType
-    , rdUpdatedTime
-    , rdPathId
-    , rdProvisionedProductId
-    , rdRecordErrors
-    , rdProductId
-
+  , RecordDetail
+  , recordDetail
+  , rdStatus
+  , rdRecordTags
+  , rdProvisionedProductName
+  , rdProvisioningArtifactId
+  , rdCreatedTime
+  , rdRecordType
+  , rdRecordId
+  , rdProvisionedProductType
+  , rdUpdatedTime
+  , rdPathId
+  , rdProvisionedProductId
+  , rdRecordErrors
+  , rdProductId
     -- ** RecordError
-    , RecordError
-    , recordError
-    , reCode
-    , reDescription
-
+  , RecordError
+  , recordError
+  , reCode
+  , reDescription
     -- ** RecordOutput
-    , RecordOutput
-    , recordOutput
-    , roOutputValue
-    , roOutputKey
-    , roDescription
-
+  , RecordOutput
+  , recordOutput
+  , roOutputValue
+  , roOutputKey
+  , roDescription
     -- ** RecordTag
-    , RecordTag
-    , recordTag
-    , rtValue
-    , rtKey
-
+  , RecordTag
+  , recordTag
+  , rtValue
+  , rtKey
     -- ** ResourceChange
-    , ResourceChange
-    , resourceChange
-    , rcLogicalResourceId
-    , rcPhysicalResourceId
-    , rcResourceType
-    , rcAction
-    , rcScope
-    , rcDetails
-    , rcReplacement
-
+  , ResourceChange
+  , resourceChange
+  , rcLogicalResourceId
+  , rcPhysicalResourceId
+  , rcResourceType
+  , rcAction
+  , rcScope
+  , rcDetails
+  , rcReplacement
     -- ** ResourceChangeDetail
-    , ResourceChangeDetail
-    , resourceChangeDetail
-    , rcdCausingEntity
-    , rcdEvaluation
-    , rcdTarget
-
+  , ResourceChangeDetail
+  , resourceChangeDetail
+  , rcdCausingEntity
+  , rcdEvaluation
+  , rcdTarget
     -- ** ResourceDetail
-    , ResourceDetail
-    , resourceDetail
-    , rARN
-    , rCreatedTime
-    , rName
-    , rId
-    , rDescription
-
+  , ResourceDetail
+  , resourceDetail
+  , rARN
+  , rCreatedTime
+  , rName
+  , rId
+  , rDescription
     -- ** ResourceTargetDefinition
-    , ResourceTargetDefinition
-    , resourceTargetDefinition
-    , rtdAttribute
-    , rtdRequiresRecreation
-    , rtdName
-
+  , ResourceTargetDefinition
+  , resourceTargetDefinition
+  , rtdAttribute
+  , rtdRequiresRecreation
+  , rtdName
     -- ** Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
     -- ** TagOptionDetail
-    , TagOptionDetail
-    , tagOptionDetail
-    , todValue
-    , todActive
-    , todKey
-    , todId
-
+  , TagOptionDetail
+  , tagOptionDetail
+  , todValue
+  , todActive
+  , todKey
+  , todId
     -- ** TagOptionSummary
-    , TagOptionSummary
-    , tagOptionSummary
-    , tosValues
-    , tosKey
-
+  , TagOptionSummary
+  , tagOptionSummary
+  , tosValues
+  , tosKey
     -- ** UpdateProvisioningParameter
-    , UpdateProvisioningParameter
-    , updateProvisioningParameter
-    , uppValue
-    , uppKey
-    , uppUsePreviousValue
-
+  , UpdateProvisioningParameter
+  , updateProvisioningParameter
+  , uppValue
+  , uppKey
+  , uppUsePreviousValue
     -- ** UsageInstruction
-    , UsageInstruction
-    , usageInstruction
-    , uiValue
-    , uiType
-    ) where
+  , UsageInstruction
+  , usageInstruction
+  , uiValue
+  , uiType
+  ) where
 
 import Network.AWS.ServiceCatalog.AcceptPortfolioShare
 import Network.AWS.ServiceCatalog.AssociatePrincipalWithPortfolio
@@ -672,14 +541,12 @@ import Network.AWS.ServiceCatalog.UpdateProvisionedProduct
 import Network.AWS.ServiceCatalog.UpdateProvisioningArtifact
 import Network.AWS.ServiceCatalog.UpdateTagOption
 import Network.AWS.ServiceCatalog.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'ServiceCatalog'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -696,7 +563,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

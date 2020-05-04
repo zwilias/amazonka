@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ResourceGroups.ListGroupResources
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,23 +22,21 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.ResourceGroups.ListGroupResources
-    (
     -- * Creating a Request
-      listGroupResources
-    , ListGroupResources
+  ( listGroupResources
+  , ListGroupResources
     -- * Request Lenses
-    , lgrNextToken
-    , lgrMaxResults
-    , lgrGroupName
-
+  , lgrNextToken
+  , lgrMaxResults
+  , lgrGroupName
     -- * Destructuring the Response
-    , listGroupResourcesResponse
-    , ListGroupResourcesResponse
+  , listGroupResourcesResponse
+  , ListGroupResourcesResponse
     -- * Response Lenses
-    , lgrrsNextToken
-    , lgrrsResourceIdentifiers
-    , lgrrsResponseStatus
-    ) where
+  , lgrrsNextToken
+  , lgrrsResourceIdentifiers
+  , lgrrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Pager
@@ -51,12 +47,13 @@ import Network.AWS.ResourceGroups.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'listGroupResources' smart constructor.
-data ListGroupResources = ListGroupResources'
-  { _lgrNextToken  :: !(Maybe Text)
-  , _lgrMaxResults :: !(Maybe Nat)
-  , _lgrGroupName  :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupResources =
+  ListGroupResources'
+    { _lgrNextToken  :: !(Maybe Text)
+    , _lgrMaxResults :: !(Maybe Nat)
+    , _lgrGroupName  :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroupResources' with the minimum fields required to make a request.
 --
@@ -67,9 +64,9 @@ data ListGroupResources = ListGroupResources'
 -- * 'lgrMaxResults' - The maximum number of group member ARNs that are returned in a single call by ListGroupResources, in paginated output. By default, this number is 50.
 --
 -- * 'lgrGroupName' - The name of the resource group.
-listGroupResources
-    :: Text -- ^ 'lgrGroupName'
-    -> ListGroupResources
+listGroupResources ::
+     Text -- ^ 'lgrGroupName'
+  -> ListGroupResources
 listGroupResources pGroupName_ =
   ListGroupResources'
     { _lgrNextToken = Nothing
@@ -77,64 +74,58 @@ listGroupResources pGroupName_ =
     , _lgrGroupName = pGroupName_
     }
 
-
 -- | The NextToken value that is returned in a paginated ListGroupResources request. To get the next page of results, run the call again, add the NextToken parameter, and specify the NextToken value.
 lgrNextToken :: Lens' ListGroupResources (Maybe Text)
-lgrNextToken = lens _lgrNextToken (\ s a -> s{_lgrNextToken = a})
+lgrNextToken = lens _lgrNextToken (\s a -> s {_lgrNextToken = a})
 
 -- | The maximum number of group member ARNs that are returned in a single call by ListGroupResources, in paginated output. By default, this number is 50.
 lgrMaxResults :: Lens' ListGroupResources (Maybe Natural)
-lgrMaxResults = lens _lgrMaxResults (\ s a -> s{_lgrMaxResults = a}) . mapping _Nat
+lgrMaxResults =
+  lens _lgrMaxResults (\s a -> s {_lgrMaxResults = a}) . mapping _Nat
 
 -- | The name of the resource group.
 lgrGroupName :: Lens' ListGroupResources Text
-lgrGroupName = lens _lgrGroupName (\ s a -> s{_lgrGroupName = a})
+lgrGroupName = lens _lgrGroupName (\s a -> s {_lgrGroupName = a})
 
 instance AWSPager ListGroupResources where
-        page rq rs
-          | stop (rs ^. lgrrsNextToken) = Nothing
-          | stop (rs ^. lgrrsResourceIdentifiers) = Nothing
-          | otherwise =
-            Just $ rq & lgrNextToken .~ rs ^. lgrrsNextToken
+  page rq rs
+    | stop (rs ^. lgrrsNextToken) = Nothing
+    | stop (rs ^. lgrrsResourceIdentifiers) = Nothing
+    | otherwise = Just $ rq & lgrNextToken .~ rs ^. lgrrsNextToken
 
 instance AWSRequest ListGroupResources where
-        type Rs ListGroupResources =
-             ListGroupResourcesResponse
-        request = get resourceGroups
-        response
-          = receiveJSON
-              (\ s h x ->
-                 ListGroupResourcesResponse' <$>
-                   (x .?> "NextToken") <*>
-                     (x .?> "ResourceIdentifiers" .!@ mempty)
-                     <*> (pure (fromEnum s)))
+  type Rs ListGroupResources = ListGroupResourcesResponse
+  request = get resourceGroups
+  response =
+    receiveJSON
+      (\s h x ->
+         ListGroupResourcesResponse' <$> (x .?> "NextToken") <*>
+         (x .?> "ResourceIdentifiers" .!@ mempty) <*>
+         (pure (fromEnum s)))
 
-instance Hashable ListGroupResources where
+instance Hashable ListGroupResources
 
-instance NFData ListGroupResources where
+instance NFData ListGroupResources
 
 instance ToHeaders ListGroupResources where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath ListGroupResources where
-        toPath ListGroupResources'{..}
-          = mconcat
-              ["/groups/", toBS _lgrGroupName,
-               "/resource-identifiers"]
+  toPath ListGroupResources' {..} =
+    mconcat ["/groups/", toBS _lgrGroupName, "/resource-identifiers"]
 
 instance ToQuery ListGroupResources where
-        toQuery ListGroupResources'{..}
-          = mconcat
-              ["nextToken" =: _lgrNextToken,
-               "maxResults" =: _lgrMaxResults]
+  toQuery ListGroupResources' {..} =
+    mconcat ["nextToken" =: _lgrNextToken, "maxResults" =: _lgrMaxResults]
 
 -- | /See:/ 'listGroupResourcesResponse' smart constructor.
-data ListGroupResourcesResponse = ListGroupResourcesResponse'
-  { _lgrrsNextToken           :: !(Maybe Text)
-  , _lgrrsResourceIdentifiers :: !(Maybe [ResourceIdentifier])
-  , _lgrrsResponseStatus      :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupResourcesResponse =
+  ListGroupResourcesResponse'
+    { _lgrrsNextToken           :: !(Maybe Text)
+    , _lgrrsResourceIdentifiers :: !(Maybe [ResourceIdentifier])
+    , _lgrrsResponseStatus      :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroupResourcesResponse' with the minimum fields required to make a request.
 --
@@ -145,9 +136,9 @@ data ListGroupResourcesResponse = ListGroupResourcesResponse'
 -- * 'lgrrsResourceIdentifiers' - The ARNs and resource types of resources that are members of the group that you specified.
 --
 -- * 'lgrrsResponseStatus' - -- | The response status code.
-listGroupResourcesResponse
-    :: Int -- ^ 'lgrrsResponseStatus'
-    -> ListGroupResourcesResponse
+listGroupResourcesResponse ::
+     Int -- ^ 'lgrrsResponseStatus'
+  -> ListGroupResourcesResponse
 listGroupResourcesResponse pResponseStatus_ =
   ListGroupResourcesResponse'
     { _lgrrsNextToken = Nothing
@@ -155,17 +146,20 @@ listGroupResourcesResponse pResponseStatus_ =
     , _lgrrsResponseStatus = pResponseStatus_
     }
 
-
 -- | The NextToken value to include in a subsequent @ListGroupResources@ request, to get more results.
 lgrrsNextToken :: Lens' ListGroupResourcesResponse (Maybe Text)
-lgrrsNextToken = lens _lgrrsNextToken (\ s a -> s{_lgrrsNextToken = a})
+lgrrsNextToken = lens _lgrrsNextToken (\s a -> s {_lgrrsNextToken = a})
 
 -- | The ARNs and resource types of resources that are members of the group that you specified.
-lgrrsResourceIdentifiers :: Lens' ListGroupResourcesResponse [ResourceIdentifier]
-lgrrsResourceIdentifiers = lens _lgrrsResourceIdentifiers (\ s a -> s{_lgrrsResourceIdentifiers = a}) . _Default . _Coerce
+lgrrsResourceIdentifiers ::
+     Lens' ListGroupResourcesResponse [ResourceIdentifier]
+lgrrsResourceIdentifiers =
+  lens _lgrrsResourceIdentifiers (\s a -> s {_lgrrsResourceIdentifiers = a}) .
+  _Default . _Coerce
 
 -- | -- | The response status code.
 lgrrsResponseStatus :: Lens' ListGroupResourcesResponse Int
-lgrrsResponseStatus = lens _lgrrsResponseStatus (\ s a -> s{_lgrrsResponseStatus = a})
+lgrrsResponseStatus =
+  lens _lgrrsResponseStatus (\s a -> s {_lgrrsResponseStatus = a})
 
-instance NFData ListGroupResourcesResponse where
+instance NFData ListGroupResourcesResponse

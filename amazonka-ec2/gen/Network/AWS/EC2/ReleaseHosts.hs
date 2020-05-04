@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.ReleaseHosts
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,21 +24,19 @@
 -- Released hosts will still appear in a 'DescribeHosts' response.
 --
 module Network.AWS.EC2.ReleaseHosts
-    (
     -- * Creating a Request
-      releaseHosts
-    , ReleaseHosts
+  ( releaseHosts
+  , ReleaseHosts
     -- * Request Lenses
-    , rhHostIds
-
+  , rhHostIds
     -- * Destructuring the Response
-    , releaseHostsResponse
-    , ReleaseHostsResponse
+  , releaseHostsResponse
+  , ReleaseHostsResponse
     -- * Response Lenses
-    , rhrsUnsuccessful
-    , rhrsSuccessful
-    , rhrsResponseStatus
-    ) where
+  , rhrsUnsuccessful
+  , rhrsSuccessful
+  , rhrsResponseStatus
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -54,67 +50,65 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'releaseHosts' smart constructor.
-newtype ReleaseHosts = ReleaseHosts'
-  { _rhHostIds :: [Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ReleaseHosts =
+  ReleaseHosts'
+    { _rhHostIds :: [Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReleaseHosts' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rhHostIds' - The IDs of the Dedicated Hosts you want to release.
-releaseHosts
-    :: ReleaseHosts
+releaseHosts :: ReleaseHosts
 releaseHosts = ReleaseHosts' {_rhHostIds = mempty}
-
 
 -- | The IDs of the Dedicated Hosts you want to release.
 rhHostIds :: Lens' ReleaseHosts [Text]
-rhHostIds = lens _rhHostIds (\ s a -> s{_rhHostIds = a}) . _Coerce
+rhHostIds = lens _rhHostIds (\s a -> s {_rhHostIds = a}) . _Coerce
 
 instance AWSRequest ReleaseHosts where
-        type Rs ReleaseHosts = ReleaseHostsResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 ReleaseHostsResponse' <$>
-                   (x .@? "unsuccessful" .!@ mempty >>=
-                      may (parseXMLList "item"))
-                     <*>
-                     (x .@? "successful" .!@ mempty >>=
-                        may (parseXMLList "item"))
-                     <*> (pure (fromEnum s)))
+  type Rs ReleaseHosts = ReleaseHostsResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         ReleaseHostsResponse' <$>
+         (x .@? "unsuccessful" .!@ mempty >>= may (parseXMLList "item")) <*>
+         (x .@? "successful" .!@ mempty >>= may (parseXMLList "item")) <*>
+         (pure (fromEnum s)))
 
-instance Hashable ReleaseHosts where
+instance Hashable ReleaseHosts
 
-instance NFData ReleaseHosts where
+instance NFData ReleaseHosts
 
 instance ToHeaders ReleaseHosts where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath ReleaseHosts where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery ReleaseHosts where
-        toQuery ReleaseHosts'{..}
-          = mconcat
-              ["Action" =: ("ReleaseHosts" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               toQueryList "HostId" _rhHostIds]
+  toQuery ReleaseHosts' {..} =
+    mconcat
+      [ "Action" =: ("ReleaseHosts" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , toQueryList "HostId" _rhHostIds
+      ]
 
 -- | Contains the output of ReleaseHosts.
 --
 --
 --
 -- /See:/ 'releaseHostsResponse' smart constructor.
-data ReleaseHostsResponse = ReleaseHostsResponse'
-  { _rhrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
-  , _rhrsSuccessful     :: !(Maybe [Text])
-  , _rhrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReleaseHostsResponse =
+  ReleaseHostsResponse'
+    { _rhrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
+    , _rhrsSuccessful     :: !(Maybe [Text])
+    , _rhrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReleaseHostsResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +119,9 @@ data ReleaseHostsResponse = ReleaseHostsResponse'
 -- * 'rhrsSuccessful' - The IDs of the Dedicated Hosts that were successfully released.
 --
 -- * 'rhrsResponseStatus' - -- | The response status code.
-releaseHostsResponse
-    :: Int -- ^ 'rhrsResponseStatus'
-    -> ReleaseHostsResponse
+releaseHostsResponse ::
+     Int -- ^ 'rhrsResponseStatus'
+  -> ReleaseHostsResponse
 releaseHostsResponse pResponseStatus_ =
   ReleaseHostsResponse'
     { _rhrsUnsuccessful = Nothing
@@ -135,17 +129,20 @@ releaseHostsResponse pResponseStatus_ =
     , _rhrsResponseStatus = pResponseStatus_
     }
 
-
 -- | The IDs of the Dedicated Hosts that could not be released, including an error message.
 rhrsUnsuccessful :: Lens' ReleaseHostsResponse [UnsuccessfulItem]
-rhrsUnsuccessful = lens _rhrsUnsuccessful (\ s a -> s{_rhrsUnsuccessful = a}) . _Default . _Coerce
+rhrsUnsuccessful =
+  lens _rhrsUnsuccessful (\s a -> s {_rhrsUnsuccessful = a}) .
+  _Default . _Coerce
 
 -- | The IDs of the Dedicated Hosts that were successfully released.
 rhrsSuccessful :: Lens' ReleaseHostsResponse [Text]
-rhrsSuccessful = lens _rhrsSuccessful (\ s a -> s{_rhrsSuccessful = a}) . _Default . _Coerce
+rhrsSuccessful =
+  lens _rhrsSuccessful (\s a -> s {_rhrsSuccessful = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 rhrsResponseStatus :: Lens' ReleaseHostsResponse Int
-rhrsResponseStatus = lens _rhrsResponseStatus (\ s a -> s{_rhrsResponseStatus = a})
+rhrsResponseStatus =
+  lens _rhrsResponseStatus (\s a -> s {_rhrsResponseStatus = a})
 
-instance NFData ReleaseHostsResponse where
+instance NFData ReleaseHostsResponse

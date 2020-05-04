@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.MediaConvert
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -89,7 +87,6 @@ import Test.Tasty
 --             cancelJob
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseDeletePreset $
 --             deletePresetResponse
@@ -153,246 +150,227 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestDeletePreset :: DeletePreset -> TestTree
-requestDeletePreset = req
-    "DeletePreset"
-    "fixture/DeletePreset.yaml"
+requestDeletePreset = req "DeletePreset" "fixture/DeletePreset.yaml"
 
 requestUpdatePreset :: UpdatePreset -> TestTree
-requestUpdatePreset = req
-    "UpdatePreset"
-    "fixture/UpdatePreset.yaml"
+requestUpdatePreset = req "UpdatePreset" "fixture/UpdatePreset.yaml"
 
 requestListQueues :: ListQueues -> TestTree
-requestListQueues = req
-    "ListQueues"
-    "fixture/ListQueues.yaml"
+requestListQueues = req "ListQueues" "fixture/ListQueues.yaml"
 
 requestDeleteQueue :: DeleteQueue -> TestTree
-requestDeleteQueue = req
-    "DeleteQueue"
-    "fixture/DeleteQueue.yaml"
+requestDeleteQueue = req "DeleteQueue" "fixture/DeleteQueue.yaml"
 
 requestUpdateQueue :: UpdateQueue -> TestTree
-requestUpdateQueue = req
-    "UpdateQueue"
-    "fixture/UpdateQueue.yaml"
+requestUpdateQueue = req "UpdateQueue" "fixture/UpdateQueue.yaml"
 
 requestGetPreset :: GetPreset -> TestTree
-requestGetPreset = req
-    "GetPreset"
-    "fixture/GetPreset.yaml"
+requestGetPreset = req "GetPreset" "fixture/GetPreset.yaml"
 
 requestCreateJob :: CreateJob -> TestTree
-requestCreateJob = req
-    "CreateJob"
-    "fixture/CreateJob.yaml"
+requestCreateJob = req "CreateJob" "fixture/CreateJob.yaml"
 
 requestListJobs :: ListJobs -> TestTree
-requestListJobs = req
-    "ListJobs"
-    "fixture/ListJobs.yaml"
+requestListJobs = req "ListJobs" "fixture/ListJobs.yaml"
 
 requestGetJob :: GetJob -> TestTree
-requestGetJob = req
-    "GetJob"
-    "fixture/GetJob.yaml"
+requestGetJob = req "GetJob" "fixture/GetJob.yaml"
 
 requestCreatePreset :: CreatePreset -> TestTree
-requestCreatePreset = req
-    "CreatePreset"
-    "fixture/CreatePreset.yaml"
+requestCreatePreset = req "CreatePreset" "fixture/CreatePreset.yaml"
 
 requestListPresets :: ListPresets -> TestTree
-requestListPresets = req
-    "ListPresets"
-    "fixture/ListPresets.yaml"
+requestListPresets = req "ListPresets" "fixture/ListPresets.yaml"
 
 requestGetQueue :: GetQueue -> TestTree
-requestGetQueue = req
-    "GetQueue"
-    "fixture/GetQueue.yaml"
+requestGetQueue = req "GetQueue" "fixture/GetQueue.yaml"
 
 requestDescribeEndpoints :: DescribeEndpoints -> TestTree
-requestDescribeEndpoints = req
-    "DescribeEndpoints"
-    "fixture/DescribeEndpoints.yaml"
+requestDescribeEndpoints =
+  req "DescribeEndpoints" "fixture/DescribeEndpoints.yaml"
 
 requestCreateQueue :: CreateQueue -> TestTree
-requestCreateQueue = req
-    "CreateQueue"
-    "fixture/CreateQueue.yaml"
+requestCreateQueue = req "CreateQueue" "fixture/CreateQueue.yaml"
 
 requestCreateJobTemplate :: CreateJobTemplate -> TestTree
-requestCreateJobTemplate = req
-    "CreateJobTemplate"
-    "fixture/CreateJobTemplate.yaml"
+requestCreateJobTemplate =
+  req "CreateJobTemplate" "fixture/CreateJobTemplate.yaml"
 
 requestDeleteJobTemplate :: DeleteJobTemplate -> TestTree
-requestDeleteJobTemplate = req
-    "DeleteJobTemplate"
-    "fixture/DeleteJobTemplate.yaml"
+requestDeleteJobTemplate =
+  req "DeleteJobTemplate" "fixture/DeleteJobTemplate.yaml"
 
 requestUpdateJobTemplate :: UpdateJobTemplate -> TestTree
-requestUpdateJobTemplate = req
-    "UpdateJobTemplate"
-    "fixture/UpdateJobTemplate.yaml"
+requestUpdateJobTemplate =
+  req "UpdateJobTemplate" "fixture/UpdateJobTemplate.yaml"
 
 requestListJobTemplates :: ListJobTemplates -> TestTree
-requestListJobTemplates = req
-    "ListJobTemplates"
-    "fixture/ListJobTemplates.yaml"
+requestListJobTemplates = req "ListJobTemplates" "fixture/ListJobTemplates.yaml"
 
 requestGetJobTemplate :: GetJobTemplate -> TestTree
-requestGetJobTemplate = req
-    "GetJobTemplate"
-    "fixture/GetJobTemplate.yaml"
+requestGetJobTemplate = req "GetJobTemplate" "fixture/GetJobTemplate.yaml"
 
 requestCancelJob :: CancelJob -> TestTree
-requestCancelJob = req
-    "CancelJob"
-    "fixture/CancelJob.yaml"
+requestCancelJob = req "CancelJob" "fixture/CancelJob.yaml"
 
 -- Responses
-
 responseDeletePreset :: DeletePresetResponse -> TestTree
-responseDeletePreset = res
+responseDeletePreset =
+  res
     "DeletePresetResponse"
     "fixture/DeletePresetResponse.proto"
     mediaConvert
     (Proxy :: Proxy DeletePreset)
 
 responseUpdatePreset :: UpdatePresetResponse -> TestTree
-responseUpdatePreset = res
+responseUpdatePreset =
+  res
     "UpdatePresetResponse"
     "fixture/UpdatePresetResponse.proto"
     mediaConvert
     (Proxy :: Proxy UpdatePreset)
 
 responseListQueues :: ListQueuesResponse -> TestTree
-responseListQueues = res
+responseListQueues =
+  res
     "ListQueuesResponse"
     "fixture/ListQueuesResponse.proto"
     mediaConvert
     (Proxy :: Proxy ListQueues)
 
 responseDeleteQueue :: DeleteQueueResponse -> TestTree
-responseDeleteQueue = res
+responseDeleteQueue =
+  res
     "DeleteQueueResponse"
     "fixture/DeleteQueueResponse.proto"
     mediaConvert
     (Proxy :: Proxy DeleteQueue)
 
 responseUpdateQueue :: UpdateQueueResponse -> TestTree
-responseUpdateQueue = res
+responseUpdateQueue =
+  res
     "UpdateQueueResponse"
     "fixture/UpdateQueueResponse.proto"
     mediaConvert
     (Proxy :: Proxy UpdateQueue)
 
 responseGetPreset :: GetPresetResponse -> TestTree
-responseGetPreset = res
+responseGetPreset =
+  res
     "GetPresetResponse"
     "fixture/GetPresetResponse.proto"
     mediaConvert
     (Proxy :: Proxy GetPreset)
 
 responseCreateJob :: CreateJobResponse -> TestTree
-responseCreateJob = res
+responseCreateJob =
+  res
     "CreateJobResponse"
     "fixture/CreateJobResponse.proto"
     mediaConvert
     (Proxy :: Proxy CreateJob)
 
 responseListJobs :: ListJobsResponse -> TestTree
-responseListJobs = res
+responseListJobs =
+  res
     "ListJobsResponse"
     "fixture/ListJobsResponse.proto"
     mediaConvert
     (Proxy :: Proxy ListJobs)
 
 responseGetJob :: GetJobResponse -> TestTree
-responseGetJob = res
+responseGetJob =
+  res
     "GetJobResponse"
     "fixture/GetJobResponse.proto"
     mediaConvert
     (Proxy :: Proxy GetJob)
 
 responseCreatePreset :: CreatePresetResponse -> TestTree
-responseCreatePreset = res
+responseCreatePreset =
+  res
     "CreatePresetResponse"
     "fixture/CreatePresetResponse.proto"
     mediaConvert
     (Proxy :: Proxy CreatePreset)
 
 responseListPresets :: ListPresetsResponse -> TestTree
-responseListPresets = res
+responseListPresets =
+  res
     "ListPresetsResponse"
     "fixture/ListPresetsResponse.proto"
     mediaConvert
     (Proxy :: Proxy ListPresets)
 
 responseGetQueue :: GetQueueResponse -> TestTree
-responseGetQueue = res
+responseGetQueue =
+  res
     "GetQueueResponse"
     "fixture/GetQueueResponse.proto"
     mediaConvert
     (Proxy :: Proxy GetQueue)
 
 responseDescribeEndpoints :: DescribeEndpointsResponse -> TestTree
-responseDescribeEndpoints = res
+responseDescribeEndpoints =
+  res
     "DescribeEndpointsResponse"
     "fixture/DescribeEndpointsResponse.proto"
     mediaConvert
     (Proxy :: Proxy DescribeEndpoints)
 
 responseCreateQueue :: CreateQueueResponse -> TestTree
-responseCreateQueue = res
+responseCreateQueue =
+  res
     "CreateQueueResponse"
     "fixture/CreateQueueResponse.proto"
     mediaConvert
     (Proxy :: Proxy CreateQueue)
 
 responseCreateJobTemplate :: CreateJobTemplateResponse -> TestTree
-responseCreateJobTemplate = res
+responseCreateJobTemplate =
+  res
     "CreateJobTemplateResponse"
     "fixture/CreateJobTemplateResponse.proto"
     mediaConvert
     (Proxy :: Proxy CreateJobTemplate)
 
 responseDeleteJobTemplate :: DeleteJobTemplateResponse -> TestTree
-responseDeleteJobTemplate = res
+responseDeleteJobTemplate =
+  res
     "DeleteJobTemplateResponse"
     "fixture/DeleteJobTemplateResponse.proto"
     mediaConvert
     (Proxy :: Proxy DeleteJobTemplate)
 
 responseUpdateJobTemplate :: UpdateJobTemplateResponse -> TestTree
-responseUpdateJobTemplate = res
+responseUpdateJobTemplate =
+  res
     "UpdateJobTemplateResponse"
     "fixture/UpdateJobTemplateResponse.proto"
     mediaConvert
     (Proxy :: Proxy UpdateJobTemplate)
 
 responseListJobTemplates :: ListJobTemplatesResponse -> TestTree
-responseListJobTemplates = res
+responseListJobTemplates =
+  res
     "ListJobTemplatesResponse"
     "fixture/ListJobTemplatesResponse.proto"
     mediaConvert
     (Proxy :: Proxy ListJobTemplates)
 
 responseGetJobTemplate :: GetJobTemplateResponse -> TestTree
-responseGetJobTemplate = res
+responseGetJobTemplate =
+  res
     "GetJobTemplateResponse"
     "fixture/GetJobTemplateResponse.proto"
     mediaConvert
     (Proxy :: Proxy GetJobTemplate)
 
 responseCancelJob :: CancelJobResponse -> TestTree
-responseCancelJob = res
+responseCancelJob =
+  res
     "CancelJobResponse"
     "fixture/CancelJobResponse.proto"
     mediaConvert

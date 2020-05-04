@@ -1,10 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Redshift.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -45,7 +43,6 @@ clusterRestored =
         ]
     }
 
-
 -- | Polls 'Network.AWS.Redshift.DescribeClusters' every 60 seconds until a successful state is reached. An error is returned after 30 failed checks.
 clusterDeleted :: Wait DescribeClusters
 clusterDeleted =
@@ -67,7 +64,6 @@ clusterDeleted =
              cClusterStatus . _Just . to toTextCI)
         ]
     }
-
 
 -- | Polls 'Network.AWS.Redshift.DescribeClusterSnapshots' every 15 seconds until a successful state is reached. An error is returned after 20 failed checks.
 snapshotAvailable :: Wait DescribeClusterSnapshots
@@ -92,7 +88,6 @@ snapshotAvailable =
         ]
     }
 
-
 -- | Polls 'Network.AWS.Redshift.DescribeClusters' every 60 seconds until a successful state is reached. An error is returned after 30 failed checks.
 clusterAvailable :: Wait DescribeClusters
 clusterAvailable =
@@ -114,4 +109,3 @@ clusterAvailable =
         , matchError "ClusterNotFound" AcceptRetry
         ]
     }
-

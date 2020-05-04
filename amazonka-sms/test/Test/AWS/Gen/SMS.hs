@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.SMS
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -62,7 +60,6 @@ import Test.Tasty
 --             startOnDemandReplicationRun
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseDeleteServerCatalog $
 --             deleteServerCatalogResponse
@@ -99,138 +96,134 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestDeleteServerCatalog :: DeleteServerCatalog -> TestTree
-requestDeleteServerCatalog = req
-    "DeleteServerCatalog"
-    "fixture/DeleteServerCatalog.yaml"
+requestDeleteServerCatalog =
+  req "DeleteServerCatalog" "fixture/DeleteServerCatalog.yaml"
 
 requestGetReplicationRuns :: GetReplicationRuns -> TestTree
-requestGetReplicationRuns = req
-    "GetReplicationRuns"
-    "fixture/GetReplicationRuns.yaml"
+requestGetReplicationRuns =
+  req "GetReplicationRuns" "fixture/GetReplicationRuns.yaml"
 
 requestGetServers :: GetServers -> TestTree
-requestGetServers = req
-    "GetServers"
-    "fixture/GetServers.yaml"
+requestGetServers = req "GetServers" "fixture/GetServers.yaml"
 
 requestImportServerCatalog :: ImportServerCatalog -> TestTree
-requestImportServerCatalog = req
-    "ImportServerCatalog"
-    "fixture/ImportServerCatalog.yaml"
+requestImportServerCatalog =
+  req "ImportServerCatalog" "fixture/ImportServerCatalog.yaml"
 
 requestGetConnectors :: GetConnectors -> TestTree
-requestGetConnectors = req
-    "GetConnectors"
-    "fixture/GetConnectors.yaml"
+requestGetConnectors = req "GetConnectors" "fixture/GetConnectors.yaml"
 
 requestGetReplicationJobs :: GetReplicationJobs -> TestTree
-requestGetReplicationJobs = req
-    "GetReplicationJobs"
-    "fixture/GetReplicationJobs.yaml"
+requestGetReplicationJobs =
+  req "GetReplicationJobs" "fixture/GetReplicationJobs.yaml"
 
 requestDisassociateConnector :: DisassociateConnector -> TestTree
-requestDisassociateConnector = req
-    "DisassociateConnector"
-    "fixture/DisassociateConnector.yaml"
+requestDisassociateConnector =
+  req "DisassociateConnector" "fixture/DisassociateConnector.yaml"
 
 requestCreateReplicationJob :: CreateReplicationJob -> TestTree
-requestCreateReplicationJob = req
-    "CreateReplicationJob"
-    "fixture/CreateReplicationJob.yaml"
+requestCreateReplicationJob =
+  req "CreateReplicationJob" "fixture/CreateReplicationJob.yaml"
 
 requestUpdateReplicationJob :: UpdateReplicationJob -> TestTree
-requestUpdateReplicationJob = req
-    "UpdateReplicationJob"
-    "fixture/UpdateReplicationJob.yaml"
+requestUpdateReplicationJob =
+  req "UpdateReplicationJob" "fixture/UpdateReplicationJob.yaml"
 
 requestDeleteReplicationJob :: DeleteReplicationJob -> TestTree
-requestDeleteReplicationJob = req
-    "DeleteReplicationJob"
-    "fixture/DeleteReplicationJob.yaml"
+requestDeleteReplicationJob =
+  req "DeleteReplicationJob" "fixture/DeleteReplicationJob.yaml"
 
 requestStartOnDemandReplicationRun :: StartOnDemandReplicationRun -> TestTree
-requestStartOnDemandReplicationRun = req
-    "StartOnDemandReplicationRun"
-    "fixture/StartOnDemandReplicationRun.yaml"
+requestStartOnDemandReplicationRun =
+  req "StartOnDemandReplicationRun" "fixture/StartOnDemandReplicationRun.yaml"
 
 -- Responses
-
 responseDeleteServerCatalog :: DeleteServerCatalogResponse -> TestTree
-responseDeleteServerCatalog = res
+responseDeleteServerCatalog =
+  res
     "DeleteServerCatalogResponse"
     "fixture/DeleteServerCatalogResponse.proto"
     sms
     (Proxy :: Proxy DeleteServerCatalog)
 
 responseGetReplicationRuns :: GetReplicationRunsResponse -> TestTree
-responseGetReplicationRuns = res
+responseGetReplicationRuns =
+  res
     "GetReplicationRunsResponse"
     "fixture/GetReplicationRunsResponse.proto"
     sms
     (Proxy :: Proxy GetReplicationRuns)
 
 responseGetServers :: GetServersResponse -> TestTree
-responseGetServers = res
+responseGetServers =
+  res
     "GetServersResponse"
     "fixture/GetServersResponse.proto"
     sms
     (Proxy :: Proxy GetServers)
 
 responseImportServerCatalog :: ImportServerCatalogResponse -> TestTree
-responseImportServerCatalog = res
+responseImportServerCatalog =
+  res
     "ImportServerCatalogResponse"
     "fixture/ImportServerCatalogResponse.proto"
     sms
     (Proxy :: Proxy ImportServerCatalog)
 
 responseGetConnectors :: GetConnectorsResponse -> TestTree
-responseGetConnectors = res
+responseGetConnectors =
+  res
     "GetConnectorsResponse"
     "fixture/GetConnectorsResponse.proto"
     sms
     (Proxy :: Proxy GetConnectors)
 
 responseGetReplicationJobs :: GetReplicationJobsResponse -> TestTree
-responseGetReplicationJobs = res
+responseGetReplicationJobs =
+  res
     "GetReplicationJobsResponse"
     "fixture/GetReplicationJobsResponse.proto"
     sms
     (Proxy :: Proxy GetReplicationJobs)
 
 responseDisassociateConnector :: DisassociateConnectorResponse -> TestTree
-responseDisassociateConnector = res
+responseDisassociateConnector =
+  res
     "DisassociateConnectorResponse"
     "fixture/DisassociateConnectorResponse.proto"
     sms
     (Proxy :: Proxy DisassociateConnector)
 
 responseCreateReplicationJob :: CreateReplicationJobResponse -> TestTree
-responseCreateReplicationJob = res
+responseCreateReplicationJob =
+  res
     "CreateReplicationJobResponse"
     "fixture/CreateReplicationJobResponse.proto"
     sms
     (Proxy :: Proxy CreateReplicationJob)
 
 responseUpdateReplicationJob :: UpdateReplicationJobResponse -> TestTree
-responseUpdateReplicationJob = res
+responseUpdateReplicationJob =
+  res
     "UpdateReplicationJobResponse"
     "fixture/UpdateReplicationJobResponse.proto"
     sms
     (Proxy :: Proxy UpdateReplicationJob)
 
 responseDeleteReplicationJob :: DeleteReplicationJobResponse -> TestTree
-responseDeleteReplicationJob = res
+responseDeleteReplicationJob =
+  res
     "DeleteReplicationJobResponse"
     "fixture/DeleteReplicationJobResponse.proto"
     sms
     (Proxy :: Proxy DeleteReplicationJob)
 
-responseStartOnDemandReplicationRun :: StartOnDemandReplicationRunResponse -> TestTree
-responseStartOnDemandReplicationRun = res
+responseStartOnDemandReplicationRun ::
+     StartOnDemandReplicationRunResponse -> TestTree
+responseStartOnDemandReplicationRun =
+  res
     "StartOnDemandReplicationRunResponse"
     "fixture/StartOnDemandReplicationRunResponse.proto"
     sms

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Kinesis.GetRecords
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,23 +32,21 @@
 -- Each Amazon Kinesis record includes a value, @ApproximateArrivalTimestamp@ , that is set when a stream successfully receives and stores a record. This is commonly referred to as a server-side time stamp, whereas a client-side time stamp is set when a data producer creates or sends the record to a stream (a data producer is any data source putting data records into a stream, for example with 'PutRecords' ). The time stamp has millisecond precision. There are no guarantees about the time stamp accuracy, or that the time stamp is always increasing. For example, records in a shard or across a stream might have time stamps that are out of order.
 --
 module Network.AWS.Kinesis.GetRecords
-    (
     -- * Creating a Request
-      getRecords
-    , GetRecords
+  ( getRecords
+  , GetRecords
     -- * Request Lenses
-    , grLimit
-    , grShardIterator
-
+  , grLimit
+  , grShardIterator
     -- * Destructuring the Response
-    , getRecordsResponse
-    , GetRecordsResponse
+  , getRecordsResponse
+  , GetRecordsResponse
     -- * Response Lenses
-    , grrsNextShardIterator
-    , grrsMillisBehindLatest
-    , grrsResponseStatus
-    , grrsRecords
-    ) where
+  , grrsNextShardIterator
+  , grrsMillisBehindLatest
+  , grrsResponseStatus
+  , grrsRecords
+  ) where
 
 import Network.AWS.Kinesis.Types
 import Network.AWS.Kinesis.Types.Product
@@ -64,11 +60,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getRecords' smart constructor.
-data GetRecords = GetRecords'
-  { _grLimit         :: !(Maybe Nat)
-  , _grShardIterator :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRecords =
+  GetRecords'
+    { _grLimit         :: !(Maybe Nat)
+    , _grShardIterator :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRecords' with the minimum fields required to make a request.
 --
@@ -77,71 +74,68 @@ data GetRecords = GetRecords'
 -- * 'grLimit' - The maximum number of records to return. Specify a value of up to 10,000. If you specify a value that is greater than 10,000, 'GetRecords' throws @InvalidArgumentException@ .
 --
 -- * 'grShardIterator' - The position in the shard from which you want to start sequentially reading data records. A shard iterator specifies this position using the sequence number of a data record in the shard.
-getRecords
-    :: Text -- ^ 'grShardIterator'
-    -> GetRecords
+getRecords ::
+     Text -- ^ 'grShardIterator'
+  -> GetRecords
 getRecords pShardIterator_ =
   GetRecords' {_grLimit = Nothing, _grShardIterator = pShardIterator_}
 
-
 -- | The maximum number of records to return. Specify a value of up to 10,000. If you specify a value that is greater than 10,000, 'GetRecords' throws @InvalidArgumentException@ .
 grLimit :: Lens' GetRecords (Maybe Natural)
-grLimit = lens _grLimit (\ s a -> s{_grLimit = a}) . mapping _Nat
+grLimit = lens _grLimit (\s a -> s {_grLimit = a}) . mapping _Nat
 
 -- | The position in the shard from which you want to start sequentially reading data records. A shard iterator specifies this position using the sequence number of a data record in the shard.
 grShardIterator :: Lens' GetRecords Text
-grShardIterator = lens _grShardIterator (\ s a -> s{_grShardIterator = a})
+grShardIterator = lens _grShardIterator (\s a -> s {_grShardIterator = a})
 
 instance AWSRequest GetRecords where
-        type Rs GetRecords = GetRecordsResponse
-        request = postJSON kinesis
-        response
-          = receiveJSON
-              (\ s h x ->
-                 GetRecordsResponse' <$>
-                   (x .?> "NextShardIterator") <*>
-                     (x .?> "MillisBehindLatest")
-                     <*> (pure (fromEnum s))
-                     <*> (x .?> "Records" .!@ mempty))
+  type Rs GetRecords = GetRecordsResponse
+  request = postJSON kinesis
+  response =
+    receiveJSON
+      (\s h x ->
+         GetRecordsResponse' <$> (x .?> "NextShardIterator") <*>
+         (x .?> "MillisBehindLatest") <*>
+         (pure (fromEnum s)) <*>
+         (x .?> "Records" .!@ mempty))
 
-instance Hashable GetRecords where
+instance Hashable GetRecords
 
-instance NFData GetRecords where
+instance NFData GetRecords
 
 instance ToHeaders GetRecords where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("Kinesis_20131202.GetRecords" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("Kinesis_20131202.GetRecords" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON GetRecords where
-        toJSON GetRecords'{..}
-          = object
-              (catMaybes
-                 [("Limit" .=) <$> _grLimit,
-                  Just ("ShardIterator" .= _grShardIterator)])
+  toJSON GetRecords' {..} =
+    object
+      (catMaybes
+         [("Limit" .=) <$> _grLimit, Just ("ShardIterator" .= _grShardIterator)])
 
 instance ToPath GetRecords where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery GetRecords where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Represents the output for 'GetRecords' .
 --
 --
 --
 -- /See:/ 'getRecordsResponse' smart constructor.
-data GetRecordsResponse = GetRecordsResponse'
-  { _grrsNextShardIterator  :: !(Maybe Text)
-  , _grrsMillisBehindLatest :: !(Maybe Nat)
-  , _grrsResponseStatus     :: !Int
-  , _grrsRecords            :: ![Record]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRecordsResponse =
+  GetRecordsResponse'
+    { _grrsNextShardIterator  :: !(Maybe Text)
+    , _grrsMillisBehindLatest :: !(Maybe Nat)
+    , _grrsResponseStatus     :: !Int
+    , _grrsRecords            :: ![Record]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRecordsResponse' with the minimum fields required to make a request.
 --
@@ -154,9 +148,9 @@ data GetRecordsResponse = GetRecordsResponse'
 -- * 'grrsResponseStatus' - -- | The response status code.
 --
 -- * 'grrsRecords' - The data records retrieved from the shard.
-getRecordsResponse
-    :: Int -- ^ 'grrsResponseStatus'
-    -> GetRecordsResponse
+getRecordsResponse ::
+     Int -- ^ 'grrsResponseStatus'
+  -> GetRecordsResponse
 getRecordsResponse pResponseStatus_ =
   GetRecordsResponse'
     { _grrsNextShardIterator = Nothing
@@ -165,21 +159,24 @@ getRecordsResponse pResponseStatus_ =
     , _grrsRecords = mempty
     }
 
-
 -- | The next position in the shard from which to start sequentially reading data records. If set to @null@ , the shard has been closed and the requested iterator does not return any more data.
 grrsNextShardIterator :: Lens' GetRecordsResponse (Maybe Text)
-grrsNextShardIterator = lens _grrsNextShardIterator (\ s a -> s{_grrsNextShardIterator = a})
+grrsNextShardIterator =
+  lens _grrsNextShardIterator (\s a -> s {_grrsNextShardIterator = a})
 
 -- | The number of milliseconds the 'GetRecords' response is from the tip of the stream, indicating how far behind current time the consumer is. A value of zero indicates that record processing is caught up, and there are no new records to process at this moment.
 grrsMillisBehindLatest :: Lens' GetRecordsResponse (Maybe Natural)
-grrsMillisBehindLatest = lens _grrsMillisBehindLatest (\ s a -> s{_grrsMillisBehindLatest = a}) . mapping _Nat
+grrsMillisBehindLatest =
+  lens _grrsMillisBehindLatest (\s a -> s {_grrsMillisBehindLatest = a}) .
+  mapping _Nat
 
 -- | -- | The response status code.
 grrsResponseStatus :: Lens' GetRecordsResponse Int
-grrsResponseStatus = lens _grrsResponseStatus (\ s a -> s{_grrsResponseStatus = a})
+grrsResponseStatus =
+  lens _grrsResponseStatus (\s a -> s {_grrsResponseStatus = a})
 
 -- | The data records retrieved from the shard.
 grrsRecords :: Lens' GetRecordsResponse [Record]
-grrsRecords = lens _grrsRecords (\ s a -> s{_grrsRecords = a}) . _Coerce
+grrsRecords = lens _grrsRecords (\s a -> s {_grrsRecords = a}) . _Coerce
 
-instance NFData GetRecordsResponse where
+instance NFData GetRecordsResponse

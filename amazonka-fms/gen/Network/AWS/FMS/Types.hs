@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.FMS.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,94 +10,81 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.FMS.Types
-    (
     -- * Service Configuration
-      fms
-
+  ( fms
     -- * Errors
-    , _InternalErrorException
-    , _InvalidInputException
-    , _InvalidOperationException
-    , _ResourceNotFoundException
-    , _LimitExceededException
-
+  , _InternalErrorException
+  , _InvalidInputException
+  , _InvalidOperationException
+  , _ResourceNotFoundException
+  , _LimitExceededException
     -- * PolicyComplianceStatusType
-    , PolicyComplianceStatusType (..)
-
+  , PolicyComplianceStatusType(..)
     -- * SecurityServiceType
-    , SecurityServiceType (..)
-
+  , SecurityServiceType(..)
     -- * ViolationReason
-    , ViolationReason (..)
-
+  , ViolationReason(..)
     -- * ComplianceViolator
-    , ComplianceViolator
-    , complianceViolator
-    , cvResourceId
-    , cvResourceType
-    , cvViolationReason
-
+  , ComplianceViolator
+  , complianceViolator
+  , cvResourceId
+  , cvResourceType
+  , cvViolationReason
     -- * EvaluationResult
-    , EvaluationResult
-    , evaluationResult
-    , erViolatorCount
-    , erComplianceStatus
-    , erEvaluationLimitExceeded
-
+  , EvaluationResult
+  , evaluationResult
+  , erViolatorCount
+  , erComplianceStatus
+  , erEvaluationLimitExceeded
     -- * Policy
-    , Policy
-    , policy
-    , pPolicyId
-    , pResourceTags
-    , pPolicyUpdateToken
-    , pPolicyName
-    , pSecurityServicePolicyData
-    , pResourceType
-    , pExcludeResourceTags
-    , pRemediationEnabled
-
+  , Policy
+  , policy
+  , pPolicyId
+  , pResourceTags
+  , pPolicyUpdateToken
+  , pPolicyName
+  , pSecurityServicePolicyData
+  , pResourceType
+  , pExcludeResourceTags
+  , pRemediationEnabled
     -- * PolicyComplianceDetail
-    , PolicyComplianceDetail
-    , policyComplianceDetail
-    , pcdExpiredAt
-    , pcdPolicyId
-    , pcdViolators
-    , pcdEvaluationLimitExceeded
-    , pcdPolicyOwner
-    , pcdMemberAccount
-
+  , PolicyComplianceDetail
+  , policyComplianceDetail
+  , pcdExpiredAt
+  , pcdPolicyId
+  , pcdViolators
+  , pcdEvaluationLimitExceeded
+  , pcdPolicyOwner
+  , pcdMemberAccount
     -- * PolicyComplianceStatus
-    , PolicyComplianceStatus
-    , policyComplianceStatus
-    , pcsEvaluationResults
-    , pcsLastUpdated
-    , pcsPolicyName
-    , pcsPolicyId
-    , pcsPolicyOwner
-    , pcsMemberAccount
-
+  , PolicyComplianceStatus
+  , policyComplianceStatus
+  , pcsEvaluationResults
+  , pcsLastUpdated
+  , pcsPolicyName
+  , pcsPolicyId
+  , pcsPolicyOwner
+  , pcsMemberAccount
     -- * PolicySummary
-    , PolicySummary
-    , policySummary
-    , psPolicyName
-    , psRemediationEnabled
-    , psResourceType
-    , psPolicyId
-    , psPolicyARN
-    , psSecurityServiceType
-
+  , PolicySummary
+  , policySummary
+  , psPolicyName
+  , psRemediationEnabled
+  , psResourceType
+  , psPolicyId
+  , psPolicyARN
+  , psSecurityServiceType
     -- * ResourceTag
-    , ResourceTag
-    , resourceTag
-    , rtValue
-    , rtKey
-
+  , ResourceTag
+  , resourceTag
+  , rtValue
+  , rtKey
     -- * SecurityServicePolicyData
-    , SecurityServicePolicyData
-    , securityServicePolicyData
-    , sspdManagedServiceData
-    , sspdType
-    ) where
+  , SecurityServicePolicyData
+  , securityServicePolicyData
+  , sspdManagedServiceData
+  , sspdType
+  ) where
 
 import Network.AWS.FMS.Types.Product
 import Network.AWS.FMS.Types.Sum
@@ -144,38 +130,37 @@ fms =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The operation failed because of a system problem, even though the request was valid. Retry your request.
 --
 --
-_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalErrorException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalErrorException = _MatchServiceError fms "InternalErrorException"
-
 
 -- | The parameters of the request were invalid.
 --
 --
-_InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInputException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidInputException = _MatchServiceError fms "InvalidInputException"
-
 
 -- | The operation failed because there was nothing to do. For example, you might have submitted an @AssociateAdminAccount@ request, but the account ID that you submitted was already set as the AWS Firewall Manager administrator.
 --
 --
-_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOperationException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidOperationException = _MatchServiceError fms "InvalidOperationException"
-
 
 -- | The specified resource was not found.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException = _MatchServiceError fms "ResourceNotFoundException"
-
 
 -- | The operation exceeds a resource limit, for example, the maximum number of @policy@ objects that you can create for an AWS account. For more information, see <http://docs.aws.amazon.com/waf/latest/developerguide/fms-limits.html Firewall Manager Limits> in the /AWS WAF Developer Guide/ .
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException = _MatchServiceError fms "LimitExceededException"
-

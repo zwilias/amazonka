@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Shield.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,125 +10,106 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Shield.Types
-    (
     -- * Service Configuration
-      shield
-
+  ( shield
     -- * Errors
-    , _InvalidResourceException
-    , _InvalidParameterException
-    , _LimitsExceededException
-    , _InternalErrorException
-    , _ResourceAlreadyExistsException
-    , _OptimisticLockException
-    , _InvalidOperationException
-    , _LockedSubscriptionException
-    , _ResourceNotFoundException
-
+  , _InvalidResourceException
+  , _InvalidParameterException
+  , _LimitsExceededException
+  , _InternalErrorException
+  , _ResourceAlreadyExistsException
+  , _OptimisticLockException
+  , _InvalidOperationException
+  , _LockedSubscriptionException
+  , _ResourceNotFoundException
     -- * AttackLayer
-    , AttackLayer (..)
-
+  , AttackLayer(..)
     -- * AttackPropertyIdentifier
-    , AttackPropertyIdentifier (..)
-
+  , AttackPropertyIdentifier(..)
     -- * SubResourceType
-    , SubResourceType (..)
-
+  , SubResourceType(..)
     -- * SubscriptionState
-    , SubscriptionState (..)
-
+  , SubscriptionState(..)
     -- * Unit
-    , Unit (..)
-
+  , Unit(..)
     -- * AttackDetail
-    , AttackDetail
-    , attackDetail
-    , adAttackId
-    , adStartTime
-    , adSubResources
-    , adMitigations
-    , adAttackProperties
-    , adAttackCounters
-    , adResourceARN
-    , adEndTime
-
+  , AttackDetail
+  , attackDetail
+  , adAttackId
+  , adStartTime
+  , adSubResources
+  , adMitigations
+  , adAttackProperties
+  , adAttackCounters
+  , adResourceARN
+  , adEndTime
     -- * AttackProperty
-    , AttackProperty
-    , attackProperty
-    , apAttackLayer
-    , apTopContributors
-    , apAttackPropertyIdentifier
-    , apTotal
-    , apUnit
-
+  , AttackProperty
+  , attackProperty
+  , apAttackLayer
+  , apTopContributors
+  , apAttackPropertyIdentifier
+  , apTotal
+  , apUnit
     -- * AttackSummary
-    , AttackSummary
-    , attackSummary
-    , asAttackVectors
-    , asAttackId
-    , asStartTime
-    , asResourceARN
-    , asEndTime
-
+  , AttackSummary
+  , attackSummary
+  , asAttackVectors
+  , asAttackId
+  , asStartTime
+  , asResourceARN
+  , asEndTime
     -- * AttackVectorDescription
-    , AttackVectorDescription
-    , attackVectorDescription
-    , avdVectorType
-
+  , AttackVectorDescription
+  , attackVectorDescription
+  , avdVectorType
     -- * Contributor
-    , Contributor
-    , contributor
-    , cValue
-    , cName
-
+  , Contributor
+  , contributor
+  , cValue
+  , cName
     -- * Mitigation
-    , Mitigation
-    , mitigation
-    , mMitigationName
-
+  , Mitigation
+  , mitigation
+  , mMitigationName
     -- * Protection
-    , Protection
-    , protection
-    , pResourceARN
-    , pName
-    , pId
-
+  , Protection
+  , protection
+  , pResourceARN
+  , pName
+  , pId
     -- * SubResourceSummary
-    , SubResourceSummary
-    , subResourceSummary
-    , srsCounters
-    , srsAttackVectors
-    , srsId
-    , srsType
-
+  , SubResourceSummary
+  , subResourceSummary
+  , srsCounters
+  , srsAttackVectors
+  , srsId
+  , srsType
     -- * Subscription
-    , Subscription
-    , subscription
-    , sTimeCommitmentInSeconds
-    , sStartTime
-
+  , Subscription
+  , subscription
+  , sTimeCommitmentInSeconds
+  , sStartTime
     -- * SummarizedAttackVector
-    , SummarizedAttackVector
-    , summarizedAttackVector
-    , savVectorCounters
-    , savVectorType
-
+  , SummarizedAttackVector
+  , summarizedAttackVector
+  , savVectorCounters
+  , savVectorType
     -- * SummarizedCounter
-    , SummarizedCounter
-    , summarizedCounter
-    , scMax
-    , scAverage
-    , scN
-    , scName
-    , scSum
-    , scUnit
-
+  , SummarizedCounter
+  , summarizedCounter
+  , scMax
+  , scAverage
+  , scN
+  , scName
+  , scSum
+  , scUnit
     -- * TimeRange
-    , TimeRange
-    , timeRange
-    , trFromInclusive
-    , trToExclusive
-    ) where
+  , TimeRange
+  , timeRange
+  , trFromInclusive
+  , trToExclusive
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -175,21 +155,20 @@ shield =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | Exception that indicates that the resource is invalid. You might not have access to the resource, or the resource might not exist.
 --
 --
-_InvalidResourceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidResourceException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidResourceException = _MatchServiceError shield "InvalidResourceException"
-
 
 -- | Exception that indicates that the parameters passed to the API are invalid.
 --
 --
-_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterException =
   _MatchServiceError shield "InvalidParameterException"
-
 
 -- | Exception that indicates that the operation would exceed a limit.
 --
@@ -198,52 +177,52 @@ _InvalidParameterException =
 --
 -- @Limit@ is the threshold that would be exceeded.
 --
-_LimitsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitsExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitsExceededException = _MatchServiceError shield "LimitsExceededException"
-
 
 -- | Exception that indicates that a problem occurred with the service infrastructure. You can retry the request.
 --
 --
-_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalErrorException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalErrorException = _MatchServiceError shield "InternalErrorException"
-
 
 -- | Exception indicating the specified resource already exists.
 --
 --
-_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceAlreadyExistsException =
   _MatchServiceError shield "ResourceAlreadyExistsException"
-
 
 -- | Exception that indicates that the protection state has been modified by another client. You can retry the request.
 --
 --
-_OptimisticLockException :: AsError a => Getting (First ServiceError) a ServiceError
+_OptimisticLockException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _OptimisticLockException = _MatchServiceError shield "OptimisticLockException"
-
 
 -- | Exception that indicates that the operation would not cause any change to occur.
 --
 --
-_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOperationException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidOperationException =
   _MatchServiceError shield "InvalidOperationException"
-
 
 -- | Exception that indicates that the subscription you are trying to delete has not yet completed the 1-year commitment. You cannot delete this subscription.
 --
 --
-_LockedSubscriptionException :: AsError a => Getting (First ServiceError) a ServiceError
+_LockedSubscriptionException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LockedSubscriptionException =
   _MatchServiceError shield "LockedSubscriptionException"
-
 
 -- | Exception indicating the specified resource does not exist.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError shield "ResourceNotFoundException"
-

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.CodeBuild
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -77,7 +75,6 @@ import Test.Tasty
 --             createProject
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseListProjects $
 --             listProjectsResponse
@@ -129,198 +126,184 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestListProjects :: ListProjects -> TestTree
-requestListProjects = req
-    "ListProjects"
-    "fixture/ListProjects.yaml"
+requestListProjects = req "ListProjects" "fixture/ListProjects.yaml"
 
 requestDeleteProject :: DeleteProject -> TestTree
-requestDeleteProject = req
-    "DeleteProject"
-    "fixture/DeleteProject.yaml"
+requestDeleteProject = req "DeleteProject" "fixture/DeleteProject.yaml"
 
 requestUpdateProject :: UpdateProject -> TestTree
-requestUpdateProject = req
-    "UpdateProject"
-    "fixture/UpdateProject.yaml"
+requestUpdateProject = req "UpdateProject" "fixture/UpdateProject.yaml"
 
 requestListBuilds :: ListBuilds -> TestTree
-requestListBuilds = req
-    "ListBuilds"
-    "fixture/ListBuilds.yaml"
+requestListBuilds = req "ListBuilds" "fixture/ListBuilds.yaml"
 
 requestCreateWebhook :: CreateWebhook -> TestTree
-requestCreateWebhook = req
-    "CreateWebhook"
-    "fixture/CreateWebhook.yaml"
+requestCreateWebhook = req "CreateWebhook" "fixture/CreateWebhook.yaml"
 
 requestStartBuild :: StartBuild -> TestTree
-requestStartBuild = req
-    "StartBuild"
-    "fixture/StartBuild.yaml"
+requestStartBuild = req "StartBuild" "fixture/StartBuild.yaml"
 
 requestListBuildsForProject :: ListBuildsForProject -> TestTree
-requestListBuildsForProject = req
-    "ListBuildsForProject"
-    "fixture/ListBuildsForProject.yaml"
+requestListBuildsForProject =
+  req "ListBuildsForProject" "fixture/ListBuildsForProject.yaml"
 
 requestBatchGetProjects :: BatchGetProjects -> TestTree
-requestBatchGetProjects = req
-    "BatchGetProjects"
-    "fixture/BatchGetProjects.yaml"
+requestBatchGetProjects = req "BatchGetProjects" "fixture/BatchGetProjects.yaml"
 
 requestBatchGetBuilds :: BatchGetBuilds -> TestTree
-requestBatchGetBuilds = req
-    "BatchGetBuilds"
-    "fixture/BatchGetBuilds.yaml"
+requestBatchGetBuilds = req "BatchGetBuilds" "fixture/BatchGetBuilds.yaml"
 
 requestUpdateWebhook :: UpdateWebhook -> TestTree
-requestUpdateWebhook = req
-    "UpdateWebhook"
-    "fixture/UpdateWebhook.yaml"
+requestUpdateWebhook = req "UpdateWebhook" "fixture/UpdateWebhook.yaml"
 
 requestDeleteWebhook :: DeleteWebhook -> TestTree
-requestDeleteWebhook = req
-    "DeleteWebhook"
-    "fixture/DeleteWebhook.yaml"
+requestDeleteWebhook = req "DeleteWebhook" "fixture/DeleteWebhook.yaml"
 
 requestInvalidateProjectCache :: InvalidateProjectCache -> TestTree
-requestInvalidateProjectCache = req
-    "InvalidateProjectCache"
-    "fixture/InvalidateProjectCache.yaml"
+requestInvalidateProjectCache =
+  req "InvalidateProjectCache" "fixture/InvalidateProjectCache.yaml"
 
 requestBatchDeleteBuilds :: BatchDeleteBuilds -> TestTree
-requestBatchDeleteBuilds = req
-    "BatchDeleteBuilds"
-    "fixture/BatchDeleteBuilds.yaml"
+requestBatchDeleteBuilds =
+  req "BatchDeleteBuilds" "fixture/BatchDeleteBuilds.yaml"
 
 requestListCuratedEnvironmentImages :: ListCuratedEnvironmentImages -> TestTree
-requestListCuratedEnvironmentImages = req
-    "ListCuratedEnvironmentImages"
-    "fixture/ListCuratedEnvironmentImages.yaml"
+requestListCuratedEnvironmentImages =
+  req "ListCuratedEnvironmentImages" "fixture/ListCuratedEnvironmentImages.yaml"
 
 requestStopBuild :: StopBuild -> TestTree
-requestStopBuild = req
-    "StopBuild"
-    "fixture/StopBuild.yaml"
+requestStopBuild = req "StopBuild" "fixture/StopBuild.yaml"
 
 requestCreateProject :: CreateProject -> TestTree
-requestCreateProject = req
-    "CreateProject"
-    "fixture/CreateProject.yaml"
+requestCreateProject = req "CreateProject" "fixture/CreateProject.yaml"
 
 -- Responses
-
 responseListProjects :: ListProjectsResponse -> TestTree
-responseListProjects = res
+responseListProjects =
+  res
     "ListProjectsResponse"
     "fixture/ListProjectsResponse.proto"
     codeBuild
     (Proxy :: Proxy ListProjects)
 
 responseDeleteProject :: DeleteProjectResponse -> TestTree
-responseDeleteProject = res
+responseDeleteProject =
+  res
     "DeleteProjectResponse"
     "fixture/DeleteProjectResponse.proto"
     codeBuild
     (Proxy :: Proxy DeleteProject)
 
 responseUpdateProject :: UpdateProjectResponse -> TestTree
-responseUpdateProject = res
+responseUpdateProject =
+  res
     "UpdateProjectResponse"
     "fixture/UpdateProjectResponse.proto"
     codeBuild
     (Proxy :: Proxy UpdateProject)
 
 responseListBuilds :: ListBuildsResponse -> TestTree
-responseListBuilds = res
+responseListBuilds =
+  res
     "ListBuildsResponse"
     "fixture/ListBuildsResponse.proto"
     codeBuild
     (Proxy :: Proxy ListBuilds)
 
 responseCreateWebhook :: CreateWebhookResponse -> TestTree
-responseCreateWebhook = res
+responseCreateWebhook =
+  res
     "CreateWebhookResponse"
     "fixture/CreateWebhookResponse.proto"
     codeBuild
     (Proxy :: Proxy CreateWebhook)
 
 responseStartBuild :: StartBuildResponse -> TestTree
-responseStartBuild = res
+responseStartBuild =
+  res
     "StartBuildResponse"
     "fixture/StartBuildResponse.proto"
     codeBuild
     (Proxy :: Proxy StartBuild)
 
 responseListBuildsForProject :: ListBuildsForProjectResponse -> TestTree
-responseListBuildsForProject = res
+responseListBuildsForProject =
+  res
     "ListBuildsForProjectResponse"
     "fixture/ListBuildsForProjectResponse.proto"
     codeBuild
     (Proxy :: Proxy ListBuildsForProject)
 
 responseBatchGetProjects :: BatchGetProjectsResponse -> TestTree
-responseBatchGetProjects = res
+responseBatchGetProjects =
+  res
     "BatchGetProjectsResponse"
     "fixture/BatchGetProjectsResponse.proto"
     codeBuild
     (Proxy :: Proxy BatchGetProjects)
 
 responseBatchGetBuilds :: BatchGetBuildsResponse -> TestTree
-responseBatchGetBuilds = res
+responseBatchGetBuilds =
+  res
     "BatchGetBuildsResponse"
     "fixture/BatchGetBuildsResponse.proto"
     codeBuild
     (Proxy :: Proxy BatchGetBuilds)
 
 responseUpdateWebhook :: UpdateWebhookResponse -> TestTree
-responseUpdateWebhook = res
+responseUpdateWebhook =
+  res
     "UpdateWebhookResponse"
     "fixture/UpdateWebhookResponse.proto"
     codeBuild
     (Proxy :: Proxy UpdateWebhook)
 
 responseDeleteWebhook :: DeleteWebhookResponse -> TestTree
-responseDeleteWebhook = res
+responseDeleteWebhook =
+  res
     "DeleteWebhookResponse"
     "fixture/DeleteWebhookResponse.proto"
     codeBuild
     (Proxy :: Proxy DeleteWebhook)
 
 responseInvalidateProjectCache :: InvalidateProjectCacheResponse -> TestTree
-responseInvalidateProjectCache = res
+responseInvalidateProjectCache =
+  res
     "InvalidateProjectCacheResponse"
     "fixture/InvalidateProjectCacheResponse.proto"
     codeBuild
     (Proxy :: Proxy InvalidateProjectCache)
 
 responseBatchDeleteBuilds :: BatchDeleteBuildsResponse -> TestTree
-responseBatchDeleteBuilds = res
+responseBatchDeleteBuilds =
+  res
     "BatchDeleteBuildsResponse"
     "fixture/BatchDeleteBuildsResponse.proto"
     codeBuild
     (Proxy :: Proxy BatchDeleteBuilds)
 
-responseListCuratedEnvironmentImages :: ListCuratedEnvironmentImagesResponse -> TestTree
-responseListCuratedEnvironmentImages = res
+responseListCuratedEnvironmentImages ::
+     ListCuratedEnvironmentImagesResponse -> TestTree
+responseListCuratedEnvironmentImages =
+  res
     "ListCuratedEnvironmentImagesResponse"
     "fixture/ListCuratedEnvironmentImagesResponse.proto"
     codeBuild
     (Proxy :: Proxy ListCuratedEnvironmentImages)
 
 responseStopBuild :: StopBuildResponse -> TestTree
-responseStopBuild = res
+responseStopBuild =
+  res
     "StopBuildResponse"
     "fixture/StopBuildResponse.proto"
     codeBuild
     (Proxy :: Proxy StopBuild)
 
 responseCreateProject :: CreateProjectResponse -> TestTree
-responseCreateProject = res
+responseCreateProject =
+  res
     "CreateProjectResponse"
     "fixture/CreateProjectResponse.proto"
     codeBuild

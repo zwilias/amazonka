@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Kinesis.SplitShard
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -40,19 +38,17 @@
 -- @SplitShard@ has a limit of five transactions per second per account.
 --
 module Network.AWS.Kinesis.SplitShard
-    (
     -- * Creating a Request
-      splitShard
-    , SplitShard
+  ( splitShard
+  , SplitShard
     -- * Request Lenses
-    , ssStreamName
-    , ssShardToSplit
-    , ssNewStartingHashKey
-
+  , ssStreamName
+  , ssShardToSplit
+  , ssNewStartingHashKey
     -- * Destructuring the Response
-    , splitShardResponse
-    , SplitShardResponse
-    ) where
+  , splitShardResponse
+  , SplitShardResponse
+  ) where
 
 import Network.AWS.Kinesis.Types
 import Network.AWS.Kinesis.Types.Product
@@ -66,12 +62,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'splitShard' smart constructor.
-data SplitShard = SplitShard'
-  { _ssStreamName         :: !Text
-  , _ssShardToSplit       :: !Text
-  , _ssNewStartingHashKey :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SplitShard =
+  SplitShard'
+    { _ssStreamName         :: !Text
+    , _ssShardToSplit       :: !Text
+    , _ssNewStartingHashKey :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SplitShard' with the minimum fields required to make a request.
 --
@@ -82,11 +79,11 @@ data SplitShard = SplitShard'
 -- * 'ssShardToSplit' - The shard ID of the shard to split.
 --
 -- * 'ssNewStartingHashKey' - A hash key value for the starting hash key of one of the child shards created by the split. The hash key range for a given shard constitutes a set of ordered contiguous positive integers. The value for @NewStartingHashKey@ must be in the range of hash keys being mapped into the shard. The @NewStartingHashKey@ hash key value and all higher hash key values in hash key range are distributed to one of the child shards. All the lower hash key values in the range are distributed to the other child shard.
-splitShard
-    :: Text -- ^ 'ssStreamName'
-    -> Text -- ^ 'ssShardToSplit'
-    -> Text -- ^ 'ssNewStartingHashKey'
-    -> SplitShard
+splitShard ::
+     Text -- ^ 'ssStreamName'
+  -> Text -- ^ 'ssShardToSplit'
+  -> Text -- ^ 'ssNewStartingHashKey'
+  -> SplitShard
 splitShard pStreamName_ pShardToSplit_ pNewStartingHashKey_ =
   SplitShard'
     { _ssStreamName = pStreamName_
@@ -94,63 +91,59 @@ splitShard pStreamName_ pShardToSplit_ pNewStartingHashKey_ =
     , _ssNewStartingHashKey = pNewStartingHashKey_
     }
 
-
 -- | The name of the stream for the shard split.
 ssStreamName :: Lens' SplitShard Text
-ssStreamName = lens _ssStreamName (\ s a -> s{_ssStreamName = a})
+ssStreamName = lens _ssStreamName (\s a -> s {_ssStreamName = a})
 
 -- | The shard ID of the shard to split.
 ssShardToSplit :: Lens' SplitShard Text
-ssShardToSplit = lens _ssShardToSplit (\ s a -> s{_ssShardToSplit = a})
+ssShardToSplit = lens _ssShardToSplit (\s a -> s {_ssShardToSplit = a})
 
 -- | A hash key value for the starting hash key of one of the child shards created by the split. The hash key range for a given shard constitutes a set of ordered contiguous positive integers. The value for @NewStartingHashKey@ must be in the range of hash keys being mapped into the shard. The @NewStartingHashKey@ hash key value and all higher hash key values in hash key range are distributed to one of the child shards. All the lower hash key values in the range are distributed to the other child shard.
 ssNewStartingHashKey :: Lens' SplitShard Text
-ssNewStartingHashKey = lens _ssNewStartingHashKey (\ s a -> s{_ssNewStartingHashKey = a})
+ssNewStartingHashKey =
+  lens _ssNewStartingHashKey (\s a -> s {_ssNewStartingHashKey = a})
 
 instance AWSRequest SplitShard where
-        type Rs SplitShard = SplitShardResponse
-        request = postJSON kinesis
-        response = receiveNull SplitShardResponse'
+  type Rs SplitShard = SplitShardResponse
+  request = postJSON kinesis
+  response = receiveNull SplitShardResponse'
 
-instance Hashable SplitShard where
+instance Hashable SplitShard
 
-instance NFData SplitShard where
+instance NFData SplitShard
 
 instance ToHeaders SplitShard where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("Kinesis_20131202.SplitShard" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("Kinesis_20131202.SplitShard" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON SplitShard where
-        toJSON SplitShard'{..}
-          = object
-              (catMaybes
-                 [Just ("StreamName" .= _ssStreamName),
-                  Just ("ShardToSplit" .= _ssShardToSplit),
-                  Just
-                    ("NewStartingHashKey" .= _ssNewStartingHashKey)])
+  toJSON SplitShard' {..} =
+    object
+      (catMaybes
+         [ Just ("StreamName" .= _ssStreamName)
+         , Just ("ShardToSplit" .= _ssShardToSplit)
+         , Just ("NewStartingHashKey" .= _ssNewStartingHashKey)
+         ])
 
 instance ToPath SplitShard where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery SplitShard where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'splitShardResponse' smart constructor.
 data SplitShardResponse =
   SplitShardResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'SplitShardResponse' with the minimum fields required to make a request.
 --
-splitShardResponse
-    :: SplitShardResponse
+splitShardResponse :: SplitShardResponse
 splitShardResponse = SplitShardResponse'
 
-
-instance NFData SplitShardResponse where
+instance NFData SplitShardResponse

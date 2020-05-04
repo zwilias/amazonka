@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DeviceFarm.GetRun
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,20 +20,18 @@
 --
 --
 module Network.AWS.DeviceFarm.GetRun
-    (
     -- * Creating a Request
-      getRun
-    , GetRun
+  ( getRun
+  , GetRun
     -- * Request Lenses
-    , grArn
-
+  , grArn
     -- * Destructuring the Response
-    , getRunResponse
-    , GetRunResponse
+  , getRunResponse
+  , GetRunResponse
     -- * Response Lenses
-    , grrsRun
-    , grrsResponseStatus
-    ) where
+  , grrsRun
+  , grrsResponseStatus
+  ) where
 
 import Network.AWS.DeviceFarm.Types
 import Network.AWS.DeviceFarm.Types.Product
@@ -49,68 +45,65 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getRun' smart constructor.
-newtype GetRun = GetRun'
-  { _grArn :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetRun =
+  GetRun'
+    { _grArn :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRun' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'grArn' - The run's ARN.
-getRun
-    :: Text -- ^ 'grArn'
-    -> GetRun
+getRun ::
+     Text -- ^ 'grArn'
+  -> GetRun
 getRun pArn_ = GetRun' {_grArn = pArn_}
-
 
 -- | The run's ARN.
 grArn :: Lens' GetRun Text
-grArn = lens _grArn (\ s a -> s{_grArn = a})
+grArn = lens _grArn (\s a -> s {_grArn = a})
 
 instance AWSRequest GetRun where
-        type Rs GetRun = GetRunResponse
-        request = postJSON deviceFarm
-        response
-          = receiveJSON
-              (\ s h x ->
-                 GetRunResponse' <$>
-                   (x .?> "run") <*> (pure (fromEnum s)))
+  type Rs GetRun = GetRunResponse
+  request = postJSON deviceFarm
+  response =
+    receiveJSON
+      (\s h x -> GetRunResponse' <$> (x .?> "run") <*> (pure (fromEnum s)))
 
-instance Hashable GetRun where
+instance Hashable GetRun
 
-instance NFData GetRun where
+instance NFData GetRun
 
 instance ToHeaders GetRun where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("DeviceFarm_20150623.GetRun" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("DeviceFarm_20150623.GetRun" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON GetRun where
-        toJSON GetRun'{..}
-          = object (catMaybes [Just ("arn" .= _grArn)])
+  toJSON GetRun' {..} = object (catMaybes [Just ("arn" .= _grArn)])
 
 instance ToPath GetRun where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery GetRun where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Represents the result of a get run request.
 --
 --
 --
 -- /See:/ 'getRunResponse' smart constructor.
-data GetRunResponse = GetRunResponse'
-  { _grrsRun            :: !(Maybe Run)
-  , _grrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRunResponse =
+  GetRunResponse'
+    { _grrsRun            :: !(Maybe Run)
+    , _grrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRunResponse' with the minimum fields required to make a request.
 --
@@ -119,19 +112,19 @@ data GetRunResponse = GetRunResponse'
 -- * 'grrsRun' - The run you wish to get results from.
 --
 -- * 'grrsResponseStatus' - -- | The response status code.
-getRunResponse
-    :: Int -- ^ 'grrsResponseStatus'
-    -> GetRunResponse
+getRunResponse ::
+     Int -- ^ 'grrsResponseStatus'
+  -> GetRunResponse
 getRunResponse pResponseStatus_ =
   GetRunResponse' {_grrsRun = Nothing, _grrsResponseStatus = pResponseStatus_}
 
-
 -- | The run you wish to get results from.
 grrsRun :: Lens' GetRunResponse (Maybe Run)
-grrsRun = lens _grrsRun (\ s a -> s{_grrsRun = a})
+grrsRun = lens _grrsRun (\s a -> s {_grrsRun = a})
 
 -- | -- | The response status code.
 grrsResponseStatus :: Lens' GetRunResponse Int
-grrsResponseStatus = lens _grrsResponseStatus (\ s a -> s{_grrsResponseStatus = a})
+grrsResponseStatus =
+  lens _grrsResponseStatus (\s a -> s {_grrsResponseStatus = a})
 
-instance NFData GetRunResponse where
+instance NFData GetRunResponse

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.CreateFlowLogs
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,27 +24,25 @@
 -- For more information, see <http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html VPC Flow Logs> in the /Amazon Virtual Private Cloud User Guide/ .
 --
 module Network.AWS.EC2.CreateFlowLogs
-    (
     -- * Creating a Request
-      createFlowLogs
-    , CreateFlowLogs
+  ( createFlowLogs
+  , CreateFlowLogs
     -- * Request Lenses
-    , cflClientToken
-    , cflDeliverLogsPermissionARN
-    , cflLogGroupName
-    , cflResourceIds
-    , cflResourceType
-    , cflTrafficType
-
+  , cflClientToken
+  , cflDeliverLogsPermissionARN
+  , cflLogGroupName
+  , cflResourceIds
+  , cflResourceType
+  , cflTrafficType
     -- * Destructuring the Response
-    , createFlowLogsResponse
-    , CreateFlowLogsResponse
+  , createFlowLogsResponse
+  , CreateFlowLogsResponse
     -- * Response Lenses
-    , cflrsUnsuccessful
-    , cflrsClientToken
-    , cflrsFlowLogIds
-    , cflrsResponseStatus
-    ) where
+  , cflrsUnsuccessful
+  , cflrsClientToken
+  , cflrsFlowLogIds
+  , cflrsResponseStatus
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -60,15 +56,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createFlowLogs' smart constructor.
-data CreateFlowLogs = CreateFlowLogs'
-  { _cflClientToken              :: !(Maybe Text)
-  , _cflDeliverLogsPermissionARN :: !Text
-  , _cflLogGroupName             :: !Text
-  , _cflResourceIds              :: ![Text]
-  , _cflResourceType             :: !FlowLogsResourceType
-  , _cflTrafficType              :: !TrafficType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFlowLogs =
+  CreateFlowLogs'
+    { _cflClientToken              :: !(Maybe Text)
+    , _cflDeliverLogsPermissionARN :: !Text
+    , _cflLogGroupName             :: !Text
+    , _cflResourceIds              :: ![Text]
+    , _cflResourceType             :: !FlowLogsResourceType
+    , _cflTrafficType              :: !TrafficType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFlowLogs' with the minimum fields required to make a request.
 --
@@ -85,12 +82,12 @@ data CreateFlowLogs = CreateFlowLogs'
 -- * 'cflResourceType' - The type of resource on which to create the flow log.
 --
 -- * 'cflTrafficType' - The type of traffic to log.
-createFlowLogs
-    :: Text -- ^ 'cflDeliverLogsPermissionARN'
-    -> Text -- ^ 'cflLogGroupName'
-    -> FlowLogsResourceType -- ^ 'cflResourceType'
-    -> TrafficType -- ^ 'cflTrafficType'
-    -> CreateFlowLogs
+createFlowLogs ::
+     Text -- ^ 'cflDeliverLogsPermissionARN'
+  -> Text -- ^ 'cflLogGroupName'
+  -> FlowLogsResourceType -- ^ 'cflResourceType'
+  -> TrafficType -- ^ 'cflTrafficType'
+  -> CreateFlowLogs
 createFlowLogs pDeliverLogsPermissionARN_ pLogGroupName_ pResourceType_ pTrafficType_ =
   CreateFlowLogs'
     { _cflClientToken = Nothing
@@ -101,81 +98,82 @@ createFlowLogs pDeliverLogsPermissionARN_ pLogGroupName_ pResourceType_ pTraffic
     , _cflTrafficType = pTrafficType_
     }
 
-
 -- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 cflClientToken :: Lens' CreateFlowLogs (Maybe Text)
-cflClientToken = lens _cflClientToken (\ s a -> s{_cflClientToken = a})
+cflClientToken = lens _cflClientToken (\s a -> s {_cflClientToken = a})
 
 -- | The ARN for the IAM role that's used to post flow logs to a CloudWatch Logs log group.
 cflDeliverLogsPermissionARN :: Lens' CreateFlowLogs Text
-cflDeliverLogsPermissionARN = lens _cflDeliverLogsPermissionARN (\ s a -> s{_cflDeliverLogsPermissionARN = a})
+cflDeliverLogsPermissionARN =
+  lens
+    _cflDeliverLogsPermissionARN
+    (\s a -> s {_cflDeliverLogsPermissionARN = a})
 
 -- | The name of the CloudWatch log group.
 cflLogGroupName :: Lens' CreateFlowLogs Text
-cflLogGroupName = lens _cflLogGroupName (\ s a -> s{_cflLogGroupName = a})
+cflLogGroupName = lens _cflLogGroupName (\s a -> s {_cflLogGroupName = a})
 
 -- | One or more subnet, network interface, or VPC IDs. Constraints: Maximum of 1000 resources
 cflResourceIds :: Lens' CreateFlowLogs [Text]
-cflResourceIds = lens _cflResourceIds (\ s a -> s{_cflResourceIds = a}) . _Coerce
+cflResourceIds =
+  lens _cflResourceIds (\s a -> s {_cflResourceIds = a}) . _Coerce
 
 -- | The type of resource on which to create the flow log.
 cflResourceType :: Lens' CreateFlowLogs FlowLogsResourceType
-cflResourceType = lens _cflResourceType (\ s a -> s{_cflResourceType = a})
+cflResourceType = lens _cflResourceType (\s a -> s {_cflResourceType = a})
 
 -- | The type of traffic to log.
 cflTrafficType :: Lens' CreateFlowLogs TrafficType
-cflTrafficType = lens _cflTrafficType (\ s a -> s{_cflTrafficType = a})
+cflTrafficType = lens _cflTrafficType (\s a -> s {_cflTrafficType = a})
 
 instance AWSRequest CreateFlowLogs where
-        type Rs CreateFlowLogs = CreateFlowLogsResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 CreateFlowLogsResponse' <$>
-                   (x .@? "unsuccessful" .!@ mempty >>=
-                      may (parseXMLList "item"))
-                     <*> (x .@? "clientToken")
-                     <*>
-                     (x .@? "flowLogIdSet" .!@ mempty >>=
-                        may (parseXMLList "item"))
-                     <*> (pure (fromEnum s)))
+  type Rs CreateFlowLogs = CreateFlowLogsResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         CreateFlowLogsResponse' <$>
+         (x .@? "unsuccessful" .!@ mempty >>= may (parseXMLList "item")) <*>
+         (x .@? "clientToken") <*>
+         (x .@? "flowLogIdSet" .!@ mempty >>= may (parseXMLList "item")) <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateFlowLogs where
+instance Hashable CreateFlowLogs
 
-instance NFData CreateFlowLogs where
+instance NFData CreateFlowLogs
 
 instance ToHeaders CreateFlowLogs where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath CreateFlowLogs where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateFlowLogs where
-        toQuery CreateFlowLogs'{..}
-          = mconcat
-              ["Action" =: ("CreateFlowLogs" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "ClientToken" =: _cflClientToken,
-               "DeliverLogsPermissionArn" =:
-                 _cflDeliverLogsPermissionARN,
-               "LogGroupName" =: _cflLogGroupName,
-               toQueryList "ResourceId" _cflResourceIds,
-               "ResourceType" =: _cflResourceType,
-               "TrafficType" =: _cflTrafficType]
+  toQuery CreateFlowLogs' {..} =
+    mconcat
+      [ "Action" =: ("CreateFlowLogs" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "ClientToken" =: _cflClientToken
+      , "DeliverLogsPermissionArn" =: _cflDeliverLogsPermissionARN
+      , "LogGroupName" =: _cflLogGroupName
+      , toQueryList "ResourceId" _cflResourceIds
+      , "ResourceType" =: _cflResourceType
+      , "TrafficType" =: _cflTrafficType
+      ]
 
 -- | Contains the output of CreateFlowLogs.
 --
 --
 --
 -- /See:/ 'createFlowLogsResponse' smart constructor.
-data CreateFlowLogsResponse = CreateFlowLogsResponse'
-  { _cflrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
-  , _cflrsClientToken    :: !(Maybe Text)
-  , _cflrsFlowLogIds     :: !(Maybe [Text])
-  , _cflrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFlowLogsResponse =
+  CreateFlowLogsResponse'
+    { _cflrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
+    , _cflrsClientToken    :: !(Maybe Text)
+    , _cflrsFlowLogIds     :: !(Maybe [Text])
+    , _cflrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFlowLogsResponse' with the minimum fields required to make a request.
 --
@@ -188,9 +186,9 @@ data CreateFlowLogsResponse = CreateFlowLogsResponse'
 -- * 'cflrsFlowLogIds' - The IDs of the flow logs.
 --
 -- * 'cflrsResponseStatus' - -- | The response status code.
-createFlowLogsResponse
-    :: Int -- ^ 'cflrsResponseStatus'
-    -> CreateFlowLogsResponse
+createFlowLogsResponse ::
+     Int -- ^ 'cflrsResponseStatus'
+  -> CreateFlowLogsResponse
 createFlowLogsResponse pResponseStatus_ =
   CreateFlowLogsResponse'
     { _cflrsUnsuccessful = Nothing
@@ -199,21 +197,24 @@ createFlowLogsResponse pResponseStatus_ =
     , _cflrsResponseStatus = pResponseStatus_
     }
 
-
 -- | Information about the flow logs that could not be created successfully.
 cflrsUnsuccessful :: Lens' CreateFlowLogsResponse [UnsuccessfulItem]
-cflrsUnsuccessful = lens _cflrsUnsuccessful (\ s a -> s{_cflrsUnsuccessful = a}) . _Default . _Coerce
+cflrsUnsuccessful =
+  lens _cflrsUnsuccessful (\s a -> s {_cflrsUnsuccessful = a}) .
+  _Default . _Coerce
 
 -- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
 cflrsClientToken :: Lens' CreateFlowLogsResponse (Maybe Text)
-cflrsClientToken = lens _cflrsClientToken (\ s a -> s{_cflrsClientToken = a})
+cflrsClientToken = lens _cflrsClientToken (\s a -> s {_cflrsClientToken = a})
 
 -- | The IDs of the flow logs.
 cflrsFlowLogIds :: Lens' CreateFlowLogsResponse [Text]
-cflrsFlowLogIds = lens _cflrsFlowLogIds (\ s a -> s{_cflrsFlowLogIds = a}) . _Default . _Coerce
+cflrsFlowLogIds =
+  lens _cflrsFlowLogIds (\s a -> s {_cflrsFlowLogIds = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 cflrsResponseStatus :: Lens' CreateFlowLogsResponse Int
-cflrsResponseStatus = lens _cflrsResponseStatus (\ s a -> s{_cflrsResponseStatus = a})
+cflrsResponseStatus =
+  lens _cflrsResponseStatus (\s a -> s {_cflrsResponseStatus = a})
 
-instance NFData CreateFlowLogsResponse where
+instance NFData CreateFlowLogsResponse

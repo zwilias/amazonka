@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ELBv2.DeleteRule
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,19 +20,17 @@
 --
 --
 module Network.AWS.ELBv2.DeleteRule
-    (
     -- * Creating a Request
-      deleteRule
-    , DeleteRule
+  ( deleteRule
+  , DeleteRule
     -- * Request Lenses
-    , drRuleARN
-
+  , drRuleARN
     -- * Destructuring the Response
-    , deleteRuleResponse
-    , DeleteRuleResponse
+  , deleteRuleResponse
+  , DeleteRuleResponse
     -- * Response Lenses
-    , drrsResponseStatus
-    ) where
+  , drrsResponseStatus
+  ) where
 
 import Network.AWS.ELBv2.Types
 import Network.AWS.ELBv2.Types.Product
@@ -44,71 +40,73 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteRule' smart constructor.
-newtype DeleteRule = DeleteRule'
-  { _drRuleARN :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteRule =
+  DeleteRule'
+    { _drRuleARN :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteRule' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'drRuleARN' - The Amazon Resource Name (ARN) of the rule.
-deleteRule
-    :: Text -- ^ 'drRuleARN'
-    -> DeleteRule
+deleteRule ::
+     Text -- ^ 'drRuleARN'
+  -> DeleteRule
 deleteRule pRuleARN_ = DeleteRule' {_drRuleARN = pRuleARN_}
-
 
 -- | The Amazon Resource Name (ARN) of the rule.
 drRuleARN :: Lens' DeleteRule Text
-drRuleARN = lens _drRuleARN (\ s a -> s{_drRuleARN = a})
+drRuleARN = lens _drRuleARN (\s a -> s {_drRuleARN = a})
 
 instance AWSRequest DeleteRule where
-        type Rs DeleteRule = DeleteRuleResponse
-        request = postQuery eLBv2
-        response
-          = receiveXMLWrapper "DeleteRuleResult"
-              (\ s h x ->
-                 DeleteRuleResponse' <$> (pure (fromEnum s)))
+  type Rs DeleteRule = DeleteRuleResponse
+  request = postQuery eLBv2
+  response =
+    receiveXMLWrapper
+      "DeleteRuleResult"
+      (\s h x -> DeleteRuleResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeleteRule where
+instance Hashable DeleteRule
 
-instance NFData DeleteRule where
+instance NFData DeleteRule
 
 instance ToHeaders DeleteRule where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath DeleteRule where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DeleteRule where
-        toQuery DeleteRule'{..}
-          = mconcat
-              ["Action" =: ("DeleteRule" :: ByteString),
-               "Version" =: ("2015-12-01" :: ByteString),
-               "RuleArn" =: _drRuleARN]
+  toQuery DeleteRule' {..} =
+    mconcat
+      [ "Action" =: ("DeleteRule" :: ByteString)
+      , "Version" =: ("2015-12-01" :: ByteString)
+      , "RuleArn" =: _drRuleARN
+      ]
 
 -- | /See:/ 'deleteRuleResponse' smart constructor.
-newtype DeleteRuleResponse = DeleteRuleResponse'
-  { _drrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteRuleResponse =
+  DeleteRuleResponse'
+    { _drrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteRuleResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'drrsResponseStatus' - -- | The response status code.
-deleteRuleResponse
-    :: Int -- ^ 'drrsResponseStatus'
-    -> DeleteRuleResponse
+deleteRuleResponse ::
+     Int -- ^ 'drrsResponseStatus'
+  -> DeleteRuleResponse
 deleteRuleResponse pResponseStatus_ =
   DeleteRuleResponse' {_drrsResponseStatus = pResponseStatus_}
 
-
 -- | -- | The response status code.
 drrsResponseStatus :: Lens' DeleteRuleResponse Int
-drrsResponseStatus = lens _drrsResponseStatus (\ s a -> s{_drrsResponseStatus = a})
+drrsResponseStatus =
+  lens _drrsResponseStatus (\s a -> s {_drrsResponseStatus = a})
 
-instance NFData DeleteRuleResponse where
+instance NFData DeleteRuleResponse

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SQS.ChangeMessageVisibility
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,19 +32,17 @@
 -- Unlike with a queue, when you change the visibility timeout for a specific message the timeout value is applied immediately but isn't saved in memory for that message. If you don't delete a message after it is received, the visibility timeout for the message reverts to the original timeout value (not to the value you set using the @ChangeMessageVisibility@ action) the next time the message is received.
 --
 module Network.AWS.SQS.ChangeMessageVisibility
-    (
     -- * Creating a Request
-      changeMessageVisibility
-    , ChangeMessageVisibility
+  ( changeMessageVisibility
+  , ChangeMessageVisibility
     -- * Request Lenses
-    , cmvQueueURL
-    , cmvReceiptHandle
-    , cmvVisibilityTimeout
-
+  , cmvQueueURL
+  , cmvReceiptHandle
+  , cmvVisibilityTimeout
     -- * Destructuring the Response
-    , changeMessageVisibilityResponse
-    , ChangeMessageVisibilityResponse
-    ) where
+  , changeMessageVisibilityResponse
+  , ChangeMessageVisibilityResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -56,12 +52,13 @@ import Network.AWS.SQS.Types
 import Network.AWS.SQS.Types.Product
 
 -- | /See:/ 'changeMessageVisibility' smart constructor.
-data ChangeMessageVisibility = ChangeMessageVisibility'
-  { _cmvQueueURL          :: !Text
-  , _cmvReceiptHandle     :: !Text
-  , _cmvVisibilityTimeout :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ChangeMessageVisibility =
+  ChangeMessageVisibility'
+    { _cmvQueueURL          :: !Text
+    , _cmvReceiptHandle     :: !Text
+    , _cmvVisibilityTimeout :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ChangeMessageVisibility' with the minimum fields required to make a request.
 --
@@ -72,11 +69,11 @@ data ChangeMessageVisibility = ChangeMessageVisibility'
 -- * 'cmvReceiptHandle' - The receipt handle associated with the message whose visibility timeout is changed. This parameter is returned by the @'ReceiveMessage' @ action.
 --
 -- * 'cmvVisibilityTimeout' - The new value for the message's visibility timeout (in seconds). Values values: @0@ to @43200@ . Maximum: 12 hours.
-changeMessageVisibility
-    :: Text -- ^ 'cmvQueueURL'
-    -> Text -- ^ 'cmvReceiptHandle'
-    -> Int -- ^ 'cmvVisibilityTimeout'
-    -> ChangeMessageVisibility
+changeMessageVisibility ::
+     Text -- ^ 'cmvQueueURL'
+  -> Text -- ^ 'cmvReceiptHandle'
+  -> Int -- ^ 'cmvVisibilityTimeout'
+  -> ChangeMessageVisibility
 changeMessageVisibility pQueueURL_ pReceiptHandle_ pVisibilityTimeout_ =
   ChangeMessageVisibility'
     { _cmvQueueURL = pQueueURL_
@@ -84,57 +81,52 @@ changeMessageVisibility pQueueURL_ pReceiptHandle_ pVisibilityTimeout_ =
     , _cmvVisibilityTimeout = pVisibilityTimeout_
     }
 
-
 -- | The URL of the Amazon SQS queue whose message's visibility is changed. Queue URLs are case-sensitive.
 cmvQueueURL :: Lens' ChangeMessageVisibility Text
-cmvQueueURL = lens _cmvQueueURL (\ s a -> s{_cmvQueueURL = a})
+cmvQueueURL = lens _cmvQueueURL (\s a -> s {_cmvQueueURL = a})
 
 -- | The receipt handle associated with the message whose visibility timeout is changed. This parameter is returned by the @'ReceiveMessage' @ action.
 cmvReceiptHandle :: Lens' ChangeMessageVisibility Text
-cmvReceiptHandle = lens _cmvReceiptHandle (\ s a -> s{_cmvReceiptHandle = a})
+cmvReceiptHandle = lens _cmvReceiptHandle (\s a -> s {_cmvReceiptHandle = a})
 
 -- | The new value for the message's visibility timeout (in seconds). Values values: @0@ to @43200@ . Maximum: 12 hours.
 cmvVisibilityTimeout :: Lens' ChangeMessageVisibility Int
-cmvVisibilityTimeout = lens _cmvVisibilityTimeout (\ s a -> s{_cmvVisibilityTimeout = a})
+cmvVisibilityTimeout =
+  lens _cmvVisibilityTimeout (\s a -> s {_cmvVisibilityTimeout = a})
 
 instance AWSRequest ChangeMessageVisibility where
-        type Rs ChangeMessageVisibility =
-             ChangeMessageVisibilityResponse
-        request = postQuery sqs
-        response
-          = receiveNull ChangeMessageVisibilityResponse'
+  type Rs ChangeMessageVisibility = ChangeMessageVisibilityResponse
+  request = postQuery sqs
+  response = receiveNull ChangeMessageVisibilityResponse'
 
-instance Hashable ChangeMessageVisibility where
+instance Hashable ChangeMessageVisibility
 
-instance NFData ChangeMessageVisibility where
+instance NFData ChangeMessageVisibility
 
 instance ToHeaders ChangeMessageVisibility where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath ChangeMessageVisibility where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery ChangeMessageVisibility where
-        toQuery ChangeMessageVisibility'{..}
-          = mconcat
-              ["Action" =:
-                 ("ChangeMessageVisibility" :: ByteString),
-               "Version" =: ("2012-11-05" :: ByteString),
-               "QueueUrl" =: _cmvQueueURL,
-               "ReceiptHandle" =: _cmvReceiptHandle,
-               "VisibilityTimeout" =: _cmvVisibilityTimeout]
+  toQuery ChangeMessageVisibility' {..} =
+    mconcat
+      [ "Action" =: ("ChangeMessageVisibility" :: ByteString)
+      , "Version" =: ("2012-11-05" :: ByteString)
+      , "QueueUrl" =: _cmvQueueURL
+      , "ReceiptHandle" =: _cmvReceiptHandle
+      , "VisibilityTimeout" =: _cmvVisibilityTimeout
+      ]
 
 -- | /See:/ 'changeMessageVisibilityResponse' smart constructor.
 data ChangeMessageVisibilityResponse =
   ChangeMessageVisibilityResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'ChangeMessageVisibilityResponse' with the minimum fields required to make a request.
 --
-changeMessageVisibilityResponse
-    :: ChangeMessageVisibilityResponse
+changeMessageVisibilityResponse :: ChangeMessageVisibilityResponse
 changeMessageVisibilityResponse = ChangeMessageVisibilityResponse'
 
-
-instance NFData ChangeMessageVisibilityResponse where
+instance NFData ChangeMessageVisibilityResponse

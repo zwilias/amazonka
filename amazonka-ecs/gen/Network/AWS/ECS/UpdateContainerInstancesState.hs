@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ECS.UpdateContainerInstancesState
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -40,23 +38,21 @@
 -- When you set a container instance to @ACTIVE@ , the Amazon ECS scheduler can begin scheduling tasks on the instance again.
 --
 module Network.AWS.ECS.UpdateContainerInstancesState
-    (
     -- * Creating a Request
-      updateContainerInstancesState
-    , UpdateContainerInstancesState
+  ( updateContainerInstancesState
+  , UpdateContainerInstancesState
     -- * Request Lenses
-    , ucisCluster
-    , ucisContainerInstances
-    , ucisStatus
-
+  , ucisCluster
+  , ucisContainerInstances
+  , ucisStatus
     -- * Destructuring the Response
-    , updateContainerInstancesStateResponse
-    , UpdateContainerInstancesStateResponse
+  , updateContainerInstancesStateResponse
+  , UpdateContainerInstancesStateResponse
     -- * Response Lenses
-    , ucisrsFailures
-    , ucisrsContainerInstances
-    , ucisrsResponseStatus
-    ) where
+  , ucisrsFailures
+  , ucisrsContainerInstances
+  , ucisrsResponseStatus
+  ) where
 
 import Network.AWS.ECS.Types
 import Network.AWS.ECS.Types.Product
@@ -66,12 +62,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateContainerInstancesState' smart constructor.
-data UpdateContainerInstancesState = UpdateContainerInstancesState'
-  { _ucisCluster            :: !(Maybe Text)
-  , _ucisContainerInstances :: ![Text]
-  , _ucisStatus             :: !ContainerInstanceStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateContainerInstancesState =
+  UpdateContainerInstancesState'
+    { _ucisCluster            :: !(Maybe Text)
+    , _ucisContainerInstances :: ![Text]
+    , _ucisStatus             :: !ContainerInstanceStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateContainerInstancesState' with the minimum fields required to make a request.
 --
@@ -82,9 +79,9 @@ data UpdateContainerInstancesState = UpdateContainerInstancesState'
 -- * 'ucisContainerInstances' - A list of container instance IDs or full ARN entries.
 --
 -- * 'ucisStatus' - The container instance state with which to update the container instance.
-updateContainerInstancesState
-    :: ContainerInstanceStatus -- ^ 'ucisStatus'
-    -> UpdateContainerInstancesState
+updateContainerInstancesState ::
+     ContainerInstanceStatus -- ^ 'ucisStatus'
+  -> UpdateContainerInstancesState
 updateContainerInstancesState pStatus_ =
   UpdateContainerInstancesState'
     { _ucisCluster = Nothing
@@ -92,69 +89,67 @@ updateContainerInstancesState pStatus_ =
     , _ucisStatus = pStatus_
     }
 
-
 -- | The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to update. If you do not specify a cluster, the default cluster is assumed.
 ucisCluster :: Lens' UpdateContainerInstancesState (Maybe Text)
-ucisCluster = lens _ucisCluster (\ s a -> s{_ucisCluster = a})
+ucisCluster = lens _ucisCluster (\s a -> s {_ucisCluster = a})
 
 -- | A list of container instance IDs or full ARN entries.
 ucisContainerInstances :: Lens' UpdateContainerInstancesState [Text]
-ucisContainerInstances = lens _ucisContainerInstances (\ s a -> s{_ucisContainerInstances = a}) . _Coerce
+ucisContainerInstances =
+  lens _ucisContainerInstances (\s a -> s {_ucisContainerInstances = a}) .
+  _Coerce
 
 -- | The container instance state with which to update the container instance.
 ucisStatus :: Lens' UpdateContainerInstancesState ContainerInstanceStatus
-ucisStatus = lens _ucisStatus (\ s a -> s{_ucisStatus = a})
+ucisStatus = lens _ucisStatus (\s a -> s {_ucisStatus = a})
 
-instance AWSRequest UpdateContainerInstancesState
-         where
-        type Rs UpdateContainerInstancesState =
-             UpdateContainerInstancesStateResponse
-        request = postJSON ecs
-        response
-          = receiveJSON
-              (\ s h x ->
-                 UpdateContainerInstancesStateResponse' <$>
-                   (x .?> "failures" .!@ mempty) <*>
-                     (x .?> "containerInstances" .!@ mempty)
-                     <*> (pure (fromEnum s)))
+instance AWSRequest UpdateContainerInstancesState where
+  type Rs UpdateContainerInstancesState = UpdateContainerInstancesStateResponse
+  request = postJSON ecs
+  response =
+    receiveJSON
+      (\s h x ->
+         UpdateContainerInstancesStateResponse' <$>
+         (x .?> "failures" .!@ mempty) <*>
+         (x .?> "containerInstances" .!@ mempty) <*>
+         (pure (fromEnum s)))
 
-instance Hashable UpdateContainerInstancesState where
+instance Hashable UpdateContainerInstancesState
 
-instance NFData UpdateContainerInstancesState where
+instance NFData UpdateContainerInstancesState
 
-instance ToHeaders UpdateContainerInstancesState
-         where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AmazonEC2ContainerServiceV20141113.UpdateContainerInstancesState"
-                       :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+instance ToHeaders UpdateContainerInstancesState where
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AmazonEC2ContainerServiceV20141113.UpdateContainerInstancesState" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON UpdateContainerInstancesState where
-        toJSON UpdateContainerInstancesState'{..}
-          = object
-              (catMaybes
-                 [("cluster" .=) <$> _ucisCluster,
-                  Just
-                    ("containerInstances" .= _ucisContainerInstances),
-                  Just ("status" .= _ucisStatus)])
+  toJSON UpdateContainerInstancesState' {..} =
+    object
+      (catMaybes
+         [ ("cluster" .=) <$> _ucisCluster
+         , Just ("containerInstances" .= _ucisContainerInstances)
+         , Just ("status" .= _ucisStatus)
+         ])
 
 instance ToPath UpdateContainerInstancesState where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery UpdateContainerInstancesState where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'updateContainerInstancesStateResponse' smart constructor.
-data UpdateContainerInstancesStateResponse = UpdateContainerInstancesStateResponse'
-  { _ucisrsFailures           :: !(Maybe [Failure])
-  , _ucisrsContainerInstances :: !(Maybe [ContainerInstance])
-  , _ucisrsResponseStatus     :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateContainerInstancesStateResponse =
+  UpdateContainerInstancesStateResponse'
+    { _ucisrsFailures           :: !(Maybe [Failure])
+    , _ucisrsContainerInstances :: !(Maybe [ContainerInstance])
+    , _ucisrsResponseStatus     :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateContainerInstancesStateResponse' with the minimum fields required to make a request.
 --
@@ -165,9 +160,9 @@ data UpdateContainerInstancesStateResponse = UpdateContainerInstancesStateRespon
 -- * 'ucisrsContainerInstances' - The list of container instances.
 --
 -- * 'ucisrsResponseStatus' - -- | The response status code.
-updateContainerInstancesStateResponse
-    :: Int -- ^ 'ucisrsResponseStatus'
-    -> UpdateContainerInstancesStateResponse
+updateContainerInstancesStateResponse ::
+     Int -- ^ 'ucisrsResponseStatus'
+  -> UpdateContainerInstancesStateResponse
 updateContainerInstancesStateResponse pResponseStatus_ =
   UpdateContainerInstancesStateResponse'
     { _ucisrsFailures = Nothing
@@ -175,18 +170,21 @@ updateContainerInstancesStateResponse pResponseStatus_ =
     , _ucisrsResponseStatus = pResponseStatus_
     }
 
-
 -- | Any failures associated with the call.
 ucisrsFailures :: Lens' UpdateContainerInstancesStateResponse [Failure]
-ucisrsFailures = lens _ucisrsFailures (\ s a -> s{_ucisrsFailures = a}) . _Default . _Coerce
+ucisrsFailures =
+  lens _ucisrsFailures (\s a -> s {_ucisrsFailures = a}) . _Default . _Coerce
 
 -- | The list of container instances.
-ucisrsContainerInstances :: Lens' UpdateContainerInstancesStateResponse [ContainerInstance]
-ucisrsContainerInstances = lens _ucisrsContainerInstances (\ s a -> s{_ucisrsContainerInstances = a}) . _Default . _Coerce
+ucisrsContainerInstances ::
+     Lens' UpdateContainerInstancesStateResponse [ContainerInstance]
+ucisrsContainerInstances =
+  lens _ucisrsContainerInstances (\s a -> s {_ucisrsContainerInstances = a}) .
+  _Default . _Coerce
 
 -- | -- | The response status code.
 ucisrsResponseStatus :: Lens' UpdateContainerInstancesStateResponse Int
-ucisrsResponseStatus = lens _ucisrsResponseStatus (\ s a -> s{_ucisrsResponseStatus = a})
+ucisrsResponseStatus =
+  lens _ucisrsResponseStatus (\s a -> s {_ucisrsResponseStatus = a})
 
 instance NFData UpdateContainerInstancesStateResponse
-         where

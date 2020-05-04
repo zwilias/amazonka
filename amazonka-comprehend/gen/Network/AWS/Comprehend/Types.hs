@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Comprehend.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,130 +10,110 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Comprehend.Types
-    (
     -- * Service Configuration
-      comprehend
-
+  ( comprehend
     -- * Errors
-    , _InvalidRequestException
-    , _TooManyRequestsException
-    , _InternalServerException
-    , _BatchSizeLimitExceededException
-    , _UnsupportedLanguageException
-    , _JobNotFoundException
-    , _InvalidFilterException
-    , _TextSizeLimitExceededException
-
+  , _InvalidRequestException
+  , _TooManyRequestsException
+  , _InternalServerException
+  , _BatchSizeLimitExceededException
+  , _UnsupportedLanguageException
+  , _JobNotFoundException
+  , _InvalidFilterException
+  , _TextSizeLimitExceededException
     -- * EntityType
-    , EntityType (..)
-
+  , EntityType(..)
     -- * InputFormat
-    , InputFormat (..)
-
+  , InputFormat(..)
     -- * JobStatus
-    , JobStatus (..)
-
+  , JobStatus(..)
     -- * LanguageCode
-    , LanguageCode (..)
-
+  , LanguageCode(..)
     -- * SentimentType
-    , SentimentType (..)
-
+  , SentimentType(..)
     -- * BatchDetectDominantLanguageItemResult
-    , BatchDetectDominantLanguageItemResult
-    , batchDetectDominantLanguageItemResult
-    , bddlirLanguages
-    , bddlirIndex
-
+  , BatchDetectDominantLanguageItemResult
+  , batchDetectDominantLanguageItemResult
+  , bddlirLanguages
+  , bddlirIndex
     -- * BatchDetectEntitiesItemResult
-    , BatchDetectEntitiesItemResult
-    , batchDetectEntitiesItemResult
-    , bdeirEntities
-    , bdeirIndex
-
+  , BatchDetectEntitiesItemResult
+  , batchDetectEntitiesItemResult
+  , bdeirEntities
+  , bdeirIndex
     -- * BatchDetectKeyPhrasesItemResult
-    , BatchDetectKeyPhrasesItemResult
-    , batchDetectKeyPhrasesItemResult
-    , bdkpirIndex
-    , bdkpirKeyPhrases
-
+  , BatchDetectKeyPhrasesItemResult
+  , batchDetectKeyPhrasesItemResult
+  , bdkpirIndex
+  , bdkpirKeyPhrases
     -- * BatchDetectSentimentItemResult
-    , BatchDetectSentimentItemResult
-    , batchDetectSentimentItemResult
-    , bdsirSentiment
-    , bdsirSentimentScore
-    , bdsirIndex
-
+  , BatchDetectSentimentItemResult
+  , batchDetectSentimentItemResult
+  , bdsirSentiment
+  , bdsirSentimentScore
+  , bdsirIndex
     -- * BatchItemError
-    , BatchItemError
-    , batchItemError
-    , bieErrorCode
-    , bieErrorMessage
-    , bieIndex
-
+  , BatchItemError
+  , batchItemError
+  , bieErrorCode
+  , bieErrorMessage
+  , bieIndex
     -- * DominantLanguage
-    , DominantLanguage
-    , dominantLanguage
-    , dlLanguageCode
-    , dlScore
-
+  , DominantLanguage
+  , dominantLanguage
+  , dlLanguageCode
+  , dlScore
     -- * Entity
-    , Entity
-    , entity
-    , eBeginOffset
-    , eText
-    , eScore
-    , eEndOffset
-    , eType
-
+  , Entity
+  , entity
+  , eBeginOffset
+  , eText
+  , eScore
+  , eEndOffset
+  , eType
     -- * InputDataConfig
-    , InputDataConfig
-    , inputDataConfig
-    , idcInputFormat
-    , idcS3URI
-
+  , InputDataConfig
+  , inputDataConfig
+  , idcInputFormat
+  , idcS3URI
     -- * KeyPhrase
-    , KeyPhrase
-    , keyPhrase
-    , kpBeginOffset
-    , kpText
-    , kpScore
-    , kpEndOffset
-
+  , KeyPhrase
+  , keyPhrase
+  , kpBeginOffset
+  , kpText
+  , kpScore
+  , kpEndOffset
     -- * OutputDataConfig
-    , OutputDataConfig
-    , outputDataConfig
-    , odcS3URI
-
+  , OutputDataConfig
+  , outputDataConfig
+  , odcS3URI
     -- * SentimentScore
-    , SentimentScore
-    , sentimentScore
-    , ssMixed
-    , ssNegative
-    , ssNeutral
-    , ssPositive
-
+  , SentimentScore
+  , sentimentScore
+  , ssMixed
+  , ssNegative
+  , ssNeutral
+  , ssPositive
     -- * TopicsDetectionJobFilter
-    , TopicsDetectionJobFilter
-    , topicsDetectionJobFilter
-    , tdjfSubmitTimeAfter
-    , tdjfSubmitTimeBefore
-    , tdjfJobName
-    , tdjfJobStatus
-
+  , TopicsDetectionJobFilter
+  , topicsDetectionJobFilter
+  , tdjfSubmitTimeAfter
+  , tdjfSubmitTimeBefore
+  , tdjfJobName
+  , tdjfJobStatus
     -- * TopicsDetectionJobProperties
-    , TopicsDetectionJobProperties
-    , topicsDetectionJobProperties
-    , tdjpJobId
-    , tdjpJobName
-    , tdjpInputDataConfig
-    , tdjpEndTime
-    , tdjpOutputDataConfig
-    , tdjpNumberOfTopics
-    , tdjpJobStatus
-    , tdjpMessage
-    , tdjpSubmitTime
-    ) where
+  , TopicsDetectionJobProperties
+  , topicsDetectionJobProperties
+  , tdjpJobId
+  , tdjpJobName
+  , tdjpInputDataConfig
+  , tdjpEndTime
+  , tdjpOutputDataConfig
+  , tdjpNumberOfTopics
+  , tdjpJobStatus
+  , tdjpMessage
+  , tdjpSubmitTime
+  ) where
 
 import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Comprehend.Types.Sum
@@ -180,65 +159,64 @@ comprehend =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The request is invalid.
 --
 --
-_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestException =
   _MatchServiceError comprehend "InvalidRequestException"
-
 
 -- | The number of requests exceeds the limit. Resubmit your request later.
 --
 --
-_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _TooManyRequestsException =
   _MatchServiceError comprehend "TooManyRequestsException"
-
 
 -- | An internal server error occurred. Retry your request.
 --
 --
-_InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerException =
   _MatchServiceError comprehend "InternalServerException"
-
 
 -- | The number of documents in the request exceeds the limit of 25. Try your request again with fewer documents.
 --
 --
-_BatchSizeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_BatchSizeLimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _BatchSizeLimitExceededException =
   _MatchServiceError comprehend "BatchSizeLimitExceededException"
-
 
 -- | Amazon Comprehend can't process the language of the input text. For all APIs except @DetectDominantLanguage@ , Amazon Comprehend accepts only English or Spanish text. For the @DetectDominantLanguage@ API, Amazon Comprehend detects 100 languages. For a list of languages, see 'how-languages'
 --
 --
-_UnsupportedLanguageException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedLanguageException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedLanguageException =
   _MatchServiceError comprehend "UnsupportedLanguageException"
-
 
 -- | The specified job was not found. Check the job ID and try again.
 --
 --
-_JobNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_JobNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _JobNotFoundException = _MatchServiceError comprehend "JobNotFoundException"
-
 
 -- | The filter specified for the @ListTopicDetectionJobs@ operation is invalid. Specify a different filter.
 --
 --
-_InvalidFilterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidFilterException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidFilterException = _MatchServiceError comprehend "InvalidFilterException"
-
 
 -- | The size of the input text exceeds the limit. Use a smaller document.
 --
 --
-_TextSizeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_TextSizeLimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _TextSizeLimitExceededException =
   _MatchServiceError comprehend "TextSizeLimitExceededException"
-

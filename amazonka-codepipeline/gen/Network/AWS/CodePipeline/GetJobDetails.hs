@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CodePipeline.GetJobDetails
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,20 +22,18 @@
 -- /Important:/ When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action.
 --
 module Network.AWS.CodePipeline.GetJobDetails
-    (
     -- * Creating a Request
-      getJobDetails
-    , GetJobDetails
+  ( getJobDetails
+  , GetJobDetails
     -- * Request Lenses
-    , gjdJobId
-
+  , gjdJobId
     -- * Destructuring the Response
-    , getJobDetailsResponse
-    , GetJobDetailsResponse
+  , getJobDetailsResponse
+  , GetJobDetailsResponse
     -- * Response Lenses
-    , gjdrsJobDetails
-    , gjdrsResponseStatus
-    ) where
+  , gjdrsJobDetails
+  , gjdrsResponseStatus
+  ) where
 
 import Network.AWS.CodePipeline.Types
 import Network.AWS.CodePipeline.Types.Product
@@ -51,69 +47,67 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getJobDetails' smart constructor.
-newtype GetJobDetails = GetJobDetails'
-  { _gjdJobId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetJobDetails =
+  GetJobDetails'
+    { _gjdJobId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobDetails' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gjdJobId' - The unique system-generated ID for the job.
-getJobDetails
-    :: Text -- ^ 'gjdJobId'
-    -> GetJobDetails
+getJobDetails ::
+     Text -- ^ 'gjdJobId'
+  -> GetJobDetails
 getJobDetails pJobId_ = GetJobDetails' {_gjdJobId = pJobId_}
-
 
 -- | The unique system-generated ID for the job.
 gjdJobId :: Lens' GetJobDetails Text
-gjdJobId = lens _gjdJobId (\ s a -> s{_gjdJobId = a})
+gjdJobId = lens _gjdJobId (\s a -> s {_gjdJobId = a})
 
 instance AWSRequest GetJobDetails where
-        type Rs GetJobDetails = GetJobDetailsResponse
-        request = postJSON codePipeline
-        response
-          = receiveJSON
-              (\ s h x ->
-                 GetJobDetailsResponse' <$>
-                   (x .?> "jobDetails") <*> (pure (fromEnum s)))
+  type Rs GetJobDetails = GetJobDetailsResponse
+  request = postJSON codePipeline
+  response =
+    receiveJSON
+      (\s h x ->
+         GetJobDetailsResponse' <$> (x .?> "jobDetails") <*> (pure (fromEnum s)))
 
-instance Hashable GetJobDetails where
+instance Hashable GetJobDetails
 
-instance NFData GetJobDetails where
+instance NFData GetJobDetails
 
 instance ToHeaders GetJobDetails where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("CodePipeline_20150709.GetJobDetails" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("CodePipeline_20150709.GetJobDetails" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON GetJobDetails where
-        toJSON GetJobDetails'{..}
-          = object (catMaybes [Just ("jobId" .= _gjdJobId)])
+  toJSON GetJobDetails' {..} = object (catMaybes [Just ("jobId" .= _gjdJobId)])
 
 instance ToPath GetJobDetails where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery GetJobDetails where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Represents the output of a GetJobDetails action.
 --
 --
 --
 -- /See:/ 'getJobDetailsResponse' smart constructor.
-data GetJobDetailsResponse = GetJobDetailsResponse'
-  { _gjdrsJobDetails     :: !(Maybe JobDetails)
-  , _gjdrsResponseStatus :: !Int
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetJobDetailsResponse =
+  GetJobDetailsResponse'
+    { _gjdrsJobDetails     :: !(Maybe JobDetails)
+    , _gjdrsResponseStatus :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobDetailsResponse' with the minimum fields required to make a request.
 --
@@ -122,20 +116,20 @@ data GetJobDetailsResponse = GetJobDetailsResponse'
 -- * 'gjdrsJobDetails' - The details of the job.
 --
 -- * 'gjdrsResponseStatus' - -- | The response status code.
-getJobDetailsResponse
-    :: Int -- ^ 'gjdrsResponseStatus'
-    -> GetJobDetailsResponse
+getJobDetailsResponse ::
+     Int -- ^ 'gjdrsResponseStatus'
+  -> GetJobDetailsResponse
 getJobDetailsResponse pResponseStatus_ =
   GetJobDetailsResponse'
     {_gjdrsJobDetails = Nothing, _gjdrsResponseStatus = pResponseStatus_}
 
-
 -- | The details of the job.
 gjdrsJobDetails :: Lens' GetJobDetailsResponse (Maybe JobDetails)
-gjdrsJobDetails = lens _gjdrsJobDetails (\ s a -> s{_gjdrsJobDetails = a})
+gjdrsJobDetails = lens _gjdrsJobDetails (\s a -> s {_gjdrsJobDetails = a})
 
 -- | -- | The response status code.
 gjdrsResponseStatus :: Lens' GetJobDetailsResponse Int
-gjdrsResponseStatus = lens _gjdrsResponseStatus (\ s a -> s{_gjdrsResponseStatus = a})
+gjdrsResponseStatus =
+  lens _gjdrsResponseStatus (\s a -> s {_gjdrsResponseStatus = a})
 
-instance NFData GetJobDetailsResponse where
+instance NFData GetJobDetailsResponse

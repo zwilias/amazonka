@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudSearch.DefineIndexField
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,21 +20,19 @@
 --
 --
 module Network.AWS.CloudSearch.DefineIndexField
-    (
     -- * Creating a Request
-      defineIndexField
-    , DefineIndexField
+  ( defineIndexField
+  , DefineIndexField
     -- * Request Lenses
-    , defeDomainName
-    , defeIndexField
-
+  , defeDomainName
+  , defeIndexField
     -- * Destructuring the Response
-    , defineIndexFieldResponse
-    , DefineIndexFieldResponse
+  , defineIndexFieldResponse
+  , DefineIndexFieldResponse
     -- * Response Lenses
-    , defrsResponseStatus
-    , defrsIndexField
-    ) where
+  , defrsResponseStatus
+  , defrsIndexField
+  ) where
 
 import Network.AWS.CloudSearch.Types
 import Network.AWS.CloudSearch.Types.Product
@@ -50,11 +46,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'defineIndexField' smart constructor.
-data DefineIndexField = DefineIndexField'
-  { _defeDomainName :: !Text
-  , _defeIndexField :: !IndexField
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DefineIndexField =
+  DefineIndexField'
+    { _defeDomainName :: !Text
+    , _defeIndexField :: !IndexField
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DefineIndexField' with the minimum fields required to make a request.
 --
@@ -63,60 +60,62 @@ data DefineIndexField = DefineIndexField'
 -- * 'defeDomainName' - Undocumented member.
 --
 -- * 'defeIndexField' - The index field and field options you want to configure.
-defineIndexField
-    :: Text -- ^ 'defeDomainName'
-    -> IndexField -- ^ 'defeIndexField'
-    -> DefineIndexField
+defineIndexField ::
+     Text -- ^ 'defeDomainName'
+  -> IndexField -- ^ 'defeIndexField'
+  -> DefineIndexField
 defineIndexField pDomainName_ pIndexField_ =
   DefineIndexField'
     {_defeDomainName = pDomainName_, _defeIndexField = pIndexField_}
 
-
 -- | Undocumented member.
 defeDomainName :: Lens' DefineIndexField Text
-defeDomainName = lens _defeDomainName (\ s a -> s{_defeDomainName = a})
+defeDomainName = lens _defeDomainName (\s a -> s {_defeDomainName = a})
 
 -- | The index field and field options you want to configure.
 defeIndexField :: Lens' DefineIndexField IndexField
-defeIndexField = lens _defeIndexField (\ s a -> s{_defeIndexField = a})
+defeIndexField = lens _defeIndexField (\s a -> s {_defeIndexField = a})
 
 instance AWSRequest DefineIndexField where
-        type Rs DefineIndexField = DefineIndexFieldResponse
-        request = postQuery cloudSearch
-        response
-          = receiveXMLWrapper "DefineIndexFieldResult"
-              (\ s h x ->
-                 DefineIndexFieldResponse' <$>
-                   (pure (fromEnum s)) <*> (x .@ "IndexField"))
+  type Rs DefineIndexField = DefineIndexFieldResponse
+  request = postQuery cloudSearch
+  response =
+    receiveXMLWrapper
+      "DefineIndexFieldResult"
+      (\s h x ->
+         DefineIndexFieldResponse' <$> (pure (fromEnum s)) <*>
+         (x .@ "IndexField"))
 
-instance Hashable DefineIndexField where
+instance Hashable DefineIndexField
 
-instance NFData DefineIndexField where
+instance NFData DefineIndexField
 
 instance ToHeaders DefineIndexField where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath DefineIndexField where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DefineIndexField where
-        toQuery DefineIndexField'{..}
-          = mconcat
-              ["Action" =: ("DefineIndexField" :: ByteString),
-               "Version" =: ("2013-01-01" :: ByteString),
-               "DomainName" =: _defeDomainName,
-               "IndexField" =: _defeIndexField]
+  toQuery DefineIndexField' {..} =
+    mconcat
+      [ "Action" =: ("DefineIndexField" :: ByteString)
+      , "Version" =: ("2013-01-01" :: ByteString)
+      , "DomainName" =: _defeDomainName
+      , "IndexField" =: _defeIndexField
+      ]
 
 -- | The result of a @'DefineIndexField' @ request. Contains the status of the newly-configured index field.
 --
 --
 --
 -- /See:/ 'defineIndexFieldResponse' smart constructor.
-data DefineIndexFieldResponse = DefineIndexFieldResponse'
-  { _defrsResponseStatus :: !Int
-  , _defrsIndexField     :: !IndexFieldStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DefineIndexFieldResponse =
+  DefineIndexFieldResponse'
+    { _defrsResponseStatus :: !Int
+    , _defrsIndexField     :: !IndexFieldStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DefineIndexFieldResponse' with the minimum fields required to make a request.
 --
@@ -125,21 +124,21 @@ data DefineIndexFieldResponse = DefineIndexFieldResponse'
 -- * 'defrsResponseStatus' - -- | The response status code.
 --
 -- * 'defrsIndexField' - Undocumented member.
-defineIndexFieldResponse
-    :: Int -- ^ 'defrsResponseStatus'
-    -> IndexFieldStatus -- ^ 'defrsIndexField'
-    -> DefineIndexFieldResponse
+defineIndexFieldResponse ::
+     Int -- ^ 'defrsResponseStatus'
+  -> IndexFieldStatus -- ^ 'defrsIndexField'
+  -> DefineIndexFieldResponse
 defineIndexFieldResponse pResponseStatus_ pIndexField_ =
   DefineIndexFieldResponse'
     {_defrsResponseStatus = pResponseStatus_, _defrsIndexField = pIndexField_}
 
-
 -- | -- | The response status code.
 defrsResponseStatus :: Lens' DefineIndexFieldResponse Int
-defrsResponseStatus = lens _defrsResponseStatus (\ s a -> s{_defrsResponseStatus = a})
+defrsResponseStatus =
+  lens _defrsResponseStatus (\s a -> s {_defrsResponseStatus = a})
 
 -- | Undocumented member.
 defrsIndexField :: Lens' DefineIndexFieldResponse IndexFieldStatus
-defrsIndexField = lens _defrsIndexField (\ s a -> s{_defrsIndexField = a})
+defrsIndexField = lens _defrsIndexField (\s a -> s {_defrsIndexField = a})
 
-instance NFData DefineIndexFieldResponse where
+instance NFData DefineIndexFieldResponse

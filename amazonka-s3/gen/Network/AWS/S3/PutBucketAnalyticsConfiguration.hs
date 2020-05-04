@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.S3.PutBucketAnalyticsConfiguration
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +18,17 @@
 --
 -- Sets an analytics configuration for the bucket (specified by the analytics configuration ID).
 module Network.AWS.S3.PutBucketAnalyticsConfiguration
-    (
     -- * Creating a Request
-      putBucketAnalyticsConfiguration
-    , PutBucketAnalyticsConfiguration
+  ( putBucketAnalyticsConfiguration
+  , PutBucketAnalyticsConfiguration
     -- * Request Lenses
-    , pBucket
-    , pId
-    , pAnalyticsConfiguration
-
+  , pBucket
+  , pId
+  , pAnalyticsConfiguration
     -- * Destructuring the Response
-    , putBucketAnalyticsConfigurationResponse
-    , PutBucketAnalyticsConfigurationResponse
-    ) where
+  , putBucketAnalyticsConfigurationResponse
+  , PutBucketAnalyticsConfigurationResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -42,12 +38,13 @@ import Network.AWS.S3.Types
 import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketAnalyticsConfiguration' smart constructor.
-data PutBucketAnalyticsConfiguration = PutBucketAnalyticsConfiguration'
-  { _pBucket                 :: !BucketName
-  , _pId                     :: !Text
-  , _pAnalyticsConfiguration :: !AnalyticsConfiguration
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketAnalyticsConfiguration =
+  PutBucketAnalyticsConfiguration'
+    { _pBucket                 :: !BucketName
+    , _pId                     :: !Text
+    , _pAnalyticsConfiguration :: !AnalyticsConfiguration
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBucketAnalyticsConfiguration' with the minimum fields required to make a request.
 --
@@ -58,11 +55,11 @@ data PutBucketAnalyticsConfiguration = PutBucketAnalyticsConfiguration'
 -- * 'pId' - The identifier used to represent an analytics configuration.
 --
 -- * 'pAnalyticsConfiguration' - The configuration and any analyses for the analytics filter.
-putBucketAnalyticsConfiguration
-    :: BucketName -- ^ 'pBucket'
-    -> Text -- ^ 'pId'
-    -> AnalyticsConfiguration -- ^ 'pAnalyticsConfiguration'
-    -> PutBucketAnalyticsConfiguration
+putBucketAnalyticsConfiguration ::
+     BucketName -- ^ 'pBucket'
+  -> Text -- ^ 'pId'
+  -> AnalyticsConfiguration -- ^ 'pAnalyticsConfiguration'
+  -> PutBucketAnalyticsConfiguration
 putBucketAnalyticsConfiguration pBucket_ pId_ pAnalyticsConfiguration_ =
   PutBucketAnalyticsConfiguration'
     { _pBucket = pBucket_
@@ -70,68 +67,54 @@ putBucketAnalyticsConfiguration pBucket_ pId_ pAnalyticsConfiguration_ =
     , _pAnalyticsConfiguration = pAnalyticsConfiguration_
     }
 
-
 -- | The name of the bucket to which an analytics configuration is stored.
 pBucket :: Lens' PutBucketAnalyticsConfiguration BucketName
-pBucket = lens _pBucket (\ s a -> s{_pBucket = a})
+pBucket = lens _pBucket (\s a -> s {_pBucket = a})
 
 -- | The identifier used to represent an analytics configuration.
 pId :: Lens' PutBucketAnalyticsConfiguration Text
-pId = lens _pId (\ s a -> s{_pId = a})
+pId = lens _pId (\s a -> s {_pId = a})
 
 -- | The configuration and any analyses for the analytics filter.
-pAnalyticsConfiguration :: Lens' PutBucketAnalyticsConfiguration AnalyticsConfiguration
-pAnalyticsConfiguration = lens _pAnalyticsConfiguration (\ s a -> s{_pAnalyticsConfiguration = a})
+pAnalyticsConfiguration ::
+     Lens' PutBucketAnalyticsConfiguration AnalyticsConfiguration
+pAnalyticsConfiguration =
+  lens _pAnalyticsConfiguration (\s a -> s {_pAnalyticsConfiguration = a})
 
-instance AWSRequest PutBucketAnalyticsConfiguration
-         where
-        type Rs PutBucketAnalyticsConfiguration =
-             PutBucketAnalyticsConfigurationResponse
-        request = putXML s3
-        response
-          = receiveNull
-              PutBucketAnalyticsConfigurationResponse'
+instance AWSRequest PutBucketAnalyticsConfiguration where
+  type Rs PutBucketAnalyticsConfiguration = PutBucketAnalyticsConfigurationResponse
+  request = putXML s3
+  response = receiveNull PutBucketAnalyticsConfigurationResponse'
 
 instance Hashable PutBucketAnalyticsConfiguration
-         where
 
-instance NFData PutBucketAnalyticsConfiguration where
+instance NFData PutBucketAnalyticsConfiguration
 
-instance ToElement PutBucketAnalyticsConfiguration
-         where
-        toElement
-          = mkElement
-              "{http://s3.amazonaws.com/doc/2006-03-01/}AnalyticsConfiguration"
-              .
-              _pAnalyticsConfiguration
+instance ToElement PutBucketAnalyticsConfiguration where
+  toElement =
+    mkElement "{http://s3.amazonaws.com/doc/2006-03-01/}AnalyticsConfiguration" .
+    _pAnalyticsConfiguration
 
-instance ToHeaders PutBucketAnalyticsConfiguration
-         where
-        toHeaders = const mempty
+instance ToHeaders PutBucketAnalyticsConfiguration where
+  toHeaders = const mempty
 
 instance ToPath PutBucketAnalyticsConfiguration where
-        toPath PutBucketAnalyticsConfiguration'{..}
-          = mconcat ["/", toBS _pBucket]
+  toPath PutBucketAnalyticsConfiguration' {..} = mconcat ["/", toBS _pBucket]
 
-instance ToQuery PutBucketAnalyticsConfiguration
-         where
-        toQuery PutBucketAnalyticsConfiguration'{..}
-          = mconcat ["id" =: _pId, "analytics"]
+instance ToQuery PutBucketAnalyticsConfiguration where
+  toQuery PutBucketAnalyticsConfiguration' {..} =
+    mconcat ["id" =: _pId, "analytics"]
 
 -- | /See:/ 'putBucketAnalyticsConfigurationResponse' smart constructor.
 data PutBucketAnalyticsConfigurationResponse =
   PutBucketAnalyticsConfigurationResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'PutBucketAnalyticsConfigurationResponse' with the minimum fields required to make a request.
 --
-putBucketAnalyticsConfigurationResponse
-    :: PutBucketAnalyticsConfigurationResponse
+putBucketAnalyticsConfigurationResponse ::
+     PutBucketAnalyticsConfigurationResponse
 putBucketAnalyticsConfigurationResponse =
   PutBucketAnalyticsConfigurationResponse'
 
-
-instance NFData
-           PutBucketAnalyticsConfigurationResponse
-         where
+instance NFData PutBucketAnalyticsConfigurationResponse

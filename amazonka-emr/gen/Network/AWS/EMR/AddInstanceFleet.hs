@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EMR.AddInstanceFleet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +20,20 @@
 --
 --
 module Network.AWS.EMR.AddInstanceFleet
-    (
     -- * Creating a Request
-      addInstanceFleet
-    , AddInstanceFleet
+  ( addInstanceFleet
+  , AddInstanceFleet
     -- * Request Lenses
-    , aifClusterId
-    , aifInstanceFleet
-
+  , aifClusterId
+  , aifInstanceFleet
     -- * Destructuring the Response
-    , addInstanceFleetResponse
-    , AddInstanceFleetResponse
+  , addInstanceFleetResponse
+  , AddInstanceFleetResponse
     -- * Response Lenses
-    , aifrsClusterId
-    , aifrsInstanceFleetId
-    , aifrsResponseStatus
-    ) where
+  , aifrsClusterId
+  , aifrsInstanceFleetId
+  , aifrsResponseStatus
+  ) where
 
 import Network.AWS.EMR.Types
 import Network.AWS.EMR.Types.Product
@@ -47,11 +43,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'addInstanceFleet' smart constructor.
-data AddInstanceFleet = AddInstanceFleet'
-  { _aifClusterId     :: !Text
-  , _aifInstanceFleet :: !InstanceFleetConfig
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddInstanceFleet =
+  AddInstanceFleet'
+    { _aifClusterId     :: !Text
+    , _aifInstanceFleet :: !InstanceFleetConfig
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddInstanceFleet' with the minimum fields required to make a request.
 --
@@ -60,66 +57,66 @@ data AddInstanceFleet = AddInstanceFleet'
 -- * 'aifClusterId' - The unique identifier of the cluster.
 --
 -- * 'aifInstanceFleet' - Specifies the configuration of the instance fleet.
-addInstanceFleet
-    :: Text -- ^ 'aifClusterId'
-    -> InstanceFleetConfig -- ^ 'aifInstanceFleet'
-    -> AddInstanceFleet
+addInstanceFleet ::
+     Text -- ^ 'aifClusterId'
+  -> InstanceFleetConfig -- ^ 'aifInstanceFleet'
+  -> AddInstanceFleet
 addInstanceFleet pClusterId_ pInstanceFleet_ =
   AddInstanceFleet'
     {_aifClusterId = pClusterId_, _aifInstanceFleet = pInstanceFleet_}
 
-
 -- | The unique identifier of the cluster.
 aifClusterId :: Lens' AddInstanceFleet Text
-aifClusterId = lens _aifClusterId (\ s a -> s{_aifClusterId = a})
+aifClusterId = lens _aifClusterId (\s a -> s {_aifClusterId = a})
 
 -- | Specifies the configuration of the instance fleet.
 aifInstanceFleet :: Lens' AddInstanceFleet InstanceFleetConfig
-aifInstanceFleet = lens _aifInstanceFleet (\ s a -> s{_aifInstanceFleet = a})
+aifInstanceFleet = lens _aifInstanceFleet (\s a -> s {_aifInstanceFleet = a})
 
 instance AWSRequest AddInstanceFleet where
-        type Rs AddInstanceFleet = AddInstanceFleetResponse
-        request = postJSON emr
-        response
-          = receiveJSON
-              (\ s h x ->
-                 AddInstanceFleetResponse' <$>
-                   (x .?> "ClusterId") <*> (x .?> "InstanceFleetId") <*>
-                     (pure (fromEnum s)))
+  type Rs AddInstanceFleet = AddInstanceFleetResponse
+  request = postJSON emr
+  response =
+    receiveJSON
+      (\s h x ->
+         AddInstanceFleetResponse' <$> (x .?> "ClusterId") <*>
+         (x .?> "InstanceFleetId") <*>
+         (pure (fromEnum s)))
 
-instance Hashable AddInstanceFleet where
+instance Hashable AddInstanceFleet
 
-instance NFData AddInstanceFleet where
+instance NFData AddInstanceFleet
 
 instance ToHeaders AddInstanceFleet where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("ElasticMapReduce.AddInstanceFleet" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("ElasticMapReduce.AddInstanceFleet" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON AddInstanceFleet where
-        toJSON AddInstanceFleet'{..}
-          = object
-              (catMaybes
-                 [Just ("ClusterId" .= _aifClusterId),
-                  Just ("InstanceFleet" .= _aifInstanceFleet)])
+  toJSON AddInstanceFleet' {..} =
+    object
+      (catMaybes
+         [ Just ("ClusterId" .= _aifClusterId)
+         , Just ("InstanceFleet" .= _aifInstanceFleet)
+         ])
 
 instance ToPath AddInstanceFleet where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery AddInstanceFleet where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'addInstanceFleetResponse' smart constructor.
-data AddInstanceFleetResponse = AddInstanceFleetResponse'
-  { _aifrsClusterId       :: !(Maybe Text)
-  , _aifrsInstanceFleetId :: !(Maybe Text)
-  , _aifrsResponseStatus  :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddInstanceFleetResponse =
+  AddInstanceFleetResponse'
+    { _aifrsClusterId       :: !(Maybe Text)
+    , _aifrsInstanceFleetId :: !(Maybe Text)
+    , _aifrsResponseStatus  :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddInstanceFleetResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +127,9 @@ data AddInstanceFleetResponse = AddInstanceFleetResponse'
 -- * 'aifrsInstanceFleetId' - The unique identifier of the instance fleet.
 --
 -- * 'aifrsResponseStatus' - -- | The response status code.
-addInstanceFleetResponse
-    :: Int -- ^ 'aifrsResponseStatus'
-    -> AddInstanceFleetResponse
+addInstanceFleetResponse ::
+     Int -- ^ 'aifrsResponseStatus'
+  -> AddInstanceFleetResponse
 addInstanceFleetResponse pResponseStatus_ =
   AddInstanceFleetResponse'
     { _aifrsClusterId = Nothing
@@ -140,17 +137,18 @@ addInstanceFleetResponse pResponseStatus_ =
     , _aifrsResponseStatus = pResponseStatus_
     }
 
-
 -- | The unique identifier of the cluster.
 aifrsClusterId :: Lens' AddInstanceFleetResponse (Maybe Text)
-aifrsClusterId = lens _aifrsClusterId (\ s a -> s{_aifrsClusterId = a})
+aifrsClusterId = lens _aifrsClusterId (\s a -> s {_aifrsClusterId = a})
 
 -- | The unique identifier of the instance fleet.
 aifrsInstanceFleetId :: Lens' AddInstanceFleetResponse (Maybe Text)
-aifrsInstanceFleetId = lens _aifrsInstanceFleetId (\ s a -> s{_aifrsInstanceFleetId = a})
+aifrsInstanceFleetId =
+  lens _aifrsInstanceFleetId (\s a -> s {_aifrsInstanceFleetId = a})
 
 -- | -- | The response status code.
 aifrsResponseStatus :: Lens' AddInstanceFleetResponse Int
-aifrsResponseStatus = lens _aifrsResponseStatus (\ s a -> s{_aifrsResponseStatus = a})
+aifrsResponseStatus =
+  lens _aifrsResponseStatus (\s a -> s {_aifrsResponseStatus = a})
 
-instance NFData AddInstanceFleetResponse where
+instance NFData AddInstanceFleetResponse

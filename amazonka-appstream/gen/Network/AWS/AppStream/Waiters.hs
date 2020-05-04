@@ -1,10 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.AppStream.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -45,7 +43,6 @@ fleetStopped =
         ]
     }
 
-
 -- | Polls 'Network.AWS.AppStream.DescribeFleets' every 30 seconds until a successful state is reached. An error is returned after 40 failed checks.
 fleetStarted :: Wait DescribeFleets
 fleetStarted =
@@ -68,4 +65,3 @@ fleetStarted =
             (folding (concatOf dfsrsFleets) . fState . to toTextCI)
         ]
     }
-

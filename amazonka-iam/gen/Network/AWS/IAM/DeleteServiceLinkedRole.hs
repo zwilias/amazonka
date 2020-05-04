@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IAM.DeleteServiceLinkedRole
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,20 +24,18 @@
 -- For more information about service-linked roles, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role Roles Terms and Concepts: AWS Service-Linked Role> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.DeleteServiceLinkedRole
-    (
     -- * Creating a Request
-      deleteServiceLinkedRole
-    , DeleteServiceLinkedRole
+  ( deleteServiceLinkedRole
+  , DeleteServiceLinkedRole
     -- * Request Lenses
-    , dslrRoleName
-
+  , dslrRoleName
     -- * Destructuring the Response
-    , deleteServiceLinkedRoleResponse
-    , DeleteServiceLinkedRoleResponse
+  , deleteServiceLinkedRoleResponse
+  , DeleteServiceLinkedRoleResponse
     -- * Response Lenses
-    , dslrrsResponseStatus
-    , dslrrsDeletionTaskId
-    ) where
+  , dslrrsResponseStatus
+  , dslrrsDeletionTaskId
+  ) where
 
 import Network.AWS.IAM.Types
 import Network.AWS.IAM.Types.Product
@@ -49,61 +45,62 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteServiceLinkedRole' smart constructor.
-newtype DeleteServiceLinkedRole = DeleteServiceLinkedRole'
-  { _dslrRoleName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteServiceLinkedRole =
+  DeleteServiceLinkedRole'
+    { _dslrRoleName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteServiceLinkedRole' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dslrRoleName' - The name of the service-linked role to be deleted.
-deleteServiceLinkedRole
-    :: Text -- ^ 'dslrRoleName'
-    -> DeleteServiceLinkedRole
+deleteServiceLinkedRole ::
+     Text -- ^ 'dslrRoleName'
+  -> DeleteServiceLinkedRole
 deleteServiceLinkedRole pRoleName_ =
   DeleteServiceLinkedRole' {_dslrRoleName = pRoleName_}
 
-
 -- | The name of the service-linked role to be deleted.
 dslrRoleName :: Lens' DeleteServiceLinkedRole Text
-dslrRoleName = lens _dslrRoleName (\ s a -> s{_dslrRoleName = a})
+dslrRoleName = lens _dslrRoleName (\s a -> s {_dslrRoleName = a})
 
 instance AWSRequest DeleteServiceLinkedRole where
-        type Rs DeleteServiceLinkedRole =
-             DeleteServiceLinkedRoleResponse
-        request = postQuery iam
-        response
-          = receiveXMLWrapper "DeleteServiceLinkedRoleResult"
-              (\ s h x ->
-                 DeleteServiceLinkedRoleResponse' <$>
-                   (pure (fromEnum s)) <*> (x .@ "DeletionTaskId"))
+  type Rs DeleteServiceLinkedRole = DeleteServiceLinkedRoleResponse
+  request = postQuery iam
+  response =
+    receiveXMLWrapper
+      "DeleteServiceLinkedRoleResult"
+      (\s h x ->
+         DeleteServiceLinkedRoleResponse' <$> (pure (fromEnum s)) <*>
+         (x .@ "DeletionTaskId"))
 
-instance Hashable DeleteServiceLinkedRole where
+instance Hashable DeleteServiceLinkedRole
 
-instance NFData DeleteServiceLinkedRole where
+instance NFData DeleteServiceLinkedRole
 
 instance ToHeaders DeleteServiceLinkedRole where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath DeleteServiceLinkedRole where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DeleteServiceLinkedRole where
-        toQuery DeleteServiceLinkedRole'{..}
-          = mconcat
-              ["Action" =:
-                 ("DeleteServiceLinkedRole" :: ByteString),
-               "Version" =: ("2010-05-08" :: ByteString),
-               "RoleName" =: _dslrRoleName]
+  toQuery DeleteServiceLinkedRole' {..} =
+    mconcat
+      [ "Action" =: ("DeleteServiceLinkedRole" :: ByteString)
+      , "Version" =: ("2010-05-08" :: ByteString)
+      , "RoleName" =: _dslrRoleName
+      ]
 
 -- | /See:/ 'deleteServiceLinkedRoleResponse' smart constructor.
-data DeleteServiceLinkedRoleResponse = DeleteServiceLinkedRoleResponse'
-  { _dslrrsResponseStatus :: !Int
-  , _dslrrsDeletionTaskId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteServiceLinkedRoleResponse =
+  DeleteServiceLinkedRoleResponse'
+    { _dslrrsResponseStatus :: !Int
+    , _dslrrsDeletionTaskId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteServiceLinkedRoleResponse' with the minimum fields required to make a request.
 --
@@ -112,23 +109,24 @@ data DeleteServiceLinkedRoleResponse = DeleteServiceLinkedRoleResponse'
 -- * 'dslrrsResponseStatus' - -- | The response status code.
 --
 -- * 'dslrrsDeletionTaskId' - The deletion task identifier that you can use to check the status of the deletion. This identifier is returned in the format @task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid>@ .
-deleteServiceLinkedRoleResponse
-    :: Int -- ^ 'dslrrsResponseStatus'
-    -> Text -- ^ 'dslrrsDeletionTaskId'
-    -> DeleteServiceLinkedRoleResponse
+deleteServiceLinkedRoleResponse ::
+     Int -- ^ 'dslrrsResponseStatus'
+  -> Text -- ^ 'dslrrsDeletionTaskId'
+  -> DeleteServiceLinkedRoleResponse
 deleteServiceLinkedRoleResponse pResponseStatus_ pDeletionTaskId_ =
   DeleteServiceLinkedRoleResponse'
     { _dslrrsResponseStatus = pResponseStatus_
     , _dslrrsDeletionTaskId = pDeletionTaskId_
     }
 
-
 -- | -- | The response status code.
 dslrrsResponseStatus :: Lens' DeleteServiceLinkedRoleResponse Int
-dslrrsResponseStatus = lens _dslrrsResponseStatus (\ s a -> s{_dslrrsResponseStatus = a})
+dslrrsResponseStatus =
+  lens _dslrrsResponseStatus (\s a -> s {_dslrrsResponseStatus = a})
 
 -- | The deletion task identifier that you can use to check the status of the deletion. This identifier is returned in the format @task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid>@ .
 dslrrsDeletionTaskId :: Lens' DeleteServiceLinkedRoleResponse Text
-dslrrsDeletionTaskId = lens _dslrrsDeletionTaskId (\ s a -> s{_dslrrsDeletionTaskId = a})
+dslrrsDeletionTaskId =
+  lens _dslrrsDeletionTaskId (\s a -> s {_dslrrsDeletionTaskId = a})
 
-instance NFData DeleteServiceLinkedRoleResponse where
+instance NFData DeleteServiceLinkedRoleResponse

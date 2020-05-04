@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Config
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,621 +17,490 @@
 -- You can access and manage AWS Config through the AWS Management Console, the AWS Command Line Interface (AWS CLI), the AWS Config API, or the AWS SDKs for AWS Config. This reference guide contains documentation for the AWS Config API and the AWS CLI commands that you can use to manage AWS Config. The AWS Config API uses the Signature Version 4 protocol for signing requests. For more information about how to sign a request with this protocol, see <http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html Signature Version 4 Signing Process> . For detailed information about AWS Config features and their associated actions or commands, as well as how to work with AWS Management Console, see <http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html What Is AWS Config> in the /AWS Config Developer Guide/ .
 --
 module Network.AWS.Config
-    (
     -- * Service Configuration
-      config
-
+  ( config
     -- * Errors
     -- $errors
-
     -- ** InvalidTimeRangeException
-    , _InvalidTimeRangeException
-
+  , _InvalidTimeRangeException
     -- ** InvalidSNSTopicARNException
-    , _InvalidSNSTopicARNException
-
+  , _InvalidSNSTopicARNException
     -- ** InvalidRecordingGroupException
-    , _InvalidRecordingGroupException
-
+  , _InvalidRecordingGroupException
     -- ** NoAvailableOrganizationException
-    , _NoAvailableOrganizationException
-
+  , _NoAvailableOrganizationException
     -- ** ValidationException
-    , _ValidationException
-
+  , _ValidationException
     -- ** OrganizationAccessDeniedException
-    , _OrganizationAccessDeniedException
-
+  , _OrganizationAccessDeniedException
     -- ** NoSuchConfigurationAggregatorException
-    , _NoSuchConfigurationAggregatorException
-
+  , _NoSuchConfigurationAggregatorException
     -- ** InvalidRoleException
-    , _InvalidRoleException
-
+  , _InvalidRoleException
     -- ** LastDeliveryChannelDeleteFailedException
-    , _LastDeliveryChannelDeleteFailedException
-
+  , _LastDeliveryChannelDeleteFailedException
     -- ** InvalidLimitException
-    , _InvalidLimitException
-
+  , _InvalidLimitException
     -- ** InvalidDeliveryChannelNameException
-    , _InvalidDeliveryChannelNameException
-
+  , _InvalidDeliveryChannelNameException
     -- ** InvalidParameterValueException
-    , _InvalidParameterValueException
-
+  , _InvalidParameterValueException
     -- ** InvalidResultTokenException
-    , _InvalidResultTokenException
-
+  , _InvalidResultTokenException
     -- ** NoSuchDeliveryChannelException
-    , _NoSuchDeliveryChannelException
-
+  , _NoSuchDeliveryChannelException
     -- ** NoSuchConfigRuleException
-    , _NoSuchConfigRuleException
-
+  , _NoSuchConfigRuleException
     -- ** OrganizationAllFeaturesNotEnabledException
-    , _OrganizationAllFeaturesNotEnabledException
-
+  , _OrganizationAllFeaturesNotEnabledException
     -- ** InsufficientPermissionsException
-    , _InsufficientPermissionsException
-
+  , _InsufficientPermissionsException
     -- ** ResourceNotDiscoveredException
-    , _ResourceNotDiscoveredException
-
+  , _ResourceNotDiscoveredException
     -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
+  , _InvalidNextTokenException
     -- ** MaxNumberOfConfigRulesExceededException
-    , _MaxNumberOfConfigRulesExceededException
-
+  , _MaxNumberOfConfigRulesExceededException
     -- ** NoAvailableConfigurationRecorderException
-    , _NoAvailableConfigurationRecorderException
-
+  , _NoAvailableConfigurationRecorderException
     -- ** NoSuchBucketException
-    , _NoSuchBucketException
-
+  , _NoSuchBucketException
     -- ** NoAvailableDeliveryChannelException
-    , _NoAvailableDeliveryChannelException
-
+  , _NoAvailableDeliveryChannelException
     -- ** InvalidConfigurationRecorderNameException
-    , _InvalidConfigurationRecorderNameException
-
+  , _InvalidConfigurationRecorderNameException
     -- ** NoRunningConfigurationRecorderException
-    , _NoRunningConfigurationRecorderException
-
+  , _NoRunningConfigurationRecorderException
     -- ** MaxNumberOfConfigurationRecordersExceededException
-    , _MaxNumberOfConfigurationRecordersExceededException
-
+  , _MaxNumberOfConfigurationRecordersExceededException
     -- ** InsufficientDeliveryPolicyException
-    , _InsufficientDeliveryPolicyException
-
+  , _InsufficientDeliveryPolicyException
     -- ** MaxNumberOfDeliveryChannelsExceededException
-    , _MaxNumberOfDeliveryChannelsExceededException
-
+  , _MaxNumberOfDeliveryChannelsExceededException
     -- ** NoSuchConfigurationRecorderException
-    , _NoSuchConfigurationRecorderException
-
+  , _NoSuchConfigurationRecorderException
     -- ** InvalidS3KeyPrefixException
-    , _InvalidS3KeyPrefixException
-
+  , _InvalidS3KeyPrefixException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- ** ResourceInUseException
-    , _ResourceInUseException
-
+  , _ResourceInUseException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** DescribePendingAggregationRequests
-    , module Network.AWS.Config.DescribePendingAggregationRequests
-
+  , module Network.AWS.Config.DescribePendingAggregationRequests
     -- ** GetResourceConfigHistory (Paginated)
-    , module Network.AWS.Config.GetResourceConfigHistory
-
+  , module Network.AWS.Config.GetResourceConfigHistory
     -- ** DescribeConfigurationAggregators
-    , module Network.AWS.Config.DescribeConfigurationAggregators
-
+  , module Network.AWS.Config.DescribeConfigurationAggregators
     -- ** DescribeComplianceByConfigRule (Paginated)
-    , module Network.AWS.Config.DescribeComplianceByConfigRule
-
+  , module Network.AWS.Config.DescribeComplianceByConfigRule
     -- ** StopConfigurationRecorder
-    , module Network.AWS.Config.StopConfigurationRecorder
-
+  , module Network.AWS.Config.StopConfigurationRecorder
     -- ** GetAggregateConfigRuleComplianceSummary
-    , module Network.AWS.Config.GetAggregateConfigRuleComplianceSummary
-
+  , module Network.AWS.Config.GetAggregateConfigRuleComplianceSummary
     -- ** BatchGetResourceConfig
-    , module Network.AWS.Config.BatchGetResourceConfig
-
+  , module Network.AWS.Config.BatchGetResourceConfig
     -- ** DescribeConfigRules (Paginated)
-    , module Network.AWS.Config.DescribeConfigRules
-
+  , module Network.AWS.Config.DescribeConfigRules
     -- ** DescribeAggregateComplianceByConfigRules
-    , module Network.AWS.Config.DescribeAggregateComplianceByConfigRules
-
+  , module Network.AWS.Config.DescribeAggregateComplianceByConfigRules
     -- ** DeleteEvaluationResults
-    , module Network.AWS.Config.DeleteEvaluationResults
-
+  , module Network.AWS.Config.DeleteEvaluationResults
     -- ** PutConfigRule
-    , module Network.AWS.Config.PutConfigRule
-
+  , module Network.AWS.Config.PutConfigRule
     -- ** DeleteConfigRule
-    , module Network.AWS.Config.DeleteConfigRule
-
+  , module Network.AWS.Config.DeleteConfigRule
     -- ** GetComplianceDetailsByResource (Paginated)
-    , module Network.AWS.Config.GetComplianceDetailsByResource
-
+  , module Network.AWS.Config.GetComplianceDetailsByResource
     -- ** DeletePendingAggregationRequest
-    , module Network.AWS.Config.DeletePendingAggregationRequest
-
+  , module Network.AWS.Config.DeletePendingAggregationRequest
     -- ** DeliverConfigSnapshot
-    , module Network.AWS.Config.DeliverConfigSnapshot
-
+  , module Network.AWS.Config.DeliverConfigSnapshot
     -- ** DescribeConfigRuleEvaluationStatus
-    , module Network.AWS.Config.DescribeConfigRuleEvaluationStatus
-
+  , module Network.AWS.Config.DescribeConfigRuleEvaluationStatus
     -- ** GetDiscoveredResourceCounts
-    , module Network.AWS.Config.GetDiscoveredResourceCounts
-
+  , module Network.AWS.Config.GetDiscoveredResourceCounts
     -- ** StartConfigRulesEvaluation
-    , module Network.AWS.Config.StartConfigRulesEvaluation
-
+  , module Network.AWS.Config.StartConfigRulesEvaluation
     -- ** DescribeComplianceByResource (Paginated)
-    , module Network.AWS.Config.DescribeComplianceByResource
-
+  , module Network.AWS.Config.DescribeComplianceByResource
     -- ** PutEvaluations
-    , module Network.AWS.Config.PutEvaluations
-
+  , module Network.AWS.Config.PutEvaluations
     -- ** DescribeConfigurationRecorders
-    , module Network.AWS.Config.DescribeConfigurationRecorders
-
+  , module Network.AWS.Config.DescribeConfigurationRecorders
     -- ** GetAggregateComplianceDetailsByConfigRule
-    , module Network.AWS.Config.GetAggregateComplianceDetailsByConfigRule
-
+  , module Network.AWS.Config.GetAggregateComplianceDetailsByConfigRule
     -- ** StartConfigurationRecorder
-    , module Network.AWS.Config.StartConfigurationRecorder
-
+  , module Network.AWS.Config.StartConfigurationRecorder
     -- ** GetComplianceSummaryByConfigRule
-    , module Network.AWS.Config.GetComplianceSummaryByConfigRule
-
+  , module Network.AWS.Config.GetComplianceSummaryByConfigRule
     -- ** PutConfigurationAggregator
-    , module Network.AWS.Config.PutConfigurationAggregator
-
+  , module Network.AWS.Config.PutConfigurationAggregator
     -- ** DeleteConfigurationAggregator
-    , module Network.AWS.Config.DeleteConfigurationAggregator
-
+  , module Network.AWS.Config.DeleteConfigurationAggregator
     -- ** DescribeConfigurationRecorderStatus
-    , module Network.AWS.Config.DescribeConfigurationRecorderStatus
-
+  , module Network.AWS.Config.DescribeConfigurationRecorderStatus
     -- ** PutConfigurationRecorder
-    , module Network.AWS.Config.PutConfigurationRecorder
-
+  , module Network.AWS.Config.PutConfigurationRecorder
     -- ** DeleteConfigurationRecorder
-    , module Network.AWS.Config.DeleteConfigurationRecorder
-
+  , module Network.AWS.Config.DeleteConfigurationRecorder
     -- ** GetComplianceSummaryByResourceType
-    , module Network.AWS.Config.GetComplianceSummaryByResourceType
-
+  , module Network.AWS.Config.GetComplianceSummaryByResourceType
     -- ** DescribeDeliveryChannelStatus
-    , module Network.AWS.Config.DescribeDeliveryChannelStatus
-
+  , module Network.AWS.Config.DescribeDeliveryChannelStatus
     -- ** PutDeliveryChannel
-    , module Network.AWS.Config.PutDeliveryChannel
-
+  , module Network.AWS.Config.PutDeliveryChannel
     -- ** GetComplianceDetailsByConfigRule (Paginated)
-    , module Network.AWS.Config.GetComplianceDetailsByConfigRule
-
+  , module Network.AWS.Config.GetComplianceDetailsByConfigRule
     -- ** DeleteAggregationAuthorization
-    , module Network.AWS.Config.DeleteAggregationAuthorization
-
+  , module Network.AWS.Config.DeleteAggregationAuthorization
     -- ** DeleteDeliveryChannel
-    , module Network.AWS.Config.DeleteDeliveryChannel
-
+  , module Network.AWS.Config.DeleteDeliveryChannel
     -- ** PutAggregationAuthorization
-    , module Network.AWS.Config.PutAggregationAuthorization
-
+  , module Network.AWS.Config.PutAggregationAuthorization
     -- ** DescribeConfigurationAggregatorSourcesStatus
-    , module Network.AWS.Config.DescribeConfigurationAggregatorSourcesStatus
-
+  , module Network.AWS.Config.DescribeConfigurationAggregatorSourcesStatus
     -- ** ListDiscoveredResources (Paginated)
-    , module Network.AWS.Config.ListDiscoveredResources
-
+  , module Network.AWS.Config.ListDiscoveredResources
     -- ** DescribeDeliveryChannels
-    , module Network.AWS.Config.DescribeDeliveryChannels
-
+  , module Network.AWS.Config.DescribeDeliveryChannels
     -- ** DescribeAggregationAuthorizations
-    , module Network.AWS.Config.DescribeAggregationAuthorizations
-
+  , module Network.AWS.Config.DescribeAggregationAuthorizations
     -- * Types
-
     -- ** AggregatedSourceStatusType
-    , AggregatedSourceStatusType (..)
-
+  , AggregatedSourceStatusType(..)
     -- ** AggregatedSourceType
-    , AggregatedSourceType (..)
-
+  , AggregatedSourceType(..)
     -- ** ChronologicalOrder
-    , ChronologicalOrder (..)
-
+  , ChronologicalOrder(..)
     -- ** ComplianceType
-    , ComplianceType (..)
-
+  , ComplianceType(..)
     -- ** ConfigRuleComplianceSummaryGroupKey
-    , ConfigRuleComplianceSummaryGroupKey (..)
-
+  , ConfigRuleComplianceSummaryGroupKey(..)
     -- ** ConfigRuleState
-    , ConfigRuleState (..)
-
+  , ConfigRuleState(..)
     -- ** ConfigurationItemStatus
-    , ConfigurationItemStatus (..)
-
+  , ConfigurationItemStatus(..)
     -- ** DeliveryStatus
-    , DeliveryStatus (..)
-
+  , DeliveryStatus(..)
     -- ** EventSource
-    , EventSource (..)
-
+  , EventSource(..)
     -- ** MaximumExecutionFrequency
-    , MaximumExecutionFrequency (..)
-
+  , MaximumExecutionFrequency(..)
     -- ** MessageType
-    , MessageType (..)
-
+  , MessageType(..)
     -- ** Owner
-    , Owner (..)
-
+  , Owner(..)
     -- ** RecorderStatus
-    , RecorderStatus (..)
-
+  , RecorderStatus(..)
     -- ** ResourceType
-    , ResourceType (..)
-
+  , ResourceType(..)
     -- ** AccountAggregationSource
-    , AccountAggregationSource
-    , accountAggregationSource
-    , aasAWSRegions
-    , aasAllAWSRegions
-    , aasAccountIds
-
+  , AccountAggregationSource
+  , accountAggregationSource
+  , aasAWSRegions
+  , aasAllAWSRegions
+  , aasAccountIds
     -- ** AggregateComplianceByConfigRule
-    , AggregateComplianceByConfigRule
-    , aggregateComplianceByConfigRule
-    , acbcrCompliance
-    , acbcrConfigRuleName
-    , acbcrAccountId
-    , acbcrAWSRegion
-
+  , AggregateComplianceByConfigRule
+  , aggregateComplianceByConfigRule
+  , acbcrCompliance
+  , acbcrConfigRuleName
+  , acbcrAccountId
+  , acbcrAWSRegion
     -- ** AggregateComplianceCount
-    , AggregateComplianceCount
-    , aggregateComplianceCount
-    , accGroupName
-    , accComplianceSummary
-
+  , AggregateComplianceCount
+  , aggregateComplianceCount
+  , accGroupName
+  , accComplianceSummary
     -- ** AggregateEvaluationResult
-    , AggregateEvaluationResult
-    , aggregateEvaluationResult
-    , aerEvaluationResultIdentifier
-    , aerAnnotation
-    , aerConfigRuleInvokedTime
-    , aerResultRecordedTime
-    , aerAccountId
-    , aerComplianceType
-    , aerAWSRegion
-
+  , AggregateEvaluationResult
+  , aggregateEvaluationResult
+  , aerEvaluationResultIdentifier
+  , aerAnnotation
+  , aerConfigRuleInvokedTime
+  , aerResultRecordedTime
+  , aerAccountId
+  , aerComplianceType
+  , aerAWSRegion
     -- ** AggregatedSourceStatus
-    , AggregatedSourceStatus
-    , aggregatedSourceStatus
-    , assLastErrorCode
-    , assLastUpdateStatus
-    , assSourceType
-    , assSourceId
-    , assLastErrorMessage
-    , assAWSRegion
-    , assLastUpdateTime
-
+  , AggregatedSourceStatus
+  , aggregatedSourceStatus
+  , assLastErrorCode
+  , assLastUpdateStatus
+  , assSourceType
+  , assSourceId
+  , assLastErrorMessage
+  , assAWSRegion
+  , assLastUpdateTime
     -- ** AggregationAuthorization
-    , AggregationAuthorization
-    , aggregationAuthorization
-    , aaCreationTime
-    , aaAuthorizedAWSRegion
-    , aaAggregationAuthorizationARN
-    , aaAuthorizedAccountId
-
+  , AggregationAuthorization
+  , aggregationAuthorization
+  , aaCreationTime
+  , aaAuthorizedAWSRegion
+  , aaAggregationAuthorizationARN
+  , aaAuthorizedAccountId
     -- ** BaseConfigurationItem
-    , BaseConfigurationItem
-    , baseConfigurationItem
-    , bciResourceId
-    , bciResourceType
-    , bciConfigurationStateId
-    , bciArn
-    , bciResourceName
-    , bciResourceCreationTime
-    , bciConfigurationItemStatus
-    , bciConfigurationItemCaptureTime
-    , bciAccountId
-    , bciSupplementaryConfiguration
-    , bciAvailabilityZone
-    , bciVersion
-    , bciAwsRegion
-    , bciConfiguration
-
+  , BaseConfigurationItem
+  , baseConfigurationItem
+  , bciResourceId
+  , bciResourceType
+  , bciConfigurationStateId
+  , bciArn
+  , bciResourceName
+  , bciResourceCreationTime
+  , bciConfigurationItemStatus
+  , bciConfigurationItemCaptureTime
+  , bciAccountId
+  , bciSupplementaryConfiguration
+  , bciAvailabilityZone
+  , bciVersion
+  , bciAwsRegion
+  , bciConfiguration
     -- ** Compliance
-    , Compliance
-    , compliance
-    , cComplianceContributorCount
-    , cComplianceType
-
+  , Compliance
+  , compliance
+  , cComplianceContributorCount
+  , cComplianceType
     -- ** ComplianceByConfigRule
-    , ComplianceByConfigRule
-    , complianceByConfigRule
-    , cbcrCompliance
-    , cbcrConfigRuleName
-
+  , ComplianceByConfigRule
+  , complianceByConfigRule
+  , cbcrCompliance
+  , cbcrConfigRuleName
     -- ** ComplianceByResource
-    , ComplianceByResource
-    , complianceByResource
-    , cbrResourceId
-    , cbrResourceType
-    , cbrCompliance
-
+  , ComplianceByResource
+  , complianceByResource
+  , cbrResourceId
+  , cbrResourceType
+  , cbrCompliance
     -- ** ComplianceContributorCount
-    , ComplianceContributorCount
-    , complianceContributorCount
-    , cccCappedCount
-    , cccCapExceeded
-
+  , ComplianceContributorCount
+  , complianceContributorCount
+  , cccCappedCount
+  , cccCapExceeded
     -- ** ComplianceSummary
-    , ComplianceSummary
-    , complianceSummary
-    , csComplianceSummaryTimestamp
-    , csCompliantResourceCount
-    , csNonCompliantResourceCount
-
+  , ComplianceSummary
+  , complianceSummary
+  , csComplianceSummaryTimestamp
+  , csCompliantResourceCount
+  , csNonCompliantResourceCount
     -- ** ComplianceSummaryByResourceType
-    , ComplianceSummaryByResourceType
-    , complianceSummaryByResourceType
-    , csbrtResourceType
-    , csbrtComplianceSummary
-
+  , ComplianceSummaryByResourceType
+  , complianceSummaryByResourceType
+  , csbrtResourceType
+  , csbrtComplianceSummary
     -- ** ConfigExportDeliveryInfo
-    , ConfigExportDeliveryInfo
-    , configExportDeliveryInfo
-    , cediLastErrorCode
-    , cediLastAttemptTime
-    , cediLastSuccessfulTime
-    , cediLastStatus
-    , cediLastErrorMessage
-    , cediNextDeliveryTime
-
+  , ConfigExportDeliveryInfo
+  , configExportDeliveryInfo
+  , cediLastErrorCode
+  , cediLastAttemptTime
+  , cediLastSuccessfulTime
+  , cediLastStatus
+  , cediLastErrorMessage
+  , cediNextDeliveryTime
     -- ** ConfigRule
-    , ConfigRule
-    , configRule
-    , crInputParameters
-    , crConfigRuleName
-    , crMaximumExecutionFrequency
-    , crConfigRuleId
-    , crScope
-    , crConfigRuleState
-    , crDescription
-    , crConfigRuleARN
-    , crSource
-
+  , ConfigRule
+  , configRule
+  , crInputParameters
+  , crConfigRuleName
+  , crMaximumExecutionFrequency
+  , crConfigRuleId
+  , crScope
+  , crConfigRuleState
+  , crDescription
+  , crConfigRuleARN
+  , crSource
     -- ** ConfigRuleComplianceFilters
-    , ConfigRuleComplianceFilters
-    , configRuleComplianceFilters
-    , crcfConfigRuleName
-    , crcfAccountId
-    , crcfComplianceType
-    , crcfAWSRegion
-
+  , ConfigRuleComplianceFilters
+  , configRuleComplianceFilters
+  , crcfConfigRuleName
+  , crcfAccountId
+  , crcfComplianceType
+  , crcfAWSRegion
     -- ** ConfigRuleComplianceSummaryFilters
-    , ConfigRuleComplianceSummaryFilters
-    , configRuleComplianceSummaryFilters
-    , crcsfAccountId
-    , crcsfAWSRegion
-
+  , ConfigRuleComplianceSummaryFilters
+  , configRuleComplianceSummaryFilters
+  , crcsfAccountId
+  , crcsfAWSRegion
     -- ** ConfigRuleEvaluationStatus
-    , ConfigRuleEvaluationStatus
-    , configRuleEvaluationStatus
-    , cresLastErrorCode
-    , cresLastFailedEvaluationTime
-    , cresFirstActivatedTime
-    , cresLastSuccessfulEvaluationTime
-    , cresConfigRuleName
-    , cresLastErrorMessage
-    , cresConfigRuleId
-    , cresLastFailedInvocationTime
-    , cresFirstEvaluationStarted
-    , cresLastSuccessfulInvocationTime
-    , cresConfigRuleARN
-
+  , ConfigRuleEvaluationStatus
+  , configRuleEvaluationStatus
+  , cresLastErrorCode
+  , cresLastFailedEvaluationTime
+  , cresFirstActivatedTime
+  , cresLastSuccessfulEvaluationTime
+  , cresConfigRuleName
+  , cresLastErrorMessage
+  , cresConfigRuleId
+  , cresLastFailedInvocationTime
+  , cresFirstEvaluationStarted
+  , cresLastSuccessfulInvocationTime
+  , cresConfigRuleARN
     -- ** ConfigSnapshotDeliveryProperties
-    , ConfigSnapshotDeliveryProperties
-    , configSnapshotDeliveryProperties
-    , csdpDeliveryFrequency
-
+  , ConfigSnapshotDeliveryProperties
+  , configSnapshotDeliveryProperties
+  , csdpDeliveryFrequency
     -- ** ConfigStreamDeliveryInfo
-    , ConfigStreamDeliveryInfo
-    , configStreamDeliveryInfo
-    , csdiLastErrorCode
-    , csdiLastStatusChangeTime
-    , csdiLastStatus
-    , csdiLastErrorMessage
-
+  , ConfigStreamDeliveryInfo
+  , configStreamDeliveryInfo
+  , csdiLastErrorCode
+  , csdiLastStatusChangeTime
+  , csdiLastStatus
+  , csdiLastErrorMessage
     -- ** ConfigurationAggregator
-    , ConfigurationAggregator
-    , configurationAggregator
-    , caConfigurationAggregatorARN
-    , caCreationTime
-    , caOrganizationAggregationSource
-    , caLastUpdatedTime
-    , caAccountAggregationSources
-    , caConfigurationAggregatorName
-
+  , ConfigurationAggregator
+  , configurationAggregator
+  , caConfigurationAggregatorARN
+  , caCreationTime
+  , caOrganizationAggregationSource
+  , caLastUpdatedTime
+  , caAccountAggregationSources
+  , caConfigurationAggregatorName
     -- ** ConfigurationItem
-    , ConfigurationItem
-    , configurationItem
-    , ciResourceId
-    , ciResourceType
-    , ciConfigurationStateId
-    , ciArn
-    , ciResourceName
-    , ciResourceCreationTime
-    , ciConfigurationItemStatus
-    , ciConfigurationItemCaptureTime
-    , ciAccountId
-    , ciSupplementaryConfiguration
-    , ciAvailabilityZone
-    , ciRelationships
-    , ciVersion
-    , ciAwsRegion
-    , ciRelatedEvents
-    , ciConfiguration
-    , ciConfigurationItemMD5Hash
-    , ciTags
-
+  , ConfigurationItem
+  , configurationItem
+  , ciResourceId
+  , ciResourceType
+  , ciConfigurationStateId
+  , ciArn
+  , ciResourceName
+  , ciResourceCreationTime
+  , ciConfigurationItemStatus
+  , ciConfigurationItemCaptureTime
+  , ciAccountId
+  , ciSupplementaryConfiguration
+  , ciAvailabilityZone
+  , ciRelationships
+  , ciVersion
+  , ciAwsRegion
+  , ciRelatedEvents
+  , ciConfiguration
+  , ciConfigurationItemMD5Hash
+  , ciTags
     -- ** ConfigurationRecorder
-    , ConfigurationRecorder
-    , configurationRecorder
-    , crName
-    , crRecordingGroup
-    , crRoleARN
-
+  , ConfigurationRecorder
+  , configurationRecorder
+  , crName
+  , crRecordingGroup
+  , crRoleARN
     -- ** ConfigurationRecorderStatus
-    , ConfigurationRecorderStatus
-    , configurationRecorderStatus
-    , crsLastErrorCode
-    , crsLastStopTime
-    , crsLastStatusChangeTime
-    , crsRecording
-    , crsLastStatus
-    , crsLastErrorMessage
-    , crsName
-    , crsLastStartTime
-
+  , ConfigurationRecorderStatus
+  , configurationRecorderStatus
+  , crsLastErrorCode
+  , crsLastStopTime
+  , crsLastStatusChangeTime
+  , crsRecording
+  , crsLastStatus
+  , crsLastErrorMessage
+  , crsName
+  , crsLastStartTime
     -- ** DeliveryChannel
-    , DeliveryChannel
-    , deliveryChannel
-    , dcS3KeyPrefix
-    , dcSnsTopicARN
-    , dcName
-    , dcConfigSnapshotDeliveryProperties
-    , dcS3BucketName
-
+  , DeliveryChannel
+  , deliveryChannel
+  , dcS3KeyPrefix
+  , dcSnsTopicARN
+  , dcName
+  , dcConfigSnapshotDeliveryProperties
+  , dcS3BucketName
     -- ** DeliveryChannelStatus
-    , DeliveryChannelStatus
-    , deliveryChannelStatus
-    , dcsConfigSnapshotDeliveryInfo
-    , dcsConfigStreamDeliveryInfo
-    , dcsConfigHistoryDeliveryInfo
-    , dcsName
-
+  , DeliveryChannelStatus
+  , deliveryChannelStatus
+  , dcsConfigSnapshotDeliveryInfo
+  , dcsConfigStreamDeliveryInfo
+  , dcsConfigHistoryDeliveryInfo
+  , dcsName
     -- ** Evaluation
-    , Evaluation
-    , evaluation
-    , eAnnotation
-    , eComplianceResourceType
-    , eComplianceResourceId
-    , eComplianceType
-    , eOrderingTimestamp
-
+  , Evaluation
+  , evaluation
+  , eAnnotation
+  , eComplianceResourceType
+  , eComplianceResourceId
+  , eComplianceType
+  , eOrderingTimestamp
     -- ** EvaluationResult
-    , EvaluationResult
-    , evaluationResult
-    , erEvaluationResultIdentifier
-    , erAnnotation
-    , erConfigRuleInvokedTime
-    , erResultRecordedTime
-    , erResultToken
-    , erComplianceType
-
+  , EvaluationResult
+  , evaluationResult
+  , erEvaluationResultIdentifier
+  , erAnnotation
+  , erConfigRuleInvokedTime
+  , erResultRecordedTime
+  , erResultToken
+  , erComplianceType
     -- ** EvaluationResultIdentifier
-    , EvaluationResultIdentifier
-    , evaluationResultIdentifier
-    , eriEvaluationResultQualifier
-    , eriOrderingTimestamp
-
+  , EvaluationResultIdentifier
+  , evaluationResultIdentifier
+  , eriEvaluationResultQualifier
+  , eriOrderingTimestamp
     -- ** EvaluationResultQualifier
-    , EvaluationResultQualifier
-    , evaluationResultQualifier
-    , erqResourceId
-    , erqResourceType
-    , erqConfigRuleName
-
+  , EvaluationResultQualifier
+  , evaluationResultQualifier
+  , erqResourceId
+  , erqResourceType
+  , erqConfigRuleName
     -- ** OrganizationAggregationSource
-    , OrganizationAggregationSource
-    , organizationAggregationSource
-    , oasAWSRegions
-    , oasAllAWSRegions
-    , oasRoleARN
-
+  , OrganizationAggregationSource
+  , organizationAggregationSource
+  , oasAWSRegions
+  , oasAllAWSRegions
+  , oasRoleARN
     -- ** PendingAggregationRequest
-    , PendingAggregationRequest
-    , pendingAggregationRequest
-    , parRequesterAccountId
-    , parRequesterAWSRegion
-
+  , PendingAggregationRequest
+  , pendingAggregationRequest
+  , parRequesterAccountId
+  , parRequesterAWSRegion
     -- ** RecordingGroup
-    , RecordingGroup
-    , recordingGroup
-    , rgAllSupported
-    , rgIncludeGlobalResourceTypes
-    , rgResourceTypes
-
+  , RecordingGroup
+  , recordingGroup
+  , rgAllSupported
+  , rgIncludeGlobalResourceTypes
+  , rgResourceTypes
     -- ** Relationship
-    , Relationship
-    , relationship
-    , rResourceId
-    , rResourceType
-    , rResourceName
-    , rRelationshipName
-
+  , Relationship
+  , relationship
+  , rResourceId
+  , rResourceType
+  , rResourceName
+  , rRelationshipName
     -- ** ResourceCount
-    , ResourceCount
-    , resourceCount
-    , rcResourceType
-    , rcCount
-
+  , ResourceCount
+  , resourceCount
+  , rcResourceType
+  , rcCount
     -- ** ResourceIdentifier
-    , ResourceIdentifier
-    , resourceIdentifier
-    , riResourceId
-    , riResourceType
-    , riResourceName
-    , riResourceDeletionTime
-
+  , ResourceIdentifier
+  , resourceIdentifier
+  , riResourceId
+  , riResourceType
+  , riResourceName
+  , riResourceDeletionTime
     -- ** ResourceKey
-    , ResourceKey
-    , resourceKey
-    , rkResourceType
-    , rkResourceId
-
+  , ResourceKey
+  , resourceKey
+  , rkResourceType
+  , rkResourceId
     -- ** Scope
-    , Scope
-    , scope
-    , sComplianceResourceTypes
-    , sComplianceResourceId
-    , sTagValue
-    , sTagKey
-
+  , Scope
+  , scope
+  , sComplianceResourceTypes
+  , sComplianceResourceId
+  , sTagValue
+  , sTagKey
     -- ** Source
-    , Source
-    , source
-    , sSourceDetails
-    , sOwner
-    , sSourceIdentifier
-
+  , Source
+  , source
+  , sSourceDetails
+  , sOwner
+  , sSourceIdentifier
     -- ** SourceDetail
-    , SourceDetail
-    , sourceDetail
-    , sdMessageType
-    , sdMaximumExecutionFrequency
-    , sdEventSource
-    ) where
+  , SourceDetail
+  , sourceDetail
+  , sdMessageType
+  , sdMaximumExecutionFrequency
+  , sdEventSource
+  ) where
 
 import Network.AWS.Config.BatchGetResourceConfig
 import Network.AWS.Config.DeleteAggregationAuthorization
@@ -676,14 +544,12 @@ import Network.AWS.Config.StartConfigurationRecorder
 import Network.AWS.Config.StopConfigurationRecorder
 import Network.AWS.Config.Types
 import Network.AWS.Config.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Config'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -700,7 +566,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

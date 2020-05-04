@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudHSMv2
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -15,130 +14,101 @@
 --
 --
 module Network.AWS.CloudHSMv2
-    (
     -- * Service Configuration
-      cloudHSMv2
-
+  ( cloudHSMv2
     -- * Errors
     -- $errors
-
     -- ** CloudHSMInternalFailureException
-    , _CloudHSMInternalFailureException
-
+  , _CloudHSMInternalFailureException
     -- ** CloudHSMServiceException
-    , _CloudHSMServiceException
-
+  , _CloudHSMServiceException
     -- ** CloudHSMInvalidRequestException
-    , _CloudHSMInvalidRequestException
-
+  , _CloudHSMInvalidRequestException
     -- ** CloudHSMAccessDeniedException
-    , _CloudHSMAccessDeniedException
-
+  , _CloudHSMAccessDeniedException
     -- ** CloudHSMResourceNotFoundException
-    , _CloudHSMResourceNotFoundException
-
+  , _CloudHSMResourceNotFoundException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** DescribeClusters (Paginated)
-    , module Network.AWS.CloudHSMv2.DescribeClusters
-
+  , module Network.AWS.CloudHSMv2.DescribeClusters
     -- ** InitializeCluster
-    , module Network.AWS.CloudHSMv2.InitializeCluster
-
+  , module Network.AWS.CloudHSMv2.InitializeCluster
     -- ** CreateHSM
-    , module Network.AWS.CloudHSMv2.CreateHSM
-
+  , module Network.AWS.CloudHSMv2.CreateHSM
     -- ** DescribeBackups (Paginated)
-    , module Network.AWS.CloudHSMv2.DescribeBackups
-
+  , module Network.AWS.CloudHSMv2.DescribeBackups
     -- ** DeleteCluster
-    , module Network.AWS.CloudHSMv2.DeleteCluster
-
+  , module Network.AWS.CloudHSMv2.DeleteCluster
     -- ** CreateCluster
-    , module Network.AWS.CloudHSMv2.CreateCluster
-
+  , module Network.AWS.CloudHSMv2.CreateCluster
     -- ** DeleteHSM
-    , module Network.AWS.CloudHSMv2.DeleteHSM
-
+  , module Network.AWS.CloudHSMv2.DeleteHSM
     -- ** TagResource
-    , module Network.AWS.CloudHSMv2.TagResource
-
+  , module Network.AWS.CloudHSMv2.TagResource
     -- ** ListTags (Paginated)
-    , module Network.AWS.CloudHSMv2.ListTags
-
+  , module Network.AWS.CloudHSMv2.ListTags
     -- ** UntagResource
-    , module Network.AWS.CloudHSMv2.UntagResource
-
+  , module Network.AWS.CloudHSMv2.UntagResource
     -- * Types
-
     -- ** BackupPolicy
-    , BackupPolicy (..)
-
+  , BackupPolicy(..)
     -- ** BackupState
-    , BackupState (..)
-
+  , BackupState(..)
     -- ** ClusterState
-    , ClusterState (..)
-
+  , ClusterState(..)
     -- ** HSMState
-    , HSMState (..)
-
+  , HSMState(..)
     -- ** Backup
-    , Backup
-    , backup
-    , bClusterId
-    , bCreateTimestamp
-    , bBackupState
-    , bBackupId
-
+  , Backup
+  , backup
+  , bClusterId
+  , bCreateTimestamp
+  , bBackupState
+  , bBackupId
     -- ** Certificates
-    , Certificates
-    , certificates
-    , cManufacturerHardwareCertificate
-    , cClusterCSR
-    , cHSMCertificate
-    , cClusterCertificate
-    , cAWSHardwareCertificate
-
+  , Certificates
+  , certificates
+  , cManufacturerHardwareCertificate
+  , cClusterCSR
+  , cHSMCertificate
+  , cClusterCertificate
+  , cAWSHardwareCertificate
     -- ** Cluster
-    , Cluster
-    , cluster
-    , cPreCoPassword
-    , cStateMessage
-    , cState
-    , cSubnetMapping
-    , cHSMs
-    , cVPCId
-    , cSourceBackupId
-    , cCertificates
-    , cSecurityGroup
-    , cClusterId
-    , cCreateTimestamp
-    , cBackupPolicy
-    , cHSMType
-
+  , Cluster
+  , cluster
+  , cPreCoPassword
+  , cStateMessage
+  , cState
+  , cSubnetMapping
+  , cHSMs
+  , cVPCId
+  , cSourceBackupId
+  , cCertificates
+  , cSecurityGroup
+  , cClusterId
+  , cCreateTimestamp
+  , cBackupPolicy
+  , cHSMType
     -- ** HSM
-    , HSM
-    , hsm
-    , hsmStateMessage
-    , hsmState
-    , hsmEniId
-    , hsmSubnetId
-    , hsmAvailabilityZone
-    , hsmClusterId
-    , hsmEniIP
-    , hsmHSMId
-
+  , HSM
+  , hsm
+  , hsmStateMessage
+  , hsmState
+  , hsmEniId
+  , hsmSubnetId
+  , hsmAvailabilityZone
+  , hsmClusterId
+  , hsmEniIP
+  , hsmHSMId
     -- ** Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-    ) where
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
+  ) where
 
 import Network.AWS.CloudHSMv2.CreateCluster
 import Network.AWS.CloudHSMv2.CreateHSM
@@ -152,14 +122,12 @@ import Network.AWS.CloudHSMv2.TagResource
 import Network.AWS.CloudHSMv2.Types
 import Network.AWS.CloudHSMv2.UntagResource
 import Network.AWS.CloudHSMv2.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CloudHSMv2'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -176,7 +144,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

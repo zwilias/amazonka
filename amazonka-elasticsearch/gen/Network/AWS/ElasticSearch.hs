@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ElasticSearch
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,356 +17,289 @@
 -- The endpoint for configuration service requests is region-specific: es./region/ .amazonaws.com. For example, es.us-east-1.amazonaws.com. For a current list of supported regions and endpoints, see <http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions Regions and Endpoints> .
 --
 module Network.AWS.ElasticSearch
-    (
     -- * Service Configuration
-      elasticSearch
-
+  ( elasticSearch
     -- * Errors
     -- $errors
-
     -- ** ValidationException
-    , _ValidationException
-
+  , _ValidationException
     -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
+  , _ResourceAlreadyExistsException
     -- ** BaseException
-    , _BaseException
-
+  , _BaseException
     -- ** DisabledOperationException
-    , _DisabledOperationException
-
+  , _DisabledOperationException
     -- ** InternalException
-    , _InternalException
-
+  , _InternalException
     -- ** InvalidTypeException
-    , _InvalidTypeException
-
+  , _InvalidTypeException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** CreateElasticsearchDomain
-    , module Network.AWS.ElasticSearch.CreateElasticsearchDomain
-
+  , module Network.AWS.ElasticSearch.CreateElasticsearchDomain
     -- ** RemoveTags
-    , module Network.AWS.ElasticSearch.RemoveTags
-
+  , module Network.AWS.ElasticSearch.RemoveTags
     -- ** DescribeElasticsearchDomains
-    , module Network.AWS.ElasticSearch.DescribeElasticsearchDomains
-
+  , module Network.AWS.ElasticSearch.DescribeElasticsearchDomains
     -- ** ListElasticsearchInstanceTypes (Paginated)
-    , module Network.AWS.ElasticSearch.ListElasticsearchInstanceTypes
-
+  , module Network.AWS.ElasticSearch.ListElasticsearchInstanceTypes
     -- ** DeleteElasticsearchServiceRole
-    , module Network.AWS.ElasticSearch.DeleteElasticsearchServiceRole
-
+  , module Network.AWS.ElasticSearch.DeleteElasticsearchServiceRole
     -- ** DescribeElasticsearchDomain
-    , module Network.AWS.ElasticSearch.DescribeElasticsearchDomain
-
+  , module Network.AWS.ElasticSearch.DescribeElasticsearchDomain
     -- ** ListDomainNames
-    , module Network.AWS.ElasticSearch.ListDomainNames
-
+  , module Network.AWS.ElasticSearch.ListDomainNames
     -- ** DescribeElasticsearchInstanceTypeLimits
-    , module Network.AWS.ElasticSearch.DescribeElasticsearchInstanceTypeLimits
-
+  , module Network.AWS.ElasticSearch.DescribeElasticsearchInstanceTypeLimits
     -- ** DescribeElasticsearchDomainConfig
-    , module Network.AWS.ElasticSearch.DescribeElasticsearchDomainConfig
-
+  , module Network.AWS.ElasticSearch.DescribeElasticsearchDomainConfig
     -- ** DeleteElasticsearchDomain
-    , module Network.AWS.ElasticSearch.DeleteElasticsearchDomain
-
+  , module Network.AWS.ElasticSearch.DeleteElasticsearchDomain
     -- ** PurchaseReservedElasticsearchInstanceOffering
-    , module Network.AWS.ElasticSearch.PurchaseReservedElasticsearchInstanceOffering
-
+  , module Network.AWS.ElasticSearch.PurchaseReservedElasticsearchInstanceOffering
     -- ** DescribeReservedElasticsearchInstances
-    , module Network.AWS.ElasticSearch.DescribeReservedElasticsearchInstances
-
+  , module Network.AWS.ElasticSearch.DescribeReservedElasticsearchInstances
     -- ** UpdateElasticsearchDomainConfig
-    , module Network.AWS.ElasticSearch.UpdateElasticsearchDomainConfig
-
+  , module Network.AWS.ElasticSearch.UpdateElasticsearchDomainConfig
     -- ** ListElasticsearchVersions (Paginated)
-    , module Network.AWS.ElasticSearch.ListElasticsearchVersions
-
+  , module Network.AWS.ElasticSearch.ListElasticsearchVersions
     -- ** AddTags
-    , module Network.AWS.ElasticSearch.AddTags
-
+  , module Network.AWS.ElasticSearch.AddTags
     -- ** DescribeReservedElasticsearchInstanceOfferings
-    , module Network.AWS.ElasticSearch.DescribeReservedElasticsearchInstanceOfferings
-
+  , module Network.AWS.ElasticSearch.DescribeReservedElasticsearchInstanceOfferings
     -- ** ListTags
-    , module Network.AWS.ElasticSearch.ListTags
-
+  , module Network.AWS.ElasticSearch.ListTags
     -- * Types
-
     -- ** ESPartitionInstanceType
-    , ESPartitionInstanceType (..)
-
+  , ESPartitionInstanceType(..)
     -- ** LogType
-    , LogType (..)
-
+  , LogType(..)
     -- ** OptionState
-    , OptionState (..)
-
+  , OptionState(..)
     -- ** ReservedElasticsearchInstancePaymentOption
-    , ReservedElasticsearchInstancePaymentOption (..)
-
+  , ReservedElasticsearchInstancePaymentOption(..)
     -- ** VolumeType
-    , VolumeType (..)
-
+  , VolumeType(..)
     -- ** AccessPoliciesStatus
-    , AccessPoliciesStatus
-    , accessPoliciesStatus
-    , apsOptions
-    , apsStatus
-
+  , AccessPoliciesStatus
+  , accessPoliciesStatus
+  , apsOptions
+  , apsStatus
     -- ** AdditionalLimit
-    , AdditionalLimit
-    , additionalLimit
-    , alLimitName
-    , alLimitValues
-
+  , AdditionalLimit
+  , additionalLimit
+  , alLimitName
+  , alLimitValues
     -- ** AdvancedOptionsStatus
-    , AdvancedOptionsStatus
-    , advancedOptionsStatus
-    , aosOptions
-    , aosStatus
-
+  , AdvancedOptionsStatus
+  , advancedOptionsStatus
+  , aosOptions
+  , aosStatus
     -- ** CognitoOptions
-    , CognitoOptions
-    , cognitoOptions
-    , coIdentityPoolId
-    , coEnabled
-    , coUserPoolId
-    , coRoleARN
-
+  , CognitoOptions
+  , cognitoOptions
+  , coIdentityPoolId
+  , coEnabled
+  , coUserPoolId
+  , coRoleARN
     -- ** CognitoOptionsStatus
-    , CognitoOptionsStatus
-    , cognitoOptionsStatus
-    , cosOptions
-    , cosStatus
-
+  , CognitoOptionsStatus
+  , cognitoOptionsStatus
+  , cosOptions
+  , cosStatus
     -- ** DomainInfo
-    , DomainInfo
-    , domainInfo
-    , diDomainName
-
+  , DomainInfo
+  , domainInfo
+  , diDomainName
     -- ** EBSOptions
-    , EBSOptions
-    , ebsOptions
-    , eoVolumeSize
-    , eoIOPS
-    , eoVolumeType
-    , eoEBSEnabled
-
+  , EBSOptions
+  , ebsOptions
+  , eoVolumeSize
+  , eoIOPS
+  , eoVolumeType
+  , eoEBSEnabled
     -- ** EBSOptionsStatus
-    , EBSOptionsStatus
-    , ebsOptionsStatus
-    , eosOptions
-    , eosStatus
-
+  , EBSOptionsStatus
+  , ebsOptionsStatus
+  , eosOptions
+  , eosStatus
     -- ** ElasticsearchClusterConfig
-    , ElasticsearchClusterConfig
-    , elasticsearchClusterConfig
-    , eccDedicatedMasterCount
-    , eccDedicatedMasterType
-    , eccDedicatedMasterEnabled
-    , eccInstanceCount
-    , eccZoneAwarenessEnabled
-    , eccInstanceType
-
+  , ElasticsearchClusterConfig
+  , elasticsearchClusterConfig
+  , eccDedicatedMasterCount
+  , eccDedicatedMasterType
+  , eccDedicatedMasterEnabled
+  , eccInstanceCount
+  , eccZoneAwarenessEnabled
+  , eccInstanceType
     -- ** ElasticsearchClusterConfigStatus
-    , ElasticsearchClusterConfigStatus
-    , elasticsearchClusterConfigStatus
-    , eccsOptions
-    , eccsStatus
-
+  , ElasticsearchClusterConfigStatus
+  , elasticsearchClusterConfigStatus
+  , eccsOptions
+  , eccsStatus
     -- ** ElasticsearchDomainConfig
-    , ElasticsearchDomainConfig
-    , elasticsearchDomainConfig
-    , edcEBSOptions
-    , edcAccessPolicies
-    , edcLogPublishingOptions
-    , edcElasticsearchClusterConfig
-    , edcSnapshotOptions
-    , edcCognitoOptions
-    , edcEncryptionAtRestOptions
-    , edcVPCOptions
-    , edcAdvancedOptions
-    , edcElasticsearchVersion
-
+  , ElasticsearchDomainConfig
+  , elasticsearchDomainConfig
+  , edcEBSOptions
+  , edcAccessPolicies
+  , edcLogPublishingOptions
+  , edcElasticsearchClusterConfig
+  , edcSnapshotOptions
+  , edcCognitoOptions
+  , edcEncryptionAtRestOptions
+  , edcVPCOptions
+  , edcAdvancedOptions
+  , edcElasticsearchVersion
     -- ** ElasticsearchDomainStatus
-    , ElasticsearchDomainStatus
-    , elasticsearchDomainStatus
-    , edsEBSOptions
-    , edsAccessPolicies
-    , edsLogPublishingOptions
-    , edsCreated
-    , edsSnapshotOptions
-    , edsCognitoOptions
-    , edsEncryptionAtRestOptions
-    , edsDeleted
-    , edsVPCOptions
-    , edsEndpoints
-    , edsProcessing
-    , edsEndpoint
-    , edsAdvancedOptions
-    , edsElasticsearchVersion
-    , edsDomainId
-    , edsDomainName
-    , edsARN
-    , edsElasticsearchClusterConfig
-
+  , ElasticsearchDomainStatus
+  , elasticsearchDomainStatus
+  , edsEBSOptions
+  , edsAccessPolicies
+  , edsLogPublishingOptions
+  , edsCreated
+  , edsSnapshotOptions
+  , edsCognitoOptions
+  , edsEncryptionAtRestOptions
+  , edsDeleted
+  , edsVPCOptions
+  , edsEndpoints
+  , edsProcessing
+  , edsEndpoint
+  , edsAdvancedOptions
+  , edsElasticsearchVersion
+  , edsDomainId
+  , edsDomainName
+  , edsARN
+  , edsElasticsearchClusterConfig
     -- ** ElasticsearchVersionStatus
-    , ElasticsearchVersionStatus
-    , elasticsearchVersionStatus
-    , evsOptions
-    , evsStatus
-
+  , ElasticsearchVersionStatus
+  , elasticsearchVersionStatus
+  , evsOptions
+  , evsStatus
     -- ** EncryptionAtRestOptions
-    , EncryptionAtRestOptions
-    , encryptionAtRestOptions
-    , earoEnabled
-    , earoKMSKeyId
-
+  , EncryptionAtRestOptions
+  , encryptionAtRestOptions
+  , earoEnabled
+  , earoKMSKeyId
     -- ** EncryptionAtRestOptionsStatus
-    , EncryptionAtRestOptionsStatus
-    , encryptionAtRestOptionsStatus
-    , earosOptions
-    , earosStatus
-
+  , EncryptionAtRestOptionsStatus
+  , encryptionAtRestOptionsStatus
+  , earosOptions
+  , earosStatus
     -- ** InstanceCountLimits
-    , InstanceCountLimits
-    , instanceCountLimits
-    , iclMaximumInstanceCount
-    , iclMinimumInstanceCount
-
+  , InstanceCountLimits
+  , instanceCountLimits
+  , iclMaximumInstanceCount
+  , iclMinimumInstanceCount
     -- ** InstanceLimits
-    , InstanceLimits
-    , instanceLimits
-    , ilInstanceCountLimits
-
+  , InstanceLimits
+  , instanceLimits
+  , ilInstanceCountLimits
     -- ** Limits
-    , Limits
-    , limits
-    , lInstanceLimits
-    , lAdditionalLimits
-    , lStorageTypes
-
+  , Limits
+  , limits
+  , lInstanceLimits
+  , lAdditionalLimits
+  , lStorageTypes
     -- ** LogPublishingOption
-    , LogPublishingOption
-    , logPublishingOption
-    , lpoEnabled
-    , lpoCloudWatchLogsLogGroupARN
-
+  , LogPublishingOption
+  , logPublishingOption
+  , lpoEnabled
+  , lpoCloudWatchLogsLogGroupARN
     -- ** LogPublishingOptionsStatus
-    , LogPublishingOptionsStatus
-    , logPublishingOptionsStatus
-    , lposStatus
-    , lposOptions
-
+  , LogPublishingOptionsStatus
+  , logPublishingOptionsStatus
+  , lposStatus
+  , lposOptions
     -- ** OptionStatus
-    , OptionStatus
-    , optionStatus
-    , osPendingDeletion
-    , osUpdateVersion
-    , osCreationDate
-    , osUpdateDate
-    , osState
-
+  , OptionStatus
+  , optionStatus
+  , osPendingDeletion
+  , osUpdateVersion
+  , osCreationDate
+  , osUpdateDate
+  , osState
     -- ** RecurringCharge
-    , RecurringCharge
-    , recurringCharge
-    , rcRecurringChargeFrequency
-    , rcRecurringChargeAmount
-
+  , RecurringCharge
+  , recurringCharge
+  , rcRecurringChargeFrequency
+  , rcRecurringChargeAmount
     -- ** ReservedElasticsearchInstance
-    , ReservedElasticsearchInstance
-    , reservedElasticsearchInstance
-    , reiState
-    , reiCurrencyCode
-    , reiStartTime
-    , reiReservedElasticsearchInstanceOfferingId
-    , reiReservedElasticsearchInstanceId
-    , reiElasticsearchInstanceCount
-    , reiReservationName
-    , reiElasticsearchInstanceType
-    , reiRecurringCharges
-    , reiUsagePrice
-    , reiFixedPrice
-    , reiDuration
-    , reiPaymentOption
-
+  , ReservedElasticsearchInstance
+  , reservedElasticsearchInstance
+  , reiState
+  , reiCurrencyCode
+  , reiStartTime
+  , reiReservedElasticsearchInstanceOfferingId
+  , reiReservedElasticsearchInstanceId
+  , reiElasticsearchInstanceCount
+  , reiReservationName
+  , reiElasticsearchInstanceType
+  , reiRecurringCharges
+  , reiUsagePrice
+  , reiFixedPrice
+  , reiDuration
+  , reiPaymentOption
     -- ** ReservedElasticsearchInstanceOffering
-    , ReservedElasticsearchInstanceOffering
-    , reservedElasticsearchInstanceOffering
-    , reioCurrencyCode
-    , reioReservedElasticsearchInstanceOfferingId
-    , reioElasticsearchInstanceType
-    , reioRecurringCharges
-    , reioUsagePrice
-    , reioFixedPrice
-    , reioDuration
-    , reioPaymentOption
-
+  , ReservedElasticsearchInstanceOffering
+  , reservedElasticsearchInstanceOffering
+  , reioCurrencyCode
+  , reioReservedElasticsearchInstanceOfferingId
+  , reioElasticsearchInstanceType
+  , reioRecurringCharges
+  , reioUsagePrice
+  , reioFixedPrice
+  , reioDuration
+  , reioPaymentOption
     -- ** SnapshotOptions
-    , SnapshotOptions
-    , snapshotOptions
-    , soAutomatedSnapshotStartHour
-
+  , SnapshotOptions
+  , snapshotOptions
+  , soAutomatedSnapshotStartHour
     -- ** SnapshotOptionsStatus
-    , SnapshotOptionsStatus
-    , snapshotOptionsStatus
-    , sosOptions
-    , sosStatus
-
+  , SnapshotOptionsStatus
+  , snapshotOptionsStatus
+  , sosOptions
+  , sosStatus
     -- ** StorageType
-    , StorageType
-    , storageType
-    , stStorageTypeLimits
-    , stStorageSubTypeName
-    , stStorageTypeName
-
+  , StorageType
+  , storageType
+  , stStorageTypeLimits
+  , stStorageSubTypeName
+  , stStorageTypeName
     -- ** StorageTypeLimit
-    , StorageTypeLimit
-    , storageTypeLimit
-    , stlLimitName
-    , stlLimitValues
-
+  , StorageTypeLimit
+  , storageTypeLimit
+  , stlLimitName
+  , stlLimitValues
     -- ** Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
     -- ** VPCDerivedInfo
-    , VPCDerivedInfo
-    , vpcDerivedInfo
-    , vdiSecurityGroupIds
-    , vdiSubnetIds
-    , vdiVPCId
-    , vdiAvailabilityZones
-
+  , VPCDerivedInfo
+  , vpcDerivedInfo
+  , vdiSecurityGroupIds
+  , vdiSubnetIds
+  , vdiVPCId
+  , vdiAvailabilityZones
     -- ** VPCDerivedInfoStatus
-    , VPCDerivedInfoStatus
-    , vpcDerivedInfoStatus
-    , vdisOptions
-    , vdisStatus
-
+  , VPCDerivedInfoStatus
+  , vpcDerivedInfoStatus
+  , vdisOptions
+  , vdisStatus
     -- ** VPCOptions
-    , VPCOptions
-    , vpcOptions
-    , voSecurityGroupIds
-    , voSubnetIds
-    ) where
+  , VPCOptions
+  , vpcOptions
+  , voSecurityGroupIds
+  , voSubnetIds
+  ) where
 
 import Network.AWS.ElasticSearch.AddTags
 import Network.AWS.ElasticSearch.CreateElasticsearchDomain
@@ -388,14 +320,12 @@ import Network.AWS.ElasticSearch.RemoveTags
 import Network.AWS.ElasticSearch.Types
 import Network.AWS.ElasticSearch.UpdateElasticsearchDomainConfig
 import Network.AWS.ElasticSearch.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'ElasticSearch'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -412,7 +342,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

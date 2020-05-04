@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.MarketplaceAnalytics
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -13,49 +12,37 @@
 --
 -- Provides AWS Marketplace business intelligence data on-demand.
 module Network.AWS.MarketplaceAnalytics
-    (
     -- * Service Configuration
-      marketplaceAnalytics
-
+  ( marketplaceAnalytics
     -- * Errors
     -- $errors
-
     -- ** MarketplaceCommerceAnalyticsException
-    , _MarketplaceCommerceAnalyticsException
-
+  , _MarketplaceCommerceAnalyticsException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** StartSupportDataExport
-    , module Network.AWS.MarketplaceAnalytics.StartSupportDataExport
-
+  , module Network.AWS.MarketplaceAnalytics.StartSupportDataExport
     -- ** GenerateDataSet
-    , module Network.AWS.MarketplaceAnalytics.GenerateDataSet
-
+  , module Network.AWS.MarketplaceAnalytics.GenerateDataSet
     -- * Types
-
     -- ** DataSetType
-    , DataSetType (..)
-
+  , DataSetType(..)
     -- ** SupportDataSetType
-    , SupportDataSetType (..)
-    ) where
+  , SupportDataSetType(..)
+  ) where
 
 import Network.AWS.MarketplaceAnalytics.GenerateDataSet
 import Network.AWS.MarketplaceAnalytics.StartSupportDataExport
 import Network.AWS.MarketplaceAnalytics.Types
 import Network.AWS.MarketplaceAnalytics.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'MarketplaceAnalytics'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -72,7 +59,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

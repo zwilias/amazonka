@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.ECS
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -122,7 +120,6 @@ import Test.Tasty
 --             createService
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseListServices $
 --             listServicesResponse
@@ -219,378 +216,367 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestListServices :: ListServices -> TestTree
-requestListServices = req
-    "ListServices"
-    "fixture/ListServices.yaml"
+requestListServices = req "ListServices" "fixture/ListServices.yaml"
 
 requestDescribeClusters :: DescribeClusters -> TestTree
-requestDescribeClusters = req
-    "DescribeClusters"
-    "fixture/DescribeClusters.yaml"
+requestDescribeClusters = req "DescribeClusters" "fixture/DescribeClusters.yaml"
 
 requestDeleteService :: DeleteService -> TestTree
-requestDeleteService = req
-    "DeleteService"
-    "fixture/DeleteService.yaml"
+requestDeleteService = req "DeleteService" "fixture/DeleteService.yaml"
 
 requestUpdateService :: UpdateService -> TestTree
-requestUpdateService = req
-    "UpdateService"
-    "fixture/UpdateService.yaml"
+requestUpdateService = req "UpdateService" "fixture/UpdateService.yaml"
 
 requestDiscoverPollEndpoint :: DiscoverPollEndpoint -> TestTree
-requestDiscoverPollEndpoint = req
-    "DiscoverPollEndpoint"
-    "fixture/DiscoverPollEndpoint.yaml"
+requestDiscoverPollEndpoint =
+  req "DiscoverPollEndpoint" "fixture/DiscoverPollEndpoint.yaml"
 
 requestSubmitContainerStateChange :: SubmitContainerStateChange -> TestTree
-requestSubmitContainerStateChange = req
-    "SubmitContainerStateChange"
-    "fixture/SubmitContainerStateChange.yaml"
+requestSubmitContainerStateChange =
+  req "SubmitContainerStateChange" "fixture/SubmitContainerStateChange.yaml"
 
 requestStopTask :: StopTask -> TestTree
-requestStopTask = req
-    "StopTask"
-    "fixture/StopTask.yaml"
+requestStopTask = req "StopTask" "fixture/StopTask.yaml"
 
 requestDescribeTaskDefinition :: DescribeTaskDefinition -> TestTree
-requestDescribeTaskDefinition = req
-    "DescribeTaskDefinition"
-    "fixture/DescribeTaskDefinition.yaml"
+requestDescribeTaskDefinition =
+  req "DescribeTaskDefinition" "fixture/DescribeTaskDefinition.yaml"
 
 requestSubmitTaskStateChange :: SubmitTaskStateChange -> TestTree
-requestSubmitTaskStateChange = req
-    "SubmitTaskStateChange"
-    "fixture/SubmitTaskStateChange.yaml"
+requestSubmitTaskStateChange =
+  req "SubmitTaskStateChange" "fixture/SubmitTaskStateChange.yaml"
 
 requestDescribeContainerInstances :: DescribeContainerInstances -> TestTree
-requestDescribeContainerInstances = req
-    "DescribeContainerInstances"
-    "fixture/DescribeContainerInstances.yaml"
+requestDescribeContainerInstances =
+  req "DescribeContainerInstances" "fixture/DescribeContainerInstances.yaml"
 
-requestUpdateContainerInstancesState :: UpdateContainerInstancesState -> TestTree
-requestUpdateContainerInstancesState = req
+requestUpdateContainerInstancesState ::
+     UpdateContainerInstancesState -> TestTree
+requestUpdateContainerInstancesState =
+  req
     "UpdateContainerInstancesState"
     "fixture/UpdateContainerInstancesState.yaml"
 
 requestDeleteCluster :: DeleteCluster -> TestTree
-requestDeleteCluster = req
-    "DeleteCluster"
-    "fixture/DeleteCluster.yaml"
+requestDeleteCluster = req "DeleteCluster" "fixture/DeleteCluster.yaml"
 
 requestCreateCluster :: CreateCluster -> TestTree
-requestCreateCluster = req
-    "CreateCluster"
-    "fixture/CreateCluster.yaml"
+requestCreateCluster = req "CreateCluster" "fixture/CreateCluster.yaml"
 
 requestListTaskDefinitions :: ListTaskDefinitions -> TestTree
-requestListTaskDefinitions = req
-    "ListTaskDefinitions"
-    "fixture/ListTaskDefinitions.yaml"
+requestListTaskDefinitions =
+  req "ListTaskDefinitions" "fixture/ListTaskDefinitions.yaml"
 
 requestRunTask :: RunTask -> TestTree
-requestRunTask = req
-    "RunTask"
-    "fixture/RunTask.yaml"
+requestRunTask = req "RunTask" "fixture/RunTask.yaml"
 
 requestListTasks :: ListTasks -> TestTree
-requestListTasks = req
-    "ListTasks"
-    "fixture/ListTasks.yaml"
+requestListTasks = req "ListTasks" "fixture/ListTasks.yaml"
 
 requestRegisterContainerInstance :: RegisterContainerInstance -> TestTree
-requestRegisterContainerInstance = req
-    "RegisterContainerInstance"
-    "fixture/RegisterContainerInstance.yaml"
+requestRegisterContainerInstance =
+  req "RegisterContainerInstance" "fixture/RegisterContainerInstance.yaml"
 
 requestUpdateContainerAgent :: UpdateContainerAgent -> TestTree
-requestUpdateContainerAgent = req
-    "UpdateContainerAgent"
-    "fixture/UpdateContainerAgent.yaml"
+requestUpdateContainerAgent =
+  req "UpdateContainerAgent" "fixture/UpdateContainerAgent.yaml"
 
 requestListContainerInstances :: ListContainerInstances -> TestTree
-requestListContainerInstances = req
-    "ListContainerInstances"
-    "fixture/ListContainerInstances.yaml"
+requestListContainerInstances =
+  req "ListContainerInstances" "fixture/ListContainerInstances.yaml"
 
 requestListTaskDefinitionFamilies :: ListTaskDefinitionFamilies -> TestTree
-requestListTaskDefinitionFamilies = req
-    "ListTaskDefinitionFamilies"
-    "fixture/ListTaskDefinitionFamilies.yaml"
+requestListTaskDefinitionFamilies =
+  req "ListTaskDefinitionFamilies" "fixture/ListTaskDefinitionFamilies.yaml"
 
 requestStartTask :: StartTask -> TestTree
-requestStartTask = req
-    "StartTask"
-    "fixture/StartTask.yaml"
+requestStartTask = req "StartTask" "fixture/StartTask.yaml"
 
 requestListAttributes :: ListAttributes -> TestTree
-requestListAttributes = req
-    "ListAttributes"
-    "fixture/ListAttributes.yaml"
+requestListAttributes = req "ListAttributes" "fixture/ListAttributes.yaml"
 
 requestDeregisterTaskDefinition :: DeregisterTaskDefinition -> TestTree
-requestDeregisterTaskDefinition = req
-    "DeregisterTaskDefinition"
-    "fixture/DeregisterTaskDefinition.yaml"
+requestDeregisterTaskDefinition =
+  req "DeregisterTaskDefinition" "fixture/DeregisterTaskDefinition.yaml"
 
 requestDescribeTasks :: DescribeTasks -> TestTree
-requestDescribeTasks = req
-    "DescribeTasks"
-    "fixture/DescribeTasks.yaml"
+requestDescribeTasks = req "DescribeTasks" "fixture/DescribeTasks.yaml"
 
 requestListClusters :: ListClusters -> TestTree
-requestListClusters = req
-    "ListClusters"
-    "fixture/ListClusters.yaml"
+requestListClusters = req "ListClusters" "fixture/ListClusters.yaml"
 
 requestDescribeServices :: DescribeServices -> TestTree
-requestDescribeServices = req
-    "DescribeServices"
-    "fixture/DescribeServices.yaml"
+requestDescribeServices = req "DescribeServices" "fixture/DescribeServices.yaml"
 
 requestDeregisterContainerInstance :: DeregisterContainerInstance -> TestTree
-requestDeregisterContainerInstance = req
-    "DeregisterContainerInstance"
-    "fixture/DeregisterContainerInstance.yaml"
+requestDeregisterContainerInstance =
+  req "DeregisterContainerInstance" "fixture/DeregisterContainerInstance.yaml"
 
 requestDeleteAttributes :: DeleteAttributes -> TestTree
-requestDeleteAttributes = req
-    "DeleteAttributes"
-    "fixture/DeleteAttributes.yaml"
+requestDeleteAttributes = req "DeleteAttributes" "fixture/DeleteAttributes.yaml"
 
 requestPutAttributes :: PutAttributes -> TestTree
-requestPutAttributes = req
-    "PutAttributes"
-    "fixture/PutAttributes.yaml"
+requestPutAttributes = req "PutAttributes" "fixture/PutAttributes.yaml"
 
 requestRegisterTaskDefinition :: RegisterTaskDefinition -> TestTree
-requestRegisterTaskDefinition = req
-    "RegisterTaskDefinition"
-    "fixture/RegisterTaskDefinition.yaml"
+requestRegisterTaskDefinition =
+  req "RegisterTaskDefinition" "fixture/RegisterTaskDefinition.yaml"
 
 requestCreateService :: CreateService -> TestTree
-requestCreateService = req
-    "CreateService"
-    "fixture/CreateService.yaml"
+requestCreateService = req "CreateService" "fixture/CreateService.yaml"
 
 -- Responses
-
 responseListServices :: ListServicesResponse -> TestTree
-responseListServices = res
+responseListServices =
+  res
     "ListServicesResponse"
     "fixture/ListServicesResponse.proto"
     ecs
     (Proxy :: Proxy ListServices)
 
 responseDescribeClusters :: DescribeClustersResponse -> TestTree
-responseDescribeClusters = res
+responseDescribeClusters =
+  res
     "DescribeClustersResponse"
     "fixture/DescribeClustersResponse.proto"
     ecs
     (Proxy :: Proxy DescribeClusters)
 
 responseDeleteService :: DeleteServiceResponse -> TestTree
-responseDeleteService = res
+responseDeleteService =
+  res
     "DeleteServiceResponse"
     "fixture/DeleteServiceResponse.proto"
     ecs
     (Proxy :: Proxy DeleteService)
 
 responseUpdateService :: UpdateServiceResponse -> TestTree
-responseUpdateService = res
+responseUpdateService =
+  res
     "UpdateServiceResponse"
     "fixture/UpdateServiceResponse.proto"
     ecs
     (Proxy :: Proxy UpdateService)
 
 responseDiscoverPollEndpoint :: DiscoverPollEndpointResponse -> TestTree
-responseDiscoverPollEndpoint = res
+responseDiscoverPollEndpoint =
+  res
     "DiscoverPollEndpointResponse"
     "fixture/DiscoverPollEndpointResponse.proto"
     ecs
     (Proxy :: Proxy DiscoverPollEndpoint)
 
-responseSubmitContainerStateChange :: SubmitContainerStateChangeResponse -> TestTree
-responseSubmitContainerStateChange = res
+responseSubmitContainerStateChange ::
+     SubmitContainerStateChangeResponse -> TestTree
+responseSubmitContainerStateChange =
+  res
     "SubmitContainerStateChangeResponse"
     "fixture/SubmitContainerStateChangeResponse.proto"
     ecs
     (Proxy :: Proxy SubmitContainerStateChange)
 
 responseStopTask :: StopTaskResponse -> TestTree
-responseStopTask = res
+responseStopTask =
+  res
     "StopTaskResponse"
     "fixture/StopTaskResponse.proto"
     ecs
     (Proxy :: Proxy StopTask)
 
 responseDescribeTaskDefinition :: DescribeTaskDefinitionResponse -> TestTree
-responseDescribeTaskDefinition = res
+responseDescribeTaskDefinition =
+  res
     "DescribeTaskDefinitionResponse"
     "fixture/DescribeTaskDefinitionResponse.proto"
     ecs
     (Proxy :: Proxy DescribeTaskDefinition)
 
 responseSubmitTaskStateChange :: SubmitTaskStateChangeResponse -> TestTree
-responseSubmitTaskStateChange = res
+responseSubmitTaskStateChange =
+  res
     "SubmitTaskStateChangeResponse"
     "fixture/SubmitTaskStateChangeResponse.proto"
     ecs
     (Proxy :: Proxy SubmitTaskStateChange)
 
-responseDescribeContainerInstances :: DescribeContainerInstancesResponse -> TestTree
-responseDescribeContainerInstances = res
+responseDescribeContainerInstances ::
+     DescribeContainerInstancesResponse -> TestTree
+responseDescribeContainerInstances =
+  res
     "DescribeContainerInstancesResponse"
     "fixture/DescribeContainerInstancesResponse.proto"
     ecs
     (Proxy :: Proxy DescribeContainerInstances)
 
-responseUpdateContainerInstancesState :: UpdateContainerInstancesStateResponse -> TestTree
-responseUpdateContainerInstancesState = res
+responseUpdateContainerInstancesState ::
+     UpdateContainerInstancesStateResponse -> TestTree
+responseUpdateContainerInstancesState =
+  res
     "UpdateContainerInstancesStateResponse"
     "fixture/UpdateContainerInstancesStateResponse.proto"
     ecs
     (Proxy :: Proxy UpdateContainerInstancesState)
 
 responseDeleteCluster :: DeleteClusterResponse -> TestTree
-responseDeleteCluster = res
+responseDeleteCluster =
+  res
     "DeleteClusterResponse"
     "fixture/DeleteClusterResponse.proto"
     ecs
     (Proxy :: Proxy DeleteCluster)
 
 responseCreateCluster :: CreateClusterResponse -> TestTree
-responseCreateCluster = res
+responseCreateCluster =
+  res
     "CreateClusterResponse"
     "fixture/CreateClusterResponse.proto"
     ecs
     (Proxy :: Proxy CreateCluster)
 
 responseListTaskDefinitions :: ListTaskDefinitionsResponse -> TestTree
-responseListTaskDefinitions = res
+responseListTaskDefinitions =
+  res
     "ListTaskDefinitionsResponse"
     "fixture/ListTaskDefinitionsResponse.proto"
     ecs
     (Proxy :: Proxy ListTaskDefinitions)
 
 responseRunTask :: RunTaskResponse -> TestTree
-responseRunTask = res
+responseRunTask =
+  res
     "RunTaskResponse"
     "fixture/RunTaskResponse.proto"
     ecs
     (Proxy :: Proxy RunTask)
 
 responseListTasks :: ListTasksResponse -> TestTree
-responseListTasks = res
+responseListTasks =
+  res
     "ListTasksResponse"
     "fixture/ListTasksResponse.proto"
     ecs
     (Proxy :: Proxy ListTasks)
 
-responseRegisterContainerInstance :: RegisterContainerInstanceResponse -> TestTree
-responseRegisterContainerInstance = res
+responseRegisterContainerInstance ::
+     RegisterContainerInstanceResponse -> TestTree
+responseRegisterContainerInstance =
+  res
     "RegisterContainerInstanceResponse"
     "fixture/RegisterContainerInstanceResponse.proto"
     ecs
     (Proxy :: Proxy RegisterContainerInstance)
 
 responseUpdateContainerAgent :: UpdateContainerAgentResponse -> TestTree
-responseUpdateContainerAgent = res
+responseUpdateContainerAgent =
+  res
     "UpdateContainerAgentResponse"
     "fixture/UpdateContainerAgentResponse.proto"
     ecs
     (Proxy :: Proxy UpdateContainerAgent)
 
 responseListContainerInstances :: ListContainerInstancesResponse -> TestTree
-responseListContainerInstances = res
+responseListContainerInstances =
+  res
     "ListContainerInstancesResponse"
     "fixture/ListContainerInstancesResponse.proto"
     ecs
     (Proxy :: Proxy ListContainerInstances)
 
-responseListTaskDefinitionFamilies :: ListTaskDefinitionFamiliesResponse -> TestTree
-responseListTaskDefinitionFamilies = res
+responseListTaskDefinitionFamilies ::
+     ListTaskDefinitionFamiliesResponse -> TestTree
+responseListTaskDefinitionFamilies =
+  res
     "ListTaskDefinitionFamiliesResponse"
     "fixture/ListTaskDefinitionFamiliesResponse.proto"
     ecs
     (Proxy :: Proxy ListTaskDefinitionFamilies)
 
 responseStartTask :: StartTaskResponse -> TestTree
-responseStartTask = res
+responseStartTask =
+  res
     "StartTaskResponse"
     "fixture/StartTaskResponse.proto"
     ecs
     (Proxy :: Proxy StartTask)
 
 responseListAttributes :: ListAttributesResponse -> TestTree
-responseListAttributes = res
+responseListAttributes =
+  res
     "ListAttributesResponse"
     "fixture/ListAttributesResponse.proto"
     ecs
     (Proxy :: Proxy ListAttributes)
 
 responseDeregisterTaskDefinition :: DeregisterTaskDefinitionResponse -> TestTree
-responseDeregisterTaskDefinition = res
+responseDeregisterTaskDefinition =
+  res
     "DeregisterTaskDefinitionResponse"
     "fixture/DeregisterTaskDefinitionResponse.proto"
     ecs
     (Proxy :: Proxy DeregisterTaskDefinition)
 
 responseDescribeTasks :: DescribeTasksResponse -> TestTree
-responseDescribeTasks = res
+responseDescribeTasks =
+  res
     "DescribeTasksResponse"
     "fixture/DescribeTasksResponse.proto"
     ecs
     (Proxy :: Proxy DescribeTasks)
 
 responseListClusters :: ListClustersResponse -> TestTree
-responseListClusters = res
+responseListClusters =
+  res
     "ListClustersResponse"
     "fixture/ListClustersResponse.proto"
     ecs
     (Proxy :: Proxy ListClusters)
 
 responseDescribeServices :: DescribeServicesResponse -> TestTree
-responseDescribeServices = res
+responseDescribeServices =
+  res
     "DescribeServicesResponse"
     "fixture/DescribeServicesResponse.proto"
     ecs
     (Proxy :: Proxy DescribeServices)
 
-responseDeregisterContainerInstance :: DeregisterContainerInstanceResponse -> TestTree
-responseDeregisterContainerInstance = res
+responseDeregisterContainerInstance ::
+     DeregisterContainerInstanceResponse -> TestTree
+responseDeregisterContainerInstance =
+  res
     "DeregisterContainerInstanceResponse"
     "fixture/DeregisterContainerInstanceResponse.proto"
     ecs
     (Proxy :: Proxy DeregisterContainerInstance)
 
 responseDeleteAttributes :: DeleteAttributesResponse -> TestTree
-responseDeleteAttributes = res
+responseDeleteAttributes =
+  res
     "DeleteAttributesResponse"
     "fixture/DeleteAttributesResponse.proto"
     ecs
     (Proxy :: Proxy DeleteAttributes)
 
 responsePutAttributes :: PutAttributesResponse -> TestTree
-responsePutAttributes = res
+responsePutAttributes =
+  res
     "PutAttributesResponse"
     "fixture/PutAttributesResponse.proto"
     ecs
     (Proxy :: Proxy PutAttributes)
 
 responseRegisterTaskDefinition :: RegisterTaskDefinitionResponse -> TestTree
-responseRegisterTaskDefinition = res
+responseRegisterTaskDefinition =
+  res
     "RegisterTaskDefinitionResponse"
     "fixture/RegisterTaskDefinitionResponse.proto"
     ecs
     (Proxy :: Proxy RegisterTaskDefinition)
 
 responseCreateService :: CreateServiceResponse -> TestTree
-responseCreateService = res
+responseCreateService =
+  res
     "CreateServiceResponse"
     "fixture/CreateServiceResponse.proto"
     ecs

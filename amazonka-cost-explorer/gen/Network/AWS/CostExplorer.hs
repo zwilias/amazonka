@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CostExplorer
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -25,275 +24,225 @@
 -- For information about costs associated with the Cost Explorer API, see <https://aws.amazon.com/aws-cost-management/pricing/ AWS Cost Management Pricing> .
 --
 module Network.AWS.CostExplorer
-    (
     -- * Service Configuration
-      costExplorer
-
+  ( costExplorer
     -- * Errors
     -- $errors
-
     -- ** BillExpirationException
-    , _BillExpirationException
-
+  , _BillExpirationException
     -- ** RequestChangedException
-    , _RequestChangedException
-
+  , _RequestChangedException
     -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
+  , _InvalidNextTokenException
     -- ** DataUnavailableException
-    , _DataUnavailableException
-
+  , _DataUnavailableException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** GetReservationUtilization
-    , module Network.AWS.CostExplorer.GetReservationUtilization
-
+  , module Network.AWS.CostExplorer.GetReservationUtilization
     -- ** GetTags
-    , module Network.AWS.CostExplorer.GetTags
-
+  , module Network.AWS.CostExplorer.GetTags
     -- ** GetReservationCoverage
-    , module Network.AWS.CostExplorer.GetReservationCoverage
-
+  , module Network.AWS.CostExplorer.GetReservationCoverage
     -- ** GetDimensionValues
-    , module Network.AWS.CostExplorer.GetDimensionValues
-
+  , module Network.AWS.CostExplorer.GetDimensionValues
     -- ** GetReservationPurchaseRecommendation
-    , module Network.AWS.CostExplorer.GetReservationPurchaseRecommendation
-
+  , module Network.AWS.CostExplorer.GetReservationPurchaseRecommendation
     -- ** GetCostAndUsage
-    , module Network.AWS.CostExplorer.GetCostAndUsage
-
+  , module Network.AWS.CostExplorer.GetCostAndUsage
     -- * Types
-
     -- ** AccountScope
-    , AccountScope (..)
-
+  , AccountScope(..)
     -- ** Context
-    , Context (..)
-
+  , Context(..)
     -- ** Dimension
-    , Dimension (..)
-
+  , Dimension(..)
     -- ** Granularity
-    , Granularity (..)
-
+  , Granularity(..)
     -- ** GroupDefinitionType
-    , GroupDefinitionType (..)
-
+  , GroupDefinitionType(..)
     -- ** LookbackPeriodInDays
-    , LookbackPeriodInDays (..)
-
+  , LookbackPeriodInDays(..)
     -- ** OfferingClass
-    , OfferingClass (..)
-
+  , OfferingClass(..)
     -- ** PaymentOption
-    , PaymentOption (..)
-
+  , PaymentOption(..)
     -- ** TermInYears
-    , TermInYears (..)
-
+  , TermInYears(..)
     -- ** Coverage
-    , Coverage
-    , coverage
-    , cCoverageHours
-
+  , Coverage
+  , coverage
+  , cCoverageHours
     -- ** CoverageByTime
-    , CoverageByTime
-    , coverageByTime
-    , cbtGroups
-    , cbtTimePeriod
-    , cbtTotal
-
+  , CoverageByTime
+  , coverageByTime
+  , cbtGroups
+  , cbtTimePeriod
+  , cbtTotal
     -- ** CoverageHours
-    , CoverageHours
-    , coverageHours
-    , chCoverageHoursPercentage
-    , chOnDemandHours
-    , chTotalRunningHours
-    , chReservedHours
-
+  , CoverageHours
+  , coverageHours
+  , chCoverageHoursPercentage
+  , chOnDemandHours
+  , chTotalRunningHours
+  , chReservedHours
     -- ** DateInterval
-    , DateInterval
-    , dateInterval
-    , diStart
-    , diEnd
-
+  , DateInterval
+  , dateInterval
+  , diStart
+  , diEnd
     -- ** DimensionValues
-    , DimensionValues
-    , dimensionValues
-    , dvValues
-    , dvKey
-
+  , DimensionValues
+  , dimensionValues
+  , dvValues
+  , dvKey
     -- ** DimensionValuesWithAttributes
-    , DimensionValuesWithAttributes
-    , dimensionValuesWithAttributes
-    , dvwaValue
-    , dvwaAttributes
-
+  , DimensionValuesWithAttributes
+  , dimensionValuesWithAttributes
+  , dvwaValue
+  , dvwaAttributes
     -- ** EC2InstanceDetails
-    , EC2InstanceDetails
-    , ec2InstanceDetails
-    , eidCurrentGeneration
-    , eidPlatform
-    , eidFamily
-    , eidInstanceType
-    , eidAvailabilityZone
-    , eidSizeFlexEligible
-    , eidTenancy
-    , eidRegion
-
+  , EC2InstanceDetails
+  , ec2InstanceDetails
+  , eidCurrentGeneration
+  , eidPlatform
+  , eidFamily
+  , eidInstanceType
+  , eidAvailabilityZone
+  , eidSizeFlexEligible
+  , eidTenancy
+  , eidRegion
     -- ** EC2Specification
-    , EC2Specification
-    , ec2Specification
-    , esOfferingClass
-
+  , EC2Specification
+  , ec2Specification
+  , esOfferingClass
     -- ** Expression
-    , Expression
-    , expression
-    , eNot
-    , eAnd
-    , eOr
-    , eDimensions
-    , eTags
-
+  , Expression
+  , expression
+  , eNot
+  , eAnd
+  , eOr
+  , eDimensions
+  , eTags
     -- ** Group
-    , Group
-    , group'
-    , gMetrics
-    , gKeys
-
+  , Group
+  , group'
+  , gMetrics
+  , gKeys
     -- ** GroupDefinition
-    , GroupDefinition
-    , groupDefinition
-    , gdKey
-    , gdType
-
+  , GroupDefinition
+  , groupDefinition
+  , gdKey
+  , gdType
     -- ** InstanceDetails
-    , InstanceDetails
-    , instanceDetails
-    , idRDSInstanceDetails
-    , idEC2InstanceDetails
-
+  , InstanceDetails
+  , instanceDetails
+  , idRDSInstanceDetails
+  , idEC2InstanceDetails
     -- ** MetricValue
-    , MetricValue
-    , metricValue
-    , mvAmount
-    , mvUnit
-
+  , MetricValue
+  , metricValue
+  , mvAmount
+  , mvUnit
     -- ** RDSInstanceDetails
-    , RDSInstanceDetails
-    , rdsInstanceDetails
-    , ridCurrentGeneration
-    , ridDeploymentOption
-    , ridFamily
-    , ridInstanceType
-    , ridLicenseModel
-    , ridSizeFlexEligible
-    , ridRegion
-    , ridDatabaseEngine
-
+  , RDSInstanceDetails
+  , rdsInstanceDetails
+  , ridCurrentGeneration
+  , ridDeploymentOption
+  , ridFamily
+  , ridInstanceType
+  , ridLicenseModel
+  , ridSizeFlexEligible
+  , ridRegion
+  , ridDatabaseEngine
     -- ** ReservationAggregates
-    , ReservationAggregates
-    , reservationAggregates
-    , raPurchasedHours
-    , raTotalActualHours
-    , raUtilizationPercentage
-    , raUnusedHours
-
+  , ReservationAggregates
+  , reservationAggregates
+  , raPurchasedHours
+  , raTotalActualHours
+  , raUtilizationPercentage
+  , raUnusedHours
     -- ** ReservationCoverageGroup
-    , ReservationCoverageGroup
-    , reservationCoverageGroup
-    , rcgCoverage
-    , rcgAttributes
-
+  , ReservationCoverageGroup
+  , reservationCoverageGroup
+  , rcgCoverage
+  , rcgAttributes
     -- ** ReservationPurchaseRecommendation
-    , ReservationPurchaseRecommendation
-    , reservationPurchaseRecommendation
-    , rprTermInYears
-    , rprRecommendationSummary
-    , rprServiceSpecification
-    , rprAccountScope
-    , rprRecommendationDetails
-    , rprLookbackPeriodInDays
-    , rprPaymentOption
-
+  , ReservationPurchaseRecommendation
+  , reservationPurchaseRecommendation
+  , rprTermInYears
+  , rprRecommendationSummary
+  , rprServiceSpecification
+  , rprAccountScope
+  , rprRecommendationDetails
+  , rprLookbackPeriodInDays
+  , rprPaymentOption
     -- ** ReservationPurchaseRecommendationDetail
-    , ReservationPurchaseRecommendationDetail
-    , reservationPurchaseRecommendationDetail
-    , rprdMaximumNormalizedUnitsUsedPerHour
-    , rprdRecurringStandardMonthlyCost
-    , rprdAverageNormalizedUnitsUsedPerHour
-    , rprdCurrencyCode
-    , rprdEstimatedMonthlySavingsPercentage
-    , rprdRecommendedNormalizedUnitsToPurchase
-    , rprdAverageUtilization
-    , rprdEstimatedMonthlySavingsAmount
-    , rprdUpfrontCost
-    , rprdMinimumNormalizedUnitsUsedPerHour
-    , rprdEstimatedMonthlyOnDemandCost
-    , rprdRecommendedNumberOfInstancesToPurchase
-    , rprdMaximumNumberOfInstancesUsedPerHour
-    , rprdEstimatedReservationCostForLookbackPeriod
-    , rprdInstanceDetails
-    , rprdAverageNumberOfInstancesUsedPerHour
-    , rprdMinimumNumberOfInstancesUsedPerHour
-    , rprdEstimatedBreakEvenInMonths
-
+  , ReservationPurchaseRecommendationDetail
+  , reservationPurchaseRecommendationDetail
+  , rprdMaximumNormalizedUnitsUsedPerHour
+  , rprdRecurringStandardMonthlyCost
+  , rprdAverageNormalizedUnitsUsedPerHour
+  , rprdCurrencyCode
+  , rprdEstimatedMonthlySavingsPercentage
+  , rprdRecommendedNormalizedUnitsToPurchase
+  , rprdAverageUtilization
+  , rprdEstimatedMonthlySavingsAmount
+  , rprdUpfrontCost
+  , rprdMinimumNormalizedUnitsUsedPerHour
+  , rprdEstimatedMonthlyOnDemandCost
+  , rprdRecommendedNumberOfInstancesToPurchase
+  , rprdMaximumNumberOfInstancesUsedPerHour
+  , rprdEstimatedReservationCostForLookbackPeriod
+  , rprdInstanceDetails
+  , rprdAverageNumberOfInstancesUsedPerHour
+  , rprdMinimumNumberOfInstancesUsedPerHour
+  , rprdEstimatedBreakEvenInMonths
     -- ** ReservationPurchaseRecommendationMetadata
-    , ReservationPurchaseRecommendationMetadata
-    , reservationPurchaseRecommendationMetadata
-    , rprmRecommendationId
-    , rprmGenerationTimestamp
-
+  , ReservationPurchaseRecommendationMetadata
+  , reservationPurchaseRecommendationMetadata
+  , rprmRecommendationId
+  , rprmGenerationTimestamp
     -- ** ReservationPurchaseRecommendationSummary
-    , ReservationPurchaseRecommendationSummary
-    , reservationPurchaseRecommendationSummary
-    , rprsCurrencyCode
-    , rprsTotalEstimatedMonthlySavingsPercentage
-    , rprsTotalEstimatedMonthlySavingsAmount
-
+  , ReservationPurchaseRecommendationSummary
+  , reservationPurchaseRecommendationSummary
+  , rprsCurrencyCode
+  , rprsTotalEstimatedMonthlySavingsPercentage
+  , rprsTotalEstimatedMonthlySavingsAmount
     -- ** ReservationUtilizationGroup
-    , ReservationUtilizationGroup
-    , reservationUtilizationGroup
-    , rugValue
-    , rugKey
-    , rugAttributes
-    , rugUtilization
-
+  , ReservationUtilizationGroup
+  , reservationUtilizationGroup
+  , rugValue
+  , rugKey
+  , rugAttributes
+  , rugUtilization
     -- ** ResultByTime
-    , ResultByTime
-    , resultByTime
-    , rbtGroups
-    , rbtTimePeriod
-    , rbtTotal
-    , rbtEstimated
-
+  , ResultByTime
+  , resultByTime
+  , rbtGroups
+  , rbtTimePeriod
+  , rbtTotal
+  , rbtEstimated
     -- ** ServiceSpecification
-    , ServiceSpecification
-    , serviceSpecification
-    , ssEC2Specification
-
+  , ServiceSpecification
+  , serviceSpecification
+  , ssEC2Specification
     -- ** TagValues
-    , TagValues
-    , tagValues
-    , tvValues
-    , tvKey
-
+  , TagValues
+  , tagValues
+  , tvValues
+  , tvKey
     -- ** UtilizationByTime
-    , UtilizationByTime
-    , utilizationByTime
-    , ubtGroups
-    , ubtTimePeriod
-    , ubtTotal
-    ) where
+  , UtilizationByTime
+  , utilizationByTime
+  , ubtGroups
+  , ubtTimePeriod
+  , ubtTotal
+  ) where
 
 import Network.AWS.CostExplorer.GetCostAndUsage
 import Network.AWS.CostExplorer.GetDimensionValues
@@ -303,14 +252,12 @@ import Network.AWS.CostExplorer.GetReservationUtilization
 import Network.AWS.CostExplorer.GetTags
 import Network.AWS.CostExplorer.Types
 import Network.AWS.CostExplorer.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CostExplorer'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -327,7 +274,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

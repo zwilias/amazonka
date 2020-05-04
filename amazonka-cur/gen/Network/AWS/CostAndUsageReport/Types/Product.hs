@@ -2,11 +2,9 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CostAndUsageReport.Types.Product
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,18 +22,19 @@ import Network.AWS.Prelude
 -- | The definition of AWS Cost and Usage Report. Customer can specify the report name, time unit, report format, compression format, S3 bucket and additional artifacts and schema elements in the definition.
 --
 -- /See:/ 'reportDefinition' smart constructor.
-data ReportDefinition = ReportDefinition'
-  { _rdAdditionalArtifacts      :: !(Maybe [AdditionalArtifact])
-  , _rdReportName               :: !Text
-  , _rdTimeUnit                 :: !TimeUnit
-  , _rdFormat                   :: !ReportFormat
-  , _rdCompression              :: !CompressionFormat
-  , _rdAdditionalSchemaElements :: ![SchemaElement]
-  , _rdS3Bucket                 :: !Text
-  , _rdS3Prefix                 :: !Text
-  , _rdS3Region                 :: !AWSRegion
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReportDefinition =
+  ReportDefinition'
+    { _rdAdditionalArtifacts      :: !(Maybe [AdditionalArtifact])
+    , _rdReportName               :: !Text
+    , _rdTimeUnit                 :: !TimeUnit
+    , _rdFormat                   :: !ReportFormat
+    , _rdCompression              :: !CompressionFormat
+    , _rdAdditionalSchemaElements :: ![SchemaElement]
+    , _rdS3Bucket                 :: !Text
+    , _rdS3Prefix                 :: !Text
+    , _rdS3Region                 :: !AWSRegion
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReportDefinition' with the minimum fields required to make a request.
 --
@@ -58,15 +57,15 @@ data ReportDefinition = ReportDefinition'
 -- * 'rdS3Prefix' - Undocumented member.
 --
 -- * 'rdS3Region' - Undocumented member.
-reportDefinition
-    :: Text -- ^ 'rdReportName'
-    -> TimeUnit -- ^ 'rdTimeUnit'
-    -> ReportFormat -- ^ 'rdFormat'
-    -> CompressionFormat -- ^ 'rdCompression'
-    -> Text -- ^ 'rdS3Bucket'
-    -> Text -- ^ 'rdS3Prefix'
-    -> AWSRegion -- ^ 'rdS3Region'
-    -> ReportDefinition
+reportDefinition ::
+     Text -- ^ 'rdReportName'
+  -> TimeUnit -- ^ 'rdTimeUnit'
+  -> ReportFormat -- ^ 'rdFormat'
+  -> CompressionFormat -- ^ 'rdCompression'
+  -> Text -- ^ 'rdS3Bucket'
+  -> Text -- ^ 'rdS3Prefix'
+  -> AWSRegion -- ^ 'rdS3Region'
+  -> ReportDefinition
 reportDefinition pReportName_ pTimeUnit_ pFormat_ pCompression_ pS3Bucket_ pS3Prefix_ pS3Region_ =
   ReportDefinition'
     { _rdAdditionalArtifacts = Nothing
@@ -80,75 +79,76 @@ reportDefinition pReportName_ pTimeUnit_ pFormat_ pCompression_ pS3Bucket_ pS3Pr
     , _rdS3Region = pS3Region_
     }
 
-
 -- | Undocumented member.
 rdAdditionalArtifacts :: Lens' ReportDefinition [AdditionalArtifact]
-rdAdditionalArtifacts = lens _rdAdditionalArtifacts (\ s a -> s{_rdAdditionalArtifacts = a}) . _Default . _Coerce
+rdAdditionalArtifacts =
+  lens _rdAdditionalArtifacts (\s a -> s {_rdAdditionalArtifacts = a}) .
+  _Default . _Coerce
 
 -- | Undocumented member.
 rdReportName :: Lens' ReportDefinition Text
-rdReportName = lens _rdReportName (\ s a -> s{_rdReportName = a})
+rdReportName = lens _rdReportName (\s a -> s {_rdReportName = a})
 
 -- | Undocumented member.
 rdTimeUnit :: Lens' ReportDefinition TimeUnit
-rdTimeUnit = lens _rdTimeUnit (\ s a -> s{_rdTimeUnit = a})
+rdTimeUnit = lens _rdTimeUnit (\s a -> s {_rdTimeUnit = a})
 
 -- | Undocumented member.
 rdFormat :: Lens' ReportDefinition ReportFormat
-rdFormat = lens _rdFormat (\ s a -> s{_rdFormat = a})
+rdFormat = lens _rdFormat (\s a -> s {_rdFormat = a})
 
 -- | Undocumented member.
 rdCompression :: Lens' ReportDefinition CompressionFormat
-rdCompression = lens _rdCompression (\ s a -> s{_rdCompression = a})
+rdCompression = lens _rdCompression (\s a -> s {_rdCompression = a})
 
 -- | Undocumented member.
 rdAdditionalSchemaElements :: Lens' ReportDefinition [SchemaElement]
-rdAdditionalSchemaElements = lens _rdAdditionalSchemaElements (\ s a -> s{_rdAdditionalSchemaElements = a}) . _Coerce
+rdAdditionalSchemaElements =
+  lens _rdAdditionalSchemaElements (\s a -> s {_rdAdditionalSchemaElements = a}) .
+  _Coerce
 
 -- | Undocumented member.
 rdS3Bucket :: Lens' ReportDefinition Text
-rdS3Bucket = lens _rdS3Bucket (\ s a -> s{_rdS3Bucket = a})
+rdS3Bucket = lens _rdS3Bucket (\s a -> s {_rdS3Bucket = a})
 
 -- | Undocumented member.
 rdS3Prefix :: Lens' ReportDefinition Text
-rdS3Prefix = lens _rdS3Prefix (\ s a -> s{_rdS3Prefix = a})
+rdS3Prefix = lens _rdS3Prefix (\s a -> s {_rdS3Prefix = a})
 
 -- | Undocumented member.
 rdS3Region :: Lens' ReportDefinition AWSRegion
-rdS3Region = lens _rdS3Region (\ s a -> s{_rdS3Region = a})
+rdS3Region = lens _rdS3Region (\s a -> s {_rdS3Region = a})
 
 instance FromJSON ReportDefinition where
-        parseJSON
-          = withObject "ReportDefinition"
-              (\ x ->
-                 ReportDefinition' <$>
-                   (x .:? "AdditionalArtifacts" .!= mempty) <*>
-                     (x .: "ReportName")
-                     <*> (x .: "TimeUnit")
-                     <*> (x .: "Format")
-                     <*> (x .: "Compression")
-                     <*> (x .:? "AdditionalSchemaElements" .!= mempty)
-                     <*> (x .: "S3Bucket")
-                     <*> (x .: "S3Prefix")
-                     <*> (x .: "S3Region"))
+  parseJSON =
+    withObject
+      "ReportDefinition"
+      (\x ->
+         ReportDefinition' <$> (x .:? "AdditionalArtifacts" .!= mempty) <*>
+         (x .: "ReportName") <*>
+         (x .: "TimeUnit") <*>
+         (x .: "Format") <*>
+         (x .: "Compression") <*>
+         (x .:? "AdditionalSchemaElements" .!= mempty) <*>
+         (x .: "S3Bucket") <*>
+         (x .: "S3Prefix") <*>
+         (x .: "S3Region"))
 
-instance Hashable ReportDefinition where
+instance Hashable ReportDefinition
 
-instance NFData ReportDefinition where
+instance NFData ReportDefinition
 
 instance ToJSON ReportDefinition where
-        toJSON ReportDefinition'{..}
-          = object
-              (catMaybes
-                 [("AdditionalArtifacts" .=) <$>
-                    _rdAdditionalArtifacts,
-                  Just ("ReportName" .= _rdReportName),
-                  Just ("TimeUnit" .= _rdTimeUnit),
-                  Just ("Format" .= _rdFormat),
-                  Just ("Compression" .= _rdCompression),
-                  Just
-                    ("AdditionalSchemaElements" .=
-                       _rdAdditionalSchemaElements),
-                  Just ("S3Bucket" .= _rdS3Bucket),
-                  Just ("S3Prefix" .= _rdS3Prefix),
-                  Just ("S3Region" .= _rdS3Region)])
+  toJSON ReportDefinition' {..} =
+    object
+      (catMaybes
+         [ ("AdditionalArtifacts" .=) <$> _rdAdditionalArtifacts
+         , Just ("ReportName" .= _rdReportName)
+         , Just ("TimeUnit" .= _rdTimeUnit)
+         , Just ("Format" .= _rdFormat)
+         , Just ("Compression" .= _rdCompression)
+         , Just ("AdditionalSchemaElements" .= _rdAdditionalSchemaElements)
+         , Just ("S3Bucket" .= _rdS3Bucket)
+         , Just ("S3Prefix" .= _rdS3Prefix)
+         , Just ("S3Region" .= _rdS3Region)
+         ])

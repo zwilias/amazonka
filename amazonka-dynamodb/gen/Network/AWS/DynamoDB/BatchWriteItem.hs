@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DynamoDB.BatchWriteItem
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -54,24 +52,22 @@
 --
 --
 module Network.AWS.DynamoDB.BatchWriteItem
-    (
     -- * Creating a Request
-      batchWriteItem
-    , BatchWriteItem
+  ( batchWriteItem
+  , BatchWriteItem
     -- * Request Lenses
-    , bwiReturnConsumedCapacity
-    , bwiReturnItemCollectionMetrics
-    , bwiRequestItems
-
+  , bwiReturnConsumedCapacity
+  , bwiReturnItemCollectionMetrics
+  , bwiRequestItems
     -- * Destructuring the Response
-    , batchWriteItemResponse
-    , BatchWriteItemResponse
+  , batchWriteItemResponse
+  , BatchWriteItemResponse
     -- * Response Lenses
-    , bwirsItemCollectionMetrics
-    , bwirsConsumedCapacity
-    , bwirsUnprocessedItems
-    , bwirsResponseStatus
-    ) where
+  , bwirsItemCollectionMetrics
+  , bwirsConsumedCapacity
+  , bwirsUnprocessedItems
+  , bwirsResponseStatus
+  ) where
 
 import Network.AWS.DynamoDB.Types
 import Network.AWS.DynamoDB.Types.Product
@@ -85,12 +81,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'batchWriteItem' smart constructor.
-data BatchWriteItem = BatchWriteItem'
-  { _bwiReturnConsumedCapacity      :: !(Maybe ReturnConsumedCapacity)
-  , _bwiReturnItemCollectionMetrics :: !(Maybe ReturnItemCollectionMetrics)
-  , _bwiRequestItems                :: !(Map Text (List1 WriteRequest))
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchWriteItem =
+  BatchWriteItem'
+    { _bwiReturnConsumedCapacity      :: !(Maybe ReturnConsumedCapacity)
+    , _bwiReturnItemCollectionMetrics :: !(Maybe ReturnItemCollectionMetrics)
+    , _bwiRequestItems                :: !(Map Text (List1 WriteRequest))
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchWriteItem' with the minimum fields required to make a request.
 --
@@ -101,8 +98,7 @@ data BatchWriteItem = BatchWriteItem'
 -- * 'bwiReturnItemCollectionMetrics' - Determines whether item collection metrics are returned. If set to @SIZE@ , the response includes statistics about item collections, if any, that were modified during the operation are returned in the response. If set to @NONE@ (the default), no statistics are returned.
 --
 -- * 'bwiRequestItems' - A map of one or more table names and, for each table, a list of operations to be performed (@DeleteRequest@ or @PutRequest@ ). Each element in the map consists of the following:     * @DeleteRequest@ - Perform a @DeleteItem@ operation on the specified item. The item to be deleted is identified by a @Key@ subelement:     * @Key@ - A map of primary key attribute values that uniquely identify the item. Each entry in this map consists of an attribute name and an attribute value. For each primary key, you must provide /all/ of the key attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for /both/ the partition key and the sort key.     * @PutRequest@ - Perform a @PutItem@ operation on the specified item. The item to be put is identified by an @Item@ subelement:     * @Item@ - A map of attributes and their values. Each entry in this map consists of an attribute name and an attribute value. Attribute values must not be null; string and binary type attributes must have lengths greater than zero; and set type attributes must not be empty. Requests that contain empty values will be rejected with a @ValidationException@ exception. If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition.
-batchWriteItem
-    :: BatchWriteItem
+batchWriteItem :: BatchWriteItem
 batchWriteItem =
   BatchWriteItem'
     { _bwiReturnConsumedCapacity = Nothing
@@ -110,72 +106,76 @@ batchWriteItem =
     , _bwiRequestItems = mempty
     }
 
-
 -- | Undocumented member.
 bwiReturnConsumedCapacity :: Lens' BatchWriteItem (Maybe ReturnConsumedCapacity)
-bwiReturnConsumedCapacity = lens _bwiReturnConsumedCapacity (\ s a -> s{_bwiReturnConsumedCapacity = a})
+bwiReturnConsumedCapacity =
+  lens _bwiReturnConsumedCapacity (\s a -> s {_bwiReturnConsumedCapacity = a})
 
 -- | Determines whether item collection metrics are returned. If set to @SIZE@ , the response includes statistics about item collections, if any, that were modified during the operation are returned in the response. If set to @NONE@ (the default), no statistics are returned.
-bwiReturnItemCollectionMetrics :: Lens' BatchWriteItem (Maybe ReturnItemCollectionMetrics)
-bwiReturnItemCollectionMetrics = lens _bwiReturnItemCollectionMetrics (\ s a -> s{_bwiReturnItemCollectionMetrics = a})
+bwiReturnItemCollectionMetrics ::
+     Lens' BatchWriteItem (Maybe ReturnItemCollectionMetrics)
+bwiReturnItemCollectionMetrics =
+  lens
+    _bwiReturnItemCollectionMetrics
+    (\s a -> s {_bwiReturnItemCollectionMetrics = a})
 
 -- | A map of one or more table names and, for each table, a list of operations to be performed (@DeleteRequest@ or @PutRequest@ ). Each element in the map consists of the following:     * @DeleteRequest@ - Perform a @DeleteItem@ operation on the specified item. The item to be deleted is identified by a @Key@ subelement:     * @Key@ - A map of primary key attribute values that uniquely identify the item. Each entry in this map consists of an attribute name and an attribute value. For each primary key, you must provide /all/ of the key attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for /both/ the partition key and the sort key.     * @PutRequest@ - Perform a @PutItem@ operation on the specified item. The item to be put is identified by an @Item@ subelement:     * @Item@ - A map of attributes and their values. Each entry in this map consists of an attribute name and an attribute value. Attribute values must not be null; string and binary type attributes must have lengths greater than zero; and set type attributes must not be empty. Requests that contain empty values will be rejected with a @ValidationException@ exception. If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition.
 bwiRequestItems :: Lens' BatchWriteItem (HashMap Text (NonEmpty WriteRequest))
-bwiRequestItems = lens _bwiRequestItems (\ s a -> s{_bwiRequestItems = a}) . _Map
+bwiRequestItems =
+  lens _bwiRequestItems (\s a -> s {_bwiRequestItems = a}) . _Map
 
 instance AWSRequest BatchWriteItem where
-        type Rs BatchWriteItem = BatchWriteItemResponse
-        request = postJSON dynamoDB
-        response
-          = receiveJSON
-              (\ s h x ->
-                 BatchWriteItemResponse' <$>
-                   (x .?> "ItemCollectionMetrics" .!@ mempty) <*>
-                     (x .?> "ConsumedCapacity" .!@ mempty)
-                     <*> (x .?> "UnprocessedItems" .!@ mempty)
-                     <*> (pure (fromEnum s)))
+  type Rs BatchWriteItem = BatchWriteItemResponse
+  request = postJSON dynamoDB
+  response =
+    receiveJSON
+      (\s h x ->
+         BatchWriteItemResponse' <$> (x .?> "ItemCollectionMetrics" .!@ mempty) <*>
+         (x .?> "ConsumedCapacity" .!@ mempty) <*>
+         (x .?> "UnprocessedItems" .!@ mempty) <*>
+         (pure (fromEnum s)))
 
-instance Hashable BatchWriteItem where
+instance Hashable BatchWriteItem
 
-instance NFData BatchWriteItem where
+instance NFData BatchWriteItem
 
 instance ToHeaders BatchWriteItem where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("DynamoDB_20120810.BatchWriteItem" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.0" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("DynamoDB_20120810.BatchWriteItem" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.0" :: ByteString)
+         ])
 
 instance ToJSON BatchWriteItem where
-        toJSON BatchWriteItem'{..}
-          = object
-              (catMaybes
-                 [("ReturnConsumedCapacity" .=) <$>
-                    _bwiReturnConsumedCapacity,
-                  ("ReturnItemCollectionMetrics" .=) <$>
-                    _bwiReturnItemCollectionMetrics,
-                  Just ("RequestItems" .= _bwiRequestItems)])
+  toJSON BatchWriteItem' {..} =
+    object
+      (catMaybes
+         [ ("ReturnConsumedCapacity" .=) <$> _bwiReturnConsumedCapacity
+         , ("ReturnItemCollectionMetrics" .=) <$>
+           _bwiReturnItemCollectionMetrics
+         , Just ("RequestItems" .= _bwiRequestItems)
+         ])
 
 instance ToPath BatchWriteItem where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery BatchWriteItem where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Represents the output of a @BatchWriteItem@ operation.
 --
 --
 --
 -- /See:/ 'batchWriteItemResponse' smart constructor.
-data BatchWriteItemResponse = BatchWriteItemResponse'
-  { _bwirsItemCollectionMetrics :: !(Maybe (Map Text [ItemCollectionMetrics]))
-  , _bwirsConsumedCapacity      :: !(Maybe [ConsumedCapacity])
-  , _bwirsUnprocessedItems      :: !(Maybe (Map Text (List1 WriteRequest)))
-  , _bwirsResponseStatus        :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchWriteItemResponse =
+  BatchWriteItemResponse'
+    { _bwirsItemCollectionMetrics :: !(Maybe (Map Text [ItemCollectionMetrics]))
+    , _bwirsConsumedCapacity      :: !(Maybe [ConsumedCapacity])
+    , _bwirsUnprocessedItems      :: !(Maybe (Map Text (List1 WriteRequest)))
+    , _bwirsResponseStatus        :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchWriteItemResponse' with the minimum fields required to make a request.
 --
@@ -188,9 +188,9 @@ data BatchWriteItemResponse = BatchWriteItemResponse'
 -- * 'bwirsUnprocessedItems' - A map of tables and requests against those tables that were not processed. The @UnprocessedItems@ value is in the same form as @RequestItems@ , so you can provide this value directly to a subsequent @BatchGetItem@ operation. For more information, see @RequestItems@ in the Request Parameters section. Each @UnprocessedItems@ entry consists of a table name and, for that table, a list of operations to perform (@DeleteRequest@ or @PutRequest@ ).     * @DeleteRequest@ - Perform a @DeleteItem@ operation on the specified item. The item to be deleted is identified by a @Key@ subelement:     * @Key@ - A map of primary key attribute values that uniquely identify the item. Each entry in this map consists of an attribute name and an attribute value.     * @PutRequest@ - Perform a @PutItem@ operation on the specified item. The item to be put is identified by an @Item@ subelement:     * @Item@ - A map of attributes and their values. Each entry in this map consists of an attribute name and an attribute value. Attribute values must not be null; string and binary type attributes must have lengths greater than zero; and set type attributes must not be empty. Requests that contain empty values will be rejected with a @ValidationException@ exception. If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition. If there are no unprocessed items remaining, the response contains an empty @UnprocessedItems@ map.
 --
 -- * 'bwirsResponseStatus' - -- | The response status code.
-batchWriteItemResponse
-    :: Int -- ^ 'bwirsResponseStatus'
-    -> BatchWriteItemResponse
+batchWriteItemResponse ::
+     Int -- ^ 'bwirsResponseStatus'
+  -> BatchWriteItemResponse
 batchWriteItemResponse pResponseStatus_ =
   BatchWriteItemResponse'
     { _bwirsItemCollectionMetrics = Nothing
@@ -199,21 +199,29 @@ batchWriteItemResponse pResponseStatus_ =
     , _bwirsResponseStatus = pResponseStatus_
     }
 
-
 -- | A list of tables that were processed by @BatchWriteItem@ and, for each table, information about any item collections that were affected by individual @DeleteItem@ or @PutItem@ operations. Each entry consists of the following subelements:     * @ItemCollectionKey@ - The partition key value of the item collection. This is the same as the partition key value of the item.     * @SizeEstimateRangeGB@ - An estimate of item collection size, expressed in GB. This is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on the table. Use this estimate to measure whether a local secondary index is approaching its size limit. The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.
-bwirsItemCollectionMetrics :: Lens' BatchWriteItemResponse (HashMap Text [ItemCollectionMetrics])
-bwirsItemCollectionMetrics = lens _bwirsItemCollectionMetrics (\ s a -> s{_bwirsItemCollectionMetrics = a}) . _Default . _Map
+bwirsItemCollectionMetrics ::
+     Lens' BatchWriteItemResponse (HashMap Text [ItemCollectionMetrics])
+bwirsItemCollectionMetrics =
+  lens _bwirsItemCollectionMetrics (\s a -> s {_bwirsItemCollectionMetrics = a}) .
+  _Default . _Map
 
 -- | The capacity units consumed by the entire @BatchWriteItem@ operation. Each element consists of:     * @TableName@ - The table that consumed the provisioned throughput.     * @CapacityUnits@ - The total number of capacity units consumed.
 bwirsConsumedCapacity :: Lens' BatchWriteItemResponse [ConsumedCapacity]
-bwirsConsumedCapacity = lens _bwirsConsumedCapacity (\ s a -> s{_bwirsConsumedCapacity = a}) . _Default . _Coerce
+bwirsConsumedCapacity =
+  lens _bwirsConsumedCapacity (\s a -> s {_bwirsConsumedCapacity = a}) .
+  _Default . _Coerce
 
 -- | A map of tables and requests against those tables that were not processed. The @UnprocessedItems@ value is in the same form as @RequestItems@ , so you can provide this value directly to a subsequent @BatchGetItem@ operation. For more information, see @RequestItems@ in the Request Parameters section. Each @UnprocessedItems@ entry consists of a table name and, for that table, a list of operations to perform (@DeleteRequest@ or @PutRequest@ ).     * @DeleteRequest@ - Perform a @DeleteItem@ operation on the specified item. The item to be deleted is identified by a @Key@ subelement:     * @Key@ - A map of primary key attribute values that uniquely identify the item. Each entry in this map consists of an attribute name and an attribute value.     * @PutRequest@ - Perform a @PutItem@ operation on the specified item. The item to be put is identified by an @Item@ subelement:     * @Item@ - A map of attributes and their values. Each entry in this map consists of an attribute name and an attribute value. Attribute values must not be null; string and binary type attributes must have lengths greater than zero; and set type attributes must not be empty. Requests that contain empty values will be rejected with a @ValidationException@ exception. If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition. If there are no unprocessed items remaining, the response contains an empty @UnprocessedItems@ map.
-bwirsUnprocessedItems :: Lens' BatchWriteItemResponse (HashMap Text (NonEmpty WriteRequest))
-bwirsUnprocessedItems = lens _bwirsUnprocessedItems (\ s a -> s{_bwirsUnprocessedItems = a}) . _Default . _Map
+bwirsUnprocessedItems ::
+     Lens' BatchWriteItemResponse (HashMap Text (NonEmpty WriteRequest))
+bwirsUnprocessedItems =
+  lens _bwirsUnprocessedItems (\s a -> s {_bwirsUnprocessedItems = a}) .
+  _Default . _Map
 
 -- | -- | The response status code.
 bwirsResponseStatus :: Lens' BatchWriteItemResponse Int
-bwirsResponseStatus = lens _bwirsResponseStatus (\ s a -> s{_bwirsResponseStatus = a})
+bwirsResponseStatus =
+  lens _bwirsResponseStatus (\s a -> s {_bwirsResponseStatus = a})
 
-instance NFData BatchWriteItemResponse where
+instance NFData BatchWriteItemResponse

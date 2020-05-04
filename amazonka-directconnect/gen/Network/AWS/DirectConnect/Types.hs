@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DirectConnect.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,249 +10,217 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.DirectConnect.Types
-    (
     -- * Service Configuration
-      directConnect
-
+  ( directConnect
     -- * Errors
-    , _DirectConnectClientException
-    , _DuplicateTagKeysException
-    , _TooManyTagsException
-    , _DirectConnectServerException
-
+  , _DirectConnectClientException
+  , _DuplicateTagKeysException
+  , _TooManyTagsException
+  , _DirectConnectServerException
     -- * AddressFamily
-    , AddressFamily (..)
-
+  , AddressFamily(..)
     -- * BGPPeerState
-    , BGPPeerState (..)
-
+  , BGPPeerState(..)
     -- * BGPStatus
-    , BGPStatus (..)
-
+  , BGPStatus(..)
     -- * ConnectionState
-    , ConnectionState (..)
-
+  , ConnectionState(..)
     -- * DirectConnectGatewayAssociationState
-    , DirectConnectGatewayAssociationState (..)
-
+  , DirectConnectGatewayAssociationState(..)
     -- * DirectConnectGatewayAttachmentState
-    , DirectConnectGatewayAttachmentState (..)
-
+  , DirectConnectGatewayAttachmentState(..)
     -- * DirectConnectGatewayState
-    , DirectConnectGatewayState (..)
-
+  , DirectConnectGatewayState(..)
     -- * InterconnectState
-    , InterconnectState (..)
-
+  , InterconnectState(..)
     -- * LagState
-    , LagState (..)
-
+  , LagState(..)
     -- * LoaContentType
-    , LoaContentType (..)
-
+  , LoaContentType(..)
     -- * VirtualInterfaceState
-    , VirtualInterfaceState (..)
-
+  , VirtualInterfaceState(..)
     -- * BGPPeer
-    , BGPPeer
-    , bgpPeer
-    , bpCustomerAddress
-    , bpAmazonAddress
-    , bpAddressFamily
-    , bpBgpStatus
-    , bpAsn
-    , bpAuthKey
-    , bpBgpPeerState
-
+  , BGPPeer
+  , bgpPeer
+  , bpCustomerAddress
+  , bpAmazonAddress
+  , bpAddressFamily
+  , bpBgpStatus
+  , bpAsn
+  , bpAuthKey
+  , bpBgpPeerState
     -- * Connection
-    , Connection
-    , connection
-    , cLagId
-    , cVlan
-    , cLocation
-    , cAwsDevice
-    , cConnectionId
-    , cLoaIssueTime
-    , cPartnerName
-    , cConnectionName
-    , cBandwidth
-    , cOwnerAccount
-    , cRegion
-    , cConnectionState
-
+  , Connection
+  , connection
+  , cLagId
+  , cVlan
+  , cLocation
+  , cAwsDevice
+  , cConnectionId
+  , cLoaIssueTime
+  , cPartnerName
+  , cConnectionName
+  , cBandwidth
+  , cOwnerAccount
+  , cRegion
+  , cConnectionState
     -- * Connections
-    , Connections
-    , connections
-    , cConnections
-
+  , Connections
+  , connections
+  , cConnections
     -- * DirectConnectGateway
-    , DirectConnectGateway
-    , directConnectGateway
-    , dcgDirectConnectGatewayId
-    , dcgStateChangeError
-    , dcgAmazonSideASN
-    , dcgDirectConnectGatewayName
-    , dcgDirectConnectGatewayState
-    , dcgOwnerAccount
-
+  , DirectConnectGateway
+  , directConnectGateway
+  , dcgDirectConnectGatewayId
+  , dcgStateChangeError
+  , dcgAmazonSideASN
+  , dcgDirectConnectGatewayName
+  , dcgDirectConnectGatewayState
+  , dcgOwnerAccount
     -- * DirectConnectGatewayAssociation
-    , DirectConnectGatewayAssociation
-    , directConnectGatewayAssociation
-    , dcgaVirtualGatewayId
-    , dcgaDirectConnectGatewayId
-    , dcgaVirtualGatewayOwnerAccount
-    , dcgaStateChangeError
-    , dcgaVirtualGatewayRegion
-    , dcgaAssociationState
-
+  , DirectConnectGatewayAssociation
+  , directConnectGatewayAssociation
+  , dcgaVirtualGatewayId
+  , dcgaDirectConnectGatewayId
+  , dcgaVirtualGatewayOwnerAccount
+  , dcgaStateChangeError
+  , dcgaVirtualGatewayRegion
+  , dcgaAssociationState
     -- * DirectConnectGatewayAttachment
-    , DirectConnectGatewayAttachment
-    , directConnectGatewayAttachment
-    , dDirectConnectGatewayId
-    , dAttachmentState
-    , dStateChangeError
-    , dVirtualInterfaceRegion
-    , dVirtualInterfaceOwnerAccount
-    , dVirtualInterfaceId
-
+  , DirectConnectGatewayAttachment
+  , directConnectGatewayAttachment
+  , dDirectConnectGatewayId
+  , dAttachmentState
+  , dStateChangeError
+  , dVirtualInterfaceRegion
+  , dVirtualInterfaceOwnerAccount
+  , dVirtualInterfaceId
     -- * Interconnect
-    , Interconnect
-    , interconnect
-    , iLagId
-    , iInterconnectId
-    , iLocation
-    , iInterconnectName
-    , iAwsDevice
-    , iLoaIssueTime
-    , iBandwidth
-    , iInterconnectState
-    , iRegion
-
+  , Interconnect
+  , interconnect
+  , iLagId
+  , iInterconnectId
+  , iLocation
+  , iInterconnectName
+  , iAwsDevice
+  , iLoaIssueTime
+  , iBandwidth
+  , iInterconnectState
+  , iRegion
     -- * Lag
-    , Lag
-    , lag
-    , lagLagId
-    , lagConnectionsBandwidth
-    , lagMinimumLinks
-    , lagLagName
-    , lagLocation
-    , lagConnections
-    , lagAwsDevice
-    , lagAllowsHostedConnections
-    , lagNumberOfConnections
-    , lagLagState
-    , lagOwnerAccount
-    , lagRegion
-
+  , Lag
+  , lag
+  , lagLagId
+  , lagConnectionsBandwidth
+  , lagMinimumLinks
+  , lagLagName
+  , lagLocation
+  , lagConnections
+  , lagAwsDevice
+  , lagAllowsHostedConnections
+  , lagNumberOfConnections
+  , lagLagState
+  , lagOwnerAccount
+  , lagRegion
     -- * Location
-    , Location
-    , location
-    , lLocationName
-    , lLocationCode
-
+  , Location
+  , location
+  , lLocationName
+  , lLocationCode
     -- * NewBGPPeer
-    , NewBGPPeer
-    , newBGPPeer
-    , nbpCustomerAddress
-    , nbpAmazonAddress
-    , nbpAddressFamily
-    , nbpAsn
-    , nbpAuthKey
-
+  , NewBGPPeer
+  , newBGPPeer
+  , nbpCustomerAddress
+  , nbpAmazonAddress
+  , nbpAddressFamily
+  , nbpAsn
+  , nbpAuthKey
     -- * NewPrivateVirtualInterface
-    , NewPrivateVirtualInterface
-    , newPrivateVirtualInterface
-    , nVirtualGatewayId
-    , nCustomerAddress
-    , nAmazonAddress
-    , nAddressFamily
-    , nDirectConnectGatewayId
-    , nAuthKey
-    , nVirtualInterfaceName
-    , nVlan
-    , nAsn
-
+  , NewPrivateVirtualInterface
+  , newPrivateVirtualInterface
+  , nVirtualGatewayId
+  , nCustomerAddress
+  , nAmazonAddress
+  , nAddressFamily
+  , nDirectConnectGatewayId
+  , nAuthKey
+  , nVirtualInterfaceName
+  , nVlan
+  , nAsn
     -- * NewPrivateVirtualInterfaceAllocation
-    , NewPrivateVirtualInterfaceAllocation
-    , newPrivateVirtualInterfaceAllocation
-    , npviaCustomerAddress
-    , npviaAmazonAddress
-    , npviaAddressFamily
-    , npviaAuthKey
-    , npviaVirtualInterfaceName
-    , npviaVlan
-    , npviaAsn
-
+  , NewPrivateVirtualInterfaceAllocation
+  , newPrivateVirtualInterfaceAllocation
+  , npviaCustomerAddress
+  , npviaAmazonAddress
+  , npviaAddressFamily
+  , npviaAuthKey
+  , npviaVirtualInterfaceName
+  , npviaVlan
+  , npviaAsn
     -- * NewPublicVirtualInterface
-    , NewPublicVirtualInterface
-    , newPublicVirtualInterface
-    , npviRouteFilterPrefixes
-    , npviCustomerAddress
-    , npviAmazonAddress
-    , npviAddressFamily
-    , npviAuthKey
-    , npviVirtualInterfaceName
-    , npviVlan
-    , npviAsn
-
+  , NewPublicVirtualInterface
+  , newPublicVirtualInterface
+  , npviRouteFilterPrefixes
+  , npviCustomerAddress
+  , npviAmazonAddress
+  , npviAddressFamily
+  , npviAuthKey
+  , npviVirtualInterfaceName
+  , npviVlan
+  , npviAsn
     -- * NewPublicVirtualInterfaceAllocation
-    , NewPublicVirtualInterfaceAllocation
-    , newPublicVirtualInterfaceAllocation
-    , newRouteFilterPrefixes
-    , newCustomerAddress
-    , newAmazonAddress
-    , newAddressFamily
-    , newAuthKey
-    , newVirtualInterfaceName
-    , newVlan
-    , newAsn
-
+  , NewPublicVirtualInterfaceAllocation
+  , newPublicVirtualInterfaceAllocation
+  , newRouteFilterPrefixes
+  , newCustomerAddress
+  , newAmazonAddress
+  , newAddressFamily
+  , newAuthKey
+  , newVirtualInterfaceName
+  , newVlan
+  , newAsn
     -- * ResourceTag
-    , ResourceTag
-    , resourceTag
-    , rtResourceARN
-    , rtTags
-
+  , ResourceTag
+  , resourceTag
+  , rtResourceARN
+  , rtTags
     -- * RouteFilterPrefix
-    , RouteFilterPrefix
-    , routeFilterPrefix
-    , rfpCidr
-
+  , RouteFilterPrefix
+  , routeFilterPrefix
+  , rfpCidr
     -- * Tag
-    , Tag
-    , tag
-    , tagValue
-    , tagKey
-
+  , Tag
+  , tag
+  , tagValue
+  , tagKey
     -- * VirtualGateway
-    , VirtualGateway
-    , virtualGateway
-    , vgVirtualGatewayId
-    , vgVirtualGatewayState
-
+  , VirtualGateway
+  , virtualGateway
+  , vgVirtualGatewayId
+  , vgVirtualGatewayState
     -- * VirtualInterface
-    , VirtualInterface
-    , virtualInterface
-    , viBgpPeers
-    , viVirtualGatewayId
-    , viRouteFilterPrefixes
-    , viCustomerAddress
-    , viVlan
-    , viLocation
-    , viAmazonAddress
-    , viAddressFamily
-    , viVirtualInterfaceState
-    , viConnectionId
-    , viDirectConnectGatewayId
-    , viAmazonSideASN
-    , viVirtualInterfaceType
-    , viAsn
-    , viAuthKey
-    , viCustomerRouterConfig
-    , viOwnerAccount
-    , viVirtualInterfaceName
-    , viVirtualInterfaceId
-    ) where
+  , VirtualInterface
+  , virtualInterface
+  , viBgpPeers
+  , viVirtualGatewayId
+  , viRouteFilterPrefixes
+  , viCustomerAddress
+  , viVlan
+  , viLocation
+  , viAmazonAddress
+  , viAddressFamily
+  , viVirtualInterfaceState
+  , viConnectionId
+  , viDirectConnectGatewayId
+  , viAmazonSideASN
+  , viVirtualInterfaceType
+  , viAsn
+  , viAuthKey
+  , viCustomerRouterConfig
+  , viOwnerAccount
+  , viVirtualInterfaceName
+  , viVirtualInterfaceId
+  ) where
 
 import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.DirectConnect.Types.Sum
@@ -299,34 +266,33 @@ directConnect =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The API was called with invalid parameters. The error message will contain additional details about the cause.
 --
 --
-_DirectConnectClientException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectConnectClientException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _DirectConnectClientException =
   _MatchServiceError directConnect "DirectConnectClientException"
-
 
 -- | A tag key was specified more than once.
 --
 --
-_DuplicateTagKeysException :: AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateTagKeysException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateTagKeysException =
   _MatchServiceError directConnect "DuplicateTagKeysException"
-
 
 -- | You have reached the limit on the number of tags that can be assigned to a Direct Connect resource.
 --
 --
-_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _TooManyTagsException = _MatchServiceError directConnect "TooManyTagsException"
-
 
 -- | A server-side error occurred during the API call. The error message will contain additional details about the cause.
 --
 --
-_DirectConnectServerException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectConnectServerException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _DirectConnectServerException =
   _MatchServiceError directConnect "DirectConnectServerException"
-

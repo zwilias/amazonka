@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DataPipeline.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,119 +10,100 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.DataPipeline.Types
-    (
     -- * Service Configuration
-      dataPipeline
-
+  ( dataPipeline
     -- * Errors
-    , _InvalidRequestException
-    , _InternalServiceError
-    , _PipelineDeletedException
-    , _PipelineNotFoundException
-    , _TaskNotFoundException
-
+  , _InvalidRequestException
+  , _InternalServiceError
+  , _PipelineDeletedException
+  , _PipelineNotFoundException
+  , _TaskNotFoundException
     -- * OperatorType
-    , OperatorType (..)
-
+  , OperatorType(..)
     -- * TaskStatus
-    , TaskStatus (..)
-
+  , TaskStatus(..)
     -- * Field
-    , Field
-    , field
-    , fRefValue
-    , fStringValue
-    , fKey
-
+  , Field
+  , field
+  , fRefValue
+  , fStringValue
+  , fKey
     -- * InstanceIdentity
-    , InstanceIdentity
-    , instanceIdentity
-    , iiSignature
-    , iiDocument
-
+  , InstanceIdentity
+  , instanceIdentity
+  , iiSignature
+  , iiDocument
     -- * Operator
-    , Operator
-    , operator
-    , oValues
-    , oType
-
+  , Operator
+  , operator
+  , oValues
+  , oType
     -- * ParameterAttribute
-    , ParameterAttribute
-    , parameterAttribute
-    , paKey
-    , paStringValue
-
+  , ParameterAttribute
+  , parameterAttribute
+  , paKey
+  , paStringValue
     -- * ParameterObject
-    , ParameterObject
-    , parameterObject
-    , poId
-    , poAttributes
-
+  , ParameterObject
+  , parameterObject
+  , poId
+  , poAttributes
     -- * ParameterValue
-    , ParameterValue
-    , parameterValue
-    , pvId
-    , pvStringValue
-
+  , ParameterValue
+  , parameterValue
+  , pvId
+  , pvStringValue
     -- * PipelineDescription
-    , PipelineDescription
-    , pipelineDescription
-    , pdDescription
-    , pdTags
-    , pdPipelineId
-    , pdName
-    , pdFields
-
+  , PipelineDescription
+  , pipelineDescription
+  , pdDescription
+  , pdTags
+  , pdPipelineId
+  , pdName
+  , pdFields
     -- * PipelineIdName
-    , PipelineIdName
-    , pipelineIdName
-    , pinName
-    , pinId
-
+  , PipelineIdName
+  , pipelineIdName
+  , pinName
+  , pinId
     -- * PipelineObject
-    , PipelineObject
-    , pipelineObject
-    , pId
-    , pName
-    , pFields
-
+  , PipelineObject
+  , pipelineObject
+  , pId
+  , pName
+  , pFields
     -- * Query
-    , Query
-    , query
-    , qSelectors
-
+  , Query
+  , query
+  , qSelectors
     -- * Selector
-    , Selector
-    , selector
-    , sOperator
-    , sFieldName
-
+  , Selector
+  , selector
+  , sOperator
+  , sFieldName
     -- * Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
     -- * TaskObject
-    , TaskObject
-    , taskObject
-    , toPipelineId
-    , toAttemptId
-    , toTaskId
-    , toObjects
-
+  , TaskObject
+  , taskObject
+  , toPipelineId
+  , toAttemptId
+  , toTaskId
+  , toObjects
     -- * ValidationError
-    , ValidationError
-    , validationError
-    , veId
-    , veErrors
-
+  , ValidationError
+  , validationError
+  , veId
+  , veErrors
     -- * ValidationWarning
-    , ValidationWarning
-    , validationWarning
-    , vwWarnings
-    , vwId
-    ) where
+  , ValidationWarning
+  , validationWarning
+  , vwWarnings
+  , vwId
+  ) where
 
 import Network.AWS.DataPipeline.Types.Product
 import Network.AWS.DataPipeline.Types.Sum
@@ -169,41 +149,40 @@ dataPipeline =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The request was not valid. Verify that your request was properly formatted, that the signature was generated with the correct credentials, and that you haven't exceeded any of the service limits for your account.
 --
 --
-_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestException =
   _MatchServiceError dataPipeline "InvalidRequestException"
-
 
 -- | An internal service error occurred.
 --
 --
-_InternalServiceError :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceError ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalServiceError = _MatchServiceError dataPipeline "InternalServiceError"
-
 
 -- | The specified pipeline has been deleted.
 --
 --
-_PipelineDeletedException :: AsError a => Getting (First ServiceError) a ServiceError
+_PipelineDeletedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _PipelineDeletedException =
   _MatchServiceError dataPipeline "PipelineDeletedException"
-
 
 -- | The specified pipeline was not found. Verify that you used the correct user and account identifiers.
 --
 --
-_PipelineNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_PipelineNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _PipelineNotFoundException =
   _MatchServiceError dataPipeline "PipelineNotFoundException"
-
 
 -- | The specified task was not found.
 --
 --
-_TaskNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_TaskNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _TaskNotFoundException = _MatchServiceError dataPipeline "TaskNotFoundException"
-

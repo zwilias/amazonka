@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Lightsail.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,457 +10,395 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Lightsail.Types
-    (
     -- * Service Configuration
-      lightsail
-
+  ( lightsail
     -- * Errors
-    , _AccessDeniedException
-    , _AccountSetupInProgressException
-    , _NotFoundException
-    , _OperationFailureException
-    , _ServiceException
-    , _UnauthenticatedException
-    , _InvalidInputException
-
+  , _AccessDeniedException
+  , _AccountSetupInProgressException
+  , _NotFoundException
+  , _OperationFailureException
+  , _ServiceException
+  , _UnauthenticatedException
+  , _InvalidInputException
     -- * AccessDirection
-    , AccessDirection (..)
-
+  , AccessDirection(..)
     -- * BlueprintType
-    , BlueprintType (..)
-
+  , BlueprintType(..)
     -- * DiskSnapshotState
-    , DiskSnapshotState (..)
-
+  , DiskSnapshotState(..)
     -- * DiskState
-    , DiskState (..)
-
+  , DiskState(..)
     -- * InstanceAccessProtocol
-    , InstanceAccessProtocol (..)
-
+  , InstanceAccessProtocol(..)
     -- * InstanceHealthReason
-    , InstanceHealthReason (..)
-
+  , InstanceHealthReason(..)
     -- * InstanceHealthState
-    , InstanceHealthState (..)
-
+  , InstanceHealthState(..)
     -- * InstanceMetricName
-    , InstanceMetricName (..)
-
+  , InstanceMetricName(..)
     -- * InstancePlatform
-    , InstancePlatform (..)
-
+  , InstancePlatform(..)
     -- * InstanceSnapshotState
-    , InstanceSnapshotState (..)
-
+  , InstanceSnapshotState(..)
     -- * LoadBalancerAttributeName
-    , LoadBalancerAttributeName (..)
-
+  , LoadBalancerAttributeName(..)
     -- * LoadBalancerMetricName
-    , LoadBalancerMetricName (..)
-
+  , LoadBalancerMetricName(..)
     -- * LoadBalancerProtocol
-    , LoadBalancerProtocol (..)
-
+  , LoadBalancerProtocol(..)
     -- * LoadBalancerState
-    , LoadBalancerState (..)
-
+  , LoadBalancerState(..)
     -- * LoadBalancerTLSCertificateDomainStatus
-    , LoadBalancerTLSCertificateDomainStatus (..)
-
+  , LoadBalancerTLSCertificateDomainStatus(..)
     -- * LoadBalancerTLSCertificateFailureReason
-    , LoadBalancerTLSCertificateFailureReason (..)
-
+  , LoadBalancerTLSCertificateFailureReason(..)
     -- * LoadBalancerTLSCertificateRenewalStatus
-    , LoadBalancerTLSCertificateRenewalStatus (..)
-
+  , LoadBalancerTLSCertificateRenewalStatus(..)
     -- * LoadBalancerTLSCertificateRevocationReason
-    , LoadBalancerTLSCertificateRevocationReason (..)
-
+  , LoadBalancerTLSCertificateRevocationReason(..)
     -- * LoadBalancerTLSCertificateStatus
-    , LoadBalancerTLSCertificateStatus (..)
-
+  , LoadBalancerTLSCertificateStatus(..)
     -- * MetricStatistic
-    , MetricStatistic (..)
-
+  , MetricStatistic(..)
     -- * MetricUnit
-    , MetricUnit (..)
-
+  , MetricUnit(..)
     -- * NetworkProtocol
-    , NetworkProtocol (..)
-
+  , NetworkProtocol(..)
     -- * OperationStatus
-    , OperationStatus (..)
-
+  , OperationStatus(..)
     -- * OperationType
-    , OperationType (..)
-
+  , OperationType(..)
     -- * PortAccessType
-    , PortAccessType (..)
-
+  , PortAccessType(..)
     -- * PortState
-    , PortState (..)
-
+  , PortState(..)
     -- * RegionName
-    , RegionName (..)
-
+  , RegionName(..)
     -- * ResourceType
-    , ResourceType (..)
-
+  , ResourceType(..)
     -- * AvailabilityZone
-    , AvailabilityZone
-    , availabilityZone
-    , azState
-    , azZoneName
-
+  , AvailabilityZone
+  , availabilityZone
+  , azState
+  , azZoneName
     -- * Blueprint
-    , Blueprint
-    , blueprint
-    , bVersionCode
-    , bPlatform
-    , bGroup
-    , bMinPower
-    , bProductURL
-    , bLicenseURL
-    , bName
-    , bVersion
-    , bBlueprintId
-    , bType
-    , bIsActive
-    , bDescription
-
+  , Blueprint
+  , blueprint
+  , bVersionCode
+  , bPlatform
+  , bGroup
+  , bMinPower
+  , bProductURL
+  , bLicenseURL
+  , bName
+  , bVersion
+  , bBlueprintId
+  , bType
+  , bIsActive
+  , bDescription
     -- * Bundle
-    , Bundle
-    , bundle
-    , bunCpuCount
-    , bunTransferPerMonthInGb
-    , bunBundleId
-    , bunInstanceType
-    , bunName
-    , bunPower
-    , bunDiskSizeInGb
-    , bunSupportedPlatforms
-    , bunPrice
-    , bunIsActive
-    , bunRamSizeInGb
-
+  , Bundle
+  , bundle
+  , bunCpuCount
+  , bunTransferPerMonthInGb
+  , bunBundleId
+  , bunInstanceType
+  , bunName
+  , bunPower
+  , bunDiskSizeInGb
+  , bunSupportedPlatforms
+  , bunPrice
+  , bunIsActive
+  , bunRamSizeInGb
     -- * Disk
-    , Disk
-    , disk
-    , dState
-    , dResourceType
-    , dArn
-    , dPath
-    , dCreatedAt
-    , dLocation
-    , dIops
-    , dIsAttached
-    , dAttachmentState
-    , dName
-    , dSizeInGb
-    , dSupportCode
-    , dIsSystemDisk
-    , dAttachedTo
-    , dGbInUse
-
+  , Disk
+  , disk
+  , dState
+  , dResourceType
+  , dArn
+  , dPath
+  , dCreatedAt
+  , dLocation
+  , dIops
+  , dIsAttached
+  , dAttachmentState
+  , dName
+  , dSizeInGb
+  , dSupportCode
+  , dIsSystemDisk
+  , dAttachedTo
+  , dGbInUse
     -- * DiskMap
-    , DiskMap
-    , diskMap
-    , dmNewDiskName
-    , dmOriginalDiskPath
-
+  , DiskMap
+  , diskMap
+  , dmNewDiskName
+  , dmOriginalDiskPath
     -- * DiskSnapshot
-    , DiskSnapshot
-    , diskSnapshot
-    , dsFromDiskName
-    , dsState
-    , dsResourceType
-    , dsArn
-    , dsCreatedAt
-    , dsLocation
-    , dsProgress
-    , dsName
-    , dsSizeInGb
-    , dsSupportCode
-    , dsFromDiskARN
-
+  , DiskSnapshot
+  , diskSnapshot
+  , dsFromDiskName
+  , dsState
+  , dsResourceType
+  , dsArn
+  , dsCreatedAt
+  , dsLocation
+  , dsProgress
+  , dsName
+  , dsSizeInGb
+  , dsSupportCode
+  , dsFromDiskARN
     -- * Domain
-    , Domain
-    , domain
-    , domResourceType
-    , domDomainEntries
-    , domArn
-    , domCreatedAt
-    , domLocation
-    , domName
-    , domSupportCode
-
+  , Domain
+  , domain
+  , domResourceType
+  , domDomainEntries
+  , domArn
+  , domCreatedAt
+  , domLocation
+  , domName
+  , domSupportCode
     -- * DomainEntry
-    , DomainEntry
-    , domainEntry
-    , deIsAlias
-    , deName
-    , deId
-    , deOptions
-    , deType
-    , deTarget
-
+  , DomainEntry
+  , domainEntry
+  , deIsAlias
+  , deName
+  , deId
+  , deOptions
+  , deType
+  , deTarget
     -- * Instance
-    , Instance
-    , instance'
-    , iState
-    , iIpv6Address
-    , iResourceType
-    , iArn
-    , iCreatedAt
-    , iLocation
-    , iSshKeyName
-    , iUsername
-    , iNetworking
-    , iBundleId
-    , iName
-    , iSupportCode
-    , iBlueprintId
-    , iPrivateIPAddress
-    , iBlueprintName
-    , iIsStaticIP
-    , iPublicIPAddress
-    , iHardware
-
+  , Instance
+  , instance'
+  , iState
+  , iIpv6Address
+  , iResourceType
+  , iArn
+  , iCreatedAt
+  , iLocation
+  , iSshKeyName
+  , iUsername
+  , iNetworking
+  , iBundleId
+  , iName
+  , iSupportCode
+  , iBlueprintId
+  , iPrivateIPAddress
+  , iBlueprintName
+  , iIsStaticIP
+  , iPublicIPAddress
+  , iHardware
     -- * InstanceAccessDetails
-    , InstanceAccessDetails
-    , instanceAccessDetails
-    , iadCertKey
-    , iadIpAddress
-    , iadPrivateKey
-    , iadExpiresAt
-    , iadUsername
-    , iadProtocol
-    , iadPasswordData
-    , iadPassword
-    , iadInstanceName
-
+  , InstanceAccessDetails
+  , instanceAccessDetails
+  , iadCertKey
+  , iadIpAddress
+  , iadPrivateKey
+  , iadExpiresAt
+  , iadUsername
+  , iadProtocol
+  , iadPasswordData
+  , iadPassword
+  , iadInstanceName
     -- * InstanceHardware
-    , InstanceHardware
-    , instanceHardware
-    , ihCpuCount
-    , ihDisks
-    , ihRamSizeInGb
-
+  , InstanceHardware
+  , instanceHardware
+  , ihCpuCount
+  , ihDisks
+  , ihRamSizeInGb
     -- * InstanceHealthSummary
-    , InstanceHealthSummary
-    , instanceHealthSummary
-    , ihsInstanceHealth
-    , ihsInstanceName
-    , ihsInstanceHealthReason
-
+  , InstanceHealthSummary
+  , instanceHealthSummary
+  , ihsInstanceHealth
+  , ihsInstanceName
+  , ihsInstanceHealthReason
     -- * InstanceNetworking
-    , InstanceNetworking
-    , instanceNetworking
-    , inMonthlyTransfer
-    , inPorts
-
+  , InstanceNetworking
+  , instanceNetworking
+  , inMonthlyTransfer
+  , inPorts
     -- * InstancePortInfo
-    , InstancePortInfo
-    , instancePortInfo
-    , ipiFromPort
-    , ipiCommonName
-    , ipiProtocol
-    , ipiAccessDirection
-    , ipiAccessType
-    , ipiToPort
-    , ipiAccessFrom
-
+  , InstancePortInfo
+  , instancePortInfo
+  , ipiFromPort
+  , ipiCommonName
+  , ipiProtocol
+  , ipiAccessDirection
+  , ipiAccessType
+  , ipiToPort
+  , ipiAccessFrom
     -- * InstancePortState
-    , InstancePortState
-    , instancePortState
-    , ipsFromPort
-    , ipsState
-    , ipsProtocol
-    , ipsToPort
-
+  , InstancePortState
+  , instancePortState
+  , ipsFromPort
+  , ipsState
+  , ipsProtocol
+  , ipsToPort
     -- * InstanceSnapshot
-    , InstanceSnapshot
-    , instanceSnapshot
-    , insFromBlueprintId
-    , insState
-    , insResourceType
-    , insFromAttachedDisks
-    , insArn
-    , insCreatedAt
-    , insLocation
-    , insProgress
-    , insName
-    , insFromBundleId
-    , insSizeInGb
-    , insSupportCode
-    , insFromInstanceARN
-    , insFromInstanceName
-
+  , InstanceSnapshot
+  , instanceSnapshot
+  , insFromBlueprintId
+  , insState
+  , insResourceType
+  , insFromAttachedDisks
+  , insArn
+  , insCreatedAt
+  , insLocation
+  , insProgress
+  , insName
+  , insFromBundleId
+  , insSizeInGb
+  , insSupportCode
+  , insFromInstanceARN
+  , insFromInstanceName
     -- * InstanceState
-    , InstanceState
-    , instanceState
-    , isName
-    , isCode
-
+  , InstanceState
+  , instanceState
+  , isName
+  , isCode
     -- * KeyPair
-    , KeyPair
-    , keyPair
-    , kpResourceType
-    , kpArn
-    , kpCreatedAt
-    , kpLocation
-    , kpFingerprint
-    , kpName
-    , kpSupportCode
-
+  , KeyPair
+  , keyPair
+  , kpResourceType
+  , kpArn
+  , kpCreatedAt
+  , kpLocation
+  , kpFingerprint
+  , kpName
+  , kpSupportCode
     -- * LoadBalancer
-    , LoadBalancer
-    , loadBalancer
-    , lbHealthCheckPath
-    , lbState
-    , lbResourceType
-    , lbArn
-    , lbCreatedAt
-    , lbLocation
-    , lbInstancePort
-    , lbConfigurationOptions
-    , lbProtocol
-    , lbTlsCertificateSummaries
-    , lbName
-    , lbSupportCode
-    , lbPublicPorts
-    , lbDnsName
-    , lbInstanceHealthSummary
-
+  , LoadBalancer
+  , loadBalancer
+  , lbHealthCheckPath
+  , lbState
+  , lbResourceType
+  , lbArn
+  , lbCreatedAt
+  , lbLocation
+  , lbInstancePort
+  , lbConfigurationOptions
+  , lbProtocol
+  , lbTlsCertificateSummaries
+  , lbName
+  , lbSupportCode
+  , lbPublicPorts
+  , lbDnsName
+  , lbInstanceHealthSummary
     -- * LoadBalancerTLSCertificate
-    , LoadBalancerTLSCertificate
-    , loadBalancerTLSCertificate
-    , lbtcFailureReason
-    , lbtcSubject
-    , lbtcStatus
-    , lbtcSubjectAlternativeNames
-    , lbtcResourceType
-    , lbtcArn
-    , lbtcCreatedAt
-    , lbtcLocation
-    , lbtcLoadBalancerName
-    , lbtcSerial
-    , lbtcIsAttached
-    , lbtcRevokedAt
-    , lbtcNotBefore
-    , lbtcRevocationReason
-    , lbtcDomainName
-    , lbtcName
-    , lbtcRenewalSummary
-    , lbtcSupportCode
-    , lbtcDomainValidationRecords
-    , lbtcIssuedAt
-    , lbtcKeyAlgorithm
-    , lbtcSignatureAlgorithm
-    , lbtcIssuer
-    , lbtcNotAfter
-
+  , LoadBalancerTLSCertificate
+  , loadBalancerTLSCertificate
+  , lbtcFailureReason
+  , lbtcSubject
+  , lbtcStatus
+  , lbtcSubjectAlternativeNames
+  , lbtcResourceType
+  , lbtcArn
+  , lbtcCreatedAt
+  , lbtcLocation
+  , lbtcLoadBalancerName
+  , lbtcSerial
+  , lbtcIsAttached
+  , lbtcRevokedAt
+  , lbtcNotBefore
+  , lbtcRevocationReason
+  , lbtcDomainName
+  , lbtcName
+  , lbtcRenewalSummary
+  , lbtcSupportCode
+  , lbtcDomainValidationRecords
+  , lbtcIssuedAt
+  , lbtcKeyAlgorithm
+  , lbtcSignatureAlgorithm
+  , lbtcIssuer
+  , lbtcNotAfter
     -- * LoadBalancerTLSCertificateDomainValidationOption
-    , LoadBalancerTLSCertificateDomainValidationOption
-    , loadBalancerTLSCertificateDomainValidationOption
-    , lbtcdvoDomainName
-    , lbtcdvoValidationStatus
-
+  , LoadBalancerTLSCertificateDomainValidationOption
+  , loadBalancerTLSCertificateDomainValidationOption
+  , lbtcdvoDomainName
+  , lbtcdvoValidationStatus
     -- * LoadBalancerTLSCertificateDomainValidationRecord
-    , LoadBalancerTLSCertificateDomainValidationRecord
-    , loadBalancerTLSCertificateDomainValidationRecord
-    , lbtcdvrValue
-    , lbtcdvrDomainName
-    , lbtcdvrName
-    , lbtcdvrValidationStatus
-    , lbtcdvrType
-
+  , LoadBalancerTLSCertificateDomainValidationRecord
+  , loadBalancerTLSCertificateDomainValidationRecord
+  , lbtcdvrValue
+  , lbtcdvrDomainName
+  , lbtcdvrName
+  , lbtcdvrValidationStatus
+  , lbtcdvrType
     -- * LoadBalancerTLSCertificateRenewalSummary
-    , LoadBalancerTLSCertificateRenewalSummary
-    , loadBalancerTLSCertificateRenewalSummary
-    , lbtcrsRenewalStatus
-    , lbtcrsDomainValidationOptions
-
+  , LoadBalancerTLSCertificateRenewalSummary
+  , loadBalancerTLSCertificateRenewalSummary
+  , lbtcrsRenewalStatus
+  , lbtcrsDomainValidationOptions
     -- * LoadBalancerTLSCertificateSummary
-    , LoadBalancerTLSCertificateSummary
-    , loadBalancerTLSCertificateSummary
-    , lbtcsIsAttached
-    , lbtcsName
-
+  , LoadBalancerTLSCertificateSummary
+  , loadBalancerTLSCertificateSummary
+  , lbtcsIsAttached
+  , lbtcsName
     -- * MetricDatapoint
-    , MetricDatapoint
-    , metricDatapoint
-    , mdSampleCount
-    , mdMaximum
-    , mdAverage
-    , mdMinimum
-    , mdSum
-    , mdTimestamp
-    , mdUnit
-
+  , MetricDatapoint
+  , metricDatapoint
+  , mdSampleCount
+  , mdMaximum
+  , mdAverage
+  , mdMinimum
+  , mdSum
+  , mdTimestamp
+  , mdUnit
     -- * MonthlyTransfer
-    , MonthlyTransfer
-    , monthlyTransfer
-    , mtGbPerMonthAllocated
-
+  , MonthlyTransfer
+  , monthlyTransfer
+  , mtGbPerMonthAllocated
     -- * Operation
-    , Operation
-    , operation
-    , oStatus
-    , oOperationDetails
-    , oResourceType
-    , oCreatedAt
-    , oResourceName
-    , oLocation
-    , oStatusChangedAt
-    , oErrorDetails
-    , oErrorCode
-    , oId
-    , oOperationType
-    , oIsTerminal
-
+  , Operation
+  , operation
+  , oStatus
+  , oOperationDetails
+  , oResourceType
+  , oCreatedAt
+  , oResourceName
+  , oLocation
+  , oStatusChangedAt
+  , oErrorDetails
+  , oErrorCode
+  , oId
+  , oOperationType
+  , oIsTerminal
     -- * PasswordData
-    , PasswordData
-    , passwordData
-    , pdKeyPairName
-    , pdCiphertext
-
+  , PasswordData
+  , passwordData
+  , pdKeyPairName
+  , pdCiphertext
     -- * PortInfo
-    , PortInfo
-    , portInfo
-    , piFromPort
-    , piProtocol
-    , piToPort
-
+  , PortInfo
+  , portInfo
+  , piFromPort
+  , piProtocol
+  , piToPort
     -- * RegionInfo
-    , RegionInfo
-    , regionInfo
-    , riAvailabilityZones
-    , riName
-    , riDisplayName
-    , riContinentCode
-    , riDescription
-
+  , RegionInfo
+  , regionInfo
+  , riAvailabilityZones
+  , riName
+  , riDisplayName
+  , riContinentCode
+  , riDescription
     -- * ResourceLocation
-    , ResourceLocation
-    , resourceLocation
-    , rlRegionName
-    , rlAvailabilityZone
-
+  , ResourceLocation
+  , resourceLocation
+  , rlRegionName
+  , rlAvailabilityZone
     -- * StaticIP
-    , StaticIP
-    , staticIP
-    , siIpAddress
-    , siResourceType
-    , siArn
-    , siCreatedAt
-    , siLocation
-    , siIsAttached
-    , siName
-    , siSupportCode
-    , siAttachedTo
-    ) where
+  , StaticIP
+  , staticIP
+  , siIpAddress
+  , siResourceType
+  , siArn
+  , siCreatedAt
+  , siLocation
+  , siIsAttached
+  , siName
+  , siSupportCode
+  , siAttachedTo
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types.Product
@@ -507,21 +444,20 @@ lightsail =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.
 --
 --
-_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _AccessDeniedException = _MatchServiceError lightsail "AccessDeniedException"
-
 
 -- | Lightsail throws this exception when an account is still in the setup in progress state.
 --
 --
-_AccountSetupInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccountSetupInProgressException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _AccountSetupInProgressException =
   _MatchServiceError lightsail "AccountSetupInProgressException"
-
 
 -- | Lightsail throws this exception when it cannot find a resource.
 --
@@ -529,14 +465,13 @@ _AccountSetupInProgressException =
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException = _MatchServiceError lightsail "NotFoundException"
 
-
 -- | Lightsail throws this exception when an operation fails to execute.
 --
 --
-_OperationFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationFailureException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _OperationFailureException =
   _MatchServiceError lightsail "OperationFailureException"
-
 
 -- | A general service exception.
 --
@@ -544,18 +479,17 @@ _OperationFailureException =
 _ServiceException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceException = _MatchServiceError lightsail "ServiceException"
 
-
 -- | Lightsail throws this exception when the user has not been authenticated.
 --
 --
-_UnauthenticatedException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnauthenticatedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _UnauthenticatedException =
   _MatchServiceError lightsail "UnauthenticatedException"
-
 
 -- | Lightsail throws this exception when user input does not conform to the validation rules of an input field.
 --
 --
-_InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInputException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidInputException = _MatchServiceError lightsail "InvalidInputException"
-

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.WAFRegional.UpdateRuleGroup
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -42,22 +40,20 @@
 -- For more information about how to use the AWS WAF API to allow or block HTTP requests, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
 --
 module Network.AWS.WAFRegional.UpdateRuleGroup
-    (
     -- * Creating a Request
-      updateRuleGroup
-    , UpdateRuleGroup
+  ( updateRuleGroup
+  , UpdateRuleGroup
     -- * Request Lenses
-    , urgRuleGroupId
-    , urgUpdates
-    , urgChangeToken
-
+  , urgRuleGroupId
+  , urgUpdates
+  , urgChangeToken
     -- * Destructuring the Response
-    , updateRuleGroupResponse
-    , UpdateRuleGroupResponse
+  , updateRuleGroupResponse
+  , UpdateRuleGroupResponse
     -- * Response Lenses
-    , urgrsChangeToken
-    , urgrsResponseStatus
-    ) where
+  , urgrsChangeToken
+  , urgrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -67,12 +63,13 @@ import Network.AWS.WAFRegional.Types
 import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'updateRuleGroup' smart constructor.
-data UpdateRuleGroup = UpdateRuleGroup'
-  { _urgRuleGroupId :: !Text
-  , _urgUpdates     :: !(List1 RuleGroupUpdate)
-  , _urgChangeToken :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRuleGroup =
+  UpdateRuleGroup'
+    { _urgRuleGroupId :: !Text
+    , _urgUpdates     :: !(List1 RuleGroupUpdate)
+    , _urgChangeToken :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateRuleGroup' with the minimum fields required to make a request.
 --
@@ -83,11 +80,11 @@ data UpdateRuleGroup = UpdateRuleGroup'
 -- * 'urgUpdates' - An array of @RuleGroupUpdate@ objects that you want to insert into or delete from a 'RuleGroup' . You can only insert @REGULAR@ rules into a rule group. @ActivatedRule|OverrideAction@ applies only when updating or adding a @RuleGroup@ to a @WebACL@ . In this case you do not use @ActivatedRule|Action@ . For all other update requests, @ActivatedRule|Action@ is used instead of @ActivatedRule|OverrideAction@ .
 --
 -- * 'urgChangeToken' - The value returned by the most recent call to 'GetChangeToken' .
-updateRuleGroup
-    :: Text -- ^ 'urgRuleGroupId'
-    -> NonEmpty RuleGroupUpdate -- ^ 'urgUpdates'
-    -> Text -- ^ 'urgChangeToken'
-    -> UpdateRuleGroup
+updateRuleGroup ::
+     Text -- ^ 'urgRuleGroupId'
+  -> NonEmpty RuleGroupUpdate -- ^ 'urgUpdates'
+  -> Text -- ^ 'urgChangeToken'
+  -> UpdateRuleGroup
 updateRuleGroup pRuleGroupId_ pUpdates_ pChangeToken_ =
   UpdateRuleGroup'
     { _urgRuleGroupId = pRuleGroupId_
@@ -95,62 +92,62 @@ updateRuleGroup pRuleGroupId_ pUpdates_ pChangeToken_ =
     , _urgChangeToken = pChangeToken_
     }
 
-
 -- | The @RuleGroupId@ of the 'RuleGroup' that you want to update. @RuleGroupId@ is returned by 'CreateRuleGroup' and by 'ListRuleGroups' .
 urgRuleGroupId :: Lens' UpdateRuleGroup Text
-urgRuleGroupId = lens _urgRuleGroupId (\ s a -> s{_urgRuleGroupId = a})
+urgRuleGroupId = lens _urgRuleGroupId (\s a -> s {_urgRuleGroupId = a})
 
 -- | An array of @RuleGroupUpdate@ objects that you want to insert into or delete from a 'RuleGroup' . You can only insert @REGULAR@ rules into a rule group. @ActivatedRule|OverrideAction@ applies only when updating or adding a @RuleGroup@ to a @WebACL@ . In this case you do not use @ActivatedRule|Action@ . For all other update requests, @ActivatedRule|Action@ is used instead of @ActivatedRule|OverrideAction@ .
 urgUpdates :: Lens' UpdateRuleGroup (NonEmpty RuleGroupUpdate)
-urgUpdates = lens _urgUpdates (\ s a -> s{_urgUpdates = a}) . _List1
+urgUpdates = lens _urgUpdates (\s a -> s {_urgUpdates = a}) . _List1
 
 -- | The value returned by the most recent call to 'GetChangeToken' .
 urgChangeToken :: Lens' UpdateRuleGroup Text
-urgChangeToken = lens _urgChangeToken (\ s a -> s{_urgChangeToken = a})
+urgChangeToken = lens _urgChangeToken (\s a -> s {_urgChangeToken = a})
 
 instance AWSRequest UpdateRuleGroup where
-        type Rs UpdateRuleGroup = UpdateRuleGroupResponse
-        request = postJSON wAFRegional
-        response
-          = receiveJSON
-              (\ s h x ->
-                 UpdateRuleGroupResponse' <$>
-                   (x .?> "ChangeToken") <*> (pure (fromEnum s)))
+  type Rs UpdateRuleGroup = UpdateRuleGroupResponse
+  request = postJSON wAFRegional
+  response =
+    receiveJSON
+      (\s h x ->
+         UpdateRuleGroupResponse' <$> (x .?> "ChangeToken") <*>
+         (pure (fromEnum s)))
 
-instance Hashable UpdateRuleGroup where
+instance Hashable UpdateRuleGroup
 
-instance NFData UpdateRuleGroup where
+instance NFData UpdateRuleGroup
 
 instance ToHeaders UpdateRuleGroup where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSWAF_Regional_20161128.UpdateRuleGroup" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AWSWAF_Regional_20161128.UpdateRuleGroup" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON UpdateRuleGroup where
-        toJSON UpdateRuleGroup'{..}
-          = object
-              (catMaybes
-                 [Just ("RuleGroupId" .= _urgRuleGroupId),
-                  Just ("Updates" .= _urgUpdates),
-                  Just ("ChangeToken" .= _urgChangeToken)])
+  toJSON UpdateRuleGroup' {..} =
+    object
+      (catMaybes
+         [ Just ("RuleGroupId" .= _urgRuleGroupId)
+         , Just ("Updates" .= _urgUpdates)
+         , Just ("ChangeToken" .= _urgChangeToken)
+         ])
 
 instance ToPath UpdateRuleGroup where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery UpdateRuleGroup where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'updateRuleGroupResponse' smart constructor.
-data UpdateRuleGroupResponse = UpdateRuleGroupResponse'
-  { _urgrsChangeToken    :: !(Maybe Text)
-  , _urgrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRuleGroupResponse =
+  UpdateRuleGroupResponse'
+    { _urgrsChangeToken    :: !(Maybe Text)
+    , _urgrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateRuleGroupResponse' with the minimum fields required to make a request.
 --
@@ -159,20 +156,20 @@ data UpdateRuleGroupResponse = UpdateRuleGroupResponse'
 -- * 'urgrsChangeToken' - The @ChangeToken@ that you used to submit the @UpdateRuleGroup@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 --
 -- * 'urgrsResponseStatus' - -- | The response status code.
-updateRuleGroupResponse
-    :: Int -- ^ 'urgrsResponseStatus'
-    -> UpdateRuleGroupResponse
+updateRuleGroupResponse ::
+     Int -- ^ 'urgrsResponseStatus'
+  -> UpdateRuleGroupResponse
 updateRuleGroupResponse pResponseStatus_ =
   UpdateRuleGroupResponse'
     {_urgrsChangeToken = Nothing, _urgrsResponseStatus = pResponseStatus_}
 
-
 -- | The @ChangeToken@ that you used to submit the @UpdateRuleGroup@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 urgrsChangeToken :: Lens' UpdateRuleGroupResponse (Maybe Text)
-urgrsChangeToken = lens _urgrsChangeToken (\ s a -> s{_urgrsChangeToken = a})
+urgrsChangeToken = lens _urgrsChangeToken (\s a -> s {_urgrsChangeToken = a})
 
 -- | -- | The response status code.
 urgrsResponseStatus :: Lens' UpdateRuleGroupResponse Int
-urgrsResponseStatus = lens _urgrsResponseStatus (\ s a -> s{_urgrsResponseStatus = a})
+urgrsResponseStatus =
+  lens _urgrsResponseStatus (\s a -> s {_urgrsResponseStatus = a})
 
-instance NFData UpdateRuleGroupResponse where
+instance NFData UpdateRuleGroupResponse

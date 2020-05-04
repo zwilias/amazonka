@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.WAFRegional.CreateSqlInjectionMatchSet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -36,22 +34,20 @@
 -- For more information about how to use the AWS WAF API to allow or block HTTP requests, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
 --
 module Network.AWS.WAFRegional.CreateSqlInjectionMatchSet
-    (
     -- * Creating a Request
-      createSqlInjectionMatchSet
-    , CreateSqlInjectionMatchSet
+  ( createSqlInjectionMatchSet
+  , CreateSqlInjectionMatchSet
     -- * Request Lenses
-    , csimsName
-    , csimsChangeToken
-
+  , csimsName
+  , csimsChangeToken
     -- * Destructuring the Response
-    , createSqlInjectionMatchSetResponse
-    , CreateSqlInjectionMatchSetResponse
+  , createSqlInjectionMatchSetResponse
+  , CreateSqlInjectionMatchSetResponse
     -- * Response Lenses
-    , csimsrsSqlInjectionMatchSet
-    , csimsrsChangeToken
-    , csimsrsResponseStatus
-    ) where
+  , csimsrsSqlInjectionMatchSet
+  , csimsrsChangeToken
+  , csimsrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -65,11 +61,12 @@ import Network.AWS.WAFRegional.Types.Product
 --
 --
 -- /See:/ 'createSqlInjectionMatchSet' smart constructor.
-data CreateSqlInjectionMatchSet = CreateSqlInjectionMatchSet'
-  { _csimsName        :: !Text
-  , _csimsChangeToken :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSqlInjectionMatchSet =
+  CreateSqlInjectionMatchSet'
+    { _csimsName        :: !Text
+    , _csimsChangeToken :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSqlInjectionMatchSet' with the minimum fields required to make a request.
 --
@@ -78,73 +75,71 @@ data CreateSqlInjectionMatchSet = CreateSqlInjectionMatchSet'
 -- * 'csimsName' - A friendly name or description for the 'SqlInjectionMatchSet' that you're creating. You can't change @Name@ after you create the @SqlInjectionMatchSet@ .
 --
 -- * 'csimsChangeToken' - The value returned by the most recent call to 'GetChangeToken' .
-createSqlInjectionMatchSet
-    :: Text -- ^ 'csimsName'
-    -> Text -- ^ 'csimsChangeToken'
-    -> CreateSqlInjectionMatchSet
+createSqlInjectionMatchSet ::
+     Text -- ^ 'csimsName'
+  -> Text -- ^ 'csimsChangeToken'
+  -> CreateSqlInjectionMatchSet
 createSqlInjectionMatchSet pName_ pChangeToken_ =
   CreateSqlInjectionMatchSet'
     {_csimsName = pName_, _csimsChangeToken = pChangeToken_}
 
-
 -- | A friendly name or description for the 'SqlInjectionMatchSet' that you're creating. You can't change @Name@ after you create the @SqlInjectionMatchSet@ .
 csimsName :: Lens' CreateSqlInjectionMatchSet Text
-csimsName = lens _csimsName (\ s a -> s{_csimsName = a})
+csimsName = lens _csimsName (\s a -> s {_csimsName = a})
 
 -- | The value returned by the most recent call to 'GetChangeToken' .
 csimsChangeToken :: Lens' CreateSqlInjectionMatchSet Text
-csimsChangeToken = lens _csimsChangeToken (\ s a -> s{_csimsChangeToken = a})
+csimsChangeToken = lens _csimsChangeToken (\s a -> s {_csimsChangeToken = a})
 
 instance AWSRequest CreateSqlInjectionMatchSet where
-        type Rs CreateSqlInjectionMatchSet =
-             CreateSqlInjectionMatchSetResponse
-        request = postJSON wAFRegional
-        response
-          = receiveJSON
-              (\ s h x ->
-                 CreateSqlInjectionMatchSetResponse' <$>
-                   (x .?> "SqlInjectionMatchSet") <*>
-                     (x .?> "ChangeToken")
-                     <*> (pure (fromEnum s)))
+  type Rs CreateSqlInjectionMatchSet = CreateSqlInjectionMatchSetResponse
+  request = postJSON wAFRegional
+  response =
+    receiveJSON
+      (\s h x ->
+         CreateSqlInjectionMatchSetResponse' <$> (x .?> "SqlInjectionMatchSet") <*>
+         (x .?> "ChangeToken") <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateSqlInjectionMatchSet where
+instance Hashable CreateSqlInjectionMatchSet
 
-instance NFData CreateSqlInjectionMatchSet where
+instance NFData CreateSqlInjectionMatchSet
 
 instance ToHeaders CreateSqlInjectionMatchSet where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSWAF_Regional_20161128.CreateSqlInjectionMatchSet"
-                       :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AWSWAF_Regional_20161128.CreateSqlInjectionMatchSet" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateSqlInjectionMatchSet where
-        toJSON CreateSqlInjectionMatchSet'{..}
-          = object
-              (catMaybes
-                 [Just ("Name" .= _csimsName),
-                  Just ("ChangeToken" .= _csimsChangeToken)])
+  toJSON CreateSqlInjectionMatchSet' {..} =
+    object
+      (catMaybes
+         [ Just ("Name" .= _csimsName)
+         , Just ("ChangeToken" .= _csimsChangeToken)
+         ])
 
 instance ToPath CreateSqlInjectionMatchSet where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateSqlInjectionMatchSet where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | The response to a @CreateSqlInjectionMatchSet@ request.
 --
 --
 --
 -- /See:/ 'createSqlInjectionMatchSetResponse' smart constructor.
-data CreateSqlInjectionMatchSetResponse = CreateSqlInjectionMatchSetResponse'
-  { _csimsrsSqlInjectionMatchSet :: !(Maybe SqlInjectionMatchSet)
-  , _csimsrsChangeToken          :: !(Maybe Text)
-  , _csimsrsResponseStatus       :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSqlInjectionMatchSetResponse =
+  CreateSqlInjectionMatchSetResponse'
+    { _csimsrsSqlInjectionMatchSet :: !(Maybe SqlInjectionMatchSet)
+    , _csimsrsChangeToken          :: !(Maybe Text)
+    , _csimsrsResponseStatus       :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSqlInjectionMatchSetResponse' with the minimum fields required to make a request.
 --
@@ -155,9 +150,9 @@ data CreateSqlInjectionMatchSetResponse = CreateSqlInjectionMatchSetResponse'
 -- * 'csimsrsChangeToken' - The @ChangeToken@ that you used to submit the @CreateSqlInjectionMatchSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 --
 -- * 'csimsrsResponseStatus' - -- | The response status code.
-createSqlInjectionMatchSetResponse
-    :: Int -- ^ 'csimsrsResponseStatus'
-    -> CreateSqlInjectionMatchSetResponse
+createSqlInjectionMatchSetResponse ::
+     Int -- ^ 'csimsrsResponseStatus'
+  -> CreateSqlInjectionMatchSetResponse
 createSqlInjectionMatchSetResponse pResponseStatus_ =
   CreateSqlInjectionMatchSetResponse'
     { _csimsrsSqlInjectionMatchSet = Nothing
@@ -165,18 +160,22 @@ createSqlInjectionMatchSetResponse pResponseStatus_ =
     , _csimsrsResponseStatus = pResponseStatus_
     }
 
-
 -- | A 'SqlInjectionMatchSet' .
-csimsrsSqlInjectionMatchSet :: Lens' CreateSqlInjectionMatchSetResponse (Maybe SqlInjectionMatchSet)
-csimsrsSqlInjectionMatchSet = lens _csimsrsSqlInjectionMatchSet (\ s a -> s{_csimsrsSqlInjectionMatchSet = a})
+csimsrsSqlInjectionMatchSet ::
+     Lens' CreateSqlInjectionMatchSetResponse (Maybe SqlInjectionMatchSet)
+csimsrsSqlInjectionMatchSet =
+  lens
+    _csimsrsSqlInjectionMatchSet
+    (\s a -> s {_csimsrsSqlInjectionMatchSet = a})
 
 -- | The @ChangeToken@ that you used to submit the @CreateSqlInjectionMatchSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 csimsrsChangeToken :: Lens' CreateSqlInjectionMatchSetResponse (Maybe Text)
-csimsrsChangeToken = lens _csimsrsChangeToken (\ s a -> s{_csimsrsChangeToken = a})
+csimsrsChangeToken =
+  lens _csimsrsChangeToken (\s a -> s {_csimsrsChangeToken = a})
 
 -- | -- | The response status code.
 csimsrsResponseStatus :: Lens' CreateSqlInjectionMatchSetResponse Int
-csimsrsResponseStatus = lens _csimsrsResponseStatus (\ s a -> s{_csimsrsResponseStatus = a})
+csimsrsResponseStatus =
+  lens _csimsrsResponseStatus (\s a -> s {_csimsrsResponseStatus = a})
 
 instance NFData CreateSqlInjectionMatchSetResponse
-         where

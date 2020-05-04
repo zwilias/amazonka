@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.RestoreAddressToClassic
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +20,20 @@
 --
 --
 module Network.AWS.EC2.RestoreAddressToClassic
-    (
     -- * Creating a Request
-      restoreAddressToClassic
-    , RestoreAddressToClassic
+  ( restoreAddressToClassic
+  , RestoreAddressToClassic
     -- * Request Lenses
-    , ratcDryRun
-    , ratcPublicIP
-
+  , ratcDryRun
+  , ratcPublicIP
     -- * Destructuring the Response
-    , restoreAddressToClassicResponse
-    , RestoreAddressToClassicResponse
+  , restoreAddressToClassicResponse
+  , RestoreAddressToClassicResponse
     -- * Response Lenses
-    , ratcrsStatus
-    , ratcrsPublicIP
-    , ratcrsResponseStatus
-    ) where
+  , ratcrsStatus
+  , ratcrsPublicIP
+  , ratcrsResponseStatus
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -51,11 +47,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'restoreAddressToClassic' smart constructor.
-data RestoreAddressToClassic = RestoreAddressToClassic'
-  { _ratcDryRun   :: !(Maybe Bool)
-  , _ratcPublicIP :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreAddressToClassic =
+  RestoreAddressToClassic'
+    { _ratcDryRun   :: !(Maybe Bool)
+    , _ratcPublicIP :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RestoreAddressToClassic' with the minimum fields required to make a request.
 --
@@ -64,61 +61,61 @@ data RestoreAddressToClassic = RestoreAddressToClassic'
 -- * 'ratcDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
 -- * 'ratcPublicIP' - The Elastic IP address.
-restoreAddressToClassic
-    :: Text -- ^ 'ratcPublicIP'
-    -> RestoreAddressToClassic
+restoreAddressToClassic ::
+     Text -- ^ 'ratcPublicIP'
+  -> RestoreAddressToClassic
 restoreAddressToClassic pPublicIP_ =
   RestoreAddressToClassic' {_ratcDryRun = Nothing, _ratcPublicIP = pPublicIP_}
 
-
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 ratcDryRun :: Lens' RestoreAddressToClassic (Maybe Bool)
-ratcDryRun = lens _ratcDryRun (\ s a -> s{_ratcDryRun = a})
+ratcDryRun = lens _ratcDryRun (\s a -> s {_ratcDryRun = a})
 
 -- | The Elastic IP address.
 ratcPublicIP :: Lens' RestoreAddressToClassic Text
-ratcPublicIP = lens _ratcPublicIP (\ s a -> s{_ratcPublicIP = a})
+ratcPublicIP = lens _ratcPublicIP (\s a -> s {_ratcPublicIP = a})
 
 instance AWSRequest RestoreAddressToClassic where
-        type Rs RestoreAddressToClassic =
-             RestoreAddressToClassicResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 RestoreAddressToClassicResponse' <$>
-                   (x .@? "status") <*> (x .@? "publicIp") <*>
-                     (pure (fromEnum s)))
+  type Rs RestoreAddressToClassic = RestoreAddressToClassicResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         RestoreAddressToClassicResponse' <$> (x .@? "status") <*>
+         (x .@? "publicIp") <*>
+         (pure (fromEnum s)))
 
-instance Hashable RestoreAddressToClassic where
+instance Hashable RestoreAddressToClassic
 
-instance NFData RestoreAddressToClassic where
+instance NFData RestoreAddressToClassic
 
 instance ToHeaders RestoreAddressToClassic where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath RestoreAddressToClassic where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery RestoreAddressToClassic where
-        toQuery RestoreAddressToClassic'{..}
-          = mconcat
-              ["Action" =:
-                 ("RestoreAddressToClassic" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _ratcDryRun, "PublicIp" =: _ratcPublicIP]
+  toQuery RestoreAddressToClassic' {..} =
+    mconcat
+      [ "Action" =: ("RestoreAddressToClassic" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "DryRun" =: _ratcDryRun
+      , "PublicIp" =: _ratcPublicIP
+      ]
 
 -- | Contains the output of RestoreAddressToClassic.
 --
 --
 --
 -- /See:/ 'restoreAddressToClassicResponse' smart constructor.
-data RestoreAddressToClassicResponse = RestoreAddressToClassicResponse'
-  { _ratcrsStatus         :: !(Maybe AddressStatus)
-  , _ratcrsPublicIP       :: !(Maybe Text)
-  , _ratcrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreAddressToClassicResponse =
+  RestoreAddressToClassicResponse'
+    { _ratcrsStatus         :: !(Maybe AddressStatus)
+    , _ratcrsPublicIP       :: !(Maybe Text)
+    , _ratcrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RestoreAddressToClassicResponse' with the minimum fields required to make a request.
 --
@@ -129,9 +126,9 @@ data RestoreAddressToClassicResponse = RestoreAddressToClassicResponse'
 -- * 'ratcrsPublicIP' - The Elastic IP address.
 --
 -- * 'ratcrsResponseStatus' - -- | The response status code.
-restoreAddressToClassicResponse
-    :: Int -- ^ 'ratcrsResponseStatus'
-    -> RestoreAddressToClassicResponse
+restoreAddressToClassicResponse ::
+     Int -- ^ 'ratcrsResponseStatus'
+  -> RestoreAddressToClassicResponse
 restoreAddressToClassicResponse pResponseStatus_ =
   RestoreAddressToClassicResponse'
     { _ratcrsStatus = Nothing
@@ -139,17 +136,17 @@ restoreAddressToClassicResponse pResponseStatus_ =
     , _ratcrsResponseStatus = pResponseStatus_
     }
 
-
 -- | The move status for the IP address.
 ratcrsStatus :: Lens' RestoreAddressToClassicResponse (Maybe AddressStatus)
-ratcrsStatus = lens _ratcrsStatus (\ s a -> s{_ratcrsStatus = a})
+ratcrsStatus = lens _ratcrsStatus (\s a -> s {_ratcrsStatus = a})
 
 -- | The Elastic IP address.
 ratcrsPublicIP :: Lens' RestoreAddressToClassicResponse (Maybe Text)
-ratcrsPublicIP = lens _ratcrsPublicIP (\ s a -> s{_ratcrsPublicIP = a})
+ratcrsPublicIP = lens _ratcrsPublicIP (\s a -> s {_ratcrsPublicIP = a})
 
 -- | -- | The response status code.
 ratcrsResponseStatus :: Lens' RestoreAddressToClassicResponse Int
-ratcrsResponseStatus = lens _ratcrsResponseStatus (\ s a -> s{_ratcrsResponseStatus = a})
+ratcrsResponseStatus =
+  lens _ratcrsResponseStatus (\s a -> s {_ratcrsResponseStatus = a})
 
-instance NFData RestoreAddressToClassicResponse where
+instance NFData RestoreAddressToClassicResponse

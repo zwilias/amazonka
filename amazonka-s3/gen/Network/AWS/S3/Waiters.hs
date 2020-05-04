@@ -1,10 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.S3.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,7 +32,6 @@ objectNotExists =
     , _waitAcceptors = [matchStatus 404 AcceptSuccess]
     }
 
-
 -- | Polls 'Network.AWS.S3.HeadBucket' every 5 seconds until a successful state is reached. An error is returned after 20 failed checks.
 bucketExists :: Wait HeadBucket
 bucketExists =
@@ -50,7 +47,6 @@ bucketExists =
         ]
     }
 
-
 -- | Polls 'Network.AWS.S3.HeadObject' every 5 seconds until a successful state is reached. An error is returned after 20 failed checks.
 objectExists :: Wait HeadObject
 objectExists =
@@ -62,7 +58,6 @@ objectExists =
         [matchStatus 200 AcceptSuccess, matchStatus 404 AcceptRetry]
     }
 
-
 -- | Polls 'Network.AWS.S3.HeadBucket' every 5 seconds until a successful state is reached. An error is returned after 20 failed checks.
 bucketNotExists :: Wait HeadBucket
 bucketNotExists =
@@ -72,4 +67,3 @@ bucketNotExists =
     , _waitDelay = 5
     , _waitAcceptors = [matchStatus 404 AcceptSuccess]
     }
-

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Organizations.LeaveOrganization
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -32,15 +30,13 @@
 --
 --
 module Network.AWS.Organizations.LeaveOrganization
-    (
     -- * Creating a Request
-      leaveOrganization
-    , LeaveOrganization
-
+  ( leaveOrganization
+  , LeaveOrganization
     -- * Destructuring the Response
-    , leaveOrganizationResponse
-    , LeaveOrganizationResponse
-    ) where
+  , leaveOrganizationResponse
+  , LeaveOrganizationResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
@@ -54,53 +50,46 @@ data LeaveOrganization =
   LeaveOrganization'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'LeaveOrganization' with the minimum fields required to make a request.
 --
-leaveOrganization
-    :: LeaveOrganization
+leaveOrganization :: LeaveOrganization
 leaveOrganization = LeaveOrganization'
 
-
 instance AWSRequest LeaveOrganization where
-        type Rs LeaveOrganization = LeaveOrganizationResponse
-        request = postJSON organizations
-        response = receiveNull LeaveOrganizationResponse'
+  type Rs LeaveOrganization = LeaveOrganizationResponse
+  request = postJSON organizations
+  response = receiveNull LeaveOrganizationResponse'
 
-instance Hashable LeaveOrganization where
+instance Hashable LeaveOrganization
 
-instance NFData LeaveOrganization where
+instance NFData LeaveOrganization
 
 instance ToHeaders LeaveOrganization where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSOrganizationsV20161128.LeaveOrganization" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AWSOrganizationsV20161128.LeaveOrganization" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON LeaveOrganization where
-        toJSON = const (Object mempty)
+  toJSON = const (Object mempty)
 
 instance ToPath LeaveOrganization where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery LeaveOrganization where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'leaveOrganizationResponse' smart constructor.
 data LeaveOrganizationResponse =
   LeaveOrganizationResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'LeaveOrganizationResponse' with the minimum fields required to make a request.
 --
-leaveOrganizationResponse
-    :: LeaveOrganizationResponse
+leaveOrganizationResponse :: LeaveOrganizationResponse
 leaveOrganizationResponse = LeaveOrganizationResponse'
 
-
-instance NFData LeaveOrganizationResponse where
+instance NFData LeaveOrganizationResponse

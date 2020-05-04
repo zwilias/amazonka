@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.APIGateway.TagResource
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +20,16 @@
 --
 --
 module Network.AWS.APIGateway.TagResource
-    (
     -- * Creating a Request
-      tagResource
-    , TagResource
+  ( tagResource
+  , TagResource
     -- * Request Lenses
-    , trResourceARN
-    , trTags
-
+  , trResourceARN
+  , trTags
     -- * Destructuring the Response
-    , tagResourceResponse
-    , TagResourceResponse
-    ) where
+  , tagResourceResponse
+  , TagResourceResponse
+  ) where
 
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.Types.Product
@@ -47,11 +43,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'tagResource' smart constructor.
-data TagResource = TagResource'
-  { _trResourceARN :: !Text
-  , _trTags        :: !(Map Text Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResource =
+  TagResource'
+    { _trResourceARN :: !Text
+    , _trTags        :: !(Map Text Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResource' with the minimum fields required to make a request.
 --
@@ -60,58 +57,49 @@ data TagResource = TagResource'
 -- * 'trResourceARN' - [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, 'Stage' is the only taggable resource.
 --
 -- * 'trTags' - [Required] The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with @aws:@ . The tag value can be up to 256 characters.
-tagResource
-    :: Text -- ^ 'trResourceARN'
-    -> TagResource
+tagResource ::
+     Text -- ^ 'trResourceARN'
+  -> TagResource
 tagResource pResourceARN_ =
   TagResource' {_trResourceARN = pResourceARN_, _trTags = mempty}
 
-
 -- | [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, 'Stage' is the only taggable resource.
 trResourceARN :: Lens' TagResource Text
-trResourceARN = lens _trResourceARN (\ s a -> s{_trResourceARN = a})
+trResourceARN = lens _trResourceARN (\s a -> s {_trResourceARN = a})
 
 -- | [Required] The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with @aws:@ . The tag value can be up to 256 characters.
 trTags :: Lens' TagResource (HashMap Text Text)
-trTags = lens _trTags (\ s a -> s{_trTags = a}) . _Map
+trTags = lens _trTags (\s a -> s {_trTags = a}) . _Map
 
 instance AWSRequest TagResource where
-        type Rs TagResource = TagResourceResponse
-        request = putJSON apiGateway
-        response = receiveNull TagResourceResponse'
+  type Rs TagResource = TagResourceResponse
+  request = putJSON apiGateway
+  response = receiveNull TagResourceResponse'
 
-instance Hashable TagResource where
+instance Hashable TagResource
 
-instance NFData TagResource where
+instance NFData TagResource
 
 instance ToHeaders TagResource where
-        toHeaders
-          = const
-              (mconcat
-                 ["Accept" =# ("application/json" :: ByteString)])
+  toHeaders = const (mconcat ["Accept" =# ("application/json" :: ByteString)])
 
 instance ToJSON TagResource where
-        toJSON TagResource'{..}
-          = object (catMaybes [Just ("tags" .= _trTags)])
+  toJSON TagResource' {..} = object (catMaybes [Just ("tags" .= _trTags)])
 
 instance ToPath TagResource where
-        toPath TagResource'{..}
-          = mconcat ["/tags/", toBS _trResourceARN]
+  toPath TagResource' {..} = mconcat ["/tags/", toBS _trResourceARN]
 
 instance ToQuery TagResource where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'tagResourceResponse' smart constructor.
 data TagResourceResponse =
   TagResourceResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'TagResourceResponse' with the minimum fields required to make a request.
 --
-tagResourceResponse
-    :: TagResourceResponse
+tagResourceResponse :: TagResourceResponse
 tagResourceResponse = TagResourceResponse'
 
-
-instance NFData TagResourceResponse where
+instance NFData TagResourceResponse

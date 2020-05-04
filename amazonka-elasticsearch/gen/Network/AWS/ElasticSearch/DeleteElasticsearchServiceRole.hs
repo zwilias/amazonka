@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ElasticSearch.DeleteElasticsearchServiceRole
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,15 +20,13 @@
 --
 --
 module Network.AWS.ElasticSearch.DeleteElasticsearchServiceRole
-    (
     -- * Creating a Request
-      deleteElasticsearchServiceRole
-    , DeleteElasticsearchServiceRole
-
+  ( deleteElasticsearchServiceRole
+  , DeleteElasticsearchServiceRole
     -- * Destructuring the Response
-    , deleteElasticsearchServiceRoleResponse
-    , DeleteElasticsearchServiceRoleResponse
-    ) where
+  , deleteElasticsearchServiceRoleResponse
+  , DeleteElasticsearchServiceRoleResponse
+  ) where
 
 import Network.AWS.ElasticSearch.Types
 import Network.AWS.ElasticSearch.Types.Product
@@ -44,50 +40,37 @@ data DeleteElasticsearchServiceRole =
   DeleteElasticsearchServiceRole'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'DeleteElasticsearchServiceRole' with the minimum fields required to make a request.
 --
-deleteElasticsearchServiceRole
-    :: DeleteElasticsearchServiceRole
+deleteElasticsearchServiceRole :: DeleteElasticsearchServiceRole
 deleteElasticsearchServiceRole = DeleteElasticsearchServiceRole'
 
-
-instance AWSRequest DeleteElasticsearchServiceRole
-         where
-        type Rs DeleteElasticsearchServiceRole =
-             DeleteElasticsearchServiceRoleResponse
-        request = delete elasticSearch
-        response
-          = receiveNull DeleteElasticsearchServiceRoleResponse'
+instance AWSRequest DeleteElasticsearchServiceRole where
+  type Rs DeleteElasticsearchServiceRole = DeleteElasticsearchServiceRoleResponse
+  request = delete elasticSearch
+  response = receiveNull DeleteElasticsearchServiceRoleResponse'
 
 instance Hashable DeleteElasticsearchServiceRole
-         where
 
-instance NFData DeleteElasticsearchServiceRole where
+instance NFData DeleteElasticsearchServiceRole
 
-instance ToHeaders DeleteElasticsearchServiceRole
-         where
-        toHeaders = const mempty
+instance ToHeaders DeleteElasticsearchServiceRole where
+  toHeaders = const mempty
 
 instance ToPath DeleteElasticsearchServiceRole where
-        toPath = const "/2015-01-01/es/role"
+  toPath = const "/2015-01-01/es/role"
 
 instance ToQuery DeleteElasticsearchServiceRole where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'deleteElasticsearchServiceRoleResponse' smart constructor.
 data DeleteElasticsearchServiceRoleResponse =
   DeleteElasticsearchServiceRoleResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'DeleteElasticsearchServiceRoleResponse' with the minimum fields required to make a request.
 --
-deleteElasticsearchServiceRoleResponse
-    :: DeleteElasticsearchServiceRoleResponse
+deleteElasticsearchServiceRoleResponse :: DeleteElasticsearchServiceRoleResponse
 deleteElasticsearchServiceRoleResponse = DeleteElasticsearchServiceRoleResponse'
 
-
-instance NFData
-           DeleteElasticsearchServiceRoleResponse
-         where
+instance NFData DeleteElasticsearchServiceRoleResponse

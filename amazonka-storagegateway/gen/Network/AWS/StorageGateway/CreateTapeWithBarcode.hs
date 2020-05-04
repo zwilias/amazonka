@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.StorageGateway.CreateTapeWithBarcode
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +20,20 @@
 --
 --
 module Network.AWS.StorageGateway.CreateTapeWithBarcode
-    (
     -- * Creating a Request
-      createTapeWithBarcode
-    , CreateTapeWithBarcode
+  ( createTapeWithBarcode
+  , CreateTapeWithBarcode
     -- * Request Lenses
-    , ctwbGatewayARN
-    , ctwbTapeSizeInBytes
-    , ctwbTapeBarcode
-
+  , ctwbGatewayARN
+  , ctwbTapeSizeInBytes
+  , ctwbTapeBarcode
     -- * Destructuring the Response
-    , createTapeWithBarcodeResponse
-    , CreateTapeWithBarcodeResponse
+  , createTapeWithBarcodeResponse
+  , CreateTapeWithBarcodeResponse
     -- * Response Lenses
-    , ctwbrsTapeARN
-    , ctwbrsResponseStatus
-    ) where
+  , ctwbrsTapeARN
+  , ctwbrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -51,12 +47,13 @@ import Network.AWS.StorageGateway.Types.Product
 --
 --
 -- /See:/ 'createTapeWithBarcode' smart constructor.
-data CreateTapeWithBarcode = CreateTapeWithBarcode'
-  { _ctwbGatewayARN      :: !Text
-  , _ctwbTapeSizeInBytes :: !Integer
-  , _ctwbTapeBarcode     :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTapeWithBarcode =
+  CreateTapeWithBarcode'
+    { _ctwbGatewayARN      :: !Text
+    , _ctwbTapeSizeInBytes :: !Integer
+    , _ctwbTapeBarcode     :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTapeWithBarcode' with the minimum fields required to make a request.
 --
@@ -67,11 +64,11 @@ data CreateTapeWithBarcode = CreateTapeWithBarcode'
 -- * 'ctwbTapeSizeInBytes' - The size, in bytes, of the virtual tape that you want to create.
 --
 -- * 'ctwbTapeBarcode' - The barcode that you want to assign to the tape.
-createTapeWithBarcode
-    :: Text -- ^ 'ctwbGatewayARN'
-    -> Integer -- ^ 'ctwbTapeSizeInBytes'
-    -> Text -- ^ 'ctwbTapeBarcode'
-    -> CreateTapeWithBarcode
+createTapeWithBarcode ::
+     Text -- ^ 'ctwbGatewayARN'
+  -> Integer -- ^ 'ctwbTapeSizeInBytes'
+  -> Text -- ^ 'ctwbTapeBarcode'
+  -> CreateTapeWithBarcode
 createTapeWithBarcode pGatewayARN_ pTapeSizeInBytes_ pTapeBarcode_ =
   CreateTapeWithBarcode'
     { _ctwbGatewayARN = pGatewayARN_
@@ -79,67 +76,67 @@ createTapeWithBarcode pGatewayARN_ pTapeSizeInBytes_ pTapeBarcode_ =
     , _ctwbTapeBarcode = pTapeBarcode_
     }
 
-
 -- | The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tape with. Use the 'ListGateways' operation to return a list of gateways for your account and region.
 ctwbGatewayARN :: Lens' CreateTapeWithBarcode Text
-ctwbGatewayARN = lens _ctwbGatewayARN (\ s a -> s{_ctwbGatewayARN = a})
+ctwbGatewayARN = lens _ctwbGatewayARN (\s a -> s {_ctwbGatewayARN = a})
 
 -- | The size, in bytes, of the virtual tape that you want to create.
 ctwbTapeSizeInBytes :: Lens' CreateTapeWithBarcode Integer
-ctwbTapeSizeInBytes = lens _ctwbTapeSizeInBytes (\ s a -> s{_ctwbTapeSizeInBytes = a})
+ctwbTapeSizeInBytes =
+  lens _ctwbTapeSizeInBytes (\s a -> s {_ctwbTapeSizeInBytes = a})
 
 -- | The barcode that you want to assign to the tape.
 ctwbTapeBarcode :: Lens' CreateTapeWithBarcode Text
-ctwbTapeBarcode = lens _ctwbTapeBarcode (\ s a -> s{_ctwbTapeBarcode = a})
+ctwbTapeBarcode = lens _ctwbTapeBarcode (\s a -> s {_ctwbTapeBarcode = a})
 
 instance AWSRequest CreateTapeWithBarcode where
-        type Rs CreateTapeWithBarcode =
-             CreateTapeWithBarcodeResponse
-        request = postJSON storageGateway
-        response
-          = receiveJSON
-              (\ s h x ->
-                 CreateTapeWithBarcodeResponse' <$>
-                   (x .?> "TapeARN") <*> (pure (fromEnum s)))
+  type Rs CreateTapeWithBarcode = CreateTapeWithBarcodeResponse
+  request = postJSON storageGateway
+  response =
+    receiveJSON
+      (\s h x ->
+         CreateTapeWithBarcodeResponse' <$> (x .?> "TapeARN") <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateTapeWithBarcode where
+instance Hashable CreateTapeWithBarcode
 
-instance NFData CreateTapeWithBarcode where
+instance NFData CreateTapeWithBarcode
 
 instance ToHeaders CreateTapeWithBarcode where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("StorageGateway_20130630.CreateTapeWithBarcode" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("StorageGateway_20130630.CreateTapeWithBarcode" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateTapeWithBarcode where
-        toJSON CreateTapeWithBarcode'{..}
-          = object
-              (catMaybes
-                 [Just ("GatewayARN" .= _ctwbGatewayARN),
-                  Just ("TapeSizeInBytes" .= _ctwbTapeSizeInBytes),
-                  Just ("TapeBarcode" .= _ctwbTapeBarcode)])
+  toJSON CreateTapeWithBarcode' {..} =
+    object
+      (catMaybes
+         [ Just ("GatewayARN" .= _ctwbGatewayARN)
+         , Just ("TapeSizeInBytes" .= _ctwbTapeSizeInBytes)
+         , Just ("TapeBarcode" .= _ctwbTapeBarcode)
+         ])
 
 instance ToPath CreateTapeWithBarcode where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateTapeWithBarcode where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | CreateTapeOutput
 --
 --
 --
 -- /See:/ 'createTapeWithBarcodeResponse' smart constructor.
-data CreateTapeWithBarcodeResponse = CreateTapeWithBarcodeResponse'
-  { _ctwbrsTapeARN        :: !(Maybe Text)
-  , _ctwbrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTapeWithBarcodeResponse =
+  CreateTapeWithBarcodeResponse'
+    { _ctwbrsTapeARN        :: !(Maybe Text)
+    , _ctwbrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTapeWithBarcodeResponse' with the minimum fields required to make a request.
 --
@@ -148,20 +145,20 @@ data CreateTapeWithBarcodeResponse = CreateTapeWithBarcodeResponse'
 -- * 'ctwbrsTapeARN' - A unique Amazon Resource Name (ARN) that represents the virtual tape that was created.
 --
 -- * 'ctwbrsResponseStatus' - -- | The response status code.
-createTapeWithBarcodeResponse
-    :: Int -- ^ 'ctwbrsResponseStatus'
-    -> CreateTapeWithBarcodeResponse
+createTapeWithBarcodeResponse ::
+     Int -- ^ 'ctwbrsResponseStatus'
+  -> CreateTapeWithBarcodeResponse
 createTapeWithBarcodeResponse pResponseStatus_ =
   CreateTapeWithBarcodeResponse'
     {_ctwbrsTapeARN = Nothing, _ctwbrsResponseStatus = pResponseStatus_}
 
-
 -- | A unique Amazon Resource Name (ARN) that represents the virtual tape that was created.
 ctwbrsTapeARN :: Lens' CreateTapeWithBarcodeResponse (Maybe Text)
-ctwbrsTapeARN = lens _ctwbrsTapeARN (\ s a -> s{_ctwbrsTapeARN = a})
+ctwbrsTapeARN = lens _ctwbrsTapeARN (\s a -> s {_ctwbrsTapeARN = a})
 
 -- | -- | The response status code.
 ctwbrsResponseStatus :: Lens' CreateTapeWithBarcodeResponse Int
-ctwbrsResponseStatus = lens _ctwbrsResponseStatus (\ s a -> s{_ctwbrsResponseStatus = a})
+ctwbrsResponseStatus =
+  lens _ctwbrsResponseStatus (\s a -> s {_ctwbrsResponseStatus = a})
 
-instance NFData CreateTapeWithBarcodeResponse where
+instance NFData CreateTapeWithBarcodeResponse

@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.AWSHealth.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,129 +10,111 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.AWSHealth.Types
-    (
     -- * Service Configuration
-      awsHealth
-
+  ( awsHealth
     -- * Errors
-    , _InvalidPaginationToken
-    , _UnsupportedLocale
-
+  , _InvalidPaginationToken
+  , _UnsupportedLocale
     -- * EntityStatusCode
-    , EntityStatusCode (..)
-
+  , EntityStatusCode(..)
     -- * EventAggregateField
-    , EventAggregateField (..)
-
+  , EventAggregateField(..)
     -- * EventStatusCode
-    , EventStatusCode (..)
-
+  , EventStatusCode(..)
     -- * EventTypeCategory
-    , EventTypeCategory (..)
-
+  , EventTypeCategory(..)
     -- * AffectedEntity
-    , AffectedEntity
-    , affectedEntity
-    , aeLastUpdatedTime
-    , aeEntityValue
-    , aeAwsAccountId
-    , aeEventARN
-    , aeEntityARN
-    , aeTags
-    , aeStatusCode
-
+  , AffectedEntity
+  , affectedEntity
+  , aeLastUpdatedTime
+  , aeEntityValue
+  , aeAwsAccountId
+  , aeEventARN
+  , aeEntityARN
+  , aeTags
+  , aeStatusCode
     -- * DateTimeRange
-    , DateTimeRange
-    , dateTimeRange
-    , dtrTo
-    , dtrFrom
-
+  , DateTimeRange
+  , dateTimeRange
+  , dtrTo
+  , dtrFrom
     -- * EntityAggregate
-    , EntityAggregate
-    , entityAggregate
-    , eCount
-    , eEventARN
-
+  , EntityAggregate
+  , entityAggregate
+  , eCount
+  , eEventARN
     -- * EntityFilter
-    , EntityFilter
-    , entityFilter
-    , eStatusCodes
-    , eEntityARNs
-    , eEntityValues
-    , eTags
-    , eLastUpdatedTimes
-    , eEventARNs
-
+  , EntityFilter
+  , entityFilter
+  , eStatusCodes
+  , eEntityARNs
+  , eEntityValues
+  , eTags
+  , eLastUpdatedTimes
+  , eEventARNs
     -- * Event
-    , Event
-    , event
-    , eLastUpdatedTime
-    , eArn
-    , eService
-    , eStartTime
-    , eEventTypeCode
-    , eEventTypeCategory
-    , eAvailabilityZone
-    , eEndTime
-    , eRegion
-    , eStatusCode
-
+  , Event
+  , event
+  , eLastUpdatedTime
+  , eArn
+  , eService
+  , eStartTime
+  , eEventTypeCode
+  , eEventTypeCategory
+  , eAvailabilityZone
+  , eEndTime
+  , eRegion
+  , eStatusCode
     -- * EventAggregate
-    , EventAggregate
-    , eventAggregate
-    , eaCount
-    , eaAggregateValue
-
+  , EventAggregate
+  , eventAggregate
+  , eaCount
+  , eaAggregateValue
     -- * EventDescription
-    , EventDescription
-    , eventDescription
-    , edLatestDescription
-
+  , EventDescription
+  , eventDescription
+  , edLatestDescription
     -- * EventDetails
-    , EventDetails
-    , eventDetails
-    , edEvent
-    , edEventDescription
-    , edEventMetadata
-
+  , EventDetails
+  , eventDetails
+  , edEvent
+  , edEventDescription
+  , edEventMetadata
     -- * EventDetailsErrorItem
-    , EventDetailsErrorItem
-    , eventDetailsErrorItem
-    , edeiEventARN
-    , edeiErrorName
-    , edeiErrorMessage
-
+  , EventDetailsErrorItem
+  , eventDetailsErrorItem
+  , edeiEventARN
+  , edeiErrorName
+  , edeiErrorMessage
     -- * EventFilter
-    , EventFilter
-    , eventFilter
-    , efEventARNs
-    , efEventTypeCategories
-    , efEventTypeCodes
-    , efRegions
-    , efEventStatusCodes
-    , efEndTimes
-    , efAvailabilityZones
-    , efEntityARNs
-    , efEntityValues
-    , efStartTimes
-    , efServices
-    , efTags
-    , efLastUpdatedTimes
-
+  , EventFilter
+  , eventFilter
+  , efEventARNs
+  , efEventTypeCategories
+  , efEventTypeCodes
+  , efRegions
+  , efEventStatusCodes
+  , efEndTimes
+  , efAvailabilityZones
+  , efEntityARNs
+  , efEntityValues
+  , efStartTimes
+  , efServices
+  , efTags
+  , efLastUpdatedTimes
     -- * EventType
-    , EventType
-    , eventType
-    , etService
-    , etCategory
-    , etCode
-
+  , EventType
+  , eventType
+  , etService
+  , etCategory
+  , etCode
     -- * EventTypeFilter
-    , EventTypeFilter
-    , eventTypeFilter
-    , etfEventTypeCategories
-    , etfEventTypeCodes
-    , etfServices
-    ) where
+  , EventTypeFilter
+  , eventTypeFilter
+  , etfEventTypeCategories
+  , etfEventTypeCodes
+  , etfServices
+  ) where
 
 import Network.AWS.AWSHealth.Types.Product
 import Network.AWS.AWSHealth.Types.Sum
@@ -179,17 +160,15 @@ awsHealth =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The specified pagination token (@nextToken@ ) is not valid.
 --
 --
-_InvalidPaginationToken :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidPaginationToken ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidPaginationToken = _MatchServiceError awsHealth "InvalidPaginationToken"
-
 
 -- | The specified locale is not supported.
 --
 --
 _UnsupportedLocale :: AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedLocale = _MatchServiceError awsHealth "UnsupportedLocale"
-

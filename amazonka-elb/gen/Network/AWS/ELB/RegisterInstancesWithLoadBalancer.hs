@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ELB.RegisterInstancesWithLoadBalancer
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -32,21 +30,19 @@
 -- For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html Register or De-Register EC2 Instances> in the /Classic Load Balancer Guide/ .
 --
 module Network.AWS.ELB.RegisterInstancesWithLoadBalancer
-    (
     -- * Creating a Request
-      registerInstancesWithLoadBalancer
-    , RegisterInstancesWithLoadBalancer
+  ( registerInstancesWithLoadBalancer
+  , RegisterInstancesWithLoadBalancer
     -- * Request Lenses
-    , riwlbLoadBalancerName
-    , riwlbInstances
-
+  , riwlbLoadBalancerName
+  , riwlbInstances
     -- * Destructuring the Response
-    , registerInstancesWithLoadBalancerResponse
-    , RegisterInstancesWithLoadBalancerResponse
+  , registerInstancesWithLoadBalancerResponse
+  , RegisterInstancesWithLoadBalancerResponse
     -- * Response Lenses
-    , riwlbrsInstances
-    , riwlbrsResponseStatus
-    ) where
+  , riwlbrsInstances
+  , riwlbrsResponseStatus
+  ) where
 
 import Network.AWS.ELB.Types
 import Network.AWS.ELB.Types.Product
@@ -60,11 +56,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'registerInstancesWithLoadBalancer' smart constructor.
-data RegisterInstancesWithLoadBalancer = RegisterInstancesWithLoadBalancer'
-  { _riwlbLoadBalancerName :: !Text
-  , _riwlbInstances        :: ![Instance]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterInstancesWithLoadBalancer =
+  RegisterInstancesWithLoadBalancer'
+    { _riwlbLoadBalancerName :: !Text
+    , _riwlbInstances        :: ![Instance]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterInstancesWithLoadBalancer' with the minimum fields required to make a request.
 --
@@ -73,70 +70,64 @@ data RegisterInstancesWithLoadBalancer = RegisterInstancesWithLoadBalancer'
 -- * 'riwlbLoadBalancerName' - The name of the load balancer.
 --
 -- * 'riwlbInstances' - The IDs of the instances.
-registerInstancesWithLoadBalancer
-    :: Text -- ^ 'riwlbLoadBalancerName'
-    -> RegisterInstancesWithLoadBalancer
+registerInstancesWithLoadBalancer ::
+     Text -- ^ 'riwlbLoadBalancerName'
+  -> RegisterInstancesWithLoadBalancer
 registerInstancesWithLoadBalancer pLoadBalancerName_ =
   RegisterInstancesWithLoadBalancer'
     {_riwlbLoadBalancerName = pLoadBalancerName_, _riwlbInstances = mempty}
 
-
 -- | The name of the load balancer.
 riwlbLoadBalancerName :: Lens' RegisterInstancesWithLoadBalancer Text
-riwlbLoadBalancerName = lens _riwlbLoadBalancerName (\ s a -> s{_riwlbLoadBalancerName = a})
+riwlbLoadBalancerName =
+  lens _riwlbLoadBalancerName (\s a -> s {_riwlbLoadBalancerName = a})
 
 -- | The IDs of the instances.
 riwlbInstances :: Lens' RegisterInstancesWithLoadBalancer [Instance]
-riwlbInstances = lens _riwlbInstances (\ s a -> s{_riwlbInstances = a}) . _Coerce
+riwlbInstances =
+  lens _riwlbInstances (\s a -> s {_riwlbInstances = a}) . _Coerce
 
-instance AWSRequest RegisterInstancesWithLoadBalancer
-         where
-        type Rs RegisterInstancesWithLoadBalancer =
-             RegisterInstancesWithLoadBalancerResponse
-        request = postQuery elb
-        response
-          = receiveXMLWrapper
-              "RegisterInstancesWithLoadBalancerResult"
-              (\ s h x ->
-                 RegisterInstancesWithLoadBalancerResponse' <$>
-                   (x .@? "Instances" .!@ mempty >>=
-                      may (parseXMLList "member"))
-                     <*> (pure (fromEnum s)))
+instance AWSRequest RegisterInstancesWithLoadBalancer where
+  type Rs RegisterInstancesWithLoadBalancer = RegisterInstancesWithLoadBalancerResponse
+  request = postQuery elb
+  response =
+    receiveXMLWrapper
+      "RegisterInstancesWithLoadBalancerResult"
+      (\s h x ->
+         RegisterInstancesWithLoadBalancerResponse' <$>
+         (x .@? "Instances" .!@ mempty >>= may (parseXMLList "member")) <*>
+         (pure (fromEnum s)))
 
 instance Hashable RegisterInstancesWithLoadBalancer
-         where
 
 instance NFData RegisterInstancesWithLoadBalancer
-         where
 
-instance ToHeaders RegisterInstancesWithLoadBalancer
-         where
-        toHeaders = const mempty
+instance ToHeaders RegisterInstancesWithLoadBalancer where
+  toHeaders = const mempty
 
-instance ToPath RegisterInstancesWithLoadBalancer
-         where
-        toPath = const "/"
+instance ToPath RegisterInstancesWithLoadBalancer where
+  toPath = const "/"
 
-instance ToQuery RegisterInstancesWithLoadBalancer
-         where
-        toQuery RegisterInstancesWithLoadBalancer'{..}
-          = mconcat
-              ["Action" =:
-                 ("RegisterInstancesWithLoadBalancer" :: ByteString),
-               "Version" =: ("2012-06-01" :: ByteString),
-               "LoadBalancerName" =: _riwlbLoadBalancerName,
-               "Instances" =: toQueryList "member" _riwlbInstances]
+instance ToQuery RegisterInstancesWithLoadBalancer where
+  toQuery RegisterInstancesWithLoadBalancer' {..} =
+    mconcat
+      [ "Action" =: ("RegisterInstancesWithLoadBalancer" :: ByteString)
+      , "Version" =: ("2012-06-01" :: ByteString)
+      , "LoadBalancerName" =: _riwlbLoadBalancerName
+      , "Instances" =: toQueryList "member" _riwlbInstances
+      ]
 
 -- | Contains the output of RegisterInstancesWithLoadBalancer.
 --
 --
 --
 -- /See:/ 'registerInstancesWithLoadBalancerResponse' smart constructor.
-data RegisterInstancesWithLoadBalancerResponse = RegisterInstancesWithLoadBalancerResponse'
-  { _riwlbrsInstances      :: !(Maybe [Instance])
-  , _riwlbrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterInstancesWithLoadBalancerResponse =
+  RegisterInstancesWithLoadBalancerResponse'
+    { _riwlbrsInstances      :: !(Maybe [Instance])
+    , _riwlbrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterInstancesWithLoadBalancerResponse' with the minimum fields required to make a request.
 --
@@ -145,22 +136,22 @@ data RegisterInstancesWithLoadBalancerResponse = RegisterInstancesWithLoadBalanc
 -- * 'riwlbrsInstances' - The updated list of instances for the load balancer.
 --
 -- * 'riwlbrsResponseStatus' - -- | The response status code.
-registerInstancesWithLoadBalancerResponse
-    :: Int -- ^ 'riwlbrsResponseStatus'
-    -> RegisterInstancesWithLoadBalancerResponse
+registerInstancesWithLoadBalancerResponse ::
+     Int -- ^ 'riwlbrsResponseStatus'
+  -> RegisterInstancesWithLoadBalancerResponse
 registerInstancesWithLoadBalancerResponse pResponseStatus_ =
   RegisterInstancesWithLoadBalancerResponse'
     {_riwlbrsInstances = Nothing, _riwlbrsResponseStatus = pResponseStatus_}
 
-
 -- | The updated list of instances for the load balancer.
 riwlbrsInstances :: Lens' RegisterInstancesWithLoadBalancerResponse [Instance]
-riwlbrsInstances = lens _riwlbrsInstances (\ s a -> s{_riwlbrsInstances = a}) . _Default . _Coerce
+riwlbrsInstances =
+  lens _riwlbrsInstances (\s a -> s {_riwlbrsInstances = a}) .
+  _Default . _Coerce
 
 -- | -- | The response status code.
 riwlbrsResponseStatus :: Lens' RegisterInstancesWithLoadBalancerResponse Int
-riwlbrsResponseStatus = lens _riwlbrsResponseStatus (\ s a -> s{_riwlbrsResponseStatus = a})
+riwlbrsResponseStatus =
+  lens _riwlbrsResponseStatus (\s a -> s {_riwlbrsResponseStatus = a})
 
-instance NFData
-           RegisterInstancesWithLoadBalancerResponse
-         where
+instance NFData RegisterInstancesWithLoadBalancerResponse

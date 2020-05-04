@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Lambda
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,327 +17,246 @@
 -- This is the /AWS Lambda API Reference/ . The AWS Lambda Developer Guide provides additional information. For the service overview, see <http://docs.aws.amazon.com/lambda/latest/dg/welcome.html What is AWS Lambda> , and for information about how the service works, see <http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html AWS Lambda: How it Works> in the __AWS Lambda Developer Guide__ .
 --
 module Network.AWS.Lambda
-    (
     -- * Service Configuration
-      lambda
-
+  ( lambda
     -- * Errors
     -- $errors
-
     -- ** KMSInvalidStateException
-    , _KMSInvalidStateException
-
+  , _KMSInvalidStateException
     -- ** EC2ThrottledException
-    , _EC2ThrottledException
-
+  , _EC2ThrottledException
     -- ** InvalidRuntimeException
-    , _InvalidRuntimeException
-
+  , _InvalidRuntimeException
     -- ** PolicyLengthExceededException
-    , _PolicyLengthExceededException
-
+  , _PolicyLengthExceededException
     -- ** PreconditionFailedException
-    , _PreconditionFailedException
-
+  , _PreconditionFailedException
     -- ** EC2AccessDeniedException
-    , _EC2AccessDeniedException
-
+  , _EC2AccessDeniedException
     -- ** InvalidSubnetIdException
-    , _InvalidSubnetIdException
-
+  , _InvalidSubnetIdException
     -- ** UnsupportedMediaTypeException
-    , _UnsupportedMediaTypeException
-
+  , _UnsupportedMediaTypeException
     -- ** InvalidRequestContentException
-    , _InvalidRequestContentException
-
+  , _InvalidRequestContentException
     -- ** KMSNotFoundException
-    , _KMSNotFoundException
-
+  , _KMSNotFoundException
     -- ** ENILimitReachedException
-    , _ENILimitReachedException
-
+  , _ENILimitReachedException
     -- ** InvalidParameterValueException
-    , _InvalidParameterValueException
-
+  , _InvalidParameterValueException
     -- ** RequestTooLargeException
-    , _RequestTooLargeException
-
+  , _RequestTooLargeException
     -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
+  , _TooManyRequestsException
     -- ** InvalidSecurityGroupIdException
-    , _InvalidSecurityGroupIdException
-
+  , _InvalidSecurityGroupIdException
     -- ** KMSDisabledException
-    , _KMSDisabledException
-
+  , _KMSDisabledException
     -- ** SubnetIPAddressLimitReachedException
-    , _SubnetIPAddressLimitReachedException
-
+  , _SubnetIPAddressLimitReachedException
     -- ** ServiceException
-    , _ServiceException
-
+  , _ServiceException
     -- ** CodeStorageExceededException
-    , _CodeStorageExceededException
-
+  , _CodeStorageExceededException
     -- ** InvalidZipFileException
-    , _InvalidZipFileException
-
+  , _InvalidZipFileException
     -- ** ResourceConflictException
-    , _ResourceConflictException
-
+  , _ResourceConflictException
     -- ** EC2UnexpectedException
-    , _EC2UnexpectedException
-
+  , _EC2UnexpectedException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- ** KMSAccessDeniedException
-    , _KMSAccessDeniedException
-
+  , _KMSAccessDeniedException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** GetFunctionConfiguration
-    , module Network.AWS.Lambda.GetFunctionConfiguration
-
+  , module Network.AWS.Lambda.GetFunctionConfiguration
     -- ** DeleteEventSourceMapping
-    , module Network.AWS.Lambda.DeleteEventSourceMapping
-
+  , module Network.AWS.Lambda.DeleteEventSourceMapping
     -- ** UpdateEventSourceMapping
-    , module Network.AWS.Lambda.UpdateEventSourceMapping
-
+  , module Network.AWS.Lambda.UpdateEventSourceMapping
     -- ** CreateAlias
-    , module Network.AWS.Lambda.CreateAlias
-
+  , module Network.AWS.Lambda.CreateAlias
     -- ** ListVersionsByFunction
-    , module Network.AWS.Lambda.ListVersionsByFunction
-
+  , module Network.AWS.Lambda.ListVersionsByFunction
     -- ** ListAliases (Paginated)
-    , module Network.AWS.Lambda.ListAliases
-
+  , module Network.AWS.Lambda.ListAliases
     -- ** RemovePermission
-    , module Network.AWS.Lambda.RemovePermission
-
+  , module Network.AWS.Lambda.RemovePermission
     -- ** Invoke
-    , module Network.AWS.Lambda.Invoke
-
+  , module Network.AWS.Lambda.Invoke
     -- ** GetAlias
-    , module Network.AWS.Lambda.GetAlias
-
+  , module Network.AWS.Lambda.GetAlias
     -- ** GetEventSourceMapping
-    , module Network.AWS.Lambda.GetEventSourceMapping
-
+  , module Network.AWS.Lambda.GetEventSourceMapping
     -- ** PutFunctionConcurrency
-    , module Network.AWS.Lambda.PutFunctionConcurrency
-
+  , module Network.AWS.Lambda.PutFunctionConcurrency
     -- ** CreateFunction
-    , module Network.AWS.Lambda.CreateFunction
-
+  , module Network.AWS.Lambda.CreateFunction
     -- ** DeleteFunctionConcurrency
-    , module Network.AWS.Lambda.DeleteFunctionConcurrency
-
+  , module Network.AWS.Lambda.DeleteFunctionConcurrency
     -- ** CreateEventSourceMapping
-    , module Network.AWS.Lambda.CreateEventSourceMapping
-
+  , module Network.AWS.Lambda.CreateEventSourceMapping
     -- ** GetFunction
-    , module Network.AWS.Lambda.GetFunction
-
+  , module Network.AWS.Lambda.GetFunction
     -- ** ListEventSourceMappings (Paginated)
-    , module Network.AWS.Lambda.ListEventSourceMappings
-
+  , module Network.AWS.Lambda.ListEventSourceMappings
     -- ** DeleteAlias
-    , module Network.AWS.Lambda.DeleteAlias
-
+  , module Network.AWS.Lambda.DeleteAlias
     -- ** UpdateAlias
-    , module Network.AWS.Lambda.UpdateAlias
-
+  , module Network.AWS.Lambda.UpdateAlias
     -- ** GetAccountSettings
-    , module Network.AWS.Lambda.GetAccountSettings
-
+  , module Network.AWS.Lambda.GetAccountSettings
     -- ** AddPermission
-    , module Network.AWS.Lambda.AddPermission
-
+  , module Network.AWS.Lambda.AddPermission
     -- ** TagResource
-    , module Network.AWS.Lambda.TagResource
-
+  , module Network.AWS.Lambda.TagResource
     -- ** PublishVersion
-    , module Network.AWS.Lambda.PublishVersion
-
+  , module Network.AWS.Lambda.PublishVersion
     -- ** ListTags
-    , module Network.AWS.Lambda.ListTags
-
+  , module Network.AWS.Lambda.ListTags
     -- ** DeleteFunction
-    , module Network.AWS.Lambda.DeleteFunction
-
+  , module Network.AWS.Lambda.DeleteFunction
     -- ** UntagResource
-    , module Network.AWS.Lambda.UntagResource
-
+  , module Network.AWS.Lambda.UntagResource
     -- ** UpdateFunctionConfiguration
-    , module Network.AWS.Lambda.UpdateFunctionConfiguration
-
+  , module Network.AWS.Lambda.UpdateFunctionConfiguration
     -- ** ListFunctions (Paginated)
-    , module Network.AWS.Lambda.ListFunctions
-
+  , module Network.AWS.Lambda.ListFunctions
     -- ** UpdateFunctionCode
-    , module Network.AWS.Lambda.UpdateFunctionCode
-
+  , module Network.AWS.Lambda.UpdateFunctionCode
     -- ** GetPolicy
-    , module Network.AWS.Lambda.GetPolicy
-
+  , module Network.AWS.Lambda.GetPolicy
     -- * Types
-
     -- ** EventSourcePosition
-    , EventSourcePosition (..)
-
+  , EventSourcePosition(..)
     -- ** FunctionVersion
-    , FunctionVersion (..)
-
+  , FunctionVersion(..)
     -- ** InvocationType
-    , InvocationType (..)
-
+  , InvocationType(..)
     -- ** LogType
-    , LogType (..)
-
+  , LogType(..)
     -- ** Runtime
-    , Runtime (..)
-
+  , Runtime(..)
     -- ** TracingMode
-    , TracingMode (..)
-
+  , TracingMode(..)
     -- ** AccountLimit
-    , AccountLimit
-    , accountLimit
-    , alConcurrentExecutions
-    , alTotalCodeSize
-    , alUnreservedConcurrentExecutions
-    , alCodeSizeUnzipped
-    , alCodeSizeZipped
-
+  , AccountLimit
+  , accountLimit
+  , alConcurrentExecutions
+  , alTotalCodeSize
+  , alUnreservedConcurrentExecutions
+  , alCodeSizeUnzipped
+  , alCodeSizeZipped
     -- ** AccountUsage
-    , AccountUsage
-    , accountUsage
-    , auTotalCodeSize
-    , auFunctionCount
-
+  , AccountUsage
+  , accountUsage
+  , auTotalCodeSize
+  , auFunctionCount
     -- ** AliasConfiguration
-    , AliasConfiguration
-    , aliasConfiguration
-    , acRoutingConfig
-    , acName
-    , acFunctionVersion
-    , acAliasARN
-    , acDescription
-    , acRevisionId
-
+  , AliasConfiguration
+  , aliasConfiguration
+  , acRoutingConfig
+  , acName
+  , acFunctionVersion
+  , acAliasARN
+  , acDescription
+  , acRevisionId
     -- ** AliasRoutingConfiguration
-    , AliasRoutingConfiguration
-    , aliasRoutingConfiguration
-    , arcAdditionalVersionWeights
-
+  , AliasRoutingConfiguration
+  , aliasRoutingConfiguration
+  , arcAdditionalVersionWeights
     -- ** Concurrency
-    , Concurrency
-    , concurrency
-    , cReservedConcurrentExecutions
-
+  , Concurrency
+  , concurrency
+  , cReservedConcurrentExecutions
     -- ** DeadLetterConfig
-    , DeadLetterConfig
-    , deadLetterConfig
-    , dlcTargetARN
-
+  , DeadLetterConfig
+  , deadLetterConfig
+  , dlcTargetARN
     -- ** Environment
-    , Environment
-    , environment
-    , eVariables
-
+  , Environment
+  , environment
+  , eVariables
     -- ** EnvironmentError
-    , EnvironmentError
-    , environmentError
-    , eeErrorCode
-    , eeMessage
-
+  , EnvironmentError
+  , environmentError
+  , eeErrorCode
+  , eeMessage
     -- ** EnvironmentResponse
-    , EnvironmentResponse
-    , environmentResponse
-    , envVariables
-    , envError
-
+  , EnvironmentResponse
+  , environmentResponse
+  , envVariables
+  , envError
     -- ** EventSourceMappingConfiguration
-    , EventSourceMappingConfiguration
-    , eventSourceMappingConfiguration
-    , esmcEventSourceARN
-    , esmcState
-    , esmcFunctionARN
-    , esmcUUId
-    , esmcLastProcessingResult
-    , esmcBatchSize
-    , esmcStateTransitionReason
-    , esmcLastModified
-
+  , EventSourceMappingConfiguration
+  , eventSourceMappingConfiguration
+  , esmcEventSourceARN
+  , esmcState
+  , esmcFunctionARN
+  , esmcUUId
+  , esmcLastProcessingResult
+  , esmcBatchSize
+  , esmcStateTransitionReason
+  , esmcLastModified
     -- ** FunctionCode
-    , FunctionCode
-    , functionCode
-    , fcS3ObjectVersion
-    , fcS3Key
-    , fcZipFile
-    , fcS3Bucket
-
+  , FunctionCode
+  , functionCode
+  , fcS3ObjectVersion
+  , fcS3Key
+  , fcZipFile
+  , fcS3Bucket
     -- ** FunctionCodeLocation
-    , FunctionCodeLocation
-    , functionCodeLocation
-    , fclLocation
-    , fclRepositoryType
-
+  , FunctionCodeLocation
+  , functionCodeLocation
+  , fclLocation
+  , fclRepositoryType
     -- ** FunctionConfiguration
-    , FunctionConfiguration
-    , functionConfiguration
-    , fcMemorySize
-    , fcRuntime
-    , fcFunctionARN
-    , fcKMSKeyARN
-    , fcEnvironment
-    , fcDeadLetterConfig
-    , fcRole
-    , fcVPCConfig
-    , fcVersion
-    , fcFunctionName
-    , fcCodeSize
-    , fcHandler
-    , fcTimeout
-    , fcLastModified
-    , fcCodeSha256
-    , fcTracingConfig
-    , fcDescription
-    , fcRevisionId
-    , fcMasterARN
-
+  , FunctionConfiguration
+  , functionConfiguration
+  , fcMemorySize
+  , fcRuntime
+  , fcFunctionARN
+  , fcKMSKeyARN
+  , fcEnvironment
+  , fcDeadLetterConfig
+  , fcRole
+  , fcVPCConfig
+  , fcVersion
+  , fcFunctionName
+  , fcCodeSize
+  , fcHandler
+  , fcTimeout
+  , fcLastModified
+  , fcCodeSha256
+  , fcTracingConfig
+  , fcDescription
+  , fcRevisionId
+  , fcMasterARN
     -- ** TracingConfig
-    , TracingConfig
-    , tracingConfig
-    , tMode
-
+  , TracingConfig
+  , tracingConfig
+  , tMode
     -- ** TracingConfigResponse
-    , TracingConfigResponse
-    , tracingConfigResponse
-    , tcMode
-
+  , TracingConfigResponse
+  , tracingConfigResponse
+  , tcMode
     -- ** VPCConfig
-    , VPCConfig
-    , vpcConfig
-    , vpccSecurityGroupIds
-    , vpccSubnetIds
-
+  , VPCConfig
+  , vpcConfig
+  , vpccSecurityGroupIds
+  , vpccSubnetIds
     -- ** VPCConfigResponse
-    , VPCConfigResponse
-    , vpcConfigResponse
-    , vcSecurityGroupIds
-    , vcSubnetIds
-    , vcVPCId
-    ) where
+  , VPCConfigResponse
+  , vpcConfigResponse
+  , vcSecurityGroupIds
+  , vcSubnetIds
+  , vcVPCId
+  ) where
 
 import Network.AWS.Lambda.AddPermission
 import Network.AWS.Lambda.CreateAlias
@@ -371,14 +289,12 @@ import Network.AWS.Lambda.UpdateEventSourceMapping
 import Network.AWS.Lambda.UpdateFunctionCode
 import Network.AWS.Lambda.UpdateFunctionConfiguration
 import Network.AWS.Lambda.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Lambda'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -395,7 +311,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

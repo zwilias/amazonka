@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.CreateKeyPair
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,23 +26,21 @@
 -- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html Key Pairs> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 module Network.AWS.EC2.CreateKeyPair
-    (
     -- * Creating a Request
-      createKeyPair
-    , CreateKeyPair
+  ( createKeyPair
+  , CreateKeyPair
     -- * Request Lenses
-    , ckpDryRun
-    , ckpKeyName
-
+  , ckpDryRun
+  , ckpKeyName
     -- * Destructuring the Response
-    , createKeyPairResponse
-    , CreateKeyPairResponse
+  , createKeyPairResponse
+  , CreateKeyPairResponse
     -- * Response Lenses
-    , ckprsResponseStatus
-    , ckprsKeyName
-    , ckprsKeyFingerprint
-    , ckprsKeyMaterial
-    ) where
+  , ckprsResponseStatus
+  , ckprsKeyName
+  , ckprsKeyFingerprint
+  , ckprsKeyMaterial
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -58,11 +54,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createKeyPair' smart constructor.
-data CreateKeyPair = CreateKeyPair'
-  { _ckpDryRun  :: !(Maybe Bool)
-  , _ckpKeyName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateKeyPair =
+  CreateKeyPair'
+    { _ckpDryRun  :: !(Maybe Bool)
+    , _ckpKeyName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateKeyPair' with the minimum fields required to make a request.
 --
@@ -71,61 +68,62 @@ data CreateKeyPair = CreateKeyPair'
 -- * 'ckpDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
 -- * 'ckpKeyName' - A unique name for the key pair. Constraints: Up to 255 ASCII characters
-createKeyPair
-    :: Text -- ^ 'ckpKeyName'
-    -> CreateKeyPair
+createKeyPair ::
+     Text -- ^ 'ckpKeyName'
+  -> CreateKeyPair
 createKeyPair pKeyName_ =
   CreateKeyPair' {_ckpDryRun = Nothing, _ckpKeyName = pKeyName_}
 
-
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 ckpDryRun :: Lens' CreateKeyPair (Maybe Bool)
-ckpDryRun = lens _ckpDryRun (\ s a -> s{_ckpDryRun = a})
+ckpDryRun = lens _ckpDryRun (\s a -> s {_ckpDryRun = a})
 
 -- | A unique name for the key pair. Constraints: Up to 255 ASCII characters
 ckpKeyName :: Lens' CreateKeyPair Text
-ckpKeyName = lens _ckpKeyName (\ s a -> s{_ckpKeyName = a})
+ckpKeyName = lens _ckpKeyName (\s a -> s {_ckpKeyName = a})
 
 instance AWSRequest CreateKeyPair where
-        type Rs CreateKeyPair = CreateKeyPairResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 CreateKeyPairResponse' <$>
-                   (pure (fromEnum s)) <*> (x .@ "keyName") <*>
-                     (x .@ "keyFingerprint")
-                     <*> (x .@ "keyMaterial"))
+  type Rs CreateKeyPair = CreateKeyPairResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         CreateKeyPairResponse' <$> (pure (fromEnum s)) <*> (x .@ "keyName") <*>
+         (x .@ "keyFingerprint") <*>
+         (x .@ "keyMaterial"))
 
-instance Hashable CreateKeyPair where
+instance Hashable CreateKeyPair
 
-instance NFData CreateKeyPair where
+instance NFData CreateKeyPair
 
 instance ToHeaders CreateKeyPair where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath CreateKeyPair where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateKeyPair where
-        toQuery CreateKeyPair'{..}
-          = mconcat
-              ["Action" =: ("CreateKeyPair" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _ckpDryRun, "KeyName" =: _ckpKeyName]
+  toQuery CreateKeyPair' {..} =
+    mconcat
+      [ "Action" =: ("CreateKeyPair" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "DryRun" =: _ckpDryRun
+      , "KeyName" =: _ckpKeyName
+      ]
 
 -- | Describes a key pair.
 --
 --
 --
 -- /See:/ 'createKeyPairResponse' smart constructor.
-data CreateKeyPairResponse = CreateKeyPairResponse'
-  { _ckprsResponseStatus :: !Int
-  , _ckprsKeyName        :: !Text
-  , _ckprsKeyFingerprint :: !Text
-  , _ckprsKeyMaterial    :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateKeyPairResponse =
+  CreateKeyPairResponse'
+    { _ckprsResponseStatus :: !Int
+    , _ckprsKeyName        :: !Text
+    , _ckprsKeyFingerprint :: !Text
+    , _ckprsKeyMaterial    :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateKeyPairResponse' with the minimum fields required to make a request.
 --
@@ -138,12 +136,12 @@ data CreateKeyPairResponse = CreateKeyPairResponse'
 -- * 'ckprsKeyFingerprint' - The SHA-1 digest of the DER encoded private key.
 --
 -- * 'ckprsKeyMaterial' - An unencrypted PEM encoded RSA private key.
-createKeyPairResponse
-    :: Int -- ^ 'ckprsResponseStatus'
-    -> Text -- ^ 'ckprsKeyName'
-    -> Text -- ^ 'ckprsKeyFingerprint'
-    -> Text -- ^ 'ckprsKeyMaterial'
-    -> CreateKeyPairResponse
+createKeyPairResponse ::
+     Int -- ^ 'ckprsResponseStatus'
+  -> Text -- ^ 'ckprsKeyName'
+  -> Text -- ^ 'ckprsKeyFingerprint'
+  -> Text -- ^ 'ckprsKeyMaterial'
+  -> CreateKeyPairResponse
 createKeyPairResponse pResponseStatus_ pKeyName_ pKeyFingerprint_ pKeyMaterial_ =
   CreateKeyPairResponse'
     { _ckprsResponseStatus = pResponseStatus_
@@ -152,21 +150,22 @@ createKeyPairResponse pResponseStatus_ pKeyName_ pKeyFingerprint_ pKeyMaterial_ 
     , _ckprsKeyMaterial = pKeyMaterial_
     }
 
-
 -- | -- | The response status code.
 ckprsResponseStatus :: Lens' CreateKeyPairResponse Int
-ckprsResponseStatus = lens _ckprsResponseStatus (\ s a -> s{_ckprsResponseStatus = a})
+ckprsResponseStatus =
+  lens _ckprsResponseStatus (\s a -> s {_ckprsResponseStatus = a})
 
 -- | The name of the key pair.
 ckprsKeyName :: Lens' CreateKeyPairResponse Text
-ckprsKeyName = lens _ckprsKeyName (\ s a -> s{_ckprsKeyName = a})
+ckprsKeyName = lens _ckprsKeyName (\s a -> s {_ckprsKeyName = a})
 
 -- | The SHA-1 digest of the DER encoded private key.
 ckprsKeyFingerprint :: Lens' CreateKeyPairResponse Text
-ckprsKeyFingerprint = lens _ckprsKeyFingerprint (\ s a -> s{_ckprsKeyFingerprint = a})
+ckprsKeyFingerprint =
+  lens _ckprsKeyFingerprint (\s a -> s {_ckprsKeyFingerprint = a})
 
 -- | An unencrypted PEM encoded RSA private key.
 ckprsKeyMaterial :: Lens' CreateKeyPairResponse Text
-ckprsKeyMaterial = lens _ckprsKeyMaterial (\ s a -> s{_ckprsKeyMaterial = a})
+ckprsKeyMaterial = lens _ckprsKeyMaterial (\s a -> s {_ckprsKeyMaterial = a})
 
-instance NFData CreateKeyPairResponse where
+instance NFData CreateKeyPairResponse

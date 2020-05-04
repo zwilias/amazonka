@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudFront.ListDistributionsByWebACLId
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +20,20 @@
 --
 --
 module Network.AWS.CloudFront.ListDistributionsByWebACLId
-    (
     -- * Creating a Request
-      listDistributionsByWebACLId
-    , ListDistributionsByWebACLId
+  ( listDistributionsByWebACLId
+  , ListDistributionsByWebACLId
     -- * Request Lenses
-    , ldbwaiMarker
-    , ldbwaiMaxItems
-    , ldbwaiWebACLId
-
+  , ldbwaiMarker
+  , ldbwaiMaxItems
+  , ldbwaiWebACLId
     -- * Destructuring the Response
-    , listDistributionsByWebACLIdResponse
-    , ListDistributionsByWebACLIdResponse
+  , listDistributionsByWebACLIdResponse
+  , ListDistributionsByWebACLIdResponse
     -- * Response Lenses
-    , ldbwairsDistributionList
-    , ldbwairsResponseStatus
-    ) where
+  , ldbwairsDistributionList
+  , ldbwairsResponseStatus
+  ) where
 
 import Network.AWS.CloudFront.Types
 import Network.AWS.CloudFront.Types.Product
@@ -51,12 +47,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listDistributionsByWebACLId' smart constructor.
-data ListDistributionsByWebACLId = ListDistributionsByWebACLId'
-  { _ldbwaiMarker   :: !(Maybe Text)
-  , _ldbwaiMaxItems :: !(Maybe Text)
-  , _ldbwaiWebACLId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDistributionsByWebACLId =
+  ListDistributionsByWebACLId'
+    { _ldbwaiMarker   :: !(Maybe Text)
+    , _ldbwaiMaxItems :: !(Maybe Text)
+    , _ldbwaiWebACLId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDistributionsByWebACLId' with the minimum fields required to make a request.
 --
@@ -67,9 +64,9 @@ data ListDistributionsByWebACLId = ListDistributionsByWebACLId'
 -- * 'ldbwaiMaxItems' - The maximum number of distributions that you want CloudFront to return in the response body. The maximum and default values are both 100.
 --
 -- * 'ldbwaiWebACLId' - The ID of the AWS WAF web ACL that you want to list the associated distributions. If you specify "null" for the ID, the request returns a list of the distributions that aren't associated with a web ACL.
-listDistributionsByWebACLId
-    :: Text -- ^ 'ldbwaiWebACLId'
-    -> ListDistributionsByWebACLId
+listDistributionsByWebACLId ::
+     Text -- ^ 'ldbwaiWebACLId'
+  -> ListDistributionsByWebACLId
 listDistributionsByWebACLId pWebACLId_ =
   ListDistributionsByWebACLId'
     { _ldbwaiMarker = Nothing
@@ -77,58 +74,53 @@ listDistributionsByWebACLId pWebACLId_ =
     , _ldbwaiWebACLId = pWebACLId_
     }
 
-
 -- | Use @Marker@ and @MaxItems@ to control pagination of results. If you have more than @MaxItems@ distributions that satisfy the request, the response includes a @NextMarker@ element. To get the next page of results, submit another request. For the value of @Marker@ , specify the value of @NextMarker@ from the last response. (For the first request, omit @Marker@ .)
 ldbwaiMarker :: Lens' ListDistributionsByWebACLId (Maybe Text)
-ldbwaiMarker = lens _ldbwaiMarker (\ s a -> s{_ldbwaiMarker = a})
+ldbwaiMarker = lens _ldbwaiMarker (\s a -> s {_ldbwaiMarker = a})
 
 -- | The maximum number of distributions that you want CloudFront to return in the response body. The maximum and default values are both 100.
 ldbwaiMaxItems :: Lens' ListDistributionsByWebACLId (Maybe Text)
-ldbwaiMaxItems = lens _ldbwaiMaxItems (\ s a -> s{_ldbwaiMaxItems = a})
+ldbwaiMaxItems = lens _ldbwaiMaxItems (\s a -> s {_ldbwaiMaxItems = a})
 
 -- | The ID of the AWS WAF web ACL that you want to list the associated distributions. If you specify "null" for the ID, the request returns a list of the distributions that aren't associated with a web ACL.
 ldbwaiWebACLId :: Lens' ListDistributionsByWebACLId Text
-ldbwaiWebACLId = lens _ldbwaiWebACLId (\ s a -> s{_ldbwaiWebACLId = a})
+ldbwaiWebACLId = lens _ldbwaiWebACLId (\s a -> s {_ldbwaiWebACLId = a})
 
 instance AWSRequest ListDistributionsByWebACLId where
-        type Rs ListDistributionsByWebACLId =
-             ListDistributionsByWebACLIdResponse
-        request = get cloudFront
-        response
-          = receiveXML
-              (\ s h x ->
-                 ListDistributionsByWebACLIdResponse' <$>
-                   (parseXML x) <*> (pure (fromEnum s)))
+  type Rs ListDistributionsByWebACLId = ListDistributionsByWebACLIdResponse
+  request = get cloudFront
+  response =
+    receiveXML
+      (\s h x ->
+         ListDistributionsByWebACLIdResponse' <$> (parseXML x) <*>
+         (pure (fromEnum s)))
 
-instance Hashable ListDistributionsByWebACLId where
+instance Hashable ListDistributionsByWebACLId
 
-instance NFData ListDistributionsByWebACLId where
+instance NFData ListDistributionsByWebACLId
 
 instance ToHeaders ListDistributionsByWebACLId where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath ListDistributionsByWebACLId where
-        toPath ListDistributionsByWebACLId'{..}
-          = mconcat
-              ["/2017-10-30/distributionsByWebACLId/",
-               toBS _ldbwaiWebACLId]
+  toPath ListDistributionsByWebACLId' {..} =
+    mconcat ["/2017-10-30/distributionsByWebACLId/", toBS _ldbwaiWebACLId]
 
 instance ToQuery ListDistributionsByWebACLId where
-        toQuery ListDistributionsByWebACLId'{..}
-          = mconcat
-              ["Marker" =: _ldbwaiMarker,
-               "MaxItems" =: _ldbwaiMaxItems]
+  toQuery ListDistributionsByWebACLId' {..} =
+    mconcat ["Marker" =: _ldbwaiMarker, "MaxItems" =: _ldbwaiMaxItems]
 
 -- | The response to a request to list the distributions that are associated with a specified AWS WAF web ACL.
 --
 --
 --
 -- /See:/ 'listDistributionsByWebACLIdResponse' smart constructor.
-data ListDistributionsByWebACLIdResponse = ListDistributionsByWebACLIdResponse'
-  { _ldbwairsDistributionList :: !(Maybe DistributionList)
-  , _ldbwairsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDistributionsByWebACLIdResponse =
+  ListDistributionsByWebACLIdResponse'
+    { _ldbwairsDistributionList :: !(Maybe DistributionList)
+    , _ldbwairsResponseStatus   :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDistributionsByWebACLIdResponse' with the minimum fields required to make a request.
 --
@@ -137,23 +129,24 @@ data ListDistributionsByWebACLIdResponse = ListDistributionsByWebACLIdResponse'
 -- * 'ldbwairsDistributionList' - The @DistributionList@ type.
 --
 -- * 'ldbwairsResponseStatus' - -- | The response status code.
-listDistributionsByWebACLIdResponse
-    :: Int -- ^ 'ldbwairsResponseStatus'
-    -> ListDistributionsByWebACLIdResponse
+listDistributionsByWebACLIdResponse ::
+     Int -- ^ 'ldbwairsResponseStatus'
+  -> ListDistributionsByWebACLIdResponse
 listDistributionsByWebACLIdResponse pResponseStatus_ =
   ListDistributionsByWebACLIdResponse'
     { _ldbwairsDistributionList = Nothing
     , _ldbwairsResponseStatus = pResponseStatus_
     }
 
-
 -- | The @DistributionList@ type.
-ldbwairsDistributionList :: Lens' ListDistributionsByWebACLIdResponse (Maybe DistributionList)
-ldbwairsDistributionList = lens _ldbwairsDistributionList (\ s a -> s{_ldbwairsDistributionList = a})
+ldbwairsDistributionList ::
+     Lens' ListDistributionsByWebACLIdResponse (Maybe DistributionList)
+ldbwairsDistributionList =
+  lens _ldbwairsDistributionList (\s a -> s {_ldbwairsDistributionList = a})
 
 -- | -- | The response status code.
 ldbwairsResponseStatus :: Lens' ListDistributionsByWebACLIdResponse Int
-ldbwairsResponseStatus = lens _ldbwairsResponseStatus (\ s a -> s{_ldbwairsResponseStatus = a})
+ldbwairsResponseStatus =
+  lens _ldbwairsResponseStatus (\s a -> s {_ldbwairsResponseStatus = a})
 
 instance NFData ListDistributionsByWebACLIdResponse
-         where

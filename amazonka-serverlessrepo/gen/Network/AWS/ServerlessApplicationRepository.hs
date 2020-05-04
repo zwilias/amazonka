@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ServerlessApplicationRepository
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -41,129 +40,102 @@
 --
 --
 module Network.AWS.ServerlessApplicationRepository
-    (
     -- * Service Configuration
-      serverlessApplicationRepository
-
+  ( serverlessApplicationRepository
     -- * Errors
     -- $errors
-
     -- ** ConflictException
-    , _ConflictException
-
+  , _ConflictException
     -- ** ForbiddenException
-    , _ForbiddenException
-
+  , _ForbiddenException
     -- ** NotFoundException
-    , _NotFoundException
-
+  , _NotFoundException
     -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
+  , _TooManyRequestsException
     -- ** InternalServerErrorException
-    , _InternalServerErrorException
-
+  , _InternalServerErrorException
     -- ** BadRequestException
-    , _BadRequestException
-
+  , _BadRequestException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** GetApplicationPolicy
-    , module Network.AWS.ServerlessApplicationRepository.GetApplicationPolicy
-
+  , module Network.AWS.ServerlessApplicationRepository.GetApplicationPolicy
     -- ** CreateApplicationVersion
-    , module Network.AWS.ServerlessApplicationRepository.CreateApplicationVersion
-
+  , module Network.AWS.ServerlessApplicationRepository.CreateApplicationVersion
     -- ** DeleteApplication
-    , module Network.AWS.ServerlessApplicationRepository.DeleteApplication
-
+  , module Network.AWS.ServerlessApplicationRepository.DeleteApplication
     -- ** UpdateApplication
-    , module Network.AWS.ServerlessApplicationRepository.UpdateApplication
-
+  , module Network.AWS.ServerlessApplicationRepository.UpdateApplication
     -- ** CreateApplication
-    , module Network.AWS.ServerlessApplicationRepository.CreateApplication
-
+  , module Network.AWS.ServerlessApplicationRepository.CreateApplication
     -- ** ListApplicationVersions
-    , module Network.AWS.ServerlessApplicationRepository.ListApplicationVersions
-
+  , module Network.AWS.ServerlessApplicationRepository.ListApplicationVersions
     -- ** GetApplication
-    , module Network.AWS.ServerlessApplicationRepository.GetApplication
-
+  , module Network.AWS.ServerlessApplicationRepository.GetApplication
     -- ** CreateCloudFormationChangeSet
-    , module Network.AWS.ServerlessApplicationRepository.CreateCloudFormationChangeSet
-
+  , module Network.AWS.ServerlessApplicationRepository.CreateCloudFormationChangeSet
     -- ** PutApplicationPolicy
-    , module Network.AWS.ServerlessApplicationRepository.PutApplicationPolicy
-
+  , module Network.AWS.ServerlessApplicationRepository.PutApplicationPolicy
     -- ** ListApplications
-    , module Network.AWS.ServerlessApplicationRepository.ListApplications
-
+  , module Network.AWS.ServerlessApplicationRepository.ListApplications
     -- * Types
-
     -- ** ApplicationPolicyStatement
-    , ApplicationPolicyStatement
-    , applicationPolicyStatement
-    , apsStatementId
-    , apsPrincipals
-    , apsActions
-
+  , ApplicationPolicyStatement
+  , applicationPolicyStatement
+  , apsStatementId
+  , apsPrincipals
+  , apsActions
     -- ** ApplicationSummary
-    , ApplicationSummary
-    , applicationSummary
-    , asCreationTime
-    , asHomePageURL
-    , asLabels
-    , asSpdxLicenseId
-    , asDescription
-    , asAuthor
-    , asApplicationId
-    , asName
-
+  , ApplicationSummary
+  , applicationSummary
+  , asCreationTime
+  , asHomePageURL
+  , asLabels
+  , asSpdxLicenseId
+  , asDescription
+  , asAuthor
+  , asApplicationId
+  , asName
     -- ** ParameterDefinition
-    , ParameterDefinition
-    , parameterDefinition
-    , pdMaxValue
-    , pdMaxLength
-    , pdConstraintDescription
-    , pdMinLength
-    , pdDefaultValue
-    , pdAllowedPattern
-    , pdNoEcho
-    , pdType
-    , pdAllowedValues
-    , pdDescription
-    , pdMinValue
-    , pdReferencedByResources
-    , pdName
-
+  , ParameterDefinition
+  , parameterDefinition
+  , pdMaxValue
+  , pdMaxLength
+  , pdConstraintDescription
+  , pdMinLength
+  , pdDefaultValue
+  , pdAllowedPattern
+  , pdNoEcho
+  , pdType
+  , pdAllowedValues
+  , pdDescription
+  , pdMinValue
+  , pdReferencedByResources
+  , pdName
     -- ** ParameterValue
-    , ParameterValue
-    , parameterValue
-    , pvValue
-    , pvName
-
+  , ParameterValue
+  , parameterValue
+  , pvValue
+  , pvName
     -- ** Version
-    , Version
-    , version
-    , vSourceCodeURL
-    , vTemplateURL
-    , vParameterDefinitions
-    , vCreationTime
-    , vApplicationId
-    , vSemanticVersion
-
+  , Version
+  , version
+  , vSourceCodeURL
+  , vTemplateURL
+  , vParameterDefinitions
+  , vCreationTime
+  , vApplicationId
+  , vSemanticVersion
     -- ** VersionSummary
-    , VersionSummary
-    , versionSummary
-    , vsSourceCodeURL
-    , vsCreationTime
-    , vsApplicationId
-    , vsSemanticVersion
-    ) where
+  , VersionSummary
+  , versionSummary
+  , vsSourceCodeURL
+  , vsCreationTime
+  , vsApplicationId
+  , vsSemanticVersion
+  ) where
 
 import Network.AWS.ServerlessApplicationRepository.CreateApplication
 import Network.AWS.ServerlessApplicationRepository.CreateApplicationVersion
@@ -177,14 +149,12 @@ import Network.AWS.ServerlessApplicationRepository.PutApplicationPolicy
 import Network.AWS.ServerlessApplicationRepository.Types
 import Network.AWS.ServerlessApplicationRepository.UpdateApplication
 import Network.AWS.ServerlessApplicationRepository.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'ServerlessApplicationRepository'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -201,7 +171,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

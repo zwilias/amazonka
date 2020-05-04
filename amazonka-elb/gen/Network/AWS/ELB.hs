@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ELB
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,371 +23,285 @@
 -- All Elastic Load Balancing operations are /idempotent/ , which means that they complete at most one time. If you repeat an operation, it succeeds with a 200 OK response code.
 --
 module Network.AWS.ELB
-    (
     -- * Service Configuration
-      elb
-
+  ( elb
     -- * Errors
     -- $errors
-
     -- ** PolicyNotFoundException
-    , _PolicyNotFoundException
-
+  , _PolicyNotFoundException
     -- ** AccessPointNotFoundException
-    , _AccessPointNotFoundException
-
+  , _AccessPointNotFoundException
     -- ** DuplicatePolicyNameException
-    , _DuplicatePolicyNameException
-
+  , _DuplicatePolicyNameException
     -- ** InvalidConfigurationRequestException
-    , _InvalidConfigurationRequestException
-
+  , _InvalidConfigurationRequestException
     -- ** SubnetNotFoundException
-    , _SubnetNotFoundException
-
+  , _SubnetNotFoundException
     -- ** LoadBalancerAttributeNotFoundException
-    , _LoadBalancerAttributeNotFoundException
-
+  , _LoadBalancerAttributeNotFoundException
     -- ** InvalidSubnetException
-    , _InvalidSubnetException
-
+  , _InvalidSubnetException
     -- ** DuplicateTagKeysException
-    , _DuplicateTagKeysException
-
+  , _DuplicateTagKeysException
     -- ** DuplicateListenerException
-    , _DuplicateListenerException
-
+  , _DuplicateListenerException
     -- ** TooManyTagsException
-    , _TooManyTagsException
-
+  , _TooManyTagsException
     -- ** PolicyTypeNotFoundException
-    , _PolicyTypeNotFoundException
-
+  , _PolicyTypeNotFoundException
     -- ** UnsupportedProtocolException
-    , _UnsupportedProtocolException
-
+  , _UnsupportedProtocolException
     -- ** DuplicateAccessPointNameException
-    , _DuplicateAccessPointNameException
-
+  , _DuplicateAccessPointNameException
     -- ** InvalidSecurityGroupException
-    , _InvalidSecurityGroupException
-
+  , _InvalidSecurityGroupException
     -- ** ListenerNotFoundException
-    , _ListenerNotFoundException
-
+  , _ListenerNotFoundException
     -- ** InvalidEndPointException
-    , _InvalidEndPointException
-
+  , _InvalidEndPointException
     -- ** OperationNotPermittedException
-    , _OperationNotPermittedException
-
+  , _OperationNotPermittedException
     -- ** DependencyThrottleException
-    , _DependencyThrottleException
-
+  , _DependencyThrottleException
     -- ** InvalidSchemeException
-    , _InvalidSchemeException
-
+  , _InvalidSchemeException
     -- ** TooManyAccessPointsException
-    , _TooManyAccessPointsException
-
+  , _TooManyAccessPointsException
     -- ** TooManyPoliciesException
-    , _TooManyPoliciesException
-
+  , _TooManyPoliciesException
     -- ** CertificateNotFoundException
-    , _CertificateNotFoundException
-
+  , _CertificateNotFoundException
     -- * Waiters
     -- $waiters
-
     -- ** AnyInstanceInService
-    , anyInstanceInService
-
+  , anyInstanceInService
     -- ** InstanceDeregistered
-    , instanceDeregistered
-
+  , instanceDeregistered
     -- ** InstanceInService
-    , instanceInService
-
+  , instanceInService
     -- * Operations
     -- $operations
-
     -- ** DescribeLoadBalancers (Paginated)
-    , module Network.AWS.ELB.DescribeLoadBalancers
-
+  , module Network.AWS.ELB.DescribeLoadBalancers
     -- ** DescribeTags
-    , module Network.AWS.ELB.DescribeTags
-
+  , module Network.AWS.ELB.DescribeTags
     -- ** DescribeLoadBalancerPolicyTypes
-    , module Network.AWS.ELB.DescribeLoadBalancerPolicyTypes
-
+  , module Network.AWS.ELB.DescribeLoadBalancerPolicyTypes
     -- ** ApplySecurityGroupsToLoadBalancer
-    , module Network.AWS.ELB.ApplySecurityGroupsToLoadBalancer
-
+  , module Network.AWS.ELB.ApplySecurityGroupsToLoadBalancer
     -- ** RemoveTags
-    , module Network.AWS.ELB.RemoveTags
-
+  , module Network.AWS.ELB.RemoveTags
     -- ** CreateLBCookieStickinessPolicy
-    , module Network.AWS.ELB.CreateLBCookieStickinessPolicy
-
+  , module Network.AWS.ELB.CreateLBCookieStickinessPolicy
     -- ** DeleteLoadBalancer
-    , module Network.AWS.ELB.DeleteLoadBalancer
-
+  , module Network.AWS.ELB.DeleteLoadBalancer
     -- ** DeregisterInstancesFromLoadBalancer
-    , module Network.AWS.ELB.DeregisterInstancesFromLoadBalancer
-
+  , module Network.AWS.ELB.DeregisterInstancesFromLoadBalancer
     -- ** CreateLoadBalancerPolicy
-    , module Network.AWS.ELB.CreateLoadBalancerPolicy
-
+  , module Network.AWS.ELB.CreateLoadBalancerPolicy
     -- ** DescribeLoadBalancerPolicies
-    , module Network.AWS.ELB.DescribeLoadBalancerPolicies
-
+  , module Network.AWS.ELB.DescribeLoadBalancerPolicies
     -- ** DisableAvailabilityZonesForLoadBalancer
-    , module Network.AWS.ELB.DisableAvailabilityZonesForLoadBalancer
-
+  , module Network.AWS.ELB.DisableAvailabilityZonesForLoadBalancer
     -- ** EnableAvailabilityZonesForLoadBalancer
-    , module Network.AWS.ELB.EnableAvailabilityZonesForLoadBalancer
-
+  , module Network.AWS.ELB.EnableAvailabilityZonesForLoadBalancer
     -- ** SetLoadBalancerPoliciesForBackendServer
-    , module Network.AWS.ELB.SetLoadBalancerPoliciesForBackendServer
-
+  , module Network.AWS.ELB.SetLoadBalancerPoliciesForBackendServer
     -- ** SetLoadBalancerListenerSSLCertificate
-    , module Network.AWS.ELB.SetLoadBalancerListenerSSLCertificate
-
+  , module Network.AWS.ELB.SetLoadBalancerListenerSSLCertificate
     -- ** DescribeAccountLimits
-    , module Network.AWS.ELB.DescribeAccountLimits
-
+  , module Network.AWS.ELB.DescribeAccountLimits
     -- ** AttachLoadBalancerToSubnets
-    , module Network.AWS.ELB.AttachLoadBalancerToSubnets
-
+  , module Network.AWS.ELB.AttachLoadBalancerToSubnets
     -- ** ConfigureHealthCheck
-    , module Network.AWS.ELB.ConfigureHealthCheck
-
+  , module Network.AWS.ELB.ConfigureHealthCheck
     -- ** ModifyLoadBalancerAttributes
-    , module Network.AWS.ELB.ModifyLoadBalancerAttributes
-
+  , module Network.AWS.ELB.ModifyLoadBalancerAttributes
     -- ** CreateAppCookieStickinessPolicy
-    , module Network.AWS.ELB.CreateAppCookieStickinessPolicy
-
+  , module Network.AWS.ELB.CreateAppCookieStickinessPolicy
     -- ** DescribeInstanceHealth
-    , module Network.AWS.ELB.DescribeInstanceHealth
-
+  , module Network.AWS.ELB.DescribeInstanceHealth
     -- ** AddTags
-    , module Network.AWS.ELB.AddTags
-
+  , module Network.AWS.ELB.AddTags
     -- ** DescribeLoadBalancerAttributes
-    , module Network.AWS.ELB.DescribeLoadBalancerAttributes
-
+  , module Network.AWS.ELB.DescribeLoadBalancerAttributes
     -- ** CreateLoadBalancerListeners
-    , module Network.AWS.ELB.CreateLoadBalancerListeners
-
+  , module Network.AWS.ELB.CreateLoadBalancerListeners
     -- ** DeleteLoadBalancerPolicy
-    , module Network.AWS.ELB.DeleteLoadBalancerPolicy
-
+  , module Network.AWS.ELB.DeleteLoadBalancerPolicy
     -- ** DetachLoadBalancerFromSubnets
-    , module Network.AWS.ELB.DetachLoadBalancerFromSubnets
-
+  , module Network.AWS.ELB.DetachLoadBalancerFromSubnets
     -- ** RegisterInstancesWithLoadBalancer
-    , module Network.AWS.ELB.RegisterInstancesWithLoadBalancer
-
+  , module Network.AWS.ELB.RegisterInstancesWithLoadBalancer
     -- ** CreateLoadBalancer
-    , module Network.AWS.ELB.CreateLoadBalancer
-
+  , module Network.AWS.ELB.CreateLoadBalancer
     -- ** DeleteLoadBalancerListeners
-    , module Network.AWS.ELB.DeleteLoadBalancerListeners
-
+  , module Network.AWS.ELB.DeleteLoadBalancerListeners
     -- ** SetLoadBalancerPoliciesOfListener
-    , module Network.AWS.ELB.SetLoadBalancerPoliciesOfListener
-
+  , module Network.AWS.ELB.SetLoadBalancerPoliciesOfListener
     -- * Types
-
     -- ** Common
-    , module Network.AWS.ELB.Internal
-
+  , module Network.AWS.ELB.Internal
     -- ** AccessLog
-    , AccessLog
-    , accessLog
-    , alEmitInterval
-    , alS3BucketPrefix
-    , alS3BucketName
-    , alEnabled
-
+  , AccessLog
+  , accessLog
+  , alEmitInterval
+  , alS3BucketPrefix
+  , alS3BucketName
+  , alEnabled
     -- ** AdditionalAttribute
-    , AdditionalAttribute
-    , additionalAttribute
-    , aaValue
-    , aaKey
-
+  , AdditionalAttribute
+  , additionalAttribute
+  , aaValue
+  , aaKey
     -- ** AppCookieStickinessPolicy
-    , AppCookieStickinessPolicy
-    , appCookieStickinessPolicy
-    , acspPolicyName
-    , acspCookieName
-
+  , AppCookieStickinessPolicy
+  , appCookieStickinessPolicy
+  , acspPolicyName
+  , acspCookieName
     -- ** BackendServerDescription
-    , BackendServerDescription
-    , backendServerDescription
-    , bsdPolicyNames
-    , bsdInstancePort
-
+  , BackendServerDescription
+  , backendServerDescription
+  , bsdPolicyNames
+  , bsdInstancePort
     -- ** ConnectionDraining
-    , ConnectionDraining
-    , connectionDraining
-    , cdTimeout
-    , cdEnabled
-
+  , ConnectionDraining
+  , connectionDraining
+  , cdTimeout
+  , cdEnabled
     -- ** ConnectionSettings
-    , ConnectionSettings
-    , connectionSettings
-    , csIdleTimeout
-
+  , ConnectionSettings
+  , connectionSettings
+  , csIdleTimeout
     -- ** CrossZoneLoadBalancing
-    , CrossZoneLoadBalancing
-    , crossZoneLoadBalancing
-    , czlbEnabled
-
+  , CrossZoneLoadBalancing
+  , crossZoneLoadBalancing
+  , czlbEnabled
     -- ** HealthCheck
-    , HealthCheck
-    , healthCheck
-    , hcTarget
-    , hcInterval
-    , hcTimeout
-    , hcUnhealthyThreshold
-    , hcHealthyThreshold
-
+  , HealthCheck
+  , healthCheck
+  , hcTarget
+  , hcInterval
+  , hcTimeout
+  , hcUnhealthyThreshold
+  , hcHealthyThreshold
     -- ** Instance
-    , Instance
-    , instance'
-    , iInstanceId
-
+  , Instance
+  , instance'
+  , iInstanceId
     -- ** InstanceState
-    , InstanceState
-    , instanceState
-    , isInstanceId
-    , isState
-    , isReasonCode
-    , isDescription
-
+  , InstanceState
+  , instanceState
+  , isInstanceId
+  , isState
+  , isReasonCode
+  , isDescription
     -- ** LBCookieStickinessPolicy
-    , LBCookieStickinessPolicy
-    , lBCookieStickinessPolicy
-    , lbcspPolicyName
-    , lbcspCookieExpirationPeriod
-
+  , LBCookieStickinessPolicy
+  , lBCookieStickinessPolicy
+  , lbcspPolicyName
+  , lbcspCookieExpirationPeriod
     -- ** Limit
-    , Limit
-    , limit
-    , lMax
-    , lName
-
+  , Limit
+  , limit
+  , lMax
+  , lName
     -- ** Listener
-    , Listener
-    , listener
-    , lInstanceProtocol
-    , lSSLCertificateId
-    , lProtocol
-    , lLoadBalancerPort
-    , lInstancePort
-
+  , Listener
+  , listener
+  , lInstanceProtocol
+  , lSSLCertificateId
+  , lProtocol
+  , lLoadBalancerPort
+  , lInstancePort
     -- ** ListenerDescription
-    , ListenerDescription
-    , listenerDescription
-    , ldPolicyNames
-    , ldListener
-
+  , ListenerDescription
+  , listenerDescription
+  , ldPolicyNames
+  , ldListener
     -- ** LoadBalancerAttributes
-    , LoadBalancerAttributes
-    , loadBalancerAttributes
-    , lbaCrossZoneLoadBalancing
-    , lbaAccessLog
-    , lbaAdditionalAttributes
-    , lbaConnectionSettings
-    , lbaConnectionDraining
-
+  , LoadBalancerAttributes
+  , loadBalancerAttributes
+  , lbaCrossZoneLoadBalancing
+  , lbaAccessLog
+  , lbaAdditionalAttributes
+  , lbaConnectionSettings
+  , lbaConnectionDraining
     -- ** LoadBalancerDescription
-    , LoadBalancerDescription
-    , loadBalancerDescription
-    , lbdSourceSecurityGroup
-    , lbdCanonicalHostedZoneName
-    , lbdSecurityGroups
-    , lbdHealthCheck
-    , lbdLoadBalancerName
-    , lbdCreatedTime
-    , lbdVPCId
-    , lbdSubnets
-    , lbdAvailabilityZones
-    , lbdBackendServerDescriptions
-    , lbdCanonicalHostedZoneNameId
-    , lbdInstances
-    , lbdScheme
-    , lbdListenerDescriptions
-    , lbdDNSName
-    , lbdPolicies
-
+  , LoadBalancerDescription
+  , loadBalancerDescription
+  , lbdSourceSecurityGroup
+  , lbdCanonicalHostedZoneName
+  , lbdSecurityGroups
+  , lbdHealthCheck
+  , lbdLoadBalancerName
+  , lbdCreatedTime
+  , lbdVPCId
+  , lbdSubnets
+  , lbdAvailabilityZones
+  , lbdBackendServerDescriptions
+  , lbdCanonicalHostedZoneNameId
+  , lbdInstances
+  , lbdScheme
+  , lbdListenerDescriptions
+  , lbdDNSName
+  , lbdPolicies
     -- ** Policies
-    , Policies
-    , policies
-    , pOtherPolicies
-    , pLBCookieStickinessPolicies
-    , pAppCookieStickinessPolicies
-
+  , Policies
+  , policies
+  , pOtherPolicies
+  , pLBCookieStickinessPolicies
+  , pAppCookieStickinessPolicies
     -- ** PolicyAttribute
-    , PolicyAttribute
-    , policyAttribute
-    , paAttributeValue
-    , paAttributeName
-
+  , PolicyAttribute
+  , policyAttribute
+  , paAttributeValue
+  , paAttributeName
     -- ** PolicyAttributeDescription
-    , PolicyAttributeDescription
-    , policyAttributeDescription
-    , padAttributeValue
-    , padAttributeName
-
+  , PolicyAttributeDescription
+  , policyAttributeDescription
+  , padAttributeValue
+  , padAttributeName
     -- ** PolicyAttributeTypeDescription
-    , PolicyAttributeTypeDescription
-    , policyAttributeTypeDescription
-    , patdAttributeType
-    , patdCardinality
-    , patdDefaultValue
-    , patdAttributeName
-    , patdDescription
-
+  , PolicyAttributeTypeDescription
+  , policyAttributeTypeDescription
+  , patdAttributeType
+  , patdCardinality
+  , patdDefaultValue
+  , patdAttributeName
+  , patdDescription
     -- ** PolicyDescription
-    , PolicyDescription
-    , policyDescription
-    , pdPolicyName
-    , pdPolicyAttributeDescriptions
-    , pdPolicyTypeName
-
+  , PolicyDescription
+  , policyDescription
+  , pdPolicyName
+  , pdPolicyAttributeDescriptions
+  , pdPolicyTypeName
     -- ** PolicyTypeDescription
-    , PolicyTypeDescription
-    , policyTypeDescription
-    , ptdPolicyTypeName
-    , ptdDescription
-    , ptdPolicyAttributeTypeDescriptions
-
+  , PolicyTypeDescription
+  , policyTypeDescription
+  , ptdPolicyTypeName
+  , ptdDescription
+  , ptdPolicyAttributeTypeDescriptions
     -- ** SourceSecurityGroup
-    , SourceSecurityGroup
-    , sourceSecurityGroup
-    , ssgOwnerAlias
-    , ssgGroupName
-
+  , SourceSecurityGroup
+  , sourceSecurityGroup
+  , ssgOwnerAlias
+  , ssgGroupName
     -- ** Tag
-    , Tag
-    , tag
-    , tagValue
-    , tagKey
-
+  , Tag
+  , tag
+  , tagValue
+  , tagKey
     -- ** TagDescription
-    , TagDescription
-    , tagDescription
-    , tdLoadBalancerName
-    , tdTags
-
+  , TagDescription
+  , tagDescription
+  , tdLoadBalancerName
+  , tdTags
     -- ** TagKeyOnly
-    , TagKeyOnly
-    , tagKeyOnly
-    , tkoKey
-    ) where
+  , TagKeyOnly
+  , tagKeyOnly
+  , tkoKey
+  ) where
 
 import Network.AWS.ELB.AddTags
 import Network.AWS.ELB.ApplySecurityGroupsToLoadBalancer
@@ -422,14 +335,12 @@ import Network.AWS.ELB.SetLoadBalancerPoliciesForBackendServer
 import Network.AWS.ELB.SetLoadBalancerPoliciesOfListener
 import Network.AWS.ELB.Types
 import Network.AWS.ELB.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'ELB'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -446,7 +357,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

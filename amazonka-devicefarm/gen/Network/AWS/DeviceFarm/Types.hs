@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DeviceFarm.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,496 +10,432 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.DeviceFarm.Types
-    (
     -- * Service Configuration
-      deviceFarm
-
+  ( deviceFarm
     -- * Errors
-    , _NotEligibleException
-    , _IdempotencyException
-    , _ArgumentException
-    , _NotFoundException
-    , _ServiceAccountException
-    , _InvalidOperationException
-    , _LimitExceededException
-
+  , _NotEligibleException
+  , _IdempotencyException
+  , _ArgumentException
+  , _NotFoundException
+  , _ServiceAccountException
+  , _InvalidOperationException
+  , _LimitExceededException
     -- * ArtifactCategory
-    , ArtifactCategory (..)
-
+  , ArtifactCategory(..)
     -- * ArtifactType
-    , ArtifactType (..)
-
+  , ArtifactType(..)
     -- * BillingMethod
-    , BillingMethod (..)
-
+  , BillingMethod(..)
     -- * CurrencyCode
-    , CurrencyCode (..)
-
+  , CurrencyCode(..)
     -- * DeviceAttribute
-    , DeviceAttribute (..)
-
+  , DeviceAttribute(..)
     -- * DeviceFormFactor
-    , DeviceFormFactor (..)
-
+  , DeviceFormFactor(..)
     -- * DevicePlatform
-    , DevicePlatform (..)
-
+  , DevicePlatform(..)
     -- * DevicePoolType
-    , DevicePoolType (..)
-
+  , DevicePoolType(..)
     -- * ExecutionResult
-    , ExecutionResult (..)
-
+  , ExecutionResult(..)
     -- * ExecutionResultCode
-    , ExecutionResultCode (..)
-
+  , ExecutionResultCode(..)
     -- * ExecutionStatus
-    , ExecutionStatus (..)
-
+  , ExecutionStatus(..)
     -- * InstanceStatus
-    , InstanceStatus (..)
-
+  , InstanceStatus(..)
     -- * InteractionMode
-    , InteractionMode (..)
-
+  , InteractionMode(..)
     -- * NetworkProfileType
-    , NetworkProfileType (..)
-
+  , NetworkProfileType(..)
     -- * OfferingTransactionType
-    , OfferingTransactionType (..)
-
+  , OfferingTransactionType(..)
     -- * OfferingType
-    , OfferingType (..)
-
+  , OfferingType(..)
     -- * RecurringChargeFrequency
-    , RecurringChargeFrequency (..)
-
+  , RecurringChargeFrequency(..)
     -- * RuleOperator
-    , RuleOperator (..)
-
+  , RuleOperator(..)
     -- * SampleType
-    , SampleType (..)
-
+  , SampleType(..)
     -- * TestType
-    , TestType (..)
-
+  , TestType(..)
     -- * UploadStatus
-    , UploadStatus (..)
-
+  , UploadStatus(..)
     -- * UploadType
-    , UploadType (..)
-
+  , UploadType(..)
     -- * AccountSettings
-    , AccountSettings
-    , accountSettings
-    , asSkipAppResign
-    , asAwsAccountNumber
-    , asMaxJobTimeoutMinutes
-    , asMaxSlots
-    , asTrialMinutes
-    , asUnmeteredDevices
-    , asUnmeteredRemoteAccessDevices
-    , asDefaultJobTimeoutMinutes
-
+  , AccountSettings
+  , accountSettings
+  , asSkipAppResign
+  , asAwsAccountNumber
+  , asMaxJobTimeoutMinutes
+  , asMaxSlots
+  , asTrialMinutes
+  , asUnmeteredDevices
+  , asUnmeteredRemoteAccessDevices
+  , asDefaultJobTimeoutMinutes
     -- * Artifact
-    , Artifact
-    , artifact
-    , aArn
-    , aUrl
-    , aExtension
-    , aName
-    , aType
-
+  , Artifact
+  , artifact
+  , aArn
+  , aUrl
+  , aExtension
+  , aName
+  , aType
     -- * CPU
-    , CPU
-    , cpu
-    , cpuFrequency
-    , cpuClock
-    , cpuArchitecture
-
+  , CPU
+  , cpu
+  , cpuFrequency
+  , cpuClock
+  , cpuArchitecture
     -- * Counters
-    , Counters
-    , counters
-    , cPassed
-    , cSkipped
-    , cWarned
-    , cStopped
-    , cTotal
-    , cFailed
-    , cErrored
-
+  , Counters
+  , counters
+  , cPassed
+  , cSkipped
+  , cWarned
+  , cStopped
+  , cTotal
+  , cFailed
+  , cErrored
     -- * CreateRemoteAccessSessionConfiguration
-    , CreateRemoteAccessSessionConfiguration
-    , createRemoteAccessSessionConfiguration
-    , crascBillingMethod
-
+  , CreateRemoteAccessSessionConfiguration
+  , createRemoteAccessSessionConfiguration
+  , crascBillingMethod
     -- * CustomerArtifactPaths
-    , CustomerArtifactPaths
-    , customerArtifactPaths
-    , capAndroidPaths
-    , capDeviceHostPaths
-    , capIosPaths
-
+  , CustomerArtifactPaths
+  , customerArtifactPaths
+  , capAndroidPaths
+  , capDeviceHostPaths
+  , capIosPaths
     -- * Device
-    , Device
-    , device
-    , devCarrier
-    , devImage
-    , devManufacturer
-    , devPlatform
-    , devModelId
-    , devRemoteAccessEnabled
-    , devArn
-    , devFormFactor
-    , devFleetType
-    , devResolution
-    , devMemory
-    , devRadio
-    , devOs
-    , devName
-    , devModel
-    , devInstances
-    , devRemoteDebugEnabled
-    , devCpu
-    , devHeapSize
-    , devFleetName
-
+  , Device
+  , device
+  , devCarrier
+  , devImage
+  , devManufacturer
+  , devPlatform
+  , devModelId
+  , devRemoteAccessEnabled
+  , devArn
+  , devFormFactor
+  , devFleetType
+  , devResolution
+  , devMemory
+  , devRadio
+  , devOs
+  , devName
+  , devModel
+  , devInstances
+  , devRemoteDebugEnabled
+  , devCpu
+  , devHeapSize
+  , devFleetName
     -- * DeviceInstance
-    , DeviceInstance
-    , deviceInstance
-    , diStatus
-    , diUdid
-    , diInstanceProfile
-    , diArn
-    , diDeviceARN
-    , diLabels
-
+  , DeviceInstance
+  , deviceInstance
+  , diStatus
+  , diUdid
+  , diInstanceProfile
+  , diArn
+  , diDeviceARN
+  , diLabels
     -- * DeviceMinutes
-    , DeviceMinutes
-    , deviceMinutes
-    , dmMetered
-    , dmTotal
-    , dmUnmetered
-
+  , DeviceMinutes
+  , deviceMinutes
+  , dmMetered
+  , dmTotal
+  , dmUnmetered
     -- * DevicePool
-    , DevicePool
-    , devicePool
-    , dArn
-    , dRules
-    , dName
-    , dType
-    , dDescription
-
+  , DevicePool
+  , devicePool
+  , dArn
+  , dRules
+  , dName
+  , dType
+  , dDescription
     -- * DevicePoolCompatibilityResult
-    , DevicePoolCompatibilityResult
-    , devicePoolCompatibilityResult
-    , dpcrDevice
-    , dpcrCompatible
-    , dpcrIncompatibilityMessages
-
+  , DevicePoolCompatibilityResult
+  , devicePoolCompatibilityResult
+  , dpcrDevice
+  , dpcrCompatible
+  , dpcrIncompatibilityMessages
     -- * ExecutionConfiguration
-    , ExecutionConfiguration
-    , executionConfiguration
-    , ecSkipAppResign
-    , ecAccountsCleanup
-    , ecAppPackagesCleanup
-    , ecJobTimeoutMinutes
-
+  , ExecutionConfiguration
+  , executionConfiguration
+  , ecSkipAppResign
+  , ecAccountsCleanup
+  , ecAppPackagesCleanup
+  , ecJobTimeoutMinutes
     -- * IncompatibilityMessage
-    , IncompatibilityMessage
-    , incompatibilityMessage
-    , imType
-    , imMessage
-
+  , IncompatibilityMessage
+  , incompatibilityMessage
+  , imType
+  , imMessage
     -- * InstanceProfile
-    , InstanceProfile
-    , instanceProfile
-    , ipArn
-    , ipRebootAfterUse
-    , ipName
-    , ipPackageCleanup
-    , ipExcludeAppPackagesFromCleanup
-    , ipDescription
-
+  , InstanceProfile
+  , instanceProfile
+  , ipArn
+  , ipRebootAfterUse
+  , ipName
+  , ipPackageCleanup
+  , ipExcludeAppPackagesFromCleanup
+  , ipDescription
     -- * Job
-    , Job
-    , job
-    , jobInstanceARN
-    , jobStatus
-    , jobCounters
-    , jobArn
-    , jobCreated
-    , jobDevice
-    , jobStopped
-    , jobResult
-    , jobName
-    , jobDeviceMinutes
-    , jobType
-    , jobMessage
-    , jobStarted
-
+  , Job
+  , job
+  , jobInstanceARN
+  , jobStatus
+  , jobCounters
+  , jobArn
+  , jobCreated
+  , jobDevice
+  , jobStopped
+  , jobResult
+  , jobName
+  , jobDeviceMinutes
+  , jobType
+  , jobMessage
+  , jobStarted
     -- * Location
-    , Location
-    , location
-    , lLatitude
-    , lLongitude
-
+  , Location
+  , location
+  , lLatitude
+  , lLongitude
     -- * MonetaryAmount
-    , MonetaryAmount
-    , monetaryAmount
-    , maAmount
-    , maCurrencyCode
-
+  , MonetaryAmount
+  , monetaryAmount
+  , maAmount
+  , maCurrencyCode
     -- * NetworkProfile
-    , NetworkProfile
-    , networkProfile
-    , npUplinkJitterMs
-    , npArn
-    , npUplinkLossPercent
-    , npDownlinkJitterMs
-    , npName
-    , npDownlinkLossPercent
-    , npType
-    , npUplinkDelayMs
-    , npUplinkBandwidthBits
-    , npDescription
-    , npDownlinkDelayMs
-    , npDownlinkBandwidthBits
-
+  , NetworkProfile
+  , networkProfile
+  , npUplinkJitterMs
+  , npArn
+  , npUplinkLossPercent
+  , npDownlinkJitterMs
+  , npName
+  , npDownlinkLossPercent
+  , npType
+  , npUplinkDelayMs
+  , npUplinkBandwidthBits
+  , npDescription
+  , npDownlinkDelayMs
+  , npDownlinkBandwidthBits
     -- * Offering
-    , Offering
-    , offering
-    , oPlatform
-    , oId
-    , oRecurringCharges
-    , oType
-    , oDescription
-
+  , Offering
+  , offering
+  , oPlatform
+  , oId
+  , oRecurringCharges
+  , oType
+  , oDescription
     -- * OfferingPromotion
-    , OfferingPromotion
-    , offeringPromotion
-    , opId
-    , opDescription
-
+  , OfferingPromotion
+  , offeringPromotion
+  , opId
+  , opDescription
     -- * OfferingStatus
-    , OfferingStatus
-    , offeringStatus
-    , osEffectiveOn
-    , osOffering
-    , osQuantity
-    , osType
-
+  , OfferingStatus
+  , offeringStatus
+  , osEffectiveOn
+  , osOffering
+  , osQuantity
+  , osType
     -- * OfferingTransaction
-    , OfferingTransaction
-    , offeringTransaction
-    , otOfferingStatus
-    , otCost
-    , otTransactionId
-    , otOfferingPromotionId
-    , otCreatedOn
-
+  , OfferingTransaction
+  , offeringTransaction
+  , otOfferingStatus
+  , otCost
+  , otTransactionId
+  , otOfferingPromotionId
+  , otCreatedOn
     -- * Problem
-    , Problem
-    , problem
-    , pDevice
-    , pTest
-    , pResult
-    , pRun
-    , pJob
-    , pMessage
-    , pSuite
-
+  , Problem
+  , problem
+  , pDevice
+  , pTest
+  , pResult
+  , pRun
+  , pJob
+  , pMessage
+  , pSuite
     -- * ProblemDetail
-    , ProblemDetail
-    , problemDetail
-    , pdArn
-    , pdName
-
+  , ProblemDetail
+  , problemDetail
+  , pdArn
+  , pdName
     -- * Project
-    , Project
-    , project
-    , pArn
-    , pCreated
-    , pName
-    , pDefaultJobTimeoutMinutes
-
+  , Project
+  , project
+  , pArn
+  , pCreated
+  , pName
+  , pDefaultJobTimeoutMinutes
     -- * Radios
-    , Radios
-    , radios
-    , rNfc
-    , rGps
-    , rBluetooth
-    , rWifi
-
+  , Radios
+  , radios
+  , rNfc
+  , rGps
+  , rBluetooth
+  , rWifi
     -- * RecurringCharge
-    , RecurringCharge
-    , recurringCharge
-    , rcFrequency
-    , rcCost
-
+  , RecurringCharge
+  , recurringCharge
+  , rcFrequency
+  , rcCost
     -- * RemoteAccessSession
-    , RemoteAccessSession
-    , remoteAccessSession
-    , rasBillingMethod
-    , rasClientId
-    , rasDeviceUdid
-    , rasSkipAppResign
-    , rasInstanceARN
-    , rasStatus
-    , rasRemoteRecordEnabled
-    , rasArn
-    , rasRemoteRecordAppARN
-    , rasCreated
-    , rasDevice
-    , rasStopped
-    , rasResult
-    , rasName
-    , rasDeviceMinutes
-    , rasRemoteDebugEnabled
-    , rasEndpoint
-    , rasMessage
-    , rasHostAddress
-    , rasInteractionMode
-    , rasStarted
-
+  , RemoteAccessSession
+  , remoteAccessSession
+  , rasBillingMethod
+  , rasClientId
+  , rasDeviceUdid
+  , rasSkipAppResign
+  , rasInstanceARN
+  , rasStatus
+  , rasRemoteRecordEnabled
+  , rasArn
+  , rasRemoteRecordAppARN
+  , rasCreated
+  , rasDevice
+  , rasStopped
+  , rasResult
+  , rasName
+  , rasDeviceMinutes
+  , rasRemoteDebugEnabled
+  , rasEndpoint
+  , rasMessage
+  , rasHostAddress
+  , rasInteractionMode
+  , rasStarted
     -- * Resolution
-    , Resolution
-    , resolution
-    , rHeight
-    , rWidth
-
+  , Resolution
+  , resolution
+  , rHeight
+  , rWidth
     -- * Rule
-    , Rule
-    , rule
-    , rAttribute
-    , rOperator
-    , rValue
-
+  , Rule
+  , rule
+  , rAttribute
+  , rOperator
+  , rValue
     -- * Run
-    , Run
-    , run
-    , runBillingMethod
-    , runSkipAppResign
-    , runStatus
-    , runCustomerArtifactPaths
-    , runEventCount
-    , runCounters
-    , runPlatform
-    , runSeed
-    , runRadios
-    , runArn
-    , runLocation
-    , runCreated
-    , runLocale
-    , runStopped
-    , runResult
-    , runJobTimeoutMinutes
-    , runCompletedJobs
-    , runResultCode
-    , runName
-    , runAppUpload
-    , runParsingResultURL
-    , runNetworkProfile
-    , runDeviceMinutes
-    , runType
-    , runMessage
-    , runWebURL
-    , runTotalJobs
-    , runDevicePoolARN
-    , runStarted
-
+  , Run
+  , run
+  , runBillingMethod
+  , runSkipAppResign
+  , runStatus
+  , runCustomerArtifactPaths
+  , runEventCount
+  , runCounters
+  , runPlatform
+  , runSeed
+  , runRadios
+  , runArn
+  , runLocation
+  , runCreated
+  , runLocale
+  , runStopped
+  , runResult
+  , runJobTimeoutMinutes
+  , runCompletedJobs
+  , runResultCode
+  , runName
+  , runAppUpload
+  , runParsingResultURL
+  , runNetworkProfile
+  , runDeviceMinutes
+  , runType
+  , runMessage
+  , runWebURL
+  , runTotalJobs
+  , runDevicePoolARN
+  , runStarted
     -- * Sample
-    , Sample
-    , sample
-    , samArn
-    , samUrl
-    , samType
-
+  , Sample
+  , sample
+  , samArn
+  , samUrl
+  , samType
     -- * ScheduleRunConfiguration
-    , ScheduleRunConfiguration
-    , scheduleRunConfiguration
-    , srcBillingMethod
-    , srcCustomerArtifactPaths
-    , srcRadios
-    , srcLocation
-    , srcLocale
-    , srcNetworkProfileARN
-    , srcExtraDataPackageARN
-    , srcAuxiliaryApps
-    , srcVpceConfigurationARNs
-
+  , ScheduleRunConfiguration
+  , scheduleRunConfiguration
+  , srcBillingMethod
+  , srcCustomerArtifactPaths
+  , srcRadios
+  , srcLocation
+  , srcLocale
+  , srcNetworkProfileARN
+  , srcExtraDataPackageARN
+  , srcAuxiliaryApps
+  , srcVpceConfigurationARNs
     -- * ScheduleRunTest
-    , ScheduleRunTest
-    , scheduleRunTest
-    , srtTestPackageARN
-    , srtParameters
-    , srtFilter
-    , srtType
-
+  , ScheduleRunTest
+  , scheduleRunTest
+  , srtTestPackageARN
+  , srtParameters
+  , srtFilter
+  , srtType
     -- * Suite
-    , Suite
-    , suite
-    , sStatus
-    , sCounters
-    , sArn
-    , sCreated
-    , sStopped
-    , sResult
-    , sName
-    , sDeviceMinutes
-    , sType
-    , sMessage
-    , sStarted
-
+  , Suite
+  , suite
+  , sStatus
+  , sCounters
+  , sArn
+  , sCreated
+  , sStopped
+  , sResult
+  , sName
+  , sDeviceMinutes
+  , sType
+  , sMessage
+  , sStarted
     -- * Test
-    , Test
-    , test
-    , tStatus
-    , tCounters
-    , tArn
-    , tCreated
-    , tStopped
-    , tResult
-    , tName
-    , tDeviceMinutes
-    , tType
-    , tMessage
-    , tStarted
-
+  , Test
+  , test
+  , tStatus
+  , tCounters
+  , tArn
+  , tCreated
+  , tStopped
+  , tResult
+  , tName
+  , tDeviceMinutes
+  , tType
+  , tMessage
+  , tStarted
     -- * TrialMinutes
-    , TrialMinutes
-    , trialMinutes
-    , tmRemaining
-    , tmTotal
-
+  , TrialMinutes
+  , trialMinutes
+  , tmRemaining
+  , tmTotal
     -- * UniqueProblem
-    , UniqueProblem
-    , uniqueProblem
-    , upProblems
-    , upMessage
-
+  , UniqueProblem
+  , uniqueProblem
+  , upProblems
+  , upMessage
     -- * Upload
-    , Upload
-    , upload
-    , uStatus
-    , uArn
-    , uCreated
-    , uUrl
-    , uName
-    , uMetadata
-    , uType
-    , uMessage
-    , uContentType
-
+  , Upload
+  , upload
+  , uStatus
+  , uArn
+  , uCreated
+  , uUrl
+  , uName
+  , uMetadata
+  , uType
+  , uMessage
+  , uContentType
     -- * VPCEConfiguration
-    , VPCEConfiguration
-    , vpcEConfiguration
-    , vecVpceServiceName
-    , vecArn
-    , vecVpceConfigurationName
-    , vecServiceDNSName
-    , vecVpceConfigurationDescription
-    ) where
+  , VPCEConfiguration
+  , vpcEConfiguration
+  , vecVpceServiceName
+  , vecArn
+  , vecVpceConfigurationName
+  , vecServiceDNSName
+  , vecVpceConfigurationDescription
+  ) where
 
 import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.DeviceFarm.Types.Sum
@@ -546,20 +481,19 @@ deviceFarm =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | Exception gets thrown when a user is not eligible to perform the specified transaction.
 --
 --
-_NotEligibleException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotEligibleException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _NotEligibleException = _MatchServiceError deviceFarm "NotEligibleException"
-
 
 -- | An entity with the same name already exists.
 --
 --
-_IdempotencyException :: AsError a => Getting (First ServiceError) a ServiceError
+_IdempotencyException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _IdempotencyException = _MatchServiceError deviceFarm "IdempotencyException"
-
 
 -- | An invalid argument was specified.
 --
@@ -567,33 +501,31 @@ _IdempotencyException = _MatchServiceError deviceFarm "IdempotencyException"
 _ArgumentException :: AsError a => Getting (First ServiceError) a ServiceError
 _ArgumentException = _MatchServiceError deviceFarm "ArgumentException"
 
-
 -- | The specified entity was not found.
 --
 --
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException = _MatchServiceError deviceFarm "NotFoundException"
 
-
 -- | There was a problem with the service account.
 --
 --
-_ServiceAccountException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceAccountException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ServiceAccountException =
   _MatchServiceError deviceFarm "ServiceAccountException"
-
 
 -- | There was an error with the update request, or you do not have sufficient permissions to update this VPC endpoint configuration.
 --
 --
-_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOperationException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidOperationException =
   _MatchServiceError deviceFarm "InvalidOperationException"
-
 
 -- | A limit was exceeded.
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException = _MatchServiceError deviceFarm "LimitExceededException"
-

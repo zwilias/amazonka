@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.Connect
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -35,7 +33,6 @@ import Test.Tasty
 --             stopContact
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseStartOutboundVoiceContact $
 --             startOutboundVoiceContactResponse
@@ -45,30 +42,27 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestStartOutboundVoiceContact :: StartOutboundVoiceContact -> TestTree
-requestStartOutboundVoiceContact = req
-    "StartOutboundVoiceContact"
-    "fixture/StartOutboundVoiceContact.yaml"
+requestStartOutboundVoiceContact =
+  req "StartOutboundVoiceContact" "fixture/StartOutboundVoiceContact.yaml"
 
 requestStopContact :: StopContact -> TestTree
-requestStopContact = req
-    "StopContact"
-    "fixture/StopContact.yaml"
+requestStopContact = req "StopContact" "fixture/StopContact.yaml"
 
 -- Responses
-
-responseStartOutboundVoiceContact :: StartOutboundVoiceContactResponse -> TestTree
-responseStartOutboundVoiceContact = res
+responseStartOutboundVoiceContact ::
+     StartOutboundVoiceContactResponse -> TestTree
+responseStartOutboundVoiceContact =
+  res
     "StartOutboundVoiceContactResponse"
     "fixture/StartOutboundVoiceContactResponse.proto"
     connect
     (Proxy :: Proxy StartOutboundVoiceContact)
 
 responseStopContact :: StopContactResponse -> TestTree
-responseStopContact = res
+responseStopContact =
+  res
     "StopContactResponse"
     "fixture/StopContactResponse.proto"
     connect

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.WorkSpaces
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -98,7 +96,6 @@ import Test.Tasty
 --             startWorkspaces
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseRevokeIPRules $
 --             revokeIPRulesResponse
@@ -171,282 +168,273 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestRevokeIPRules :: RevokeIPRules -> TestTree
-requestRevokeIPRules = req
-    "RevokeIPRules"
-    "fixture/RevokeIPRules.yaml"
+requestRevokeIPRules = req "RevokeIPRules" "fixture/RevokeIPRules.yaml"
 
 requestModifyWorkspaceProperties :: ModifyWorkspaceProperties -> TestTree
-requestModifyWorkspaceProperties = req
-    "ModifyWorkspaceProperties"
-    "fixture/ModifyWorkspaceProperties.yaml"
+requestModifyWorkspaceProperties =
+  req "ModifyWorkspaceProperties" "fixture/ModifyWorkspaceProperties.yaml"
 
 requestDescribeTags :: DescribeTags -> TestTree
-requestDescribeTags = req
-    "DescribeTags"
-    "fixture/DescribeTags.yaml"
+requestDescribeTags = req "DescribeTags" "fixture/DescribeTags.yaml"
 
 requestDescribeWorkspaceDirectories :: DescribeWorkspaceDirectories -> TestTree
-requestDescribeWorkspaceDirectories = req
-    "DescribeWorkspaceDirectories"
-    "fixture/DescribeWorkspaceDirectories.yaml"
+requestDescribeWorkspaceDirectories =
+  req "DescribeWorkspaceDirectories" "fixture/DescribeWorkspaceDirectories.yaml"
 
 requestDisassociateIPGroups :: DisassociateIPGroups -> TestTree
-requestDisassociateIPGroups = req
-    "DisassociateIPGroups"
-    "fixture/DisassociateIPGroups.yaml"
+requestDisassociateIPGroups =
+  req "DisassociateIPGroups" "fixture/DisassociateIPGroups.yaml"
 
 requestDescribeWorkspaceBundles :: DescribeWorkspaceBundles -> TestTree
-requestDescribeWorkspaceBundles = req
-    "DescribeWorkspaceBundles"
-    "fixture/DescribeWorkspaceBundles.yaml"
+requestDescribeWorkspaceBundles =
+  req "DescribeWorkspaceBundles" "fixture/DescribeWorkspaceBundles.yaml"
 
 requestAuthorizeIPRules :: AuthorizeIPRules -> TestTree
-requestAuthorizeIPRules = req
-    "AuthorizeIPRules"
-    "fixture/AuthorizeIPRules.yaml"
+requestAuthorizeIPRules = req "AuthorizeIPRules" "fixture/AuthorizeIPRules.yaml"
 
 requestRebuildWorkspaces :: RebuildWorkspaces -> TestTree
-requestRebuildWorkspaces = req
-    "RebuildWorkspaces"
-    "fixture/RebuildWorkspaces.yaml"
+requestRebuildWorkspaces =
+  req "RebuildWorkspaces" "fixture/RebuildWorkspaces.yaml"
 
 requestModifyWorkspaceState :: ModifyWorkspaceState -> TestTree
-requestModifyWorkspaceState = req
-    "ModifyWorkspaceState"
-    "fixture/ModifyWorkspaceState.yaml"
+requestModifyWorkspaceState =
+  req "ModifyWorkspaceState" "fixture/ModifyWorkspaceState.yaml"
 
 requestCreateIPGroup :: CreateIPGroup -> TestTree
-requestCreateIPGroup = req
-    "CreateIPGroup"
-    "fixture/CreateIPGroup.yaml"
+requestCreateIPGroup = req "CreateIPGroup" "fixture/CreateIPGroup.yaml"
 
 requestCreateTags :: CreateTags -> TestTree
-requestCreateTags = req
-    "CreateTags"
-    "fixture/CreateTags.yaml"
+requestCreateTags = req "CreateTags" "fixture/CreateTags.yaml"
 
 requestDeleteTags :: DeleteTags -> TestTree
-requestDeleteTags = req
-    "DeleteTags"
-    "fixture/DeleteTags.yaml"
+requestDeleteTags = req "DeleteTags" "fixture/DeleteTags.yaml"
 
 requestUpdateRulesOfIPGroup :: UpdateRulesOfIPGroup -> TestTree
-requestUpdateRulesOfIPGroup = req
-    "UpdateRulesOfIPGroup"
-    "fixture/UpdateRulesOfIPGroup.yaml"
+requestUpdateRulesOfIPGroup =
+  req "UpdateRulesOfIPGroup" "fixture/UpdateRulesOfIPGroup.yaml"
 
 requestStopWorkspaces :: StopWorkspaces -> TestTree
-requestStopWorkspaces = req
-    "StopWorkspaces"
-    "fixture/StopWorkspaces.yaml"
+requestStopWorkspaces = req "StopWorkspaces" "fixture/StopWorkspaces.yaml"
 
 requestAssociateIPGroups :: AssociateIPGroups -> TestTree
-requestAssociateIPGroups = req
-    "AssociateIPGroups"
-    "fixture/AssociateIPGroups.yaml"
+requestAssociateIPGroups =
+  req "AssociateIPGroups" "fixture/AssociateIPGroups.yaml"
 
-requestDescribeWorkspacesConnectionStatus :: DescribeWorkspacesConnectionStatus -> TestTree
-requestDescribeWorkspacesConnectionStatus = req
+requestDescribeWorkspacesConnectionStatus ::
+     DescribeWorkspacesConnectionStatus -> TestTree
+requestDescribeWorkspacesConnectionStatus =
+  req
     "DescribeWorkspacesConnectionStatus"
     "fixture/DescribeWorkspacesConnectionStatus.yaml"
 
 requestRebootWorkspaces :: RebootWorkspaces -> TestTree
-requestRebootWorkspaces = req
-    "RebootWorkspaces"
-    "fixture/RebootWorkspaces.yaml"
+requestRebootWorkspaces = req "RebootWorkspaces" "fixture/RebootWorkspaces.yaml"
 
 requestDeleteIPGroup :: DeleteIPGroup -> TestTree
-requestDeleteIPGroup = req
-    "DeleteIPGroup"
-    "fixture/DeleteIPGroup.yaml"
+requestDeleteIPGroup = req "DeleteIPGroup" "fixture/DeleteIPGroup.yaml"
 
 requestTerminateWorkspaces :: TerminateWorkspaces -> TestTree
-requestTerminateWorkspaces = req
-    "TerminateWorkspaces"
-    "fixture/TerminateWorkspaces.yaml"
+requestTerminateWorkspaces =
+  req "TerminateWorkspaces" "fixture/TerminateWorkspaces.yaml"
 
 requestCreateWorkspaces :: CreateWorkspaces -> TestTree
-requestCreateWorkspaces = req
-    "CreateWorkspaces"
-    "fixture/CreateWorkspaces.yaml"
+requestCreateWorkspaces = req "CreateWorkspaces" "fixture/CreateWorkspaces.yaml"
 
 requestDescribeIPGroups :: DescribeIPGroups -> TestTree
-requestDescribeIPGroups = req
-    "DescribeIPGroups"
-    "fixture/DescribeIPGroups.yaml"
+requestDescribeIPGroups = req "DescribeIPGroups" "fixture/DescribeIPGroups.yaml"
 
 requestDescribeWorkspaces :: DescribeWorkspaces -> TestTree
-requestDescribeWorkspaces = req
-    "DescribeWorkspaces"
-    "fixture/DescribeWorkspaces.yaml"
+requestDescribeWorkspaces =
+  req "DescribeWorkspaces" "fixture/DescribeWorkspaces.yaml"
 
 requestStartWorkspaces :: StartWorkspaces -> TestTree
-requestStartWorkspaces = req
-    "StartWorkspaces"
-    "fixture/StartWorkspaces.yaml"
+requestStartWorkspaces = req "StartWorkspaces" "fixture/StartWorkspaces.yaml"
 
 -- Responses
-
 responseRevokeIPRules :: RevokeIPRulesResponse -> TestTree
-responseRevokeIPRules = res
+responseRevokeIPRules =
+  res
     "RevokeIPRulesResponse"
     "fixture/RevokeIPRulesResponse.proto"
     workSpaces
     (Proxy :: Proxy RevokeIPRules)
 
-responseModifyWorkspaceProperties :: ModifyWorkspacePropertiesResponse -> TestTree
-responseModifyWorkspaceProperties = res
+responseModifyWorkspaceProperties ::
+     ModifyWorkspacePropertiesResponse -> TestTree
+responseModifyWorkspaceProperties =
+  res
     "ModifyWorkspacePropertiesResponse"
     "fixture/ModifyWorkspacePropertiesResponse.proto"
     workSpaces
     (Proxy :: Proxy ModifyWorkspaceProperties)
 
 responseDescribeTags :: DescribeTagsResponse -> TestTree
-responseDescribeTags = res
+responseDescribeTags =
+  res
     "DescribeTagsResponse"
     "fixture/DescribeTagsResponse.proto"
     workSpaces
     (Proxy :: Proxy DescribeTags)
 
-responseDescribeWorkspaceDirectories :: DescribeWorkspaceDirectoriesResponse -> TestTree
-responseDescribeWorkspaceDirectories = res
+responseDescribeWorkspaceDirectories ::
+     DescribeWorkspaceDirectoriesResponse -> TestTree
+responseDescribeWorkspaceDirectories =
+  res
     "DescribeWorkspaceDirectoriesResponse"
     "fixture/DescribeWorkspaceDirectoriesResponse.proto"
     workSpaces
     (Proxy :: Proxy DescribeWorkspaceDirectories)
 
 responseDisassociateIPGroups :: DisassociateIPGroupsResponse -> TestTree
-responseDisassociateIPGroups = res
+responseDisassociateIPGroups =
+  res
     "DisassociateIPGroupsResponse"
     "fixture/DisassociateIPGroupsResponse.proto"
     workSpaces
     (Proxy :: Proxy DisassociateIPGroups)
 
 responseDescribeWorkspaceBundles :: DescribeWorkspaceBundlesResponse -> TestTree
-responseDescribeWorkspaceBundles = res
+responseDescribeWorkspaceBundles =
+  res
     "DescribeWorkspaceBundlesResponse"
     "fixture/DescribeWorkspaceBundlesResponse.proto"
     workSpaces
     (Proxy :: Proxy DescribeWorkspaceBundles)
 
 responseAuthorizeIPRules :: AuthorizeIPRulesResponse -> TestTree
-responseAuthorizeIPRules = res
+responseAuthorizeIPRules =
+  res
     "AuthorizeIPRulesResponse"
     "fixture/AuthorizeIPRulesResponse.proto"
     workSpaces
     (Proxy :: Proxy AuthorizeIPRules)
 
 responseRebuildWorkspaces :: RebuildWorkspacesResponse -> TestTree
-responseRebuildWorkspaces = res
+responseRebuildWorkspaces =
+  res
     "RebuildWorkspacesResponse"
     "fixture/RebuildWorkspacesResponse.proto"
     workSpaces
     (Proxy :: Proxy RebuildWorkspaces)
 
 responseModifyWorkspaceState :: ModifyWorkspaceStateResponse -> TestTree
-responseModifyWorkspaceState = res
+responseModifyWorkspaceState =
+  res
     "ModifyWorkspaceStateResponse"
     "fixture/ModifyWorkspaceStateResponse.proto"
     workSpaces
     (Proxy :: Proxy ModifyWorkspaceState)
 
 responseCreateIPGroup :: CreateIPGroupResponse -> TestTree
-responseCreateIPGroup = res
+responseCreateIPGroup =
+  res
     "CreateIPGroupResponse"
     "fixture/CreateIPGroupResponse.proto"
     workSpaces
     (Proxy :: Proxy CreateIPGroup)
 
 responseCreateTags :: CreateTagsResponse -> TestTree
-responseCreateTags = res
+responseCreateTags =
+  res
     "CreateTagsResponse"
     "fixture/CreateTagsResponse.proto"
     workSpaces
     (Proxy :: Proxy CreateTags)
 
 responseDeleteTags :: DeleteTagsResponse -> TestTree
-responseDeleteTags = res
+responseDeleteTags =
+  res
     "DeleteTagsResponse"
     "fixture/DeleteTagsResponse.proto"
     workSpaces
     (Proxy :: Proxy DeleteTags)
 
 responseUpdateRulesOfIPGroup :: UpdateRulesOfIPGroupResponse -> TestTree
-responseUpdateRulesOfIPGroup = res
+responseUpdateRulesOfIPGroup =
+  res
     "UpdateRulesOfIPGroupResponse"
     "fixture/UpdateRulesOfIPGroupResponse.proto"
     workSpaces
     (Proxy :: Proxy UpdateRulesOfIPGroup)
 
 responseStopWorkspaces :: StopWorkspacesResponse -> TestTree
-responseStopWorkspaces = res
+responseStopWorkspaces =
+  res
     "StopWorkspacesResponse"
     "fixture/StopWorkspacesResponse.proto"
     workSpaces
     (Proxy :: Proxy StopWorkspaces)
 
 responseAssociateIPGroups :: AssociateIPGroupsResponse -> TestTree
-responseAssociateIPGroups = res
+responseAssociateIPGroups =
+  res
     "AssociateIPGroupsResponse"
     "fixture/AssociateIPGroupsResponse.proto"
     workSpaces
     (Proxy :: Proxy AssociateIPGroups)
 
-responseDescribeWorkspacesConnectionStatus :: DescribeWorkspacesConnectionStatusResponse -> TestTree
-responseDescribeWorkspacesConnectionStatus = res
+responseDescribeWorkspacesConnectionStatus ::
+     DescribeWorkspacesConnectionStatusResponse -> TestTree
+responseDescribeWorkspacesConnectionStatus =
+  res
     "DescribeWorkspacesConnectionStatusResponse"
     "fixture/DescribeWorkspacesConnectionStatusResponse.proto"
     workSpaces
     (Proxy :: Proxy DescribeWorkspacesConnectionStatus)
 
 responseRebootWorkspaces :: RebootWorkspacesResponse -> TestTree
-responseRebootWorkspaces = res
+responseRebootWorkspaces =
+  res
     "RebootWorkspacesResponse"
     "fixture/RebootWorkspacesResponse.proto"
     workSpaces
     (Proxy :: Proxy RebootWorkspaces)
 
 responseDeleteIPGroup :: DeleteIPGroupResponse -> TestTree
-responseDeleteIPGroup = res
+responseDeleteIPGroup =
+  res
     "DeleteIPGroupResponse"
     "fixture/DeleteIPGroupResponse.proto"
     workSpaces
     (Proxy :: Proxy DeleteIPGroup)
 
 responseTerminateWorkspaces :: TerminateWorkspacesResponse -> TestTree
-responseTerminateWorkspaces = res
+responseTerminateWorkspaces =
+  res
     "TerminateWorkspacesResponse"
     "fixture/TerminateWorkspacesResponse.proto"
     workSpaces
     (Proxy :: Proxy TerminateWorkspaces)
 
 responseCreateWorkspaces :: CreateWorkspacesResponse -> TestTree
-responseCreateWorkspaces = res
+responseCreateWorkspaces =
+  res
     "CreateWorkspacesResponse"
     "fixture/CreateWorkspacesResponse.proto"
     workSpaces
     (Proxy :: Proxy CreateWorkspaces)
 
 responseDescribeIPGroups :: DescribeIPGroupsResponse -> TestTree
-responseDescribeIPGroups = res
+responseDescribeIPGroups =
+  res
     "DescribeIPGroupsResponse"
     "fixture/DescribeIPGroupsResponse.proto"
     workSpaces
     (Proxy :: Proxy DescribeIPGroups)
 
 responseDescribeWorkspaces :: DescribeWorkspacesResponse -> TestTree
-responseDescribeWorkspaces = res
+responseDescribeWorkspaces =
+  res
     "DescribeWorkspacesResponse"
     "fixture/DescribeWorkspacesResponse.proto"
     workSpaces
     (Proxy :: Proxy DescribeWorkspaces)
 
 responseStartWorkspaces :: StartWorkspacesResponse -> TestTree
-responseStartWorkspaces = res
+responseStartWorkspaces =
+  res
     "StartWorkspacesResponse"
     "fixture/StartWorkspacesResponse.proto"
     workSpaces

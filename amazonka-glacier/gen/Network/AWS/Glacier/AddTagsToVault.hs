@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Glacier.AddTagsToVault
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,19 +20,17 @@
 --
 --
 module Network.AWS.Glacier.AddTagsToVault
-    (
     -- * Creating a Request
-      addTagsToVault
-    , AddTagsToVault
+  ( addTagsToVault
+  , AddTagsToVault
     -- * Request Lenses
-    , attvTags
-    , attvAccountId
-    , attvVaultName
-
+  , attvTags
+  , attvAccountId
+  , attvVaultName
     -- * Destructuring the Response
-    , addTagsToVaultResponse
-    , AddTagsToVaultResponse
-    ) where
+  , addTagsToVaultResponse
+  , AddTagsToVaultResponse
+  ) where
 
 import Network.AWS.Glacier.Types
 import Network.AWS.Glacier.Types.Product
@@ -48,12 +44,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'addTagsToVault' smart constructor.
-data AddTagsToVault = AddTagsToVault'
-  { _attvTags      :: !(Maybe (Map Text Text))
-  , _attvAccountId :: !Text
-  , _attvVaultName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTagsToVault =
+  AddTagsToVault'
+    { _attvTags      :: !(Maybe (Map Text Text))
+    , _attvAccountId :: !Text
+    , _attvVaultName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTagsToVault' with the minimum fields required to make a request.
 --
@@ -64,10 +61,10 @@ data AddTagsToVault = AddTagsToVault'
 -- * 'attvAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 --
 -- * 'attvVaultName' - The name of the vault.
-addTagsToVault
-    :: Text -- ^ 'attvAccountId'
-    -> Text -- ^ 'attvVaultName'
-    -> AddTagsToVault
+addTagsToVault ::
+     Text -- ^ 'attvAccountId'
+  -> Text -- ^ 'attvVaultName'
+  -> AddTagsToVault
 addTagsToVault pAccountId_ pVaultName_ =
   AddTagsToVault'
     { _attvTags = Nothing
@@ -75,55 +72,48 @@ addTagsToVault pAccountId_ pVaultName_ =
     , _attvVaultName = pVaultName_
     }
 
-
 -- | The tags to add to the vault. Each tag is composed of a key and a value. The value can be an empty string.
 attvTags :: Lens' AddTagsToVault (HashMap Text Text)
-attvTags = lens _attvTags (\ s a -> s{_attvTags = a}) . _Default . _Map
+attvTags = lens _attvTags (\s a -> s {_attvTags = a}) . _Default . _Map
 
 -- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 attvAccountId :: Lens' AddTagsToVault Text
-attvAccountId = lens _attvAccountId (\ s a -> s{_attvAccountId = a})
+attvAccountId = lens _attvAccountId (\s a -> s {_attvAccountId = a})
 
 -- | The name of the vault.
 attvVaultName :: Lens' AddTagsToVault Text
-attvVaultName = lens _attvVaultName (\ s a -> s{_attvVaultName = a})
+attvVaultName = lens _attvVaultName (\s a -> s {_attvVaultName = a})
 
 instance AWSRequest AddTagsToVault where
-        type Rs AddTagsToVault = AddTagsToVaultResponse
-        request = postJSON glacier
-        response = receiveNull AddTagsToVaultResponse'
+  type Rs AddTagsToVault = AddTagsToVaultResponse
+  request = postJSON glacier
+  response = receiveNull AddTagsToVaultResponse'
 
-instance Hashable AddTagsToVault where
+instance Hashable AddTagsToVault
 
-instance NFData AddTagsToVault where
+instance NFData AddTagsToVault
 
 instance ToHeaders AddTagsToVault where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToJSON AddTagsToVault where
-        toJSON AddTagsToVault'{..}
-          = object (catMaybes [("Tags" .=) <$> _attvTags])
+  toJSON AddTagsToVault' {..} = object (catMaybes [("Tags" .=) <$> _attvTags])
 
 instance ToPath AddTagsToVault where
-        toPath AddTagsToVault'{..}
-          = mconcat
-              ["/", toBS _attvAccountId, "/vaults/",
-               toBS _attvVaultName, "/tags"]
+  toPath AddTagsToVault' {..} =
+    mconcat ["/", toBS _attvAccountId, "/vaults/", toBS _attvVaultName, "/tags"]
 
 instance ToQuery AddTagsToVault where
-        toQuery = const (mconcat ["operation=add"])
+  toQuery = const (mconcat ["operation=add"])
 
 -- | /See:/ 'addTagsToVaultResponse' smart constructor.
 data AddTagsToVaultResponse =
   AddTagsToVaultResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'AddTagsToVaultResponse' with the minimum fields required to make a request.
 --
-addTagsToVaultResponse
-    :: AddTagsToVaultResponse
+addTagsToVaultResponse :: AddTagsToVaultResponse
 addTagsToVaultResponse = AddTagsToVaultResponse'
 
-
-instance NFData AddTagsToVaultResponse where
+instance NFData AddTagsToVaultResponse

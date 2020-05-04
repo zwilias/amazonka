@@ -2,11 +2,9 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.WorkDocs.Types.Product
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,17 +24,18 @@ import Network.AWS.WorkDocs.Types.Sum
 --
 --
 -- /See:/ 'activity' smart constructor.
-data Activity = Activity'
-  { _aResourceMetadata :: !(Maybe ResourceMetadata)
-  , _aInitiator        :: !(Maybe UserMetadata)
-  , _aParticipants     :: !(Maybe Participants)
-  , _aOriginalParent   :: !(Maybe ResourceMetadata)
-  , _aType             :: !(Maybe ActivityType)
-  , _aCommentMetadata  :: !(Maybe CommentMetadata)
-  , _aTimeStamp        :: !(Maybe POSIX)
-  , _aOrganizationId   :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Activity =
+  Activity'
+    { _aResourceMetadata :: !(Maybe ResourceMetadata)
+    , _aInitiator        :: !(Maybe UserMetadata)
+    , _aParticipants     :: !(Maybe Participants)
+    , _aOriginalParent   :: !(Maybe ResourceMetadata)
+    , _aType             :: !(Maybe ActivityType)
+    , _aCommentMetadata  :: !(Maybe CommentMetadata)
+    , _aTimeStamp        :: !(Maybe POSIX)
+    , _aOrganizationId   :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Activity' with the minimum fields required to make a request.
 --
@@ -57,8 +56,7 @@ data Activity = Activity'
 -- * 'aTimeStamp' - The timestamp when the action was performed.
 --
 -- * 'aOrganizationId' - The ID of the organization.
-activity
-    :: Activity
+activity :: Activity
 activity =
   Activity'
     { _aResourceMetadata = Nothing
@@ -71,73 +69,73 @@ activity =
     , _aOrganizationId = Nothing
     }
 
-
 -- | The metadata of the resource involved in the user action.
 aResourceMetadata :: Lens' Activity (Maybe ResourceMetadata)
-aResourceMetadata = lens _aResourceMetadata (\ s a -> s{_aResourceMetadata = a})
+aResourceMetadata = lens _aResourceMetadata (\s a -> s {_aResourceMetadata = a})
 
 -- | The user who performed the action.
 aInitiator :: Lens' Activity (Maybe UserMetadata)
-aInitiator = lens _aInitiator (\ s a -> s{_aInitiator = a})
+aInitiator = lens _aInitiator (\s a -> s {_aInitiator = a})
 
 -- | The list of users or groups impacted by this action. This is an optional field and is filled for the following sharing activities: DOCUMENT_SHARED, DOCUMENT_SHARED, DOCUMENT_UNSHARED, FOLDER_SHARED, FOLDER_UNSHARED.
 aParticipants :: Lens' Activity (Maybe Participants)
-aParticipants = lens _aParticipants (\ s a -> s{_aParticipants = a})
+aParticipants = lens _aParticipants (\s a -> s {_aParticipants = a})
 
 -- | The original parent of the resource. This is an optional field and is filled for move activities.
 aOriginalParent :: Lens' Activity (Maybe ResourceMetadata)
-aOriginalParent = lens _aOriginalParent (\ s a -> s{_aOriginalParent = a})
+aOriginalParent = lens _aOriginalParent (\s a -> s {_aOriginalParent = a})
 
 -- | The activity type.
 aType :: Lens' Activity (Maybe ActivityType)
-aType = lens _aType (\ s a -> s{_aType = a})
+aType = lens _aType (\s a -> s {_aType = a})
 
 -- | Metadata of the commenting activity. This is an optional field and is filled for commenting activities.
 aCommentMetadata :: Lens' Activity (Maybe CommentMetadata)
-aCommentMetadata = lens _aCommentMetadata (\ s a -> s{_aCommentMetadata = a})
+aCommentMetadata = lens _aCommentMetadata (\s a -> s {_aCommentMetadata = a})
 
 -- | The timestamp when the action was performed.
 aTimeStamp :: Lens' Activity (Maybe UTCTime)
-aTimeStamp = lens _aTimeStamp (\ s a -> s{_aTimeStamp = a}) . mapping _Time
+aTimeStamp = lens _aTimeStamp (\s a -> s {_aTimeStamp = a}) . mapping _Time
 
 -- | The ID of the organization.
 aOrganizationId :: Lens' Activity (Maybe Text)
-aOrganizationId = lens _aOrganizationId (\ s a -> s{_aOrganizationId = a})
+aOrganizationId = lens _aOrganizationId (\s a -> s {_aOrganizationId = a})
 
 instance FromJSON Activity where
-        parseJSON
-          = withObject "Activity"
-              (\ x ->
-                 Activity' <$>
-                   (x .:? "ResourceMetadata") <*> (x .:? "Initiator")
-                     <*> (x .:? "Participants")
-                     <*> (x .:? "OriginalParent")
-                     <*> (x .:? "Type")
-                     <*> (x .:? "CommentMetadata")
-                     <*> (x .:? "TimeStamp")
-                     <*> (x .:? "OrganizationId"))
+  parseJSON =
+    withObject
+      "Activity"
+      (\x ->
+         Activity' <$> (x .:? "ResourceMetadata") <*> (x .:? "Initiator") <*>
+         (x .:? "Participants") <*>
+         (x .:? "OriginalParent") <*>
+         (x .:? "Type") <*>
+         (x .:? "CommentMetadata") <*>
+         (x .:? "TimeStamp") <*>
+         (x .:? "OrganizationId"))
 
-instance Hashable Activity where
+instance Hashable Activity
 
-instance NFData Activity where
+instance NFData Activity
 
 -- | Describes a comment.
 --
 --
 --
 -- /See:/ 'comment' smart constructor.
-data Comment = Comment'
-  { _cStatus           :: !(Maybe CommentStatusType)
-  , _cText             :: !(Maybe (Sensitive Text))
-  , _cVisibility       :: !(Maybe CommentVisibilityType)
-  , _cThreadId         :: !(Maybe Text)
-  , _cContributor      :: !(Maybe User)
-  , _cCreatedTimestamp :: !(Maybe POSIX)
-  , _cRecipientId      :: !(Maybe Text)
-  , _cParentId         :: !(Maybe Text)
-  , _cCommentId        :: !Text
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data Comment =
+  Comment'
+    { _cStatus           :: !(Maybe CommentStatusType)
+    , _cText             :: !(Maybe (Sensitive Text))
+    , _cVisibility       :: !(Maybe CommentVisibilityType)
+    , _cThreadId         :: !(Maybe Text)
+    , _cContributor      :: !(Maybe User)
+    , _cCreatedTimestamp :: !(Maybe POSIX)
+    , _cRecipientId      :: !(Maybe Text)
+    , _cParentId         :: !(Maybe Text)
+    , _cCommentId        :: !Text
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Comment' with the minimum fields required to make a request.
 --
@@ -160,9 +158,9 @@ data Comment = Comment'
 -- * 'cParentId' - The ID of the parent comment.
 --
 -- * 'cCommentId' - The ID of the comment.
-comment
-    :: Text -- ^ 'cCommentId'
-    -> Comment
+comment ::
+     Text -- ^ 'cCommentId'
+  -> Comment
 comment pCommentId_ =
   Comment'
     { _cStatus = Nothing
@@ -176,74 +174,75 @@ comment pCommentId_ =
     , _cCommentId = pCommentId_
     }
 
-
 -- | The status of the comment.
 cStatus :: Lens' Comment (Maybe CommentStatusType)
-cStatus = lens _cStatus (\ s a -> s{_cStatus = a})
+cStatus = lens _cStatus (\s a -> s {_cStatus = a})
 
 -- | The text of the comment.
 cText :: Lens' Comment (Maybe Text)
-cText = lens _cText (\ s a -> s{_cText = a}) . mapping _Sensitive
+cText = lens _cText (\s a -> s {_cText = a}) . mapping _Sensitive
 
 -- | The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.
 cVisibility :: Lens' Comment (Maybe CommentVisibilityType)
-cVisibility = lens _cVisibility (\ s a -> s{_cVisibility = a})
+cVisibility = lens _cVisibility (\s a -> s {_cVisibility = a})
 
 -- | The ID of the root comment in the thread.
 cThreadId :: Lens' Comment (Maybe Text)
-cThreadId = lens _cThreadId (\ s a -> s{_cThreadId = a})
+cThreadId = lens _cThreadId (\s a -> s {_cThreadId = a})
 
 -- | The details of the user who made the comment.
 cContributor :: Lens' Comment (Maybe User)
-cContributor = lens _cContributor (\ s a -> s{_cContributor = a})
+cContributor = lens _cContributor (\s a -> s {_cContributor = a})
 
 -- | The time that the comment was created.
 cCreatedTimestamp :: Lens' Comment (Maybe UTCTime)
-cCreatedTimestamp = lens _cCreatedTimestamp (\ s a -> s{_cCreatedTimestamp = a}) . mapping _Time
+cCreatedTimestamp =
+  lens _cCreatedTimestamp (\s a -> s {_cCreatedTimestamp = a}) . mapping _Time
 
 -- | If the comment is a reply to another user's comment, this field contains the user ID of the user being replied to.
 cRecipientId :: Lens' Comment (Maybe Text)
-cRecipientId = lens _cRecipientId (\ s a -> s{_cRecipientId = a})
+cRecipientId = lens _cRecipientId (\s a -> s {_cRecipientId = a})
 
 -- | The ID of the parent comment.
 cParentId :: Lens' Comment (Maybe Text)
-cParentId = lens _cParentId (\ s a -> s{_cParentId = a})
+cParentId = lens _cParentId (\s a -> s {_cParentId = a})
 
 -- | The ID of the comment.
 cCommentId :: Lens' Comment Text
-cCommentId = lens _cCommentId (\ s a -> s{_cCommentId = a})
+cCommentId = lens _cCommentId (\s a -> s {_cCommentId = a})
 
 instance FromJSON Comment where
-        parseJSON
-          = withObject "Comment"
-              (\ x ->
-                 Comment' <$>
-                   (x .:? "Status") <*> (x .:? "Text") <*>
-                     (x .:? "Visibility")
-                     <*> (x .:? "ThreadId")
-                     <*> (x .:? "Contributor")
-                     <*> (x .:? "CreatedTimestamp")
-                     <*> (x .:? "RecipientId")
-                     <*> (x .:? "ParentId")
-                     <*> (x .: "CommentId"))
+  parseJSON =
+    withObject
+      "Comment"
+      (\x ->
+         Comment' <$> (x .:? "Status") <*> (x .:? "Text") <*>
+         (x .:? "Visibility") <*>
+         (x .:? "ThreadId") <*>
+         (x .:? "Contributor") <*>
+         (x .:? "CreatedTimestamp") <*>
+         (x .:? "RecipientId") <*>
+         (x .:? "ParentId") <*>
+         (x .: "CommentId"))
 
-instance Hashable Comment where
+instance Hashable Comment
 
-instance NFData Comment where
+instance NFData Comment
 
 -- | Describes the metadata of a comment.
 --
 --
 --
 -- /See:/ 'commentMetadata' smart constructor.
-data CommentMetadata = CommentMetadata'
-  { _cmCommentStatus    :: !(Maybe CommentStatusType)
-  , _cmContributor      :: !(Maybe User)
-  , _cmCommentId        :: !(Maybe Text)
-  , _cmCreatedTimestamp :: !(Maybe POSIX)
-  , _cmRecipientId      :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CommentMetadata =
+  CommentMetadata'
+    { _cmCommentStatus    :: !(Maybe CommentStatusType)
+    , _cmContributor      :: !(Maybe User)
+    , _cmCommentId        :: !(Maybe Text)
+    , _cmCreatedTimestamp :: !(Maybe POSIX)
+    , _cmRecipientId      :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CommentMetadata' with the minimum fields required to make a request.
 --
@@ -258,8 +257,7 @@ data CommentMetadata = CommentMetadata'
 -- * 'cmCreatedTimestamp' - The timestamp that the comment was created.
 --
 -- * 'cmRecipientId' - The ID of the user being replied to.
-commentMetadata
-    :: CommentMetadata
+commentMetadata :: CommentMetadata
 commentMetadata =
   CommentMetadata'
     { _cmCommentStatus = Nothing
@@ -269,57 +267,58 @@ commentMetadata =
     , _cmRecipientId = Nothing
     }
 
-
 -- | The status of the comment.
 cmCommentStatus :: Lens' CommentMetadata (Maybe CommentStatusType)
-cmCommentStatus = lens _cmCommentStatus (\ s a -> s{_cmCommentStatus = a})
+cmCommentStatus = lens _cmCommentStatus (\s a -> s {_cmCommentStatus = a})
 
 -- | The user who made the comment.
 cmContributor :: Lens' CommentMetadata (Maybe User)
-cmContributor = lens _cmContributor (\ s a -> s{_cmContributor = a})
+cmContributor = lens _cmContributor (\s a -> s {_cmContributor = a})
 
 -- | The ID of the comment.
 cmCommentId :: Lens' CommentMetadata (Maybe Text)
-cmCommentId = lens _cmCommentId (\ s a -> s{_cmCommentId = a})
+cmCommentId = lens _cmCommentId (\s a -> s {_cmCommentId = a})
 
 -- | The timestamp that the comment was created.
 cmCreatedTimestamp :: Lens' CommentMetadata (Maybe UTCTime)
-cmCreatedTimestamp = lens _cmCreatedTimestamp (\ s a -> s{_cmCreatedTimestamp = a}) . mapping _Time
+cmCreatedTimestamp =
+  lens _cmCreatedTimestamp (\s a -> s {_cmCreatedTimestamp = a}) . mapping _Time
 
 -- | The ID of the user being replied to.
 cmRecipientId :: Lens' CommentMetadata (Maybe Text)
-cmRecipientId = lens _cmRecipientId (\ s a -> s{_cmRecipientId = a})
+cmRecipientId = lens _cmRecipientId (\s a -> s {_cmRecipientId = a})
 
 instance FromJSON CommentMetadata where
-        parseJSON
-          = withObject "CommentMetadata"
-              (\ x ->
-                 CommentMetadata' <$>
-                   (x .:? "CommentStatus") <*> (x .:? "Contributor") <*>
-                     (x .:? "CommentId")
-                     <*> (x .:? "CreatedTimestamp")
-                     <*> (x .:? "RecipientId"))
+  parseJSON =
+    withObject
+      "CommentMetadata"
+      (\x ->
+         CommentMetadata' <$> (x .:? "CommentStatus") <*> (x .:? "Contributor") <*>
+         (x .:? "CommentId") <*>
+         (x .:? "CreatedTimestamp") <*>
+         (x .:? "RecipientId"))
 
-instance Hashable CommentMetadata where
+instance Hashable CommentMetadata
 
-instance NFData CommentMetadata where
+instance NFData CommentMetadata
 
 -- | Describes the document.
 --
 --
 --
 -- /See:/ 'documentMetadata' smart constructor.
-data DocumentMetadata = DocumentMetadata'
-  { _dmLatestVersionMetadata :: !(Maybe DocumentVersionMetadata)
-  , _dmParentFolderId        :: !(Maybe Text)
-  , _dmModifiedTimestamp     :: !(Maybe POSIX)
-  , _dmId                    :: !(Maybe Text)
-  , _dmLabels                :: !(Maybe [Text])
-  , _dmResourceState         :: !(Maybe ResourceStateType)
-  , _dmCreatedTimestamp      :: !(Maybe POSIX)
-  , _dmCreatorId             :: !(Maybe Text)
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data DocumentMetadata =
+  DocumentMetadata'
+    { _dmLatestVersionMetadata :: !(Maybe DocumentVersionMetadata)
+    , _dmParentFolderId        :: !(Maybe Text)
+    , _dmModifiedTimestamp     :: !(Maybe POSIX)
+    , _dmId                    :: !(Maybe Text)
+    , _dmLabels                :: !(Maybe [Text])
+    , _dmResourceState         :: !(Maybe ResourceStateType)
+    , _dmCreatedTimestamp      :: !(Maybe POSIX)
+    , _dmCreatorId             :: !(Maybe Text)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DocumentMetadata' with the minimum fields required to make a request.
 --
@@ -340,8 +339,7 @@ data DocumentMetadata = DocumentMetadata'
 -- * 'dmCreatedTimestamp' - The time when the document was created.
 --
 -- * 'dmCreatorId' - The ID of the creator.
-documentMetadata
-    :: DocumentMetadata
+documentMetadata :: DocumentMetadata
 documentMetadata =
   DocumentMetadata'
     { _dmLatestVersionMetadata = Nothing
@@ -354,78 +352,83 @@ documentMetadata =
     , _dmCreatorId = Nothing
     }
 
-
 -- | The latest version of the document.
-dmLatestVersionMetadata :: Lens' DocumentMetadata (Maybe DocumentVersionMetadata)
-dmLatestVersionMetadata = lens _dmLatestVersionMetadata (\ s a -> s{_dmLatestVersionMetadata = a})
+dmLatestVersionMetadata ::
+     Lens' DocumentMetadata (Maybe DocumentVersionMetadata)
+dmLatestVersionMetadata =
+  lens _dmLatestVersionMetadata (\s a -> s {_dmLatestVersionMetadata = a})
 
 -- | The ID of the parent folder.
 dmParentFolderId :: Lens' DocumentMetadata (Maybe Text)
-dmParentFolderId = lens _dmParentFolderId (\ s a -> s{_dmParentFolderId = a})
+dmParentFolderId = lens _dmParentFolderId (\s a -> s {_dmParentFolderId = a})
 
 -- | The time when the document was updated.
 dmModifiedTimestamp :: Lens' DocumentMetadata (Maybe UTCTime)
-dmModifiedTimestamp = lens _dmModifiedTimestamp (\ s a -> s{_dmModifiedTimestamp = a}) . mapping _Time
+dmModifiedTimestamp =
+  lens _dmModifiedTimestamp (\s a -> s {_dmModifiedTimestamp = a}) .
+  mapping _Time
 
 -- | The ID of the document.
 dmId :: Lens' DocumentMetadata (Maybe Text)
-dmId = lens _dmId (\ s a -> s{_dmId = a})
+dmId = lens _dmId (\s a -> s {_dmId = a})
 
 -- | List of labels on the document.
 dmLabels :: Lens' DocumentMetadata [Text]
-dmLabels = lens _dmLabels (\ s a -> s{_dmLabels = a}) . _Default . _Coerce
+dmLabels = lens _dmLabels (\s a -> s {_dmLabels = a}) . _Default . _Coerce
 
 -- | The resource state.
 dmResourceState :: Lens' DocumentMetadata (Maybe ResourceStateType)
-dmResourceState = lens _dmResourceState (\ s a -> s{_dmResourceState = a})
+dmResourceState = lens _dmResourceState (\s a -> s {_dmResourceState = a})
 
 -- | The time when the document was created.
 dmCreatedTimestamp :: Lens' DocumentMetadata (Maybe UTCTime)
-dmCreatedTimestamp = lens _dmCreatedTimestamp (\ s a -> s{_dmCreatedTimestamp = a}) . mapping _Time
+dmCreatedTimestamp =
+  lens _dmCreatedTimestamp (\s a -> s {_dmCreatedTimestamp = a}) . mapping _Time
 
 -- | The ID of the creator.
 dmCreatorId :: Lens' DocumentMetadata (Maybe Text)
-dmCreatorId = lens _dmCreatorId (\ s a -> s{_dmCreatorId = a})
+dmCreatorId = lens _dmCreatorId (\s a -> s {_dmCreatorId = a})
 
 instance FromJSON DocumentMetadata where
-        parseJSON
-          = withObject "DocumentMetadata"
-              (\ x ->
-                 DocumentMetadata' <$>
-                   (x .:? "LatestVersionMetadata") <*>
-                     (x .:? "ParentFolderId")
-                     <*> (x .:? "ModifiedTimestamp")
-                     <*> (x .:? "Id")
-                     <*> (x .:? "Labels" .!= mempty)
-                     <*> (x .:? "ResourceState")
-                     <*> (x .:? "CreatedTimestamp")
-                     <*> (x .:? "CreatorId"))
+  parseJSON =
+    withObject
+      "DocumentMetadata"
+      (\x ->
+         DocumentMetadata' <$> (x .:? "LatestVersionMetadata") <*>
+         (x .:? "ParentFolderId") <*>
+         (x .:? "ModifiedTimestamp") <*>
+         (x .:? "Id") <*>
+         (x .:? "Labels" .!= mempty) <*>
+         (x .:? "ResourceState") <*>
+         (x .:? "CreatedTimestamp") <*>
+         (x .:? "CreatorId"))
 
-instance Hashable DocumentMetadata where
+instance Hashable DocumentMetadata
 
-instance NFData DocumentMetadata where
+instance NFData DocumentMetadata
 
 -- | Describes a version of a document.
 --
 --
 --
 -- /See:/ 'documentVersionMetadata' smart constructor.
-data DocumentVersionMetadata = DocumentVersionMetadata'
-  { _dvmThumbnail :: !(Maybe (Map DocumentThumbnailType (Sensitive Text)))
-  , _dvmStatus :: !(Maybe DocumentStatusType)
-  , _dvmSignature :: !(Maybe Text)
-  , _dvmContentCreatedTimestamp :: !(Maybe POSIX)
-  , _dvmSize :: !(Maybe Integer)
-  , _dvmName :: !(Maybe Text)
-  , _dvmModifiedTimestamp :: !(Maybe POSIX)
-  , _dvmSource :: !(Maybe (Map DocumentSourceType (Sensitive Text)))
-  , _dvmId :: !(Maybe Text)
-  , _dvmCreatedTimestamp :: !(Maybe POSIX)
-  , _dvmContentModifiedTimestamp :: !(Maybe POSIX)
-  , _dvmCreatorId :: !(Maybe Text)
-  , _dvmContentType :: !(Maybe Text)
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data DocumentVersionMetadata =
+  DocumentVersionMetadata'
+    { _dvmThumbnail :: !(Maybe (Map DocumentThumbnailType (Sensitive Text)))
+    , _dvmStatus :: !(Maybe DocumentStatusType)
+    , _dvmSignature :: !(Maybe Text)
+    , _dvmContentCreatedTimestamp :: !(Maybe POSIX)
+    , _dvmSize :: !(Maybe Integer)
+    , _dvmName :: !(Maybe Text)
+    , _dvmModifiedTimestamp :: !(Maybe POSIX)
+    , _dvmSource :: !(Maybe (Map DocumentSourceType (Sensitive Text)))
+    , _dvmId :: !(Maybe Text)
+    , _dvmCreatedTimestamp :: !(Maybe POSIX)
+    , _dvmContentModifiedTimestamp :: !(Maybe POSIX)
+    , _dvmCreatorId :: !(Maybe Text)
+    , _dvmContentType :: !(Maybe Text)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DocumentVersionMetadata' with the minimum fields required to make a request.
 --
@@ -456,8 +459,7 @@ data DocumentVersionMetadata = DocumentVersionMetadata'
 -- * 'dvmCreatorId' - The ID of the creator.
 --
 -- * 'dvmContentType' - The content type of the document.
-documentVersionMetadata
-    :: DocumentVersionMetadata
+documentVersionMetadata :: DocumentVersionMetadata
 documentVersionMetadata =
   DocumentVersionMetadata'
     { _dvmThumbnail = Nothing
@@ -475,100 +477,113 @@ documentVersionMetadata =
     , _dvmContentType = Nothing
     }
 
-
 -- | The thumbnail of the document.
-dvmThumbnail :: Lens' DocumentVersionMetadata (HashMap DocumentThumbnailType Text)
-dvmThumbnail = lens _dvmThumbnail (\ s a -> s{_dvmThumbnail = a}) . _Default . _Map
+dvmThumbnail ::
+     Lens' DocumentVersionMetadata (HashMap DocumentThumbnailType Text)
+dvmThumbnail =
+  lens _dvmThumbnail (\s a -> s {_dvmThumbnail = a}) . _Default . _Map
 
 -- | The status of the document.
 dvmStatus :: Lens' DocumentVersionMetadata (Maybe DocumentStatusType)
-dvmStatus = lens _dvmStatus (\ s a -> s{_dvmStatus = a})
+dvmStatus = lens _dvmStatus (\s a -> s {_dvmStatus = a})
 
 -- | The signature of the document.
 dvmSignature :: Lens' DocumentVersionMetadata (Maybe Text)
-dvmSignature = lens _dvmSignature (\ s a -> s{_dvmSignature = a})
+dvmSignature = lens _dvmSignature (\s a -> s {_dvmSignature = a})
 
 -- | The timestamp when the content of the document was originally created.
 dvmContentCreatedTimestamp :: Lens' DocumentVersionMetadata (Maybe UTCTime)
-dvmContentCreatedTimestamp = lens _dvmContentCreatedTimestamp (\ s a -> s{_dvmContentCreatedTimestamp = a}) . mapping _Time
+dvmContentCreatedTimestamp =
+  lens _dvmContentCreatedTimestamp (\s a -> s {_dvmContentCreatedTimestamp = a}) .
+  mapping _Time
 
 -- | The size of the document, in bytes.
 dvmSize :: Lens' DocumentVersionMetadata (Maybe Integer)
-dvmSize = lens _dvmSize (\ s a -> s{_dvmSize = a})
+dvmSize = lens _dvmSize (\s a -> s {_dvmSize = a})
 
 -- | The name of the version.
 dvmName :: Lens' DocumentVersionMetadata (Maybe Text)
-dvmName = lens _dvmName (\ s a -> s{_dvmName = a})
+dvmName = lens _dvmName (\s a -> s {_dvmName = a})
 
 -- | The timestamp when the document was last uploaded.
 dvmModifiedTimestamp :: Lens' DocumentVersionMetadata (Maybe UTCTime)
-dvmModifiedTimestamp = lens _dvmModifiedTimestamp (\ s a -> s{_dvmModifiedTimestamp = a}) . mapping _Time
+dvmModifiedTimestamp =
+  lens _dvmModifiedTimestamp (\s a -> s {_dvmModifiedTimestamp = a}) .
+  mapping _Time
 
 -- | The source of the document.
 dvmSource :: Lens' DocumentVersionMetadata (HashMap DocumentSourceType Text)
-dvmSource = lens _dvmSource (\ s a -> s{_dvmSource = a}) . _Default . _Map
+dvmSource = lens _dvmSource (\s a -> s {_dvmSource = a}) . _Default . _Map
 
 -- | The ID of the version.
 dvmId :: Lens' DocumentVersionMetadata (Maybe Text)
-dvmId = lens _dvmId (\ s a -> s{_dvmId = a})
+dvmId = lens _dvmId (\s a -> s {_dvmId = a})
 
 -- | The timestamp when the document was first uploaded.
 dvmCreatedTimestamp :: Lens' DocumentVersionMetadata (Maybe UTCTime)
-dvmCreatedTimestamp = lens _dvmCreatedTimestamp (\ s a -> s{_dvmCreatedTimestamp = a}) . mapping _Time
+dvmCreatedTimestamp =
+  lens _dvmCreatedTimestamp (\s a -> s {_dvmCreatedTimestamp = a}) .
+  mapping _Time
 
 -- | The timestamp when the content of the document was modified.
 dvmContentModifiedTimestamp :: Lens' DocumentVersionMetadata (Maybe UTCTime)
-dvmContentModifiedTimestamp = lens _dvmContentModifiedTimestamp (\ s a -> s{_dvmContentModifiedTimestamp = a}) . mapping _Time
+dvmContentModifiedTimestamp =
+  lens
+    _dvmContentModifiedTimestamp
+    (\s a -> s {_dvmContentModifiedTimestamp = a}) .
+  mapping _Time
 
 -- | The ID of the creator.
 dvmCreatorId :: Lens' DocumentVersionMetadata (Maybe Text)
-dvmCreatorId = lens _dvmCreatorId (\ s a -> s{_dvmCreatorId = a})
+dvmCreatorId = lens _dvmCreatorId (\s a -> s {_dvmCreatorId = a})
 
 -- | The content type of the document.
 dvmContentType :: Lens' DocumentVersionMetadata (Maybe Text)
-dvmContentType = lens _dvmContentType (\ s a -> s{_dvmContentType = a})
+dvmContentType = lens _dvmContentType (\s a -> s {_dvmContentType = a})
 
 instance FromJSON DocumentVersionMetadata where
-        parseJSON
-          = withObject "DocumentVersionMetadata"
-              (\ x ->
-                 DocumentVersionMetadata' <$>
-                   (x .:? "Thumbnail" .!= mempty) <*> (x .:? "Status")
-                     <*> (x .:? "Signature")
-                     <*> (x .:? "ContentCreatedTimestamp")
-                     <*> (x .:? "Size")
-                     <*> (x .:? "Name")
-                     <*> (x .:? "ModifiedTimestamp")
-                     <*> (x .:? "Source" .!= mempty)
-                     <*> (x .:? "Id")
-                     <*> (x .:? "CreatedTimestamp")
-                     <*> (x .:? "ContentModifiedTimestamp")
-                     <*> (x .:? "CreatorId")
-                     <*> (x .:? "ContentType"))
+  parseJSON =
+    withObject
+      "DocumentVersionMetadata"
+      (\x ->
+         DocumentVersionMetadata' <$> (x .:? "Thumbnail" .!= mempty) <*>
+         (x .:? "Status") <*>
+         (x .:? "Signature") <*>
+         (x .:? "ContentCreatedTimestamp") <*>
+         (x .:? "Size") <*>
+         (x .:? "Name") <*>
+         (x .:? "ModifiedTimestamp") <*>
+         (x .:? "Source" .!= mempty) <*>
+         (x .:? "Id") <*>
+         (x .:? "CreatedTimestamp") <*>
+         (x .:? "ContentModifiedTimestamp") <*>
+         (x .:? "CreatorId") <*>
+         (x .:? "ContentType"))
 
-instance Hashable DocumentVersionMetadata where
+instance Hashable DocumentVersionMetadata
 
-instance NFData DocumentVersionMetadata where
+instance NFData DocumentVersionMetadata
 
 -- | Describes a folder.
 --
 --
 --
 -- /See:/ 'folderMetadata' smart constructor.
-data FolderMetadata = FolderMetadata'
-  { _fmSignature         :: !(Maybe Text)
-  , _fmParentFolderId    :: !(Maybe Text)
-  , _fmSize              :: !(Maybe Integer)
-  , _fmLatestVersionSize :: !(Maybe Integer)
-  , _fmName              :: !(Maybe Text)
-  , _fmModifiedTimestamp :: !(Maybe POSIX)
-  , _fmId                :: !(Maybe Text)
-  , _fmLabels            :: !(Maybe [Text])
-  , _fmResourceState     :: !(Maybe ResourceStateType)
-  , _fmCreatedTimestamp  :: !(Maybe POSIX)
-  , _fmCreatorId         :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data FolderMetadata =
+  FolderMetadata'
+    { _fmSignature         :: !(Maybe Text)
+    , _fmParentFolderId    :: !(Maybe Text)
+    , _fmSize              :: !(Maybe Integer)
+    , _fmLatestVersionSize :: !(Maybe Integer)
+    , _fmName              :: !(Maybe Text)
+    , _fmModifiedTimestamp :: !(Maybe POSIX)
+    , _fmId                :: !(Maybe Text)
+    , _fmLabels            :: !(Maybe [Text])
+    , _fmResourceState     :: !(Maybe ResourceStateType)
+    , _fmCreatedTimestamp  :: !(Maybe POSIX)
+    , _fmCreatorId         :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'FolderMetadata' with the minimum fields required to make a request.
 --
@@ -595,8 +610,7 @@ data FolderMetadata = FolderMetadata'
 -- * 'fmCreatedTimestamp' - The time when the folder was created.
 --
 -- * 'fmCreatorId' - The ID of the creator.
-folderMetadata
-    :: FolderMetadata
+folderMetadata :: FolderMetadata
 folderMetadata =
   FolderMetadata'
     { _fmSignature = Nothing
@@ -612,81 +626,85 @@ folderMetadata =
     , _fmCreatorId = Nothing
     }
 
-
 -- | The unique identifier created from the subfolders and documents of the folder.
 fmSignature :: Lens' FolderMetadata (Maybe Text)
-fmSignature = lens _fmSignature (\ s a -> s{_fmSignature = a})
+fmSignature = lens _fmSignature (\s a -> s {_fmSignature = a})
 
 -- | The ID of the parent folder.
 fmParentFolderId :: Lens' FolderMetadata (Maybe Text)
-fmParentFolderId = lens _fmParentFolderId (\ s a -> s{_fmParentFolderId = a})
+fmParentFolderId = lens _fmParentFolderId (\s a -> s {_fmParentFolderId = a})
 
 -- | The size of the folder metadata.
 fmSize :: Lens' FolderMetadata (Maybe Integer)
-fmSize = lens _fmSize (\ s a -> s{_fmSize = a})
+fmSize = lens _fmSize (\s a -> s {_fmSize = a})
 
 -- | The size of the latest version of the folder metadata.
 fmLatestVersionSize :: Lens' FolderMetadata (Maybe Integer)
-fmLatestVersionSize = lens _fmLatestVersionSize (\ s a -> s{_fmLatestVersionSize = a})
+fmLatestVersionSize =
+  lens _fmLatestVersionSize (\s a -> s {_fmLatestVersionSize = a})
 
 -- | The name of the folder.
 fmName :: Lens' FolderMetadata (Maybe Text)
-fmName = lens _fmName (\ s a -> s{_fmName = a})
+fmName = lens _fmName (\s a -> s {_fmName = a})
 
 -- | The time when the folder was updated.
 fmModifiedTimestamp :: Lens' FolderMetadata (Maybe UTCTime)
-fmModifiedTimestamp = lens _fmModifiedTimestamp (\ s a -> s{_fmModifiedTimestamp = a}) . mapping _Time
+fmModifiedTimestamp =
+  lens _fmModifiedTimestamp (\s a -> s {_fmModifiedTimestamp = a}) .
+  mapping _Time
 
 -- | The ID of the folder.
 fmId :: Lens' FolderMetadata (Maybe Text)
-fmId = lens _fmId (\ s a -> s{_fmId = a})
+fmId = lens _fmId (\s a -> s {_fmId = a})
 
 -- | List of labels on the folder.
 fmLabels :: Lens' FolderMetadata [Text]
-fmLabels = lens _fmLabels (\ s a -> s{_fmLabels = a}) . _Default . _Coerce
+fmLabels = lens _fmLabels (\s a -> s {_fmLabels = a}) . _Default . _Coerce
 
 -- | The resource state of the folder.
 fmResourceState :: Lens' FolderMetadata (Maybe ResourceStateType)
-fmResourceState = lens _fmResourceState (\ s a -> s{_fmResourceState = a})
+fmResourceState = lens _fmResourceState (\s a -> s {_fmResourceState = a})
 
 -- | The time when the folder was created.
 fmCreatedTimestamp :: Lens' FolderMetadata (Maybe UTCTime)
-fmCreatedTimestamp = lens _fmCreatedTimestamp (\ s a -> s{_fmCreatedTimestamp = a}) . mapping _Time
+fmCreatedTimestamp =
+  lens _fmCreatedTimestamp (\s a -> s {_fmCreatedTimestamp = a}) . mapping _Time
 
 -- | The ID of the creator.
 fmCreatorId :: Lens' FolderMetadata (Maybe Text)
-fmCreatorId = lens _fmCreatorId (\ s a -> s{_fmCreatorId = a})
+fmCreatorId = lens _fmCreatorId (\s a -> s {_fmCreatorId = a})
 
 instance FromJSON FolderMetadata where
-        parseJSON
-          = withObject "FolderMetadata"
-              (\ x ->
-                 FolderMetadata' <$>
-                   (x .:? "Signature") <*> (x .:? "ParentFolderId") <*>
-                     (x .:? "Size")
-                     <*> (x .:? "LatestVersionSize")
-                     <*> (x .:? "Name")
-                     <*> (x .:? "ModifiedTimestamp")
-                     <*> (x .:? "Id")
-                     <*> (x .:? "Labels" .!= mempty)
-                     <*> (x .:? "ResourceState")
-                     <*> (x .:? "CreatedTimestamp")
-                     <*> (x .:? "CreatorId"))
+  parseJSON =
+    withObject
+      "FolderMetadata"
+      (\x ->
+         FolderMetadata' <$> (x .:? "Signature") <*> (x .:? "ParentFolderId") <*>
+         (x .:? "Size") <*>
+         (x .:? "LatestVersionSize") <*>
+         (x .:? "Name") <*>
+         (x .:? "ModifiedTimestamp") <*>
+         (x .:? "Id") <*>
+         (x .:? "Labels" .!= mempty) <*>
+         (x .:? "ResourceState") <*>
+         (x .:? "CreatedTimestamp") <*>
+         (x .:? "CreatorId"))
 
-instance Hashable FolderMetadata where
+instance Hashable FolderMetadata
 
-instance NFData FolderMetadata where
+instance NFData FolderMetadata
 
 -- | Describes the metadata of a user group.
 --
 --
 --
 -- /See:/ 'groupMetadata' smart constructor.
-data GroupMetadata = GroupMetadata'
-  { _gmName :: !(Maybe Text)
-  , _gmId   :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GroupMetadata =
+  GroupMetadata'
+    { _gmName :: !(Maybe Text)
+    , _gmId   :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GroupMetadata' with the minimum fields required to make a request.
 --
@@ -695,39 +713,38 @@ data GroupMetadata = GroupMetadata'
 -- * 'gmName' - The name of the group.
 --
 -- * 'gmId' - The ID of the user group.
-groupMetadata
-    :: GroupMetadata
+groupMetadata :: GroupMetadata
 groupMetadata = GroupMetadata' {_gmName = Nothing, _gmId = Nothing}
-
 
 -- | The name of the group.
 gmName :: Lens' GroupMetadata (Maybe Text)
-gmName = lens _gmName (\ s a -> s{_gmName = a})
+gmName = lens _gmName (\s a -> s {_gmName = a})
 
 -- | The ID of the user group.
 gmId :: Lens' GroupMetadata (Maybe Text)
-gmId = lens _gmId (\ s a -> s{_gmId = a})
+gmId = lens _gmId (\s a -> s {_gmId = a})
 
 instance FromJSON GroupMetadata where
-        parseJSON
-          = withObject "GroupMetadata"
-              (\ x ->
-                 GroupMetadata' <$> (x .:? "Name") <*> (x .:? "Id"))
+  parseJSON =
+    withObject
+      "GroupMetadata"
+      (\x -> GroupMetadata' <$> (x .:? "Name") <*> (x .:? "Id"))
 
-instance Hashable GroupMetadata where
+instance Hashable GroupMetadata
 
-instance NFData GroupMetadata where
+instance NFData GroupMetadata
 
 -- | Set of options which defines notification preferences of given action.
 --
 --
 --
 -- /See:/ 'notificationOptions' smart constructor.
-data NotificationOptions = NotificationOptions'
-  { _noEmailMessage :: !(Maybe (Sensitive Text))
-  , _noSendEmail    :: !(Maybe Bool)
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data NotificationOptions =
+  NotificationOptions'
+    { _noEmailMessage :: !(Maybe (Sensitive Text))
+    , _noSendEmail    :: !(Maybe Bool)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'NotificationOptions' with the minimum fields required to make a request.
 --
@@ -736,41 +753,42 @@ data NotificationOptions = NotificationOptions'
 -- * 'noEmailMessage' - Text value to be included in the email body.
 --
 -- * 'noSendEmail' - Boolean value to indicate an email notification should be sent to the receipients.
-notificationOptions
-    :: NotificationOptions
+notificationOptions :: NotificationOptions
 notificationOptions =
   NotificationOptions' {_noEmailMessage = Nothing, _noSendEmail = Nothing}
 
-
 -- | Text value to be included in the email body.
 noEmailMessage :: Lens' NotificationOptions (Maybe Text)
-noEmailMessage = lens _noEmailMessage (\ s a -> s{_noEmailMessage = a}) . mapping _Sensitive
+noEmailMessage =
+  lens _noEmailMessage (\s a -> s {_noEmailMessage = a}) . mapping _Sensitive
 
 -- | Boolean value to indicate an email notification should be sent to the receipients.
 noSendEmail :: Lens' NotificationOptions (Maybe Bool)
-noSendEmail = lens _noSendEmail (\ s a -> s{_noSendEmail = a})
+noSendEmail = lens _noSendEmail (\s a -> s {_noSendEmail = a})
 
-instance Hashable NotificationOptions where
+instance Hashable NotificationOptions
 
-instance NFData NotificationOptions where
+instance NFData NotificationOptions
 
 instance ToJSON NotificationOptions where
-        toJSON NotificationOptions'{..}
-          = object
-              (catMaybes
-                 [("EmailMessage" .=) <$> _noEmailMessage,
-                  ("SendEmail" .=) <$> _noSendEmail])
+  toJSON NotificationOptions' {..} =
+    object
+      (catMaybes
+         [ ("EmailMessage" .=) <$> _noEmailMessage
+         , ("SendEmail" .=) <$> _noSendEmail
+         ])
 
 -- | Describes the users or user groups.
 --
 --
 --
 -- /See:/ 'participants' smart constructor.
-data Participants = Participants'
-  { _pGroups :: !(Maybe [GroupMetadata])
-  , _pUsers  :: !(Maybe [UserMetadata])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Participants =
+  Participants'
+    { _pGroups :: !(Maybe [GroupMetadata])
+    , _pUsers  :: !(Maybe [UserMetadata])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Participants' with the minimum fields required to make a request.
 --
@@ -779,41 +797,40 @@ data Participants = Participants'
 -- * 'pGroups' - The list of user groups.
 --
 -- * 'pUsers' - The list of users.
-participants
-    :: Participants
+participants :: Participants
 participants = Participants' {_pGroups = Nothing, _pUsers = Nothing}
-
 
 -- | The list of user groups.
 pGroups :: Lens' Participants [GroupMetadata]
-pGroups = lens _pGroups (\ s a -> s{_pGroups = a}) . _Default . _Coerce
+pGroups = lens _pGroups (\s a -> s {_pGroups = a}) . _Default . _Coerce
 
 -- | The list of users.
 pUsers :: Lens' Participants [UserMetadata]
-pUsers = lens _pUsers (\ s a -> s{_pUsers = a}) . _Default . _Coerce
+pUsers = lens _pUsers (\s a -> s {_pUsers = a}) . _Default . _Coerce
 
 instance FromJSON Participants where
-        parseJSON
-          = withObject "Participants"
-              (\ x ->
-                 Participants' <$>
-                   (x .:? "Groups" .!= mempty) <*>
-                     (x .:? "Users" .!= mempty))
+  parseJSON =
+    withObject
+      "Participants"
+      (\x ->
+         Participants' <$> (x .:? "Groups" .!= mempty) <*>
+         (x .:? "Users" .!= mempty))
 
-instance Hashable Participants where
+instance Hashable Participants
 
-instance NFData Participants where
+instance NFData Participants
 
 -- | Describes the permissions.
 --
 --
 --
 -- /See:/ 'permissionInfo' smart constructor.
-data PermissionInfo = PermissionInfo'
-  { _piRole :: !(Maybe RoleType)
-  , _piType :: !(Maybe RolePermissionType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PermissionInfo =
+  PermissionInfo'
+    { _piRole :: !(Maybe RoleType)
+    , _piType :: !(Maybe RolePermissionType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PermissionInfo' with the minimum fields required to make a request.
 --
@@ -822,41 +839,39 @@ data PermissionInfo = PermissionInfo'
 -- * 'piRole' - The role of the user.
 --
 -- * 'piType' - The type of permissions.
-permissionInfo
-    :: PermissionInfo
+permissionInfo :: PermissionInfo
 permissionInfo = PermissionInfo' {_piRole = Nothing, _piType = Nothing}
-
 
 -- | The role of the user.
 piRole :: Lens' PermissionInfo (Maybe RoleType)
-piRole = lens _piRole (\ s a -> s{_piRole = a})
+piRole = lens _piRole (\s a -> s {_piRole = a})
 
 -- | The type of permissions.
 piType :: Lens' PermissionInfo (Maybe RolePermissionType)
-piType = lens _piType (\ s a -> s{_piType = a})
+piType = lens _piType (\s a -> s {_piType = a})
 
 instance FromJSON PermissionInfo where
-        parseJSON
-          = withObject "PermissionInfo"
-              (\ x ->
-                 PermissionInfo' <$>
-                   (x .:? "Role") <*> (x .:? "Type"))
+  parseJSON =
+    withObject
+      "PermissionInfo"
+      (\x -> PermissionInfo' <$> (x .:? "Role") <*> (x .:? "Type"))
 
-instance Hashable PermissionInfo where
+instance Hashable PermissionInfo
 
-instance NFData PermissionInfo where
+instance NFData PermissionInfo
 
 -- | Describes a resource.
 --
 --
 --
 -- /See:/ 'principal' smart constructor.
-data Principal = Principal'
-  { _pRoles :: !(Maybe [PermissionInfo])
-  , _pId    :: !(Maybe Text)
-  , _pType  :: !(Maybe PrincipalType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Principal =
+  Principal'
+    { _pRoles :: !(Maybe [PermissionInfo])
+    , _pId    :: !(Maybe Text)
+    , _pType  :: !(Maybe PrincipalType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Principal' with the minimum fields required to make a request.
 --
@@ -867,50 +882,49 @@ data Principal = Principal'
 -- * 'pId' - The ID of the resource.
 --
 -- * 'pType' - The type of resource.
-principal
-    :: Principal
+principal :: Principal
 principal = Principal' {_pRoles = Nothing, _pId = Nothing, _pType = Nothing}
-
 
 -- | The permission information for the resource.
 pRoles :: Lens' Principal [PermissionInfo]
-pRoles = lens _pRoles (\ s a -> s{_pRoles = a}) . _Default . _Coerce
+pRoles = lens _pRoles (\s a -> s {_pRoles = a}) . _Default . _Coerce
 
 -- | The ID of the resource.
 pId :: Lens' Principal (Maybe Text)
-pId = lens _pId (\ s a -> s{_pId = a})
+pId = lens _pId (\s a -> s {_pId = a})
 
 -- | The type of resource.
 pType :: Lens' Principal (Maybe PrincipalType)
-pType = lens _pType (\ s a -> s{_pType = a})
+pType = lens _pType (\s a -> s {_pType = a})
 
 instance FromJSON Principal where
-        parseJSON
-          = withObject "Principal"
-              (\ x ->
-                 Principal' <$>
-                   (x .:? "Roles" .!= mempty) <*> (x .:? "Id") <*>
-                     (x .:? "Type"))
+  parseJSON =
+    withObject
+      "Principal"
+      (\x ->
+         Principal' <$> (x .:? "Roles" .!= mempty) <*> (x .:? "Id") <*>
+         (x .:? "Type"))
 
-instance Hashable Principal where
+instance Hashable Principal
 
-instance NFData Principal where
+instance NFData Principal
 
 -- | Describes the metadata of a resource.
 --
 --
 --
 -- /See:/ 'resourceMetadata' smart constructor.
-data ResourceMetadata = ResourceMetadata'
-  { _rmVersionId    :: !(Maybe Text)
-  , _rmOwner        :: !(Maybe UserMetadata)
-  , _rmName         :: !(Maybe Text)
-  , _rmId           :: !(Maybe Text)
-  , _rmType         :: !(Maybe ResourceType)
-  , _rmOriginalName :: !(Maybe Text)
-  , _rmParentId     :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResourceMetadata =
+  ResourceMetadata'
+    { _rmVersionId    :: !(Maybe Text)
+    , _rmOwner        :: !(Maybe UserMetadata)
+    , _rmName         :: !(Maybe Text)
+    , _rmId           :: !(Maybe Text)
+    , _rmType         :: !(Maybe ResourceType)
+    , _rmOriginalName :: !(Maybe Text)
+    , _rmParentId     :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResourceMetadata' with the minimum fields required to make a request.
 --
@@ -929,8 +943,7 @@ data ResourceMetadata = ResourceMetadata'
 -- * 'rmOriginalName' - The original name of the resource before a rename operation.
 --
 -- * 'rmParentId' - The parent ID of the resource before a rename operation.
-resourceMetadata
-    :: ResourceMetadata
+resourceMetadata :: ResourceMetadata
 resourceMetadata =
   ResourceMetadata'
     { _rmVersionId = Nothing
@@ -942,95 +955,95 @@ resourceMetadata =
     , _rmParentId = Nothing
     }
 
-
 -- | The version ID of the resource. This is an optional field and is filled for action on document version.
 rmVersionId :: Lens' ResourceMetadata (Maybe Text)
-rmVersionId = lens _rmVersionId (\ s a -> s{_rmVersionId = a})
+rmVersionId = lens _rmVersionId (\s a -> s {_rmVersionId = a})
 
 -- | The owner of the resource.
 rmOwner :: Lens' ResourceMetadata (Maybe UserMetadata)
-rmOwner = lens _rmOwner (\ s a -> s{_rmOwner = a})
+rmOwner = lens _rmOwner (\s a -> s {_rmOwner = a})
 
 -- | The name of the resource.
 rmName :: Lens' ResourceMetadata (Maybe Text)
-rmName = lens _rmName (\ s a -> s{_rmName = a})
+rmName = lens _rmName (\s a -> s {_rmName = a})
 
 -- | The ID of the resource.
 rmId :: Lens' ResourceMetadata (Maybe Text)
-rmId = lens _rmId (\ s a -> s{_rmId = a})
+rmId = lens _rmId (\s a -> s {_rmId = a})
 
 -- | The type of resource.
 rmType :: Lens' ResourceMetadata (Maybe ResourceType)
-rmType = lens _rmType (\ s a -> s{_rmType = a})
+rmType = lens _rmType (\s a -> s {_rmType = a})
 
 -- | The original name of the resource before a rename operation.
 rmOriginalName :: Lens' ResourceMetadata (Maybe Text)
-rmOriginalName = lens _rmOriginalName (\ s a -> s{_rmOriginalName = a})
+rmOriginalName = lens _rmOriginalName (\s a -> s {_rmOriginalName = a})
 
 -- | The parent ID of the resource before a rename operation.
 rmParentId :: Lens' ResourceMetadata (Maybe Text)
-rmParentId = lens _rmParentId (\ s a -> s{_rmParentId = a})
+rmParentId = lens _rmParentId (\s a -> s {_rmParentId = a})
 
 instance FromJSON ResourceMetadata where
-        parseJSON
-          = withObject "ResourceMetadata"
-              (\ x ->
-                 ResourceMetadata' <$>
-                   (x .:? "VersionId") <*> (x .:? "Owner") <*>
-                     (x .:? "Name")
-                     <*> (x .:? "Id")
-                     <*> (x .:? "Type")
-                     <*> (x .:? "OriginalName")
-                     <*> (x .:? "ParentId"))
+  parseJSON =
+    withObject
+      "ResourceMetadata"
+      (\x ->
+         ResourceMetadata' <$> (x .:? "VersionId") <*> (x .:? "Owner") <*>
+         (x .:? "Name") <*>
+         (x .:? "Id") <*>
+         (x .:? "Type") <*>
+         (x .:? "OriginalName") <*>
+         (x .:? "ParentId"))
 
-instance Hashable ResourceMetadata where
+instance Hashable ResourceMetadata
 
-instance NFData ResourceMetadata where
+instance NFData ResourceMetadata
 
 -- | Describes the path information of a resource.
 --
 --
 --
 -- /See:/ 'resourcePath' smart constructor.
-newtype ResourcePath = ResourcePath'
-  { _rpComponents :: Maybe [ResourcePathComponent]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ResourcePath =
+  ResourcePath'
+    { _rpComponents :: Maybe [ResourcePathComponent]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResourcePath' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rpComponents' - The components of the resource path.
-resourcePath
-    :: ResourcePath
+resourcePath :: ResourcePath
 resourcePath = ResourcePath' {_rpComponents = Nothing}
-
 
 -- | The components of the resource path.
 rpComponents :: Lens' ResourcePath [ResourcePathComponent]
-rpComponents = lens _rpComponents (\ s a -> s{_rpComponents = a}) . _Default . _Coerce
+rpComponents =
+  lens _rpComponents (\s a -> s {_rpComponents = a}) . _Default . _Coerce
 
 instance FromJSON ResourcePath where
-        parseJSON
-          = withObject "ResourcePath"
-              (\ x ->
-                 ResourcePath' <$> (x .:? "Components" .!= mempty))
+  parseJSON =
+    withObject
+      "ResourcePath"
+      (\x -> ResourcePath' <$> (x .:? "Components" .!= mempty))
 
-instance Hashable ResourcePath where
+instance Hashable ResourcePath
 
-instance NFData ResourcePath where
+instance NFData ResourcePath
 
 -- | Describes the resource path.
 --
 --
 --
 -- /See:/ 'resourcePathComponent' smart constructor.
-data ResourcePathComponent = ResourcePathComponent'
-  { _rpcName :: !(Maybe Text)
-  , _rpcId   :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResourcePathComponent =
+  ResourcePathComponent'
+    { _rpcName :: !(Maybe Text)
+    , _rpcId   :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResourcePathComponent' with the minimum fields required to make a request.
 --
@@ -1039,42 +1052,40 @@ data ResourcePathComponent = ResourcePathComponent'
 -- * 'rpcName' - The name of the resource path.
 --
 -- * 'rpcId' - The ID of the resource path.
-resourcePathComponent
-    :: ResourcePathComponent
+resourcePathComponent :: ResourcePathComponent
 resourcePathComponent =
   ResourcePathComponent' {_rpcName = Nothing, _rpcId = Nothing}
 
-
 -- | The name of the resource path.
 rpcName :: Lens' ResourcePathComponent (Maybe Text)
-rpcName = lens _rpcName (\ s a -> s{_rpcName = a})
+rpcName = lens _rpcName (\s a -> s {_rpcName = a})
 
 -- | The ID of the resource path.
 rpcId :: Lens' ResourcePathComponent (Maybe Text)
-rpcId = lens _rpcId (\ s a -> s{_rpcId = a})
+rpcId = lens _rpcId (\s a -> s {_rpcId = a})
 
 instance FromJSON ResourcePathComponent where
-        parseJSON
-          = withObject "ResourcePathComponent"
-              (\ x ->
-                 ResourcePathComponent' <$>
-                   (x .:? "Name") <*> (x .:? "Id"))
+  parseJSON =
+    withObject
+      "ResourcePathComponent"
+      (\x -> ResourcePathComponent' <$> (x .:? "Name") <*> (x .:? "Id"))
 
-instance Hashable ResourcePathComponent where
+instance Hashable ResourcePathComponent
 
-instance NFData ResourcePathComponent where
+instance NFData ResourcePathComponent
 
 -- | Describes the recipient type and ID, if available.
 --
 --
 --
 -- /See:/ 'sharePrincipal' smart constructor.
-data SharePrincipal = SharePrincipal'
-  { _spId   :: !Text
-  , _spType :: !PrincipalType
-  , _spRole :: !RoleType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SharePrincipal =
+  SharePrincipal'
+    { _spId   :: !Text
+    , _spType :: !PrincipalType
+    , _spRole :: !RoleType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SharePrincipal' with the minimum fields required to make a request.
 --
@@ -1085,51 +1096,53 @@ data SharePrincipal = SharePrincipal'
 -- * 'spType' - The type of the recipient.
 --
 -- * 'spRole' - The role of the recipient.
-sharePrincipal
-    :: Text -- ^ 'spId'
-    -> PrincipalType -- ^ 'spType'
-    -> RoleType -- ^ 'spRole'
-    -> SharePrincipal
+sharePrincipal ::
+     Text -- ^ 'spId'
+  -> PrincipalType -- ^ 'spType'
+  -> RoleType -- ^ 'spRole'
+  -> SharePrincipal
 sharePrincipal pId_ pType_ pRole_ =
   SharePrincipal' {_spId = pId_, _spType = pType_, _spRole = pRole_}
 
-
 -- | The ID of the recipient.
 spId :: Lens' SharePrincipal Text
-spId = lens _spId (\ s a -> s{_spId = a})
+spId = lens _spId (\s a -> s {_spId = a})
 
 -- | The type of the recipient.
 spType :: Lens' SharePrincipal PrincipalType
-spType = lens _spType (\ s a -> s{_spType = a})
+spType = lens _spType (\s a -> s {_spType = a})
 
 -- | The role of the recipient.
 spRole :: Lens' SharePrincipal RoleType
-spRole = lens _spRole (\ s a -> s{_spRole = a})
+spRole = lens _spRole (\s a -> s {_spRole = a})
 
-instance Hashable SharePrincipal where
+instance Hashable SharePrincipal
 
-instance NFData SharePrincipal where
+instance NFData SharePrincipal
 
 instance ToJSON SharePrincipal where
-        toJSON SharePrincipal'{..}
-          = object
-              (catMaybes
-                 [Just ("Id" .= _spId), Just ("Type" .= _spType),
-                  Just ("Role" .= _spRole)])
+  toJSON SharePrincipal' {..} =
+    object
+      (catMaybes
+         [ Just ("Id" .= _spId)
+         , Just ("Type" .= _spType)
+         , Just ("Role" .= _spRole)
+         ])
 
 -- | Describes the share results of a resource.
 --
 --
 --
 -- /See:/ 'shareResult' smart constructor.
-data ShareResult = ShareResult'
-  { _srStatus        :: !(Maybe ShareStatusType)
-  , _srPrincipalId   :: !(Maybe Text)
-  , _srRole          :: !(Maybe RoleType)
-  , _srStatusMessage :: !(Maybe (Sensitive Text))
-  , _srShareId       :: !(Maybe Text)
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data ShareResult =
+  ShareResult'
+    { _srStatus        :: !(Maybe ShareStatusType)
+    , _srPrincipalId   :: !(Maybe Text)
+    , _srRole          :: !(Maybe RoleType)
+    , _srStatusMessage :: !(Maybe (Sensitive Text))
+    , _srShareId       :: !(Maybe Text)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ShareResult' with the minimum fields required to make a request.
 --
@@ -1144,8 +1157,7 @@ data ShareResult = ShareResult'
 -- * 'srStatusMessage' - The status message.
 --
 -- * 'srShareId' - The ID of the resource that was shared.
-shareResult
-    :: ShareResult
+shareResult :: ShareResult
 shareResult =
   ShareResult'
     { _srStatus = Nothing
@@ -1155,51 +1167,52 @@ shareResult =
     , _srShareId = Nothing
     }
 
-
 -- | The status.
 srStatus :: Lens' ShareResult (Maybe ShareStatusType)
-srStatus = lens _srStatus (\ s a -> s{_srStatus = a})
+srStatus = lens _srStatus (\s a -> s {_srStatus = a})
 
 -- | The ID of the principal.
 srPrincipalId :: Lens' ShareResult (Maybe Text)
-srPrincipalId = lens _srPrincipalId (\ s a -> s{_srPrincipalId = a})
+srPrincipalId = lens _srPrincipalId (\s a -> s {_srPrincipalId = a})
 
 -- | The role.
 srRole :: Lens' ShareResult (Maybe RoleType)
-srRole = lens _srRole (\ s a -> s{_srRole = a})
+srRole = lens _srRole (\s a -> s {_srRole = a})
 
 -- | The status message.
 srStatusMessage :: Lens' ShareResult (Maybe Text)
-srStatusMessage = lens _srStatusMessage (\ s a -> s{_srStatusMessage = a}) . mapping _Sensitive
+srStatusMessage =
+  lens _srStatusMessage (\s a -> s {_srStatusMessage = a}) . mapping _Sensitive
 
 -- | The ID of the resource that was shared.
 srShareId :: Lens' ShareResult (Maybe Text)
-srShareId = lens _srShareId (\ s a -> s{_srShareId = a})
+srShareId = lens _srShareId (\s a -> s {_srShareId = a})
 
 instance FromJSON ShareResult where
-        parseJSON
-          = withObject "ShareResult"
-              (\ x ->
-                 ShareResult' <$>
-                   (x .:? "Status") <*> (x .:? "PrincipalId") <*>
-                     (x .:? "Role")
-                     <*> (x .:? "StatusMessage")
-                     <*> (x .:? "ShareId"))
+  parseJSON =
+    withObject
+      "ShareResult"
+      (\x ->
+         ShareResult' <$> (x .:? "Status") <*> (x .:? "PrincipalId") <*>
+         (x .:? "Role") <*>
+         (x .:? "StatusMessage") <*>
+         (x .:? "ShareId"))
 
-instance Hashable ShareResult where
+instance Hashable ShareResult
 
-instance NFData ShareResult where
+instance NFData ShareResult
 
 -- | Describes the storage for a user.
 --
 --
 --
 -- /See:/ 'storageRuleType' smart constructor.
-data StorageRuleType = StorageRuleType'
-  { _srtStorageAllocatedInBytes :: !(Maybe Nat)
-  , _srtStorageType             :: !(Maybe StorageType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StorageRuleType =
+  StorageRuleType'
+    { _srtStorageAllocatedInBytes :: !(Maybe Nat)
+    , _srtStorageType             :: !(Maybe StorageType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StorageRuleType' with the minimum fields required to make a request.
 --
@@ -1208,52 +1221,53 @@ data StorageRuleType = StorageRuleType'
 -- * 'srtStorageAllocatedInBytes' - The amount of storage allocated, in bytes.
 --
 -- * 'srtStorageType' - The type of storage.
-storageRuleType
-    :: StorageRuleType
+storageRuleType :: StorageRuleType
 storageRuleType =
   StorageRuleType'
     {_srtStorageAllocatedInBytes = Nothing, _srtStorageType = Nothing}
 
-
 -- | The amount of storage allocated, in bytes.
 srtStorageAllocatedInBytes :: Lens' StorageRuleType (Maybe Natural)
-srtStorageAllocatedInBytes = lens _srtStorageAllocatedInBytes (\ s a -> s{_srtStorageAllocatedInBytes = a}) . mapping _Nat
+srtStorageAllocatedInBytes =
+  lens _srtStorageAllocatedInBytes (\s a -> s {_srtStorageAllocatedInBytes = a}) .
+  mapping _Nat
 
 -- | The type of storage.
 srtStorageType :: Lens' StorageRuleType (Maybe StorageType)
-srtStorageType = lens _srtStorageType (\ s a -> s{_srtStorageType = a})
+srtStorageType = lens _srtStorageType (\s a -> s {_srtStorageType = a})
 
 instance FromJSON StorageRuleType where
-        parseJSON
-          = withObject "StorageRuleType"
-              (\ x ->
-                 StorageRuleType' <$>
-                   (x .:? "StorageAllocatedInBytes") <*>
-                     (x .:? "StorageType"))
+  parseJSON =
+    withObject
+      "StorageRuleType"
+      (\x ->
+         StorageRuleType' <$> (x .:? "StorageAllocatedInBytes") <*>
+         (x .:? "StorageType"))
 
-instance Hashable StorageRuleType where
+instance Hashable StorageRuleType
 
-instance NFData StorageRuleType where
+instance NFData StorageRuleType
 
 instance ToJSON StorageRuleType where
-        toJSON StorageRuleType'{..}
-          = object
-              (catMaybes
-                 [("StorageAllocatedInBytes" .=) <$>
-                    _srtStorageAllocatedInBytes,
-                  ("StorageType" .=) <$> _srtStorageType])
+  toJSON StorageRuleType' {..} =
+    object
+      (catMaybes
+         [ ("StorageAllocatedInBytes" .=) <$> _srtStorageAllocatedInBytes
+         , ("StorageType" .=) <$> _srtStorageType
+         ])
 
 -- | Describes a subscription.
 --
 --
 --
 -- /See:/ 'subscription' smart constructor.
-data Subscription = Subscription'
-  { _sProtocol       :: !(Maybe SubscriptionProtocolType)
-  , _sEndPoint       :: !(Maybe Text)
-  , _sSubscriptionId :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Subscription =
+  Subscription'
+    { _sProtocol       :: !(Maybe SubscriptionProtocolType)
+    , _sEndPoint       :: !(Maybe Text)
+    , _sSubscriptionId :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Subscription' with the minimum fields required to make a request.
 --
@@ -1264,47 +1278,46 @@ data Subscription = Subscription'
 -- * 'sEndPoint' - The endpoint of the subscription.
 --
 -- * 'sSubscriptionId' - The ID of the subscription.
-subscription
-    :: Subscription
+subscription :: Subscription
 subscription =
   Subscription'
     {_sProtocol = Nothing, _sEndPoint = Nothing, _sSubscriptionId = Nothing}
 
-
 -- | The protocol of the subscription.
 sProtocol :: Lens' Subscription (Maybe SubscriptionProtocolType)
-sProtocol = lens _sProtocol (\ s a -> s{_sProtocol = a})
+sProtocol = lens _sProtocol (\s a -> s {_sProtocol = a})
 
 -- | The endpoint of the subscription.
 sEndPoint :: Lens' Subscription (Maybe Text)
-sEndPoint = lens _sEndPoint (\ s a -> s{_sEndPoint = a})
+sEndPoint = lens _sEndPoint (\s a -> s {_sEndPoint = a})
 
 -- | The ID of the subscription.
 sSubscriptionId :: Lens' Subscription (Maybe Text)
-sSubscriptionId = lens _sSubscriptionId (\ s a -> s{_sSubscriptionId = a})
+sSubscriptionId = lens _sSubscriptionId (\s a -> s {_sSubscriptionId = a})
 
 instance FromJSON Subscription where
-        parseJSON
-          = withObject "Subscription"
-              (\ x ->
-                 Subscription' <$>
-                   (x .:? "Protocol") <*> (x .:? "EndPoint") <*>
-                     (x .:? "SubscriptionId"))
+  parseJSON =
+    withObject
+      "Subscription"
+      (\x ->
+         Subscription' <$> (x .:? "Protocol") <*> (x .:? "EndPoint") <*>
+         (x .:? "SubscriptionId"))
 
-instance Hashable Subscription where
+instance Hashable Subscription
 
-instance NFData Subscription where
+instance NFData Subscription
 
 -- | Describes the upload.
 --
 --
 --
 -- /See:/ 'uploadMetadata' smart constructor.
-data UploadMetadata = UploadMetadata'
-  { _umUploadURL     :: !(Maybe (Sensitive Text))
-  , _umSignedHeaders :: !(Maybe (Map Text Text))
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data UploadMetadata =
+  UploadMetadata'
+    { _umUploadURL     :: !(Maybe (Sensitive Text))
+    , _umSignedHeaders :: !(Maybe (Map Text Text))
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UploadMetadata' with the minimum fields required to make a request.
 --
@@ -1313,55 +1326,56 @@ data UploadMetadata = UploadMetadata'
 -- * 'umUploadURL' - The URL of the upload.
 --
 -- * 'umSignedHeaders' - The signed headers.
-uploadMetadata
-    :: UploadMetadata
+uploadMetadata :: UploadMetadata
 uploadMetadata =
   UploadMetadata' {_umUploadURL = Nothing, _umSignedHeaders = Nothing}
 
-
 -- | The URL of the upload.
 umUploadURL :: Lens' UploadMetadata (Maybe Text)
-umUploadURL = lens _umUploadURL (\ s a -> s{_umUploadURL = a}) . mapping _Sensitive
+umUploadURL =
+  lens _umUploadURL (\s a -> s {_umUploadURL = a}) . mapping _Sensitive
 
 -- | The signed headers.
 umSignedHeaders :: Lens' UploadMetadata (HashMap Text Text)
-umSignedHeaders = lens _umSignedHeaders (\ s a -> s{_umSignedHeaders = a}) . _Default . _Map
+umSignedHeaders =
+  lens _umSignedHeaders (\s a -> s {_umSignedHeaders = a}) . _Default . _Map
 
 instance FromJSON UploadMetadata where
-        parseJSON
-          = withObject "UploadMetadata"
-              (\ x ->
-                 UploadMetadata' <$>
-                   (x .:? "UploadUrl") <*>
-                     (x .:? "SignedHeaders" .!= mempty))
+  parseJSON =
+    withObject
+      "UploadMetadata"
+      (\x ->
+         UploadMetadata' <$> (x .:? "UploadUrl") <*>
+         (x .:? "SignedHeaders" .!= mempty))
 
-instance Hashable UploadMetadata where
+instance Hashable UploadMetadata
 
-instance NFData UploadMetadata where
+instance NFData UploadMetadata
 
 -- | Describes a user.
 --
 --
 --
 -- /See:/ 'user' smart constructor.
-data User = User'
-  { _uGivenName          :: !(Maybe Text)
-  , _uStatus             :: !(Maybe UserStatusType)
-  , _uLocale             :: !(Maybe LocaleType)
-  , _uUsername           :: !(Maybe Text)
-  , _uStorage            :: !(Maybe UserStorageMetadata)
-  , _uModifiedTimestamp  :: !(Maybe POSIX)
-  , _uEmailAddress       :: !(Maybe Text)
-  , _uId                 :: !(Maybe Text)
-  , _uRootFolderId       :: !(Maybe Text)
-  , _uType               :: !(Maybe UserType)
-  , _uSurname            :: !(Maybe Text)
-  , _uTimeZoneId         :: !(Maybe Text)
-  , _uCreatedTimestamp   :: !(Maybe POSIX)
-  , _uOrganizationId     :: !(Maybe Text)
-  , _uRecycleBinFolderId :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data User =
+  User'
+    { _uGivenName          :: !(Maybe Text)
+    , _uStatus             :: !(Maybe UserStatusType)
+    , _uLocale             :: !(Maybe LocaleType)
+    , _uUsername           :: !(Maybe Text)
+    , _uStorage            :: !(Maybe UserStorageMetadata)
+    , _uModifiedTimestamp  :: !(Maybe POSIX)
+    , _uEmailAddress       :: !(Maybe Text)
+    , _uId                 :: !(Maybe Text)
+    , _uRootFolderId       :: !(Maybe Text)
+    , _uType               :: !(Maybe UserType)
+    , _uSurname            :: !(Maybe Text)
+    , _uTimeZoneId         :: !(Maybe Text)
+    , _uCreatedTimestamp   :: !(Maybe POSIX)
+    , _uOrganizationId     :: !(Maybe Text)
+    , _uRecycleBinFolderId :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'User' with the minimum fields required to make a request.
 --
@@ -1396,8 +1410,7 @@ data User = User'
 -- * 'uOrganizationId' - The ID of the organization.
 --
 -- * 'uRecycleBinFolderId' - The ID of the recycle bin folder.
-user
-    :: User
+user :: User
 user =
   User'
     { _uGivenName = Nothing
@@ -1417,104 +1430,106 @@ user =
     , _uRecycleBinFolderId = Nothing
     }
 
-
 -- | The given name of the user.
 uGivenName :: Lens' User (Maybe Text)
-uGivenName = lens _uGivenName (\ s a -> s{_uGivenName = a})
+uGivenName = lens _uGivenName (\s a -> s {_uGivenName = a})
 
 -- | The status of the user.
 uStatus :: Lens' User (Maybe UserStatusType)
-uStatus = lens _uStatus (\ s a -> s{_uStatus = a})
+uStatus = lens _uStatus (\s a -> s {_uStatus = a})
 
 -- | The locale of the user.
 uLocale :: Lens' User (Maybe LocaleType)
-uLocale = lens _uLocale (\ s a -> s{_uLocale = a})
+uLocale = lens _uLocale (\s a -> s {_uLocale = a})
 
 -- | The login name of the user.
 uUsername :: Lens' User (Maybe Text)
-uUsername = lens _uUsername (\ s a -> s{_uUsername = a})
+uUsername = lens _uUsername (\s a -> s {_uUsername = a})
 
 -- | The storage for the user.
 uStorage :: Lens' User (Maybe UserStorageMetadata)
-uStorage = lens _uStorage (\ s a -> s{_uStorage = a})
+uStorage = lens _uStorage (\s a -> s {_uStorage = a})
 
 -- | The time when the user was modified.
 uModifiedTimestamp :: Lens' User (Maybe UTCTime)
-uModifiedTimestamp = lens _uModifiedTimestamp (\ s a -> s{_uModifiedTimestamp = a}) . mapping _Time
+uModifiedTimestamp =
+  lens _uModifiedTimestamp (\s a -> s {_uModifiedTimestamp = a}) . mapping _Time
 
 -- | The email address of the user.
 uEmailAddress :: Lens' User (Maybe Text)
-uEmailAddress = lens _uEmailAddress (\ s a -> s{_uEmailAddress = a})
+uEmailAddress = lens _uEmailAddress (\s a -> s {_uEmailAddress = a})
 
 -- | The ID of the user.
 uId :: Lens' User (Maybe Text)
-uId = lens _uId (\ s a -> s{_uId = a})
+uId = lens _uId (\s a -> s {_uId = a})
 
 -- | The ID of the root folder.
 uRootFolderId :: Lens' User (Maybe Text)
-uRootFolderId = lens _uRootFolderId (\ s a -> s{_uRootFolderId = a})
+uRootFolderId = lens _uRootFolderId (\s a -> s {_uRootFolderId = a})
 
 -- | The type of user.
 uType :: Lens' User (Maybe UserType)
-uType = lens _uType (\ s a -> s{_uType = a})
+uType = lens _uType (\s a -> s {_uType = a})
 
 -- | The surname of the user.
 uSurname :: Lens' User (Maybe Text)
-uSurname = lens _uSurname (\ s a -> s{_uSurname = a})
+uSurname = lens _uSurname (\s a -> s {_uSurname = a})
 
 -- | The time zone ID of the user.
 uTimeZoneId :: Lens' User (Maybe Text)
-uTimeZoneId = lens _uTimeZoneId (\ s a -> s{_uTimeZoneId = a})
+uTimeZoneId = lens _uTimeZoneId (\s a -> s {_uTimeZoneId = a})
 
 -- | The time when the user was created.
 uCreatedTimestamp :: Lens' User (Maybe UTCTime)
-uCreatedTimestamp = lens _uCreatedTimestamp (\ s a -> s{_uCreatedTimestamp = a}) . mapping _Time
+uCreatedTimestamp =
+  lens _uCreatedTimestamp (\s a -> s {_uCreatedTimestamp = a}) . mapping _Time
 
 -- | The ID of the organization.
 uOrganizationId :: Lens' User (Maybe Text)
-uOrganizationId = lens _uOrganizationId (\ s a -> s{_uOrganizationId = a})
+uOrganizationId = lens _uOrganizationId (\s a -> s {_uOrganizationId = a})
 
 -- | The ID of the recycle bin folder.
 uRecycleBinFolderId :: Lens' User (Maybe Text)
-uRecycleBinFolderId = lens _uRecycleBinFolderId (\ s a -> s{_uRecycleBinFolderId = a})
+uRecycleBinFolderId =
+  lens _uRecycleBinFolderId (\s a -> s {_uRecycleBinFolderId = a})
 
 instance FromJSON User where
-        parseJSON
-          = withObject "User"
-              (\ x ->
-                 User' <$>
-                   (x .:? "GivenName") <*> (x .:? "Status") <*>
-                     (x .:? "Locale")
-                     <*> (x .:? "Username")
-                     <*> (x .:? "Storage")
-                     <*> (x .:? "ModifiedTimestamp")
-                     <*> (x .:? "EmailAddress")
-                     <*> (x .:? "Id")
-                     <*> (x .:? "RootFolderId")
-                     <*> (x .:? "Type")
-                     <*> (x .:? "Surname")
-                     <*> (x .:? "TimeZoneId")
-                     <*> (x .:? "CreatedTimestamp")
-                     <*> (x .:? "OrganizationId")
-                     <*> (x .:? "RecycleBinFolderId"))
+  parseJSON =
+    withObject
+      "User"
+      (\x ->
+         User' <$> (x .:? "GivenName") <*> (x .:? "Status") <*> (x .:? "Locale") <*>
+         (x .:? "Username") <*>
+         (x .:? "Storage") <*>
+         (x .:? "ModifiedTimestamp") <*>
+         (x .:? "EmailAddress") <*>
+         (x .:? "Id") <*>
+         (x .:? "RootFolderId") <*>
+         (x .:? "Type") <*>
+         (x .:? "Surname") <*>
+         (x .:? "TimeZoneId") <*>
+         (x .:? "CreatedTimestamp") <*>
+         (x .:? "OrganizationId") <*>
+         (x .:? "RecycleBinFolderId"))
 
-instance Hashable User where
+instance Hashable User
 
-instance NFData User where
+instance NFData User
 
 -- | Describes the metadata of the user.
 --
 --
 --
 -- /See:/ 'userMetadata' smart constructor.
-data UserMetadata = UserMetadata'
-  { _umGivenName    :: !(Maybe Text)
-  , _umUsername     :: !(Maybe Text)
-  , _umEmailAddress :: !(Maybe Text)
-  , _umId           :: !(Maybe Text)
-  , _umSurname      :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UserMetadata =
+  UserMetadata'
+    { _umGivenName    :: !(Maybe Text)
+    , _umUsername     :: !(Maybe Text)
+    , _umEmailAddress :: !(Maybe Text)
+    , _umId           :: !(Maybe Text)
+    , _umSurname      :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UserMetadata' with the minimum fields required to make a request.
 --
@@ -1529,8 +1544,7 @@ data UserMetadata = UserMetadata'
 -- * 'umId' - The ID of the user.
 --
 -- * 'umSurname' - The surname of the user.
-userMetadata
-    :: UserMetadata
+userMetadata :: UserMetadata
 userMetadata =
   UserMetadata'
     { _umGivenName = Nothing
@@ -1540,51 +1554,51 @@ userMetadata =
     , _umSurname = Nothing
     }
 
-
 -- | The given name of the user before a rename operation.
 umGivenName :: Lens' UserMetadata (Maybe Text)
-umGivenName = lens _umGivenName (\ s a -> s{_umGivenName = a})
+umGivenName = lens _umGivenName (\s a -> s {_umGivenName = a})
 
 -- | The name of the user.
 umUsername :: Lens' UserMetadata (Maybe Text)
-umUsername = lens _umUsername (\ s a -> s{_umUsername = a})
+umUsername = lens _umUsername (\s a -> s {_umUsername = a})
 
 -- | The email address of the user.
 umEmailAddress :: Lens' UserMetadata (Maybe Text)
-umEmailAddress = lens _umEmailAddress (\ s a -> s{_umEmailAddress = a})
+umEmailAddress = lens _umEmailAddress (\s a -> s {_umEmailAddress = a})
 
 -- | The ID of the user.
 umId :: Lens' UserMetadata (Maybe Text)
-umId = lens _umId (\ s a -> s{_umId = a})
+umId = lens _umId (\s a -> s {_umId = a})
 
 -- | The surname of the user.
 umSurname :: Lens' UserMetadata (Maybe Text)
-umSurname = lens _umSurname (\ s a -> s{_umSurname = a})
+umSurname = lens _umSurname (\s a -> s {_umSurname = a})
 
 instance FromJSON UserMetadata where
-        parseJSON
-          = withObject "UserMetadata"
-              (\ x ->
-                 UserMetadata' <$>
-                   (x .:? "GivenName") <*> (x .:? "Username") <*>
-                     (x .:? "EmailAddress")
-                     <*> (x .:? "Id")
-                     <*> (x .:? "Surname"))
+  parseJSON =
+    withObject
+      "UserMetadata"
+      (\x ->
+         UserMetadata' <$> (x .:? "GivenName") <*> (x .:? "Username") <*>
+         (x .:? "EmailAddress") <*>
+         (x .:? "Id") <*>
+         (x .:? "Surname"))
 
-instance Hashable UserMetadata where
+instance Hashable UserMetadata
 
-instance NFData UserMetadata where
+instance NFData UserMetadata
 
 -- | Describes the storage for a user.
 --
 --
 --
 -- /See:/ 'userStorageMetadata' smart constructor.
-data UserStorageMetadata = UserStorageMetadata'
-  { _usmStorageUtilizedInBytes :: !(Maybe Integer)
-  , _usmStorageRule            :: !(Maybe StorageRuleType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UserStorageMetadata =
+  UserStorageMetadata'
+    { _usmStorageUtilizedInBytes :: !(Maybe Integer)
+    , _usmStorageRule            :: !(Maybe StorageRuleType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UserStorageMetadata' with the minimum fields required to make a request.
 --
@@ -1593,29 +1607,28 @@ data UserStorageMetadata = UserStorageMetadata'
 -- * 'usmStorageUtilizedInBytes' - The amount of storage used, in bytes.
 --
 -- * 'usmStorageRule' - The storage for a user.
-userStorageMetadata
-    :: UserStorageMetadata
+userStorageMetadata :: UserStorageMetadata
 userStorageMetadata =
   UserStorageMetadata'
     {_usmStorageUtilizedInBytes = Nothing, _usmStorageRule = Nothing}
 
-
 -- | The amount of storage used, in bytes.
 usmStorageUtilizedInBytes :: Lens' UserStorageMetadata (Maybe Integer)
-usmStorageUtilizedInBytes = lens _usmStorageUtilizedInBytes (\ s a -> s{_usmStorageUtilizedInBytes = a})
+usmStorageUtilizedInBytes =
+  lens _usmStorageUtilizedInBytes (\s a -> s {_usmStorageUtilizedInBytes = a})
 
 -- | The storage for a user.
 usmStorageRule :: Lens' UserStorageMetadata (Maybe StorageRuleType)
-usmStorageRule = lens _usmStorageRule (\ s a -> s{_usmStorageRule = a})
+usmStorageRule = lens _usmStorageRule (\s a -> s {_usmStorageRule = a})
 
 instance FromJSON UserStorageMetadata where
-        parseJSON
-          = withObject "UserStorageMetadata"
-              (\ x ->
-                 UserStorageMetadata' <$>
-                   (x .:? "StorageUtilizedInBytes") <*>
-                     (x .:? "StorageRule"))
+  parseJSON =
+    withObject
+      "UserStorageMetadata"
+      (\x ->
+         UserStorageMetadata' <$> (x .:? "StorageUtilizedInBytes") <*>
+         (x .:? "StorageRule"))
 
-instance Hashable UserStorageMetadata where
+instance Hashable UserStorageMetadata
 
-instance NFData UserStorageMetadata where
+instance NFData UserStorageMetadata

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.WAFRegional.UpdateRegexPatternSet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -52,22 +50,20 @@
 -- For more information about how to use the AWS WAF API to allow or block HTTP requests, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
 --
 module Network.AWS.WAFRegional.UpdateRegexPatternSet
-    (
     -- * Creating a Request
-      updateRegexPatternSet
-    , UpdateRegexPatternSet
+  ( updateRegexPatternSet
+  , UpdateRegexPatternSet
     -- * Request Lenses
-    , urpsRegexPatternSetId
-    , urpsUpdates
-    , urpsChangeToken
-
+  , urpsRegexPatternSetId
+  , urpsUpdates
+  , urpsChangeToken
     -- * Destructuring the Response
-    , updateRegexPatternSetResponse
-    , UpdateRegexPatternSetResponse
+  , updateRegexPatternSetResponse
+  , UpdateRegexPatternSetResponse
     -- * Response Lenses
-    , urpsrsChangeToken
-    , urpsrsResponseStatus
-    ) where
+  , urpsrsChangeToken
+  , urpsrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -77,12 +73,13 @@ import Network.AWS.WAFRegional.Types
 import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'updateRegexPatternSet' smart constructor.
-data UpdateRegexPatternSet = UpdateRegexPatternSet'
-  { _urpsRegexPatternSetId :: !Text
-  , _urpsUpdates           :: !(List1 RegexPatternSetUpdate)
-  , _urpsChangeToken       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRegexPatternSet =
+  UpdateRegexPatternSet'
+    { _urpsRegexPatternSetId :: !Text
+    , _urpsUpdates           :: !(List1 RegexPatternSetUpdate)
+    , _urpsChangeToken       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateRegexPatternSet' with the minimum fields required to make a request.
 --
@@ -93,11 +90,11 @@ data UpdateRegexPatternSet = UpdateRegexPatternSet'
 -- * 'urpsUpdates' - An array of @RegexPatternSetUpdate@ objects that you want to insert into or delete from a 'RegexPatternSet' .
 --
 -- * 'urpsChangeToken' - The value returned by the most recent call to 'GetChangeToken' .
-updateRegexPatternSet
-    :: Text -- ^ 'urpsRegexPatternSetId'
-    -> NonEmpty RegexPatternSetUpdate -- ^ 'urpsUpdates'
-    -> Text -- ^ 'urpsChangeToken'
-    -> UpdateRegexPatternSet
+updateRegexPatternSet ::
+     Text -- ^ 'urpsRegexPatternSetId'
+  -> NonEmpty RegexPatternSetUpdate -- ^ 'urpsUpdates'
+  -> Text -- ^ 'urpsChangeToken'
+  -> UpdateRegexPatternSet
 updateRegexPatternSet pRegexPatternSetId_ pUpdates_ pChangeToken_ =
   UpdateRegexPatternSet'
     { _urpsRegexPatternSetId = pRegexPatternSetId_
@@ -105,64 +102,63 @@ updateRegexPatternSet pRegexPatternSetId_ pUpdates_ pChangeToken_ =
     , _urpsChangeToken = pChangeToken_
     }
 
-
 -- | The @RegexPatternSetId@ of the 'RegexPatternSet' that you want to update. @RegexPatternSetId@ is returned by 'CreateRegexPatternSet' and by 'ListRegexPatternSets' .
 urpsRegexPatternSetId :: Lens' UpdateRegexPatternSet Text
-urpsRegexPatternSetId = lens _urpsRegexPatternSetId (\ s a -> s{_urpsRegexPatternSetId = a})
+urpsRegexPatternSetId =
+  lens _urpsRegexPatternSetId (\s a -> s {_urpsRegexPatternSetId = a})
 
 -- | An array of @RegexPatternSetUpdate@ objects that you want to insert into or delete from a 'RegexPatternSet' .
 urpsUpdates :: Lens' UpdateRegexPatternSet (NonEmpty RegexPatternSetUpdate)
-urpsUpdates = lens _urpsUpdates (\ s a -> s{_urpsUpdates = a}) . _List1
+urpsUpdates = lens _urpsUpdates (\s a -> s {_urpsUpdates = a}) . _List1
 
 -- | The value returned by the most recent call to 'GetChangeToken' .
 urpsChangeToken :: Lens' UpdateRegexPatternSet Text
-urpsChangeToken = lens _urpsChangeToken (\ s a -> s{_urpsChangeToken = a})
+urpsChangeToken = lens _urpsChangeToken (\s a -> s {_urpsChangeToken = a})
 
 instance AWSRequest UpdateRegexPatternSet where
-        type Rs UpdateRegexPatternSet =
-             UpdateRegexPatternSetResponse
-        request = postJSON wAFRegional
-        response
-          = receiveJSON
-              (\ s h x ->
-                 UpdateRegexPatternSetResponse' <$>
-                   (x .?> "ChangeToken") <*> (pure (fromEnum s)))
+  type Rs UpdateRegexPatternSet = UpdateRegexPatternSetResponse
+  request = postJSON wAFRegional
+  response =
+    receiveJSON
+      (\s h x ->
+         UpdateRegexPatternSetResponse' <$> (x .?> "ChangeToken") <*>
+         (pure (fromEnum s)))
 
-instance Hashable UpdateRegexPatternSet where
+instance Hashable UpdateRegexPatternSet
 
-instance NFData UpdateRegexPatternSet where
+instance NFData UpdateRegexPatternSet
 
 instance ToHeaders UpdateRegexPatternSet where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSWAF_Regional_20161128.UpdateRegexPatternSet" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AWSWAF_Regional_20161128.UpdateRegexPatternSet" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON UpdateRegexPatternSet where
-        toJSON UpdateRegexPatternSet'{..}
-          = object
-              (catMaybes
-                 [Just
-                    ("RegexPatternSetId" .= _urpsRegexPatternSetId),
-                  Just ("Updates" .= _urpsUpdates),
-                  Just ("ChangeToken" .= _urpsChangeToken)])
+  toJSON UpdateRegexPatternSet' {..} =
+    object
+      (catMaybes
+         [ Just ("RegexPatternSetId" .= _urpsRegexPatternSetId)
+         , Just ("Updates" .= _urpsUpdates)
+         , Just ("ChangeToken" .= _urpsChangeToken)
+         ])
 
 instance ToPath UpdateRegexPatternSet where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery UpdateRegexPatternSet where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'updateRegexPatternSetResponse' smart constructor.
-data UpdateRegexPatternSetResponse = UpdateRegexPatternSetResponse'
-  { _urpsrsChangeToken    :: !(Maybe Text)
-  , _urpsrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRegexPatternSetResponse =
+  UpdateRegexPatternSetResponse'
+    { _urpsrsChangeToken    :: !(Maybe Text)
+    , _urpsrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateRegexPatternSetResponse' with the minimum fields required to make a request.
 --
@@ -171,20 +167,20 @@ data UpdateRegexPatternSetResponse = UpdateRegexPatternSetResponse'
 -- * 'urpsrsChangeToken' - The @ChangeToken@ that you used to submit the @UpdateRegexPatternSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 --
 -- * 'urpsrsResponseStatus' - -- | The response status code.
-updateRegexPatternSetResponse
-    :: Int -- ^ 'urpsrsResponseStatus'
-    -> UpdateRegexPatternSetResponse
+updateRegexPatternSetResponse ::
+     Int -- ^ 'urpsrsResponseStatus'
+  -> UpdateRegexPatternSetResponse
 updateRegexPatternSetResponse pResponseStatus_ =
   UpdateRegexPatternSetResponse'
     {_urpsrsChangeToken = Nothing, _urpsrsResponseStatus = pResponseStatus_}
 
-
 -- | The @ChangeToken@ that you used to submit the @UpdateRegexPatternSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 urpsrsChangeToken :: Lens' UpdateRegexPatternSetResponse (Maybe Text)
-urpsrsChangeToken = lens _urpsrsChangeToken (\ s a -> s{_urpsrsChangeToken = a})
+urpsrsChangeToken = lens _urpsrsChangeToken (\s a -> s {_urpsrsChangeToken = a})
 
 -- | -- | The response status code.
 urpsrsResponseStatus :: Lens' UpdateRegexPatternSetResponse Int
-urpsrsResponseStatus = lens _urpsrsResponseStatus (\ s a -> s{_urpsrsResponseStatus = a})
+urpsrsResponseStatus =
+  lens _urpsrsResponseStatus (\s a -> s {_urpsrsResponseStatus = a})
 
-instance NFData UpdateRegexPatternSetResponse where
+instance NFData UpdateRegexPatternSetResponse

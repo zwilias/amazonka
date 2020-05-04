@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SES.UpdateConfigurationSetSendingEnabled
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,18 +22,16 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.UpdateConfigurationSetSendingEnabled
-    (
     -- * Creating a Request
-      updateConfigurationSetSendingEnabled
-    , UpdateConfigurationSetSendingEnabled
+  ( updateConfigurationSetSendingEnabled
+  , UpdateConfigurationSetSendingEnabled
     -- * Request Lenses
-    , ucsseConfigurationSetName
-    , ucsseEnabled
-
+  , ucsseConfigurationSetName
+  , ucsseEnabled
     -- * Destructuring the Response
-    , updateConfigurationSetSendingEnabledResponse
-    , UpdateConfigurationSetSendingEnabledResponse
-    ) where
+  , updateConfigurationSetSendingEnabledResponse
+  , UpdateConfigurationSetSendingEnabledResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -49,11 +45,12 @@ import Network.AWS.SES.Types.Product
 --
 --
 -- /See:/ 'updateConfigurationSetSendingEnabled' smart constructor.
-data UpdateConfigurationSetSendingEnabled = UpdateConfigurationSetSendingEnabled'
-  { _ucsseConfigurationSetName :: !Text
-  , _ucsseEnabled              :: !Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateConfigurationSetSendingEnabled =
+  UpdateConfigurationSetSendingEnabled'
+    { _ucsseConfigurationSetName :: !Text
+    , _ucsseEnabled              :: !Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateConfigurationSetSendingEnabled' with the minimum fields required to make a request.
 --
@@ -62,76 +59,59 @@ data UpdateConfigurationSetSendingEnabled = UpdateConfigurationSetSendingEnabled
 -- * 'ucsseConfigurationSetName' - The name of the configuration set that you want to update.
 --
 -- * 'ucsseEnabled' - Describes whether email sending is enabled or disabled for the configuration set.
-updateConfigurationSetSendingEnabled
-    :: Text -- ^ 'ucsseConfigurationSetName'
-    -> Bool -- ^ 'ucsseEnabled'
-    -> UpdateConfigurationSetSendingEnabled
+updateConfigurationSetSendingEnabled ::
+     Text -- ^ 'ucsseConfigurationSetName'
+  -> Bool -- ^ 'ucsseEnabled'
+  -> UpdateConfigurationSetSendingEnabled
 updateConfigurationSetSendingEnabled pConfigurationSetName_ pEnabled_ =
   UpdateConfigurationSetSendingEnabled'
     { _ucsseConfigurationSetName = pConfigurationSetName_
     , _ucsseEnabled = pEnabled_
     }
 
-
 -- | The name of the configuration set that you want to update.
 ucsseConfigurationSetName :: Lens' UpdateConfigurationSetSendingEnabled Text
-ucsseConfigurationSetName = lens _ucsseConfigurationSetName (\ s a -> s{_ucsseConfigurationSetName = a})
+ucsseConfigurationSetName =
+  lens _ucsseConfigurationSetName (\s a -> s {_ucsseConfigurationSetName = a})
 
 -- | Describes whether email sending is enabled or disabled for the configuration set.
 ucsseEnabled :: Lens' UpdateConfigurationSetSendingEnabled Bool
-ucsseEnabled = lens _ucsseEnabled (\ s a -> s{_ucsseEnabled = a})
+ucsseEnabled = lens _ucsseEnabled (\s a -> s {_ucsseEnabled = a})
 
-instance AWSRequest
-           UpdateConfigurationSetSendingEnabled
-         where
-        type Rs UpdateConfigurationSetSendingEnabled =
-             UpdateConfigurationSetSendingEnabledResponse
-        request = postQuery ses
-        response
-          = receiveNull
-              UpdateConfigurationSetSendingEnabledResponse'
+instance AWSRequest UpdateConfigurationSetSendingEnabled where
+  type Rs UpdateConfigurationSetSendingEnabled = UpdateConfigurationSetSendingEnabledResponse
+  request = postQuery ses
+  response = receiveNull UpdateConfigurationSetSendingEnabledResponse'
 
-instance Hashable
-           UpdateConfigurationSetSendingEnabled
-         where
+instance Hashable UpdateConfigurationSetSendingEnabled
 
 instance NFData UpdateConfigurationSetSendingEnabled
-         where
 
-instance ToHeaders
-           UpdateConfigurationSetSendingEnabled
-         where
-        toHeaders = const mempty
+instance ToHeaders UpdateConfigurationSetSendingEnabled where
+  toHeaders = const mempty
 
-instance ToPath UpdateConfigurationSetSendingEnabled
-         where
-        toPath = const "/"
+instance ToPath UpdateConfigurationSetSendingEnabled where
+  toPath = const "/"
 
-instance ToQuery UpdateConfigurationSetSendingEnabled
-         where
-        toQuery UpdateConfigurationSetSendingEnabled'{..}
-          = mconcat
-              ["Action" =:
-                 ("UpdateConfigurationSetSendingEnabled" ::
-                    ByteString),
-               "Version" =: ("2010-12-01" :: ByteString),
-               "ConfigurationSetName" =: _ucsseConfigurationSetName,
-               "Enabled" =: _ucsseEnabled]
+instance ToQuery UpdateConfigurationSetSendingEnabled where
+  toQuery UpdateConfigurationSetSendingEnabled' {..} =
+    mconcat
+      [ "Action" =: ("UpdateConfigurationSetSendingEnabled" :: ByteString)
+      , "Version" =: ("2010-12-01" :: ByteString)
+      , "ConfigurationSetName" =: _ucsseConfigurationSetName
+      , "Enabled" =: _ucsseEnabled
+      ]
 
 -- | /See:/ 'updateConfigurationSetSendingEnabledResponse' smart constructor.
 data UpdateConfigurationSetSendingEnabledResponse =
   UpdateConfigurationSetSendingEnabledResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'UpdateConfigurationSetSendingEnabledResponse' with the minimum fields required to make a request.
 --
-updateConfigurationSetSendingEnabledResponse
-    :: UpdateConfigurationSetSendingEnabledResponse
+updateConfigurationSetSendingEnabledResponse ::
+     UpdateConfigurationSetSendingEnabledResponse
 updateConfigurationSetSendingEnabledResponse =
   UpdateConfigurationSetSendingEnabledResponse'
 
-
-instance NFData
-           UpdateConfigurationSetSendingEnabledResponse
-         where
+instance NFData UpdateConfigurationSetSendingEnabledResponse

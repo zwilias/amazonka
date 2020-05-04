@@ -2,11 +2,9 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DirectConnect.Types.Sum
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -33,30 +31,37 @@ data AddressFamily
   | IPV6
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText AddressFamily where
-    parser = takeLowerText >>= \case
-        "ipv4" -> pure IPV4
-        "ipv6" -> pure IPV6
-        e -> fromTextError $ "Failure parsing AddressFamily from value: '" <> e
-           <> "'. Accepted values: ipv4, ipv6"
+  parser =
+    takeLowerText >>= \case
+      "ipv4" -> pure IPV4
+      "ipv6" -> pure IPV6
+      e ->
+        fromTextError $
+        "Failure parsing AddressFamily from value: '" <>
+        e <> "'. Accepted values: ipv4, ipv6"
 
 instance ToText AddressFamily where
-    toText = \case
-        IPV4 -> "ipv4"
-        IPV6 -> "ipv6"
+  toText =
+    \case
+      IPV4 -> "ipv4"
+      IPV6 -> "ipv6"
 
-instance Hashable     AddressFamily
-instance NFData       AddressFamily
+instance Hashable AddressFamily
+
+instance NFData AddressFamily
+
 instance ToByteString AddressFamily
-instance ToQuery      AddressFamily
-instance ToHeader     AddressFamily
+
+instance ToQuery AddressFamily
+
+instance ToHeader AddressFamily
 
 instance ToJSON AddressFamily where
-    toJSON = toJSONText
+  toJSON = toJSONText
 
 instance FromJSON AddressFamily where
-    parseJSON = parseJSONText "AddressFamily"
+  parseJSON = parseJSONText "AddressFamily"
 
 -- | The state of the BGP peer.
 --
@@ -81,33 +86,41 @@ data BGPPeerState
   | Verifying
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText BGPPeerState where
-    parser = takeLowerText >>= \case
-        "available" -> pure Available
-        "deleted" -> pure Deleted
-        "deleting" -> pure Deleting
-        "pending" -> pure Pending
-        "verifying" -> pure Verifying
-        e -> fromTextError $ "Failure parsing BGPPeerState from value: '" <> e
-           <> "'. Accepted values: available, deleted, deleting, pending, verifying"
+  parser =
+    takeLowerText >>= \case
+      "available" -> pure Available
+      "deleted" -> pure Deleted
+      "deleting" -> pure Deleting
+      "pending" -> pure Pending
+      "verifying" -> pure Verifying
+      e ->
+        fromTextError $
+        "Failure parsing BGPPeerState from value: '" <>
+        e <>
+        "'. Accepted values: available, deleted, deleting, pending, verifying"
 
 instance ToText BGPPeerState where
-    toText = \case
-        Available -> "available"
-        Deleted -> "deleted"
-        Deleting -> "deleting"
-        Pending -> "pending"
-        Verifying -> "verifying"
+  toText =
+    \case
+      Available -> "available"
+      Deleted -> "deleted"
+      Deleting -> "deleting"
+      Pending -> "pending"
+      Verifying -> "verifying"
 
-instance Hashable     BGPPeerState
-instance NFData       BGPPeerState
+instance Hashable BGPPeerState
+
+instance NFData BGPPeerState
+
 instance ToByteString BGPPeerState
-instance ToQuery      BGPPeerState
-instance ToHeader     BGPPeerState
+
+instance ToQuery BGPPeerState
+
+instance ToHeader BGPPeerState
 
 instance FromJSON BGPPeerState where
-    parseJSON = parseJSONText "BGPPeerState"
+  parseJSON = parseJSONText "BGPPeerState"
 
 -- | The Up/Down state of the BGP peer.
 --
@@ -123,27 +136,34 @@ data BGPStatus
   | UP
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText BGPStatus where
-    parser = takeLowerText >>= \case
-        "down" -> pure Down
-        "up" -> pure UP
-        e -> fromTextError $ "Failure parsing BGPStatus from value: '" <> e
-           <> "'. Accepted values: down, up"
+  parser =
+    takeLowerText >>= \case
+      "down" -> pure Down
+      "up" -> pure UP
+      e ->
+        fromTextError $
+        "Failure parsing BGPStatus from value: '" <>
+        e <> "'. Accepted values: down, up"
 
 instance ToText BGPStatus where
-    toText = \case
-        Down -> "down"
-        UP -> "up"
+  toText =
+    \case
+      Down -> "down"
+      UP -> "up"
 
-instance Hashable     BGPStatus
-instance NFData       BGPStatus
+instance Hashable BGPStatus
+
+instance NFData BGPStatus
+
 instance ToByteString BGPStatus
-instance ToQuery      BGPStatus
-instance ToHeader     BGPStatus
+
+instance ToQuery BGPStatus
+
+instance ToHeader BGPStatus
 
 instance FromJSON BGPStatus where
-    parseJSON = parseJSONText "BGPStatus"
+  parseJSON = parseJSONText "BGPStatus"
 
 -- | State of the connection.
 --
@@ -177,39 +197,47 @@ data ConnectionState
   | CSRequested
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText ConnectionState where
-    parser = takeLowerText >>= \case
-        "available" -> pure CSAvailable
-        "deleted" -> pure CSDeleted
-        "deleting" -> pure CSDeleting
-        "down" -> pure CSDown
-        "ordering" -> pure CSOrdering
-        "pending" -> pure CSPending
-        "rejected" -> pure CSRejected
-        "requested" -> pure CSRequested
-        e -> fromTextError $ "Failure parsing ConnectionState from value: '" <> e
-           <> "'. Accepted values: available, deleted, deleting, down, ordering, pending, rejected, requested"
+  parser =
+    takeLowerText >>= \case
+      "available" -> pure CSAvailable
+      "deleted" -> pure CSDeleted
+      "deleting" -> pure CSDeleting
+      "down" -> pure CSDown
+      "ordering" -> pure CSOrdering
+      "pending" -> pure CSPending
+      "rejected" -> pure CSRejected
+      "requested" -> pure CSRequested
+      e ->
+        fromTextError $
+        "Failure parsing ConnectionState from value: '" <>
+        e <>
+        "'. Accepted values: available, deleted, deleting, down, ordering, pending, rejected, requested"
 
 instance ToText ConnectionState where
-    toText = \case
-        CSAvailable -> "available"
-        CSDeleted -> "deleted"
-        CSDeleting -> "deleting"
-        CSDown -> "down"
-        CSOrdering -> "ordering"
-        CSPending -> "pending"
-        CSRejected -> "rejected"
-        CSRequested -> "requested"
+  toText =
+    \case
+      CSAvailable -> "available"
+      CSDeleted -> "deleted"
+      CSDeleting -> "deleting"
+      CSDown -> "down"
+      CSOrdering -> "ordering"
+      CSPending -> "pending"
+      CSRejected -> "rejected"
+      CSRequested -> "requested"
 
-instance Hashable     ConnectionState
-instance NFData       ConnectionState
+instance Hashable ConnectionState
+
+instance NFData ConnectionState
+
 instance ToByteString ConnectionState
-instance ToQuery      ConnectionState
-instance ToHeader     ConnectionState
+
+instance ToQuery ConnectionState
+
+instance ToHeader ConnectionState
 
 instance FromJSON ConnectionState where
-    parseJSON = parseJSONText "ConnectionState"
+  parseJSON = parseJSONText "ConnectionState"
 
 -- | State of the direct connect gateway association.
 --
@@ -231,31 +259,39 @@ data DirectConnectGatewayAssociationState
   | Disassociating
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText DirectConnectGatewayAssociationState where
-    parser = takeLowerText >>= \case
-        "associated" -> pure Associated
-        "associating" -> pure Associating
-        "disassociated" -> pure Disassociated
-        "disassociating" -> pure Disassociating
-        e -> fromTextError $ "Failure parsing DirectConnectGatewayAssociationState from value: '" <> e
-           <> "'. Accepted values: associated, associating, disassociated, disassociating"
+  parser =
+    takeLowerText >>= \case
+      "associated" -> pure Associated
+      "associating" -> pure Associating
+      "disassociated" -> pure Disassociated
+      "disassociating" -> pure Disassociating
+      e ->
+        fromTextError $
+        "Failure parsing DirectConnectGatewayAssociationState from value: '" <>
+        e <>
+        "'. Accepted values: associated, associating, disassociated, disassociating"
 
 instance ToText DirectConnectGatewayAssociationState where
-    toText = \case
-        Associated -> "associated"
-        Associating -> "associating"
-        Disassociated -> "disassociated"
-        Disassociating -> "disassociating"
+  toText =
+    \case
+      Associated -> "associated"
+      Associating -> "associating"
+      Disassociated -> "disassociated"
+      Disassociating -> "disassociating"
 
-instance Hashable     DirectConnectGatewayAssociationState
-instance NFData       DirectConnectGatewayAssociationState
+instance Hashable DirectConnectGatewayAssociationState
+
+instance NFData DirectConnectGatewayAssociationState
+
 instance ToByteString DirectConnectGatewayAssociationState
-instance ToQuery      DirectConnectGatewayAssociationState
-instance ToHeader     DirectConnectGatewayAssociationState
+
+instance ToQuery DirectConnectGatewayAssociationState
+
+instance ToHeader DirectConnectGatewayAssociationState
 
 instance FromJSON DirectConnectGatewayAssociationState where
-    parseJSON = parseJSONText "DirectConnectGatewayAssociationState"
+  parseJSON = parseJSONText "DirectConnectGatewayAssociationState"
 
 -- | State of the direct connect gateway attachment.
 --
@@ -277,31 +313,38 @@ data DirectConnectGatewayAttachmentState
   | Detaching
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText DirectConnectGatewayAttachmentState where
-    parser = takeLowerText >>= \case
-        "attached" -> pure Attached
-        "attaching" -> pure Attaching
-        "detached" -> pure Detached
-        "detaching" -> pure Detaching
-        e -> fromTextError $ "Failure parsing DirectConnectGatewayAttachmentState from value: '" <> e
-           <> "'. Accepted values: attached, attaching, detached, detaching"
+  parser =
+    takeLowerText >>= \case
+      "attached" -> pure Attached
+      "attaching" -> pure Attaching
+      "detached" -> pure Detached
+      "detaching" -> pure Detaching
+      e ->
+        fromTextError $
+        "Failure parsing DirectConnectGatewayAttachmentState from value: '" <>
+        e <> "'. Accepted values: attached, attaching, detached, detaching"
 
 instance ToText DirectConnectGatewayAttachmentState where
-    toText = \case
-        Attached -> "attached"
-        Attaching -> "attaching"
-        Detached -> "detached"
-        Detaching -> "detaching"
+  toText =
+    \case
+      Attached -> "attached"
+      Attaching -> "attaching"
+      Detached -> "detached"
+      Detaching -> "detaching"
 
-instance Hashable     DirectConnectGatewayAttachmentState
-instance NFData       DirectConnectGatewayAttachmentState
+instance Hashable DirectConnectGatewayAttachmentState
+
+instance NFData DirectConnectGatewayAttachmentState
+
 instance ToByteString DirectConnectGatewayAttachmentState
-instance ToQuery      DirectConnectGatewayAttachmentState
-instance ToHeader     DirectConnectGatewayAttachmentState
+
+instance ToQuery DirectConnectGatewayAttachmentState
+
+instance ToHeader DirectConnectGatewayAttachmentState
 
 instance FromJSON DirectConnectGatewayAttachmentState where
-    parseJSON = parseJSONText "DirectConnectGatewayAttachmentState"
+  parseJSON = parseJSONText "DirectConnectGatewayAttachmentState"
 
 -- | State of the direct connect gateway.
 --
@@ -323,31 +366,38 @@ data DirectConnectGatewayState
   | DCGSPending
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText DirectConnectGatewayState where
-    parser = takeLowerText >>= \case
-        "available" -> pure DCGSAvailable
-        "deleted" -> pure DCGSDeleted
-        "deleting" -> pure DCGSDeleting
-        "pending" -> pure DCGSPending
-        e -> fromTextError $ "Failure parsing DirectConnectGatewayState from value: '" <> e
-           <> "'. Accepted values: available, deleted, deleting, pending"
+  parser =
+    takeLowerText >>= \case
+      "available" -> pure DCGSAvailable
+      "deleted" -> pure DCGSDeleted
+      "deleting" -> pure DCGSDeleting
+      "pending" -> pure DCGSPending
+      e ->
+        fromTextError $
+        "Failure parsing DirectConnectGatewayState from value: '" <>
+        e <> "'. Accepted values: available, deleted, deleting, pending"
 
 instance ToText DirectConnectGatewayState where
-    toText = \case
-        DCGSAvailable -> "available"
-        DCGSDeleted -> "deleted"
-        DCGSDeleting -> "deleting"
-        DCGSPending -> "pending"
+  toText =
+    \case
+      DCGSAvailable -> "available"
+      DCGSDeleted -> "deleted"
+      DCGSDeleting -> "deleting"
+      DCGSPending -> "pending"
 
-instance Hashable     DirectConnectGatewayState
-instance NFData       DirectConnectGatewayState
+instance Hashable DirectConnectGatewayState
+
+instance NFData DirectConnectGatewayState
+
 instance ToByteString DirectConnectGatewayState
-instance ToQuery      DirectConnectGatewayState
-instance ToHeader     DirectConnectGatewayState
+
+instance ToQuery DirectConnectGatewayState
+
+instance ToHeader DirectConnectGatewayState
 
 instance FromJSON DirectConnectGatewayState where
-    parseJSON = parseJSONText "DirectConnectGatewayState"
+  parseJSON = parseJSONText "DirectConnectGatewayState"
 
 -- | State of the interconnect.
 --
@@ -375,35 +425,43 @@ data InterconnectState
   | ISRequested
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText InterconnectState where
-    parser = takeLowerText >>= \case
-        "available" -> pure ISAvailable
-        "deleted" -> pure ISDeleted
-        "deleting" -> pure ISDeleting
-        "down" -> pure ISDown
-        "pending" -> pure ISPending
-        "requested" -> pure ISRequested
-        e -> fromTextError $ "Failure parsing InterconnectState from value: '" <> e
-           <> "'. Accepted values: available, deleted, deleting, down, pending, requested"
+  parser =
+    takeLowerText >>= \case
+      "available" -> pure ISAvailable
+      "deleted" -> pure ISDeleted
+      "deleting" -> pure ISDeleting
+      "down" -> pure ISDown
+      "pending" -> pure ISPending
+      "requested" -> pure ISRequested
+      e ->
+        fromTextError $
+        "Failure parsing InterconnectState from value: '" <>
+        e <>
+        "'. Accepted values: available, deleted, deleting, down, pending, requested"
 
 instance ToText InterconnectState where
-    toText = \case
-        ISAvailable -> "available"
-        ISDeleted -> "deleted"
-        ISDeleting -> "deleting"
-        ISDown -> "down"
-        ISPending -> "pending"
-        ISRequested -> "requested"
+  toText =
+    \case
+      ISAvailable -> "available"
+      ISDeleted -> "deleted"
+      ISDeleting -> "deleting"
+      ISDown -> "down"
+      ISPending -> "pending"
+      ISRequested -> "requested"
 
-instance Hashable     InterconnectState
-instance NFData       InterconnectState
+instance Hashable InterconnectState
+
+instance NFData InterconnectState
+
 instance ToByteString InterconnectState
-instance ToQuery      InterconnectState
-instance ToHeader     InterconnectState
+
+instance ToQuery InterconnectState
+
+instance ToHeader InterconnectState
 
 instance FromJSON InterconnectState where
-    parseJSON = parseJSONText "InterconnectState"
+  parseJSON = parseJSONText "InterconnectState"
 
 -- | The state of the LAG.
 --
@@ -431,35 +489,43 @@ data LagState
   | LSRequested
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText LagState where
-    parser = takeLowerText >>= \case
-        "available" -> pure LSAvailable
-        "deleted" -> pure LSDeleted
-        "deleting" -> pure LSDeleting
-        "down" -> pure LSDown
-        "pending" -> pure LSPending
-        "requested" -> pure LSRequested
-        e -> fromTextError $ "Failure parsing LagState from value: '" <> e
-           <> "'. Accepted values: available, deleted, deleting, down, pending, requested"
+  parser =
+    takeLowerText >>= \case
+      "available" -> pure LSAvailable
+      "deleted" -> pure LSDeleted
+      "deleting" -> pure LSDeleting
+      "down" -> pure LSDown
+      "pending" -> pure LSPending
+      "requested" -> pure LSRequested
+      e ->
+        fromTextError $
+        "Failure parsing LagState from value: '" <>
+        e <>
+        "'. Accepted values: available, deleted, deleting, down, pending, requested"
 
 instance ToText LagState where
-    toText = \case
-        LSAvailable -> "available"
-        LSDeleted -> "deleted"
-        LSDeleting -> "deleting"
-        LSDown -> "down"
-        LSPending -> "pending"
-        LSRequested -> "requested"
+  toText =
+    \case
+      LSAvailable -> "available"
+      LSDeleted -> "deleted"
+      LSDeleting -> "deleting"
+      LSDown -> "down"
+      LSPending -> "pending"
+      LSRequested -> "requested"
 
-instance Hashable     LagState
-instance NFData       LagState
+instance Hashable LagState
+
+instance NFData LagState
+
 instance ToByteString LagState
-instance ToQuery      LagState
-instance ToHeader     LagState
+
+instance ToQuery LagState
+
+instance ToHeader LagState
 
 instance FromJSON LagState where
-    parseJSON = parseJSONText "LagState"
+  parseJSON = parseJSONText "LagState"
 
 -- | A standard media type indicating the content type of the LOA-CFA document. Currently, the only supported value is "application/pdf".
 --
@@ -470,28 +536,35 @@ data LoaContentType =
   ApplicationPdf
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText LoaContentType where
-    parser = takeLowerText >>= \case
-        "application/pdf" -> pure ApplicationPdf
-        e -> fromTextError $ "Failure parsing LoaContentType from value: '" <> e
-           <> "'. Accepted values: application/pdf"
+  parser =
+    takeLowerText >>= \case
+      "application/pdf" -> pure ApplicationPdf
+      e ->
+        fromTextError $
+        "Failure parsing LoaContentType from value: '" <>
+        e <> "'. Accepted values: application/pdf"
 
 instance ToText LoaContentType where
-    toText = \case
-        ApplicationPdf -> "application/pdf"
+  toText =
+    \case
+      ApplicationPdf -> "application/pdf"
 
-instance Hashable     LoaContentType
-instance NFData       LoaContentType
+instance Hashable LoaContentType
+
+instance NFData LoaContentType
+
 instance ToByteString LoaContentType
-instance ToQuery      LoaContentType
-instance ToHeader     LoaContentType
+
+instance ToQuery LoaContentType
+
+instance ToHeader LoaContentType
 
 instance ToJSON LoaContentType where
-    toJSON = toJSONText
+  toJSON = toJSONText
 
 instance FromJSON LoaContentType where
-    parseJSON = parseJSONText "LoaContentType"
+  parseJSON = parseJSONText "LoaContentType"
 
 -- | State of the virtual interface.
 --
@@ -525,36 +598,44 @@ data VirtualInterfaceState
   | VISVerifying
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText VirtualInterfaceState where
-    parser = takeLowerText >>= \case
-        "available" -> pure VISAvailable
-        "confirming" -> pure VISConfirming
-        "deleted" -> pure VISDeleted
-        "deleting" -> pure VISDeleting
-        "down" -> pure VISDown
-        "pending" -> pure VISPending
-        "rejected" -> pure VISRejected
-        "verifying" -> pure VISVerifying
-        e -> fromTextError $ "Failure parsing VirtualInterfaceState from value: '" <> e
-           <> "'. Accepted values: available, confirming, deleted, deleting, down, pending, rejected, verifying"
+  parser =
+    takeLowerText >>= \case
+      "available" -> pure VISAvailable
+      "confirming" -> pure VISConfirming
+      "deleted" -> pure VISDeleted
+      "deleting" -> pure VISDeleting
+      "down" -> pure VISDown
+      "pending" -> pure VISPending
+      "rejected" -> pure VISRejected
+      "verifying" -> pure VISVerifying
+      e ->
+        fromTextError $
+        "Failure parsing VirtualInterfaceState from value: '" <>
+        e <>
+        "'. Accepted values: available, confirming, deleted, deleting, down, pending, rejected, verifying"
 
 instance ToText VirtualInterfaceState where
-    toText = \case
-        VISAvailable -> "available"
-        VISConfirming -> "confirming"
-        VISDeleted -> "deleted"
-        VISDeleting -> "deleting"
-        VISDown -> "down"
-        VISPending -> "pending"
-        VISRejected -> "rejected"
-        VISVerifying -> "verifying"
+  toText =
+    \case
+      VISAvailable -> "available"
+      VISConfirming -> "confirming"
+      VISDeleted -> "deleted"
+      VISDeleting -> "deleting"
+      VISDown -> "down"
+      VISPending -> "pending"
+      VISRejected -> "rejected"
+      VISVerifying -> "verifying"
 
-instance Hashable     VirtualInterfaceState
-instance NFData       VirtualInterfaceState
+instance Hashable VirtualInterfaceState
+
+instance NFData VirtualInterfaceState
+
 instance ToByteString VirtualInterfaceState
-instance ToQuery      VirtualInterfaceState
-instance ToHeader     VirtualInterfaceState
+
+instance ToQuery VirtualInterfaceState
+
+instance ToHeader VirtualInterfaceState
 
 instance FromJSON VirtualInterfaceState where
-    parseJSON = parseJSONText "VirtualInterfaceState"
+  parseJSON = parseJSONText "VirtualInterfaceState"

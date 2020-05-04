@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.GameLift.DeleteFleet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -72,17 +70,15 @@
 --
 --
 module Network.AWS.GameLift.DeleteFleet
-    (
     -- * Creating a Request
-      deleteFleet
-    , DeleteFleet
+  ( deleteFleet
+  , DeleteFleet
     -- * Request Lenses
-    , dfFleetId
-
+  , dfFleetId
     -- * Destructuring the Response
-    , deleteFleetResponse
-    , DeleteFleetResponse
-    ) where
+  , deleteFleetResponse
+  , DeleteFleetResponse
+  ) where
 
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
@@ -96,65 +92,60 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteFleet' smart constructor.
-newtype DeleteFleet = DeleteFleet'
-  { _dfFleetId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteFleet =
+  DeleteFleet'
+    { _dfFleetId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFleet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dfFleetId' - Unique identifier for a fleet to be deleted.
-deleteFleet
-    :: Text -- ^ 'dfFleetId'
-    -> DeleteFleet
+deleteFleet ::
+     Text -- ^ 'dfFleetId'
+  -> DeleteFleet
 deleteFleet pFleetId_ = DeleteFleet' {_dfFleetId = pFleetId_}
-
 
 -- | Unique identifier for a fleet to be deleted.
 dfFleetId :: Lens' DeleteFleet Text
-dfFleetId = lens _dfFleetId (\ s a -> s{_dfFleetId = a})
+dfFleetId = lens _dfFleetId (\s a -> s {_dfFleetId = a})
 
 instance AWSRequest DeleteFleet where
-        type Rs DeleteFleet = DeleteFleetResponse
-        request = postJSON gameLift
-        response = receiveNull DeleteFleetResponse'
+  type Rs DeleteFleet = DeleteFleetResponse
+  request = postJSON gameLift
+  response = receiveNull DeleteFleetResponse'
 
-instance Hashable DeleteFleet where
+instance Hashable DeleteFleet
 
-instance NFData DeleteFleet where
+instance NFData DeleteFleet
 
 instance ToHeaders DeleteFleet where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("GameLift.DeleteFleet" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("GameLift.DeleteFleet" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON DeleteFleet where
-        toJSON DeleteFleet'{..}
-          = object (catMaybes [Just ("FleetId" .= _dfFleetId)])
+  toJSON DeleteFleet' {..} = object (catMaybes [Just ("FleetId" .= _dfFleetId)])
 
 instance ToPath DeleteFleet where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DeleteFleet where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'deleteFleetResponse' smart constructor.
 data DeleteFleetResponse =
   DeleteFleetResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'DeleteFleetResponse' with the minimum fields required to make a request.
 --
-deleteFleetResponse
-    :: DeleteFleetResponse
+deleteFleetResponse :: DeleteFleetResponse
 deleteFleetResponse = DeleteFleetResponse'
 
-
-instance NFData DeleteFleetResponse where
+instance NFData DeleteFleetResponse

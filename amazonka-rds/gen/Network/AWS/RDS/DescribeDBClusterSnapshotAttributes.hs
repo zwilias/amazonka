@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.RDS.DescribeDBClusterSnapshotAttributes
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,20 +24,18 @@
 -- To add or remove access for an AWS account to copy or restore a manual DB cluster snapshot, or to make the manual DB cluster snapshot public or private, use the 'ModifyDBClusterSnapshotAttribute' API action.
 --
 module Network.AWS.RDS.DescribeDBClusterSnapshotAttributes
-    (
     -- * Creating a Request
-      describeDBClusterSnapshotAttributes
-    , DescribeDBClusterSnapshotAttributes
+  ( describeDBClusterSnapshotAttributes
+  , DescribeDBClusterSnapshotAttributes
     -- * Request Lenses
-    , ddcsaDBClusterSnapshotIdentifier
-
+  , ddcsaDBClusterSnapshotIdentifier
     -- * Destructuring the Response
-    , describeDBClusterSnapshotAttributesResponse
-    , DescribeDBClusterSnapshotAttributesResponse
+  , describeDBClusterSnapshotAttributesResponse
+  , DescribeDBClusterSnapshotAttributesResponse
     -- * Response Lenses
-    , ddcsarsDBClusterSnapshotAttributesResult
-    , ddcsarsResponseStatus
-    ) where
+  , ddcsarsDBClusterSnapshotAttributesResult
+  , ddcsarsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -53,74 +49,68 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeDBClusterSnapshotAttributes' smart constructor.
-newtype DescribeDBClusterSnapshotAttributes = DescribeDBClusterSnapshotAttributes'
-  { _ddcsaDBClusterSnapshotIdentifier :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeDBClusterSnapshotAttributes =
+  DescribeDBClusterSnapshotAttributes'
+    { _ddcsaDBClusterSnapshotIdentifier :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDBClusterSnapshotAttributes' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ddcsaDBClusterSnapshotIdentifier' - The identifier for the DB cluster snapshot to describe the attributes for.
-describeDBClusterSnapshotAttributes
-    :: Text -- ^ 'ddcsaDBClusterSnapshotIdentifier'
-    -> DescribeDBClusterSnapshotAttributes
+describeDBClusterSnapshotAttributes ::
+     Text -- ^ 'ddcsaDBClusterSnapshotIdentifier'
+  -> DescribeDBClusterSnapshotAttributes
 describeDBClusterSnapshotAttributes pDBClusterSnapshotIdentifier_ =
   DescribeDBClusterSnapshotAttributes'
     {_ddcsaDBClusterSnapshotIdentifier = pDBClusterSnapshotIdentifier_}
 
-
 -- | The identifier for the DB cluster snapshot to describe the attributes for.
-ddcsaDBClusterSnapshotIdentifier :: Lens' DescribeDBClusterSnapshotAttributes Text
-ddcsaDBClusterSnapshotIdentifier = lens _ddcsaDBClusterSnapshotIdentifier (\ s a -> s{_ddcsaDBClusterSnapshotIdentifier = a})
+ddcsaDBClusterSnapshotIdentifier ::
+     Lens' DescribeDBClusterSnapshotAttributes Text
+ddcsaDBClusterSnapshotIdentifier =
+  lens
+    _ddcsaDBClusterSnapshotIdentifier
+    (\s a -> s {_ddcsaDBClusterSnapshotIdentifier = a})
 
-instance AWSRequest
-           DescribeDBClusterSnapshotAttributes
-         where
-        type Rs DescribeDBClusterSnapshotAttributes =
-             DescribeDBClusterSnapshotAttributesResponse
-        request = postQuery rds
-        response
-          = receiveXMLWrapper
-              "DescribeDBClusterSnapshotAttributesResult"
-              (\ s h x ->
-                 DescribeDBClusterSnapshotAttributesResponse' <$>
-                   (x .@? "DBClusterSnapshotAttributesResult") <*>
-                     (pure (fromEnum s)))
+instance AWSRequest DescribeDBClusterSnapshotAttributes where
+  type Rs DescribeDBClusterSnapshotAttributes = DescribeDBClusterSnapshotAttributesResponse
+  request = postQuery rds
+  response =
+    receiveXMLWrapper
+      "DescribeDBClusterSnapshotAttributesResult"
+      (\s h x ->
+         DescribeDBClusterSnapshotAttributesResponse' <$>
+         (x .@? "DBClusterSnapshotAttributesResult") <*>
+         (pure (fromEnum s)))
 
 instance Hashable DescribeDBClusterSnapshotAttributes
-         where
 
 instance NFData DescribeDBClusterSnapshotAttributes
-         where
 
-instance ToHeaders
-           DescribeDBClusterSnapshotAttributes
-         where
-        toHeaders = const mempty
+instance ToHeaders DescribeDBClusterSnapshotAttributes where
+  toHeaders = const mempty
 
-instance ToPath DescribeDBClusterSnapshotAttributes
-         where
-        toPath = const "/"
+instance ToPath DescribeDBClusterSnapshotAttributes where
+  toPath = const "/"
 
-instance ToQuery DescribeDBClusterSnapshotAttributes
-         where
-        toQuery DescribeDBClusterSnapshotAttributes'{..}
-          = mconcat
-              ["Action" =:
-                 ("DescribeDBClusterSnapshotAttributes" ::
-                    ByteString),
-               "Version" =: ("2014-10-31" :: ByteString),
-               "DBClusterSnapshotIdentifier" =:
-                 _ddcsaDBClusterSnapshotIdentifier]
+instance ToQuery DescribeDBClusterSnapshotAttributes where
+  toQuery DescribeDBClusterSnapshotAttributes' {..} =
+    mconcat
+      [ "Action" =: ("DescribeDBClusterSnapshotAttributes" :: ByteString)
+      , "Version" =: ("2014-10-31" :: ByteString)
+      , "DBClusterSnapshotIdentifier" =: _ddcsaDBClusterSnapshotIdentifier
+      ]
 
 -- | /See:/ 'describeDBClusterSnapshotAttributesResponse' smart constructor.
-data DescribeDBClusterSnapshotAttributesResponse = DescribeDBClusterSnapshotAttributesResponse'
-  { _ddcsarsDBClusterSnapshotAttributesResult :: !(Maybe DBClusterSnapshotAttributesResult)
-  , _ddcsarsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDBClusterSnapshotAttributesResponse =
+  DescribeDBClusterSnapshotAttributesResponse'
+    { _ddcsarsDBClusterSnapshotAttributesResult :: !(Maybe DBClusterSnapshotAttributesResult)
+    , _ddcsarsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDBClusterSnapshotAttributesResponse' with the minimum fields required to make a request.
 --
@@ -129,24 +119,26 @@ data DescribeDBClusterSnapshotAttributesResponse = DescribeDBClusterSnapshotAttr
 -- * 'ddcsarsDBClusterSnapshotAttributesResult' - Undocumented member.
 --
 -- * 'ddcsarsResponseStatus' - -- | The response status code.
-describeDBClusterSnapshotAttributesResponse
-    :: Int -- ^ 'ddcsarsResponseStatus'
-    -> DescribeDBClusterSnapshotAttributesResponse
+describeDBClusterSnapshotAttributesResponse ::
+     Int -- ^ 'ddcsarsResponseStatus'
+  -> DescribeDBClusterSnapshotAttributesResponse
 describeDBClusterSnapshotAttributesResponse pResponseStatus_ =
   DescribeDBClusterSnapshotAttributesResponse'
     { _ddcsarsDBClusterSnapshotAttributesResult = Nothing
     , _ddcsarsResponseStatus = pResponseStatus_
     }
 
-
 -- | Undocumented member.
-ddcsarsDBClusterSnapshotAttributesResult :: Lens' DescribeDBClusterSnapshotAttributesResponse (Maybe DBClusterSnapshotAttributesResult)
-ddcsarsDBClusterSnapshotAttributesResult = lens _ddcsarsDBClusterSnapshotAttributesResult (\ s a -> s{_ddcsarsDBClusterSnapshotAttributesResult = a})
+ddcsarsDBClusterSnapshotAttributesResult ::
+     Lens' DescribeDBClusterSnapshotAttributesResponse (Maybe DBClusterSnapshotAttributesResult)
+ddcsarsDBClusterSnapshotAttributesResult =
+  lens
+    _ddcsarsDBClusterSnapshotAttributesResult
+    (\s a -> s {_ddcsarsDBClusterSnapshotAttributesResult = a})
 
 -- | -- | The response status code.
 ddcsarsResponseStatus :: Lens' DescribeDBClusterSnapshotAttributesResponse Int
-ddcsarsResponseStatus = lens _ddcsarsResponseStatus (\ s a -> s{_ddcsarsResponseStatus = a})
+ddcsarsResponseStatus =
+  lens _ddcsarsResponseStatus (\s a -> s {_ddcsarsResponseStatus = a})
 
-instance NFData
-           DescribeDBClusterSnapshotAttributesResponse
-         where
+instance NFData DescribeDBClusterSnapshotAttributesResponse

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ApplicationAutoScaling
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -47,209 +46,167 @@
 -- For a list of supported regions, see <http://docs.aws.amazon.com/general/latest/gr/rande.html#as-app_region AWS Regions and Endpoints: Application Auto Scaling> in the /AWS General Reference/ .
 --
 module Network.AWS.ApplicationAutoScaling
-    (
     -- * Service Configuration
-      applicationAutoScaling
-
+  ( applicationAutoScaling
     -- * Errors
     -- $errors
-
     -- ** ValidationException
-    , _ValidationException
-
+  , _ValidationException
     -- ** FailedResourceAccessException
-    , _FailedResourceAccessException
-
+  , _FailedResourceAccessException
     -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
+  , _InvalidNextTokenException
     -- ** ConcurrentUpdateException
-    , _ConcurrentUpdateException
-
+  , _ConcurrentUpdateException
     -- ** InternalServiceException
-    , _InternalServiceException
-
+  , _InternalServiceException
     -- ** ObjectNotFoundException
-    , _ObjectNotFoundException
-
+  , _ObjectNotFoundException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** DeleteScalingPolicy
-    , module Network.AWS.ApplicationAutoScaling.DeleteScalingPolicy
-
+  , module Network.AWS.ApplicationAutoScaling.DeleteScalingPolicy
     -- ** PutScalingPolicy
-    , module Network.AWS.ApplicationAutoScaling.PutScalingPolicy
-
+  , module Network.AWS.ApplicationAutoScaling.PutScalingPolicy
     -- ** RegisterScalableTarget
-    , module Network.AWS.ApplicationAutoScaling.RegisterScalableTarget
-
+  , module Network.AWS.ApplicationAutoScaling.RegisterScalableTarget
     -- ** DescribeScalingPolicies (Paginated)
-    , module Network.AWS.ApplicationAutoScaling.DescribeScalingPolicies
-
+  , module Network.AWS.ApplicationAutoScaling.DescribeScalingPolicies
     -- ** PutScheduledAction
-    , module Network.AWS.ApplicationAutoScaling.PutScheduledAction
-
+  , module Network.AWS.ApplicationAutoScaling.PutScheduledAction
     -- ** DeleteScheduledAction
-    , module Network.AWS.ApplicationAutoScaling.DeleteScheduledAction
-
+  , module Network.AWS.ApplicationAutoScaling.DeleteScheduledAction
     -- ** DescribeScheduledActions
-    , module Network.AWS.ApplicationAutoScaling.DescribeScheduledActions
-
+  , module Network.AWS.ApplicationAutoScaling.DescribeScheduledActions
     -- ** DescribeScalableTargets (Paginated)
-    , module Network.AWS.ApplicationAutoScaling.DescribeScalableTargets
-
+  , module Network.AWS.ApplicationAutoScaling.DescribeScalableTargets
     -- ** DescribeScalingActivities (Paginated)
-    , module Network.AWS.ApplicationAutoScaling.DescribeScalingActivities
-
+  , module Network.AWS.ApplicationAutoScaling.DescribeScalingActivities
     -- ** DeregisterScalableTarget
-    , module Network.AWS.ApplicationAutoScaling.DeregisterScalableTarget
-
+  , module Network.AWS.ApplicationAutoScaling.DeregisterScalableTarget
     -- * Types
-
     -- ** AdjustmentType
-    , AdjustmentType (..)
-
+  , AdjustmentType(..)
     -- ** MetricAggregationType
-    , MetricAggregationType (..)
-
+  , MetricAggregationType(..)
     -- ** MetricStatistic
-    , MetricStatistic (..)
-
+  , MetricStatistic(..)
     -- ** MetricType
-    , MetricType (..)
-
+  , MetricType(..)
     -- ** PolicyType
-    , PolicyType (..)
-
+  , PolicyType(..)
     -- ** ScalableDimension
-    , ScalableDimension (..)
-
+  , ScalableDimension(..)
     -- ** ScalingActivityStatusCode
-    , ScalingActivityStatusCode (..)
-
+  , ScalingActivityStatusCode(..)
     -- ** ServiceNamespace
-    , ServiceNamespace (..)
-
+  , ServiceNamespace(..)
     -- ** Alarm
-    , Alarm
-    , alarm
-    , aAlarmName
-    , aAlarmARN
-
+  , Alarm
+  , alarm
+  , aAlarmName
+  , aAlarmARN
     -- ** CustomizedMetricSpecification
-    , CustomizedMetricSpecification
-    , customizedMetricSpecification
-    , cmsDimensions
-    , cmsUnit
-    , cmsMetricName
-    , cmsNamespace
-    , cmsStatistic
-
+  , CustomizedMetricSpecification
+  , customizedMetricSpecification
+  , cmsDimensions
+  , cmsUnit
+  , cmsMetricName
+  , cmsNamespace
+  , cmsStatistic
     -- ** MetricDimension
-    , MetricDimension
-    , metricDimension
-    , mdName
-    , mdValue
-
+  , MetricDimension
+  , metricDimension
+  , mdName
+  , mdValue
     -- ** PredefinedMetricSpecification
-    , PredefinedMetricSpecification
-    , predefinedMetricSpecification
-    , pmsResourceLabel
-    , pmsPredefinedMetricType
-
+  , PredefinedMetricSpecification
+  , predefinedMetricSpecification
+  , pmsResourceLabel
+  , pmsPredefinedMetricType
     -- ** ScalableTarget
-    , ScalableTarget
-    , scalableTarget
-    , stServiceNamespace
-    , stResourceId
-    , stScalableDimension
-    , stMinCapacity
-    , stMaxCapacity
-    , stRoleARN
-    , stCreationTime
-
+  , ScalableTarget
+  , scalableTarget
+  , stServiceNamespace
+  , stResourceId
+  , stScalableDimension
+  , stMinCapacity
+  , stMaxCapacity
+  , stRoleARN
+  , stCreationTime
     -- ** ScalableTargetAction
-    , ScalableTargetAction
-    , scalableTargetAction
-    , staMaxCapacity
-    , staMinCapacity
-
+  , ScalableTargetAction
+  , scalableTargetAction
+  , staMaxCapacity
+  , staMinCapacity
     -- ** ScalingActivity
-    , ScalingActivity
-    , scalingActivity
-    , sStatusMessage
-    , sEndTime
-    , sDetails
-    , sActivityId
-    , sServiceNamespace
-    , sResourceId
-    , sScalableDimension
-    , sDescription
-    , sCause
-    , sStartTime
-    , sStatusCode
-
+  , ScalingActivity
+  , scalingActivity
+  , sStatusMessage
+  , sEndTime
+  , sDetails
+  , sActivityId
+  , sServiceNamespace
+  , sResourceId
+  , sScalableDimension
+  , sDescription
+  , sCause
+  , sStartTime
+  , sStatusCode
     -- ** ScalingPolicy
-    , ScalingPolicy
-    , scalingPolicy
-    , spTargetTrackingScalingPolicyConfiguration
-    , spStepScalingPolicyConfiguration
-    , spAlarms
-    , spPolicyARN
-    , spPolicyName
-    , spServiceNamespace
-    , spResourceId
-    , spScalableDimension
-    , spPolicyType
-    , spCreationTime
-
+  , ScalingPolicy
+  , scalingPolicy
+  , spTargetTrackingScalingPolicyConfiguration
+  , spStepScalingPolicyConfiguration
+  , spAlarms
+  , spPolicyARN
+  , spPolicyName
+  , spServiceNamespace
+  , spResourceId
+  , spScalableDimension
+  , spPolicyType
+  , spCreationTime
     -- ** ScheduledAction
-    , ScheduledAction
-    , scheduledAction
-    , saScalableDimension
-    , saStartTime
-    , saEndTime
-    , saScalableTargetAction
-    , saScheduledActionName
-    , saScheduledActionARN
-    , saServiceNamespace
-    , saSchedule
-    , saResourceId
-    , saCreationTime
-
+  , ScheduledAction
+  , scheduledAction
+  , saScalableDimension
+  , saStartTime
+  , saEndTime
+  , saScalableTargetAction
+  , saScheduledActionName
+  , saScheduledActionARN
+  , saServiceNamespace
+  , saSchedule
+  , saResourceId
+  , saCreationTime
     -- ** StepAdjustment
-    , StepAdjustment
-    , stepAdjustment
-    , saMetricIntervalLowerBound
-    , saMetricIntervalUpperBound
-    , saScalingAdjustment
-
+  , StepAdjustment
+  , stepAdjustment
+  , saMetricIntervalLowerBound
+  , saMetricIntervalUpperBound
+  , saScalingAdjustment
     -- ** StepScalingPolicyConfiguration
-    , StepScalingPolicyConfiguration
-    , stepScalingPolicyConfiguration
-    , sspcStepAdjustments
-    , sspcAdjustmentType
-    , sspcCooldown
-    , sspcMetricAggregationType
-    , sspcMinAdjustmentMagnitude
-
+  , StepScalingPolicyConfiguration
+  , stepScalingPolicyConfiguration
+  , sspcStepAdjustments
+  , sspcAdjustmentType
+  , sspcCooldown
+  , sspcMetricAggregationType
+  , sspcMinAdjustmentMagnitude
     -- ** TargetTrackingScalingPolicyConfiguration
-    , TargetTrackingScalingPolicyConfiguration
-    , targetTrackingScalingPolicyConfiguration
-    , ttspcPredefinedMetricSpecification
-    , ttspcScaleInCooldown
-    , ttspcCustomizedMetricSpecification
-    , ttspcDisableScaleIn
-    , ttspcScaleOutCooldown
-    , ttspcTargetValue
-    ) where
+  , TargetTrackingScalingPolicyConfiguration
+  , targetTrackingScalingPolicyConfiguration
+  , ttspcPredefinedMetricSpecification
+  , ttspcScaleInCooldown
+  , ttspcCustomizedMetricSpecification
+  , ttspcDisableScaleIn
+  , ttspcScaleOutCooldown
+  , ttspcTargetValue
+  ) where
 
 import Network.AWS.ApplicationAutoScaling.DeleteScalingPolicy
 import Network.AWS.ApplicationAutoScaling.DeleteScheduledAction
@@ -263,14 +220,12 @@ import Network.AWS.ApplicationAutoScaling.PutScheduledAction
 import Network.AWS.ApplicationAutoScaling.RegisterScalableTarget
 import Network.AWS.ApplicationAutoScaling.Types
 import Network.AWS.ApplicationAutoScaling.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'ApplicationAutoScaling'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -287,7 +242,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.RequestSpotFleet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,21 +32,19 @@
 -- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html Spot Fleet Requests> in the /Amazon EC2 User Guide for Linux Instances/ .
 --
 module Network.AWS.EC2.RequestSpotFleet
-    (
     -- * Creating a Request
-      requestSpotFleet
-    , RequestSpotFleet
+  ( requestSpotFleet
+  , RequestSpotFleet
     -- * Request Lenses
-    , rsfDryRun
-    , rsfSpotFleetRequestConfig
-
+  , rsfDryRun
+  , rsfSpotFleetRequestConfig
     -- * Destructuring the Response
-    , requestSpotFleetResponse
-    , RequestSpotFleetResponse
+  , requestSpotFleetResponse
+  , RequestSpotFleetResponse
     -- * Response Lenses
-    , rsfrsResponseStatus
-    , rsfrsSpotFleetRequestId
-    ) where
+  , rsfrsResponseStatus
+  , rsfrsSpotFleetRequestId
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -62,11 +58,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'requestSpotFleet' smart constructor.
-data RequestSpotFleet = RequestSpotFleet'
-  { _rsfDryRun                 :: !(Maybe Bool)
-  , _rsfSpotFleetRequestConfig :: !SpotFleetRequestConfigData
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RequestSpotFleet =
+  RequestSpotFleet'
+    { _rsfDryRun                 :: !(Maybe Bool)
+    , _rsfSpotFleetRequestConfig :: !SpotFleetRequestConfigData
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RequestSpotFleet' with the minimum fields required to make a request.
 --
@@ -75,62 +72,63 @@ data RequestSpotFleet = RequestSpotFleet'
 -- * 'rsfDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
 -- * 'rsfSpotFleetRequestConfig' - The configuration for the Spot Fleet request.
-requestSpotFleet
-    :: SpotFleetRequestConfigData -- ^ 'rsfSpotFleetRequestConfig'
-    -> RequestSpotFleet
+requestSpotFleet ::
+     SpotFleetRequestConfigData -- ^ 'rsfSpotFleetRequestConfig'
+  -> RequestSpotFleet
 requestSpotFleet pSpotFleetRequestConfig_ =
   RequestSpotFleet'
     { _rsfDryRun = Nothing
     , _rsfSpotFleetRequestConfig = pSpotFleetRequestConfig_
     }
 
-
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 rsfDryRun :: Lens' RequestSpotFleet (Maybe Bool)
-rsfDryRun = lens _rsfDryRun (\ s a -> s{_rsfDryRun = a})
+rsfDryRun = lens _rsfDryRun (\s a -> s {_rsfDryRun = a})
 
 -- | The configuration for the Spot Fleet request.
 rsfSpotFleetRequestConfig :: Lens' RequestSpotFleet SpotFleetRequestConfigData
-rsfSpotFleetRequestConfig = lens _rsfSpotFleetRequestConfig (\ s a -> s{_rsfSpotFleetRequestConfig = a})
+rsfSpotFleetRequestConfig =
+  lens _rsfSpotFleetRequestConfig (\s a -> s {_rsfSpotFleetRequestConfig = a})
 
 instance AWSRequest RequestSpotFleet where
-        type Rs RequestSpotFleet = RequestSpotFleetResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 RequestSpotFleetResponse' <$>
-                   (pure (fromEnum s)) <*> (x .@ "spotFleetRequestId"))
+  type Rs RequestSpotFleet = RequestSpotFleetResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         RequestSpotFleetResponse' <$> (pure (fromEnum s)) <*>
+         (x .@ "spotFleetRequestId"))
 
-instance Hashable RequestSpotFleet where
+instance Hashable RequestSpotFleet
 
-instance NFData RequestSpotFleet where
+instance NFData RequestSpotFleet
 
 instance ToHeaders RequestSpotFleet where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath RequestSpotFleet where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery RequestSpotFleet where
-        toQuery RequestSpotFleet'{..}
-          = mconcat
-              ["Action" =: ("RequestSpotFleet" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _rsfDryRun,
-               "SpotFleetRequestConfig" =:
-                 _rsfSpotFleetRequestConfig]
+  toQuery RequestSpotFleet' {..} =
+    mconcat
+      [ "Action" =: ("RequestSpotFleet" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "DryRun" =: _rsfDryRun
+      , "SpotFleetRequestConfig" =: _rsfSpotFleetRequestConfig
+      ]
 
 -- | Contains the output of RequestSpotFleet.
 --
 --
 --
 -- /See:/ 'requestSpotFleetResponse' smart constructor.
-data RequestSpotFleetResponse = RequestSpotFleetResponse'
-  { _rsfrsResponseStatus     :: !Int
-  , _rsfrsSpotFleetRequestId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RequestSpotFleetResponse =
+  RequestSpotFleetResponse'
+    { _rsfrsResponseStatus     :: !Int
+    , _rsfrsSpotFleetRequestId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RequestSpotFleetResponse' with the minimum fields required to make a request.
 --
@@ -139,23 +137,24 @@ data RequestSpotFleetResponse = RequestSpotFleetResponse'
 -- * 'rsfrsResponseStatus' - -- | The response status code.
 --
 -- * 'rsfrsSpotFleetRequestId' - The ID of the Spot Fleet request.
-requestSpotFleetResponse
-    :: Int -- ^ 'rsfrsResponseStatus'
-    -> Text -- ^ 'rsfrsSpotFleetRequestId'
-    -> RequestSpotFleetResponse
+requestSpotFleetResponse ::
+     Int -- ^ 'rsfrsResponseStatus'
+  -> Text -- ^ 'rsfrsSpotFleetRequestId'
+  -> RequestSpotFleetResponse
 requestSpotFleetResponse pResponseStatus_ pSpotFleetRequestId_ =
   RequestSpotFleetResponse'
     { _rsfrsResponseStatus = pResponseStatus_
     , _rsfrsSpotFleetRequestId = pSpotFleetRequestId_
     }
 
-
 -- | -- | The response status code.
 rsfrsResponseStatus :: Lens' RequestSpotFleetResponse Int
-rsfrsResponseStatus = lens _rsfrsResponseStatus (\ s a -> s{_rsfrsResponseStatus = a})
+rsfrsResponseStatus =
+  lens _rsfrsResponseStatus (\s a -> s {_rsfrsResponseStatus = a})
 
 -- | The ID of the Spot Fleet request.
 rsfrsSpotFleetRequestId :: Lens' RequestSpotFleetResponse Text
-rsfrsSpotFleetRequestId = lens _rsfrsSpotFleetRequestId (\ s a -> s{_rsfrsSpotFleetRequestId = a})
+rsfrsSpotFleetRequestId =
+  lens _rsfrsSpotFleetRequestId (\s a -> s {_rsfrsSpotFleetRequestId = a})
 
-instance NFData RequestSpotFleetResponse where
+instance NFData RequestSpotFleetResponse

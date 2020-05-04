@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SNS.ListPlatformApplications
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,21 +22,19 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.SNS.ListPlatformApplications
-    (
     -- * Creating a Request
-      listPlatformApplications
-    , ListPlatformApplications
+  ( listPlatformApplications
+  , ListPlatformApplications
     -- * Request Lenses
-    , lpaNextToken
-
+  , lpaNextToken
     -- * Destructuring the Response
-    , listPlatformApplicationsResponse
-    , ListPlatformApplicationsResponse
+  , listPlatformApplicationsResponse
+  , ListPlatformApplicationsResponse
     -- * Response Lenses
-    , lparsPlatformApplications
-    , lparsNextToken
-    , lparsResponseStatus
-    ) where
+  , lparsPlatformApplications
+  , lparsNextToken
+  , lparsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Pager
@@ -53,74 +49,73 @@ import Network.AWS.SNS.Types.Product
 --
 --
 -- /See:/ 'listPlatformApplications' smart constructor.
-newtype ListPlatformApplications = ListPlatformApplications'
-  { _lpaNextToken :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListPlatformApplications =
+  ListPlatformApplications'
+    { _lpaNextToken :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPlatformApplications' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'lpaNextToken' - NextToken string is used when calling ListPlatformApplications action to retrieve additional records that are available after the first page results.
-listPlatformApplications
-    :: ListPlatformApplications
+listPlatformApplications :: ListPlatformApplications
 listPlatformApplications = ListPlatformApplications' {_lpaNextToken = Nothing}
-
 
 -- | NextToken string is used when calling ListPlatformApplications action to retrieve additional records that are available after the first page results.
 lpaNextToken :: Lens' ListPlatformApplications (Maybe Text)
-lpaNextToken = lens _lpaNextToken (\ s a -> s{_lpaNextToken = a})
+lpaNextToken = lens _lpaNextToken (\s a -> s {_lpaNextToken = a})
 
 instance AWSPager ListPlatformApplications where
-        page rq rs
-          | stop (rs ^. lparsNextToken) = Nothing
-          | stop (rs ^. lparsPlatformApplications) = Nothing
-          | otherwise =
-            Just $ rq & lpaNextToken .~ rs ^. lparsNextToken
+  page rq rs
+    | stop (rs ^. lparsNextToken) = Nothing
+    | stop (rs ^. lparsPlatformApplications) = Nothing
+    | otherwise = Just $ rq & lpaNextToken .~ rs ^. lparsNextToken
 
 instance AWSRequest ListPlatformApplications where
-        type Rs ListPlatformApplications =
-             ListPlatformApplicationsResponse
-        request = postQuery sns
-        response
-          = receiveXMLWrapper "ListPlatformApplicationsResult"
-              (\ s h x ->
-                 ListPlatformApplicationsResponse' <$>
-                   (x .@? "PlatformApplications" .!@ mempty >>=
-                      may (parseXMLList "member"))
-                     <*> (x .@? "NextToken")
-                     <*> (pure (fromEnum s)))
+  type Rs ListPlatformApplications = ListPlatformApplicationsResponse
+  request = postQuery sns
+  response =
+    receiveXMLWrapper
+      "ListPlatformApplicationsResult"
+      (\s h x ->
+         ListPlatformApplicationsResponse' <$>
+         (x .@? "PlatformApplications" .!@ mempty >>=
+          may (parseXMLList "member")) <*>
+         (x .@? "NextToken") <*>
+         (pure (fromEnum s)))
 
-instance Hashable ListPlatformApplications where
+instance Hashable ListPlatformApplications
 
-instance NFData ListPlatformApplications where
+instance NFData ListPlatformApplications
 
 instance ToHeaders ListPlatformApplications where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath ListPlatformApplications where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery ListPlatformApplications where
-        toQuery ListPlatformApplications'{..}
-          = mconcat
-              ["Action" =:
-                 ("ListPlatformApplications" :: ByteString),
-               "Version" =: ("2010-03-31" :: ByteString),
-               "NextToken" =: _lpaNextToken]
+  toQuery ListPlatformApplications' {..} =
+    mconcat
+      [ "Action" =: ("ListPlatformApplications" :: ByteString)
+      , "Version" =: ("2010-03-31" :: ByteString)
+      , "NextToken" =: _lpaNextToken
+      ]
 
 -- | Response for ListPlatformApplications action.
 --
 --
 --
 -- /See:/ 'listPlatformApplicationsResponse' smart constructor.
-data ListPlatformApplicationsResponse = ListPlatformApplicationsResponse'
-  { _lparsPlatformApplications :: !(Maybe [PlatformApplication])
-  , _lparsNextToken            :: !(Maybe Text)
-  , _lparsResponseStatus       :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPlatformApplicationsResponse =
+  ListPlatformApplicationsResponse'
+    { _lparsPlatformApplications :: !(Maybe [PlatformApplication])
+    , _lparsNextToken            :: !(Maybe Text)
+    , _lparsResponseStatus       :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPlatformApplicationsResponse' with the minimum fields required to make a request.
 --
@@ -131,9 +126,9 @@ data ListPlatformApplicationsResponse = ListPlatformApplicationsResponse'
 -- * 'lparsNextToken' - NextToken string is returned when calling ListPlatformApplications action if additional records are available after the first page results.
 --
 -- * 'lparsResponseStatus' - -- | The response status code.
-listPlatformApplicationsResponse
-    :: Int -- ^ 'lparsResponseStatus'
-    -> ListPlatformApplicationsResponse
+listPlatformApplicationsResponse ::
+     Int -- ^ 'lparsResponseStatus'
+  -> ListPlatformApplicationsResponse
 listPlatformApplicationsResponse pResponseStatus_ =
   ListPlatformApplicationsResponse'
     { _lparsPlatformApplications = Nothing
@@ -141,18 +136,20 @@ listPlatformApplicationsResponse pResponseStatus_ =
     , _lparsResponseStatus = pResponseStatus_
     }
 
-
 -- | Platform applications returned when calling ListPlatformApplications action.
-lparsPlatformApplications :: Lens' ListPlatformApplicationsResponse [PlatformApplication]
-lparsPlatformApplications = lens _lparsPlatformApplications (\ s a -> s{_lparsPlatformApplications = a}) . _Default . _Coerce
+lparsPlatformApplications ::
+     Lens' ListPlatformApplicationsResponse [PlatformApplication]
+lparsPlatformApplications =
+  lens _lparsPlatformApplications (\s a -> s {_lparsPlatformApplications = a}) .
+  _Default . _Coerce
 
 -- | NextToken string is returned when calling ListPlatformApplications action if additional records are available after the first page results.
 lparsNextToken :: Lens' ListPlatformApplicationsResponse (Maybe Text)
-lparsNextToken = lens _lparsNextToken (\ s a -> s{_lparsNextToken = a})
+lparsNextToken = lens _lparsNextToken (\s a -> s {_lparsNextToken = a})
 
 -- | -- | The response status code.
 lparsResponseStatus :: Lens' ListPlatformApplicationsResponse Int
-lparsResponseStatus = lens _lparsResponseStatus (\ s a -> s{_lparsResponseStatus = a})
+lparsResponseStatus =
+  lens _lparsResponseStatus (\s a -> s {_lparsResponseStatus = a})
 
 instance NFData ListPlatformApplicationsResponse
-         where

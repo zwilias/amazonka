@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.Shield
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -59,7 +57,6 @@ import Test.Tasty
 --             describeSubscription
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseCreateSubscription $
 --             createSubscriptionResponse
@@ -93,126 +90,118 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestCreateSubscription :: CreateSubscription -> TestTree
-requestCreateSubscription = req
-    "CreateSubscription"
-    "fixture/CreateSubscription.yaml"
+requestCreateSubscription =
+  req "CreateSubscription" "fixture/CreateSubscription.yaml"
 
 requestListProtections :: ListProtections -> TestTree
-requestListProtections = req
-    "ListProtections"
-    "fixture/ListProtections.yaml"
+requestListProtections = req "ListProtections" "fixture/ListProtections.yaml"
 
 requestDeleteSubscription :: DeleteSubscription -> TestTree
-requestDeleteSubscription = req
-    "DeleteSubscription"
-    "fixture/DeleteSubscription.yaml"
+requestDeleteSubscription =
+  req "DeleteSubscription" "fixture/DeleteSubscription.yaml"
 
 requestDescribeAttack :: DescribeAttack -> TestTree
-requestDescribeAttack = req
-    "DescribeAttack"
-    "fixture/DescribeAttack.yaml"
+requestDescribeAttack = req "DescribeAttack" "fixture/DescribeAttack.yaml"
 
 requestDescribeProtection :: DescribeProtection -> TestTree
-requestDescribeProtection = req
-    "DescribeProtection"
-    "fixture/DescribeProtection.yaml"
+requestDescribeProtection =
+  req "DescribeProtection" "fixture/DescribeProtection.yaml"
 
 requestListAttacks :: ListAttacks -> TestTree
-requestListAttacks = req
-    "ListAttacks"
-    "fixture/ListAttacks.yaml"
+requestListAttacks = req "ListAttacks" "fixture/ListAttacks.yaml"
 
 requestCreateProtection :: CreateProtection -> TestTree
-requestCreateProtection = req
-    "CreateProtection"
-    "fixture/CreateProtection.yaml"
+requestCreateProtection = req "CreateProtection" "fixture/CreateProtection.yaml"
 
 requestDeleteProtection :: DeleteProtection -> TestTree
-requestDeleteProtection = req
-    "DeleteProtection"
-    "fixture/DeleteProtection.yaml"
+requestDeleteProtection = req "DeleteProtection" "fixture/DeleteProtection.yaml"
 
 requestGetSubscriptionState :: GetSubscriptionState -> TestTree
-requestGetSubscriptionState = req
-    "GetSubscriptionState"
-    "fixture/GetSubscriptionState.yaml"
+requestGetSubscriptionState =
+  req "GetSubscriptionState" "fixture/GetSubscriptionState.yaml"
 
 requestDescribeSubscription :: DescribeSubscription -> TestTree
-requestDescribeSubscription = req
-    "DescribeSubscription"
-    "fixture/DescribeSubscription.yaml"
+requestDescribeSubscription =
+  req "DescribeSubscription" "fixture/DescribeSubscription.yaml"
 
 -- Responses
-
 responseCreateSubscription :: CreateSubscriptionResponse -> TestTree
-responseCreateSubscription = res
+responseCreateSubscription =
+  res
     "CreateSubscriptionResponse"
     "fixture/CreateSubscriptionResponse.proto"
     shield
     (Proxy :: Proxy CreateSubscription)
 
 responseListProtections :: ListProtectionsResponse -> TestTree
-responseListProtections = res
+responseListProtections =
+  res
     "ListProtectionsResponse"
     "fixture/ListProtectionsResponse.proto"
     shield
     (Proxy :: Proxy ListProtections)
 
 responseDeleteSubscription :: DeleteSubscriptionResponse -> TestTree
-responseDeleteSubscription = res
+responseDeleteSubscription =
+  res
     "DeleteSubscriptionResponse"
     "fixture/DeleteSubscriptionResponse.proto"
     shield
     (Proxy :: Proxy DeleteSubscription)
 
 responseDescribeAttack :: DescribeAttackResponse -> TestTree
-responseDescribeAttack = res
+responseDescribeAttack =
+  res
     "DescribeAttackResponse"
     "fixture/DescribeAttackResponse.proto"
     shield
     (Proxy :: Proxy DescribeAttack)
 
 responseDescribeProtection :: DescribeProtectionResponse -> TestTree
-responseDescribeProtection = res
+responseDescribeProtection =
+  res
     "DescribeProtectionResponse"
     "fixture/DescribeProtectionResponse.proto"
     shield
     (Proxy :: Proxy DescribeProtection)
 
 responseListAttacks :: ListAttacksResponse -> TestTree
-responseListAttacks = res
+responseListAttacks =
+  res
     "ListAttacksResponse"
     "fixture/ListAttacksResponse.proto"
     shield
     (Proxy :: Proxy ListAttacks)
 
 responseCreateProtection :: CreateProtectionResponse -> TestTree
-responseCreateProtection = res
+responseCreateProtection =
+  res
     "CreateProtectionResponse"
     "fixture/CreateProtectionResponse.proto"
     shield
     (Proxy :: Proxy CreateProtection)
 
 responseDeleteProtection :: DeleteProtectionResponse -> TestTree
-responseDeleteProtection = res
+responseDeleteProtection =
+  res
     "DeleteProtectionResponse"
     "fixture/DeleteProtectionResponse.proto"
     shield
     (Proxy :: Proxy DeleteProtection)
 
 responseGetSubscriptionState :: GetSubscriptionStateResponse -> TestTree
-responseGetSubscriptionState = res
+responseGetSubscriptionState =
+  res
     "GetSubscriptionStateResponse"
     "fixture/GetSubscriptionStateResponse.proto"
     shield
     (Proxy :: Proxy GetSubscriptionState)
 
 responseDescribeSubscription :: DescribeSubscriptionResponse -> TestTree
-responseDescribeSubscription = res
+responseDescribeSubscription =
+  res
     "DescribeSubscriptionResponse"
     "fixture/DescribeSubscriptionResponse.proto"
     shield

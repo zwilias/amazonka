@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.ModifyVPCEndpointServiceConfiguration
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,24 +20,22 @@
 --
 --
 module Network.AWS.EC2.ModifyVPCEndpointServiceConfiguration
-    (
     -- * Creating a Request
-      modifyVPCEndpointServiceConfiguration
-    , ModifyVPCEndpointServiceConfiguration
+  ( modifyVPCEndpointServiceConfiguration
+  , ModifyVPCEndpointServiceConfiguration
     -- * Request Lenses
-    , mvescRemoveNetworkLoadBalancerARNs
-    , mvescAcceptanceRequired
-    , mvescAddNetworkLoadBalancerARNs
-    , mvescDryRun
-    , mvescServiceId
-
+  , mvescRemoveNetworkLoadBalancerARNs
+  , mvescAcceptanceRequired
+  , mvescAddNetworkLoadBalancerARNs
+  , mvescDryRun
+  , mvescServiceId
     -- * Destructuring the Response
-    , modifyVPCEndpointServiceConfigurationResponse
-    , ModifyVPCEndpointServiceConfigurationResponse
+  , modifyVPCEndpointServiceConfigurationResponse
+  , ModifyVPCEndpointServiceConfigurationResponse
     -- * Response Lenses
-    , mvescrsReturn
-    , mvescrsResponseStatus
-    ) where
+  , mvescrsReturn
+  , mvescrsResponseStatus
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -49,14 +45,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyVPCEndpointServiceConfiguration' smart constructor.
-data ModifyVPCEndpointServiceConfiguration = ModifyVPCEndpointServiceConfiguration'
-  { _mvescRemoveNetworkLoadBalancerARNs :: !(Maybe [Text])
-  , _mvescAcceptanceRequired            :: !(Maybe Bool)
-  , _mvescAddNetworkLoadBalancerARNs    :: !(Maybe [Text])
-  , _mvescDryRun                        :: !(Maybe Bool)
-  , _mvescServiceId                     :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCEndpointServiceConfiguration =
+  ModifyVPCEndpointServiceConfiguration'
+    { _mvescRemoveNetworkLoadBalancerARNs :: !(Maybe [Text])
+    , _mvescAcceptanceRequired            :: !(Maybe Bool)
+    , _mvescAddNetworkLoadBalancerARNs    :: !(Maybe [Text])
+    , _mvescDryRun                        :: !(Maybe Bool)
+    , _mvescServiceId                     :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPCEndpointServiceConfiguration' with the minimum fields required to make a request.
 --
@@ -71,9 +68,9 @@ data ModifyVPCEndpointServiceConfiguration = ModifyVPCEndpointServiceConfigurati
 -- * 'mvescDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
 -- * 'mvescServiceId' - The ID of the service.
-modifyVPCEndpointServiceConfiguration
-    :: Text -- ^ 'mvescServiceId'
-    -> ModifyVPCEndpointServiceConfiguration
+modifyVPCEndpointServiceConfiguration ::
+     Text -- ^ 'mvescServiceId'
+  -> ModifyVPCEndpointServiceConfiguration
 modifyVPCEndpointServiceConfiguration pServiceId_ =
   ModifyVPCEndpointServiceConfiguration'
     { _mvescRemoveNetworkLoadBalancerARNs = Nothing
@@ -83,80 +80,80 @@ modifyVPCEndpointServiceConfiguration pServiceId_ =
     , _mvescServiceId = pServiceId_
     }
 
-
 -- | The Amazon Resource Names (ARNs) of Network Load Balancers to remove from your service configuration.
-mvescRemoveNetworkLoadBalancerARNs :: Lens' ModifyVPCEndpointServiceConfiguration [Text]
-mvescRemoveNetworkLoadBalancerARNs = lens _mvescRemoveNetworkLoadBalancerARNs (\ s a -> s{_mvescRemoveNetworkLoadBalancerARNs = a}) . _Default . _Coerce
+mvescRemoveNetworkLoadBalancerARNs ::
+     Lens' ModifyVPCEndpointServiceConfiguration [Text]
+mvescRemoveNetworkLoadBalancerARNs =
+  lens
+    _mvescRemoveNetworkLoadBalancerARNs
+    (\s a -> s {_mvescRemoveNetworkLoadBalancerARNs = a}) .
+  _Default . _Coerce
 
 -- | Indicate whether requests to create an endpoint to your service must be accepted.
-mvescAcceptanceRequired :: Lens' ModifyVPCEndpointServiceConfiguration (Maybe Bool)
-mvescAcceptanceRequired = lens _mvescAcceptanceRequired (\ s a -> s{_mvescAcceptanceRequired = a})
+mvescAcceptanceRequired ::
+     Lens' ModifyVPCEndpointServiceConfiguration (Maybe Bool)
+mvescAcceptanceRequired =
+  lens _mvescAcceptanceRequired (\s a -> s {_mvescAcceptanceRequired = a})
 
 -- | The Amazon Resource Names (ARNs) of Network Load Balancers to add to your service configuration.
-mvescAddNetworkLoadBalancerARNs :: Lens' ModifyVPCEndpointServiceConfiguration [Text]
-mvescAddNetworkLoadBalancerARNs = lens _mvescAddNetworkLoadBalancerARNs (\ s a -> s{_mvescAddNetworkLoadBalancerARNs = a}) . _Default . _Coerce
+mvescAddNetworkLoadBalancerARNs ::
+     Lens' ModifyVPCEndpointServiceConfiguration [Text]
+mvescAddNetworkLoadBalancerARNs =
+  lens
+    _mvescAddNetworkLoadBalancerARNs
+    (\s a -> s {_mvescAddNetworkLoadBalancerARNs = a}) .
+  _Default . _Coerce
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 mvescDryRun :: Lens' ModifyVPCEndpointServiceConfiguration (Maybe Bool)
-mvescDryRun = lens _mvescDryRun (\ s a -> s{_mvescDryRun = a})
+mvescDryRun = lens _mvescDryRun (\s a -> s {_mvescDryRun = a})
 
 -- | The ID of the service.
 mvescServiceId :: Lens' ModifyVPCEndpointServiceConfiguration Text
-mvescServiceId = lens _mvescServiceId (\ s a -> s{_mvescServiceId = a})
+mvescServiceId = lens _mvescServiceId (\s a -> s {_mvescServiceId = a})
 
-instance AWSRequest
-           ModifyVPCEndpointServiceConfiguration
-         where
-        type Rs ModifyVPCEndpointServiceConfiguration =
-             ModifyVPCEndpointServiceConfigurationResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 ModifyVPCEndpointServiceConfigurationResponse' <$>
-                   (x .@? "return") <*> (pure (fromEnum s)))
+instance AWSRequest ModifyVPCEndpointServiceConfiguration where
+  type Rs ModifyVPCEndpointServiceConfiguration = ModifyVPCEndpointServiceConfigurationResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         ModifyVPCEndpointServiceConfigurationResponse' <$> (x .@? "return") <*>
+         (pure (fromEnum s)))
 
-instance Hashable
-           ModifyVPCEndpointServiceConfiguration
-         where
+instance Hashable ModifyVPCEndpointServiceConfiguration
 
 instance NFData ModifyVPCEndpointServiceConfiguration
-         where
 
-instance ToHeaders
-           ModifyVPCEndpointServiceConfiguration
-         where
-        toHeaders = const mempty
+instance ToHeaders ModifyVPCEndpointServiceConfiguration where
+  toHeaders = const mempty
 
-instance ToPath ModifyVPCEndpointServiceConfiguration
-         where
-        toPath = const "/"
+instance ToPath ModifyVPCEndpointServiceConfiguration where
+  toPath = const "/"
 
-instance ToQuery
-           ModifyVPCEndpointServiceConfiguration
-         where
-        toQuery ModifyVPCEndpointServiceConfiguration'{..}
-          = mconcat
-              ["Action" =:
-                 ("ModifyVpcEndpointServiceConfiguration" ::
-                    ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               toQuery
-                 (toQueryList "RemoveNetworkLoadBalancerArn" <$>
-                    _mvescRemoveNetworkLoadBalancerARNs),
-               "AcceptanceRequired" =: _mvescAcceptanceRequired,
-               toQuery
-                 (toQueryList "AddNetworkLoadBalancerArn" <$>
-                    _mvescAddNetworkLoadBalancerARNs),
-               "DryRun" =: _mvescDryRun,
-               "ServiceId" =: _mvescServiceId]
+instance ToQuery ModifyVPCEndpointServiceConfiguration where
+  toQuery ModifyVPCEndpointServiceConfiguration' {..} =
+    mconcat
+      [ "Action" =: ("ModifyVpcEndpointServiceConfiguration" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , toQuery
+          (toQueryList "RemoveNetworkLoadBalancerArn" <$>
+           _mvescRemoveNetworkLoadBalancerARNs)
+      , "AcceptanceRequired" =: _mvescAcceptanceRequired
+      , toQuery
+          (toQueryList "AddNetworkLoadBalancerArn" <$>
+           _mvescAddNetworkLoadBalancerARNs)
+      , "DryRun" =: _mvescDryRun
+      , "ServiceId" =: _mvescServiceId
+      ]
 
 -- | /See:/ 'modifyVPCEndpointServiceConfigurationResponse' smart constructor.
-data ModifyVPCEndpointServiceConfigurationResponse = ModifyVPCEndpointServiceConfigurationResponse'
-  { _mvescrsReturn         :: !(Maybe Bool)
-  , _mvescrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCEndpointServiceConfigurationResponse =
+  ModifyVPCEndpointServiceConfigurationResponse'
+    { _mvescrsReturn         :: !(Maybe Bool)
+    , _mvescrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPCEndpointServiceConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -165,22 +162,21 @@ data ModifyVPCEndpointServiceConfigurationResponse = ModifyVPCEndpointServiceCon
 -- * 'mvescrsReturn' - Returns @true@ if the request succeeds; otherwise, it returns an error.
 --
 -- * 'mvescrsResponseStatus' - -- | The response status code.
-modifyVPCEndpointServiceConfigurationResponse
-    :: Int -- ^ 'mvescrsResponseStatus'
-    -> ModifyVPCEndpointServiceConfigurationResponse
+modifyVPCEndpointServiceConfigurationResponse ::
+     Int -- ^ 'mvescrsResponseStatus'
+  -> ModifyVPCEndpointServiceConfigurationResponse
 modifyVPCEndpointServiceConfigurationResponse pResponseStatus_ =
   ModifyVPCEndpointServiceConfigurationResponse'
     {_mvescrsReturn = Nothing, _mvescrsResponseStatus = pResponseStatus_}
 
-
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
-mvescrsReturn :: Lens' ModifyVPCEndpointServiceConfigurationResponse (Maybe Bool)
-mvescrsReturn = lens _mvescrsReturn (\ s a -> s{_mvescrsReturn = a})
+mvescrsReturn ::
+     Lens' ModifyVPCEndpointServiceConfigurationResponse (Maybe Bool)
+mvescrsReturn = lens _mvescrsReturn (\s a -> s {_mvescrsReturn = a})
 
 -- | -- | The response status code.
 mvescrsResponseStatus :: Lens' ModifyVPCEndpointServiceConfigurationResponse Int
-mvescrsResponseStatus = lens _mvescrsResponseStatus (\ s a -> s{_mvescrsResponseStatus = a})
+mvescrsResponseStatus =
+  lens _mvescrsResponseStatus (\s a -> s {_mvescrsResponseStatus = a})
 
-instance NFData
-           ModifyVPCEndpointServiceConfigurationResponse
-         where
+instance NFData ModifyVPCEndpointServiceConfigurationResponse

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IAM.GetRolePolicy
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,23 +26,21 @@
 -- For more information about roles, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html Using Roles to Delegate Permissions and Federate Identities> .
 --
 module Network.AWS.IAM.GetRolePolicy
-    (
     -- * Creating a Request
-      getRolePolicy
-    , GetRolePolicy
+  ( getRolePolicy
+  , GetRolePolicy
     -- * Request Lenses
-    , grpRoleName
-    , grpPolicyName
-
+  , grpRoleName
+  , grpPolicyName
     -- * Destructuring the Response
-    , getRolePolicyResponse
-    , GetRolePolicyResponse
+  , getRolePolicyResponse
+  , GetRolePolicyResponse
     -- * Response Lenses
-    , grprsResponseStatus
-    , grprsRoleName
-    , grprsPolicyName
-    , grprsPolicyDocument
-    ) where
+  , grprsResponseStatus
+  , grprsRoleName
+  , grprsPolicyName
+  , grprsPolicyDocument
+  ) where
 
 import Network.AWS.IAM.Types
 import Network.AWS.IAM.Types.Product
@@ -54,11 +50,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getRolePolicy' smart constructor.
-data GetRolePolicy = GetRolePolicy'
-  { _grpRoleName   :: !Text
-  , _grpPolicyName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRolePolicy =
+  GetRolePolicy'
+    { _grpRoleName   :: !Text
+    , _grpPolicyName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRolePolicy' with the minimum fields required to make a request.
 --
@@ -67,63 +64,64 @@ data GetRolePolicy = GetRolePolicy'
 -- * 'grpRoleName' - The name of the role associated with the policy. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 --
 -- * 'grpPolicyName' - The name of the policy document to get. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
-getRolePolicy
-    :: Text -- ^ 'grpRoleName'
-    -> Text -- ^ 'grpPolicyName'
-    -> GetRolePolicy
+getRolePolicy ::
+     Text -- ^ 'grpRoleName'
+  -> Text -- ^ 'grpPolicyName'
+  -> GetRolePolicy
 getRolePolicy pRoleName_ pPolicyName_ =
   GetRolePolicy' {_grpRoleName = pRoleName_, _grpPolicyName = pPolicyName_}
 
-
 -- | The name of the role associated with the policy. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 grpRoleName :: Lens' GetRolePolicy Text
-grpRoleName = lens _grpRoleName (\ s a -> s{_grpRoleName = a})
+grpRoleName = lens _grpRoleName (\s a -> s {_grpRoleName = a})
 
 -- | The name of the policy document to get. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 grpPolicyName :: Lens' GetRolePolicy Text
-grpPolicyName = lens _grpPolicyName (\ s a -> s{_grpPolicyName = a})
+grpPolicyName = lens _grpPolicyName (\s a -> s {_grpPolicyName = a})
 
 instance AWSRequest GetRolePolicy where
-        type Rs GetRolePolicy = GetRolePolicyResponse
-        request = postQuery iam
-        response
-          = receiveXMLWrapper "GetRolePolicyResult"
-              (\ s h x ->
-                 GetRolePolicyResponse' <$>
-                   (pure (fromEnum s)) <*> (x .@ "RoleName") <*>
-                     (x .@ "PolicyName")
-                     <*> (x .@ "PolicyDocument"))
+  type Rs GetRolePolicy = GetRolePolicyResponse
+  request = postQuery iam
+  response =
+    receiveXMLWrapper
+      "GetRolePolicyResult"
+      (\s h x ->
+         GetRolePolicyResponse' <$> (pure (fromEnum s)) <*> (x .@ "RoleName") <*>
+         (x .@ "PolicyName") <*>
+         (x .@ "PolicyDocument"))
 
-instance Hashable GetRolePolicy where
+instance Hashable GetRolePolicy
 
-instance NFData GetRolePolicy where
+instance NFData GetRolePolicy
 
 instance ToHeaders GetRolePolicy where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath GetRolePolicy where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery GetRolePolicy where
-        toQuery GetRolePolicy'{..}
-          = mconcat
-              ["Action" =: ("GetRolePolicy" :: ByteString),
-               "Version" =: ("2010-05-08" :: ByteString),
-               "RoleName" =: _grpRoleName,
-               "PolicyName" =: _grpPolicyName]
+  toQuery GetRolePolicy' {..} =
+    mconcat
+      [ "Action" =: ("GetRolePolicy" :: ByteString)
+      , "Version" =: ("2010-05-08" :: ByteString)
+      , "RoleName" =: _grpRoleName
+      , "PolicyName" =: _grpPolicyName
+      ]
 
 -- | Contains the response to a successful 'GetRolePolicy' request.
 --
 --
 --
 -- /See:/ 'getRolePolicyResponse' smart constructor.
-data GetRolePolicyResponse = GetRolePolicyResponse'
-  { _grprsResponseStatus :: !Int
-  , _grprsRoleName       :: !Text
-  , _grprsPolicyName     :: !Text
-  , _grprsPolicyDocument :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRolePolicyResponse =
+  GetRolePolicyResponse'
+    { _grprsResponseStatus :: !Int
+    , _grprsRoleName       :: !Text
+    , _grprsPolicyName     :: !Text
+    , _grprsPolicyDocument :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRolePolicyResponse' with the minimum fields required to make a request.
 --
@@ -136,12 +134,12 @@ data GetRolePolicyResponse = GetRolePolicyResponse'
 -- * 'grprsPolicyName' - The name of the policy.
 --
 -- * 'grprsPolicyDocument' - The policy document.
-getRolePolicyResponse
-    :: Int -- ^ 'grprsResponseStatus'
-    -> Text -- ^ 'grprsRoleName'
-    -> Text -- ^ 'grprsPolicyName'
-    -> Text -- ^ 'grprsPolicyDocument'
-    -> GetRolePolicyResponse
+getRolePolicyResponse ::
+     Int -- ^ 'grprsResponseStatus'
+  -> Text -- ^ 'grprsRoleName'
+  -> Text -- ^ 'grprsPolicyName'
+  -> Text -- ^ 'grprsPolicyDocument'
+  -> GetRolePolicyResponse
 getRolePolicyResponse pResponseStatus_ pRoleName_ pPolicyName_ pPolicyDocument_ =
   GetRolePolicyResponse'
     { _grprsResponseStatus = pResponseStatus_
@@ -150,21 +148,22 @@ getRolePolicyResponse pResponseStatus_ pRoleName_ pPolicyName_ pPolicyDocument_ 
     , _grprsPolicyDocument = pPolicyDocument_
     }
 
-
 -- | -- | The response status code.
 grprsResponseStatus :: Lens' GetRolePolicyResponse Int
-grprsResponseStatus = lens _grprsResponseStatus (\ s a -> s{_grprsResponseStatus = a})
+grprsResponseStatus =
+  lens _grprsResponseStatus (\s a -> s {_grprsResponseStatus = a})
 
 -- | The role the policy is associated with.
 grprsRoleName :: Lens' GetRolePolicyResponse Text
-grprsRoleName = lens _grprsRoleName (\ s a -> s{_grprsRoleName = a})
+grprsRoleName = lens _grprsRoleName (\s a -> s {_grprsRoleName = a})
 
 -- | The name of the policy.
 grprsPolicyName :: Lens' GetRolePolicyResponse Text
-grprsPolicyName = lens _grprsPolicyName (\ s a -> s{_grprsPolicyName = a})
+grprsPolicyName = lens _grprsPolicyName (\s a -> s {_grprsPolicyName = a})
 
 -- | The policy document.
 grprsPolicyDocument :: Lens' GetRolePolicyResponse Text
-grprsPolicyDocument = lens _grprsPolicyDocument (\ s a -> s{_grprsPolicyDocument = a})
+grprsPolicyDocument =
+  lens _grprsPolicyDocument (\s a -> s {_grprsPolicyDocument = a})
 
-instance NFData GetRolePolicyResponse where
+instance NFData GetRolePolicyResponse

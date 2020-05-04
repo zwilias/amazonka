@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CodeBuild
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -50,310 +49,248 @@
 --
 --
 module Network.AWS.CodeBuild
-    (
     -- * Service Configuration
-      codeBuild
-
+  ( codeBuild
     -- * Errors
     -- $errors
-
     -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
+  , _ResourceAlreadyExistsException
     -- ** OAuthProviderException
-    , _OAuthProviderException
-
+  , _OAuthProviderException
     -- ** AccountLimitExceededException
-    , _AccountLimitExceededException
-
+  , _AccountLimitExceededException
     -- ** InvalidInputException
-    , _InvalidInputException
-
+  , _InvalidInputException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** ListProjects (Paginated)
-    , module Network.AWS.CodeBuild.ListProjects
-
+  , module Network.AWS.CodeBuild.ListProjects
     -- ** DeleteProject
-    , module Network.AWS.CodeBuild.DeleteProject
-
+  , module Network.AWS.CodeBuild.DeleteProject
     -- ** UpdateProject
-    , module Network.AWS.CodeBuild.UpdateProject
-
+  , module Network.AWS.CodeBuild.UpdateProject
     -- ** ListBuilds (Paginated)
-    , module Network.AWS.CodeBuild.ListBuilds
-
+  , module Network.AWS.CodeBuild.ListBuilds
     -- ** CreateWebhook
-    , module Network.AWS.CodeBuild.CreateWebhook
-
+  , module Network.AWS.CodeBuild.CreateWebhook
     -- ** StartBuild
-    , module Network.AWS.CodeBuild.StartBuild
-
+  , module Network.AWS.CodeBuild.StartBuild
     -- ** ListBuildsForProject (Paginated)
-    , module Network.AWS.CodeBuild.ListBuildsForProject
-
+  , module Network.AWS.CodeBuild.ListBuildsForProject
     -- ** BatchGetProjects
-    , module Network.AWS.CodeBuild.BatchGetProjects
-
+  , module Network.AWS.CodeBuild.BatchGetProjects
     -- ** BatchGetBuilds
-    , module Network.AWS.CodeBuild.BatchGetBuilds
-
+  , module Network.AWS.CodeBuild.BatchGetBuilds
     -- ** UpdateWebhook
-    , module Network.AWS.CodeBuild.UpdateWebhook
-
+  , module Network.AWS.CodeBuild.UpdateWebhook
     -- ** DeleteWebhook
-    , module Network.AWS.CodeBuild.DeleteWebhook
-
+  , module Network.AWS.CodeBuild.DeleteWebhook
     -- ** InvalidateProjectCache
-    , module Network.AWS.CodeBuild.InvalidateProjectCache
-
+  , module Network.AWS.CodeBuild.InvalidateProjectCache
     -- ** BatchDeleteBuilds
-    , module Network.AWS.CodeBuild.BatchDeleteBuilds
-
+  , module Network.AWS.CodeBuild.BatchDeleteBuilds
     -- ** ListCuratedEnvironmentImages
-    , module Network.AWS.CodeBuild.ListCuratedEnvironmentImages
-
+  , module Network.AWS.CodeBuild.ListCuratedEnvironmentImages
     -- ** StopBuild
-    , module Network.AWS.CodeBuild.StopBuild
-
+  , module Network.AWS.CodeBuild.StopBuild
     -- ** CreateProject
-    , module Network.AWS.CodeBuild.CreateProject
-
+  , module Network.AWS.CodeBuild.CreateProject
     -- * Types
-
     -- ** ArtifactNamespace
-    , ArtifactNamespace (..)
-
+  , ArtifactNamespace(..)
     -- ** ArtifactPackaging
-    , ArtifactPackaging (..)
-
+  , ArtifactPackaging(..)
     -- ** ArtifactsType
-    , ArtifactsType (..)
-
+  , ArtifactsType(..)
     -- ** BuildPhaseType
-    , BuildPhaseType (..)
-
+  , BuildPhaseType(..)
     -- ** CacheType
-    , CacheType (..)
-
+  , CacheType(..)
     -- ** ComputeType
-    , ComputeType (..)
-
+  , ComputeType(..)
     -- ** EnvironmentType
-    , EnvironmentType (..)
-
+  , EnvironmentType(..)
     -- ** EnvironmentVariableType
-    , EnvironmentVariableType (..)
-
+  , EnvironmentVariableType(..)
     -- ** LanguageType
-    , LanguageType (..)
-
+  , LanguageType(..)
     -- ** PlatformType
-    , PlatformType (..)
-
+  , PlatformType(..)
     -- ** ProjectSortByType
-    , ProjectSortByType (..)
-
+  , ProjectSortByType(..)
     -- ** SortOrderType
-    , SortOrderType (..)
-
+  , SortOrderType(..)
     -- ** SourceAuthType
-    , SourceAuthType (..)
-
+  , SourceAuthType(..)
     -- ** SourceType
-    , SourceType (..)
-
+  , SourceType(..)
     -- ** StatusType
-    , StatusType (..)
-
+  , StatusType(..)
     -- ** Build
-    , Build
-    , build
-    , bPhases
-    , bBuildComplete
-    , bArn
-    , bStartTime
-    , bArtifacts
-    , bEnvironment
-    , bInitiator
-    , bNetworkInterface
-    , bCurrentPhase
-    , bCache
-    , bSourceVersion
-    , bLogs
-    , bVpcConfig
-    , bEndTime
-    , bProjectName
-    , bBuildStatus
-    , bSource
-    , bId
-    , bTimeoutInMinutes
-
+  , Build
+  , build
+  , bPhases
+  , bBuildComplete
+  , bArn
+  , bStartTime
+  , bArtifacts
+  , bEnvironment
+  , bInitiator
+  , bNetworkInterface
+  , bCurrentPhase
+  , bCache
+  , bSourceVersion
+  , bLogs
+  , bVpcConfig
+  , bEndTime
+  , bProjectName
+  , bBuildStatus
+  , bSource
+  , bId
+  , bTimeoutInMinutes
     -- ** BuildArtifacts
-    , BuildArtifacts
-    , buildArtifacts
-    , baLocation
-    , baMd5sum
-    , baSha256sum
-
+  , BuildArtifacts
+  , buildArtifacts
+  , baLocation
+  , baMd5sum
+  , baSha256sum
     -- ** BuildNotDeleted
-    , BuildNotDeleted
-    , buildNotDeleted
-    , bndId
-    , bndStatusCode
-
+  , BuildNotDeleted
+  , buildNotDeleted
+  , bndId
+  , bndStatusCode
     -- ** BuildPhase
-    , BuildPhase
-    , buildPhase
-    , bpContexts
-    , bpStartTime
-    , bpPhaseStatus
-    , bpPhaseType
-    , bpEndTime
-    , bpDurationInSeconds
-
+  , BuildPhase
+  , buildPhase
+  , bpContexts
+  , bpStartTime
+  , bpPhaseStatus
+  , bpPhaseType
+  , bpEndTime
+  , bpDurationInSeconds
     -- ** EnvironmentImage
-    , EnvironmentImage
-    , environmentImage
-    , eiVersions
-    , eiName
-    , eiDescription
-
+  , EnvironmentImage
+  , environmentImage
+  , eiVersions
+  , eiName
+  , eiDescription
     -- ** EnvironmentLanguage
-    , EnvironmentLanguage
-    , environmentLanguage
-    , elImages
-    , elLanguage
-
+  , EnvironmentLanguage
+  , environmentLanguage
+  , elImages
+  , elLanguage
     -- ** EnvironmentPlatform
-    , EnvironmentPlatform
-    , environmentPlatform
-    , epPlatform
-    , epLanguages
-
+  , EnvironmentPlatform
+  , environmentPlatform
+  , epPlatform
+  , epLanguages
     -- ** EnvironmentVariable
-    , EnvironmentVariable
-    , environmentVariable
-    , evType
-    , evName
-    , evValue
-
+  , EnvironmentVariable
+  , environmentVariable
+  , evType
+  , evName
+  , evValue
     -- ** LogsLocation
-    , LogsLocation
-    , logsLocation
-    , llDeepLink
-    , llGroupName
-    , llStreamName
-
+  , LogsLocation
+  , logsLocation
+  , llDeepLink
+  , llGroupName
+  , llStreamName
     -- ** NetworkInterface
-    , NetworkInterface
-    , networkInterface
-    , niSubnetId
-    , niNetworkInterfaceId
-
+  , NetworkInterface
+  , networkInterface
+  , niSubnetId
+  , niNetworkInterfaceId
     -- ** PhaseContext
-    , PhaseContext
-    , phaseContext
-    , pcMessage
-    , pcStatusCode
-
+  , PhaseContext
+  , phaseContext
+  , pcMessage
+  , pcStatusCode
     -- ** Project
-    , Project
-    , project
-    , pArn
-    , pArtifacts
-    , pEnvironment
-    , pCreated
-    , pCache
-    , pName
-    , pVpcConfig
-    , pSource
-    , pBadge
-    , pEncryptionKey
-    , pLastModified
-    , pWebhook
-    , pDescription
-    , pServiceRole
-    , pTags
-    , pTimeoutInMinutes
-
+  , Project
+  , project
+  , pArn
+  , pArtifacts
+  , pEnvironment
+  , pCreated
+  , pCache
+  , pName
+  , pVpcConfig
+  , pSource
+  , pBadge
+  , pEncryptionKey
+  , pLastModified
+  , pWebhook
+  , pDescription
+  , pServiceRole
+  , pTags
+  , pTimeoutInMinutes
     -- ** ProjectArtifacts
-    , ProjectArtifacts
-    , projectArtifacts
-    , paPackaging
-    , paPath
-    , paLocation
-    , paName
-    , paNamespaceType
-    , paType
-
+  , ProjectArtifacts
+  , projectArtifacts
+  , paPackaging
+  , paPath
+  , paLocation
+  , paName
+  , paNamespaceType
+  , paType
     -- ** ProjectBadge
-    , ProjectBadge
-    , projectBadge
-    , pbBadgeEnabled
-    , pbBadgeRequestURL
-
+  , ProjectBadge
+  , projectBadge
+  , pbBadgeEnabled
+  , pbBadgeRequestURL
     -- ** ProjectCache
-    , ProjectCache
-    , projectCache
-    , pcLocation
-    , pcType
-
+  , ProjectCache
+  , projectCache
+  , pcLocation
+  , pcType
     -- ** ProjectEnvironment
-    , ProjectEnvironment
-    , projectEnvironment
-    , pePrivilegedMode
-    , peCertificate
-    , peEnvironmentVariables
-    , peType
-    , peImage
-    , peComputeType
-
+  , ProjectEnvironment
+  , projectEnvironment
+  , pePrivilegedMode
+  , peCertificate
+  , peEnvironmentVariables
+  , peType
+  , peImage
+  , peComputeType
     -- ** ProjectSource
-    , ProjectSource
-    , projectSource
-    , psInsecureSSL
-    , psLocation
-    , psAuth
-    , psBuildspec
-    , psGitCloneDepth
-    , psType
-
+  , ProjectSource
+  , projectSource
+  , psInsecureSSL
+  , psLocation
+  , psAuth
+  , psBuildspec
+  , psGitCloneDepth
+  , psType
     -- ** SourceAuth
-    , SourceAuth
-    , sourceAuth
-    , saResource
-    , saType
-
+  , SourceAuth
+  , sourceAuth
+  , saResource
+  , saType
     -- ** Tag
-    , Tag
-    , tag
-    , tagValue
-    , tagKey
-
+  , Tag
+  , tag
+  , tagValue
+  , tagKey
     -- ** VPCConfig
-    , VPCConfig
-    , vpcConfig
-    , vcSecurityGroupIds
-    , vcVpcId
-    , vcSubnets
-
+  , VPCConfig
+  , vpcConfig
+  , vcSecurityGroupIds
+  , vcVpcId
+  , vcSubnets
     -- ** Webhook
-    , Webhook
-    , webhook
-    , wBranchFilter
-    , wLastModifiedSecret
-    , wUrl
-    , wSecret
-    , wPayloadURL
-    ) where
+  , Webhook
+  , webhook
+  , wBranchFilter
+  , wLastModifiedSecret
+  , wUrl
+  , wSecret
+  , wPayloadURL
+  ) where
 
 import Network.AWS.CodeBuild.BatchDeleteBuilds
 import Network.AWS.CodeBuild.BatchGetBuilds
@@ -373,14 +310,12 @@ import Network.AWS.CodeBuild.Types
 import Network.AWS.CodeBuild.UpdateProject
 import Network.AWS.CodeBuild.UpdateWebhook
 import Network.AWS.CodeBuild.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CodeBuild'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -397,7 +332,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.CostExplorer
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -47,7 +45,6 @@ import Test.Tasty
 --             getCostAndUsage
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseGetReservationUtilization $
 --             getReservationUtilizationResponse
@@ -69,78 +66,78 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestGetReservationUtilization :: GetReservationUtilization -> TestTree
-requestGetReservationUtilization = req
-    "GetReservationUtilization"
-    "fixture/GetReservationUtilization.yaml"
+requestGetReservationUtilization =
+  req "GetReservationUtilization" "fixture/GetReservationUtilization.yaml"
 
 requestGetTags :: GetTags -> TestTree
-requestGetTags = req
-    "GetTags"
-    "fixture/GetTags.yaml"
+requestGetTags = req "GetTags" "fixture/GetTags.yaml"
 
 requestGetReservationCoverage :: GetReservationCoverage -> TestTree
-requestGetReservationCoverage = req
-    "GetReservationCoverage"
-    "fixture/GetReservationCoverage.yaml"
+requestGetReservationCoverage =
+  req "GetReservationCoverage" "fixture/GetReservationCoverage.yaml"
 
 requestGetDimensionValues :: GetDimensionValues -> TestTree
-requestGetDimensionValues = req
-    "GetDimensionValues"
-    "fixture/GetDimensionValues.yaml"
+requestGetDimensionValues =
+  req "GetDimensionValues" "fixture/GetDimensionValues.yaml"
 
-requestGetReservationPurchaseRecommendation :: GetReservationPurchaseRecommendation -> TestTree
-requestGetReservationPurchaseRecommendation = req
+requestGetReservationPurchaseRecommendation ::
+     GetReservationPurchaseRecommendation -> TestTree
+requestGetReservationPurchaseRecommendation =
+  req
     "GetReservationPurchaseRecommendation"
     "fixture/GetReservationPurchaseRecommendation.yaml"
 
 requestGetCostAndUsage :: GetCostAndUsage -> TestTree
-requestGetCostAndUsage = req
-    "GetCostAndUsage"
-    "fixture/GetCostAndUsage.yaml"
+requestGetCostAndUsage = req "GetCostAndUsage" "fixture/GetCostAndUsage.yaml"
 
 -- Responses
-
-responseGetReservationUtilization :: GetReservationUtilizationResponse -> TestTree
-responseGetReservationUtilization = res
+responseGetReservationUtilization ::
+     GetReservationUtilizationResponse -> TestTree
+responseGetReservationUtilization =
+  res
     "GetReservationUtilizationResponse"
     "fixture/GetReservationUtilizationResponse.proto"
     costExplorer
     (Proxy :: Proxy GetReservationUtilization)
 
 responseGetTags :: GetTagsResponse -> TestTree
-responseGetTags = res
+responseGetTags =
+  res
     "GetTagsResponse"
     "fixture/GetTagsResponse.proto"
     costExplorer
     (Proxy :: Proxy GetTags)
 
 responseGetReservationCoverage :: GetReservationCoverageResponse -> TestTree
-responseGetReservationCoverage = res
+responseGetReservationCoverage =
+  res
     "GetReservationCoverageResponse"
     "fixture/GetReservationCoverageResponse.proto"
     costExplorer
     (Proxy :: Proxy GetReservationCoverage)
 
 responseGetDimensionValues :: GetDimensionValuesResponse -> TestTree
-responseGetDimensionValues = res
+responseGetDimensionValues =
+  res
     "GetDimensionValuesResponse"
     "fixture/GetDimensionValuesResponse.proto"
     costExplorer
     (Proxy :: Proxy GetDimensionValues)
 
-responseGetReservationPurchaseRecommendation :: GetReservationPurchaseRecommendationResponse -> TestTree
-responseGetReservationPurchaseRecommendation = res
+responseGetReservationPurchaseRecommendation ::
+     GetReservationPurchaseRecommendationResponse -> TestTree
+responseGetReservationPurchaseRecommendation =
+  res
     "GetReservationPurchaseRecommendationResponse"
     "fixture/GetReservationPurchaseRecommendationResponse.proto"
     costExplorer
     (Proxy :: Proxy GetReservationPurchaseRecommendation)
 
 responseGetCostAndUsage :: GetCostAndUsageResponse -> TestTree
-responseGetCostAndUsage = res
+responseGetCostAndUsage =
+  res
     "GetCostAndUsageResponse"
     "fixture/GetCostAndUsageResponse.proto"
     costExplorer

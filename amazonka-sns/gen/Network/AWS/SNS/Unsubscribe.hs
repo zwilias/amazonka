@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SNS.Unsubscribe
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,17 +20,15 @@
 --
 --
 module Network.AWS.SNS.Unsubscribe
-    (
     -- * Creating a Request
-      unsubscribe
-    , Unsubscribe
+  ( unsubscribe
+  , Unsubscribe
     -- * Request Lenses
-    , uSubscriptionARN
-
+  , uSubscriptionARN
     -- * Destructuring the Response
-    , unsubscribeResponse
-    , UnsubscribeResponse
-    ) where
+  , unsubscribeResponse
+  , UnsubscribeResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -46,60 +42,58 @@ import Network.AWS.SNS.Types.Product
 --
 --
 -- /See:/ 'unsubscribe' smart constructor.
-newtype Unsubscribe = Unsubscribe'
-  { _uSubscriptionARN :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype Unsubscribe =
+  Unsubscribe'
+    { _uSubscriptionARN :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Unsubscribe' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'uSubscriptionARN' - The ARN of the subscription to be deleted.
-unsubscribe
-    :: Text -- ^ 'uSubscriptionARN'
-    -> Unsubscribe
+unsubscribe ::
+     Text -- ^ 'uSubscriptionARN'
+  -> Unsubscribe
 unsubscribe pSubscriptionARN_ =
   Unsubscribe' {_uSubscriptionARN = pSubscriptionARN_}
 
-
 -- | The ARN of the subscription to be deleted.
 uSubscriptionARN :: Lens' Unsubscribe Text
-uSubscriptionARN = lens _uSubscriptionARN (\ s a -> s{_uSubscriptionARN = a})
+uSubscriptionARN = lens _uSubscriptionARN (\s a -> s {_uSubscriptionARN = a})
 
 instance AWSRequest Unsubscribe where
-        type Rs Unsubscribe = UnsubscribeResponse
-        request = postQuery sns
-        response = receiveNull UnsubscribeResponse'
+  type Rs Unsubscribe = UnsubscribeResponse
+  request = postQuery sns
+  response = receiveNull UnsubscribeResponse'
 
-instance Hashable Unsubscribe where
+instance Hashable Unsubscribe
 
-instance NFData Unsubscribe where
+instance NFData Unsubscribe
 
 instance ToHeaders Unsubscribe where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath Unsubscribe where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery Unsubscribe where
-        toQuery Unsubscribe'{..}
-          = mconcat
-              ["Action" =: ("Unsubscribe" :: ByteString),
-               "Version" =: ("2010-03-31" :: ByteString),
-               "SubscriptionArn" =: _uSubscriptionARN]
+  toQuery Unsubscribe' {..} =
+    mconcat
+      [ "Action" =: ("Unsubscribe" :: ByteString)
+      , "Version" =: ("2010-03-31" :: ByteString)
+      , "SubscriptionArn" =: _uSubscriptionARN
+      ]
 
 -- | /See:/ 'unsubscribeResponse' smart constructor.
 data UnsubscribeResponse =
   UnsubscribeResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'UnsubscribeResponse' with the minimum fields required to make a request.
 --
-unsubscribeResponse
-    :: UnsubscribeResponse
+unsubscribeResponse :: UnsubscribeResponse
 unsubscribeResponse = UnsubscribeResponse'
 
-
-instance NFData UnsubscribeResponse where
+instance NFData UnsubscribeResponse

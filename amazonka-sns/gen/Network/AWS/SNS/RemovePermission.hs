@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SNS.RemovePermission
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +20,16 @@
 --
 --
 module Network.AWS.SNS.RemovePermission
-    (
     -- * Creating a Request
-      removePermission
-    , RemovePermission
+  ( removePermission
+  , RemovePermission
     -- * Request Lenses
-    , rpTopicARN
-    , rpLabel
-
+  , rpTopicARN
+  , rpLabel
     -- * Destructuring the Response
-    , removePermissionResponse
-    , RemovePermissionResponse
-    ) where
+  , removePermissionResponse
+  , RemovePermissionResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -47,11 +43,12 @@ import Network.AWS.SNS.Types.Product
 --
 --
 -- /See:/ 'removePermission' smart constructor.
-data RemovePermission = RemovePermission'
-  { _rpTopicARN :: !Text
-  , _rpLabel    :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemovePermission =
+  RemovePermission'
+    { _rpTopicARN :: !Text
+    , _rpLabel    :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RemovePermission' with the minimum fields required to make a request.
 --
@@ -60,55 +57,53 @@ data RemovePermission = RemovePermission'
 -- * 'rpTopicARN' - The ARN of the topic whose access control policy you wish to modify.
 --
 -- * 'rpLabel' - The unique label of the statement you want to remove.
-removePermission
-    :: Text -- ^ 'rpTopicARN'
-    -> Text -- ^ 'rpLabel'
-    -> RemovePermission
+removePermission ::
+     Text -- ^ 'rpTopicARN'
+  -> Text -- ^ 'rpLabel'
+  -> RemovePermission
 removePermission pTopicARN_ pLabel_ =
   RemovePermission' {_rpTopicARN = pTopicARN_, _rpLabel = pLabel_}
 
-
 -- | The ARN of the topic whose access control policy you wish to modify.
 rpTopicARN :: Lens' RemovePermission Text
-rpTopicARN = lens _rpTopicARN (\ s a -> s{_rpTopicARN = a})
+rpTopicARN = lens _rpTopicARN (\s a -> s {_rpTopicARN = a})
 
 -- | The unique label of the statement you want to remove.
 rpLabel :: Lens' RemovePermission Text
-rpLabel = lens _rpLabel (\ s a -> s{_rpLabel = a})
+rpLabel = lens _rpLabel (\s a -> s {_rpLabel = a})
 
 instance AWSRequest RemovePermission where
-        type Rs RemovePermission = RemovePermissionResponse
-        request = postQuery sns
-        response = receiveNull RemovePermissionResponse'
+  type Rs RemovePermission = RemovePermissionResponse
+  request = postQuery sns
+  response = receiveNull RemovePermissionResponse'
 
-instance Hashable RemovePermission where
+instance Hashable RemovePermission
 
-instance NFData RemovePermission where
+instance NFData RemovePermission
 
 instance ToHeaders RemovePermission where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath RemovePermission where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery RemovePermission where
-        toQuery RemovePermission'{..}
-          = mconcat
-              ["Action" =: ("RemovePermission" :: ByteString),
-               "Version" =: ("2010-03-31" :: ByteString),
-               "TopicArn" =: _rpTopicARN, "Label" =: _rpLabel]
+  toQuery RemovePermission' {..} =
+    mconcat
+      [ "Action" =: ("RemovePermission" :: ByteString)
+      , "Version" =: ("2010-03-31" :: ByteString)
+      , "TopicArn" =: _rpTopicARN
+      , "Label" =: _rpLabel
+      ]
 
 -- | /See:/ 'removePermissionResponse' smart constructor.
 data RemovePermissionResponse =
   RemovePermissionResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'RemovePermissionResponse' with the minimum fields required to make a request.
 --
-removePermissionResponse
-    :: RemovePermissionResponse
+removePermissionResponse :: RemovePermissionResponse
 removePermissionResponse = RemovePermissionResponse'
 
-
-instance NFData RemovePermissionResponse where
+instance NFData RemovePermissionResponse

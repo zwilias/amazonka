@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.APIGateway.GetAuthorizers
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,23 +21,21 @@
 --
 -- <http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html AWS CLI>
 module Network.AWS.APIGateway.GetAuthorizers
-    (
     -- * Creating a Request
-      getAuthorizers
-    , GetAuthorizers
+  ( getAuthorizers
+  , GetAuthorizers
     -- * Request Lenses
-    , gaLimit
-    , gaPosition
-    , gaRestAPIId
-
+  , gaLimit
+  , gaPosition
+  , gaRestAPIId
     -- * Destructuring the Response
-    , getAuthorizersResponse
-    , GetAuthorizersResponse
+  , getAuthorizersResponse
+  , GetAuthorizersResponse
     -- * Response Lenses
-    , garsItems
-    , garsPosition
-    , garsResponseStatus
-    ) where
+  , garsItems
+  , garsPosition
+  , garsResponseStatus
+  ) where
 
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.Types.Product
@@ -53,12 +49,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getAuthorizers' smart constructor.
-data GetAuthorizers = GetAuthorizers'
-  { _gaLimit     :: !(Maybe Int)
-  , _gaPosition  :: !(Maybe Text)
-  , _gaRestAPIId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAuthorizers =
+  GetAuthorizers'
+    { _gaLimit     :: !(Maybe Int)
+    , _gaPosition  :: !(Maybe Text)
+    , _gaRestAPIId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAuthorizers' with the minimum fields required to make a request.
 --
@@ -69,55 +66,49 @@ data GetAuthorizers = GetAuthorizers'
 -- * 'gaPosition' - The current pagination position in the paged result set.
 --
 -- * 'gaRestAPIId' - [Required] The string identifier of the associated 'RestApi' .
-getAuthorizers
-    :: Text -- ^ 'gaRestAPIId'
-    -> GetAuthorizers
+getAuthorizers ::
+     Text -- ^ 'gaRestAPIId'
+  -> GetAuthorizers
 getAuthorizers pRestAPIId_ =
   GetAuthorizers'
     {_gaLimit = Nothing, _gaPosition = Nothing, _gaRestAPIId = pRestAPIId_}
 
-
 -- | The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 gaLimit :: Lens' GetAuthorizers (Maybe Int)
-gaLimit = lens _gaLimit (\ s a -> s{_gaLimit = a})
+gaLimit = lens _gaLimit (\s a -> s {_gaLimit = a})
 
 -- | The current pagination position in the paged result set.
 gaPosition :: Lens' GetAuthorizers (Maybe Text)
-gaPosition = lens _gaPosition (\ s a -> s{_gaPosition = a})
+gaPosition = lens _gaPosition (\s a -> s {_gaPosition = a})
 
 -- | [Required] The string identifier of the associated 'RestApi' .
 gaRestAPIId :: Lens' GetAuthorizers Text
-gaRestAPIId = lens _gaRestAPIId (\ s a -> s{_gaRestAPIId = a})
+gaRestAPIId = lens _gaRestAPIId (\s a -> s {_gaRestAPIId = a})
 
 instance AWSRequest GetAuthorizers where
-        type Rs GetAuthorizers = GetAuthorizersResponse
-        request = get apiGateway
-        response
-          = receiveJSON
-              (\ s h x ->
-                 GetAuthorizersResponse' <$>
-                   (x .?> "item" .!@ mempty) <*> (x .?> "position") <*>
-                     (pure (fromEnum s)))
+  type Rs GetAuthorizers = GetAuthorizersResponse
+  request = get apiGateway
+  response =
+    receiveJSON
+      (\s h x ->
+         GetAuthorizersResponse' <$> (x .?> "item" .!@ mempty) <*>
+         (x .?> "position") <*>
+         (pure (fromEnum s)))
 
-instance Hashable GetAuthorizers where
+instance Hashable GetAuthorizers
 
-instance NFData GetAuthorizers where
+instance NFData GetAuthorizers
 
 instance ToHeaders GetAuthorizers where
-        toHeaders
-          = const
-              (mconcat
-                 ["Accept" =# ("application/json" :: ByteString)])
+  toHeaders = const (mconcat ["Accept" =# ("application/json" :: ByteString)])
 
 instance ToPath GetAuthorizers where
-        toPath GetAuthorizers'{..}
-          = mconcat
-              ["/restapis/", toBS _gaRestAPIId, "/authorizers"]
+  toPath GetAuthorizers' {..} =
+    mconcat ["/restapis/", toBS _gaRestAPIId, "/authorizers"]
 
 instance ToQuery GetAuthorizers where
-        toQuery GetAuthorizers'{..}
-          = mconcat
-              ["limit" =: _gaLimit, "position" =: _gaPosition]
+  toQuery GetAuthorizers' {..} =
+    mconcat ["limit" =: _gaLimit, "position" =: _gaPosition]
 
 -- | Represents a collection of 'Authorizer' resources.
 --
@@ -125,12 +116,13 @@ instance ToQuery GetAuthorizers where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html Enable custom authorization>
 --
 -- /See:/ 'getAuthorizersResponse' smart constructor.
-data GetAuthorizersResponse = GetAuthorizersResponse'
-  { _garsItems          :: !(Maybe [Authorizer])
-  , _garsPosition       :: !(Maybe Text)
-  , _garsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAuthorizersResponse =
+  GetAuthorizersResponse'
+    { _garsItems          :: !(Maybe [Authorizer])
+    , _garsPosition       :: !(Maybe Text)
+    , _garsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAuthorizersResponse' with the minimum fields required to make a request.
 --
@@ -141,9 +133,9 @@ data GetAuthorizersResponse = GetAuthorizersResponse'
 -- * 'garsPosition' - Undocumented member.
 --
 -- * 'garsResponseStatus' - -- | The response status code.
-getAuthorizersResponse
-    :: Int -- ^ 'garsResponseStatus'
-    -> GetAuthorizersResponse
+getAuthorizersResponse ::
+     Int -- ^ 'garsResponseStatus'
+  -> GetAuthorizersResponse
 getAuthorizersResponse pResponseStatus_ =
   GetAuthorizersResponse'
     { _garsItems = Nothing
@@ -151,17 +143,17 @@ getAuthorizersResponse pResponseStatus_ =
     , _garsResponseStatus = pResponseStatus_
     }
 
-
 -- | The current page of elements from this collection.
 garsItems :: Lens' GetAuthorizersResponse [Authorizer]
-garsItems = lens _garsItems (\ s a -> s{_garsItems = a}) . _Default . _Coerce
+garsItems = lens _garsItems (\s a -> s {_garsItems = a}) . _Default . _Coerce
 
 -- | Undocumented member.
 garsPosition :: Lens' GetAuthorizersResponse (Maybe Text)
-garsPosition = lens _garsPosition (\ s a -> s{_garsPosition = a})
+garsPosition = lens _garsPosition (\s a -> s {_garsPosition = a})
 
 -- | -- | The response status code.
 garsResponseStatus :: Lens' GetAuthorizersResponse Int
-garsResponseStatus = lens _garsResponseStatus (\ s a -> s{_garsResponseStatus = a})
+garsResponseStatus =
+  lens _garsResponseStatus (\s a -> s {_garsResponseStatus = a})
 
-instance NFData GetAuthorizersResponse where
+instance NFData GetAuthorizersResponse

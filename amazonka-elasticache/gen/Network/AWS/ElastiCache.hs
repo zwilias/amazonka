@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ElastiCache
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,646 +19,509 @@
 -- In addition, through integration with Amazon CloudWatch, customers get enhanced visibility into the key performance statistics associated with their cache and can receive alarms if a part of their cache runs hot.
 --
 module Network.AWS.ElastiCache
-    (
     -- * Service Configuration
-      elastiCache
-
+  ( elastiCache
     -- * Errors
     -- $errors
-
     -- ** CacheSubnetGroupInUse
-    , _CacheSubnetGroupInUse
-
+  , _CacheSubnetGroupInUse
     -- ** ReservedCacheNodeAlreadyExistsFault
-    , _ReservedCacheNodeAlreadyExistsFault
-
+  , _ReservedCacheNodeAlreadyExistsFault
     -- ** CacheSecurityGroupNotFoundFault
-    , _CacheSecurityGroupNotFoundFault
-
+  , _CacheSecurityGroupNotFoundFault
     -- ** CacheSubnetGroupAlreadyExistsFault
-    , _CacheSubnetGroupAlreadyExistsFault
-
+  , _CacheSubnetGroupAlreadyExistsFault
     -- ** NodeGroupsPerReplicationGroupQuotaExceededFault
-    , _NodeGroupsPerReplicationGroupQuotaExceededFault
-
+  , _NodeGroupsPerReplicationGroupQuotaExceededFault
     -- ** CacheSubnetGroupQuotaExceededFault
-    , _CacheSubnetGroupQuotaExceededFault
-
+  , _CacheSubnetGroupQuotaExceededFault
     -- ** AuthorizationAlreadyExistsFault
-    , _AuthorizationAlreadyExistsFault
-
+  , _AuthorizationAlreadyExistsFault
     -- ** ReservedCacheNodeQuotaExceededFault
-    , _ReservedCacheNodeQuotaExceededFault
-
+  , _ReservedCacheNodeQuotaExceededFault
     -- ** ReservedCacheNodesOfferingNotFoundFault
-    , _ReservedCacheNodesOfferingNotFoundFault
-
+  , _ReservedCacheNodesOfferingNotFoundFault
     -- ** ReplicationGroupNotFoundFault
-    , _ReplicationGroupNotFoundFault
-
+  , _ReplicationGroupNotFoundFault
     -- ** InvalidSubnet
-    , _InvalidSubnet
-
+  , _InvalidSubnet
     -- ** TagQuotaPerResourceExceeded
-    , _TagQuotaPerResourceExceeded
-
+  , _TagQuotaPerResourceExceeded
     -- ** SnapshotNotFoundFault
-    , _SnapshotNotFoundFault
-
+  , _SnapshotNotFoundFault
     -- ** InsufficientCacheClusterCapacityFault
-    , _InsufficientCacheClusterCapacityFault
-
+  , _InsufficientCacheClusterCapacityFault
     -- ** InvalidSnapshotStateFault
-    , _InvalidSnapshotStateFault
-
+  , _InvalidSnapshotStateFault
     -- ** SnapshotAlreadyExistsFault
-    , _SnapshotAlreadyExistsFault
-
+  , _SnapshotAlreadyExistsFault
     -- ** TagNotFoundFault
-    , _TagNotFoundFault
-
+  , _TagNotFoundFault
     -- ** SnapshotQuotaExceededFault
-    , _SnapshotQuotaExceededFault
-
+  , _SnapshotQuotaExceededFault
     -- ** NodeQuotaForClusterExceededFault
-    , _NodeQuotaForClusterExceededFault
-
+  , _NodeQuotaForClusterExceededFault
     -- ** APICallRateForCustomerExceededFault
-    , _APICallRateForCustomerExceededFault
-
+  , _APICallRateForCustomerExceededFault
     -- ** NodeGroupNotFoundFault
-    , _NodeGroupNotFoundFault
-
+  , _NodeGroupNotFoundFault
     -- ** CacheParameterGroupAlreadyExistsFault
-    , _CacheParameterGroupAlreadyExistsFault
-
+  , _CacheParameterGroupAlreadyExistsFault
     -- ** ReservedCacheNodeNotFoundFault
-    , _ReservedCacheNodeNotFoundFault
-
+  , _ReservedCacheNodeNotFoundFault
     -- ** CacheSubnetGroupNotFoundFault
-    , _CacheSubnetGroupNotFoundFault
-
+  , _CacheSubnetGroupNotFoundFault
     -- ** SnapshotFeatureNotSupportedFault
-    , _SnapshotFeatureNotSupportedFault
-
+  , _SnapshotFeatureNotSupportedFault
     -- ** InvalidParameterValueException
-    , _InvalidParameterValueException
-
+  , _InvalidParameterValueException
     -- ** TestFailoverNotAvailableFault
-    , _TestFailoverNotAvailableFault
-
+  , _TestFailoverNotAvailableFault
     -- ** InvalidReplicationGroupStateFault
-    , _InvalidReplicationGroupStateFault
-
+  , _InvalidReplicationGroupStateFault
     -- ** ReplicationGroupAlreadyExistsFault
-    , _ReplicationGroupAlreadyExistsFault
-
+  , _ReplicationGroupAlreadyExistsFault
     -- ** InvalidVPCNetworkStateFault
-    , _InvalidVPCNetworkStateFault
-
+  , _InvalidVPCNetworkStateFault
     -- ** SubnetInUse
-    , _SubnetInUse
-
+  , _SubnetInUse
     -- ** CacheClusterNotFoundFault
-    , _CacheClusterNotFoundFault
-
+  , _CacheClusterNotFoundFault
     -- ** ClusterQuotaForCustomerExceededFault
-    , _ClusterQuotaForCustomerExceededFault
-
+  , _ClusterQuotaForCustomerExceededFault
     -- ** AuthorizationNotFoundFault
-    , _AuthorizationNotFoundFault
-
+  , _AuthorizationNotFoundFault
     -- ** InvalidCacheClusterStateFault
-    , _InvalidCacheClusterStateFault
-
+  , _InvalidCacheClusterStateFault
     -- ** CacheSecurityGroupQuotaExceededFault
-    , _CacheSecurityGroupQuotaExceededFault
-
+  , _CacheSecurityGroupQuotaExceededFault
     -- ** CacheClusterAlreadyExistsFault
-    , _CacheClusterAlreadyExistsFault
-
+  , _CacheClusterAlreadyExistsFault
     -- ** CacheParameterGroupQuotaExceededFault
-    , _CacheParameterGroupQuotaExceededFault
-
+  , _CacheParameterGroupQuotaExceededFault
     -- ** NodeQuotaForCustomerExceededFault
-    , _NodeQuotaForCustomerExceededFault
-
+  , _NodeQuotaForCustomerExceededFault
     -- ** CacheSubnetQuotaExceededFault
-    , _CacheSubnetQuotaExceededFault
-
+  , _CacheSubnetQuotaExceededFault
     -- ** CacheParameterGroupNotFoundFault
-    , _CacheParameterGroupNotFoundFault
-
+  , _CacheParameterGroupNotFoundFault
     -- ** InvalidARNFault
-    , _InvalidARNFault
-
+  , _InvalidARNFault
     -- ** InvalidCacheParameterGroupStateFault
-    , _InvalidCacheParameterGroupStateFault
-
+  , _InvalidCacheParameterGroupStateFault
     -- ** InvalidParameterCombinationException
-    , _InvalidParameterCombinationException
-
+  , _InvalidParameterCombinationException
     -- ** InvalidCacheSecurityGroupStateFault
-    , _InvalidCacheSecurityGroupStateFault
-
+  , _InvalidCacheSecurityGroupStateFault
     -- ** CacheSecurityGroupAlreadyExistsFault
-    , _CacheSecurityGroupAlreadyExistsFault
-
+  , _CacheSecurityGroupAlreadyExistsFault
     -- * Waiters
     -- $waiters
-
     -- ** CacheClusterAvailable
-    , cacheClusterAvailable
-
+  , cacheClusterAvailable
     -- ** CacheClusterDeleted
-    , cacheClusterDeleted
-
+  , cacheClusterDeleted
     -- ** ReplicationGroupDeleted
-    , replicationGroupDeleted
-
+  , replicationGroupDeleted
     -- ** ReplicationGroupAvailable
-    , replicationGroupAvailable
-
+  , replicationGroupAvailable
     -- * Operations
     -- $operations
-
     -- ** DeleteCacheSecurityGroup
-    , module Network.AWS.ElastiCache.DeleteCacheSecurityGroup
-
+  , module Network.AWS.ElastiCache.DeleteCacheSecurityGroup
     -- ** CreateReplicationGroup
-    , module Network.AWS.ElastiCache.CreateReplicationGroup
-
+  , module Network.AWS.ElastiCache.CreateReplicationGroup
     -- ** DeleteCacheCluster
-    , module Network.AWS.ElastiCache.DeleteCacheCluster
-
+  , module Network.AWS.ElastiCache.DeleteCacheCluster
     -- ** RebootCacheCluster
-    , module Network.AWS.ElastiCache.RebootCacheCluster
-
+  , module Network.AWS.ElastiCache.RebootCacheCluster
     -- ** RevokeCacheSecurityGroupIngress
-    , module Network.AWS.ElastiCache.RevokeCacheSecurityGroupIngress
-
+  , module Network.AWS.ElastiCache.RevokeCacheSecurityGroupIngress
     -- ** CreateCacheCluster
-    , module Network.AWS.ElastiCache.CreateCacheCluster
-
+  , module Network.AWS.ElastiCache.CreateCacheCluster
     -- ** DescribeEvents (Paginated)
-    , module Network.AWS.ElastiCache.DescribeEvents
-
+  , module Network.AWS.ElastiCache.DescribeEvents
     -- ** DescribeEngineDefaultParameters (Paginated)
-    , module Network.AWS.ElastiCache.DescribeEngineDefaultParameters
-
+  , module Network.AWS.ElastiCache.DescribeEngineDefaultParameters
     -- ** ModifyCacheParameterGroup
-    , module Network.AWS.ElastiCache.ModifyCacheParameterGroup
-
+  , module Network.AWS.ElastiCache.ModifyCacheParameterGroup
     -- ** TestFailover
-    , module Network.AWS.ElastiCache.TestFailover
-
+  , module Network.AWS.ElastiCache.TestFailover
     -- ** DeleteReplicationGroup
-    , module Network.AWS.ElastiCache.DeleteReplicationGroup
-
+  , module Network.AWS.ElastiCache.DeleteReplicationGroup
     -- ** ListTagsForResource
-    , module Network.AWS.ElastiCache.ListTagsForResource
-
+  , module Network.AWS.ElastiCache.ListTagsForResource
     -- ** DescribeCacheClusters (Paginated)
-    , module Network.AWS.ElastiCache.DescribeCacheClusters
-
+  , module Network.AWS.ElastiCache.DescribeCacheClusters
     -- ** PurchaseReservedCacheNodesOffering
-    , module Network.AWS.ElastiCache.PurchaseReservedCacheNodesOffering
-
+  , module Network.AWS.ElastiCache.PurchaseReservedCacheNodesOffering
     -- ** RemoveTagsFromResource
-    , module Network.AWS.ElastiCache.RemoveTagsFromResource
-
+  , module Network.AWS.ElastiCache.RemoveTagsFromResource
     -- ** ModifyReplicationGroup
-    , module Network.AWS.ElastiCache.ModifyReplicationGroup
-
+  , module Network.AWS.ElastiCache.ModifyReplicationGroup
     -- ** DescribeCacheParameters (Paginated)
-    , module Network.AWS.ElastiCache.DescribeCacheParameters
-
+  , module Network.AWS.ElastiCache.DescribeCacheParameters
     -- ** DescribeCacheSubnetGroups (Paginated)
-    , module Network.AWS.ElastiCache.DescribeCacheSubnetGroups
-
+  , module Network.AWS.ElastiCache.DescribeCacheSubnetGroups
     -- ** CreateCacheSecurityGroup
-    , module Network.AWS.ElastiCache.CreateCacheSecurityGroup
-
+  , module Network.AWS.ElastiCache.CreateCacheSecurityGroup
     -- ** AddTagsToResource
-    , module Network.AWS.ElastiCache.AddTagsToResource
-
+  , module Network.AWS.ElastiCache.AddTagsToResource
     -- ** AuthorizeCacheSecurityGroupIngress
-    , module Network.AWS.ElastiCache.AuthorizeCacheSecurityGroupIngress
-
+  , module Network.AWS.ElastiCache.AuthorizeCacheSecurityGroupIngress
     -- ** CopySnapshot
-    , module Network.AWS.ElastiCache.CopySnapshot
-
+  , module Network.AWS.ElastiCache.CopySnapshot
     -- ** CreateCacheSubnetGroup
-    , module Network.AWS.ElastiCache.CreateCacheSubnetGroup
-
+  , module Network.AWS.ElastiCache.CreateCacheSubnetGroup
     -- ** DescribeCacheParameterGroups (Paginated)
-    , module Network.AWS.ElastiCache.DescribeCacheParameterGroups
-
+  , module Network.AWS.ElastiCache.DescribeCacheParameterGroups
     -- ** ResetCacheParameterGroup
-    , module Network.AWS.ElastiCache.ResetCacheParameterGroup
-
+  , module Network.AWS.ElastiCache.ResetCacheParameterGroup
     -- ** ListAllowedNodeTypeModifications
-    , module Network.AWS.ElastiCache.ListAllowedNodeTypeModifications
-
+  , module Network.AWS.ElastiCache.ListAllowedNodeTypeModifications
     -- ** ModifyReplicationGroupShardConfiguration
-    , module Network.AWS.ElastiCache.ModifyReplicationGroupShardConfiguration
-
+  , module Network.AWS.ElastiCache.ModifyReplicationGroupShardConfiguration
     -- ** DescribeSnapshots (Paginated)
-    , module Network.AWS.ElastiCache.DescribeSnapshots
-
+  , module Network.AWS.ElastiCache.DescribeSnapshots
     -- ** DescribeReplicationGroups (Paginated)
-    , module Network.AWS.ElastiCache.DescribeReplicationGroups
-
+  , module Network.AWS.ElastiCache.DescribeReplicationGroups
     -- ** DeleteSnapshot
-    , module Network.AWS.ElastiCache.DeleteSnapshot
-
+  , module Network.AWS.ElastiCache.DeleteSnapshot
     -- ** DescribeReservedCacheNodesOfferings (Paginated)
-    , module Network.AWS.ElastiCache.DescribeReservedCacheNodesOfferings
-
+  , module Network.AWS.ElastiCache.DescribeReservedCacheNodesOfferings
     -- ** ModifyCacheSubnetGroup
-    , module Network.AWS.ElastiCache.ModifyCacheSubnetGroup
-
+  , module Network.AWS.ElastiCache.ModifyCacheSubnetGroup
     -- ** CreateSnapshot
-    , module Network.AWS.ElastiCache.CreateSnapshot
-
+  , module Network.AWS.ElastiCache.CreateSnapshot
     -- ** DeleteCacheParameterGroup
-    , module Network.AWS.ElastiCache.DeleteCacheParameterGroup
-
+  , module Network.AWS.ElastiCache.DeleteCacheParameterGroup
     -- ** DescribeCacheSecurityGroups (Paginated)
-    , module Network.AWS.ElastiCache.DescribeCacheSecurityGroups
-
+  , module Network.AWS.ElastiCache.DescribeCacheSecurityGroups
     -- ** ModifyCacheCluster
-    , module Network.AWS.ElastiCache.ModifyCacheCluster
-
+  , module Network.AWS.ElastiCache.ModifyCacheCluster
     -- ** DescribeCacheEngineVersions (Paginated)
-    , module Network.AWS.ElastiCache.DescribeCacheEngineVersions
-
+  , module Network.AWS.ElastiCache.DescribeCacheEngineVersions
     -- ** CreateCacheParameterGroup
-    , module Network.AWS.ElastiCache.CreateCacheParameterGroup
-
+  , module Network.AWS.ElastiCache.CreateCacheParameterGroup
     -- ** DescribeReservedCacheNodes (Paginated)
-    , module Network.AWS.ElastiCache.DescribeReservedCacheNodes
-
+  , module Network.AWS.ElastiCache.DescribeReservedCacheNodes
     -- ** DeleteCacheSubnetGroup
-    , module Network.AWS.ElastiCache.DeleteCacheSubnetGroup
-
+  , module Network.AWS.ElastiCache.DeleteCacheSubnetGroup
     -- * Types
-
     -- ** AZMode
-    , AZMode (..)
-
+  , AZMode(..)
     -- ** AutomaticFailoverStatus
-    , AutomaticFailoverStatus (..)
-
+  , AutomaticFailoverStatus(..)
     -- ** ChangeType
-    , ChangeType (..)
-
+  , ChangeType(..)
     -- ** PendingAutomaticFailoverStatus
-    , PendingAutomaticFailoverStatus (..)
-
+  , PendingAutomaticFailoverStatus(..)
     -- ** SourceType
-    , SourceType (..)
-
+  , SourceType(..)
     -- ** AvailabilityZone
-    , AvailabilityZone
-    , availabilityZone
-    , azName
-
+  , AvailabilityZone
+  , availabilityZone
+  , azName
     -- ** CacheCluster
-    , CacheCluster
-    , cacheCluster
-    , ccEngineVersion
-    , ccCacheNodeType
-    , ccCacheNodes
-    , ccCacheClusterCreateTime
-    , ccAtRestEncryptionEnabled
-    , ccAutoMinorVersionUpgrade
-    , ccSecurityGroups
-    , ccNotificationConfiguration
-    , ccTransitEncryptionEnabled
-    , ccSnapshotWindow
-    , ccCacheClusterId
-    , ccConfigurationEndpoint
-    , ccEngine
-    , ccCacheSecurityGroups
-    , ccAuthTokenEnabled
-    , ccClientDownloadLandingPage
-    , ccPreferredMaintenanceWindow
-    , ccCacheSubnetGroupName
-    , ccPreferredAvailabilityZone
-    , ccCacheParameterGroup
-    , ccCacheClusterStatus
-    , ccSnapshotRetentionLimit
-    , ccReplicationGroupId
-    , ccPendingModifiedValues
-    , ccNumCacheNodes
-
+  , CacheCluster
+  , cacheCluster
+  , ccEngineVersion
+  , ccCacheNodeType
+  , ccCacheNodes
+  , ccCacheClusterCreateTime
+  , ccAtRestEncryptionEnabled
+  , ccAutoMinorVersionUpgrade
+  , ccSecurityGroups
+  , ccNotificationConfiguration
+  , ccTransitEncryptionEnabled
+  , ccSnapshotWindow
+  , ccCacheClusterId
+  , ccConfigurationEndpoint
+  , ccEngine
+  , ccCacheSecurityGroups
+  , ccAuthTokenEnabled
+  , ccClientDownloadLandingPage
+  , ccPreferredMaintenanceWindow
+  , ccCacheSubnetGroupName
+  , ccPreferredAvailabilityZone
+  , ccCacheParameterGroup
+  , ccCacheClusterStatus
+  , ccSnapshotRetentionLimit
+  , ccReplicationGroupId
+  , ccPendingModifiedValues
+  , ccNumCacheNodes
     -- ** CacheEngineVersion
-    , CacheEngineVersion
-    , cacheEngineVersion
-    , cevEngineVersion
-    , cevCacheParameterGroupFamily
-    , cevCacheEngineDescription
-    , cevEngine
-    , cevCacheEngineVersionDescription
-
+  , CacheEngineVersion
+  , cacheEngineVersion
+  , cevEngineVersion
+  , cevCacheParameterGroupFamily
+  , cevCacheEngineDescription
+  , cevEngine
+  , cevCacheEngineVersionDescription
     -- ** CacheNode
-    , CacheNode
-    , cacheNode
-    , cnSourceCacheNodeId
-    , cnParameterGroupStatus
-    , cnCacheNodeCreateTime
-    , cnCustomerAvailabilityZone
-    , cnCacheNodeId
-    , cnCacheNodeStatus
-    , cnEndpoint
-
+  , CacheNode
+  , cacheNode
+  , cnSourceCacheNodeId
+  , cnParameterGroupStatus
+  , cnCacheNodeCreateTime
+  , cnCustomerAvailabilityZone
+  , cnCacheNodeId
+  , cnCacheNodeStatus
+  , cnEndpoint
     -- ** CacheNodeTypeSpecificParameter
-    , CacheNodeTypeSpecificParameter
-    , cacheNodeTypeSpecificParameter
-    , cntspCacheNodeTypeSpecificValues
-    , cntspMinimumEngineVersion
-    , cntspSource
-    , cntspIsModifiable
-    , cntspDataType
-    , cntspAllowedValues
-    , cntspParameterName
-    , cntspDescription
-    , cntspChangeType
-
+  , CacheNodeTypeSpecificParameter
+  , cacheNodeTypeSpecificParameter
+  , cntspCacheNodeTypeSpecificValues
+  , cntspMinimumEngineVersion
+  , cntspSource
+  , cntspIsModifiable
+  , cntspDataType
+  , cntspAllowedValues
+  , cntspParameterName
+  , cntspDescription
+  , cntspChangeType
     -- ** CacheNodeTypeSpecificValue
-    , CacheNodeTypeSpecificValue
-    , cacheNodeTypeSpecificValue
-    , cntsvCacheNodeType
-    , cntsvValue
-
+  , CacheNodeTypeSpecificValue
+  , cacheNodeTypeSpecificValue
+  , cntsvCacheNodeType
+  , cntsvValue
     -- ** CacheParameterGroup
-    , CacheParameterGroup
-    , cacheParameterGroup
-    , cpgCacheParameterGroupFamily
-    , cpgCacheParameterGroupName
-    , cpgDescription
-
+  , CacheParameterGroup
+  , cacheParameterGroup
+  , cpgCacheParameterGroupFamily
+  , cpgCacheParameterGroupName
+  , cpgDescription
     -- ** CacheParameterGroupNameMessage
-    , CacheParameterGroupNameMessage
-    , cacheParameterGroupNameMessage
-    , cpgnmCacheParameterGroupName
-
+  , CacheParameterGroupNameMessage
+  , cacheParameterGroupNameMessage
+  , cpgnmCacheParameterGroupName
     -- ** CacheParameterGroupStatus
-    , CacheParameterGroupStatus
-    , cacheParameterGroupStatus
-    , cpgsCacheParameterGroupName
-    , cpgsCacheNodeIdsToReboot
-    , cpgsParameterApplyStatus
-
+  , CacheParameterGroupStatus
+  , cacheParameterGroupStatus
+  , cpgsCacheParameterGroupName
+  , cpgsCacheNodeIdsToReboot
+  , cpgsParameterApplyStatus
     -- ** CacheSecurityGroup
-    , CacheSecurityGroup
-    , cacheSecurityGroup
-    , csgCacheSecurityGroupName
-    , csgOwnerId
-    , csgEC2SecurityGroups
-    , csgDescription
-
+  , CacheSecurityGroup
+  , cacheSecurityGroup
+  , csgCacheSecurityGroupName
+  , csgOwnerId
+  , csgEC2SecurityGroups
+  , csgDescription
     -- ** CacheSecurityGroupMembership
-    , CacheSecurityGroupMembership
-    , cacheSecurityGroupMembership
-    , csgmStatus
-    , csgmCacheSecurityGroupName
-
+  , CacheSecurityGroupMembership
+  , cacheSecurityGroupMembership
+  , csgmStatus
+  , csgmCacheSecurityGroupName
     -- ** CacheSubnetGroup
-    , CacheSubnetGroup
-    , cacheSubnetGroup
-    , csgVPCId
-    , csgSubnets
-    , csgCacheSubnetGroupName
-    , csgCacheSubnetGroupDescription
-
+  , CacheSubnetGroup
+  , cacheSubnetGroup
+  , csgVPCId
+  , csgSubnets
+  , csgCacheSubnetGroupName
+  , csgCacheSubnetGroupDescription
     -- ** EC2SecurityGroup
-    , EC2SecurityGroup
-    , ec2SecurityGroup
-    , esgStatus
-    , esgEC2SecurityGroupOwnerId
-    , esgEC2SecurityGroupName
-
+  , EC2SecurityGroup
+  , ec2SecurityGroup
+  , esgStatus
+  , esgEC2SecurityGroupOwnerId
+  , esgEC2SecurityGroupName
     -- ** Endpoint
-    , Endpoint
-    , endpoint
-    , eAddress
-    , ePort
-
+  , Endpoint
+  , endpoint
+  , eAddress
+  , ePort
     -- ** EngineDefaults
-    , EngineDefaults
-    , engineDefaults
-    , edCacheParameterGroupFamily
-    , edCacheNodeTypeSpecificParameters
-    , edMarker
-    , edParameters
-
+  , EngineDefaults
+  , engineDefaults
+  , edCacheParameterGroupFamily
+  , edCacheNodeTypeSpecificParameters
+  , edMarker
+  , edParameters
     -- ** Event
-    , Event
-    , event
-    , eSourceType
-    , eSourceIdentifier
-    , eDate
-    , eMessage
-
+  , Event
+  , event
+  , eSourceType
+  , eSourceIdentifier
+  , eDate
+  , eMessage
     -- ** NodeGroup
-    , NodeGroup
-    , nodeGroup
-    , ngStatus
-    , ngPrimaryEndpoint
-    , ngSlots
-    , ngNodeGroupMembers
-    , ngNodeGroupId
-
+  , NodeGroup
+  , nodeGroup
+  , ngStatus
+  , ngPrimaryEndpoint
+  , ngSlots
+  , ngNodeGroupMembers
+  , ngNodeGroupId
     -- ** NodeGroupConfiguration
-    , NodeGroupConfiguration
-    , nodeGroupConfiguration
-    , ngcSlots
-    , ngcReplicaCount
-    , ngcPrimaryAvailabilityZone
-    , ngcReplicaAvailabilityZones
-
+  , NodeGroupConfiguration
+  , nodeGroupConfiguration
+  , ngcSlots
+  , ngcReplicaCount
+  , ngcPrimaryAvailabilityZone
+  , ngcReplicaAvailabilityZones
     -- ** NodeGroupMember
-    , NodeGroupMember
-    , nodeGroupMember
-    , ngmCacheClusterId
-    , ngmCacheNodeId
-    , ngmPreferredAvailabilityZone
-    , ngmCurrentRole
-    , ngmReadEndpoint
-
+  , NodeGroupMember
+  , nodeGroupMember
+  , ngmCacheClusterId
+  , ngmCacheNodeId
+  , ngmPreferredAvailabilityZone
+  , ngmCurrentRole
+  , ngmReadEndpoint
     -- ** NodeSnapshot
-    , NodeSnapshot
-    , nodeSnapshot
-    , nsNodeGroupConfiguration
-    , nsCacheNodeCreateTime
-    , nsCacheClusterId
-    , nsCacheNodeId
-    , nsNodeGroupId
-    , nsSnapshotCreateTime
-    , nsCacheSize
-
+  , NodeSnapshot
+  , nodeSnapshot
+  , nsNodeGroupConfiguration
+  , nsCacheNodeCreateTime
+  , nsCacheClusterId
+  , nsCacheNodeId
+  , nsNodeGroupId
+  , nsSnapshotCreateTime
+  , nsCacheSize
     -- ** NotificationConfiguration
-    , NotificationConfiguration
-    , notificationConfiguration
-    , ncTopicStatus
-    , ncTopicARN
-
+  , NotificationConfiguration
+  , notificationConfiguration
+  , ncTopicStatus
+  , ncTopicARN
     -- ** Parameter
-    , Parameter
-    , parameter
-    , pParameterValue
-    , pMinimumEngineVersion
-    , pSource
-    , pIsModifiable
-    , pDataType
-    , pAllowedValues
-    , pParameterName
-    , pDescription
-    , pChangeType
-
+  , Parameter
+  , parameter
+  , pParameterValue
+  , pMinimumEngineVersion
+  , pSource
+  , pIsModifiable
+  , pDataType
+  , pAllowedValues
+  , pParameterName
+  , pDescription
+  , pChangeType
     -- ** ParameterNameValue
-    , ParameterNameValue
-    , parameterNameValue
-    , pnvParameterValue
-    , pnvParameterName
-
+  , ParameterNameValue
+  , parameterNameValue
+  , pnvParameterValue
+  , pnvParameterName
     -- ** PendingModifiedValues
-    , PendingModifiedValues
-    , pendingModifiedValues
-    , pmvEngineVersion
-    , pmvCacheNodeType
-    , pmvCacheNodeIdsToRemove
-    , pmvNumCacheNodes
-
+  , PendingModifiedValues
+  , pendingModifiedValues
+  , pmvEngineVersion
+  , pmvCacheNodeType
+  , pmvCacheNodeIdsToRemove
+  , pmvNumCacheNodes
     -- ** RecurringCharge
-    , RecurringCharge
-    , recurringCharge
-    , rcRecurringChargeFrequency
-    , rcRecurringChargeAmount
-
+  , RecurringCharge
+  , recurringCharge
+  , rcRecurringChargeFrequency
+  , rcRecurringChargeAmount
     -- ** ReplicationGroup
-    , ReplicationGroup
-    , replicationGroup
-    , rgStatus
-    , rgCacheNodeType
-    , rgNodeGroups
-    , rgSnapshottingClusterId
-    , rgClusterEnabled
-    , rgAtRestEncryptionEnabled
-    , rgTransitEncryptionEnabled
-    , rgSnapshotWindow
-    , rgConfigurationEndpoint
-    , rgAuthTokenEnabled
-    , rgMemberClusters
-    , rgSnapshotRetentionLimit
-    , rgDescription
-    , rgReplicationGroupId
-    , rgPendingModifiedValues
-    , rgAutomaticFailover
-
+  , ReplicationGroup
+  , replicationGroup
+  , rgStatus
+  , rgCacheNodeType
+  , rgNodeGroups
+  , rgSnapshottingClusterId
+  , rgClusterEnabled
+  , rgAtRestEncryptionEnabled
+  , rgTransitEncryptionEnabled
+  , rgSnapshotWindow
+  , rgConfigurationEndpoint
+  , rgAuthTokenEnabled
+  , rgMemberClusters
+  , rgSnapshotRetentionLimit
+  , rgDescription
+  , rgReplicationGroupId
+  , rgPendingModifiedValues
+  , rgAutomaticFailover
     -- ** ReplicationGroupPendingModifiedValues
-    , ReplicationGroupPendingModifiedValues
-    , replicationGroupPendingModifiedValues
-    , rgpmvResharding
-    , rgpmvPrimaryClusterId
-    , rgpmvAutomaticFailoverStatus
-
+  , ReplicationGroupPendingModifiedValues
+  , replicationGroupPendingModifiedValues
+  , rgpmvResharding
+  , rgpmvPrimaryClusterId
+  , rgpmvAutomaticFailoverStatus
     -- ** ReservedCacheNode
-    , ReservedCacheNode
-    , reservedCacheNode
-    , rcnCacheNodeType
-    , rcnState
-    , rcnStartTime
-    , rcnProductDescription
-    , rcnCacheNodeCount
-    , rcnReservedCacheNodeId
-    , rcnRecurringCharges
-    , rcnOfferingType
-    , rcnUsagePrice
-    , rcnFixedPrice
-    , rcnDuration
-    , rcnReservedCacheNodesOfferingId
-
+  , ReservedCacheNode
+  , reservedCacheNode
+  , rcnCacheNodeType
+  , rcnState
+  , rcnStartTime
+  , rcnProductDescription
+  , rcnCacheNodeCount
+  , rcnReservedCacheNodeId
+  , rcnRecurringCharges
+  , rcnOfferingType
+  , rcnUsagePrice
+  , rcnFixedPrice
+  , rcnDuration
+  , rcnReservedCacheNodesOfferingId
     -- ** ReservedCacheNodesOffering
-    , ReservedCacheNodesOffering
-    , reservedCacheNodesOffering
-    , rcnoCacheNodeType
-    , rcnoProductDescription
-    , rcnoRecurringCharges
-    , rcnoOfferingType
-    , rcnoUsagePrice
-    , rcnoFixedPrice
-    , rcnoDuration
-    , rcnoReservedCacheNodesOfferingId
-
+  , ReservedCacheNodesOffering
+  , reservedCacheNodesOffering
+  , rcnoCacheNodeType
+  , rcnoProductDescription
+  , rcnoRecurringCharges
+  , rcnoOfferingType
+  , rcnoUsagePrice
+  , rcnoFixedPrice
+  , rcnoDuration
+  , rcnoReservedCacheNodesOfferingId
     -- ** ReshardingConfiguration
-    , ReshardingConfiguration
-    , reshardingConfiguration
-    , rcPreferredAvailabilityZones
-
+  , ReshardingConfiguration
+  , reshardingConfiguration
+  , rcPreferredAvailabilityZones
     -- ** ReshardingStatus
-    , ReshardingStatus
-    , reshardingStatus
-    , rsSlotMigration
-
+  , ReshardingStatus
+  , reshardingStatus
+  , rsSlotMigration
     -- ** SecurityGroupMembership
-    , SecurityGroupMembership
-    , securityGroupMembership
-    , sgmStatus
-    , sgmSecurityGroupId
-
+  , SecurityGroupMembership
+  , securityGroupMembership
+  , sgmStatus
+  , sgmSecurityGroupId
     -- ** SlotMigration
-    , SlotMigration
-    , slotMigration
-    , smProgressPercentage
-
+  , SlotMigration
+  , slotMigration
+  , smProgressPercentage
     -- ** Snapshot
-    , Snapshot
-    , snapshot
-    , sEngineVersion
-    , sCacheNodeType
-    , sCacheClusterCreateTime
-    , sAutoMinorVersionUpgrade
-    , sCacheParameterGroupName
-    , sReplicationGroupDescription
-    , sVPCId
-    , sSnapshotStatus
-    , sSnapshotWindow
-    , sCacheClusterId
-    , sEngine
-    , sPreferredMaintenanceWindow
-    , sTopicARN
-    , sNodeSnapshots
-    , sCacheSubnetGroupName
-    , sPreferredAvailabilityZone
-    , sNumNodeGroups
-    , sSnapshotRetentionLimit
-    , sSnapshotName
-    , sReplicationGroupId
-    , sNumCacheNodes
-    , sPort
-    , sAutomaticFailover
-    , sSnapshotSource
-
+  , Snapshot
+  , snapshot
+  , sEngineVersion
+  , sCacheNodeType
+  , sCacheClusterCreateTime
+  , sAutoMinorVersionUpgrade
+  , sCacheParameterGroupName
+  , sReplicationGroupDescription
+  , sVPCId
+  , sSnapshotStatus
+  , sSnapshotWindow
+  , sCacheClusterId
+  , sEngine
+  , sPreferredMaintenanceWindow
+  , sTopicARN
+  , sNodeSnapshots
+  , sCacheSubnetGroupName
+  , sPreferredAvailabilityZone
+  , sNumNodeGroups
+  , sSnapshotRetentionLimit
+  , sSnapshotName
+  , sReplicationGroupId
+  , sNumCacheNodes
+  , sPort
+  , sAutomaticFailover
+  , sSnapshotSource
     -- ** Subnet
-    , Subnet
-    , subnet
-    , sSubnetIdentifier
-    , sSubnetAvailabilityZone
-
+  , Subnet
+  , subnet
+  , sSubnetIdentifier
+  , sSubnetAvailabilityZone
     -- ** Tag
-    , Tag
-    , tag
-    , tagValue
-    , tagKey
-
+  , Tag
+  , tag
+  , tagValue
+  , tagKey
     -- ** TagListMessage
-    , TagListMessage
-    , tagListMessage
-    , tlmTagList
-    ) where
+  , TagListMessage
+  , tagListMessage
+  , tlmTagList
+  ) where
 
 import Network.AWS.ElastiCache.AddTagsToResource
 import Network.AWS.ElastiCache.AuthorizeCacheSecurityGroupIngress
@@ -703,14 +565,12 @@ import Network.AWS.ElastiCache.RevokeCacheSecurityGroupIngress
 import Network.AWS.ElastiCache.TestFailover
 import Network.AWS.ElastiCache.Types
 import Network.AWS.ElastiCache.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'ElastiCache'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -727,7 +587,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

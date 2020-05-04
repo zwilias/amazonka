@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.ElastiCache
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -149,7 +147,6 @@ import Test.Tasty
 --             deleteCacheSubnetGroup
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseDeleteCacheSecurityGroup $
 --             deleteCacheSecurityGroupResponse
@@ -273,486 +270,514 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestDeleteCacheSecurityGroup :: DeleteCacheSecurityGroup -> TestTree
-requestDeleteCacheSecurityGroup = req
-    "DeleteCacheSecurityGroup"
-    "fixture/DeleteCacheSecurityGroup.yaml"
+requestDeleteCacheSecurityGroup =
+  req "DeleteCacheSecurityGroup" "fixture/DeleteCacheSecurityGroup.yaml"
 
 requestCreateReplicationGroup :: CreateReplicationGroup -> TestTree
-requestCreateReplicationGroup = req
-    "CreateReplicationGroup"
-    "fixture/CreateReplicationGroup.yaml"
+requestCreateReplicationGroup =
+  req "CreateReplicationGroup" "fixture/CreateReplicationGroup.yaml"
 
 requestDeleteCacheCluster :: DeleteCacheCluster -> TestTree
-requestDeleteCacheCluster = req
-    "DeleteCacheCluster"
-    "fixture/DeleteCacheCluster.yaml"
+requestDeleteCacheCluster =
+  req "DeleteCacheCluster" "fixture/DeleteCacheCluster.yaml"
 
 requestRebootCacheCluster :: RebootCacheCluster -> TestTree
-requestRebootCacheCluster = req
-    "RebootCacheCluster"
-    "fixture/RebootCacheCluster.yaml"
+requestRebootCacheCluster =
+  req "RebootCacheCluster" "fixture/RebootCacheCluster.yaml"
 
-requestRevokeCacheSecurityGroupIngress :: RevokeCacheSecurityGroupIngress -> TestTree
-requestRevokeCacheSecurityGroupIngress = req
+requestRevokeCacheSecurityGroupIngress ::
+     RevokeCacheSecurityGroupIngress -> TestTree
+requestRevokeCacheSecurityGroupIngress =
+  req
     "RevokeCacheSecurityGroupIngress"
     "fixture/RevokeCacheSecurityGroupIngress.yaml"
 
 requestCreateCacheCluster :: CreateCacheCluster -> TestTree
-requestCreateCacheCluster = req
-    "CreateCacheCluster"
-    "fixture/CreateCacheCluster.yaml"
+requestCreateCacheCluster =
+  req "CreateCacheCluster" "fixture/CreateCacheCluster.yaml"
 
 requestDescribeEvents :: DescribeEvents -> TestTree
-requestDescribeEvents = req
-    "DescribeEvents"
-    "fixture/DescribeEvents.yaml"
+requestDescribeEvents = req "DescribeEvents" "fixture/DescribeEvents.yaml"
 
-requestDescribeEngineDefaultParameters :: DescribeEngineDefaultParameters -> TestTree
-requestDescribeEngineDefaultParameters = req
+requestDescribeEngineDefaultParameters ::
+     DescribeEngineDefaultParameters -> TestTree
+requestDescribeEngineDefaultParameters =
+  req
     "DescribeEngineDefaultParameters"
     "fixture/DescribeEngineDefaultParameters.yaml"
 
 requestModifyCacheParameterGroup :: ModifyCacheParameterGroup -> TestTree
-requestModifyCacheParameterGroup = req
-    "ModifyCacheParameterGroup"
-    "fixture/ModifyCacheParameterGroup.yaml"
+requestModifyCacheParameterGroup =
+  req "ModifyCacheParameterGroup" "fixture/ModifyCacheParameterGroup.yaml"
 
 requestTestFailover :: TestFailover -> TestTree
-requestTestFailover = req
-    "TestFailover"
-    "fixture/TestFailover.yaml"
+requestTestFailover = req "TestFailover" "fixture/TestFailover.yaml"
 
 requestDeleteReplicationGroup :: DeleteReplicationGroup -> TestTree
-requestDeleteReplicationGroup = req
-    "DeleteReplicationGroup"
-    "fixture/DeleteReplicationGroup.yaml"
+requestDeleteReplicationGroup =
+  req "DeleteReplicationGroup" "fixture/DeleteReplicationGroup.yaml"
 
 requestListTagsForResource :: ListTagsForResource -> TestTree
-requestListTagsForResource = req
-    "ListTagsForResource"
-    "fixture/ListTagsForResource.yaml"
+requestListTagsForResource =
+  req "ListTagsForResource" "fixture/ListTagsForResource.yaml"
 
 requestDescribeCacheClusters :: DescribeCacheClusters -> TestTree
-requestDescribeCacheClusters = req
-    "DescribeCacheClusters"
-    "fixture/DescribeCacheClusters.yaml"
+requestDescribeCacheClusters =
+  req "DescribeCacheClusters" "fixture/DescribeCacheClusters.yaml"
 
-requestPurchaseReservedCacheNodesOffering :: PurchaseReservedCacheNodesOffering -> TestTree
-requestPurchaseReservedCacheNodesOffering = req
+requestPurchaseReservedCacheNodesOffering ::
+     PurchaseReservedCacheNodesOffering -> TestTree
+requestPurchaseReservedCacheNodesOffering =
+  req
     "PurchaseReservedCacheNodesOffering"
     "fixture/PurchaseReservedCacheNodesOffering.yaml"
 
 requestRemoveTagsFromResource :: RemoveTagsFromResource -> TestTree
-requestRemoveTagsFromResource = req
-    "RemoveTagsFromResource"
-    "fixture/RemoveTagsFromResource.yaml"
+requestRemoveTagsFromResource =
+  req "RemoveTagsFromResource" "fixture/RemoveTagsFromResource.yaml"
 
 requestModifyReplicationGroup :: ModifyReplicationGroup -> TestTree
-requestModifyReplicationGroup = req
-    "ModifyReplicationGroup"
-    "fixture/ModifyReplicationGroup.yaml"
+requestModifyReplicationGroup =
+  req "ModifyReplicationGroup" "fixture/ModifyReplicationGroup.yaml"
 
 requestDescribeCacheParameters :: DescribeCacheParameters -> TestTree
-requestDescribeCacheParameters = req
-    "DescribeCacheParameters"
-    "fixture/DescribeCacheParameters.yaml"
+requestDescribeCacheParameters =
+  req "DescribeCacheParameters" "fixture/DescribeCacheParameters.yaml"
 
 requestDescribeCacheSubnetGroups :: DescribeCacheSubnetGroups -> TestTree
-requestDescribeCacheSubnetGroups = req
-    "DescribeCacheSubnetGroups"
-    "fixture/DescribeCacheSubnetGroups.yaml"
+requestDescribeCacheSubnetGroups =
+  req "DescribeCacheSubnetGroups" "fixture/DescribeCacheSubnetGroups.yaml"
 
 requestCreateCacheSecurityGroup :: CreateCacheSecurityGroup -> TestTree
-requestCreateCacheSecurityGroup = req
-    "CreateCacheSecurityGroup"
-    "fixture/CreateCacheSecurityGroup.yaml"
+requestCreateCacheSecurityGroup =
+  req "CreateCacheSecurityGroup" "fixture/CreateCacheSecurityGroup.yaml"
 
 requestAddTagsToResource :: AddTagsToResource -> TestTree
-requestAddTagsToResource = req
-    "AddTagsToResource"
-    "fixture/AddTagsToResource.yaml"
+requestAddTagsToResource =
+  req "AddTagsToResource" "fixture/AddTagsToResource.yaml"
 
-requestAuthorizeCacheSecurityGroupIngress :: AuthorizeCacheSecurityGroupIngress -> TestTree
-requestAuthorizeCacheSecurityGroupIngress = req
+requestAuthorizeCacheSecurityGroupIngress ::
+     AuthorizeCacheSecurityGroupIngress -> TestTree
+requestAuthorizeCacheSecurityGroupIngress =
+  req
     "AuthorizeCacheSecurityGroupIngress"
     "fixture/AuthorizeCacheSecurityGroupIngress.yaml"
 
 requestCopySnapshot :: CopySnapshot -> TestTree
-requestCopySnapshot = req
-    "CopySnapshot"
-    "fixture/CopySnapshot.yaml"
+requestCopySnapshot = req "CopySnapshot" "fixture/CopySnapshot.yaml"
 
 requestCreateCacheSubnetGroup :: CreateCacheSubnetGroup -> TestTree
-requestCreateCacheSubnetGroup = req
-    "CreateCacheSubnetGroup"
-    "fixture/CreateCacheSubnetGroup.yaml"
+requestCreateCacheSubnetGroup =
+  req "CreateCacheSubnetGroup" "fixture/CreateCacheSubnetGroup.yaml"
 
 requestDescribeCacheParameterGroups :: DescribeCacheParameterGroups -> TestTree
-requestDescribeCacheParameterGroups = req
-    "DescribeCacheParameterGroups"
-    "fixture/DescribeCacheParameterGroups.yaml"
+requestDescribeCacheParameterGroups =
+  req "DescribeCacheParameterGroups" "fixture/DescribeCacheParameterGroups.yaml"
 
 requestResetCacheParameterGroup :: ResetCacheParameterGroup -> TestTree
-requestResetCacheParameterGroup = req
-    "ResetCacheParameterGroup"
-    "fixture/ResetCacheParameterGroup.yaml"
+requestResetCacheParameterGroup =
+  req "ResetCacheParameterGroup" "fixture/ResetCacheParameterGroup.yaml"
 
-requestListAllowedNodeTypeModifications :: ListAllowedNodeTypeModifications -> TestTree
-requestListAllowedNodeTypeModifications = req
+requestListAllowedNodeTypeModifications ::
+     ListAllowedNodeTypeModifications -> TestTree
+requestListAllowedNodeTypeModifications =
+  req
     "ListAllowedNodeTypeModifications"
     "fixture/ListAllowedNodeTypeModifications.yaml"
 
-requestModifyReplicationGroupShardConfiguration :: ModifyReplicationGroupShardConfiguration -> TestTree
-requestModifyReplicationGroupShardConfiguration = req
+requestModifyReplicationGroupShardConfiguration ::
+     ModifyReplicationGroupShardConfiguration -> TestTree
+requestModifyReplicationGroupShardConfiguration =
+  req
     "ModifyReplicationGroupShardConfiguration"
     "fixture/ModifyReplicationGroupShardConfiguration.yaml"
 
 requestDescribeSnapshots :: DescribeSnapshots -> TestTree
-requestDescribeSnapshots = req
-    "DescribeSnapshots"
-    "fixture/DescribeSnapshots.yaml"
+requestDescribeSnapshots =
+  req "DescribeSnapshots" "fixture/DescribeSnapshots.yaml"
 
 requestDescribeReplicationGroups :: DescribeReplicationGroups -> TestTree
-requestDescribeReplicationGroups = req
-    "DescribeReplicationGroups"
-    "fixture/DescribeReplicationGroups.yaml"
+requestDescribeReplicationGroups =
+  req "DescribeReplicationGroups" "fixture/DescribeReplicationGroups.yaml"
 
 requestDeleteSnapshot :: DeleteSnapshot -> TestTree
-requestDeleteSnapshot = req
-    "DeleteSnapshot"
-    "fixture/DeleteSnapshot.yaml"
+requestDeleteSnapshot = req "DeleteSnapshot" "fixture/DeleteSnapshot.yaml"
 
-requestDescribeReservedCacheNodesOfferings :: DescribeReservedCacheNodesOfferings -> TestTree
-requestDescribeReservedCacheNodesOfferings = req
+requestDescribeReservedCacheNodesOfferings ::
+     DescribeReservedCacheNodesOfferings -> TestTree
+requestDescribeReservedCacheNodesOfferings =
+  req
     "DescribeReservedCacheNodesOfferings"
     "fixture/DescribeReservedCacheNodesOfferings.yaml"
 
 requestModifyCacheSubnetGroup :: ModifyCacheSubnetGroup -> TestTree
-requestModifyCacheSubnetGroup = req
-    "ModifyCacheSubnetGroup"
-    "fixture/ModifyCacheSubnetGroup.yaml"
+requestModifyCacheSubnetGroup =
+  req "ModifyCacheSubnetGroup" "fixture/ModifyCacheSubnetGroup.yaml"
 
 requestCreateSnapshot :: CreateSnapshot -> TestTree
-requestCreateSnapshot = req
-    "CreateSnapshot"
-    "fixture/CreateSnapshot.yaml"
+requestCreateSnapshot = req "CreateSnapshot" "fixture/CreateSnapshot.yaml"
 
 requestDeleteCacheParameterGroup :: DeleteCacheParameterGroup -> TestTree
-requestDeleteCacheParameterGroup = req
-    "DeleteCacheParameterGroup"
-    "fixture/DeleteCacheParameterGroup.yaml"
+requestDeleteCacheParameterGroup =
+  req "DeleteCacheParameterGroup" "fixture/DeleteCacheParameterGroup.yaml"
 
 requestDescribeCacheSecurityGroups :: DescribeCacheSecurityGroups -> TestTree
-requestDescribeCacheSecurityGroups = req
-    "DescribeCacheSecurityGroups"
-    "fixture/DescribeCacheSecurityGroups.yaml"
+requestDescribeCacheSecurityGroups =
+  req "DescribeCacheSecurityGroups" "fixture/DescribeCacheSecurityGroups.yaml"
 
 requestModifyCacheCluster :: ModifyCacheCluster -> TestTree
-requestModifyCacheCluster = req
-    "ModifyCacheCluster"
-    "fixture/ModifyCacheCluster.yaml"
+requestModifyCacheCluster =
+  req "ModifyCacheCluster" "fixture/ModifyCacheCluster.yaml"
 
 requestDescribeCacheEngineVersions :: DescribeCacheEngineVersions -> TestTree
-requestDescribeCacheEngineVersions = req
-    "DescribeCacheEngineVersions"
-    "fixture/DescribeCacheEngineVersions.yaml"
+requestDescribeCacheEngineVersions =
+  req "DescribeCacheEngineVersions" "fixture/DescribeCacheEngineVersions.yaml"
 
 requestCreateCacheParameterGroup :: CreateCacheParameterGroup -> TestTree
-requestCreateCacheParameterGroup = req
-    "CreateCacheParameterGroup"
-    "fixture/CreateCacheParameterGroup.yaml"
+requestCreateCacheParameterGroup =
+  req "CreateCacheParameterGroup" "fixture/CreateCacheParameterGroup.yaml"
 
 requestDescribeReservedCacheNodes :: DescribeReservedCacheNodes -> TestTree
-requestDescribeReservedCacheNodes = req
-    "DescribeReservedCacheNodes"
-    "fixture/DescribeReservedCacheNodes.yaml"
+requestDescribeReservedCacheNodes =
+  req "DescribeReservedCacheNodes" "fixture/DescribeReservedCacheNodes.yaml"
 
 requestDeleteCacheSubnetGroup :: DeleteCacheSubnetGroup -> TestTree
-requestDeleteCacheSubnetGroup = req
-    "DeleteCacheSubnetGroup"
-    "fixture/DeleteCacheSubnetGroup.yaml"
+requestDeleteCacheSubnetGroup =
+  req "DeleteCacheSubnetGroup" "fixture/DeleteCacheSubnetGroup.yaml"
 
 -- Responses
-
 responseDeleteCacheSecurityGroup :: DeleteCacheSecurityGroupResponse -> TestTree
-responseDeleteCacheSecurityGroup = res
+responseDeleteCacheSecurityGroup =
+  res
     "DeleteCacheSecurityGroupResponse"
     "fixture/DeleteCacheSecurityGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy DeleteCacheSecurityGroup)
 
 responseCreateReplicationGroup :: CreateReplicationGroupResponse -> TestTree
-responseCreateReplicationGroup = res
+responseCreateReplicationGroup =
+  res
     "CreateReplicationGroupResponse"
     "fixture/CreateReplicationGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy CreateReplicationGroup)
 
 responseDeleteCacheCluster :: DeleteCacheClusterResponse -> TestTree
-responseDeleteCacheCluster = res
+responseDeleteCacheCluster =
+  res
     "DeleteCacheClusterResponse"
     "fixture/DeleteCacheClusterResponse.proto"
     elastiCache
     (Proxy :: Proxy DeleteCacheCluster)
 
 responseRebootCacheCluster :: RebootCacheClusterResponse -> TestTree
-responseRebootCacheCluster = res
+responseRebootCacheCluster =
+  res
     "RebootCacheClusterResponse"
     "fixture/RebootCacheClusterResponse.proto"
     elastiCache
     (Proxy :: Proxy RebootCacheCluster)
 
-responseRevokeCacheSecurityGroupIngress :: RevokeCacheSecurityGroupIngressResponse -> TestTree
-responseRevokeCacheSecurityGroupIngress = res
+responseRevokeCacheSecurityGroupIngress ::
+     RevokeCacheSecurityGroupIngressResponse -> TestTree
+responseRevokeCacheSecurityGroupIngress =
+  res
     "RevokeCacheSecurityGroupIngressResponse"
     "fixture/RevokeCacheSecurityGroupIngressResponse.proto"
     elastiCache
     (Proxy :: Proxy RevokeCacheSecurityGroupIngress)
 
 responseCreateCacheCluster :: CreateCacheClusterResponse -> TestTree
-responseCreateCacheCluster = res
+responseCreateCacheCluster =
+  res
     "CreateCacheClusterResponse"
     "fixture/CreateCacheClusterResponse.proto"
     elastiCache
     (Proxy :: Proxy CreateCacheCluster)
 
 responseDescribeEvents :: DescribeEventsResponse -> TestTree
-responseDescribeEvents = res
+responseDescribeEvents =
+  res
     "DescribeEventsResponse"
     "fixture/DescribeEventsResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeEvents)
 
-responseDescribeEngineDefaultParameters :: DescribeEngineDefaultParametersResponse -> TestTree
-responseDescribeEngineDefaultParameters = res
+responseDescribeEngineDefaultParameters ::
+     DescribeEngineDefaultParametersResponse -> TestTree
+responseDescribeEngineDefaultParameters =
+  res
     "DescribeEngineDefaultParametersResponse"
     "fixture/DescribeEngineDefaultParametersResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeEngineDefaultParameters)
 
 responseModifyCacheParameterGroup :: CacheParameterGroupNameMessage -> TestTree
-responseModifyCacheParameterGroup = res
+responseModifyCacheParameterGroup =
+  res
     "ModifyCacheParameterGroupResponse"
     "fixture/ModifyCacheParameterGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy ModifyCacheParameterGroup)
 
 responseTestFailover :: TestFailoverResponse -> TestTree
-responseTestFailover = res
+responseTestFailover =
+  res
     "TestFailoverResponse"
     "fixture/TestFailoverResponse.proto"
     elastiCache
     (Proxy :: Proxy TestFailover)
 
 responseDeleteReplicationGroup :: DeleteReplicationGroupResponse -> TestTree
-responseDeleteReplicationGroup = res
+responseDeleteReplicationGroup =
+  res
     "DeleteReplicationGroupResponse"
     "fixture/DeleteReplicationGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy DeleteReplicationGroup)
 
 responseListTagsForResource :: TagListMessage -> TestTree
-responseListTagsForResource = res
+responseListTagsForResource =
+  res
     "ListTagsForResourceResponse"
     "fixture/ListTagsForResourceResponse.proto"
     elastiCache
     (Proxy :: Proxy ListTagsForResource)
 
 responseDescribeCacheClusters :: DescribeCacheClustersResponse -> TestTree
-responseDescribeCacheClusters = res
+responseDescribeCacheClusters =
+  res
     "DescribeCacheClustersResponse"
     "fixture/DescribeCacheClustersResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeCacheClusters)
 
-responsePurchaseReservedCacheNodesOffering :: PurchaseReservedCacheNodesOfferingResponse -> TestTree
-responsePurchaseReservedCacheNodesOffering = res
+responsePurchaseReservedCacheNodesOffering ::
+     PurchaseReservedCacheNodesOfferingResponse -> TestTree
+responsePurchaseReservedCacheNodesOffering =
+  res
     "PurchaseReservedCacheNodesOfferingResponse"
     "fixture/PurchaseReservedCacheNodesOfferingResponse.proto"
     elastiCache
     (Proxy :: Proxy PurchaseReservedCacheNodesOffering)
 
 responseRemoveTagsFromResource :: TagListMessage -> TestTree
-responseRemoveTagsFromResource = res
+responseRemoveTagsFromResource =
+  res
     "RemoveTagsFromResourceResponse"
     "fixture/RemoveTagsFromResourceResponse.proto"
     elastiCache
     (Proxy :: Proxy RemoveTagsFromResource)
 
 responseModifyReplicationGroup :: ModifyReplicationGroupResponse -> TestTree
-responseModifyReplicationGroup = res
+responseModifyReplicationGroup =
+  res
     "ModifyReplicationGroupResponse"
     "fixture/ModifyReplicationGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy ModifyReplicationGroup)
 
 responseDescribeCacheParameters :: DescribeCacheParametersResponse -> TestTree
-responseDescribeCacheParameters = res
+responseDescribeCacheParameters =
+  res
     "DescribeCacheParametersResponse"
     "fixture/DescribeCacheParametersResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeCacheParameters)
 
-responseDescribeCacheSubnetGroups :: DescribeCacheSubnetGroupsResponse -> TestTree
-responseDescribeCacheSubnetGroups = res
+responseDescribeCacheSubnetGroups ::
+     DescribeCacheSubnetGroupsResponse -> TestTree
+responseDescribeCacheSubnetGroups =
+  res
     "DescribeCacheSubnetGroupsResponse"
     "fixture/DescribeCacheSubnetGroupsResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeCacheSubnetGroups)
 
 responseCreateCacheSecurityGroup :: CreateCacheSecurityGroupResponse -> TestTree
-responseCreateCacheSecurityGroup = res
+responseCreateCacheSecurityGroup =
+  res
     "CreateCacheSecurityGroupResponse"
     "fixture/CreateCacheSecurityGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy CreateCacheSecurityGroup)
 
 responseAddTagsToResource :: TagListMessage -> TestTree
-responseAddTagsToResource = res
+responseAddTagsToResource =
+  res
     "AddTagsToResourceResponse"
     "fixture/AddTagsToResourceResponse.proto"
     elastiCache
     (Proxy :: Proxy AddTagsToResource)
 
-responseAuthorizeCacheSecurityGroupIngress :: AuthorizeCacheSecurityGroupIngressResponse -> TestTree
-responseAuthorizeCacheSecurityGroupIngress = res
+responseAuthorizeCacheSecurityGroupIngress ::
+     AuthorizeCacheSecurityGroupIngressResponse -> TestTree
+responseAuthorizeCacheSecurityGroupIngress =
+  res
     "AuthorizeCacheSecurityGroupIngressResponse"
     "fixture/AuthorizeCacheSecurityGroupIngressResponse.proto"
     elastiCache
     (Proxy :: Proxy AuthorizeCacheSecurityGroupIngress)
 
 responseCopySnapshot :: CopySnapshotResponse -> TestTree
-responseCopySnapshot = res
+responseCopySnapshot =
+  res
     "CopySnapshotResponse"
     "fixture/CopySnapshotResponse.proto"
     elastiCache
     (Proxy :: Proxy CopySnapshot)
 
 responseCreateCacheSubnetGroup :: CreateCacheSubnetGroupResponse -> TestTree
-responseCreateCacheSubnetGroup = res
+responseCreateCacheSubnetGroup =
+  res
     "CreateCacheSubnetGroupResponse"
     "fixture/CreateCacheSubnetGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy CreateCacheSubnetGroup)
 
-responseDescribeCacheParameterGroups :: DescribeCacheParameterGroupsResponse -> TestTree
-responseDescribeCacheParameterGroups = res
+responseDescribeCacheParameterGroups ::
+     DescribeCacheParameterGroupsResponse -> TestTree
+responseDescribeCacheParameterGroups =
+  res
     "DescribeCacheParameterGroupsResponse"
     "fixture/DescribeCacheParameterGroupsResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeCacheParameterGroups)
 
 responseResetCacheParameterGroup :: CacheParameterGroupNameMessage -> TestTree
-responseResetCacheParameterGroup = res
+responseResetCacheParameterGroup =
+  res
     "ResetCacheParameterGroupResponse"
     "fixture/ResetCacheParameterGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy ResetCacheParameterGroup)
 
-responseListAllowedNodeTypeModifications :: ListAllowedNodeTypeModificationsResponse -> TestTree
-responseListAllowedNodeTypeModifications = res
+responseListAllowedNodeTypeModifications ::
+     ListAllowedNodeTypeModificationsResponse -> TestTree
+responseListAllowedNodeTypeModifications =
+  res
     "ListAllowedNodeTypeModificationsResponse"
     "fixture/ListAllowedNodeTypeModificationsResponse.proto"
     elastiCache
     (Proxy :: Proxy ListAllowedNodeTypeModifications)
 
-responseModifyReplicationGroupShardConfiguration :: ModifyReplicationGroupShardConfigurationResponse -> TestTree
-responseModifyReplicationGroupShardConfiguration = res
+responseModifyReplicationGroupShardConfiguration ::
+     ModifyReplicationGroupShardConfigurationResponse -> TestTree
+responseModifyReplicationGroupShardConfiguration =
+  res
     "ModifyReplicationGroupShardConfigurationResponse"
     "fixture/ModifyReplicationGroupShardConfigurationResponse.proto"
     elastiCache
     (Proxy :: Proxy ModifyReplicationGroupShardConfiguration)
 
 responseDescribeSnapshots :: DescribeSnapshotsResponse -> TestTree
-responseDescribeSnapshots = res
+responseDescribeSnapshots =
+  res
     "DescribeSnapshotsResponse"
     "fixture/DescribeSnapshotsResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeSnapshots)
 
-responseDescribeReplicationGroups :: DescribeReplicationGroupsResponse -> TestTree
-responseDescribeReplicationGroups = res
+responseDescribeReplicationGroups ::
+     DescribeReplicationGroupsResponse -> TestTree
+responseDescribeReplicationGroups =
+  res
     "DescribeReplicationGroupsResponse"
     "fixture/DescribeReplicationGroupsResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeReplicationGroups)
 
 responseDeleteSnapshot :: DeleteSnapshotResponse -> TestTree
-responseDeleteSnapshot = res
+responseDeleteSnapshot =
+  res
     "DeleteSnapshotResponse"
     "fixture/DeleteSnapshotResponse.proto"
     elastiCache
     (Proxy :: Proxy DeleteSnapshot)
 
-responseDescribeReservedCacheNodesOfferings :: DescribeReservedCacheNodesOfferingsResponse -> TestTree
-responseDescribeReservedCacheNodesOfferings = res
+responseDescribeReservedCacheNodesOfferings ::
+     DescribeReservedCacheNodesOfferingsResponse -> TestTree
+responseDescribeReservedCacheNodesOfferings =
+  res
     "DescribeReservedCacheNodesOfferingsResponse"
     "fixture/DescribeReservedCacheNodesOfferingsResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeReservedCacheNodesOfferings)
 
 responseModifyCacheSubnetGroup :: ModifyCacheSubnetGroupResponse -> TestTree
-responseModifyCacheSubnetGroup = res
+responseModifyCacheSubnetGroup =
+  res
     "ModifyCacheSubnetGroupResponse"
     "fixture/ModifyCacheSubnetGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy ModifyCacheSubnetGroup)
 
 responseCreateSnapshot :: CreateSnapshotResponse -> TestTree
-responseCreateSnapshot = res
+responseCreateSnapshot =
+  res
     "CreateSnapshotResponse"
     "fixture/CreateSnapshotResponse.proto"
     elastiCache
     (Proxy :: Proxy CreateSnapshot)
 
-responseDeleteCacheParameterGroup :: DeleteCacheParameterGroupResponse -> TestTree
-responseDeleteCacheParameterGroup = res
+responseDeleteCacheParameterGroup ::
+     DeleteCacheParameterGroupResponse -> TestTree
+responseDeleteCacheParameterGroup =
+  res
     "DeleteCacheParameterGroupResponse"
     "fixture/DeleteCacheParameterGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy DeleteCacheParameterGroup)
 
-responseDescribeCacheSecurityGroups :: DescribeCacheSecurityGroupsResponse -> TestTree
-responseDescribeCacheSecurityGroups = res
+responseDescribeCacheSecurityGroups ::
+     DescribeCacheSecurityGroupsResponse -> TestTree
+responseDescribeCacheSecurityGroups =
+  res
     "DescribeCacheSecurityGroupsResponse"
     "fixture/DescribeCacheSecurityGroupsResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeCacheSecurityGroups)
 
 responseModifyCacheCluster :: ModifyCacheClusterResponse -> TestTree
-responseModifyCacheCluster = res
+responseModifyCacheCluster =
+  res
     "ModifyCacheClusterResponse"
     "fixture/ModifyCacheClusterResponse.proto"
     elastiCache
     (Proxy :: Proxy ModifyCacheCluster)
 
-responseDescribeCacheEngineVersions :: DescribeCacheEngineVersionsResponse -> TestTree
-responseDescribeCacheEngineVersions = res
+responseDescribeCacheEngineVersions ::
+     DescribeCacheEngineVersionsResponse -> TestTree
+responseDescribeCacheEngineVersions =
+  res
     "DescribeCacheEngineVersionsResponse"
     "fixture/DescribeCacheEngineVersionsResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeCacheEngineVersions)
 
-responseCreateCacheParameterGroup :: CreateCacheParameterGroupResponse -> TestTree
-responseCreateCacheParameterGroup = res
+responseCreateCacheParameterGroup ::
+     CreateCacheParameterGroupResponse -> TestTree
+responseCreateCacheParameterGroup =
+  res
     "CreateCacheParameterGroupResponse"
     "fixture/CreateCacheParameterGroupResponse.proto"
     elastiCache
     (Proxy :: Proxy CreateCacheParameterGroup)
 
-responseDescribeReservedCacheNodes :: DescribeReservedCacheNodesResponse -> TestTree
-responseDescribeReservedCacheNodes = res
+responseDescribeReservedCacheNodes ::
+     DescribeReservedCacheNodesResponse -> TestTree
+responseDescribeReservedCacheNodes =
+  res
     "DescribeReservedCacheNodesResponse"
     "fixture/DescribeReservedCacheNodesResponse.proto"
     elastiCache
     (Proxy :: Proxy DescribeReservedCacheNodes)
 
 responseDeleteCacheSubnetGroup :: DeleteCacheSubnetGroupResponse -> TestTree
-responseDeleteCacheSubnetGroup = res
+responseDeleteCacheSubnetGroup =
+  res
     "DeleteCacheSubnetGroupResponse"
     "fixture/DeleteCacheSubnetGroupResponse.proto"
     elastiCache

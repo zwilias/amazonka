@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IAM.ListSAMLProviders
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +20,16 @@
 --
 --
 module Network.AWS.IAM.ListSAMLProviders
-    (
     -- * Creating a Request
-      listSAMLProviders
-    , ListSAMLProviders
-
+  ( listSAMLProviders
+  , ListSAMLProviders
     -- * Destructuring the Response
-    , listSAMLProvidersResponse
-    , ListSAMLProvidersResponse
+  , listSAMLProvidersResponse
+  , ListSAMLProvidersResponse
     -- * Response Lenses
-    , lsamlprsSAMLProviderList
-    , lsamlprsResponseStatus
-    ) where
+  , lsamlprsSAMLProviderList
+  , lsamlprsResponseStatus
+  ) where
 
 import Network.AWS.IAM.Types
 import Network.AWS.IAM.Types.Product
@@ -47,52 +43,51 @@ data ListSAMLProviders =
   ListSAMLProviders'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'ListSAMLProviders' with the minimum fields required to make a request.
 --
-listSAMLProviders
-    :: ListSAMLProviders
+listSAMLProviders :: ListSAMLProviders
 listSAMLProviders = ListSAMLProviders'
 
-
 instance AWSRequest ListSAMLProviders where
-        type Rs ListSAMLProviders = ListSAMLProvidersResponse
-        request = postQuery iam
-        response
-          = receiveXMLWrapper "ListSAMLProvidersResult"
-              (\ s h x ->
-                 ListSAMLProvidersResponse' <$>
-                   (x .@? "SAMLProviderList" .!@ mempty >>=
-                      may (parseXMLList "member"))
-                     <*> (pure (fromEnum s)))
+  type Rs ListSAMLProviders = ListSAMLProvidersResponse
+  request = postQuery iam
+  response =
+    receiveXMLWrapper
+      "ListSAMLProvidersResult"
+      (\s h x ->
+         ListSAMLProvidersResponse' <$>
+         (x .@? "SAMLProviderList" .!@ mempty >>= may (parseXMLList "member")) <*>
+         (pure (fromEnum s)))
 
-instance Hashable ListSAMLProviders where
+instance Hashable ListSAMLProviders
 
-instance NFData ListSAMLProviders where
+instance NFData ListSAMLProviders
 
 instance ToHeaders ListSAMLProviders where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath ListSAMLProviders where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery ListSAMLProviders where
-        toQuery
-          = const
-              (mconcat
-                 ["Action" =: ("ListSAMLProviders" :: ByteString),
-                  "Version" =: ("2010-05-08" :: ByteString)])
+  toQuery =
+    const
+      (mconcat
+         [ "Action" =: ("ListSAMLProviders" :: ByteString)
+         , "Version" =: ("2010-05-08" :: ByteString)
+         ])
 
 -- | Contains the response to a successful 'ListSAMLProviders' request.
 --
 --
 --
 -- /See:/ 'listSAMLProvidersResponse' smart constructor.
-data ListSAMLProvidersResponse = ListSAMLProvidersResponse'
-  { _lsamlprsSAMLProviderList :: !(Maybe [SAMLProviderListEntry])
-  , _lsamlprsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSAMLProvidersResponse =
+  ListSAMLProvidersResponse'
+    { _lsamlprsSAMLProviderList :: !(Maybe [SAMLProviderListEntry])
+    , _lsamlprsResponseStatus   :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListSAMLProvidersResponse' with the minimum fields required to make a request.
 --
@@ -101,22 +96,25 @@ data ListSAMLProvidersResponse = ListSAMLProvidersResponse'
 -- * 'lsamlprsSAMLProviderList' - The list of SAML provider resource objects defined in IAM for this AWS account.
 --
 -- * 'lsamlprsResponseStatus' - -- | The response status code.
-listSAMLProvidersResponse
-    :: Int -- ^ 'lsamlprsResponseStatus'
-    -> ListSAMLProvidersResponse
+listSAMLProvidersResponse ::
+     Int -- ^ 'lsamlprsResponseStatus'
+  -> ListSAMLProvidersResponse
 listSAMLProvidersResponse pResponseStatus_ =
   ListSAMLProvidersResponse'
     { _lsamlprsSAMLProviderList = Nothing
     , _lsamlprsResponseStatus = pResponseStatus_
     }
 
-
 -- | The list of SAML provider resource objects defined in IAM for this AWS account.
-lsamlprsSAMLProviderList :: Lens' ListSAMLProvidersResponse [SAMLProviderListEntry]
-lsamlprsSAMLProviderList = lens _lsamlprsSAMLProviderList (\ s a -> s{_lsamlprsSAMLProviderList = a}) . _Default . _Coerce
+lsamlprsSAMLProviderList ::
+     Lens' ListSAMLProvidersResponse [SAMLProviderListEntry]
+lsamlprsSAMLProviderList =
+  lens _lsamlprsSAMLProviderList (\s a -> s {_lsamlprsSAMLProviderList = a}) .
+  _Default . _Coerce
 
 -- | -- | The response status code.
 lsamlprsResponseStatus :: Lens' ListSAMLProvidersResponse Int
-lsamlprsResponseStatus = lens _lsamlprsResponseStatus (\ s a -> s{_lsamlprsResponseStatus = a})
+lsamlprsResponseStatus =
+  lens _lsamlprsResponseStatus (\s a -> s {_lsamlprsResponseStatus = a})
 
-instance NFData ListSAMLProvidersResponse where
+instance NFData ListSAMLProvidersResponse

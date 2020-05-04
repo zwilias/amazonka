@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CognitoIdentity
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,187 +23,140 @@
 -- If you want to use Amazon Cognito in an Android, iOS, or Unity application, you will probably want to make API calls via the AWS Mobile SDK. To learn more, see the <http://docs.aws.amazon.com/mobile/index.html AWS Mobile SDK Developer Guide> .
 --
 module Network.AWS.CognitoIdentity
-    (
     -- * Service Configuration
-      cognitoIdentity
-
+  ( cognitoIdentity
     -- * Errors
     -- $errors
-
     -- ** InvalidIdentityPoolConfigurationException
-    , _InvalidIdentityPoolConfigurationException
-
+  , _InvalidIdentityPoolConfigurationException
     -- ** InvalidParameterException
-    , _InvalidParameterException
-
+  , _InvalidParameterException
     -- ** NotAuthorizedException
-    , _NotAuthorizedException
-
+  , _NotAuthorizedException
     -- ** InternalErrorException
-    , _InternalErrorException
-
+  , _InternalErrorException
     -- ** ExternalServiceException
-    , _ExternalServiceException
-
+  , _ExternalServiceException
     -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
+  , _TooManyRequestsException
     -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
+  , _ConcurrentModificationException
     -- ** ResourceConflictException
-    , _ResourceConflictException
-
+  , _ResourceConflictException
     -- ** DeveloperUserAlreadyRegisteredException
-    , _DeveloperUserAlreadyRegisteredException
-
+  , _DeveloperUserAlreadyRegisteredException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** GetOpenIdToken
-    , module Network.AWS.CognitoIdentity.GetOpenIdToken
-
+  , module Network.AWS.CognitoIdentity.GetOpenIdToken
     -- ** GetOpenIdTokenForDeveloperIdentity
-    , module Network.AWS.CognitoIdentity.GetOpenIdTokenForDeveloperIdentity
-
+  , module Network.AWS.CognitoIdentity.GetOpenIdTokenForDeveloperIdentity
     -- ** DescribeIdentityPool
-    , module Network.AWS.CognitoIdentity.DescribeIdentityPool
-
+  , module Network.AWS.CognitoIdentity.DescribeIdentityPool
     -- ** GetId
-    , module Network.AWS.CognitoIdentity.GetId
-
+  , module Network.AWS.CognitoIdentity.GetId
     -- ** DeleteIdentityPool
-    , module Network.AWS.CognitoIdentity.DeleteIdentityPool
-
+  , module Network.AWS.CognitoIdentity.DeleteIdentityPool
     -- ** UpdateIdentityPool
-    , module Network.AWS.CognitoIdentity.UpdateIdentityPool
-
+  , module Network.AWS.CognitoIdentity.UpdateIdentityPool
     -- ** UnlinkDeveloperIdentity
-    , module Network.AWS.CognitoIdentity.UnlinkDeveloperIdentity
-
+  , module Network.AWS.CognitoIdentity.UnlinkDeveloperIdentity
     -- ** GetIdentityPoolRoles
-    , module Network.AWS.CognitoIdentity.GetIdentityPoolRoles
-
+  , module Network.AWS.CognitoIdentity.GetIdentityPoolRoles
     -- ** ListIdentityPools
-    , module Network.AWS.CognitoIdentity.ListIdentityPools
-
+  , module Network.AWS.CognitoIdentity.ListIdentityPools
     -- ** GetCredentialsForIdentity
-    , module Network.AWS.CognitoIdentity.GetCredentialsForIdentity
-
+  , module Network.AWS.CognitoIdentity.GetCredentialsForIdentity
     -- ** DeleteIdentities
-    , module Network.AWS.CognitoIdentity.DeleteIdentities
-
+  , module Network.AWS.CognitoIdentity.DeleteIdentities
     -- ** SetIdentityPoolRoles
-    , module Network.AWS.CognitoIdentity.SetIdentityPoolRoles
-
+  , module Network.AWS.CognitoIdentity.SetIdentityPoolRoles
     -- ** ListIdentities
-    , module Network.AWS.CognitoIdentity.ListIdentities
-
+  , module Network.AWS.CognitoIdentity.ListIdentities
     -- ** LookupDeveloperIdentity
-    , module Network.AWS.CognitoIdentity.LookupDeveloperIdentity
-
+  , module Network.AWS.CognitoIdentity.LookupDeveloperIdentity
     -- ** UnlinkIdentity
-    , module Network.AWS.CognitoIdentity.UnlinkIdentity
-
+  , module Network.AWS.CognitoIdentity.UnlinkIdentity
     -- ** DescribeIdentity
-    , module Network.AWS.CognitoIdentity.DescribeIdentity
-
+  , module Network.AWS.CognitoIdentity.DescribeIdentity
     -- ** CreateIdentityPool
-    , module Network.AWS.CognitoIdentity.CreateIdentityPool
-
+  , module Network.AWS.CognitoIdentity.CreateIdentityPool
     -- ** MergeDeveloperIdentities
-    , module Network.AWS.CognitoIdentity.MergeDeveloperIdentities
-
+  , module Network.AWS.CognitoIdentity.MergeDeveloperIdentities
     -- * Types
-
     -- ** AmbiguousRoleResolutionType
-    , AmbiguousRoleResolutionType (..)
-
+  , AmbiguousRoleResolutionType(..)
     -- ** CognitoErrorCode
-    , CognitoErrorCode (..)
-
+  , CognitoErrorCode(..)
     -- ** MappingRuleMatchType
-    , MappingRuleMatchType (..)
-
+  , MappingRuleMatchType(..)
     -- ** RoleMappingType
-    , RoleMappingType (..)
-
+  , RoleMappingType(..)
     -- ** CognitoIdentityProvider
-    , CognitoIdentityProvider
-    , cognitoIdentityProvider
-    , cipClientId
-    , cipServerSideTokenCheck
-    , cipProviderName
-
+  , CognitoIdentityProvider
+  , cognitoIdentityProvider
+  , cipClientId
+  , cipServerSideTokenCheck
+  , cipProviderName
     -- ** Credentials
-    , Credentials
-    , credentials
-    , cSessionToken
-    , cExpiration
-    , cSecretKey
-    , cAccessKeyId
-
+  , Credentials
+  , credentials
+  , cSessionToken
+  , cExpiration
+  , cSecretKey
+  , cAccessKeyId
     -- ** IdentityDescription
-    , IdentityDescription
-    , identityDescription
-    , idLastModifiedDate
-    , idCreationDate
-    , idLogins
-    , idIdentityId
-
+  , IdentityDescription
+  , identityDescription
+  , idLastModifiedDate
+  , idCreationDate
+  , idLogins
+  , idIdentityId
     -- ** IdentityPool
-    , IdentityPool
-    , identityPool
-    , ipSamlProviderARNs
-    , ipSupportedLoginProviders
-    , ipDeveloperProviderName
-    , ipOpenIdConnectProviderARNs
-    , ipCognitoIdentityProviders
-    , ipIdentityPoolId
-    , ipIdentityPoolName
-    , ipAllowUnauthenticatedIdentities
-
+  , IdentityPool
+  , identityPool
+  , ipSamlProviderARNs
+  , ipSupportedLoginProviders
+  , ipDeveloperProviderName
+  , ipOpenIdConnectProviderARNs
+  , ipCognitoIdentityProviders
+  , ipIdentityPoolId
+  , ipIdentityPoolName
+  , ipAllowUnauthenticatedIdentities
     -- ** IdentityPoolShortDescription
-    , IdentityPoolShortDescription
-    , identityPoolShortDescription
-    , ipsdIdentityPoolId
-    , ipsdIdentityPoolName
-
+  , IdentityPoolShortDescription
+  , identityPoolShortDescription
+  , ipsdIdentityPoolId
+  , ipsdIdentityPoolName
     -- ** MappingRule
-    , MappingRule
-    , mappingRule
-    , mrClaim
-    , mrMatchType
-    , mrValue
-    , mrRoleARN
-
+  , MappingRule
+  , mappingRule
+  , mrClaim
+  , mrMatchType
+  , mrValue
+  , mrRoleARN
     -- ** RoleMapping
-    , RoleMapping
-    , roleMapping
-    , rmRulesConfiguration
-    , rmAmbiguousRoleResolution
-    , rmType
-
+  , RoleMapping
+  , roleMapping
+  , rmRulesConfiguration
+  , rmAmbiguousRoleResolution
+  , rmType
     -- ** RulesConfigurationType
-    , RulesConfigurationType
-    , rulesConfigurationType
-    , rctRules
-
+  , RulesConfigurationType
+  , rulesConfigurationType
+  , rctRules
     -- ** UnprocessedIdentityId
-    , UnprocessedIdentityId
-    , unprocessedIdentityId
-    , uiiErrorCode
-    , uiiIdentityId
-    ) where
+  , UnprocessedIdentityId
+  , unprocessedIdentityId
+  , uiiErrorCode
+  , uiiIdentityId
+  ) where
 
 import Network.AWS.CognitoIdentity.CreateIdentityPool
 import Network.AWS.CognitoIdentity.DeleteIdentities
@@ -226,14 +178,12 @@ import Network.AWS.CognitoIdentity.UnlinkDeveloperIdentity
 import Network.AWS.CognitoIdentity.UnlinkIdentity
 import Network.AWS.CognitoIdentity.UpdateIdentityPool
 import Network.AWS.CognitoIdentity.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CognitoIdentity'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -250,7 +200,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

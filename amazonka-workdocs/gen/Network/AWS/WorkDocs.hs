@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.WorkDocs
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -25,482 +24,368 @@
 -- All Amazon WorkDocs API actions are Amazon authenticated and certificate-signed. They not only require the use of the AWS SDK, but also allow for the exclusive use of IAM users and roles to help facilitate access, trust, and permission policies. By creating a role and allowing an IAM user to access the Amazon WorkDocs site, the IAM user gains full administrative visibility into the entire Amazon WorkDocs site (or as set in the IAM policy). This includes, but is not limited to, the ability to modify file permissions and upload any file to any user. This allows developers to perform the three use cases above, as well as give users the ability to grant access on a selective basis using the IAM model.
 --
 module Network.AWS.WorkDocs
-    (
     -- * Service Configuration
-      workDocs
-
+  ( workDocs
     -- * Errors
     -- $errors
-
     -- ** CustomMetadataLimitExceededException
-    , _CustomMetadataLimitExceededException
-
+  , _CustomMetadataLimitExceededException
     -- ** EntityAlreadyExistsException
-    , _EntityAlreadyExistsException
-
+  , _EntityAlreadyExistsException
     -- ** ResourceAlreadyCheckedOutException
-    , _ResourceAlreadyCheckedOutException
-
+  , _ResourceAlreadyCheckedOutException
     -- ** ProhibitedStateException
-    , _ProhibitedStateException
-
+  , _ProhibitedStateException
     -- ** TooManyLabelsException
-    , _TooManyLabelsException
-
+  , _TooManyLabelsException
     -- ** InvalidArgumentException
-    , _InvalidArgumentException
-
+  , _InvalidArgumentException
     -- ** UnauthorizedResourceAccessException
-    , _UnauthorizedResourceAccessException
-
+  , _UnauthorizedResourceAccessException
     -- ** TooManySubscriptionsException
-    , _TooManySubscriptionsException
-
+  , _TooManySubscriptionsException
     -- ** FailedDependencyException
-    , _FailedDependencyException
-
+  , _FailedDependencyException
     -- ** DocumentLockedForCommentsException
-    , _DocumentLockedForCommentsException
-
+  , _DocumentLockedForCommentsException
     -- ** EntityNotExistsException
-    , _EntityNotExistsException
-
+  , _EntityNotExistsException
     -- ** DeactivatingLastSystemUserException
-    , _DeactivatingLastSystemUserException
-
+  , _DeactivatingLastSystemUserException
     -- ** IllegalUserStateException
-    , _IllegalUserStateException
-
+  , _IllegalUserStateException
     -- ** StorageLimitWillExceedException
-    , _StorageLimitWillExceedException
-
+  , _StorageLimitWillExceedException
     -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
+  , _ConcurrentModificationException
     -- ** StorageLimitExceededException
-    , _StorageLimitExceededException
-
+  , _StorageLimitExceededException
     -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
-
+  , _ServiceUnavailableException
     -- ** InvalidOperationException
-    , _InvalidOperationException
-
+  , _InvalidOperationException
     -- ** UnauthorizedOperationException
-    , _UnauthorizedOperationException
-
+  , _UnauthorizedOperationException
     -- ** DraftUploadOutOfSyncException
-    , _DraftUploadOutOfSyncException
-
+  , _DraftUploadOutOfSyncException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- ** InvalidPasswordException
-    , _InvalidPasswordException
-
+  , _InvalidPasswordException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** DeleteLabels
-    , module Network.AWS.WorkDocs.DeleteLabels
-
+  , module Network.AWS.WorkDocs.DeleteLabels
     -- ** AbortDocumentVersionUpload
-    , module Network.AWS.WorkDocs.AbortDocumentVersionUpload
-
+  , module Network.AWS.WorkDocs.AbortDocumentVersionUpload
     -- ** GetDocumentPath
-    , module Network.AWS.WorkDocs.GetDocumentPath
-
+  , module Network.AWS.WorkDocs.GetDocumentPath
     -- ** CreateComment
-    , module Network.AWS.WorkDocs.CreateComment
-
+  , module Network.AWS.WorkDocs.CreateComment
     -- ** DescribeUsers (Paginated)
-    , module Network.AWS.WorkDocs.DescribeUsers
-
+  , module Network.AWS.WorkDocs.DescribeUsers
     -- ** DeleteFolder
-    , module Network.AWS.WorkDocs.DeleteFolder
-
+  , module Network.AWS.WorkDocs.DeleteFolder
     -- ** UpdateFolder
-    , module Network.AWS.WorkDocs.UpdateFolder
-
+  , module Network.AWS.WorkDocs.UpdateFolder
     -- ** DeleteCustomMetadata
-    , module Network.AWS.WorkDocs.DeleteCustomMetadata
-
+  , module Network.AWS.WorkDocs.DeleteCustomMetadata
     -- ** DescribeResourcePermissions
-    , module Network.AWS.WorkDocs.DescribeResourcePermissions
-
+  , module Network.AWS.WorkDocs.DescribeResourcePermissions
     -- ** DeleteNotificationSubscription
-    , module Network.AWS.WorkDocs.DeleteNotificationSubscription
-
+  , module Network.AWS.WorkDocs.DeleteNotificationSubscription
     -- ** CreateFolder
-    , module Network.AWS.WorkDocs.CreateFolder
-
+  , module Network.AWS.WorkDocs.CreateFolder
     -- ** CreateNotificationSubscription
-    , module Network.AWS.WorkDocs.CreateNotificationSubscription
-
+  , module Network.AWS.WorkDocs.CreateNotificationSubscription
     -- ** CreateCustomMetadata
-    , module Network.AWS.WorkDocs.CreateCustomMetadata
-
+  , module Network.AWS.WorkDocs.CreateCustomMetadata
     -- ** GetFolderPath
-    , module Network.AWS.WorkDocs.GetFolderPath
-
+  , module Network.AWS.WorkDocs.GetFolderPath
     -- ** DescribeComments
-    , module Network.AWS.WorkDocs.DescribeComments
-
+  , module Network.AWS.WorkDocs.DescribeComments
     -- ** DeleteFolderContents
-    , module Network.AWS.WorkDocs.DeleteFolderContents
-
+  , module Network.AWS.WorkDocs.DeleteFolderContents
     -- ** RemoveAllResourcePermissions
-    , module Network.AWS.WorkDocs.RemoveAllResourcePermissions
-
+  , module Network.AWS.WorkDocs.RemoveAllResourcePermissions
     -- ** GetFolder
-    , module Network.AWS.WorkDocs.GetFolder
-
+  , module Network.AWS.WorkDocs.GetFolder
     -- ** DescribeNotificationSubscriptions
-    , module Network.AWS.WorkDocs.DescribeNotificationSubscriptions
-
+  , module Network.AWS.WorkDocs.DescribeNotificationSubscriptions
     -- ** ActivateUser
-    , module Network.AWS.WorkDocs.ActivateUser
-
+  , module Network.AWS.WorkDocs.ActivateUser
     -- ** DescribeDocumentVersions (Paginated)
-    , module Network.AWS.WorkDocs.DescribeDocumentVersions
-
+  , module Network.AWS.WorkDocs.DescribeDocumentVersions
     -- ** GetDocumentVersion
-    , module Network.AWS.WorkDocs.GetDocumentVersion
-
+  , module Network.AWS.WorkDocs.GetDocumentVersion
     -- ** DescribeActivities
-    , module Network.AWS.WorkDocs.DescribeActivities
-
+  , module Network.AWS.WorkDocs.DescribeActivities
     -- ** DescribeRootFolders
-    , module Network.AWS.WorkDocs.DescribeRootFolders
-
+  , module Network.AWS.WorkDocs.DescribeRootFolders
     -- ** GetCurrentUser
-    , module Network.AWS.WorkDocs.GetCurrentUser
-
+  , module Network.AWS.WorkDocs.GetCurrentUser
     -- ** DeactivateUser
-    , module Network.AWS.WorkDocs.DeactivateUser
-
+  , module Network.AWS.WorkDocs.DeactivateUser
     -- ** GetDocument
-    , module Network.AWS.WorkDocs.GetDocument
-
+  , module Network.AWS.WorkDocs.GetDocument
     -- ** DescribeFolderContents (Paginated)
-    , module Network.AWS.WorkDocs.DescribeFolderContents
-
+  , module Network.AWS.WorkDocs.DescribeFolderContents
     -- ** CreateLabels
-    , module Network.AWS.WorkDocs.CreateLabels
-
+  , module Network.AWS.WorkDocs.CreateLabels
     -- ** UpdateDocumentVersion
-    , module Network.AWS.WorkDocs.UpdateDocumentVersion
-
+  , module Network.AWS.WorkDocs.UpdateDocumentVersion
     -- ** RemoveResourcePermission
-    , module Network.AWS.WorkDocs.RemoveResourcePermission
-
+  , module Network.AWS.WorkDocs.RemoveResourcePermission
     -- ** DeleteComment
-    , module Network.AWS.WorkDocs.DeleteComment
-
+  , module Network.AWS.WorkDocs.DeleteComment
     -- ** InitiateDocumentVersionUpload
-    , module Network.AWS.WorkDocs.InitiateDocumentVersionUpload
-
+  , module Network.AWS.WorkDocs.InitiateDocumentVersionUpload
     -- ** CreateUser
-    , module Network.AWS.WorkDocs.CreateUser
-
+  , module Network.AWS.WorkDocs.CreateUser
     -- ** UpdateUser
-    , module Network.AWS.WorkDocs.UpdateUser
-
+  , module Network.AWS.WorkDocs.UpdateUser
     -- ** DeleteUser
-    , module Network.AWS.WorkDocs.DeleteUser
-
+  , module Network.AWS.WorkDocs.DeleteUser
     -- ** AddResourcePermissions
-    , module Network.AWS.WorkDocs.AddResourcePermissions
-
+  , module Network.AWS.WorkDocs.AddResourcePermissions
     -- ** UpdateDocument
-    , module Network.AWS.WorkDocs.UpdateDocument
-
+  , module Network.AWS.WorkDocs.UpdateDocument
     -- ** DeleteDocument
-    , module Network.AWS.WorkDocs.DeleteDocument
-
+  , module Network.AWS.WorkDocs.DeleteDocument
     -- ** DescribeGroups
-    , module Network.AWS.WorkDocs.DescribeGroups
-
+  , module Network.AWS.WorkDocs.DescribeGroups
     -- * Types
-
     -- ** ActivityType
-    , ActivityType (..)
-
+  , ActivityType(..)
     -- ** BooleanEnumType
-    , BooleanEnumType (..)
-
+  , BooleanEnumType(..)
     -- ** CommentStatusType
-    , CommentStatusType (..)
-
+  , CommentStatusType(..)
     -- ** CommentVisibilityType
-    , CommentVisibilityType (..)
-
+  , CommentVisibilityType(..)
     -- ** DocumentSourceType
-    , DocumentSourceType (..)
-
+  , DocumentSourceType(..)
     -- ** DocumentStatusType
-    , DocumentStatusType (..)
-
+  , DocumentStatusType(..)
     -- ** DocumentThumbnailType
-    , DocumentThumbnailType (..)
-
+  , DocumentThumbnailType(..)
     -- ** DocumentVersionStatus
-    , DocumentVersionStatus (..)
-
+  , DocumentVersionStatus(..)
     -- ** FolderContentType
-    , FolderContentType (..)
-
+  , FolderContentType(..)
     -- ** LocaleType
-    , LocaleType (..)
-
+  , LocaleType(..)
     -- ** OrderType
-    , OrderType (..)
-
+  , OrderType(..)
     -- ** PrincipalType
-    , PrincipalType (..)
-
+  , PrincipalType(..)
     -- ** ResourceSortType
-    , ResourceSortType (..)
-
+  , ResourceSortType(..)
     -- ** ResourceStateType
-    , ResourceStateType (..)
-
+  , ResourceStateType(..)
     -- ** ResourceType
-    , ResourceType (..)
-
+  , ResourceType(..)
     -- ** RolePermissionType
-    , RolePermissionType (..)
-
+  , RolePermissionType(..)
     -- ** RoleType
-    , RoleType (..)
-
+  , RoleType(..)
     -- ** ShareStatusType
-    , ShareStatusType (..)
-
+  , ShareStatusType(..)
     -- ** StorageType
-    , StorageType (..)
-
+  , StorageType(..)
     -- ** SubscriptionProtocolType
-    , SubscriptionProtocolType (..)
-
+  , SubscriptionProtocolType(..)
     -- ** SubscriptionType
-    , SubscriptionType (..)
-
+  , SubscriptionType(..)
     -- ** UserFilterType
-    , UserFilterType (..)
-
+  , UserFilterType(..)
     -- ** UserSortType
-    , UserSortType (..)
-
+  , UserSortType(..)
     -- ** UserStatusType
-    , UserStatusType (..)
-
+  , UserStatusType(..)
     -- ** UserType
-    , UserType (..)
-
+  , UserType(..)
     -- ** Activity
-    , Activity
-    , activity
-    , aResourceMetadata
-    , aInitiator
-    , aParticipants
-    , aOriginalParent
-    , aType
-    , aCommentMetadata
-    , aTimeStamp
-    , aOrganizationId
-
+  , Activity
+  , activity
+  , aResourceMetadata
+  , aInitiator
+  , aParticipants
+  , aOriginalParent
+  , aType
+  , aCommentMetadata
+  , aTimeStamp
+  , aOrganizationId
     -- ** Comment
-    , Comment
-    , comment
-    , cStatus
-    , cText
-    , cVisibility
-    , cThreadId
-    , cContributor
-    , cCreatedTimestamp
-    , cRecipientId
-    , cParentId
-    , cCommentId
-
+  , Comment
+  , comment
+  , cStatus
+  , cText
+  , cVisibility
+  , cThreadId
+  , cContributor
+  , cCreatedTimestamp
+  , cRecipientId
+  , cParentId
+  , cCommentId
     -- ** CommentMetadata
-    , CommentMetadata
-    , commentMetadata
-    , cmCommentStatus
-    , cmContributor
-    , cmCommentId
-    , cmCreatedTimestamp
-    , cmRecipientId
-
+  , CommentMetadata
+  , commentMetadata
+  , cmCommentStatus
+  , cmContributor
+  , cmCommentId
+  , cmCreatedTimestamp
+  , cmRecipientId
     -- ** DocumentMetadata
-    , DocumentMetadata
-    , documentMetadata
-    , dmLatestVersionMetadata
-    , dmParentFolderId
-    , dmModifiedTimestamp
-    , dmId
-    , dmLabels
-    , dmResourceState
-    , dmCreatedTimestamp
-    , dmCreatorId
-
+  , DocumentMetadata
+  , documentMetadata
+  , dmLatestVersionMetadata
+  , dmParentFolderId
+  , dmModifiedTimestamp
+  , dmId
+  , dmLabels
+  , dmResourceState
+  , dmCreatedTimestamp
+  , dmCreatorId
     -- ** DocumentVersionMetadata
-    , DocumentVersionMetadata
-    , documentVersionMetadata
-    , dvmThumbnail
-    , dvmStatus
-    , dvmSignature
-    , dvmContentCreatedTimestamp
-    , dvmSize
-    , dvmName
-    , dvmModifiedTimestamp
-    , dvmSource
-    , dvmId
-    , dvmCreatedTimestamp
-    , dvmContentModifiedTimestamp
-    , dvmCreatorId
-    , dvmContentType
-
+  , DocumentVersionMetadata
+  , documentVersionMetadata
+  , dvmThumbnail
+  , dvmStatus
+  , dvmSignature
+  , dvmContentCreatedTimestamp
+  , dvmSize
+  , dvmName
+  , dvmModifiedTimestamp
+  , dvmSource
+  , dvmId
+  , dvmCreatedTimestamp
+  , dvmContentModifiedTimestamp
+  , dvmCreatorId
+  , dvmContentType
     -- ** FolderMetadata
-    , FolderMetadata
-    , folderMetadata
-    , fmSignature
-    , fmParentFolderId
-    , fmSize
-    , fmLatestVersionSize
-    , fmName
-    , fmModifiedTimestamp
-    , fmId
-    , fmLabels
-    , fmResourceState
-    , fmCreatedTimestamp
-    , fmCreatorId
-
+  , FolderMetadata
+  , folderMetadata
+  , fmSignature
+  , fmParentFolderId
+  , fmSize
+  , fmLatestVersionSize
+  , fmName
+  , fmModifiedTimestamp
+  , fmId
+  , fmLabels
+  , fmResourceState
+  , fmCreatedTimestamp
+  , fmCreatorId
     -- ** GroupMetadata
-    , GroupMetadata
-    , groupMetadata
-    , gmName
-    , gmId
-
+  , GroupMetadata
+  , groupMetadata
+  , gmName
+  , gmId
     -- ** NotificationOptions
-    , NotificationOptions
-    , notificationOptions
-    , noEmailMessage
-    , noSendEmail
-
+  , NotificationOptions
+  , notificationOptions
+  , noEmailMessage
+  , noSendEmail
     -- ** Participants
-    , Participants
-    , participants
-    , pGroups
-    , pUsers
-
+  , Participants
+  , participants
+  , pGroups
+  , pUsers
     -- ** PermissionInfo
-    , PermissionInfo
-    , permissionInfo
-    , piRole
-    , piType
-
+  , PermissionInfo
+  , permissionInfo
+  , piRole
+  , piType
     -- ** Principal
-    , Principal
-    , principal
-    , pRoles
-    , pId
-    , pType
-
+  , Principal
+  , principal
+  , pRoles
+  , pId
+  , pType
     -- ** ResourceMetadata
-    , ResourceMetadata
-    , resourceMetadata
-    , rmVersionId
-    , rmOwner
-    , rmName
-    , rmId
-    , rmType
-    , rmOriginalName
-    , rmParentId
-
+  , ResourceMetadata
+  , resourceMetadata
+  , rmVersionId
+  , rmOwner
+  , rmName
+  , rmId
+  , rmType
+  , rmOriginalName
+  , rmParentId
     -- ** ResourcePath
-    , ResourcePath
-    , resourcePath
-    , rpComponents
-
+  , ResourcePath
+  , resourcePath
+  , rpComponents
     -- ** ResourcePathComponent
-    , ResourcePathComponent
-    , resourcePathComponent
-    , rpcName
-    , rpcId
-
+  , ResourcePathComponent
+  , resourcePathComponent
+  , rpcName
+  , rpcId
     -- ** SharePrincipal
-    , SharePrincipal
-    , sharePrincipal
-    , spId
-    , spType
-    , spRole
-
+  , SharePrincipal
+  , sharePrincipal
+  , spId
+  , spType
+  , spRole
     -- ** ShareResult
-    , ShareResult
-    , shareResult
-    , srStatus
-    , srPrincipalId
-    , srRole
-    , srStatusMessage
-    , srShareId
-
+  , ShareResult
+  , shareResult
+  , srStatus
+  , srPrincipalId
+  , srRole
+  , srStatusMessage
+  , srShareId
     -- ** StorageRuleType
-    , StorageRuleType
-    , storageRuleType
-    , srtStorageAllocatedInBytes
-    , srtStorageType
-
+  , StorageRuleType
+  , storageRuleType
+  , srtStorageAllocatedInBytes
+  , srtStorageType
     -- ** Subscription
-    , Subscription
-    , subscription
-    , sProtocol
-    , sEndPoint
-    , sSubscriptionId
-
+  , Subscription
+  , subscription
+  , sProtocol
+  , sEndPoint
+  , sSubscriptionId
     -- ** UploadMetadata
-    , UploadMetadata
-    , uploadMetadata
-    , umUploadURL
-    , umSignedHeaders
-
+  , UploadMetadata
+  , uploadMetadata
+  , umUploadURL
+  , umSignedHeaders
     -- ** User
-    , User
-    , user
-    , uGivenName
-    , uStatus
-    , uLocale
-    , uUsername
-    , uStorage
-    , uModifiedTimestamp
-    , uEmailAddress
-    , uId
-    , uRootFolderId
-    , uType
-    , uSurname
-    , uTimeZoneId
-    , uCreatedTimestamp
-    , uOrganizationId
-    , uRecycleBinFolderId
-
+  , User
+  , user
+  , uGivenName
+  , uStatus
+  , uLocale
+  , uUsername
+  , uStorage
+  , uModifiedTimestamp
+  , uEmailAddress
+  , uId
+  , uRootFolderId
+  , uType
+  , uSurname
+  , uTimeZoneId
+  , uCreatedTimestamp
+  , uOrganizationId
+  , uRecycleBinFolderId
     -- ** UserMetadata
-    , UserMetadata
-    , userMetadata
-    , umGivenName
-    , umUsername
-    , umEmailAddress
-    , umId
-    , umSurname
-
+  , UserMetadata
+  , userMetadata
+  , umGivenName
+  , umUsername
+  , umEmailAddress
+  , umId
+  , umSurname
     -- ** UserStorageMetadata
-    , UserStorageMetadata
-    , userStorageMetadata
-    , usmStorageUtilizedInBytes
-    , usmStorageRule
-    ) where
+  , UserStorageMetadata
+  , userStorageMetadata
+  , usmStorageUtilizedInBytes
+  , usmStorageRule
+  ) where
 
 import Network.AWS.WorkDocs.AbortDocumentVersionUpload
 import Network.AWS.WorkDocs.ActivateUser
@@ -544,14 +429,12 @@ import Network.AWS.WorkDocs.UpdateDocumentVersion
 import Network.AWS.WorkDocs.UpdateFolder
 import Network.AWS.WorkDocs.UpdateUser
 import Network.AWS.WorkDocs.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'WorkDocs'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -568,7 +451,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

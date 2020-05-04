@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EFS.CreateMountTarget
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -84,28 +82,26 @@
 --
 --
 module Network.AWS.EFS.CreateMountTarget
-    (
     -- * Creating a Request
-      createMountTarget
-    , CreateMountTarget
+  ( createMountTarget
+  , CreateMountTarget
     -- * Request Lenses
-    , cmtIPAddress
-    , cmtSecurityGroups
-    , cmtFileSystemId
-    , cmtSubnetId
-
+  , cmtIPAddress
+  , cmtSecurityGroups
+  , cmtFileSystemId
+  , cmtSubnetId
     -- * Destructuring the Response
-    , mountTargetDescription
-    , MountTargetDescription
+  , mountTargetDescription
+  , MountTargetDescription
     -- * Response Lenses
-    , mtdIPAddress
-    , mtdNetworkInterfaceId
-    , mtdOwnerId
-    , mtdMountTargetId
-    , mtdFileSystemId
-    , mtdSubnetId
-    , mtdLifeCycleState
-    ) where
+  , mtdIPAddress
+  , mtdNetworkInterfaceId
+  , mtdOwnerId
+  , mtdMountTargetId
+  , mtdFileSystemId
+  , mtdSubnetId
+  , mtdLifeCycleState
+  ) where
 
 import Network.AWS.EFS.Types
 import Network.AWS.EFS.Types.Product
@@ -119,13 +115,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createMountTarget' smart constructor.
-data CreateMountTarget = CreateMountTarget'
-  { _cmtIPAddress      :: !(Maybe Text)
-  , _cmtSecurityGroups :: !(Maybe [Text])
-  , _cmtFileSystemId   :: !Text
-  , _cmtSubnetId       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateMountTarget =
+  CreateMountTarget'
+    { _cmtIPAddress      :: !(Maybe Text)
+    , _cmtSecurityGroups :: !(Maybe [Text])
+    , _cmtFileSystemId   :: !Text
+    , _cmtSubnetId       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateMountTarget' with the minimum fields required to make a request.
 --
@@ -138,10 +135,10 @@ data CreateMountTarget = CreateMountTarget'
 -- * 'cmtFileSystemId' - ID of the file system for which to create the mount target.
 --
 -- * 'cmtSubnetId' - ID of the subnet to add the mount target in.
-createMountTarget
-    :: Text -- ^ 'cmtFileSystemId'
-    -> Text -- ^ 'cmtSubnetId'
-    -> CreateMountTarget
+createMountTarget ::
+     Text -- ^ 'cmtFileSystemId'
+  -> Text -- ^ 'cmtSubnetId'
+  -> CreateMountTarget
 createMountTarget pFileSystemId_ pSubnetId_ =
   CreateMountTarget'
     { _cmtIPAddress = Nothing
@@ -150,46 +147,48 @@ createMountTarget pFileSystemId_ pSubnetId_ =
     , _cmtSubnetId = pSubnetId_
     }
 
-
 -- | Valid IPv4 address within the address range of the specified subnet.
 cmtIPAddress :: Lens' CreateMountTarget (Maybe Text)
-cmtIPAddress = lens _cmtIPAddress (\ s a -> s{_cmtIPAddress = a})
+cmtIPAddress = lens _cmtIPAddress (\s a -> s {_cmtIPAddress = a})
 
 -- | Up to five VPC security group IDs, of the form @sg-xxxxxxxx@ . These must be for the same VPC as subnet specified.
 cmtSecurityGroups :: Lens' CreateMountTarget [Text]
-cmtSecurityGroups = lens _cmtSecurityGroups (\ s a -> s{_cmtSecurityGroups = a}) . _Default . _Coerce
+cmtSecurityGroups =
+  lens _cmtSecurityGroups (\s a -> s {_cmtSecurityGroups = a}) .
+  _Default . _Coerce
 
 -- | ID of the file system for which to create the mount target.
 cmtFileSystemId :: Lens' CreateMountTarget Text
-cmtFileSystemId = lens _cmtFileSystemId (\ s a -> s{_cmtFileSystemId = a})
+cmtFileSystemId = lens _cmtFileSystemId (\s a -> s {_cmtFileSystemId = a})
 
 -- | ID of the subnet to add the mount target in.
 cmtSubnetId :: Lens' CreateMountTarget Text
-cmtSubnetId = lens _cmtSubnetId (\ s a -> s{_cmtSubnetId = a})
+cmtSubnetId = lens _cmtSubnetId (\s a -> s {_cmtSubnetId = a})
 
 instance AWSRequest CreateMountTarget where
-        type Rs CreateMountTarget = MountTargetDescription
-        request = postJSON efs
-        response = receiveJSON (\ s h x -> eitherParseJSON x)
+  type Rs CreateMountTarget = MountTargetDescription
+  request = postJSON efs
+  response = receiveJSON (\s h x -> eitherParseJSON x)
 
-instance Hashable CreateMountTarget where
+instance Hashable CreateMountTarget
 
-instance NFData CreateMountTarget where
+instance NFData CreateMountTarget
 
 instance ToHeaders CreateMountTarget where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToJSON CreateMountTarget where
-        toJSON CreateMountTarget'{..}
-          = object
-              (catMaybes
-                 [("IpAddress" .=) <$> _cmtIPAddress,
-                  ("SecurityGroups" .=) <$> _cmtSecurityGroups,
-                  Just ("FileSystemId" .= _cmtFileSystemId),
-                  Just ("SubnetId" .= _cmtSubnetId)])
+  toJSON CreateMountTarget' {..} =
+    object
+      (catMaybes
+         [ ("IpAddress" .=) <$> _cmtIPAddress
+         , ("SecurityGroups" .=) <$> _cmtSecurityGroups
+         , Just ("FileSystemId" .= _cmtFileSystemId)
+         , Just ("SubnetId" .= _cmtSubnetId)
+         ])
 
 instance ToPath CreateMountTarget where
-        toPath = const "/2015-02-01/mount-targets"
+  toPath = const "/2015-02-01/mount-targets"
 
 instance ToQuery CreateMountTarget where
-        toQuery = const mempty
+  toQuery = const mempty

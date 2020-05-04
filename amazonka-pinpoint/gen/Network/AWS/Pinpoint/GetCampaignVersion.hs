@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Pinpoint.GetCampaignVersion
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,22 +18,20 @@
 --
 -- Returns information about a specific version of a campaign.
 module Network.AWS.Pinpoint.GetCampaignVersion
-    (
     -- * Creating a Request
-      getCampaignVersion
-    , GetCampaignVersion
+  ( getCampaignVersion
+  , GetCampaignVersion
     -- * Request Lenses
-    , gcvcVersion
-    , gcvcApplicationId
-    , gcvcCampaignId
-
+  , gcvcVersion
+  , gcvcApplicationId
+  , gcvcCampaignId
     -- * Destructuring the Response
-    , getCampaignVersionResponse
-    , GetCampaignVersionResponse
+  , getCampaignVersionResponse
+  , GetCampaignVersionResponse
     -- * Response Lenses
-    , gcvcrsResponseStatus
-    , gcvcrsCampaignResponse
-    ) where
+  , gcvcrsResponseStatus
+  , gcvcrsCampaignResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
@@ -45,12 +41,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCampaignVersion' smart constructor.
-data GetCampaignVersion = GetCampaignVersion'
-  { _gcvcVersion       :: !Text
-  , _gcvcApplicationId :: !Text
-  , _gcvcCampaignId    :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaignVersion =
+  GetCampaignVersion'
+    { _gcvcVersion       :: !Text
+    , _gcvcApplicationId :: !Text
+    , _gcvcCampaignId    :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCampaignVersion' with the minimum fields required to make a request.
 --
@@ -61,11 +58,11 @@ data GetCampaignVersion = GetCampaignVersion'
 -- * 'gcvcApplicationId' - Undocumented member.
 --
 -- * 'gcvcCampaignId' - Undocumented member.
-getCampaignVersion
-    :: Text -- ^ 'gcvcVersion'
-    -> Text -- ^ 'gcvcApplicationId'
-    -> Text -- ^ 'gcvcCampaignId'
-    -> GetCampaignVersion
+getCampaignVersion ::
+     Text -- ^ 'gcvcVersion'
+  -> Text -- ^ 'gcvcApplicationId'
+  -> Text -- ^ 'gcvcCampaignId'
+  -> GetCampaignVersion
 getCampaignVersion pVersion_ pApplicationId_ pCampaignId_ =
   GetCampaignVersion'
     { _gcvcVersion = pVersion_
@@ -73,56 +70,57 @@ getCampaignVersion pVersion_ pApplicationId_ pCampaignId_ =
     , _gcvcCampaignId = pCampaignId_
     }
 
-
 -- | Undocumented member.
 gcvcVersion :: Lens' GetCampaignVersion Text
-gcvcVersion = lens _gcvcVersion (\ s a -> s{_gcvcVersion = a})
+gcvcVersion = lens _gcvcVersion (\s a -> s {_gcvcVersion = a})
 
 -- | Undocumented member.
 gcvcApplicationId :: Lens' GetCampaignVersion Text
-gcvcApplicationId = lens _gcvcApplicationId (\ s a -> s{_gcvcApplicationId = a})
+gcvcApplicationId = lens _gcvcApplicationId (\s a -> s {_gcvcApplicationId = a})
 
 -- | Undocumented member.
 gcvcCampaignId :: Lens' GetCampaignVersion Text
-gcvcCampaignId = lens _gcvcCampaignId (\ s a -> s{_gcvcCampaignId = a})
+gcvcCampaignId = lens _gcvcCampaignId (\s a -> s {_gcvcCampaignId = a})
 
 instance AWSRequest GetCampaignVersion where
-        type Rs GetCampaignVersion =
-             GetCampaignVersionResponse
-        request = get pinpoint
-        response
-          = receiveJSON
-              (\ s h x ->
-                 GetCampaignVersionResponse' <$>
-                   (pure (fromEnum s)) <*> (eitherParseJSON x))
+  type Rs GetCampaignVersion = GetCampaignVersionResponse
+  request = get pinpoint
+  response =
+    receiveJSON
+      (\s h x ->
+         GetCampaignVersionResponse' <$> (pure (fromEnum s)) <*>
+         (eitherParseJSON x))
 
-instance Hashable GetCampaignVersion where
+instance Hashable GetCampaignVersion
 
-instance NFData GetCampaignVersion where
+instance NFData GetCampaignVersion
 
 instance ToHeaders GetCampaignVersion where
-        toHeaders
-          = const
-              (mconcat
-                 ["Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath GetCampaignVersion where
-        toPath GetCampaignVersion'{..}
-          = mconcat
-              ["/v1/apps/", toBS _gcvcApplicationId, "/campaigns/",
-               toBS _gcvcCampaignId, "/versions/",
-               toBS _gcvcVersion]
+  toPath GetCampaignVersion' {..} =
+    mconcat
+      [ "/v1/apps/"
+      , toBS _gcvcApplicationId
+      , "/campaigns/"
+      , toBS _gcvcCampaignId
+      , "/versions/"
+      , toBS _gcvcVersion
+      ]
 
 instance ToQuery GetCampaignVersion where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'getCampaignVersionResponse' smart constructor.
-data GetCampaignVersionResponse = GetCampaignVersionResponse'
-  { _gcvcrsResponseStatus   :: !Int
-  , _gcvcrsCampaignResponse :: !CampaignResponse
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaignVersionResponse =
+  GetCampaignVersionResponse'
+    { _gcvcrsResponseStatus   :: !Int
+    , _gcvcrsCampaignResponse :: !CampaignResponse
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCampaignVersionResponse' with the minimum fields required to make a request.
 --
@@ -131,23 +129,24 @@ data GetCampaignVersionResponse = GetCampaignVersionResponse'
 -- * 'gcvcrsResponseStatus' - -- | The response status code.
 --
 -- * 'gcvcrsCampaignResponse' - Undocumented member.
-getCampaignVersionResponse
-    :: Int -- ^ 'gcvcrsResponseStatus'
-    -> CampaignResponse -- ^ 'gcvcrsCampaignResponse'
-    -> GetCampaignVersionResponse
+getCampaignVersionResponse ::
+     Int -- ^ 'gcvcrsResponseStatus'
+  -> CampaignResponse -- ^ 'gcvcrsCampaignResponse'
+  -> GetCampaignVersionResponse
 getCampaignVersionResponse pResponseStatus_ pCampaignResponse_ =
   GetCampaignVersionResponse'
     { _gcvcrsResponseStatus = pResponseStatus_
     , _gcvcrsCampaignResponse = pCampaignResponse_
     }
 
-
 -- | -- | The response status code.
 gcvcrsResponseStatus :: Lens' GetCampaignVersionResponse Int
-gcvcrsResponseStatus = lens _gcvcrsResponseStatus (\ s a -> s{_gcvcrsResponseStatus = a})
+gcvcrsResponseStatus =
+  lens _gcvcrsResponseStatus (\s a -> s {_gcvcrsResponseStatus = a})
 
 -- | Undocumented member.
 gcvcrsCampaignResponse :: Lens' GetCampaignVersionResponse CampaignResponse
-gcvcrsCampaignResponse = lens _gcvcrsCampaignResponse (\ s a -> s{_gcvcrsCampaignResponse = a})
+gcvcrsCampaignResponse =
+  lens _gcvcrsCampaignResponse (\s a -> s {_gcvcrsCampaignResponse = a})
 
-instance NFData GetCampaignVersionResponse where
+instance NFData GetCampaignVersionResponse

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.AppSync
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -15,243 +14,183 @@
 --
 --
 module Network.AWS.AppSync
-    (
     -- * Service Configuration
-      appSync
-
+  ( appSync
     -- * Errors
     -- $errors
-
     -- ** APIKeyValidityOutOfBoundsException
-    , _APIKeyValidityOutOfBoundsException
-
+  , _APIKeyValidityOutOfBoundsException
     -- ** APIKeyLimitExceededException
-    , _APIKeyLimitExceededException
-
+  , _APIKeyLimitExceededException
     -- ** APILimitExceededException
-    , _APILimitExceededException
-
+  , _APILimitExceededException
     -- ** NotFoundException
-    , _NotFoundException
-
+  , _NotFoundException
     -- ** GraphQLSchemaException
-    , _GraphQLSchemaException
-
+  , _GraphQLSchemaException
     -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
+  , _ConcurrentModificationException
     -- ** InternalFailureException
-    , _InternalFailureException
-
+  , _InternalFailureException
     -- ** UnauthorizedException
-    , _UnauthorizedException
-
+  , _UnauthorizedException
     -- ** BadRequestException
-    , _BadRequestException
-
+  , _BadRequestException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** UpdateDataSource
-    , module Network.AWS.AppSync.UpdateDataSource
-
+  , module Network.AWS.AppSync.UpdateDataSource
     -- ** DeleteDataSource
-    , module Network.AWS.AppSync.DeleteDataSource
-
+  , module Network.AWS.AppSync.DeleteDataSource
     -- ** CreateType
-    , module Network.AWS.AppSync.CreateType
-
+  , module Network.AWS.AppSync.CreateType
     -- ** GetGraphqlAPI
-    , module Network.AWS.AppSync.GetGraphqlAPI
-
+  , module Network.AWS.AppSync.GetGraphqlAPI
     -- ** CreateGraphqlAPI
-    , module Network.AWS.AppSync.CreateGraphqlAPI
-
+  , module Network.AWS.AppSync.CreateGraphqlAPI
     -- ** StartSchemaCreation
-    , module Network.AWS.AppSync.StartSchemaCreation
-
+  , module Network.AWS.AppSync.StartSchemaCreation
     -- ** DeleteGraphqlAPI
-    , module Network.AWS.AppSync.DeleteGraphqlAPI
-
+  , module Network.AWS.AppSync.DeleteGraphqlAPI
     -- ** UpdateGraphqlAPI
-    , module Network.AWS.AppSync.UpdateGraphqlAPI
-
+  , module Network.AWS.AppSync.UpdateGraphqlAPI
     -- ** GetIntrospectionSchema
-    , module Network.AWS.AppSync.GetIntrospectionSchema
-
+  , module Network.AWS.AppSync.GetIntrospectionSchema
     -- ** GetDataSource
-    , module Network.AWS.AppSync.GetDataSource
-
+  , module Network.AWS.AppSync.GetDataSource
     -- ** DeleteAPIKey
-    , module Network.AWS.AppSync.DeleteAPIKey
-
+  , module Network.AWS.AppSync.DeleteAPIKey
     -- ** UpdateAPIKey
-    , module Network.AWS.AppSync.UpdateAPIKey
-
+  , module Network.AWS.AppSync.UpdateAPIKey
     -- ** UpdateType
-    , module Network.AWS.AppSync.UpdateType
-
+  , module Network.AWS.AppSync.UpdateType
     -- ** DeleteType
-    , module Network.AWS.AppSync.DeleteType
-
+  , module Network.AWS.AppSync.DeleteType
     -- ** CreateDataSource
-    , module Network.AWS.AppSync.CreateDataSource
-
+  , module Network.AWS.AppSync.CreateDataSource
     -- ** ListTypes
-    , module Network.AWS.AppSync.ListTypes
-
+  , module Network.AWS.AppSync.ListTypes
     -- ** ListDataSources
-    , module Network.AWS.AppSync.ListDataSources
-
+  , module Network.AWS.AppSync.ListDataSources
     -- ** UpdateResolver
-    , module Network.AWS.AppSync.UpdateResolver
-
+  , module Network.AWS.AppSync.UpdateResolver
     -- ** DeleteResolver
-    , module Network.AWS.AppSync.DeleteResolver
-
+  , module Network.AWS.AppSync.DeleteResolver
     -- ** ListResolvers
-    , module Network.AWS.AppSync.ListResolvers
-
+  , module Network.AWS.AppSync.ListResolvers
     -- ** CreateResolver
-    , module Network.AWS.AppSync.CreateResolver
-
+  , module Network.AWS.AppSync.CreateResolver
     -- ** GetSchemaCreationStatus
-    , module Network.AWS.AppSync.GetSchemaCreationStatus
-
+  , module Network.AWS.AppSync.GetSchemaCreationStatus
     -- ** ListGraphqlAPIs
-    , module Network.AWS.AppSync.ListGraphqlAPIs
-
+  , module Network.AWS.AppSync.ListGraphqlAPIs
     -- ** GetResolver
-    , module Network.AWS.AppSync.GetResolver
-
+  , module Network.AWS.AppSync.GetResolver
     -- ** CreateAPIKey
-    , module Network.AWS.AppSync.CreateAPIKey
-
+  , module Network.AWS.AppSync.CreateAPIKey
     -- ** ListAPIKeys
-    , module Network.AWS.AppSync.ListAPIKeys
-
+  , module Network.AWS.AppSync.ListAPIKeys
     -- ** GetType
-    , module Network.AWS.AppSync.GetType
-
+  , module Network.AWS.AppSync.GetType
     -- * Types
-
     -- ** AuthenticationType
-    , AuthenticationType (..)
-
+  , AuthenticationType(..)
     -- ** DataSourceType
-    , DataSourceType (..)
-
+  , DataSourceType(..)
     -- ** DefaultAction
-    , DefaultAction (..)
-
+  , DefaultAction(..)
     -- ** FieldLogLevel
-    , FieldLogLevel (..)
-
+  , FieldLogLevel(..)
     -- ** OutputType
-    , OutputType (..)
-
+  , OutputType(..)
     -- ** SchemaStatus
-    , SchemaStatus (..)
-
+  , SchemaStatus(..)
     -- ** TypeDefinitionFormat
-    , TypeDefinitionFormat (..)
-
+  , TypeDefinitionFormat(..)
     -- ** APIKey
-    , APIKey
-    , apiKey
-    , akExpires
-    , akId
-    , akDescription
-
+  , APIKey
+  , apiKey
+  , akExpires
+  , akId
+  , akDescription
     -- ** DataSource
-    , DataSource
-    , dataSource
-    , dsServiceRoleARN
-    , dsDataSourceARN
-    , dsDynamodbConfig
-    , dsName
-    , dsLambdaConfig
-    , dsType
-    , dsDescription
-    , dsElasticsearchConfig
-
+  , DataSource
+  , dataSource
+  , dsServiceRoleARN
+  , dsDataSourceARN
+  , dsDynamodbConfig
+  , dsName
+  , dsLambdaConfig
+  , dsType
+  , dsDescription
+  , dsElasticsearchConfig
     -- ** DynamodbDataSourceConfig
-    , DynamodbDataSourceConfig
-    , dynamodbDataSourceConfig
-    , ddscUseCallerCredentials
-    , ddscTableName
-    , ddscAwsRegion
-
+  , DynamodbDataSourceConfig
+  , dynamodbDataSourceConfig
+  , ddscUseCallerCredentials
+  , ddscTableName
+  , ddscAwsRegion
     -- ** ElasticsearchDataSourceConfig
-    , ElasticsearchDataSourceConfig
-    , elasticsearchDataSourceConfig
-    , edscEndpoint
-    , edscAwsRegion
-
+  , ElasticsearchDataSourceConfig
+  , elasticsearchDataSourceConfig
+  , edscEndpoint
+  , edscAwsRegion
     -- ** GraphqlAPI
-    , GraphqlAPI
-    , graphqlAPI
-    , gaArn
-    , gaApiId
-    , gaUris
-    , gaOpenIdConnectConfig
-    , gaName
-    , gaUserPoolConfig
-    , gaAuthenticationType
-    , gaLogConfig
-
+  , GraphqlAPI
+  , graphqlAPI
+  , gaArn
+  , gaApiId
+  , gaUris
+  , gaOpenIdConnectConfig
+  , gaName
+  , gaUserPoolConfig
+  , gaAuthenticationType
+  , gaLogConfig
     -- ** LambdaDataSourceConfig
-    , LambdaDataSourceConfig
-    , lambdaDataSourceConfig
-    , ldscLambdaFunctionARN
-
+  , LambdaDataSourceConfig
+  , lambdaDataSourceConfig
+  , ldscLambdaFunctionARN
     -- ** LogConfig
-    , LogConfig
-    , logConfig
-    , lcFieldLogLevel
-    , lcCloudWatchLogsRoleARN
-
+  , LogConfig
+  , logConfig
+  , lcFieldLogLevel
+  , lcCloudWatchLogsRoleARN
     -- ** OpenIdConnectConfig
-    , OpenIdConnectConfig
-    , openIdConnectConfig
-    , oiccAuthTTL
-    , oiccClientId
-    , oiccIatTTL
-    , oiccIssuer
-
+  , OpenIdConnectConfig
+  , openIdConnectConfig
+  , oiccAuthTTL
+  , oiccClientId
+  , oiccIatTTL
+  , oiccIssuer
     -- ** Resolver
-    , Resolver
-    , resolver
-    , rTypeName
-    , rDataSourceName
-    , rRequestMappingTemplate
-    , rResolverARN
-    , rResponseMappingTemplate
-    , rFieldName
-
+  , Resolver
+  , resolver
+  , rTypeName
+  , rDataSourceName
+  , rRequestMappingTemplate
+  , rResolverARN
+  , rResponseMappingTemplate
+  , rFieldName
     -- ** Type
-    , Type
-    , type'
-    , tArn
-    , tDefinition
-    , tFormat
-    , tName
-    , tDescription
-
+  , Type
+  , type'
+  , tArn
+  , tDefinition
+  , tFormat
+  , tName
+  , tDescription
     -- ** UserPoolConfig
-    , UserPoolConfig
-    , userPoolConfig
-    , upcAppIdClientRegex
-    , upcUserPoolId
-    , upcAwsRegion
-    , upcDefaultAction
-    ) where
+  , UserPoolConfig
+  , userPoolConfig
+  , upcAppIdClientRegex
+  , upcUserPoolId
+  , upcAwsRegion
+  , upcDefaultAction
+  ) where
 
 import Network.AWS.AppSync.CreateAPIKey
 import Network.AWS.AppSync.CreateDataSource
@@ -282,14 +221,12 @@ import Network.AWS.AppSync.UpdateGraphqlAPI
 import Network.AWS.AppSync.UpdateResolver
 import Network.AWS.AppSync.UpdateType
 import Network.AWS.AppSync.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'AppSync'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -306,7 +243,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

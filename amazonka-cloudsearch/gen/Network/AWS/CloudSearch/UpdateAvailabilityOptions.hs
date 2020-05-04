@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudSearch.UpdateAvailabilityOptions
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,21 +20,19 @@
 --
 --
 module Network.AWS.CloudSearch.UpdateAvailabilityOptions
-    (
     -- * Creating a Request
-      updateAvailabilityOptions
-    , UpdateAvailabilityOptions
+  ( updateAvailabilityOptions
+  , UpdateAvailabilityOptions
     -- * Request Lenses
-    , uaoDomainName
-    , uaoMultiAZ
-
+  , uaoDomainName
+  , uaoMultiAZ
     -- * Destructuring the Response
-    , updateAvailabilityOptionsResponse
-    , UpdateAvailabilityOptionsResponse
+  , updateAvailabilityOptionsResponse
+  , UpdateAvailabilityOptionsResponse
     -- * Response Lenses
-    , uaorsAvailabilityOptions
-    , uaorsResponseStatus
-    ) where
+  , uaorsAvailabilityOptions
+  , uaorsResponseStatus
+  ) where
 
 import Network.AWS.CloudSearch.Types
 import Network.AWS.CloudSearch.Types.Product
@@ -50,11 +46,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateAvailabilityOptions' smart constructor.
-data UpdateAvailabilityOptions = UpdateAvailabilityOptions'
-  { _uaoDomainName :: !Text
-  , _uaoMultiAZ    :: !Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAvailabilityOptions =
+  UpdateAvailabilityOptions'
+    { _uaoDomainName :: !Text
+    , _uaoMultiAZ    :: !Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAvailabilityOptions' with the minimum fields required to make a request.
 --
@@ -63,63 +60,62 @@ data UpdateAvailabilityOptions = UpdateAvailabilityOptions'
 -- * 'uaoDomainName' - Undocumented member.
 --
 -- * 'uaoMultiAZ' - You expand an existing search domain to a second Availability Zone by setting the Multi-AZ option to true. Similarly, you can turn off the Multi-AZ option to downgrade the domain to a single Availability Zone by setting the Multi-AZ option to @false@ .
-updateAvailabilityOptions
-    :: Text -- ^ 'uaoDomainName'
-    -> Bool -- ^ 'uaoMultiAZ'
-    -> UpdateAvailabilityOptions
+updateAvailabilityOptions ::
+     Text -- ^ 'uaoDomainName'
+  -> Bool -- ^ 'uaoMultiAZ'
+  -> UpdateAvailabilityOptions
 updateAvailabilityOptions pDomainName_ pMultiAZ_ =
   UpdateAvailabilityOptions'
     {_uaoDomainName = pDomainName_, _uaoMultiAZ = pMultiAZ_}
 
-
 -- | Undocumented member.
 uaoDomainName :: Lens' UpdateAvailabilityOptions Text
-uaoDomainName = lens _uaoDomainName (\ s a -> s{_uaoDomainName = a})
+uaoDomainName = lens _uaoDomainName (\s a -> s {_uaoDomainName = a})
 
 -- | You expand an existing search domain to a second Availability Zone by setting the Multi-AZ option to true. Similarly, you can turn off the Multi-AZ option to downgrade the domain to a single Availability Zone by setting the Multi-AZ option to @false@ .
 uaoMultiAZ :: Lens' UpdateAvailabilityOptions Bool
-uaoMultiAZ = lens _uaoMultiAZ (\ s a -> s{_uaoMultiAZ = a})
+uaoMultiAZ = lens _uaoMultiAZ (\s a -> s {_uaoMultiAZ = a})
 
 instance AWSRequest UpdateAvailabilityOptions where
-        type Rs UpdateAvailabilityOptions =
-             UpdateAvailabilityOptionsResponse
-        request = postQuery cloudSearch
-        response
-          = receiveXMLWrapper "UpdateAvailabilityOptionsResult"
-              (\ s h x ->
-                 UpdateAvailabilityOptionsResponse' <$>
-                   (x .@? "AvailabilityOptions") <*>
-                     (pure (fromEnum s)))
+  type Rs UpdateAvailabilityOptions = UpdateAvailabilityOptionsResponse
+  request = postQuery cloudSearch
+  response =
+    receiveXMLWrapper
+      "UpdateAvailabilityOptionsResult"
+      (\s h x ->
+         UpdateAvailabilityOptionsResponse' <$> (x .@? "AvailabilityOptions") <*>
+         (pure (fromEnum s)))
 
-instance Hashable UpdateAvailabilityOptions where
+instance Hashable UpdateAvailabilityOptions
 
-instance NFData UpdateAvailabilityOptions where
+instance NFData UpdateAvailabilityOptions
 
 instance ToHeaders UpdateAvailabilityOptions where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath UpdateAvailabilityOptions where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery UpdateAvailabilityOptions where
-        toQuery UpdateAvailabilityOptions'{..}
-          = mconcat
-              ["Action" =:
-                 ("UpdateAvailabilityOptions" :: ByteString),
-               "Version" =: ("2013-01-01" :: ByteString),
-               "DomainName" =: _uaoDomainName,
-               "MultiAZ" =: _uaoMultiAZ]
+  toQuery UpdateAvailabilityOptions' {..} =
+    mconcat
+      [ "Action" =: ("UpdateAvailabilityOptions" :: ByteString)
+      , "Version" =: ("2013-01-01" :: ByteString)
+      , "DomainName" =: _uaoDomainName
+      , "MultiAZ" =: _uaoMultiAZ
+      ]
 
 -- | The result of a @UpdateAvailabilityOptions@ request. Contains the status of the domain's availability options.
 --
 --
 --
 -- /See:/ 'updateAvailabilityOptionsResponse' smart constructor.
-data UpdateAvailabilityOptionsResponse = UpdateAvailabilityOptionsResponse'
-  { _uaorsAvailabilityOptions :: !(Maybe AvailabilityOptionsStatus)
-  , _uaorsResponseStatus      :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAvailabilityOptionsResponse =
+  UpdateAvailabilityOptionsResponse'
+    { _uaorsAvailabilityOptions :: !(Maybe AvailabilityOptionsStatus)
+    , _uaorsResponseStatus      :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAvailabilityOptionsResponse' with the minimum fields required to make a request.
 --
@@ -128,23 +124,24 @@ data UpdateAvailabilityOptionsResponse = UpdateAvailabilityOptionsResponse'
 -- * 'uaorsAvailabilityOptions' - The newly-configured availability options. Indicates whether Multi-AZ is enabled for the domain.
 --
 -- * 'uaorsResponseStatus' - -- | The response status code.
-updateAvailabilityOptionsResponse
-    :: Int -- ^ 'uaorsResponseStatus'
-    -> UpdateAvailabilityOptionsResponse
+updateAvailabilityOptionsResponse ::
+     Int -- ^ 'uaorsResponseStatus'
+  -> UpdateAvailabilityOptionsResponse
 updateAvailabilityOptionsResponse pResponseStatus_ =
   UpdateAvailabilityOptionsResponse'
     { _uaorsAvailabilityOptions = Nothing
     , _uaorsResponseStatus = pResponseStatus_
     }
 
-
 -- | The newly-configured availability options. Indicates whether Multi-AZ is enabled for the domain.
-uaorsAvailabilityOptions :: Lens' UpdateAvailabilityOptionsResponse (Maybe AvailabilityOptionsStatus)
-uaorsAvailabilityOptions = lens _uaorsAvailabilityOptions (\ s a -> s{_uaorsAvailabilityOptions = a})
+uaorsAvailabilityOptions ::
+     Lens' UpdateAvailabilityOptionsResponse (Maybe AvailabilityOptionsStatus)
+uaorsAvailabilityOptions =
+  lens _uaorsAvailabilityOptions (\s a -> s {_uaorsAvailabilityOptions = a})
 
 -- | -- | The response status code.
 uaorsResponseStatus :: Lens' UpdateAvailabilityOptionsResponse Int
-uaorsResponseStatus = lens _uaorsResponseStatus (\ s a -> s{_uaorsResponseStatus = a})
+uaorsResponseStatus =
+  lens _uaorsResponseStatus (\s a -> s {_uaorsResponseStatus = a})
 
 instance NFData UpdateAvailabilityOptionsResponse
-         where

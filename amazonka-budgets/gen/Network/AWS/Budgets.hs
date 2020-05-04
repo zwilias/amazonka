@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Budgets
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -35,164 +34,125 @@
 -- For information about costs associated with the AWS Budgets API, see <https://aws.amazon.com/aws-cost-management/pricing/ AWS Cost Management Pricing> .
 --
 module Network.AWS.Budgets
-    (
     -- * Service Configuration
-      budgets
-
+  ( budgets
     -- * Errors
     -- $errors
-
     -- ** InvalidParameterException
-    , _InvalidParameterException
-
+  , _InvalidParameterException
     -- ** InternalErrorException
-    , _InternalErrorException
-
+  , _InternalErrorException
     -- ** ExpiredNextTokenException
-    , _ExpiredNextTokenException
-
+  , _ExpiredNextTokenException
     -- ** NotFoundException
-    , _NotFoundException
-
+  , _NotFoundException
     -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
+  , _InvalidNextTokenException
     -- ** DuplicateRecordException
-    , _DuplicateRecordException
-
+  , _DuplicateRecordException
     -- ** CreationLimitExceededException
-    , _CreationLimitExceededException
-
+  , _CreationLimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** DescribeSubscribersForNotification
-    , module Network.AWS.Budgets.DescribeSubscribersForNotification
-
+  , module Network.AWS.Budgets.DescribeSubscribersForNotification
     -- ** DescribeNotificationsForBudget
-    , module Network.AWS.Budgets.DescribeNotificationsForBudget
-
+  , module Network.AWS.Budgets.DescribeNotificationsForBudget
     -- ** DescribeBudgets
-    , module Network.AWS.Budgets.DescribeBudgets
-
+  , module Network.AWS.Budgets.DescribeBudgets
     -- ** CreateSubscriber
-    , module Network.AWS.Budgets.CreateSubscriber
-
+  , module Network.AWS.Budgets.CreateSubscriber
     -- ** UpdateBudget
-    , module Network.AWS.Budgets.UpdateBudget
-
+  , module Network.AWS.Budgets.UpdateBudget
     -- ** DeleteBudget
-    , module Network.AWS.Budgets.DeleteBudget
-
+  , module Network.AWS.Budgets.DeleteBudget
     -- ** DeleteNotification
-    , module Network.AWS.Budgets.DeleteNotification
-
+  , module Network.AWS.Budgets.DeleteNotification
     -- ** UpdateNotification
-    , module Network.AWS.Budgets.UpdateNotification
-
+  , module Network.AWS.Budgets.UpdateNotification
     -- ** DescribeBudget
-    , module Network.AWS.Budgets.DescribeBudget
-
+  , module Network.AWS.Budgets.DescribeBudget
     -- ** UpdateSubscriber
-    , module Network.AWS.Budgets.UpdateSubscriber
-
+  , module Network.AWS.Budgets.UpdateSubscriber
     -- ** DeleteSubscriber
-    , module Network.AWS.Budgets.DeleteSubscriber
-
+  , module Network.AWS.Budgets.DeleteSubscriber
     -- ** CreateBudget
-    , module Network.AWS.Budgets.CreateBudget
-
+  , module Network.AWS.Budgets.CreateBudget
     -- ** CreateNotification
-    , module Network.AWS.Budgets.CreateNotification
-
+  , module Network.AWS.Budgets.CreateNotification
     -- * Types
-
     -- ** BudgetType
-    , BudgetType (..)
-
+  , BudgetType(..)
     -- ** ComparisonOperator
-    , ComparisonOperator (..)
-
+  , ComparisonOperator(..)
     -- ** NotificationType
-    , NotificationType (..)
-
+  , NotificationType(..)
     -- ** SubscriptionType
-    , SubscriptionType (..)
-
+  , SubscriptionType(..)
     -- ** ThresholdType
-    , ThresholdType (..)
-
+  , ThresholdType(..)
     -- ** TimeUnit
-    , TimeUnit (..)
-
+  , TimeUnit(..)
     -- ** Budget
-    , Budget
-    , budget
-    , bCalculatedSpend
-    , bBudgetLimit
-    , bTimePeriod
-    , bCostTypes
-    , bCostFilters
-    , bBudgetName
-    , bTimeUnit
-    , bBudgetType
-
+  , Budget
+  , budget
+  , bCalculatedSpend
+  , bBudgetLimit
+  , bTimePeriod
+  , bCostTypes
+  , bCostFilters
+  , bBudgetName
+  , bTimeUnit
+  , bBudgetType
     -- ** CalculatedSpend
-    , CalculatedSpend
-    , calculatedSpend
-    , csForecastedSpend
-    , csActualSpend
-
+  , CalculatedSpend
+  , calculatedSpend
+  , csForecastedSpend
+  , csActualSpend
     -- ** CostTypes
-    , CostTypes
-    , costTypes
-    , ctUseAmortized
-    , ctIncludeRecurring
-    , ctUseBlended
-    , ctIncludeSupport
-    , ctIncludeDiscount
-    , ctIncludeSubscription
-    , ctIncludeRefund
-    , ctIncludeUpfront
-    , ctIncludeOtherSubscription
-    , ctIncludeTax
-    , ctIncludeCredit
-
+  , CostTypes
+  , costTypes
+  , ctUseAmortized
+  , ctIncludeRecurring
+  , ctUseBlended
+  , ctIncludeSupport
+  , ctIncludeDiscount
+  , ctIncludeSubscription
+  , ctIncludeRefund
+  , ctIncludeUpfront
+  , ctIncludeOtherSubscription
+  , ctIncludeTax
+  , ctIncludeCredit
     -- ** Notification
-    , Notification
-    , notification
-    , nThresholdType
-    , nNotificationType
-    , nComparisonOperator
-    , nThreshold
-
+  , Notification
+  , notification
+  , nThresholdType
+  , nNotificationType
+  , nComparisonOperator
+  , nThreshold
     -- ** NotificationWithSubscribers
-    , NotificationWithSubscribers
-    , notificationWithSubscribers
-    , nwsNotification
-    , nwsSubscribers
-
+  , NotificationWithSubscribers
+  , notificationWithSubscribers
+  , nwsNotification
+  , nwsSubscribers
     -- ** Spend
-    , Spend
-    , spend
-    , sAmount
-    , sUnit
-
+  , Spend
+  , spend
+  , sAmount
+  , sUnit
     -- ** Subscriber
-    , Subscriber
-    , subscriber
-    , sSubscriptionType
-    , sAddress
-
+  , Subscriber
+  , subscriber
+  , sSubscriptionType
+  , sAddress
     -- ** TimePeriod
-    , TimePeriod
-    , timePeriod
-    , tpStart
-    , tpEnd
-    ) where
+  , TimePeriod
+  , timePeriod
+  , tpStart
+  , tpEnd
+  ) where
 
 import Network.AWS.Budgets.CreateBudget
 import Network.AWS.Budgets.CreateNotification
@@ -209,14 +169,12 @@ import Network.AWS.Budgets.UpdateBudget
 import Network.AWS.Budgets.UpdateNotification
 import Network.AWS.Budgets.UpdateSubscriber
 import Network.AWS.Budgets.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Budgets'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -233,7 +191,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -1,10 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudFormation.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -61,7 +59,6 @@ stackCreateComplete =
         ]
     }
 
-
 -- | Polls 'Network.AWS.CloudFormation.DescribeStacks' every 30 seconds until a successful state is reached. An error is returned after 120 failed checks.
 stackUpdateComplete :: Wait DescribeStacks
 stackUpdateComplete =
@@ -90,7 +87,6 @@ stackUpdateComplete =
         ]
     }
 
-
 -- | Polls 'Network.AWS.CloudFormation.DescribeStacks' every 5 seconds until a successful state is reached. An error is returned after 20 failed checks.
 stackExists :: Wait DescribeStacks
 stackExists =
@@ -103,7 +99,6 @@ stackExists =
         , matchError "ValidationError" AcceptRetry
         ]
     }
-
 
 -- | Polls 'Network.AWS.CloudFormation.DescribeStacks' every 30 seconds until a successful state is reached. An error is returned after 120 failed checks.
 stackDeleteComplete :: Wait DescribeStacks
@@ -141,7 +136,6 @@ stackDeleteComplete =
         ]
     }
 
-
 -- | Polls 'Network.AWS.CloudFormation.DescribeChangeSet' every 30 seconds until a successful state is reached. An error is returned after 120 failed checks.
 changeSetCreateComplete :: Wait DescribeChangeSet
 changeSetCreateComplete =
@@ -155,4 +149,3 @@ changeSetCreateComplete =
         , matchError "ValidationError" AcceptFailure
         ]
     }
-

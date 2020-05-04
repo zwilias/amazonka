@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.XRay.PutTraceSegments
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -52,20 +50,18 @@
 --
 --
 module Network.AWS.XRay.PutTraceSegments
-    (
     -- * Creating a Request
-      putTraceSegments
-    , PutTraceSegments
+  ( putTraceSegments
+  , PutTraceSegments
     -- * Request Lenses
-    , ptsTraceSegmentDocuments
-
+  , ptsTraceSegmentDocuments
     -- * Destructuring the Response
-    , putTraceSegmentsResponse
-    , PutTraceSegmentsResponse
+  , putTraceSegmentsResponse
+  , PutTraceSegmentsResponse
     -- * Response Lenses
-    , ptsrsUnprocessedTraceSegments
-    , ptsrsResponseStatus
-    ) where
+  , ptsrsUnprocessedTraceSegments
+  , ptsrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -75,62 +71,61 @@ import Network.AWS.XRay.Types
 import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'putTraceSegments' smart constructor.
-newtype PutTraceSegments = PutTraceSegments'
-  { _ptsTraceSegmentDocuments :: [Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutTraceSegments =
+  PutTraceSegments'
+    { _ptsTraceSegmentDocuments :: [Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutTraceSegments' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ptsTraceSegmentDocuments' - A string containing a JSON document defining one or more segments or subsegments.
-putTraceSegments
-    :: PutTraceSegments
+putTraceSegments :: PutTraceSegments
 putTraceSegments = PutTraceSegments' {_ptsTraceSegmentDocuments = mempty}
-
 
 -- | A string containing a JSON document defining one or more segments or subsegments.
 ptsTraceSegmentDocuments :: Lens' PutTraceSegments [Text]
-ptsTraceSegmentDocuments = lens _ptsTraceSegmentDocuments (\ s a -> s{_ptsTraceSegmentDocuments = a}) . _Coerce
+ptsTraceSegmentDocuments =
+  lens _ptsTraceSegmentDocuments (\s a -> s {_ptsTraceSegmentDocuments = a}) .
+  _Coerce
 
 instance AWSRequest PutTraceSegments where
-        type Rs PutTraceSegments = PutTraceSegmentsResponse
-        request = postJSON xRay
-        response
-          = receiveJSON
-              (\ s h x ->
-                 PutTraceSegmentsResponse' <$>
-                   (x .?> "UnprocessedTraceSegments" .!@ mempty) <*>
-                     (pure (fromEnum s)))
+  type Rs PutTraceSegments = PutTraceSegmentsResponse
+  request = postJSON xRay
+  response =
+    receiveJSON
+      (\s h x ->
+         PutTraceSegmentsResponse' <$>
+         (x .?> "UnprocessedTraceSegments" .!@ mempty) <*>
+         (pure (fromEnum s)))
 
-instance Hashable PutTraceSegments where
+instance Hashable PutTraceSegments
 
-instance NFData PutTraceSegments where
+instance NFData PutTraceSegments
 
 instance ToHeaders PutTraceSegments where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToJSON PutTraceSegments where
-        toJSON PutTraceSegments'{..}
-          = object
-              (catMaybes
-                 [Just
-                    ("TraceSegmentDocuments" .=
-                       _ptsTraceSegmentDocuments)])
+  toJSON PutTraceSegments' {..} =
+    object
+      (catMaybes [Just ("TraceSegmentDocuments" .= _ptsTraceSegmentDocuments)])
 
 instance ToPath PutTraceSegments where
-        toPath = const "/TraceSegments"
+  toPath = const "/TraceSegments"
 
 instance ToQuery PutTraceSegments where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'putTraceSegmentsResponse' smart constructor.
-data PutTraceSegmentsResponse = PutTraceSegmentsResponse'
-  { _ptsrsUnprocessedTraceSegments :: !(Maybe [UnprocessedTraceSegment])
-  , _ptsrsResponseStatus           :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutTraceSegmentsResponse =
+  PutTraceSegmentsResponse'
+    { _ptsrsUnprocessedTraceSegments :: !(Maybe [UnprocessedTraceSegment])
+    , _ptsrsResponseStatus           :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutTraceSegmentsResponse' with the minimum fields required to make a request.
 --
@@ -139,22 +134,27 @@ data PutTraceSegmentsResponse = PutTraceSegmentsResponse'
 -- * 'ptsrsUnprocessedTraceSegments' - Segments that failed processing.
 --
 -- * 'ptsrsResponseStatus' - -- | The response status code.
-putTraceSegmentsResponse
-    :: Int -- ^ 'ptsrsResponseStatus'
-    -> PutTraceSegmentsResponse
+putTraceSegmentsResponse ::
+     Int -- ^ 'ptsrsResponseStatus'
+  -> PutTraceSegmentsResponse
 putTraceSegmentsResponse pResponseStatus_ =
   PutTraceSegmentsResponse'
     { _ptsrsUnprocessedTraceSegments = Nothing
     , _ptsrsResponseStatus = pResponseStatus_
     }
 
-
 -- | Segments that failed processing.
-ptsrsUnprocessedTraceSegments :: Lens' PutTraceSegmentsResponse [UnprocessedTraceSegment]
-ptsrsUnprocessedTraceSegments = lens _ptsrsUnprocessedTraceSegments (\ s a -> s{_ptsrsUnprocessedTraceSegments = a}) . _Default . _Coerce
+ptsrsUnprocessedTraceSegments ::
+     Lens' PutTraceSegmentsResponse [UnprocessedTraceSegment]
+ptsrsUnprocessedTraceSegments =
+  lens
+    _ptsrsUnprocessedTraceSegments
+    (\s a -> s {_ptsrsUnprocessedTraceSegments = a}) .
+  _Default . _Coerce
 
 -- | -- | The response status code.
 ptsrsResponseStatus :: Lens' PutTraceSegmentsResponse Int
-ptsrsResponseStatus = lens _ptsrsResponseStatus (\ s a -> s{_ptsrsResponseStatus = a})
+ptsrsResponseStatus =
+  lens _ptsrsResponseStatus (\s a -> s {_ptsrsResponseStatus = a})
 
-instance NFData PutTraceSegmentsResponse where
+instance NFData PutTraceSegmentsResponse

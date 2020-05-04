@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.AutoScalingPlans.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,124 +10,105 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.AutoScalingPlans.Types
-    (
     -- * Service Configuration
-      autoScalingPlans
-
+  ( autoScalingPlans
     -- * Errors
-    , _ValidationException
-    , _InvalidNextTokenException
-    , _ConcurrentUpdateException
-    , _InternalServiceException
-    , _ObjectNotFoundException
-    , _LimitExceededException
-
+  , _ValidationException
+  , _InvalidNextTokenException
+  , _ConcurrentUpdateException
+  , _InternalServiceException
+  , _ObjectNotFoundException
+  , _LimitExceededException
     -- * MetricStatistic
-    , MetricStatistic (..)
-
+  , MetricStatistic(..)
     -- * PolicyType
-    , PolicyType (..)
-
+  , PolicyType(..)
     -- * ScalableDimension
-    , ScalableDimension (..)
-
+  , ScalableDimension(..)
     -- * ScalingMetricType
-    , ScalingMetricType (..)
-
+  , ScalingMetricType(..)
     -- * ScalingPlanStatusCode
-    , ScalingPlanStatusCode (..)
-
+  , ScalingPlanStatusCode(..)
     -- * ScalingStatusCode
-    , ScalingStatusCode (..)
-
+  , ScalingStatusCode(..)
     -- * ServiceNamespace
-    , ServiceNamespace (..)
-
+  , ServiceNamespace(..)
     -- * ApplicationSource
-    , ApplicationSource
-    , applicationSource
-    , asTagFilters
-    , asCloudFormationStackARN
-
+  , ApplicationSource
+  , applicationSource
+  , asTagFilters
+  , asCloudFormationStackARN
     -- * CustomizedScalingMetricSpecification
-    , CustomizedScalingMetricSpecification
-    , customizedScalingMetricSpecification
-    , csmsDimensions
-    , csmsUnit
-    , csmsMetricName
-    , csmsNamespace
-    , csmsStatistic
-
+  , CustomizedScalingMetricSpecification
+  , customizedScalingMetricSpecification
+  , csmsDimensions
+  , csmsUnit
+  , csmsMetricName
+  , csmsNamespace
+  , csmsStatistic
     -- * MetricDimension
-    , MetricDimension
-    , metricDimension
-    , mdName
-    , mdValue
-
+  , MetricDimension
+  , metricDimension
+  , mdName
+  , mdValue
     -- * PredefinedScalingMetricSpecification
-    , PredefinedScalingMetricSpecification
-    , predefinedScalingMetricSpecification
-    , psmsResourceLabel
-    , psmsPredefinedScalingMetricType
-
+  , PredefinedScalingMetricSpecification
+  , predefinedScalingMetricSpecification
+  , psmsResourceLabel
+  , psmsPredefinedScalingMetricType
     -- * ScalingInstruction
-    , ScalingInstruction
-    , scalingInstruction
-    , siServiceNamespace
-    , siResourceId
-    , siScalableDimension
-    , siMinCapacity
-    , siMaxCapacity
-    , siTargetTrackingConfigurations
-
+  , ScalingInstruction
+  , scalingInstruction
+  , siServiceNamespace
+  , siResourceId
+  , siScalableDimension
+  , siMinCapacity
+  , siMaxCapacity
+  , siTargetTrackingConfigurations
     -- * ScalingPlan
-    , ScalingPlan
-    , scalingPlan
-    , spCreationTime
-    , spStatusStartTime
-    , spStatusMessage
-    , spScalingPlanName
-    , spScalingPlanVersion
-    , spApplicationSource
-    , spScalingInstructions
-    , spStatusCode
-
+  , ScalingPlan
+  , scalingPlan
+  , spCreationTime
+  , spStatusStartTime
+  , spStatusMessage
+  , spScalingPlanName
+  , spScalingPlanVersion
+  , spApplicationSource
+  , spScalingInstructions
+  , spStatusCode
     -- * ScalingPlanResource
-    , ScalingPlanResource
-    , scalingPlanResource
-    , sprScalingStatusMessage
-    , sprScalingPolicies
-    , sprScalingPlanName
-    , sprScalingPlanVersion
-    , sprServiceNamespace
-    , sprResourceId
-    , sprScalableDimension
-    , sprScalingStatusCode
-
+  , ScalingPlanResource
+  , scalingPlanResource
+  , sprScalingStatusMessage
+  , sprScalingPolicies
+  , sprScalingPlanName
+  , sprScalingPlanVersion
+  , sprServiceNamespace
+  , sprResourceId
+  , sprScalableDimension
+  , sprScalingStatusCode
     -- * ScalingPolicy
-    , ScalingPolicy
-    , scalingPolicy
-    , spTargetTrackingConfiguration
-    , spPolicyName
-    , spPolicyType
-
+  , ScalingPolicy
+  , scalingPolicy
+  , spTargetTrackingConfiguration
+  , spPolicyName
+  , spPolicyType
     -- * TagFilter
-    , TagFilter
-    , tagFilter
-    , tfValues
-    , tfKey
-
+  , TagFilter
+  , tagFilter
+  , tfValues
+  , tfKey
     -- * TargetTrackingConfiguration
-    , TargetTrackingConfiguration
-    , targetTrackingConfiguration
-    , ttcEstimatedInstanceWarmup
-    , ttcPredefinedScalingMetricSpecification
-    , ttcScaleInCooldown
-    , ttcDisableScaleIn
-    , ttcCustomizedScalingMetricSpecification
-    , ttcScaleOutCooldown
-    , ttcTargetValue
-    ) where
+  , TargetTrackingConfiguration
+  , targetTrackingConfiguration
+  , ttcEstimatedInstanceWarmup
+  , ttcPredefinedScalingMetricSpecification
+  , ttcScaleInCooldown
+  , ttcDisableScaleIn
+  , ttcCustomizedScalingMetricSpecification
+  , ttcScaleOutCooldown
+  , ttcTargetValue
+  ) where
 
 import Network.AWS.AutoScalingPlans.Types.Product
 import Network.AWS.AutoScalingPlans.Types.Sum
@@ -174,50 +154,48 @@ autoScalingPlans =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | An exception was thrown for a validation issue. Review the parameters provided.
 --
 --
 _ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ValidationException = _MatchServiceError autoScalingPlans "ValidationException"
 
-
 -- | The token provided is not valid.
 --
 --
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidNextTokenException =
   _MatchServiceError autoScalingPlans "InvalidNextTokenException"
-
 
 -- | Concurrent updates caused an exception, for example, if you request an update to a scaling plan that already has a pending update.
 --
 --
-_ConcurrentUpdateException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentUpdateException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ConcurrentUpdateException =
   _MatchServiceError autoScalingPlans "ConcurrentUpdateException"
-
 
 -- | The service encountered an internal error.
 --
 --
-_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalServiceException =
   _MatchServiceError autoScalingPlans "InternalServiceException"
-
 
 -- | The specified object could not be found.
 --
 --
-_ObjectNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ObjectNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ObjectNotFoundException =
   _MatchServiceError autoScalingPlans "ObjectNotFoundException"
-
 
 -- | Your account exceeded a limit. This exception is thrown when a per-account resource limit is exceeded.
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError autoScalingPlans "LimitExceededException"
-

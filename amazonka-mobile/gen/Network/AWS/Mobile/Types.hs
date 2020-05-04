@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Mobile.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,63 +10,55 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Mobile.Types
-    (
     -- * Service Configuration
-      mobile
-
+  ( mobile
     -- * Errors
-    , _NotFoundException
-    , _TooManyRequestsException
-    , _InternalFailureException
-    , _ServiceUnavailableException
-    , _UnauthorizedException
-    , _BadRequestException
-    , _LimitExceededException
-    , _AccountActionRequiredException
-
+  , _NotFoundException
+  , _TooManyRequestsException
+  , _InternalFailureException
+  , _ServiceUnavailableException
+  , _UnauthorizedException
+  , _BadRequestException
+  , _LimitExceededException
+  , _AccountActionRequiredException
     -- * Platform
-    , Platform (..)
-
+  , Platform(..)
     -- * ProjectState
-    , ProjectState (..)
-
+  , ProjectState(..)
     -- * BundleDetails
-    , BundleDetails
-    , bundleDetails
-    , bdAvailablePlatforms
-    , bdBundleId
-    , bdVersion
-    , bdIconURL
-    , bdTitle
-    , bdDescription
-
+  , BundleDetails
+  , bundleDetails
+  , bdAvailablePlatforms
+  , bdBundleId
+  , bdVersion
+  , bdIconURL
+  , bdTitle
+  , bdDescription
     -- * ProjectDetails
-    , ProjectDetails
-    , projectDetails
-    , pdState
-    , pdResources
-    , pdCreatedDate
-    , pdConsoleURL
-    , pdName
-    , pdRegion
-    , pdProjectId
-    , pdLastUpdatedDate
-
+  , ProjectDetails
+  , projectDetails
+  , pdState
+  , pdResources
+  , pdCreatedDate
+  , pdConsoleURL
+  , pdName
+  , pdRegion
+  , pdProjectId
+  , pdLastUpdatedDate
     -- * ProjectSummary
-    , ProjectSummary
-    , projectSummary
-    , psName
-    , psProjectId
-
+  , ProjectSummary
+  , projectSummary
+  , psName
+  , psProjectId
     -- * Resource
-    , Resource
-    , resource
-    , rFeature
-    , rArn
-    , rName
-    , rAttributes
-    , rType
-    ) where
+  , Resource
+  , resource
+  , rFeature
+  , rArn
+  , rName
+  , rAttributes
+  , rType
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Mobile.Types.Product
@@ -113,7 +104,6 @@ mobile =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | No entity can be found with the specified identifier.
 --
 --
@@ -121,38 +111,37 @@ _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException =
   _MatchServiceError mobile "NotFoundException" . hasStatus 404
 
-
 -- | Too many requests have been received for this AWS account in too short a time. The request should be retried after some time delay.
 --
 --
-_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _TooManyRequestsException =
   _MatchServiceError mobile "TooManyRequestsException" . hasStatus 429
-
 
 -- | The service has encountered an unexpected error condition which prevents it from servicing the request.
 --
 --
-_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalFailureException =
   _MatchServiceError mobile "InternalFailureException" . hasStatus 500
-
 
 -- | The service is temporarily unavailable. The request should be retried after some time delay.
 --
 --
-_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ServiceUnavailableException =
   _MatchServiceError mobile "ServiceUnavailableException" . hasStatus 503
-
 
 -- | Credentials of the caller are insufficient to authorize the request.
 --
 --
-_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _UnauthorizedException =
   _MatchServiceError mobile "UnauthorizedException" . hasStatus 401
-
 
 -- | The request cannot be processed because some parameter is not valid or the project state prevents the operation from being performed.
 --
@@ -161,19 +150,18 @@ _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException =
   _MatchServiceError mobile "BadRequestException" . hasStatus 400
 
-
 -- | There are too many AWS Mobile Hub projects in the account or the account has exceeded the maximum number of resources in some AWS service. You should create another sub-account using AWS Organizations or remove some resources and retry your request.
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError mobile "LimitExceededException" . hasStatus 429
-
 
 -- | Account Action is required in order to continue the request.
 --
 --
-_AccountActionRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccountActionRequiredException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _AccountActionRequiredException =
   _MatchServiceError mobile "AccountActionRequiredException" . hasStatus 403
-

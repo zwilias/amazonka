@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Rekognition.StartStreamProcessor
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,19 +20,17 @@
 --
 --
 module Network.AWS.Rekognition.StartStreamProcessor
-    (
     -- * Creating a Request
-      startStreamProcessor
-    , StartStreamProcessor
+  ( startStreamProcessor
+  , StartStreamProcessor
     -- * Request Lenses
-    , sName
-
+  , sName
     -- * Destructuring the Response
-    , startStreamProcessorResponse
-    , StartStreamProcessorResponse
+  , startStreamProcessorResponse
+  , StartStreamProcessorResponse
     -- * Response Lenses
-    , srsResponseStatus
-    ) where
+  , srsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -44,80 +40,76 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startStreamProcessor' smart constructor.
-newtype StartStreamProcessor = StartStreamProcessor'
-  { _sName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartStreamProcessor =
+  StartStreamProcessor'
+    { _sName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartStreamProcessor' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'sName' - The name of the stream processor to start processing.
-startStreamProcessor
-    :: Text -- ^ 'sName'
-    -> StartStreamProcessor
+startStreamProcessor ::
+     Text -- ^ 'sName'
+  -> StartStreamProcessor
 startStreamProcessor pName_ = StartStreamProcessor' {_sName = pName_}
-
 
 -- | The name of the stream processor to start processing.
 sName :: Lens' StartStreamProcessor Text
-sName = lens _sName (\ s a -> s{_sName = a})
+sName = lens _sName (\s a -> s {_sName = a})
 
 instance AWSRequest StartStreamProcessor where
-        type Rs StartStreamProcessor =
-             StartStreamProcessorResponse
-        request = postJSON rekognition
-        response
-          = receiveEmpty
-              (\ s h x ->
-                 StartStreamProcessorResponse' <$>
-                   (pure (fromEnum s)))
+  type Rs StartStreamProcessor = StartStreamProcessorResponse
+  request = postJSON rekognition
+  response =
+    receiveEmpty
+      (\s h x -> StartStreamProcessorResponse' <$> (pure (fromEnum s)))
 
-instance Hashable StartStreamProcessor where
+instance Hashable StartStreamProcessor
 
-instance NFData StartStreamProcessor where
+instance NFData StartStreamProcessor
 
 instance ToHeaders StartStreamProcessor where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("RekognitionService.StartStreamProcessor" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("RekognitionService.StartStreamProcessor" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON StartStreamProcessor where
-        toJSON StartStreamProcessor'{..}
-          = object (catMaybes [Just ("Name" .= _sName)])
+  toJSON StartStreamProcessor' {..} =
+    object (catMaybes [Just ("Name" .= _sName)])
 
 instance ToPath StartStreamProcessor where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery StartStreamProcessor where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'startStreamProcessorResponse' smart constructor.
-newtype StartStreamProcessorResponse = StartStreamProcessorResponse'
-  { _srsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartStreamProcessorResponse =
+  StartStreamProcessorResponse'
+    { _srsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartStreamProcessorResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'srsResponseStatus' - -- | The response status code.
-startStreamProcessorResponse
-    :: Int -- ^ 'srsResponseStatus'
-    -> StartStreamProcessorResponse
+startStreamProcessorResponse ::
+     Int -- ^ 'srsResponseStatus'
+  -> StartStreamProcessorResponse
 startStreamProcessorResponse pResponseStatus_ =
   StartStreamProcessorResponse' {_srsResponseStatus = pResponseStatus_}
 
-
 -- | -- | The response status code.
 srsResponseStatus :: Lens' StartStreamProcessorResponse Int
-srsResponseStatus = lens _srsResponseStatus (\ s a -> s{_srsResponseStatus = a})
+srsResponseStatus = lens _srsResponseStatus (\s a -> s {_srsResponseStatus = a})
 
-instance NFData StartStreamProcessorResponse where
+instance NFData StartStreamProcessorResponse

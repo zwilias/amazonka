@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.MediaStore
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -15,93 +14,68 @@
 --
 --
 module Network.AWS.MediaStore
-    (
     -- * Service Configuration
-      mediaStore
-
+  ( mediaStore
     -- * Errors
     -- $errors
-
     -- ** PolicyNotFoundException
-    , _PolicyNotFoundException
-
+  , _PolicyNotFoundException
     -- ** CORSPolicyNotFoundException
-    , _CORSPolicyNotFoundException
-
+  , _CORSPolicyNotFoundException
     -- ** ContainerInUseException
-    , _ContainerInUseException
-
+  , _ContainerInUseException
     -- ** InternalServerError
-    , _InternalServerError
-
+  , _InternalServerError
     -- ** ContainerNotFoundException
-    , _ContainerNotFoundException
-
+  , _ContainerNotFoundException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** CreateContainer
-    , module Network.AWS.MediaStore.CreateContainer
-
+  , module Network.AWS.MediaStore.CreateContainer
     -- ** ListContainers
-    , module Network.AWS.MediaStore.ListContainers
-
+  , module Network.AWS.MediaStore.ListContainers
     -- ** DeleteContainer
-    , module Network.AWS.MediaStore.DeleteContainer
-
+  , module Network.AWS.MediaStore.DeleteContainer
     -- ** PutCORSPolicy
-    , module Network.AWS.MediaStore.PutCORSPolicy
-
+  , module Network.AWS.MediaStore.PutCORSPolicy
     -- ** DeleteCORSPolicy
-    , module Network.AWS.MediaStore.DeleteCORSPolicy
-
+  , module Network.AWS.MediaStore.DeleteCORSPolicy
     -- ** DescribeContainer
-    , module Network.AWS.MediaStore.DescribeContainer
-
+  , module Network.AWS.MediaStore.DescribeContainer
     -- ** GetCORSPolicy
-    , module Network.AWS.MediaStore.GetCORSPolicy
-
+  , module Network.AWS.MediaStore.GetCORSPolicy
     -- ** DeleteContainerPolicy
-    , module Network.AWS.MediaStore.DeleteContainerPolicy
-
+  , module Network.AWS.MediaStore.DeleteContainerPolicy
     -- ** PutContainerPolicy
-    , module Network.AWS.MediaStore.PutContainerPolicy
-
+  , module Network.AWS.MediaStore.PutContainerPolicy
     -- ** GetContainerPolicy
-    , module Network.AWS.MediaStore.GetContainerPolicy
-
+  , module Network.AWS.MediaStore.GetContainerPolicy
     -- * Types
-
     -- ** ContainerStatus
-    , ContainerStatus (..)
-
+  , ContainerStatus(..)
     -- ** MethodName
-    , MethodName (..)
-
+  , MethodName(..)
     -- ** CORSRule
-    , CORSRule
-    , corsRule
-    , crAllowedMethods
-    , crMaxAgeSeconds
-    , crAllowedHeaders
-    , crAllowedOrigins
-    , crExposeHeaders
-
+  , CORSRule
+  , corsRule
+  , crAllowedMethods
+  , crMaxAgeSeconds
+  , crAllowedHeaders
+  , crAllowedOrigins
+  , crExposeHeaders
     -- ** Container
-    , Container
-    , container
-    , cCreationTime
-    , cStatus
-    , cARN
-    , cName
-    , cEndpoint
-    ) where
+  , Container
+  , container
+  , cCreationTime
+  , cStatus
+  , cARN
+  , cName
+  , cEndpoint
+  ) where
 
 import Network.AWS.MediaStore.CreateContainer
 import Network.AWS.MediaStore.DeleteContainer
@@ -115,14 +89,12 @@ import Network.AWS.MediaStore.PutContainerPolicy
 import Network.AWS.MediaStore.PutCORSPolicy
 import Network.AWS.MediaStore.Types
 import Network.AWS.MediaStore.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'MediaStore'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -139,7 +111,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

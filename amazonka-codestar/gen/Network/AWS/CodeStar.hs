@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CodeStar
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -64,140 +63,100 @@
 --
 --
 module Network.AWS.CodeStar
-    (
     -- * Service Configuration
-      codeStar
-
+  ( codeStar
     -- * Errors
     -- $errors
-
     -- ** TeamMemberAlreadyAssociatedException
-    , _TeamMemberAlreadyAssociatedException
-
+  , _TeamMemberAlreadyAssociatedException
     -- ** ValidationException
-    , _ValidationException
-
+  , _ValidationException
     -- ** InvalidServiceRoleException
-    , _InvalidServiceRoleException
-
+  , _InvalidServiceRoleException
     -- ** ProjectCreationFailedException
-    , _ProjectCreationFailedException
-
+  , _ProjectCreationFailedException
     -- ** UserProfileAlreadyExistsException
-    , _UserProfileAlreadyExistsException
-
+  , _UserProfileAlreadyExistsException
     -- ** ProjectNotFoundException
-    , _ProjectNotFoundException
-
+  , _ProjectNotFoundException
     -- ** TeamMemberNotFoundException
-    , _TeamMemberNotFoundException
-
+  , _TeamMemberNotFoundException
     -- ** ProjectAlreadyExistsException
-    , _ProjectAlreadyExistsException
-
+  , _ProjectAlreadyExistsException
     -- ** ProjectConfigurationException
-    , _ProjectConfigurationException
-
+  , _ProjectConfigurationException
     -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
+  , _ConcurrentModificationException
     -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
+  , _InvalidNextTokenException
     -- ** UserProfileNotFoundException
-    , _UserProfileNotFoundException
-
+  , _UserProfileNotFoundException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** ListProjects
-    , module Network.AWS.CodeStar.ListProjects
-
+  , module Network.AWS.CodeStar.ListProjects
     -- ** ListTeamMembers
-    , module Network.AWS.CodeStar.ListTeamMembers
-
+  , module Network.AWS.CodeStar.ListTeamMembers
     -- ** DeleteProject
-    , module Network.AWS.CodeStar.DeleteProject
-
+  , module Network.AWS.CodeStar.DeleteProject
     -- ** UpdateProject
-    , module Network.AWS.CodeStar.UpdateProject
-
+  , module Network.AWS.CodeStar.UpdateProject
     -- ** DisassociateTeamMember
-    , module Network.AWS.CodeStar.DisassociateTeamMember
-
+  , module Network.AWS.CodeStar.DisassociateTeamMember
     -- ** TagProject
-    , module Network.AWS.CodeStar.TagProject
-
+  , module Network.AWS.CodeStar.TagProject
     -- ** DescribeProject
-    , module Network.AWS.CodeStar.DescribeProject
-
+  , module Network.AWS.CodeStar.DescribeProject
     -- ** ListUserProfiles
-    , module Network.AWS.CodeStar.ListUserProfiles
-
+  , module Network.AWS.CodeStar.ListUserProfiles
     -- ** ListResources
-    , module Network.AWS.CodeStar.ListResources
-
+  , module Network.AWS.CodeStar.ListResources
     -- ** AssociateTeamMember
-    , module Network.AWS.CodeStar.AssociateTeamMember
-
+  , module Network.AWS.CodeStar.AssociateTeamMember
     -- ** UntagProject
-    , module Network.AWS.CodeStar.UntagProject
-
+  , module Network.AWS.CodeStar.UntagProject
     -- ** UpdateTeamMember
-    , module Network.AWS.CodeStar.UpdateTeamMember
-
+  , module Network.AWS.CodeStar.UpdateTeamMember
     -- ** DescribeUserProfile
-    , module Network.AWS.CodeStar.DescribeUserProfile
-
+  , module Network.AWS.CodeStar.DescribeUserProfile
     -- ** ListTagsForProject
-    , module Network.AWS.CodeStar.ListTagsForProject
-
+  , module Network.AWS.CodeStar.ListTagsForProject
     -- ** DeleteUserProfile
-    , module Network.AWS.CodeStar.DeleteUserProfile
-
+  , module Network.AWS.CodeStar.DeleteUserProfile
     -- ** UpdateUserProfile
-    , module Network.AWS.CodeStar.UpdateUserProfile
-
+  , module Network.AWS.CodeStar.UpdateUserProfile
     -- ** CreateUserProfile
-    , module Network.AWS.CodeStar.CreateUserProfile
-
+  , module Network.AWS.CodeStar.CreateUserProfile
     -- ** CreateProject
-    , module Network.AWS.CodeStar.CreateProject
-
+  , module Network.AWS.CodeStar.CreateProject
     -- * Types
-
     -- ** ProjectSummary
-    , ProjectSummary
-    , projectSummary
-    , psProjectARN
-    , psProjectId
-
+  , ProjectSummary
+  , projectSummary
+  , psProjectARN
+  , psProjectId
     -- ** Resource
-    , Resource
-    , resource
-    , rId
-
+  , Resource
+  , resource
+  , rId
     -- ** TeamMember
-    , TeamMember
-    , teamMember
-    , tmRemoteAccessAllowed
-    , tmUserARN
-    , tmProjectRole
-
+  , TeamMember
+  , teamMember
+  , tmRemoteAccessAllowed
+  , tmUserARN
+  , tmProjectRole
     -- ** UserProfileSummary
-    , UserProfileSummary
-    , userProfileSummary
-    , upsSshPublicKey
-    , upsUserARN
-    , upsEmailAddress
-    , upsDisplayName
-    ) where
+  , UserProfileSummary
+  , userProfileSummary
+  , upsSshPublicKey
+  , upsUserARN
+  , upsEmailAddress
+  , upsDisplayName
+  ) where
 
 import Network.AWS.CodeStar.AssociateTeamMember
 import Network.AWS.CodeStar.CreateProject
@@ -219,14 +178,12 @@ import Network.AWS.CodeStar.UpdateProject
 import Network.AWS.CodeStar.UpdateTeamMember
 import Network.AWS.CodeStar.UpdateUserProfile
 import Network.AWS.CodeStar.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CodeStar'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -243,7 +200,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

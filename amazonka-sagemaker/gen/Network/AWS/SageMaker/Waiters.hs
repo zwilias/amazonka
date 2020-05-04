@@ -1,10 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SageMaker.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -42,7 +40,6 @@ notebookInstanceDeleted =
         ]
     }
 
-
 -- | Polls 'Network.AWS.SageMaker.DescribeEndpoint' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 endpointDeleted :: Wait DescribeEndpoint
 endpointDeleted =
@@ -55,7 +52,6 @@ endpointDeleted =
         , matchAll "Failed" AcceptFailure (dersEndpointStatus . to toTextCI)
         ]
     }
-
 
 -- | Polls 'Network.AWS.SageMaker.DescribeEndpoint' every 30 seconds until a successful state is reached. An error is returned after 120 failed checks.
 endpointInService :: Wait DescribeEndpoint
@@ -70,7 +66,6 @@ endpointInService =
         , matchError "ValidationException" AcceptFailure
         ]
     }
-
 
 -- | Polls 'Network.AWS.SageMaker.DescribeNotebookInstance' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 notebookInstanceInService :: Wait DescribeNotebookInstance
@@ -90,7 +85,6 @@ notebookInstanceInService =
             (dnirsNotebookInstanceStatus . to toTextCI)
         ]
     }
-
 
 -- | Polls 'Network.AWS.SageMaker.DescribeTrainingJob' every 120 seconds until a successful state is reached. An error is returned after 180 failed checks.
 trainingJobCompletedOrStopped :: Wait DescribeTrainingJob
@@ -113,7 +107,6 @@ trainingJobCompletedOrStopped =
         ]
     }
 
-
 -- | Polls 'Network.AWS.SageMaker.DescribeNotebookInstance' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 notebookInstanceStopped :: Wait DescribeNotebookInstance
 notebookInstanceStopped =
@@ -132,4 +125,3 @@ notebookInstanceStopped =
             (dnirsNotebookInstanceStatus . to toTextCI)
         ]
     }
-

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SES.SetIdentityDkimEnabled
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,20 +32,18 @@
 -- For more information about Easy DKIM signing, go to the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html Amazon SES Developer Guide> .
 --
 module Network.AWS.SES.SetIdentityDkimEnabled
-    (
     -- * Creating a Request
-      setIdentityDkimEnabled
-    , SetIdentityDkimEnabled
+  ( setIdentityDkimEnabled
+  , SetIdentityDkimEnabled
     -- * Request Lenses
-    , sideIdentity
-    , sideDkimEnabled
-
+  , sideIdentity
+  , sideDkimEnabled
     -- * Destructuring the Response
-    , setIdentityDkimEnabledResponse
-    , SetIdentityDkimEnabledResponse
+  , setIdentityDkimEnabledResponse
+  , SetIdentityDkimEnabledResponse
     -- * Response Lenses
-    , sidersResponseStatus
-    ) where
+  , sidersResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -61,11 +57,12 @@ import Network.AWS.SES.Types.Product
 --
 --
 -- /See:/ 'setIdentityDkimEnabled' smart constructor.
-data SetIdentityDkimEnabled = SetIdentityDkimEnabled'
-  { _sideIdentity    :: !Text
-  , _sideDkimEnabled :: !Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetIdentityDkimEnabled =
+  SetIdentityDkimEnabled'
+    { _sideIdentity    :: !Text
+    , _sideDkimEnabled :: !Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetIdentityDkimEnabled' with the minimum fields required to make a request.
 --
@@ -74,76 +71,74 @@ data SetIdentityDkimEnabled = SetIdentityDkimEnabled'
 -- * 'sideIdentity' - The identity for which DKIM signing should be enabled or disabled.
 --
 -- * 'sideDkimEnabled' - Sets whether DKIM signing is enabled for an identity. Set to @true@ to enable DKIM signing for this identity; @false@ to disable it.
-setIdentityDkimEnabled
-    :: Text -- ^ 'sideIdentity'
-    -> Bool -- ^ 'sideDkimEnabled'
-    -> SetIdentityDkimEnabled
+setIdentityDkimEnabled ::
+     Text -- ^ 'sideIdentity'
+  -> Bool -- ^ 'sideDkimEnabled'
+  -> SetIdentityDkimEnabled
 setIdentityDkimEnabled pIdentity_ pDkimEnabled_ =
   SetIdentityDkimEnabled'
     {_sideIdentity = pIdentity_, _sideDkimEnabled = pDkimEnabled_}
 
-
 -- | The identity for which DKIM signing should be enabled or disabled.
 sideIdentity :: Lens' SetIdentityDkimEnabled Text
-sideIdentity = lens _sideIdentity (\ s a -> s{_sideIdentity = a})
+sideIdentity = lens _sideIdentity (\s a -> s {_sideIdentity = a})
 
 -- | Sets whether DKIM signing is enabled for an identity. Set to @true@ to enable DKIM signing for this identity; @false@ to disable it.
 sideDkimEnabled :: Lens' SetIdentityDkimEnabled Bool
-sideDkimEnabled = lens _sideDkimEnabled (\ s a -> s{_sideDkimEnabled = a})
+sideDkimEnabled = lens _sideDkimEnabled (\s a -> s {_sideDkimEnabled = a})
 
 instance AWSRequest SetIdentityDkimEnabled where
-        type Rs SetIdentityDkimEnabled =
-             SetIdentityDkimEnabledResponse
-        request = postQuery ses
-        response
-          = receiveXMLWrapper "SetIdentityDkimEnabledResult"
-              (\ s h x ->
-                 SetIdentityDkimEnabledResponse' <$>
-                   (pure (fromEnum s)))
+  type Rs SetIdentityDkimEnabled = SetIdentityDkimEnabledResponse
+  request = postQuery ses
+  response =
+    receiveXMLWrapper
+      "SetIdentityDkimEnabledResult"
+      (\s h x -> SetIdentityDkimEnabledResponse' <$> (pure (fromEnum s)))
 
-instance Hashable SetIdentityDkimEnabled where
+instance Hashable SetIdentityDkimEnabled
 
-instance NFData SetIdentityDkimEnabled where
+instance NFData SetIdentityDkimEnabled
 
 instance ToHeaders SetIdentityDkimEnabled where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath SetIdentityDkimEnabled where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery SetIdentityDkimEnabled where
-        toQuery SetIdentityDkimEnabled'{..}
-          = mconcat
-              ["Action" =:
-                 ("SetIdentityDkimEnabled" :: ByteString),
-               "Version" =: ("2010-12-01" :: ByteString),
-               "Identity" =: _sideIdentity,
-               "DkimEnabled" =: _sideDkimEnabled]
+  toQuery SetIdentityDkimEnabled' {..} =
+    mconcat
+      [ "Action" =: ("SetIdentityDkimEnabled" :: ByteString)
+      , "Version" =: ("2010-12-01" :: ByteString)
+      , "Identity" =: _sideIdentity
+      , "DkimEnabled" =: _sideDkimEnabled
+      ]
 
 -- | An empty element returned on a successful request.
 --
 --
 --
 -- /See:/ 'setIdentityDkimEnabledResponse' smart constructor.
-newtype SetIdentityDkimEnabledResponse = SetIdentityDkimEnabledResponse'
-  { _sidersResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SetIdentityDkimEnabledResponse =
+  SetIdentityDkimEnabledResponse'
+    { _sidersResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetIdentityDkimEnabledResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'sidersResponseStatus' - -- | The response status code.
-setIdentityDkimEnabledResponse
-    :: Int -- ^ 'sidersResponseStatus'
-    -> SetIdentityDkimEnabledResponse
+setIdentityDkimEnabledResponse ::
+     Int -- ^ 'sidersResponseStatus'
+  -> SetIdentityDkimEnabledResponse
 setIdentityDkimEnabledResponse pResponseStatus_ =
   SetIdentityDkimEnabledResponse' {_sidersResponseStatus = pResponseStatus_}
 
-
 -- | -- | The response status code.
 sidersResponseStatus :: Lens' SetIdentityDkimEnabledResponse Int
-sidersResponseStatus = lens _sidersResponseStatus (\ s a -> s{_sidersResponseStatus = a})
+sidersResponseStatus =
+  lens _sidersResponseStatus (\s a -> s {_sidersResponseStatus = a})
 
-instance NFData SetIdentityDkimEnabledResponse where
+instance NFData SetIdentityDkimEnabledResponse

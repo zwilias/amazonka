@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DynamoDB.DescribeContinuousBackups
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,20 +26,18 @@
 -- You can call @DescribeContinuousBackups@ at a maximum rate of 10 times per second.
 --
 module Network.AWS.DynamoDB.DescribeContinuousBackups
-    (
     -- * Creating a Request
-      describeContinuousBackups
-    , DescribeContinuousBackups
+  ( describeContinuousBackups
+  , DescribeContinuousBackups
     -- * Request Lenses
-    , dcbTableName
-
+  , dcbTableName
     -- * Destructuring the Response
-    , describeContinuousBackupsResponse
-    , DescribeContinuousBackupsResponse
+  , describeContinuousBackupsResponse
+  , DescribeContinuousBackupsResponse
     -- * Response Lenses
-    , dcbrsContinuousBackupsDescription
-    , dcbrsResponseStatus
-    ) where
+  , dcbrsContinuousBackupsDescription
+  , dcbrsResponseStatus
+  ) where
 
 import Network.AWS.DynamoDB.Types
 import Network.AWS.DynamoDB.Types.Product
@@ -51,69 +47,67 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeContinuousBackups' smart constructor.
-newtype DescribeContinuousBackups = DescribeContinuousBackups'
-  { _dcbTableName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeContinuousBackups =
+  DescribeContinuousBackups'
+    { _dcbTableName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeContinuousBackups' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dcbTableName' - Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.
-describeContinuousBackups
-    :: Text -- ^ 'dcbTableName'
-    -> DescribeContinuousBackups
+describeContinuousBackups ::
+     Text -- ^ 'dcbTableName'
+  -> DescribeContinuousBackups
 describeContinuousBackups pTableName_ =
   DescribeContinuousBackups' {_dcbTableName = pTableName_}
 
-
 -- | Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.
 dcbTableName :: Lens' DescribeContinuousBackups Text
-dcbTableName = lens _dcbTableName (\ s a -> s{_dcbTableName = a})
+dcbTableName = lens _dcbTableName (\s a -> s {_dcbTableName = a})
 
 instance AWSRequest DescribeContinuousBackups where
-        type Rs DescribeContinuousBackups =
-             DescribeContinuousBackupsResponse
-        request = postJSON dynamoDB
-        response
-          = receiveJSON
-              (\ s h x ->
-                 DescribeContinuousBackupsResponse' <$>
-                   (x .?> "ContinuousBackupsDescription") <*>
-                     (pure (fromEnum s)))
+  type Rs DescribeContinuousBackups = DescribeContinuousBackupsResponse
+  request = postJSON dynamoDB
+  response =
+    receiveJSON
+      (\s h x ->
+         DescribeContinuousBackupsResponse' <$>
+         (x .?> "ContinuousBackupsDescription") <*>
+         (pure (fromEnum s)))
 
-instance Hashable DescribeContinuousBackups where
+instance Hashable DescribeContinuousBackups
 
-instance NFData DescribeContinuousBackups where
+instance NFData DescribeContinuousBackups
 
 instance ToHeaders DescribeContinuousBackups where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("DynamoDB_20120810.DescribeContinuousBackups" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.0" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("DynamoDB_20120810.DescribeContinuousBackups" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.0" :: ByteString)
+         ])
 
 instance ToJSON DescribeContinuousBackups where
-        toJSON DescribeContinuousBackups'{..}
-          = object
-              (catMaybes [Just ("TableName" .= _dcbTableName)])
+  toJSON DescribeContinuousBackups' {..} =
+    object (catMaybes [Just ("TableName" .= _dcbTableName)])
 
 instance ToPath DescribeContinuousBackups where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DescribeContinuousBackups where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'describeContinuousBackupsResponse' smart constructor.
-data DescribeContinuousBackupsResponse = DescribeContinuousBackupsResponse'
-  { _dcbrsContinuousBackupsDescription :: !(Maybe ContinuousBackupsDescription)
-  , _dcbrsResponseStatus               :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeContinuousBackupsResponse =
+  DescribeContinuousBackupsResponse'
+    { _dcbrsContinuousBackupsDescription :: !(Maybe ContinuousBackupsDescription)
+    , _dcbrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeContinuousBackupsResponse' with the minimum fields required to make a request.
 --
@@ -122,23 +116,26 @@ data DescribeContinuousBackupsResponse = DescribeContinuousBackupsResponse'
 -- * 'dcbrsContinuousBackupsDescription' - @ContinuousBackupsDescription@ can be one of the following : ENABLED, DISABLED.
 --
 -- * 'dcbrsResponseStatus' - -- | The response status code.
-describeContinuousBackupsResponse
-    :: Int -- ^ 'dcbrsResponseStatus'
-    -> DescribeContinuousBackupsResponse
+describeContinuousBackupsResponse ::
+     Int -- ^ 'dcbrsResponseStatus'
+  -> DescribeContinuousBackupsResponse
 describeContinuousBackupsResponse pResponseStatus_ =
   DescribeContinuousBackupsResponse'
     { _dcbrsContinuousBackupsDescription = Nothing
     , _dcbrsResponseStatus = pResponseStatus_
     }
 
-
 -- | @ContinuousBackupsDescription@ can be one of the following : ENABLED, DISABLED.
-dcbrsContinuousBackupsDescription :: Lens' DescribeContinuousBackupsResponse (Maybe ContinuousBackupsDescription)
-dcbrsContinuousBackupsDescription = lens _dcbrsContinuousBackupsDescription (\ s a -> s{_dcbrsContinuousBackupsDescription = a})
+dcbrsContinuousBackupsDescription ::
+     Lens' DescribeContinuousBackupsResponse (Maybe ContinuousBackupsDescription)
+dcbrsContinuousBackupsDescription =
+  lens
+    _dcbrsContinuousBackupsDescription
+    (\s a -> s {_dcbrsContinuousBackupsDescription = a})
 
 -- | -- | The response status code.
 dcbrsResponseStatus :: Lens' DescribeContinuousBackupsResponse Int
-dcbrsResponseStatus = lens _dcbrsResponseStatus (\ s a -> s{_dcbrsResponseStatus = a})
+dcbrsResponseStatus =
+  lens _dcbrsResponseStatus (\s a -> s {_dcbrsResponseStatus = a})
 
 instance NFData DescribeContinuousBackupsResponse
-         where

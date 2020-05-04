@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Support.CreateCase
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -44,28 +42,26 @@
 -- A successful 'CreateCase' request returns an AWS Support case number. Case numbers are used by the 'DescribeCases' operation to retrieve existing AWS Support cases.
 --
 module Network.AWS.Support.CreateCase
-    (
     -- * Creating a Request
-      createCase
-    , CreateCase
+  ( createCase
+  , CreateCase
     -- * Request Lenses
-    , ccSeverityCode
-    , ccIssueType
-    , ccCcEmailAddresses
-    , ccLanguage
-    , ccCategoryCode
-    , ccServiceCode
-    , ccAttachmentSetId
-    , ccSubject
-    , ccCommunicationBody
-
+  , ccSeverityCode
+  , ccIssueType
+  , ccCcEmailAddresses
+  , ccLanguage
+  , ccCategoryCode
+  , ccServiceCode
+  , ccAttachmentSetId
+  , ccSubject
+  , ccCommunicationBody
     -- * Destructuring the Response
-    , createCaseResponse
-    , CreateCaseResponse
+  , createCaseResponse
+  , CreateCaseResponse
     -- * Response Lenses
-    , ccrsCaseId
-    , ccrsResponseStatus
-    ) where
+  , ccrsCaseId
+  , ccrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -79,18 +75,19 @@ import Network.AWS.Support.Types.Product
 --
 --
 -- /See:/ 'createCase' smart constructor.
-data CreateCase = CreateCase'
-  { _ccSeverityCode      :: !(Maybe Text)
-  , _ccIssueType         :: !(Maybe Text)
-  , _ccCcEmailAddresses  :: !(Maybe [Text])
-  , _ccLanguage          :: !(Maybe Text)
-  , _ccCategoryCode      :: !(Maybe Text)
-  , _ccServiceCode       :: !(Maybe Text)
-  , _ccAttachmentSetId   :: !(Maybe Text)
-  , _ccSubject           :: !Text
-  , _ccCommunicationBody :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCase =
+  CreateCase'
+    { _ccSeverityCode      :: !(Maybe Text)
+    , _ccIssueType         :: !(Maybe Text)
+    , _ccCcEmailAddresses  :: !(Maybe [Text])
+    , _ccLanguage          :: !(Maybe Text)
+    , _ccCategoryCode      :: !(Maybe Text)
+    , _ccServiceCode       :: !(Maybe Text)
+    , _ccAttachmentSetId   :: !(Maybe Text)
+    , _ccSubject           :: !Text
+    , _ccCommunicationBody :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCase' with the minimum fields required to make a request.
 --
@@ -113,10 +110,10 @@ data CreateCase = CreateCase'
 -- * 'ccSubject' - The title of the AWS Support case.
 --
 -- * 'ccCommunicationBody' - The communication body text when you create an AWS Support case by calling 'CreateCase' .
-createCase
-    :: Text -- ^ 'ccSubject'
-    -> Text -- ^ 'ccCommunicationBody'
-    -> CreateCase
+createCase ::
+     Text -- ^ 'ccSubject'
+  -> Text -- ^ 'ccCommunicationBody'
+  -> CreateCase
 createCase pSubject_ pCommunicationBody_ =
   CreateCase'
     { _ccSeverityCode = Nothing
@@ -130,95 +127,97 @@ createCase pSubject_ pCommunicationBody_ =
     , _ccCommunicationBody = pCommunicationBody_
     }
 
-
 -- | The code for the severity level returned by the call to 'DescribeSeverityLevels' .
 ccSeverityCode :: Lens' CreateCase (Maybe Text)
-ccSeverityCode = lens _ccSeverityCode (\ s a -> s{_ccSeverityCode = a})
+ccSeverityCode = lens _ccSeverityCode (\s a -> s {_ccSeverityCode = a})
 
 -- | The type of issue for the case. You can specify either "customer-service" or "technical." If you do not indicate a value, the default is "technical."
 ccIssueType :: Lens' CreateCase (Maybe Text)
-ccIssueType = lens _ccIssueType (\ s a -> s{_ccIssueType = a})
+ccIssueType = lens _ccIssueType (\s a -> s {_ccIssueType = a})
 
 -- | A list of email addresses that AWS Support copies on case correspondence.
 ccCcEmailAddresses :: Lens' CreateCase [Text]
-ccCcEmailAddresses = lens _ccCcEmailAddresses (\ s a -> s{_ccCcEmailAddresses = a}) . _Default . _Coerce
+ccCcEmailAddresses =
+  lens _ccCcEmailAddresses (\s a -> s {_ccCcEmailAddresses = a}) .
+  _Default . _Coerce
 
 -- | The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.
 ccLanguage :: Lens' CreateCase (Maybe Text)
-ccLanguage = lens _ccLanguage (\ s a -> s{_ccLanguage = a})
+ccLanguage = lens _ccLanguage (\s a -> s {_ccLanguage = a})
 
 -- | The category of problem for the AWS Support case.
 ccCategoryCode :: Lens' CreateCase (Maybe Text)
-ccCategoryCode = lens _ccCategoryCode (\ s a -> s{_ccCategoryCode = a})
+ccCategoryCode = lens _ccCategoryCode (\s a -> s {_ccCategoryCode = a})
 
 -- | The code for the AWS service returned by the call to 'DescribeServices' .
 ccServiceCode :: Lens' CreateCase (Maybe Text)
-ccServiceCode = lens _ccServiceCode (\ s a -> s{_ccServiceCode = a})
+ccServiceCode = lens _ccServiceCode (\s a -> s {_ccServiceCode = a})
 
 -- | The ID of a set of one or more attachments for the case. Create the set by using 'AddAttachmentsToSet' .
 ccAttachmentSetId :: Lens' CreateCase (Maybe Text)
-ccAttachmentSetId = lens _ccAttachmentSetId (\ s a -> s{_ccAttachmentSetId = a})
+ccAttachmentSetId = lens _ccAttachmentSetId (\s a -> s {_ccAttachmentSetId = a})
 
 -- | The title of the AWS Support case.
 ccSubject :: Lens' CreateCase Text
-ccSubject = lens _ccSubject (\ s a -> s{_ccSubject = a})
+ccSubject = lens _ccSubject (\s a -> s {_ccSubject = a})
 
 -- | The communication body text when you create an AWS Support case by calling 'CreateCase' .
 ccCommunicationBody :: Lens' CreateCase Text
-ccCommunicationBody = lens _ccCommunicationBody (\ s a -> s{_ccCommunicationBody = a})
+ccCommunicationBody =
+  lens _ccCommunicationBody (\s a -> s {_ccCommunicationBody = a})
 
 instance AWSRequest CreateCase where
-        type Rs CreateCase = CreateCaseResponse
-        request = postJSON support
-        response
-          = receiveJSON
-              (\ s h x ->
-                 CreateCaseResponse' <$>
-                   (x .?> "caseId") <*> (pure (fromEnum s)))
+  type Rs CreateCase = CreateCaseResponse
+  request = postJSON support
+  response =
+    receiveJSON
+      (\s h x ->
+         CreateCaseResponse' <$> (x .?> "caseId") <*> (pure (fromEnum s)))
 
-instance Hashable CreateCase where
+instance Hashable CreateCase
 
-instance NFData CreateCase where
+instance NFData CreateCase
 
 instance ToHeaders CreateCase where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSSupport_20130415.CreateCase" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("AWSSupport_20130415.CreateCase" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateCase where
-        toJSON CreateCase'{..}
-          = object
-              (catMaybes
-                 [("severityCode" .=) <$> _ccSeverityCode,
-                  ("issueType" .=) <$> _ccIssueType,
-                  ("ccEmailAddresses" .=) <$> _ccCcEmailAddresses,
-                  ("language" .=) <$> _ccLanguage,
-                  ("categoryCode" .=) <$> _ccCategoryCode,
-                  ("serviceCode" .=) <$> _ccServiceCode,
-                  ("attachmentSetId" .=) <$> _ccAttachmentSetId,
-                  Just ("subject" .= _ccSubject),
-                  Just ("communicationBody" .= _ccCommunicationBody)])
+  toJSON CreateCase' {..} =
+    object
+      (catMaybes
+         [ ("severityCode" .=) <$> _ccSeverityCode
+         , ("issueType" .=) <$> _ccIssueType
+         , ("ccEmailAddresses" .=) <$> _ccCcEmailAddresses
+         , ("language" .=) <$> _ccLanguage
+         , ("categoryCode" .=) <$> _ccCategoryCode
+         , ("serviceCode" .=) <$> _ccServiceCode
+         , ("attachmentSetId" .=) <$> _ccAttachmentSetId
+         , Just ("subject" .= _ccSubject)
+         , Just ("communicationBody" .= _ccCommunicationBody)
+         ])
 
 instance ToPath CreateCase where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateCase where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | The AWS Support case ID returned by a successful completion of the 'CreateCase' operation.
 --
 --
 --
 -- /See:/ 'createCaseResponse' smart constructor.
-data CreateCaseResponse = CreateCaseResponse'
-  { _ccrsCaseId         :: !(Maybe Text)
-  , _ccrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCaseResponse =
+  CreateCaseResponse'
+    { _ccrsCaseId         :: !(Maybe Text)
+    , _ccrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCaseResponse' with the minimum fields required to make a request.
 --
@@ -227,20 +226,20 @@ data CreateCaseResponse = CreateCaseResponse'
 -- * 'ccrsCaseId' - The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-/12345678910-2013-c4c1d2bf33c5cf47/
 --
 -- * 'ccrsResponseStatus' - -- | The response status code.
-createCaseResponse
-    :: Int -- ^ 'ccrsResponseStatus'
-    -> CreateCaseResponse
+createCaseResponse ::
+     Int -- ^ 'ccrsResponseStatus'
+  -> CreateCaseResponse
 createCaseResponse pResponseStatus_ =
   CreateCaseResponse'
     {_ccrsCaseId = Nothing, _ccrsResponseStatus = pResponseStatus_}
 
-
 -- | The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-/12345678910-2013-c4c1d2bf33c5cf47/
 ccrsCaseId :: Lens' CreateCaseResponse (Maybe Text)
-ccrsCaseId = lens _ccrsCaseId (\ s a -> s{_ccrsCaseId = a})
+ccrsCaseId = lens _ccrsCaseId (\s a -> s {_ccrsCaseId = a})
 
 -- | -- | The response status code.
 ccrsResponseStatus :: Lens' CreateCaseResponse Int
-ccrsResponseStatus = lens _ccrsResponseStatus (\ s a -> s{_ccrsResponseStatus = a})
+ccrsResponseStatus =
+  lens _ccrsResponseStatus (\s a -> s {_ccrsResponseStatus = a})
 
-instance NFData CreateCaseResponse where
+instance NFData CreateCaseResponse

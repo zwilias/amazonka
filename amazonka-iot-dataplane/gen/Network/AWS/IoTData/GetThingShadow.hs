@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IoTData.GetThingShadow
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,20 +22,18 @@
 -- For more information, see <http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html GetThingShadow> in the /AWS IoT Developer Guide/ .
 --
 module Network.AWS.IoTData.GetThingShadow
-    (
     -- * Creating a Request
-      getThingShadow
-    , GetThingShadow
+  ( getThingShadow
+  , GetThingShadow
     -- * Request Lenses
-    , gtsThingName
-
+  , gtsThingName
     -- * Destructuring the Response
-    , getThingShadowResponse
-    , GetThingShadowResponse
+  , getThingShadowResponse
+  , GetThingShadowResponse
     -- * Response Lenses
-    , gtsrsPayload
-    , gtsrsResponseStatus
-    ) where
+  , gtsrsPayload
+  , gtsrsResponseStatus
+  ) where
 
 import Network.AWS.IoTData.Types
 import Network.AWS.IoTData.Types.Product
@@ -51,59 +47,59 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getThingShadow' smart constructor.
-newtype GetThingShadow = GetThingShadow'
-  { _gtsThingName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetThingShadow =
+  GetThingShadow'
+    { _gtsThingName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetThingShadow' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gtsThingName' - The name of the thing.
-getThingShadow
-    :: Text -- ^ 'gtsThingName'
-    -> GetThingShadow
+getThingShadow ::
+     Text -- ^ 'gtsThingName'
+  -> GetThingShadow
 getThingShadow pThingName_ = GetThingShadow' {_gtsThingName = pThingName_}
-
 
 -- | The name of the thing.
 gtsThingName :: Lens' GetThingShadow Text
-gtsThingName = lens _gtsThingName (\ s a -> s{_gtsThingName = a})
+gtsThingName = lens _gtsThingName (\s a -> s {_gtsThingName = a})
 
 instance AWSRequest GetThingShadow where
-        type Rs GetThingShadow = GetThingShadowResponse
-        request = get ioTData
-        response
-          = receiveBytes
-              (\ s h x ->
-                 GetThingShadowResponse' <$>
-                   (pure (Just x)) <*> (pure (fromEnum s)))
+  type Rs GetThingShadow = GetThingShadowResponse
+  request = get ioTData
+  response =
+    receiveBytes
+      (\s h x ->
+         GetThingShadowResponse' <$> (pure (Just x)) <*> (pure (fromEnum s)))
 
-instance Hashable GetThingShadow where
+instance Hashable GetThingShadow
 
-instance NFData GetThingShadow where
+instance NFData GetThingShadow
 
 instance ToHeaders GetThingShadow where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath GetThingShadow where
-        toPath GetThingShadow'{..}
-          = mconcat ["/things/", toBS _gtsThingName, "/shadow"]
+  toPath GetThingShadow' {..} =
+    mconcat ["/things/", toBS _gtsThingName, "/shadow"]
 
 instance ToQuery GetThingShadow where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | The output from the GetThingShadow operation.
 --
 --
 --
 -- /See:/ 'getThingShadowResponse' smart constructor.
-data GetThingShadowResponse = GetThingShadowResponse'
-  { _gtsrsPayload        :: !(Maybe ByteString)
-  , _gtsrsResponseStatus :: !Int
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetThingShadowResponse =
+  GetThingShadowResponse'
+    { _gtsrsPayload        :: !(Maybe ByteString)
+    , _gtsrsResponseStatus :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetThingShadowResponse' with the minimum fields required to make a request.
 --
@@ -112,20 +108,20 @@ data GetThingShadowResponse = GetThingShadowResponse'
 -- * 'gtsrsPayload' - The state information, in JSON format.
 --
 -- * 'gtsrsResponseStatus' - -- | The response status code.
-getThingShadowResponse
-    :: Int -- ^ 'gtsrsResponseStatus'
-    -> GetThingShadowResponse
+getThingShadowResponse ::
+     Int -- ^ 'gtsrsResponseStatus'
+  -> GetThingShadowResponse
 getThingShadowResponse pResponseStatus_ =
   GetThingShadowResponse'
     {_gtsrsPayload = Nothing, _gtsrsResponseStatus = pResponseStatus_}
 
-
 -- | The state information, in JSON format.
 gtsrsPayload :: Lens' GetThingShadowResponse (Maybe ByteString)
-gtsrsPayload = lens _gtsrsPayload (\ s a -> s{_gtsrsPayload = a})
+gtsrsPayload = lens _gtsrsPayload (\s a -> s {_gtsrsPayload = a})
 
 -- | -- | The response status code.
 gtsrsResponseStatus :: Lens' GetThingShadowResponse Int
-gtsrsResponseStatus = lens _gtsrsResponseStatus (\ s a -> s{_gtsrsResponseStatus = a})
+gtsrsResponseStatus =
+  lens _gtsrsResponseStatus (\s a -> s {_gtsrsResponseStatus = a})
 
-instance NFData GetThingShadowResponse where
+instance NFData GetThingShadowResponse

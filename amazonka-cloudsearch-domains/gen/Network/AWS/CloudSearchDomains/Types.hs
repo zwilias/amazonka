@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudSearchDomains.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,90 +10,76 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.CloudSearchDomains.Types
-    (
     -- * Service Configuration
-      cloudSearchDomains
-
+  ( cloudSearchDomains
     -- * Errors
-    , _DocumentServiceException
-    , _SearchException
-
+  , _DocumentServiceException
+  , _SearchException
     -- * ContentType
-    , ContentType (..)
-
+  , ContentType(..)
     -- * QueryParser
-    , QueryParser (..)
-
+  , QueryParser(..)
     -- * Bucket
-    , Bucket
-    , bucket
-    , bValue
-    , bCount
-
+  , Bucket
+  , bucket
+  , bValue
+  , bCount
     -- * BucketInfo
-    , BucketInfo
-    , bucketInfo
-    , biBuckets
-
+  , BucketInfo
+  , bucketInfo
+  , biBuckets
     -- * DocumentServiceWarning
-    , DocumentServiceWarning
-    , documentServiceWarning
-    , dswMessage
-
+  , DocumentServiceWarning
+  , documentServiceWarning
+  , dswMessage
     -- * FieldStats
-    , FieldStats
-    , fieldStats
-    , fsMax
-    , fsMean
-    , fsCount
-    , fsMissing
-    , fsStddev
-    , fsMin
-    , fsSumOfSquares
-    , fsSum
-
+  , FieldStats
+  , fieldStats
+  , fsMax
+  , fsMean
+  , fsCount
+  , fsMissing
+  , fsStddev
+  , fsMin
+  , fsSumOfSquares
+  , fsSum
     -- * Hit
-    , Hit
-    , hit
-    , hitExprs
-    , hitId
-    , hitHighlights
-    , hitFields
-
+  , Hit
+  , hit
+  , hitExprs
+  , hitId
+  , hitHighlights
+  , hitFields
     -- * Hits
-    , Hits
-    , hits
-    , hCursor
-    , hHit
-    , hStart
-    , hFound
-
+  , Hits
+  , hits
+  , hCursor
+  , hHit
+  , hStart
+  , hFound
     -- * SearchStatus
-    , SearchStatus
-    , searchStatus
-    , sRid
-    , sTimems
-
+  , SearchStatus
+  , searchStatus
+  , sRid
+  , sTimems
     -- * SuggestModel
-    , SuggestModel
-    , suggestModel
-    , smFound
-    , smSuggestions
-    , smQuery
-
+  , SuggestModel
+  , suggestModel
+  , smFound
+  , smSuggestions
+  , smQuery
     -- * SuggestStatus
-    , SuggestStatus
-    , suggestStatus
-    , ssRid
-    , ssTimems
-
+  , SuggestStatus
+  , suggestStatus
+  , ssRid
+  , ssTimems
     -- * SuggestionMatch
-    , SuggestionMatch
-    , suggestionMatch
-    , smSuggestion
-    , smScore
-    , smId
-    ) where
+  , SuggestionMatch
+  , suggestionMatch
+  , smSuggestion
+  , smScore
+  , smId
+  ) where
 
 import Network.AWS.CloudSearchDomains.Types.Product
 import Network.AWS.CloudSearchDomains.Types.Sum
@@ -140,18 +125,16 @@ cloudSearchDomains =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | Information about any problems encountered while processing an upload request.
 --
 --
-_DocumentServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_DocumentServiceException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _DocumentServiceException =
   _MatchServiceError cloudSearchDomains "DocumentServiceException"
-
 
 -- | Information about any problems encountered while processing a search request.
 --
 --
 _SearchException :: AsError a => Getting (First ServiceError) a ServiceError
 _SearchException = _MatchServiceError cloudSearchDomains "SearchException"
-

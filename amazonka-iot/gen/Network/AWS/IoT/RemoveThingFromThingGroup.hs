@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IoT.RemoveThingFromThingGroup
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +20,20 @@
 --
 --
 module Network.AWS.IoT.RemoveThingFromThingGroup
-    (
     -- * Creating a Request
-      removeThingFromThingGroup
-    , RemoveThingFromThingGroup
+  ( removeThingFromThingGroup
+  , RemoveThingFromThingGroup
     -- * Request Lenses
-    , rtftgThingGroupARN
-    , rtftgThingARN
-    , rtftgThingGroupName
-    , rtftgThingName
-
+  , rtftgThingGroupARN
+  , rtftgThingARN
+  , rtftgThingGroupName
+  , rtftgThingName
     -- * Destructuring the Response
-    , removeThingFromThingGroupResponse
-    , RemoveThingFromThingGroupResponse
+  , removeThingFromThingGroupResponse
+  , RemoveThingFromThingGroupResponse
     -- * Response Lenses
-    , rtftgrsResponseStatus
-    ) where
+  , rtftgrsResponseStatus
+  ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -47,13 +43,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removeThingFromThingGroup' smart constructor.
-data RemoveThingFromThingGroup = RemoveThingFromThingGroup'
-  { _rtftgThingGroupARN  :: !(Maybe Text)
-  , _rtftgThingARN       :: !(Maybe Text)
-  , _rtftgThingGroupName :: !(Maybe Text)
-  , _rtftgThingName      :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveThingFromThingGroup =
+  RemoveThingFromThingGroup'
+    { _rtftgThingGroupARN  :: !(Maybe Text)
+    , _rtftgThingARN       :: !(Maybe Text)
+    , _rtftgThingGroupName :: !(Maybe Text)
+    , _rtftgThingName      :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RemoveThingFromThingGroup' with the minimum fields required to make a request.
 --
@@ -66,8 +63,7 @@ data RemoveThingFromThingGroup = RemoveThingFromThingGroup'
 -- * 'rtftgThingGroupName' - The group name.
 --
 -- * 'rtftgThingName' - The name of the thing to remove from the group.
-removeThingFromThingGroup
-    :: RemoveThingFromThingGroup
+removeThingFromThingGroup :: RemoveThingFromThingGroup
 removeThingFromThingGroup =
   RemoveThingFromThingGroup'
     { _rtftgThingGroupARN = Nothing
@@ -76,77 +72,75 @@ removeThingFromThingGroup =
     , _rtftgThingName = Nothing
     }
 
-
 -- | The group ARN.
 rtftgThingGroupARN :: Lens' RemoveThingFromThingGroup (Maybe Text)
-rtftgThingGroupARN = lens _rtftgThingGroupARN (\ s a -> s{_rtftgThingGroupARN = a})
+rtftgThingGroupARN =
+  lens _rtftgThingGroupARN (\s a -> s {_rtftgThingGroupARN = a})
 
 -- | The ARN of the thing to remove from the group.
 rtftgThingARN :: Lens' RemoveThingFromThingGroup (Maybe Text)
-rtftgThingARN = lens _rtftgThingARN (\ s a -> s{_rtftgThingARN = a})
+rtftgThingARN = lens _rtftgThingARN (\s a -> s {_rtftgThingARN = a})
 
 -- | The group name.
 rtftgThingGroupName :: Lens' RemoveThingFromThingGroup (Maybe Text)
-rtftgThingGroupName = lens _rtftgThingGroupName (\ s a -> s{_rtftgThingGroupName = a})
+rtftgThingGroupName =
+  lens _rtftgThingGroupName (\s a -> s {_rtftgThingGroupName = a})
 
 -- | The name of the thing to remove from the group.
 rtftgThingName :: Lens' RemoveThingFromThingGroup (Maybe Text)
-rtftgThingName = lens _rtftgThingName (\ s a -> s{_rtftgThingName = a})
+rtftgThingName = lens _rtftgThingName (\s a -> s {_rtftgThingName = a})
 
 instance AWSRequest RemoveThingFromThingGroup where
-        type Rs RemoveThingFromThingGroup =
-             RemoveThingFromThingGroupResponse
-        request = putJSON ioT
-        response
-          = receiveEmpty
-              (\ s h x ->
-                 RemoveThingFromThingGroupResponse' <$>
-                   (pure (fromEnum s)))
+  type Rs RemoveThingFromThingGroup = RemoveThingFromThingGroupResponse
+  request = putJSON ioT
+  response =
+    receiveEmpty
+      (\s h x -> RemoveThingFromThingGroupResponse' <$> (pure (fromEnum s)))
 
-instance Hashable RemoveThingFromThingGroup where
+instance Hashable RemoveThingFromThingGroup
 
-instance NFData RemoveThingFromThingGroup where
+instance NFData RemoveThingFromThingGroup
 
 instance ToHeaders RemoveThingFromThingGroup where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToJSON RemoveThingFromThingGroup where
-        toJSON RemoveThingFromThingGroup'{..}
-          = object
-              (catMaybes
-                 [("thingGroupArn" .=) <$> _rtftgThingGroupARN,
-                  ("thingArn" .=) <$> _rtftgThingARN,
-                  ("thingGroupName" .=) <$> _rtftgThingGroupName,
-                  ("thingName" .=) <$> _rtftgThingName])
+  toJSON RemoveThingFromThingGroup' {..} =
+    object
+      (catMaybes
+         [ ("thingGroupArn" .=) <$> _rtftgThingGroupARN
+         , ("thingArn" .=) <$> _rtftgThingARN
+         , ("thingGroupName" .=) <$> _rtftgThingGroupName
+         , ("thingName" .=) <$> _rtftgThingName
+         ])
 
 instance ToPath RemoveThingFromThingGroup where
-        toPath
-          = const "/thing-groups/removeThingFromThingGroup"
+  toPath = const "/thing-groups/removeThingFromThingGroup"
 
 instance ToQuery RemoveThingFromThingGroup where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'removeThingFromThingGroupResponse' smart constructor.
-newtype RemoveThingFromThingGroupResponse = RemoveThingFromThingGroupResponse'
-  { _rtftgrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RemoveThingFromThingGroupResponse =
+  RemoveThingFromThingGroupResponse'
+    { _rtftgrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RemoveThingFromThingGroupResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rtftgrsResponseStatus' - -- | The response status code.
-removeThingFromThingGroupResponse
-    :: Int -- ^ 'rtftgrsResponseStatus'
-    -> RemoveThingFromThingGroupResponse
+removeThingFromThingGroupResponse ::
+     Int -- ^ 'rtftgrsResponseStatus'
+  -> RemoveThingFromThingGroupResponse
 removeThingFromThingGroupResponse pResponseStatus_ =
   RemoveThingFromThingGroupResponse' {_rtftgrsResponseStatus = pResponseStatus_}
 
-
 -- | -- | The response status code.
 rtftgrsResponseStatus :: Lens' RemoveThingFromThingGroupResponse Int
-rtftgrsResponseStatus = lens _rtftgrsResponseStatus (\ s a -> s{_rtftgrsResponseStatus = a})
+rtftgrsResponseStatus =
+  lens _rtftgrsResponseStatus (\s a -> s {_rtftgrsResponseStatus = a})
 
 instance NFData RemoveThingFromThingGroupResponse
-         where

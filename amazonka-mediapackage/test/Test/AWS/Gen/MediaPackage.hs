@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.MediaPackage
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -62,7 +60,6 @@ import Test.Tasty
 --             updateOriginEndpoint
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseRotateChannelCredentials $
 --             rotateChannelCredentialsResponse
@@ -99,138 +96,130 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestRotateChannelCredentials :: RotateChannelCredentials -> TestTree
-requestRotateChannelCredentials = req
-    "RotateChannelCredentials"
-    "fixture/RotateChannelCredentials.yaml"
+requestRotateChannelCredentials =
+  req "RotateChannelCredentials" "fixture/RotateChannelCredentials.yaml"
 
 requestDescribeOriginEndpoint :: DescribeOriginEndpoint -> TestTree
-requestDescribeOriginEndpoint = req
-    "DescribeOriginEndpoint"
-    "fixture/DescribeOriginEndpoint.yaml"
+requestDescribeOriginEndpoint =
+  req "DescribeOriginEndpoint" "fixture/DescribeOriginEndpoint.yaml"
 
 requestListChannels :: ListChannels -> TestTree
-requestListChannels = req
-    "ListChannels"
-    "fixture/ListChannels.yaml"
+requestListChannels = req "ListChannels" "fixture/ListChannels.yaml"
 
 requestDeleteChannel :: DeleteChannel -> TestTree
-requestDeleteChannel = req
-    "DeleteChannel"
-    "fixture/DeleteChannel.yaml"
+requestDeleteChannel = req "DeleteChannel" "fixture/DeleteChannel.yaml"
 
 requestUpdateChannel :: UpdateChannel -> TestTree
-requestUpdateChannel = req
-    "UpdateChannel"
-    "fixture/UpdateChannel.yaml"
+requestUpdateChannel = req "UpdateChannel" "fixture/UpdateChannel.yaml"
 
 requestCreateOriginEndpoint :: CreateOriginEndpoint -> TestTree
-requestCreateOriginEndpoint = req
-    "CreateOriginEndpoint"
-    "fixture/CreateOriginEndpoint.yaml"
+requestCreateOriginEndpoint =
+  req "CreateOriginEndpoint" "fixture/CreateOriginEndpoint.yaml"
 
 requestListOriginEndpoints :: ListOriginEndpoints -> TestTree
-requestListOriginEndpoints = req
-    "ListOriginEndpoints"
-    "fixture/ListOriginEndpoints.yaml"
+requestListOriginEndpoints =
+  req "ListOriginEndpoints" "fixture/ListOriginEndpoints.yaml"
 
 requestCreateChannel :: CreateChannel -> TestTree
-requestCreateChannel = req
-    "CreateChannel"
-    "fixture/CreateChannel.yaml"
+requestCreateChannel = req "CreateChannel" "fixture/CreateChannel.yaml"
 
 requestDescribeChannel :: DescribeChannel -> TestTree
-requestDescribeChannel = req
-    "DescribeChannel"
-    "fixture/DescribeChannel.yaml"
+requestDescribeChannel = req "DescribeChannel" "fixture/DescribeChannel.yaml"
 
 requestDeleteOriginEndpoint :: DeleteOriginEndpoint -> TestTree
-requestDeleteOriginEndpoint = req
-    "DeleteOriginEndpoint"
-    "fixture/DeleteOriginEndpoint.yaml"
+requestDeleteOriginEndpoint =
+  req "DeleteOriginEndpoint" "fixture/DeleteOriginEndpoint.yaml"
 
 requestUpdateOriginEndpoint :: UpdateOriginEndpoint -> TestTree
-requestUpdateOriginEndpoint = req
-    "UpdateOriginEndpoint"
-    "fixture/UpdateOriginEndpoint.yaml"
+requestUpdateOriginEndpoint =
+  req "UpdateOriginEndpoint" "fixture/UpdateOriginEndpoint.yaml"
 
 -- Responses
-
 responseRotateChannelCredentials :: RotateChannelCredentialsResponse -> TestTree
-responseRotateChannelCredentials = res
+responseRotateChannelCredentials =
+  res
     "RotateChannelCredentialsResponse"
     "fixture/RotateChannelCredentialsResponse.proto"
     mediaPackage
     (Proxy :: Proxy RotateChannelCredentials)
 
 responseDescribeOriginEndpoint :: DescribeOriginEndpointResponse -> TestTree
-responseDescribeOriginEndpoint = res
+responseDescribeOriginEndpoint =
+  res
     "DescribeOriginEndpointResponse"
     "fixture/DescribeOriginEndpointResponse.proto"
     mediaPackage
     (Proxy :: Proxy DescribeOriginEndpoint)
 
 responseListChannels :: ListChannelsResponse -> TestTree
-responseListChannels = res
+responseListChannels =
+  res
     "ListChannelsResponse"
     "fixture/ListChannelsResponse.proto"
     mediaPackage
     (Proxy :: Proxy ListChannels)
 
 responseDeleteChannel :: DeleteChannelResponse -> TestTree
-responseDeleteChannel = res
+responseDeleteChannel =
+  res
     "DeleteChannelResponse"
     "fixture/DeleteChannelResponse.proto"
     mediaPackage
     (Proxy :: Proxy DeleteChannel)
 
 responseUpdateChannel :: UpdateChannelResponse -> TestTree
-responseUpdateChannel = res
+responseUpdateChannel =
+  res
     "UpdateChannelResponse"
     "fixture/UpdateChannelResponse.proto"
     mediaPackage
     (Proxy :: Proxy UpdateChannel)
 
 responseCreateOriginEndpoint :: CreateOriginEndpointResponse -> TestTree
-responseCreateOriginEndpoint = res
+responseCreateOriginEndpoint =
+  res
     "CreateOriginEndpointResponse"
     "fixture/CreateOriginEndpointResponse.proto"
     mediaPackage
     (Proxy :: Proxy CreateOriginEndpoint)
 
 responseListOriginEndpoints :: ListOriginEndpointsResponse -> TestTree
-responseListOriginEndpoints = res
+responseListOriginEndpoints =
+  res
     "ListOriginEndpointsResponse"
     "fixture/ListOriginEndpointsResponse.proto"
     mediaPackage
     (Proxy :: Proxy ListOriginEndpoints)
 
 responseCreateChannel :: CreateChannelResponse -> TestTree
-responseCreateChannel = res
+responseCreateChannel =
+  res
     "CreateChannelResponse"
     "fixture/CreateChannelResponse.proto"
     mediaPackage
     (Proxy :: Proxy CreateChannel)
 
 responseDescribeChannel :: DescribeChannelResponse -> TestTree
-responseDescribeChannel = res
+responseDescribeChannel =
+  res
     "DescribeChannelResponse"
     "fixture/DescribeChannelResponse.proto"
     mediaPackage
     (Proxy :: Proxy DescribeChannel)
 
 responseDeleteOriginEndpoint :: DeleteOriginEndpointResponse -> TestTree
-responseDeleteOriginEndpoint = res
+responseDeleteOriginEndpoint =
+  res
     "DeleteOriginEndpointResponse"
     "fixture/DeleteOriginEndpointResponse.proto"
     mediaPackage
     (Proxy :: Proxy DeleteOriginEndpoint)
 
 responseUpdateOriginEndpoint :: UpdateOriginEndpointResponse -> TestTree
-responseUpdateOriginEndpoint = res
+responseUpdateOriginEndpoint =
+  res
     "UpdateOriginEndpointResponse"
     "fixture/UpdateOriginEndpointResponse.proto"
     mediaPackage

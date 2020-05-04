@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Route53AutoNaming.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,205 +10,171 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Route53AutoNaming.Types
-    (
     -- * Service Configuration
-      route53AutoNaming
-
+  ( route53AutoNaming
     -- * Errors
-    , _ResourceLimitExceeded
-    , _InvalidInput
-    , _NamespaceAlreadyExists
-    , _NamespaceNotFound
-    , _ServiceAlreadyExists
-    , _ResourceInUse
-    , _CustomHealthNotFound
-    , _InstanceNotFound
-    , _DuplicateRequest
-    , _ServiceNotFound
-    , _OperationNotFound
-
+  , _ResourceLimitExceeded
+  , _InvalidInput
+  , _NamespaceAlreadyExists
+  , _NamespaceNotFound
+  , _ServiceAlreadyExists
+  , _ResourceInUse
+  , _CustomHealthNotFound
+  , _InstanceNotFound
+  , _DuplicateRequest
+  , _ServiceNotFound
+  , _OperationNotFound
     -- * CustomHealthStatus
-    , CustomHealthStatus (..)
-
+  , CustomHealthStatus(..)
     -- * FilterCondition
-    , FilterCondition (..)
-
+  , FilterCondition(..)
     -- * HealthCheckType
-    , HealthCheckType (..)
-
+  , HealthCheckType(..)
     -- * HealthStatus
-    , HealthStatus (..)
-
+  , HealthStatus(..)
     -- * NamespaceFilterName
-    , NamespaceFilterName (..)
-
+  , NamespaceFilterName(..)
     -- * NamespaceType
-    , NamespaceType (..)
-
+  , NamespaceType(..)
     -- * OperationFilterName
-    , OperationFilterName (..)
-
+  , OperationFilterName(..)
     -- * OperationStatus
-    , OperationStatus (..)
-
+  , OperationStatus(..)
     -- * OperationTargetType
-    , OperationTargetType (..)
-
+  , OperationTargetType(..)
     -- * OperationType
-    , OperationType (..)
-
+  , OperationType(..)
     -- * RecordType
-    , RecordType (..)
-
+  , RecordType(..)
     -- * RoutingPolicy
-    , RoutingPolicy (..)
-
+  , RoutingPolicy(..)
     -- * ServiceFilterName
-    , ServiceFilterName (..)
-
+  , ServiceFilterName(..)
     -- * DNSConfig
-    , DNSConfig
-    , dnsConfig
-    , dcRoutingPolicy
-    , dcNamespaceId
-    , dcDNSRecords
-
+  , DNSConfig
+  , dnsConfig
+  , dcRoutingPolicy
+  , dcNamespaceId
+  , dcDNSRecords
     -- * DNSConfigChange
-    , DNSConfigChange
-    , dnsConfigChange
-    , dccDNSRecords
-
+  , DNSConfigChange
+  , dnsConfigChange
+  , dccDNSRecords
     -- * DNSProperties
-    , DNSProperties
-    , dnsProperties
-    , dpHostedZoneId
-
+  , DNSProperties
+  , dnsProperties
+  , dpHostedZoneId
     -- * DNSRecord
-    , DNSRecord
-    , dnsRecord
-    , drType
-    , drTTL
-
+  , DNSRecord
+  , dnsRecord
+  , drType
+  , drTTL
     -- * HealthCheckConfig
-    , HealthCheckConfig
-    , healthCheckConfig
-    , hccFailureThreshold
-    , hccResourcePath
-    , hccType
-
+  , HealthCheckConfig
+  , healthCheckConfig
+  , hccFailureThreshold
+  , hccResourcePath
+  , hccType
     -- * HealthCheckCustomConfig
-    , HealthCheckCustomConfig
-    , healthCheckCustomConfig
-    , hcccFailureThreshold
-
+  , HealthCheckCustomConfig
+  , healthCheckCustomConfig
+  , hcccFailureThreshold
     -- * Instance
-    , Instance
-    , instance'
-    , iCreatorRequestId
-    , iAttributes
-    , iId
-
+  , Instance
+  , instance'
+  , iCreatorRequestId
+  , iAttributes
+  , iId
     -- * InstanceSummary
-    , InstanceSummary
-    , instanceSummary
-    , isAttributes
-    , isId
-
+  , InstanceSummary
+  , instanceSummary
+  , isAttributes
+  , isId
     -- * Namespace
-    , Namespace
-    , namespace
-    , nARN
-    , nCreatorRequestId
-    , nCreateDate
-    , nServiceCount
-    , nName
-    , nId
-    , nType
-    , nDescription
-    , nProperties
-
+  , Namespace
+  , namespace
+  , nARN
+  , nCreatorRequestId
+  , nCreateDate
+  , nServiceCount
+  , nName
+  , nId
+  , nType
+  , nDescription
+  , nProperties
     -- * NamespaceFilter
-    , NamespaceFilter
-    , namespaceFilter
-    , nfCondition
-    , nfName
-    , nfValues
-
+  , NamespaceFilter
+  , namespaceFilter
+  , nfCondition
+  , nfName
+  , nfValues
     -- * NamespaceProperties
-    , NamespaceProperties
-    , namespaceProperties
-    , npDNSProperties
-
+  , NamespaceProperties
+  , namespaceProperties
+  , npDNSProperties
     -- * NamespaceSummary
-    , NamespaceSummary
-    , namespaceSummary
-    , nsARN
-    , nsName
-    , nsId
-    , nsType
-
+  , NamespaceSummary
+  , namespaceSummary
+  , nsARN
+  , nsName
+  , nsId
+  , nsType
     -- * Operation
-    , Operation
-    , operation
-    , oStatus
-    , oUpdateDate
-    , oCreateDate
-    , oTargets
-    , oErrorCode
-    , oId
-    , oType
-    , oErrorMessage
-
+  , Operation
+  , operation
+  , oStatus
+  , oUpdateDate
+  , oCreateDate
+  , oTargets
+  , oErrorCode
+  , oId
+  , oType
+  , oErrorMessage
     -- * OperationFilter
-    , OperationFilter
-    , operationFilter
-    , ofCondition
-    , ofName
-    , ofValues
-
+  , OperationFilter
+  , operationFilter
+  , ofCondition
+  , ofName
+  , ofValues
     -- * OperationSummary
-    , OperationSummary
-    , operationSummary
-    , osStatus
-    , osId
-
+  , OperationSummary
+  , operationSummary
+  , osStatus
+  , osId
     -- * ServiceChange
-    , ServiceChange
-    , serviceChange
-    , scHealthCheckConfig
-    , scDescription
-    , scDNSConfig
-
+  , ServiceChange
+  , serviceChange
+  , scHealthCheckConfig
+  , scDescription
+  , scDNSConfig
     -- * ServiceFilter
-    , ServiceFilter
-    , serviceFilter
-    , sfCondition
-    , sfName
-    , sfValues
-
+  , ServiceFilter
+  , serviceFilter
+  , sfCondition
+  , sfName
+  , sfValues
     -- * ServiceInfo
-    , ServiceInfo
-    , serviceInfo
-    , siInstanceCount
-    , siARN
-    , siHealthCheckConfig
-    , siCreatorRequestId
-    , siCreateDate
-    , siHealthCheckCustomConfig
-    , siName
-    , siId
-    , siDNSConfig
-    , siDescription
-
+  , ServiceInfo
+  , serviceInfo
+  , siInstanceCount
+  , siARN
+  , siHealthCheckConfig
+  , siCreatorRequestId
+  , siCreateDate
+  , siHealthCheckCustomConfig
+  , siName
+  , siId
+  , siDNSConfig
+  , siDescription
     -- * ServiceSummary
-    , ServiceSummary
-    , serviceSummary
-    , ssInstanceCount
-    , ssARN
-    , ssName
-    , ssId
-    , ssDescription
-    ) where
+  , ServiceSummary
+  , serviceSummary
+  , ssInstanceCount
+  , ssARN
+  , ssName
+  , ssId
+  , ssDescription
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -255,14 +220,13 @@ route53AutoNaming =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The resource can't be created because you've reached the limit on the number of resources.
 --
 --
-_ResourceLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceLimitExceeded ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceLimitExceeded =
   _MatchServiceError route53AutoNaming "ResourceLimitExceeded"
-
 
 -- | One or more specified values aren't valid. For example, when you're creating a namespace, the value of @Name@ might not be a valid DNS name.
 --
@@ -270,14 +234,13 @@ _ResourceLimitExceeded =
 _InvalidInput :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidInput = _MatchServiceError route53AutoNaming "InvalidInput"
 
-
 -- | The namespace that you're trying to create already exists.
 --
 --
-_NamespaceAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_NamespaceAlreadyExists ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _NamespaceAlreadyExists =
   _MatchServiceError route53AutoNaming "NamespaceAlreadyExists"
-
 
 -- | No namespace exists with the specified ID.
 --
@@ -285,14 +248,13 @@ _NamespaceAlreadyExists =
 _NamespaceNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _NamespaceNotFound = _MatchServiceError route53AutoNaming "NamespaceNotFound"
 
-
 -- | The service can't be created because a service with the same name already exists.
 --
 --
-_ServiceAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceAlreadyExists ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ServiceAlreadyExists =
   _MatchServiceError route53AutoNaming "ServiceAlreadyExists"
-
 
 -- | The specified resource can't be deleted because it contains other resources. For example, you can't delete a service that contains any instances.
 --
@@ -300,12 +262,11 @@ _ServiceAlreadyExists =
 _ResourceInUse :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceInUse = _MatchServiceError route53AutoNaming "ResourceInUse"
 
-
 -- | Prism for CustomHealthNotFound' errors.
-_CustomHealthNotFound :: AsError a => Getting (First ServiceError) a ServiceError
+_CustomHealthNotFound ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _CustomHealthNotFound =
   _MatchServiceError route53AutoNaming "CustomHealthNotFound"
-
 
 -- | No instance exists with the specified ID, or the instance was recently registered, and information about the instance hasn't propagated yet.
 --
@@ -313,13 +274,11 @@ _CustomHealthNotFound =
 _InstanceNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _InstanceNotFound = _MatchServiceError route53AutoNaming "InstanceNotFound"
 
-
 -- | The operation is already in progress.
 --
 --
 _DuplicateRequest :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateRequest = _MatchServiceError route53AutoNaming "DuplicateRequest"
-
 
 -- | No service exists with the specified ID.
 --
@@ -327,10 +286,8 @@ _DuplicateRequest = _MatchServiceError route53AutoNaming "DuplicateRequest"
 _ServiceNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceNotFound = _MatchServiceError route53AutoNaming "ServiceNotFound"
 
-
 -- | No operation exists with the specified ID.
 --
 --
 _OperationNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _OperationNotFound = _MatchServiceError route53AutoNaming "OperationNotFound"
-

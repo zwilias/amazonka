@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Batch
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -17,335 +16,278 @@
 -- As a fully managed service, AWS Batch enables developers, scientists, and engineers to run batch computing workloads of any scale. AWS Batch automatically provisions compute resources and optimizes the workload distribution based on the quantity and scale of the workloads. With AWS Batch, there is no need to install or manage batch computing software, which allows you to focus on analyzing results and solving problems. AWS Batch reduces operational complexities, saves time, and reduces costs, which makes it easy for developers, scientists, and engineers to run their batch jobs in the AWS Cloud.
 --
 module Network.AWS.Batch
-    (
     -- * Service Configuration
-      batch
-
+  ( batch
     -- * Errors
     -- $errors
-
     -- ** ServerException
-    , _ServerException
-
+  , _ServerException
     -- ** ClientException
-    , _ClientException
-
+  , _ClientException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** CreateComputeEnvironment
-    , module Network.AWS.Batch.CreateComputeEnvironment
-
+  , module Network.AWS.Batch.CreateComputeEnvironment
     -- ** RegisterJobDefinition
-    , module Network.AWS.Batch.RegisterJobDefinition
-
+  , module Network.AWS.Batch.RegisterJobDefinition
     -- ** SubmitJob
-    , module Network.AWS.Batch.SubmitJob
-
+  , module Network.AWS.Batch.SubmitJob
     -- ** ListJobs
-    , module Network.AWS.Batch.ListJobs
-
+  , module Network.AWS.Batch.ListJobs
     -- ** TerminateJob
-    , module Network.AWS.Batch.TerminateJob
-
+  , module Network.AWS.Batch.TerminateJob
     -- ** DescribeJobs
-    , module Network.AWS.Batch.DescribeJobs
-
+  , module Network.AWS.Batch.DescribeJobs
     -- ** DeleteComputeEnvironment
-    , module Network.AWS.Batch.DeleteComputeEnvironment
-
+  , module Network.AWS.Batch.DeleteComputeEnvironment
     -- ** UpdateComputeEnvironment
-    , module Network.AWS.Batch.UpdateComputeEnvironment
-
+  , module Network.AWS.Batch.UpdateComputeEnvironment
     -- ** DescribeJobDefinitions
-    , module Network.AWS.Batch.DescribeJobDefinitions
-
+  , module Network.AWS.Batch.DescribeJobDefinitions
     -- ** UpdateJobQueue
-    , module Network.AWS.Batch.UpdateJobQueue
-
+  , module Network.AWS.Batch.UpdateJobQueue
     -- ** DeleteJobQueue
-    , module Network.AWS.Batch.DeleteJobQueue
-
+  , module Network.AWS.Batch.DeleteJobQueue
     -- ** CreateJobQueue
-    , module Network.AWS.Batch.CreateJobQueue
-
+  , module Network.AWS.Batch.CreateJobQueue
     -- ** DeregisterJobDefinition
-    , module Network.AWS.Batch.DeregisterJobDefinition
-
+  , module Network.AWS.Batch.DeregisterJobDefinition
     -- ** DescribeJobQueues
-    , module Network.AWS.Batch.DescribeJobQueues
-
+  , module Network.AWS.Batch.DescribeJobQueues
     -- ** DescribeComputeEnvironments
-    , module Network.AWS.Batch.DescribeComputeEnvironments
-
+  , module Network.AWS.Batch.DescribeComputeEnvironments
     -- ** CancelJob
-    , module Network.AWS.Batch.CancelJob
-
+  , module Network.AWS.Batch.CancelJob
     -- * Types
-
     -- ** ArrayJobDependency
-    , ArrayJobDependency (..)
-
+  , ArrayJobDependency(..)
     -- ** CEState
-    , CEState (..)
-
+  , CEState(..)
     -- ** CEStatus
-    , CEStatus (..)
-
+  , CEStatus(..)
     -- ** CEType
-    , CEType (..)
-
+  , CEType(..)
     -- ** CRType
-    , CRType (..)
-
+  , CRType(..)
     -- ** JQState
-    , JQState (..)
-
+  , JQState(..)
     -- ** JQStatus
-    , JQStatus (..)
-
+  , JQStatus(..)
     -- ** JobDefinitionType
-    , JobDefinitionType (..)
-
+  , JobDefinitionType(..)
     -- ** JobStatus
-    , JobStatus (..)
-
+  , JobStatus(..)
     -- ** ArrayProperties
-    , ArrayProperties
-    , arrayProperties
-    , apSize
-
+  , ArrayProperties
+  , arrayProperties
+  , apSize
     -- ** ArrayPropertiesDetail
-    , ArrayPropertiesDetail
-    , arrayPropertiesDetail
-    , apdSize
-    , apdStatusSummary
-    , apdIndex
-
+  , ArrayPropertiesDetail
+  , arrayPropertiesDetail
+  , apdSize
+  , apdStatusSummary
+  , apdIndex
     -- ** ArrayPropertiesSummary
-    , ArrayPropertiesSummary
-    , arrayPropertiesSummary
-    , apsSize
-    , apsIndex
-
+  , ArrayPropertiesSummary
+  , arrayPropertiesSummary
+  , apsSize
+  , apsIndex
     -- ** AttemptContainerDetail
-    , AttemptContainerDetail
-    , attemptContainerDetail
-    , acdTaskARN
-    , acdContainerInstanceARN
-    , acdReason
-    , acdLogStreamName
-    , acdExitCode
-
+  , AttemptContainerDetail
+  , attemptContainerDetail
+  , acdTaskARN
+  , acdContainerInstanceARN
+  , acdReason
+  , acdLogStreamName
+  , acdExitCode
     -- ** AttemptDetail
-    , AttemptDetail
-    , attemptDetail
-    , adStoppedAt
-    , adStartedAt
-    , adContainer
-    , adStatusReason
-
+  , AttemptDetail
+  , attemptDetail
+  , adStoppedAt
+  , adStartedAt
+  , adContainer
+  , adStatusReason
     -- ** ComputeEnvironmentDetail
-    , ComputeEnvironmentDetail
-    , computeEnvironmentDetail
-    , cedStatus
-    , cedState
-    , cedComputeResources
-    , cedStatusReason
-    , cedType
-    , cedServiceRole
-    , cedComputeEnvironmentName
-    , cedComputeEnvironmentARN
-    , cedEcsClusterARN
-
+  , ComputeEnvironmentDetail
+  , computeEnvironmentDetail
+  , cedStatus
+  , cedState
+  , cedComputeResources
+  , cedStatusReason
+  , cedType
+  , cedServiceRole
+  , cedComputeEnvironmentName
+  , cedComputeEnvironmentARN
+  , cedEcsClusterARN
     -- ** ComputeEnvironmentOrder
-    , ComputeEnvironmentOrder
-    , computeEnvironmentOrder
-    , ceoOrder
-    , ceoComputeEnvironment
-
+  , ComputeEnvironmentOrder
+  , computeEnvironmentOrder
+  , ceoOrder
+  , ceoComputeEnvironment
     -- ** ComputeResource
-    , ComputeResource
-    , computeResource
-    , crEc2KeyPair
-    , crBidPercentage
-    , crSpotIAMFleetRole
-    , crImageId
-    , crDesiredvCPUs
-    , crTags
-    , crType
-    , crMinvCPUs
-    , crMaxvCPUs
-    , crInstanceTypes
-    , crSubnets
-    , crSecurityGroupIds
-    , crInstanceRole
-
+  , ComputeResource
+  , computeResource
+  , crEc2KeyPair
+  , crBidPercentage
+  , crSpotIAMFleetRole
+  , crImageId
+  , crDesiredvCPUs
+  , crTags
+  , crType
+  , crMinvCPUs
+  , crMaxvCPUs
+  , crInstanceTypes
+  , crSubnets
+  , crSecurityGroupIds
+  , crInstanceRole
     -- ** ComputeResourceUpdate
-    , ComputeResourceUpdate
-    , computeResourceUpdate
-    , cruMinvCPUs
-    , cruMaxvCPUs
-    , cruDesiredvCPUs
-
+  , ComputeResourceUpdate
+  , computeResourceUpdate
+  , cruMinvCPUs
+  , cruMaxvCPUs
+  , cruDesiredvCPUs
     -- ** ContainerDetail
-    , ContainerDetail
-    , containerDetail
-    , cdImage
-    , cdCommand
-    , cdEnvironment
-    , cdTaskARN
-    , cdUlimits
-    , cdContainerInstanceARN
-    , cdPrivileged
-    , cdJobRoleARN
-    , cdMemory
-    , cdUser
-    , cdReason
-    , cdLogStreamName
-    , cdMountPoints
-    , cdExitCode
-    , cdVcpus
-    , cdReadonlyRootFilesystem
-    , cdVolumes
-
+  , ContainerDetail
+  , containerDetail
+  , cdImage
+  , cdCommand
+  , cdEnvironment
+  , cdTaskARN
+  , cdUlimits
+  , cdContainerInstanceARN
+  , cdPrivileged
+  , cdJobRoleARN
+  , cdMemory
+  , cdUser
+  , cdReason
+  , cdLogStreamName
+  , cdMountPoints
+  , cdExitCode
+  , cdVcpus
+  , cdReadonlyRootFilesystem
+  , cdVolumes
     -- ** ContainerOverrides
-    , ContainerOverrides
-    , containerOverrides
-    , coCommand
-    , coEnvironment
-    , coMemory
-    , coVcpus
-
+  , ContainerOverrides
+  , containerOverrides
+  , coCommand
+  , coEnvironment
+  , coMemory
+  , coVcpus
     -- ** ContainerProperties
-    , ContainerProperties
-    , containerProperties
-    , cpCommand
-    , cpEnvironment
-    , cpUlimits
-    , cpPrivileged
-    , cpJobRoleARN
-    , cpUser
-    , cpMountPoints
-    , cpReadonlyRootFilesystem
-    , cpVolumes
-    , cpImage
-    , cpVcpus
-    , cpMemory
-
+  , ContainerProperties
+  , containerProperties
+  , cpCommand
+  , cpEnvironment
+  , cpUlimits
+  , cpPrivileged
+  , cpJobRoleARN
+  , cpUser
+  , cpMountPoints
+  , cpReadonlyRootFilesystem
+  , cpVolumes
+  , cpImage
+  , cpVcpus
+  , cpMemory
     -- ** ContainerSummary
-    , ContainerSummary
-    , containerSummary
-    , csReason
-    , csExitCode
-
+  , ContainerSummary
+  , containerSummary
+  , csReason
+  , csExitCode
     -- ** Host
-    , Host
-    , host
-    , hSourcePath
-
+  , Host
+  , host
+  , hSourcePath
     -- ** JobDefinition
-    , JobDefinition
-    , jobDefinition
-    , jddStatus
-    , jddRetryStrategy
-    , jddParameters
-    , jddTimeout
-    , jddContainerProperties
-    , jddJobDefinitionName
-    , jddJobDefinitionARN
-    , jddRevision
-    , jddType
-
+  , JobDefinition
+  , jobDefinition
+  , jddStatus
+  , jddRetryStrategy
+  , jddParameters
+  , jddTimeout
+  , jddContainerProperties
+  , jddJobDefinitionName
+  , jddJobDefinitionARN
+  , jddRevision
+  , jddType
     -- ** JobDependency
-    , JobDependency
-    , jobDependency
-    , jJobId
-    , jType
-
+  , JobDependency
+  , jobDependency
+  , jJobId
+  , jType
     -- ** JobDetail
-    , JobDetail
-    , jobDetail
-    , jdStoppedAt
-    , jdCreatedAt
-    , jdRetryStrategy
-    , jdAttempts
-    , jdDependsOn
-    , jdContainer
-    , jdParameters
-    , jdStatusReason
-    , jdArrayProperties
-    , jdTimeout
-    , jdJobName
-    , jdJobId
-    , jdJobQueue
-    , jdStatus
-    , jdStartedAt
-    , jdJobDefinition
-
+  , JobDetail
+  , jobDetail
+  , jdStoppedAt
+  , jdCreatedAt
+  , jdRetryStrategy
+  , jdAttempts
+  , jdDependsOn
+  , jdContainer
+  , jdParameters
+  , jdStatusReason
+  , jdArrayProperties
+  , jdTimeout
+  , jdJobName
+  , jdJobId
+  , jdJobQueue
+  , jdStatus
+  , jdStartedAt
+  , jdJobDefinition
     -- ** JobQueueDetail
-    , JobQueueDetail
-    , jobQueueDetail
-    , jqdStatus
-    , jqdStatusReason
-    , jqdJobQueueName
-    , jqdJobQueueARN
-    , jqdState
-    , jqdPriority
-    , jqdComputeEnvironmentOrder
-
+  , JobQueueDetail
+  , jobQueueDetail
+  , jqdStatus
+  , jqdStatusReason
+  , jqdJobQueueName
+  , jqdJobQueueARN
+  , jqdState
+  , jqdPriority
+  , jqdComputeEnvironmentOrder
     -- ** JobSummary
-    , JobSummary
-    , jobSummary
-    , jsStoppedAt
-    , jsStatus
-    , jsCreatedAt
-    , jsStartedAt
-    , jsContainer
-    , jsStatusReason
-    , jsArrayProperties
-    , jsJobId
-    , jsJobName
-
+  , JobSummary
+  , jobSummary
+  , jsStoppedAt
+  , jsStatus
+  , jsCreatedAt
+  , jsStartedAt
+  , jsContainer
+  , jsStatusReason
+  , jsArrayProperties
+  , jsJobId
+  , jsJobName
     -- ** JobTimeout
-    , JobTimeout
-    , jobTimeout
-    , jtAttemptDurationSeconds
-
+  , JobTimeout
+  , jobTimeout
+  , jtAttemptDurationSeconds
     -- ** KeyValuePair
-    , KeyValuePair
-    , keyValuePair
-    , kvpValue
-    , kvpName
-
+  , KeyValuePair
+  , keyValuePair
+  , kvpValue
+  , kvpName
     -- ** MountPoint
-    , MountPoint
-    , mountPoint
-    , mpContainerPath
-    , mpSourceVolume
-    , mpReadOnly
-
+  , MountPoint
+  , mountPoint
+  , mpContainerPath
+  , mpSourceVolume
+  , mpReadOnly
     -- ** RetryStrategy
-    , RetryStrategy
-    , retryStrategy
-    , rsAttempts
-
+  , RetryStrategy
+  , retryStrategy
+  , rsAttempts
     -- ** Ulimit
-    , Ulimit
-    , ulimit
-    , uHardLimit
-    , uName
-    , uSoftLimit
-
+  , Ulimit
+  , ulimit
+  , uHardLimit
+  , uName
+  , uSoftLimit
     -- ** Volume
-    , Volume
-    , volume
-    , vName
-    , vHost
-    ) where
+  , Volume
+  , volume
+  , vName
+  , vHost
+  ) where
 
 import Network.AWS.Batch.CancelJob
 import Network.AWS.Batch.CreateComputeEnvironment
@@ -365,14 +307,12 @@ import Network.AWS.Batch.Types
 import Network.AWS.Batch.UpdateComputeEnvironment
 import Network.AWS.Batch.UpdateJobQueue
 import Network.AWS.Batch.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Batch'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -389,7 +329,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -2,11 +2,9 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudWatchEvents.Types.Sum
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,27 +22,34 @@ data RuleState
   | Enabled
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText RuleState where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        e -> fromTextError $ "Failure parsing RuleState from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+  parser =
+    takeLowerText >>= \case
+      "disabled" -> pure Disabled
+      "enabled" -> pure Enabled
+      e ->
+        fromTextError $
+        "Failure parsing RuleState from value: '" <>
+        e <> "'. Accepted values: disabled, enabled"
 
 instance ToText RuleState where
-    toText = \case
-        Disabled -> "DISABLED"
-        Enabled -> "ENABLED"
+  toText =
+    \case
+      Disabled -> "DISABLED"
+      Enabled -> "ENABLED"
 
-instance Hashable     RuleState
-instance NFData       RuleState
+instance Hashable RuleState
+
+instance NFData RuleState
+
 instance ToByteString RuleState
-instance ToQuery      RuleState
-instance ToHeader     RuleState
+
+instance ToQuery RuleState
+
+instance ToHeader RuleState
 
 instance ToJSON RuleState where
-    toJSON = toJSONText
+  toJSON = toJSONText
 
 instance FromJSON RuleState where
-    parseJSON = parseJSONText "RuleState"
+  parseJSON = parseJSONText "RuleState"

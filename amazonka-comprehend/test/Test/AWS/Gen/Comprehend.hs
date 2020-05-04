@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.Comprehend
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -62,7 +60,6 @@ import Test.Tasty
 --             detectKeyPhrases
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseBatchDetectSentiment $
 --             batchDetectSentimentResponse
@@ -99,138 +96,134 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestBatchDetectSentiment :: BatchDetectSentiment -> TestTree
-requestBatchDetectSentiment = req
-    "BatchDetectSentiment"
-    "fixture/BatchDetectSentiment.yaml"
+requestBatchDetectSentiment =
+  req "BatchDetectSentiment" "fixture/BatchDetectSentiment.yaml"
 
 requestStartTopicsDetectionJob :: StartTopicsDetectionJob -> TestTree
-requestStartTopicsDetectionJob = req
-    "StartTopicsDetectionJob"
-    "fixture/StartTopicsDetectionJob.yaml"
+requestStartTopicsDetectionJob =
+  req "StartTopicsDetectionJob" "fixture/StartTopicsDetectionJob.yaml"
 
 requestBatchDetectKeyPhrases :: BatchDetectKeyPhrases -> TestTree
-requestBatchDetectKeyPhrases = req
-    "BatchDetectKeyPhrases"
-    "fixture/BatchDetectKeyPhrases.yaml"
+requestBatchDetectKeyPhrases =
+  req "BatchDetectKeyPhrases" "fixture/BatchDetectKeyPhrases.yaml"
 
 requestDetectSentiment :: DetectSentiment -> TestTree
-requestDetectSentiment = req
-    "DetectSentiment"
-    "fixture/DetectSentiment.yaml"
+requestDetectSentiment = req "DetectSentiment" "fixture/DetectSentiment.yaml"
 
 requestBatchDetectEntities :: BatchDetectEntities -> TestTree
-requestBatchDetectEntities = req
-    "BatchDetectEntities"
-    "fixture/BatchDetectEntities.yaml"
+requestBatchDetectEntities =
+  req "BatchDetectEntities" "fixture/BatchDetectEntities.yaml"
 
 requestDetectDominantLanguage :: DetectDominantLanguage -> TestTree
-requestDetectDominantLanguage = req
-    "DetectDominantLanguage"
-    "fixture/DetectDominantLanguage.yaml"
+requestDetectDominantLanguage =
+  req "DetectDominantLanguage" "fixture/DetectDominantLanguage.yaml"
 
 requestDescribeTopicsDetectionJob :: DescribeTopicsDetectionJob -> TestTree
-requestDescribeTopicsDetectionJob = req
-    "DescribeTopicsDetectionJob"
-    "fixture/DescribeTopicsDetectionJob.yaml"
+requestDescribeTopicsDetectionJob =
+  req "DescribeTopicsDetectionJob" "fixture/DescribeTopicsDetectionJob.yaml"
 
 requestDetectEntities :: DetectEntities -> TestTree
-requestDetectEntities = req
-    "DetectEntities"
-    "fixture/DetectEntities.yaml"
+requestDetectEntities = req "DetectEntities" "fixture/DetectEntities.yaml"
 
 requestListTopicsDetectionJobs :: ListTopicsDetectionJobs -> TestTree
-requestListTopicsDetectionJobs = req
-    "ListTopicsDetectionJobs"
-    "fixture/ListTopicsDetectionJobs.yaml"
+requestListTopicsDetectionJobs =
+  req "ListTopicsDetectionJobs" "fixture/ListTopicsDetectionJobs.yaml"
 
 requestBatchDetectDominantLanguage :: BatchDetectDominantLanguage -> TestTree
-requestBatchDetectDominantLanguage = req
-    "BatchDetectDominantLanguage"
-    "fixture/BatchDetectDominantLanguage.yaml"
+requestBatchDetectDominantLanguage =
+  req "BatchDetectDominantLanguage" "fixture/BatchDetectDominantLanguage.yaml"
 
 requestDetectKeyPhrases :: DetectKeyPhrases -> TestTree
-requestDetectKeyPhrases = req
-    "DetectKeyPhrases"
-    "fixture/DetectKeyPhrases.yaml"
+requestDetectKeyPhrases = req "DetectKeyPhrases" "fixture/DetectKeyPhrases.yaml"
 
 -- Responses
-
 responseBatchDetectSentiment :: BatchDetectSentimentResponse -> TestTree
-responseBatchDetectSentiment = res
+responseBatchDetectSentiment =
+  res
     "BatchDetectSentimentResponse"
     "fixture/BatchDetectSentimentResponse.proto"
     comprehend
     (Proxy :: Proxy BatchDetectSentiment)
 
 responseStartTopicsDetectionJob :: StartTopicsDetectionJobResponse -> TestTree
-responseStartTopicsDetectionJob = res
+responseStartTopicsDetectionJob =
+  res
     "StartTopicsDetectionJobResponse"
     "fixture/StartTopicsDetectionJobResponse.proto"
     comprehend
     (Proxy :: Proxy StartTopicsDetectionJob)
 
 responseBatchDetectKeyPhrases :: BatchDetectKeyPhrasesResponse -> TestTree
-responseBatchDetectKeyPhrases = res
+responseBatchDetectKeyPhrases =
+  res
     "BatchDetectKeyPhrasesResponse"
     "fixture/BatchDetectKeyPhrasesResponse.proto"
     comprehend
     (Proxy :: Proxy BatchDetectKeyPhrases)
 
 responseDetectSentiment :: DetectSentimentResponse -> TestTree
-responseDetectSentiment = res
+responseDetectSentiment =
+  res
     "DetectSentimentResponse"
     "fixture/DetectSentimentResponse.proto"
     comprehend
     (Proxy :: Proxy DetectSentiment)
 
 responseBatchDetectEntities :: BatchDetectEntitiesResponse -> TestTree
-responseBatchDetectEntities = res
+responseBatchDetectEntities =
+  res
     "BatchDetectEntitiesResponse"
     "fixture/BatchDetectEntitiesResponse.proto"
     comprehend
     (Proxy :: Proxy BatchDetectEntities)
 
 responseDetectDominantLanguage :: DetectDominantLanguageResponse -> TestTree
-responseDetectDominantLanguage = res
+responseDetectDominantLanguage =
+  res
     "DetectDominantLanguageResponse"
     "fixture/DetectDominantLanguageResponse.proto"
     comprehend
     (Proxy :: Proxy DetectDominantLanguage)
 
-responseDescribeTopicsDetectionJob :: DescribeTopicsDetectionJobResponse -> TestTree
-responseDescribeTopicsDetectionJob = res
+responseDescribeTopicsDetectionJob ::
+     DescribeTopicsDetectionJobResponse -> TestTree
+responseDescribeTopicsDetectionJob =
+  res
     "DescribeTopicsDetectionJobResponse"
     "fixture/DescribeTopicsDetectionJobResponse.proto"
     comprehend
     (Proxy :: Proxy DescribeTopicsDetectionJob)
 
 responseDetectEntities :: DetectEntitiesResponse -> TestTree
-responseDetectEntities = res
+responseDetectEntities =
+  res
     "DetectEntitiesResponse"
     "fixture/DetectEntitiesResponse.proto"
     comprehend
     (Proxy :: Proxy DetectEntities)
 
 responseListTopicsDetectionJobs :: ListTopicsDetectionJobsResponse -> TestTree
-responseListTopicsDetectionJobs = res
+responseListTopicsDetectionJobs =
+  res
     "ListTopicsDetectionJobsResponse"
     "fixture/ListTopicsDetectionJobsResponse.proto"
     comprehend
     (Proxy :: Proxy ListTopicsDetectionJobs)
 
-responseBatchDetectDominantLanguage :: BatchDetectDominantLanguageResponse -> TestTree
-responseBatchDetectDominantLanguage = res
+responseBatchDetectDominantLanguage ::
+     BatchDetectDominantLanguageResponse -> TestTree
+responseBatchDetectDominantLanguage =
+  res
     "BatchDetectDominantLanguageResponse"
     "fixture/BatchDetectDominantLanguageResponse.proto"
     comprehend
     (Proxy :: Proxy BatchDetectDominantLanguage)
 
 responseDetectKeyPhrases :: DetectKeyPhrasesResponse -> TestTree
-responseDetectKeyPhrases = res
+responseDetectKeyPhrases =
+  res
     "DetectKeyPhrasesResponse"
     "fixture/DetectKeyPhrasesResponse.proto"
     comprehend

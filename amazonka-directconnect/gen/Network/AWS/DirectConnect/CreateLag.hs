@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DirectConnect.CreateLag
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,34 +28,32 @@
 -- If the AWS account used to create a LAG is a registered AWS Direct Connect partner, the LAG is automatically enabled to host sub-connections. For a LAG owned by a partner, any associated virtual interfaces cannot be directly configured.
 --
 module Network.AWS.DirectConnect.CreateLag
-    (
     -- * Creating a Request
-      createLag
-    , CreateLag
+  ( createLag
+  , CreateLag
     -- * Request Lenses
-    , clConnectionId
-    , clNumberOfConnections
-    , clLocation
-    , clConnectionsBandwidth
-    , clLagName
-
+  , clConnectionId
+  , clNumberOfConnections
+  , clLocation
+  , clConnectionsBandwidth
+  , clLagName
     -- * Destructuring the Response
-    , lag
-    , Lag
+  , lag
+  , Lag
     -- * Response Lenses
-    , lagLagId
-    , lagConnectionsBandwidth
-    , lagMinimumLinks
-    , lagLagName
-    , lagLocation
-    , lagConnections
-    , lagAwsDevice
-    , lagAllowsHostedConnections
-    , lagNumberOfConnections
-    , lagLagState
-    , lagOwnerAccount
-    , lagRegion
-    ) where
+  , lagLagId
+  , lagConnectionsBandwidth
+  , lagMinimumLinks
+  , lagLagName
+  , lagLocation
+  , lagConnections
+  , lagAwsDevice
+  , lagAllowsHostedConnections
+  , lagNumberOfConnections
+  , lagLagState
+  , lagOwnerAccount
+  , lagRegion
+  ) where
 
 import Network.AWS.DirectConnect.Types
 import Network.AWS.DirectConnect.Types.Product
@@ -71,14 +67,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createLag' smart constructor.
-data CreateLag = CreateLag'
-  { _clConnectionId         :: !(Maybe Text)
-  , _clNumberOfConnections  :: !Int
-  , _clLocation             :: !Text
-  , _clConnectionsBandwidth :: !Text
-  , _clLagName              :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLag =
+  CreateLag'
+    { _clConnectionId         :: !(Maybe Text)
+    , _clNumberOfConnections  :: !Int
+    , _clLocation             :: !Text
+    , _clConnectionsBandwidth :: !Text
+    , _clLagName              :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLag' with the minimum fields required to make a request.
 --
@@ -93,12 +90,12 @@ data CreateLag = CreateLag'
 -- * 'clConnectionsBandwidth' - The bandwidth of the individual physical connections bundled by the LAG. Default: None Available values: 1Gbps, 10Gbps
 --
 -- * 'clLagName' - The name of the LAG. Example: "@3x10G LAG to AWS@ " Default: None
-createLag
-    :: Int -- ^ 'clNumberOfConnections'
-    -> Text -- ^ 'clLocation'
-    -> Text -- ^ 'clConnectionsBandwidth'
-    -> Text -- ^ 'clLagName'
-    -> CreateLag
+createLag ::
+     Int -- ^ 'clNumberOfConnections'
+  -> Text -- ^ 'clLocation'
+  -> Text -- ^ 'clConnectionsBandwidth'
+  -> Text -- ^ 'clLagName'
+  -> CreateLag
 createLag pNumberOfConnections_ pLocation_ pConnectionsBandwidth_ pLagName_ =
   CreateLag'
     { _clConnectionId = Nothing
@@ -108,59 +105,58 @@ createLag pNumberOfConnections_ pLocation_ pConnectionsBandwidth_ pLagName_ =
     , _clLagName = pLagName_
     }
 
-
 -- | The ID of an existing connection to migrate to the LAG. Default: None
 clConnectionId :: Lens' CreateLag (Maybe Text)
-clConnectionId = lens _clConnectionId (\ s a -> s{_clConnectionId = a})
+clConnectionId = lens _clConnectionId (\s a -> s {_clConnectionId = a})
 
 -- | The number of physical connections initially provisioned and bundled by the LAG. Default: None
 clNumberOfConnections :: Lens' CreateLag Int
-clNumberOfConnections = lens _clNumberOfConnections (\ s a -> s{_clNumberOfConnections = a})
+clNumberOfConnections =
+  lens _clNumberOfConnections (\s a -> s {_clNumberOfConnections = a})
 
 -- | The AWS Direct Connect location in which the LAG should be allocated. Example: EqSV5 Default: None
 clLocation :: Lens' CreateLag Text
-clLocation = lens _clLocation (\ s a -> s{_clLocation = a})
+clLocation = lens _clLocation (\s a -> s {_clLocation = a})
 
 -- | The bandwidth of the individual physical connections bundled by the LAG. Default: None Available values: 1Gbps, 10Gbps
 clConnectionsBandwidth :: Lens' CreateLag Text
-clConnectionsBandwidth = lens _clConnectionsBandwidth (\ s a -> s{_clConnectionsBandwidth = a})
+clConnectionsBandwidth =
+  lens _clConnectionsBandwidth (\s a -> s {_clConnectionsBandwidth = a})
 
 -- | The name of the LAG. Example: "@3x10G LAG to AWS@ " Default: None
 clLagName :: Lens' CreateLag Text
-clLagName = lens _clLagName (\ s a -> s{_clLagName = a})
+clLagName = lens _clLagName (\s a -> s {_clLagName = a})
 
 instance AWSRequest CreateLag where
-        type Rs CreateLag = Lag
-        request = postJSON directConnect
-        response = receiveJSON (\ s h x -> eitherParseJSON x)
+  type Rs CreateLag = Lag
+  request = postJSON directConnect
+  response = receiveJSON (\s h x -> eitherParseJSON x)
 
-instance Hashable CreateLag where
+instance Hashable CreateLag
 
-instance NFData CreateLag where
+instance NFData CreateLag
 
 instance ToHeaders CreateLag where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("OvertureService.CreateLag" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("OvertureService.CreateLag" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateLag where
-        toJSON CreateLag'{..}
-          = object
-              (catMaybes
-                 [("connectionId" .=) <$> _clConnectionId,
-                  Just
-                    ("numberOfConnections" .= _clNumberOfConnections),
-                  Just ("location" .= _clLocation),
-                  Just
-                    ("connectionsBandwidth" .= _clConnectionsBandwidth),
-                  Just ("lagName" .= _clLagName)])
+  toJSON CreateLag' {..} =
+    object
+      (catMaybes
+         [ ("connectionId" .=) <$> _clConnectionId
+         , Just ("numberOfConnections" .= _clNumberOfConnections)
+         , Just ("location" .= _clLocation)
+         , Just ("connectionsBandwidth" .= _clConnectionsBandwidth)
+         , Just ("lagName" .= _clLagName)
+         ])
 
 instance ToPath CreateLag where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateLag where
-        toQuery = const mempty
+  toQuery = const mempty

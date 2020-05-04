@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Lambda.PutFunctionConcurrency
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,20 +20,18 @@
 --
 --
 module Network.AWS.Lambda.PutFunctionConcurrency
-    (
     -- * Creating a Request
-      putFunctionConcurrency
-    , PutFunctionConcurrency
+  ( putFunctionConcurrency
+  , PutFunctionConcurrency
     -- * Request Lenses
-    , pfcFunctionName
-    , pfcReservedConcurrentExecutions
-
+  , pfcFunctionName
+  , pfcReservedConcurrentExecutions
     -- * Destructuring the Response
-    , concurrency
-    , Concurrency
+  , concurrency
+  , Concurrency
     -- * Response Lenses
-    , cReservedConcurrentExecutions
-    ) where
+  , cReservedConcurrentExecutions
+  ) where
 
 import Network.AWS.Lambda.Types
 import Network.AWS.Lambda.Types.Product
@@ -45,11 +41,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putFunctionConcurrency' smart constructor.
-data PutFunctionConcurrency = PutFunctionConcurrency'
-  { _pfcFunctionName                 :: !Text
-  , _pfcReservedConcurrentExecutions :: !Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutFunctionConcurrency =
+  PutFunctionConcurrency'
+    { _pfcFunctionName                 :: !Text
+    , _pfcReservedConcurrentExecutions :: !Nat
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutFunctionConcurrency' with the minimum fields required to make a request.
 --
@@ -58,50 +55,51 @@ data PutFunctionConcurrency = PutFunctionConcurrency'
 -- * 'pfcFunctionName' - The name of the function you are setting concurrent execution limits on. For more information, see 'concurrent-executions' .
 --
 -- * 'pfcReservedConcurrentExecutions' - The concurrent execution limit reserved for this function. For more information, see 'concurrent-executions' .
-putFunctionConcurrency
-    :: Text -- ^ 'pfcFunctionName'
-    -> Natural -- ^ 'pfcReservedConcurrentExecutions'
-    -> PutFunctionConcurrency
+putFunctionConcurrency ::
+     Text -- ^ 'pfcFunctionName'
+  -> Natural -- ^ 'pfcReservedConcurrentExecutions'
+  -> PutFunctionConcurrency
 putFunctionConcurrency pFunctionName_ pReservedConcurrentExecutions_ =
   PutFunctionConcurrency'
     { _pfcFunctionName = pFunctionName_
     , _pfcReservedConcurrentExecutions = _Nat # pReservedConcurrentExecutions_
     }
 
-
 -- | The name of the function you are setting concurrent execution limits on. For more information, see 'concurrent-executions' .
 pfcFunctionName :: Lens' PutFunctionConcurrency Text
-pfcFunctionName = lens _pfcFunctionName (\ s a -> s{_pfcFunctionName = a})
+pfcFunctionName = lens _pfcFunctionName (\s a -> s {_pfcFunctionName = a})
 
 -- | The concurrent execution limit reserved for this function. For more information, see 'concurrent-executions' .
 pfcReservedConcurrentExecutions :: Lens' PutFunctionConcurrency Natural
-pfcReservedConcurrentExecutions = lens _pfcReservedConcurrentExecutions (\ s a -> s{_pfcReservedConcurrentExecutions = a}) . _Nat
+pfcReservedConcurrentExecutions =
+  lens
+    _pfcReservedConcurrentExecutions
+    (\s a -> s {_pfcReservedConcurrentExecutions = a}) .
+  _Nat
 
 instance AWSRequest PutFunctionConcurrency where
-        type Rs PutFunctionConcurrency = Concurrency
-        request = putJSON lambda
-        response = receiveJSON (\ s h x -> eitherParseJSON x)
+  type Rs PutFunctionConcurrency = Concurrency
+  request = putJSON lambda
+  response = receiveJSON (\s h x -> eitherParseJSON x)
 
-instance Hashable PutFunctionConcurrency where
+instance Hashable PutFunctionConcurrency
 
-instance NFData PutFunctionConcurrency where
+instance NFData PutFunctionConcurrency
 
 instance ToHeaders PutFunctionConcurrency where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToJSON PutFunctionConcurrency where
-        toJSON PutFunctionConcurrency'{..}
-          = object
-              (catMaybes
-                 [Just
-                    ("ReservedConcurrentExecutions" .=
-                       _pfcReservedConcurrentExecutions)])
+  toJSON PutFunctionConcurrency' {..} =
+    object
+      (catMaybes
+         [ Just
+             ("ReservedConcurrentExecutions" .= _pfcReservedConcurrentExecutions)
+         ])
 
 instance ToPath PutFunctionConcurrency where
-        toPath PutFunctionConcurrency'{..}
-          = mconcat
-              ["/2017-10-31/functions/", toBS _pfcFunctionName,
-               "/concurrency"]
+  toPath PutFunctionConcurrency' {..} =
+    mconcat ["/2017-10-31/functions/", toBS _pfcFunctionName, "/concurrency"]
 
 instance ToQuery PutFunctionConcurrency where
-        toQuery = const mempty
+  toQuery = const mempty

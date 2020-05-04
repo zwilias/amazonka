@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Pinpoint
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -21,1152 +20,978 @@
 -- With Amazon Pinpoint, there are no upfront setup costs, and no fixed monthly cost. You only pay for the number of users your campaign targets, the messages you send, and the events you collect, so you can start small and scale as your application grows.
 --
 module Network.AWS.Pinpoint
-    (
     -- * Service Configuration
-      pinpoint
-
+  ( pinpoint
     -- * Errors
     -- $errors
-
     -- ** ForbiddenException
-    , _ForbiddenException
-
+  , _ForbiddenException
     -- ** NotFoundException
-    , _NotFoundException
-
+  , _NotFoundException
     -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
+  , _TooManyRequestsException
     -- ** InternalServerErrorException
-    , _InternalServerErrorException
-
+  , _InternalServerErrorException
     -- ** MethodNotAllowedException
-    , _MethodNotAllowedException
-
+  , _MethodNotAllowedException
     -- ** BadRequestException
-    , _BadRequestException
-
+  , _BadRequestException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** GetGCMChannel
-    , module Network.AWS.Pinpoint.GetGCMChannel
-
+  , module Network.AWS.Pinpoint.GetGCMChannel
     -- ** GetSegmentImportJobs
-    , module Network.AWS.Pinpoint.GetSegmentImportJobs
-
+  , module Network.AWS.Pinpoint.GetSegmentImportJobs
     -- ** SendMessages
-    , module Network.AWS.Pinpoint.SendMessages
-
+  , module Network.AWS.Pinpoint.SendMessages
     -- ** GetImportJob
-    , module Network.AWS.Pinpoint.GetImportJob
-
+  , module Network.AWS.Pinpoint.GetImportJob
     -- ** GetAPNSVoipSandboxChannel
-    , module Network.AWS.Pinpoint.GetAPNSVoipSandboxChannel
-
+  , module Network.AWS.Pinpoint.GetAPNSVoipSandboxChannel
     -- ** GetSegmentVersions
-    , module Network.AWS.Pinpoint.GetSegmentVersions
-
+  , module Network.AWS.Pinpoint.GetSegmentVersions
     -- ** DeleteCampaign
-    , module Network.AWS.Pinpoint.DeleteCampaign
-
+  , module Network.AWS.Pinpoint.DeleteCampaign
     -- ** UpdateCampaign
-    , module Network.AWS.Pinpoint.UpdateCampaign
-
+  , module Network.AWS.Pinpoint.UpdateCampaign
     -- ** GetSegmentVersion
-    , module Network.AWS.Pinpoint.GetSegmentVersion
-
+  , module Network.AWS.Pinpoint.GetSegmentVersion
     -- ** CreateExportJob
-    , module Network.AWS.Pinpoint.CreateExportJob
-
+  , module Network.AWS.Pinpoint.CreateExportJob
     -- ** CreateSegment
-    , module Network.AWS.Pinpoint.CreateSegment
-
+  , module Network.AWS.Pinpoint.CreateSegment
     -- ** UpdateADMChannel
-    , module Network.AWS.Pinpoint.UpdateADMChannel
-
+  , module Network.AWS.Pinpoint.UpdateADMChannel
     -- ** DeleteADMChannel
-    , module Network.AWS.Pinpoint.DeleteADMChannel
-
+  , module Network.AWS.Pinpoint.DeleteADMChannel
     -- ** DeleteEndpoint
-    , module Network.AWS.Pinpoint.DeleteEndpoint
-
+  , module Network.AWS.Pinpoint.DeleteEndpoint
     -- ** UpdateEndpoint
-    , module Network.AWS.Pinpoint.UpdateEndpoint
-
+  , module Network.AWS.Pinpoint.UpdateEndpoint
     -- ** CreateCampaign
-    , module Network.AWS.Pinpoint.CreateCampaign
-
+  , module Network.AWS.Pinpoint.CreateCampaign
     -- ** GetExportJob
-    , module Network.AWS.Pinpoint.GetExportJob
-
+  , module Network.AWS.Pinpoint.GetExportJob
     -- ** GetEndpoint
-    , module Network.AWS.Pinpoint.GetEndpoint
-
+  , module Network.AWS.Pinpoint.GetEndpoint
     -- ** GetSegment
-    , module Network.AWS.Pinpoint.GetSegment
-
+  , module Network.AWS.Pinpoint.GetSegment
     -- ** UpdateEndpointsBatch
-    , module Network.AWS.Pinpoint.UpdateEndpointsBatch
-
+  , module Network.AWS.Pinpoint.UpdateEndpointsBatch
     -- ** GetADMChannel
-    , module Network.AWS.Pinpoint.GetADMChannel
-
+  , module Network.AWS.Pinpoint.GetADMChannel
     -- ** GetCampaign
-    , module Network.AWS.Pinpoint.GetCampaign
-
+  , module Network.AWS.Pinpoint.GetCampaign
     -- ** DeleteApp
-    , module Network.AWS.Pinpoint.DeleteApp
-
+  , module Network.AWS.Pinpoint.DeleteApp
     -- ** UpdateAPNSVoipSandboxChannel
-    , module Network.AWS.Pinpoint.UpdateAPNSVoipSandboxChannel
-
+  , module Network.AWS.Pinpoint.UpdateAPNSVoipSandboxChannel
     -- ** DeleteAPNSVoipSandboxChannel
-    , module Network.AWS.Pinpoint.DeleteAPNSVoipSandboxChannel
-
+  , module Network.AWS.Pinpoint.DeleteAPNSVoipSandboxChannel
     -- ** UpdateGCMChannel
-    , module Network.AWS.Pinpoint.UpdateGCMChannel
-
+  , module Network.AWS.Pinpoint.UpdateGCMChannel
     -- ** DeleteGCMChannel
-    , module Network.AWS.Pinpoint.DeleteGCMChannel
-
+  , module Network.AWS.Pinpoint.DeleteGCMChannel
     -- ** GetCampaignActivities
-    , module Network.AWS.Pinpoint.GetCampaignActivities
-
+  , module Network.AWS.Pinpoint.GetCampaignActivities
     -- ** GetEventStream
-    , module Network.AWS.Pinpoint.GetEventStream
-
+  , module Network.AWS.Pinpoint.GetEventStream
     -- ** DeleteEmailChannel
-    , module Network.AWS.Pinpoint.DeleteEmailChannel
-
+  , module Network.AWS.Pinpoint.DeleteEmailChannel
     -- ** UpdateEmailChannel
-    , module Network.AWS.Pinpoint.UpdateEmailChannel
-
+  , module Network.AWS.Pinpoint.UpdateEmailChannel
     -- ** GetBaiduChannel
-    , module Network.AWS.Pinpoint.GetBaiduChannel
-
+  , module Network.AWS.Pinpoint.GetBaiduChannel
     -- ** DeleteAPNSChannel
-    , module Network.AWS.Pinpoint.DeleteAPNSChannel
-
+  , module Network.AWS.Pinpoint.DeleteAPNSChannel
     -- ** UpdateAPNSChannel
-    , module Network.AWS.Pinpoint.UpdateAPNSChannel
-
+  , module Network.AWS.Pinpoint.UpdateAPNSChannel
     -- ** PutEventStream
-    , module Network.AWS.Pinpoint.PutEventStream
-
+  , module Network.AWS.Pinpoint.PutEventStream
     -- ** DeleteEventStream
-    , module Network.AWS.Pinpoint.DeleteEventStream
-
+  , module Network.AWS.Pinpoint.DeleteEventStream
     -- ** GetCampaignVersions
-    , module Network.AWS.Pinpoint.GetCampaignVersions
-
+  , module Network.AWS.Pinpoint.GetCampaignVersions
     -- ** GetAPNSChannel
-    , module Network.AWS.Pinpoint.GetAPNSChannel
-
+  , module Network.AWS.Pinpoint.GetAPNSChannel
     -- ** GetApps
-    , module Network.AWS.Pinpoint.GetApps
-
+  , module Network.AWS.Pinpoint.GetApps
     -- ** GetAPNSSandboxChannel
-    , module Network.AWS.Pinpoint.GetAPNSSandboxChannel
-
+  , module Network.AWS.Pinpoint.GetAPNSSandboxChannel
     -- ** GetImportJobs
-    , module Network.AWS.Pinpoint.GetImportJobs
-
+  , module Network.AWS.Pinpoint.GetImportJobs
     -- ** DeleteSmsChannel
-    , module Network.AWS.Pinpoint.DeleteSmsChannel
-
+  , module Network.AWS.Pinpoint.DeleteSmsChannel
     -- ** UpdateSmsChannel
-    , module Network.AWS.Pinpoint.UpdateSmsChannel
-
+  , module Network.AWS.Pinpoint.UpdateSmsChannel
     -- ** GetApp
-    , module Network.AWS.Pinpoint.GetApp
-
+  , module Network.AWS.Pinpoint.GetApp
     -- ** GetCampaignVersion
-    , module Network.AWS.Pinpoint.GetCampaignVersion
-
+  , module Network.AWS.Pinpoint.GetCampaignVersion
     -- ** DeleteSegment
-    , module Network.AWS.Pinpoint.DeleteSegment
-
+  , module Network.AWS.Pinpoint.DeleteSegment
     -- ** UpdateSegment
-    , module Network.AWS.Pinpoint.UpdateSegment
-
+  , module Network.AWS.Pinpoint.UpdateSegment
     -- ** CreateApp
-    , module Network.AWS.Pinpoint.CreateApp
-
+  , module Network.AWS.Pinpoint.CreateApp
     -- ** GetSegmentExportJobs
-    , module Network.AWS.Pinpoint.GetSegmentExportJobs
-
+  , module Network.AWS.Pinpoint.GetSegmentExportJobs
     -- ** GetSmsChannel
-    , module Network.AWS.Pinpoint.GetSmsChannel
-
+  , module Network.AWS.Pinpoint.GetSmsChannel
     -- ** DeleteAPNSSandboxChannel
-    , module Network.AWS.Pinpoint.DeleteAPNSSandboxChannel
-
+  , module Network.AWS.Pinpoint.DeleteAPNSSandboxChannel
     -- ** UpdateAPNSSandboxChannel
-    , module Network.AWS.Pinpoint.UpdateAPNSSandboxChannel
-
+  , module Network.AWS.Pinpoint.UpdateAPNSSandboxChannel
     -- ** GetCampaigns
-    , module Network.AWS.Pinpoint.GetCampaigns
-
+  , module Network.AWS.Pinpoint.GetCampaigns
     -- ** UpdateApplicationSettings
-    , module Network.AWS.Pinpoint.UpdateApplicationSettings
-
+  , module Network.AWS.Pinpoint.UpdateApplicationSettings
     -- ** GetSegments
-    , module Network.AWS.Pinpoint.GetSegments
-
+  , module Network.AWS.Pinpoint.GetSegments
     -- ** GetExportJobs
-    , module Network.AWS.Pinpoint.GetExportJobs
-
+  , module Network.AWS.Pinpoint.GetExportJobs
     -- ** CreateImportJob
-    , module Network.AWS.Pinpoint.CreateImportJob
-
+  , module Network.AWS.Pinpoint.CreateImportJob
     -- ** DeleteAPNSVoipChannel
-    , module Network.AWS.Pinpoint.DeleteAPNSVoipChannel
-
+  , module Network.AWS.Pinpoint.DeleteAPNSVoipChannel
     -- ** UpdateAPNSVoipChannel
-    , module Network.AWS.Pinpoint.UpdateAPNSVoipChannel
-
+  , module Network.AWS.Pinpoint.UpdateAPNSVoipChannel
     -- ** SendUsersMessages
-    , module Network.AWS.Pinpoint.SendUsersMessages
-
+  , module Network.AWS.Pinpoint.SendUsersMessages
     -- ** GetApplicationSettings
-    , module Network.AWS.Pinpoint.GetApplicationSettings
-
+  , module Network.AWS.Pinpoint.GetApplicationSettings
     -- ** DeleteBaiduChannel
-    , module Network.AWS.Pinpoint.DeleteBaiduChannel
-
+  , module Network.AWS.Pinpoint.DeleteBaiduChannel
     -- ** UpdateBaiduChannel
-    , module Network.AWS.Pinpoint.UpdateBaiduChannel
-
+  , module Network.AWS.Pinpoint.UpdateBaiduChannel
     -- ** GetAPNSVoipChannel
-    , module Network.AWS.Pinpoint.GetAPNSVoipChannel
-
+  , module Network.AWS.Pinpoint.GetAPNSVoipChannel
     -- ** GetEmailChannel
-    , module Network.AWS.Pinpoint.GetEmailChannel
-
+  , module Network.AWS.Pinpoint.GetEmailChannel
     -- * Types
-
     -- ** Action
-    , Action (..)
-
+  , Action(..)
     -- ** AttributeType
-    , AttributeType (..)
-
+  , AttributeType(..)
     -- ** CampaignStatus
-    , CampaignStatus (..)
-
+  , CampaignStatus(..)
     -- ** ChannelType
-    , ChannelType (..)
-
+  , ChannelType(..)
     -- ** DefinitionFormat
-    , DefinitionFormat (..)
-
+  , DefinitionFormat(..)
     -- ** DeliveryStatus
-    , DeliveryStatus (..)
-
+  , DeliveryStatus(..)
     -- ** DimensionType
-    , DimensionType (..)
-
+  , DimensionType(..)
     -- ** Duration
-    , Duration (..)
-
+  , Duration(..)
     -- ** Frequency
-    , Frequency (..)
-
+  , Frequency(..)
     -- ** JobStatus
-    , JobStatus (..)
-
+  , JobStatus(..)
     -- ** MessageType
-    , MessageType (..)
-
+  , MessageType(..)
     -- ** Mode
-    , Mode (..)
-
+  , Mode(..)
     -- ** RecencyType
-    , RecencyType (..)
-
+  , RecencyType(..)
     -- ** SegmentType
-    , SegmentType (..)
-
+  , SegmentType(..)
     -- ** ADMChannelRequest
-    , ADMChannelRequest
-    , aDMChannelRequest
-    , admcrClientId
-    , admcrClientSecret
-    , admcrEnabled
-
+  , ADMChannelRequest
+  , aDMChannelRequest
+  , admcrClientId
+  , admcrClientSecret
+  , admcrEnabled
     -- ** ADMChannelResponse
-    , ADMChannelResponse
-    , aDMChannelResponse
-    , admcPlatform
-    , admcLastModifiedDate
-    , admcEnabled
-    , admcIsArchived
-    , admcApplicationId
-    , admcVersion
-    , admcId
-    , admcCreationDate
-    , admcLastModifiedBy
-    , admcHasCredential
-
+  , ADMChannelResponse
+  , aDMChannelResponse
+  , admcPlatform
+  , admcLastModifiedDate
+  , admcEnabled
+  , admcIsArchived
+  , admcApplicationId
+  , admcVersion
+  , admcId
+  , admcCreationDate
+  , admcLastModifiedBy
+  , admcHasCredential
     -- ** ADMMessage
-    , ADMMessage
-    , aDMMessage
-    , admmSubstitutions
-    , admmExpiresAfter
-    , admmMD5
-    , admmSilentPush
-    , admmImageIconURL
-    , admmRawContent
-    , admmData
-    , admmSmallImageIconURL
-    , admmBody
-    , admmURL
-    , admmSound
-    , admmAction
-    , admmImageURL
-    , admmConsolidationKey
-    , admmTitle
-    , admmIconReference
-
+  , ADMMessage
+  , aDMMessage
+  , admmSubstitutions
+  , admmExpiresAfter
+  , admmMD5
+  , admmSilentPush
+  , admmImageIconURL
+  , admmRawContent
+  , admmData
+  , admmSmallImageIconURL
+  , admmBody
+  , admmURL
+  , admmSound
+  , admmAction
+  , admmImageURL
+  , admmConsolidationKey
+  , admmTitle
+  , admmIconReference
     -- ** APNSChannelRequest
-    , APNSChannelRequest
-    , apnsChannelRequest
-    , acrTokenKey
-    , acrPrivateKey
-    , acrEnabled
-    , acrTeamId
-    , acrBundleId
-    , acrDefaultAuthenticationMethod
-    , acrCertificate
-    , acrTokenKeyId
-
+  , APNSChannelRequest
+  , apnsChannelRequest
+  , acrTokenKey
+  , acrPrivateKey
+  , acrEnabled
+  , acrTeamId
+  , acrBundleId
+  , acrDefaultAuthenticationMethod
+  , acrCertificate
+  , acrTokenKeyId
     -- ** APNSChannelResponse
-    , APNSChannelResponse
-    , apnsChannelResponse
-    , acPlatform
-    , acLastModifiedDate
-    , acEnabled
-    , acHasTokenKey
-    , acDefaultAuthenticationMethod
-    , acIsArchived
-    , acApplicationId
-    , acVersion
-    , acId
-    , acCreationDate
-    , acLastModifiedBy
-    , acHasCredential
-
+  , APNSChannelResponse
+  , apnsChannelResponse
+  , acPlatform
+  , acLastModifiedDate
+  , acEnabled
+  , acHasTokenKey
+  , acDefaultAuthenticationMethod
+  , acIsArchived
+  , acApplicationId
+  , acVersion
+  , acId
+  , acCreationDate
+  , acLastModifiedBy
+  , acHasCredential
     -- ** APNSMessage
-    , APNSMessage
-    , apnsMessage
-    , amSubstitutions
-    , amSilentPush
-    , amPriority
-    , amRawContent
-    , amData
-    , amBody
-    , amCategory
-    , amTimeToLive
-    , amURL
-    , amSound
-    , amAction
-    , amMediaURL
-    , amPreferredAuthenticationMethod
-    , amBadge
-    , amTitle
-    , amThreadId
-    , amCollapseId
-
+  , APNSMessage
+  , apnsMessage
+  , amSubstitutions
+  , amSilentPush
+  , amPriority
+  , amRawContent
+  , amData
+  , amBody
+  , amCategory
+  , amTimeToLive
+  , amURL
+  , amSound
+  , amAction
+  , amMediaURL
+  , amPreferredAuthenticationMethod
+  , amBadge
+  , amTitle
+  , amThreadId
+  , amCollapseId
     -- ** APNSSandboxChannelRequest
-    , APNSSandboxChannelRequest
-    , apnsSandboxChannelRequest
-    , ascrTokenKey
-    , ascrPrivateKey
-    , ascrEnabled
-    , ascrTeamId
-    , ascrBundleId
-    , ascrDefaultAuthenticationMethod
-    , ascrCertificate
-    , ascrTokenKeyId
-
+  , APNSSandboxChannelRequest
+  , apnsSandboxChannelRequest
+  , ascrTokenKey
+  , ascrPrivateKey
+  , ascrEnabled
+  , ascrTeamId
+  , ascrBundleId
+  , ascrDefaultAuthenticationMethod
+  , ascrCertificate
+  , ascrTokenKeyId
     -- ** APNSSandboxChannelResponse
-    , APNSSandboxChannelResponse
-    , apnsSandboxChannelResponse
-    , ascPlatform
-    , ascLastModifiedDate
-    , ascEnabled
-    , ascHasTokenKey
-    , ascDefaultAuthenticationMethod
-    , ascIsArchived
-    , ascApplicationId
-    , ascVersion
-    , ascId
-    , ascCreationDate
-    , ascLastModifiedBy
-    , ascHasCredential
-
+  , APNSSandboxChannelResponse
+  , apnsSandboxChannelResponse
+  , ascPlatform
+  , ascLastModifiedDate
+  , ascEnabled
+  , ascHasTokenKey
+  , ascDefaultAuthenticationMethod
+  , ascIsArchived
+  , ascApplicationId
+  , ascVersion
+  , ascId
+  , ascCreationDate
+  , ascLastModifiedBy
+  , ascHasCredential
     -- ** APNSVoipChannelRequest
-    , APNSVoipChannelRequest
-    , apnsVoipChannelRequest
-    , avcrTokenKey
-    , avcrPrivateKey
-    , avcrEnabled
-    , avcrTeamId
-    , avcrBundleId
-    , avcrDefaultAuthenticationMethod
-    , avcrCertificate
-    , avcrTokenKeyId
-
+  , APNSVoipChannelRequest
+  , apnsVoipChannelRequest
+  , avcrTokenKey
+  , avcrPrivateKey
+  , avcrEnabled
+  , avcrTeamId
+  , avcrBundleId
+  , avcrDefaultAuthenticationMethod
+  , avcrCertificate
+  , avcrTokenKeyId
     -- ** APNSVoipChannelResponse
-    , APNSVoipChannelResponse
-    , apnsVoipChannelResponse
-    , avcPlatform
-    , avcLastModifiedDate
-    , avcEnabled
-    , avcHasTokenKey
-    , avcDefaultAuthenticationMethod
-    , avcIsArchived
-    , avcApplicationId
-    , avcVersion
-    , avcId
-    , avcCreationDate
-    , avcLastModifiedBy
-    , avcHasCredential
-
+  , APNSVoipChannelResponse
+  , apnsVoipChannelResponse
+  , avcPlatform
+  , avcLastModifiedDate
+  , avcEnabled
+  , avcHasTokenKey
+  , avcDefaultAuthenticationMethod
+  , avcIsArchived
+  , avcApplicationId
+  , avcVersion
+  , avcId
+  , avcCreationDate
+  , avcLastModifiedBy
+  , avcHasCredential
     -- ** APNSVoipSandboxChannelRequest
-    , APNSVoipSandboxChannelRequest
-    , apnsVoipSandboxChannelRequest
-    , avscrTokenKey
-    , avscrPrivateKey
-    , avscrEnabled
-    , avscrTeamId
-    , avscrBundleId
-    , avscrDefaultAuthenticationMethod
-    , avscrCertificate
-    , avscrTokenKeyId
-
+  , APNSVoipSandboxChannelRequest
+  , apnsVoipSandboxChannelRequest
+  , avscrTokenKey
+  , avscrPrivateKey
+  , avscrEnabled
+  , avscrTeamId
+  , avscrBundleId
+  , avscrDefaultAuthenticationMethod
+  , avscrCertificate
+  , avscrTokenKeyId
     -- ** APNSVoipSandboxChannelResponse
-    , APNSVoipSandboxChannelResponse
-    , apnsVoipSandboxChannelResponse
-    , avscPlatform
-    , avscLastModifiedDate
-    , avscEnabled
-    , avscHasTokenKey
-    , avscDefaultAuthenticationMethod
-    , avscIsArchived
-    , avscApplicationId
-    , avscVersion
-    , avscId
-    , avscCreationDate
-    , avscLastModifiedBy
-    , avscHasCredential
-
+  , APNSVoipSandboxChannelResponse
+  , apnsVoipSandboxChannelResponse
+  , avscPlatform
+  , avscLastModifiedDate
+  , avscEnabled
+  , avscHasTokenKey
+  , avscDefaultAuthenticationMethod
+  , avscIsArchived
+  , avscApplicationId
+  , avscVersion
+  , avscId
+  , avscCreationDate
+  , avscLastModifiedBy
+  , avscHasCredential
     -- ** ActivitiesResponse
-    , ActivitiesResponse
-    , activitiesResponse
-    , aItem
-
+  , ActivitiesResponse
+  , activitiesResponse
+  , aItem
     -- ** ActivityResponse
-    , ActivityResponse
-    , activityResponse
-    , aState
-    , aStart
-    , aCampaignId
-    , aTimezonesCompletedCount
-    , aTimezonesTotalCount
-    , aResult
-    , aTreatmentId
-    , aSuccessfulEndpointCount
-    , aEnd
-    , aApplicationId
-    , aTotalEndpointCount
-    , aId
-    , aScheduledStart
-
+  , ActivityResponse
+  , activityResponse
+  , aState
+  , aStart
+  , aCampaignId
+  , aTimezonesCompletedCount
+  , aTimezonesTotalCount
+  , aResult
+  , aTreatmentId
+  , aSuccessfulEndpointCount
+  , aEnd
+  , aApplicationId
+  , aTotalEndpointCount
+  , aId
+  , aScheduledStart
     -- ** AddressConfiguration
-    , AddressConfiguration
-    , addressConfiguration
-    , acSubstitutions
-    , acTitleOverride
-    , acContext
-    , acRawContent
-    , acBodyOverride
-    , acChannelType
-
+  , AddressConfiguration
+  , addressConfiguration
+  , acSubstitutions
+  , acTitleOverride
+  , acContext
+  , acRawContent
+  , acBodyOverride
+  , acChannelType
     -- ** ApplicationResponse
-    , ApplicationResponse
-    , applicationResponse
-    , appName
-    , appId
-
+  , ApplicationResponse
+  , applicationResponse
+  , appName
+  , appId
     -- ** ApplicationSettingsResource
-    , ApplicationSettingsResource
-    , applicationSettingsResource
-    , asrLastModifiedDate
-    , asrLimits
-    , asrQuietTime
-    , asrApplicationId
-    , asrCampaignHook
-
+  , ApplicationSettingsResource
+  , applicationSettingsResource
+  , asrLastModifiedDate
+  , asrLimits
+  , asrQuietTime
+  , asrApplicationId
+  , asrCampaignHook
     -- ** ApplicationsResponse
-    , ApplicationsResponse
-    , applicationsResponse
-    , appNextToken
-    , appItem
-
+  , ApplicationsResponse
+  , applicationsResponse
+  , appNextToken
+  , appItem
     -- ** AttributeDimension
-    , AttributeDimension
-    , attributeDimension
-    , adValues
-    , adAttributeType
-
+  , AttributeDimension
+  , attributeDimension
+  , adValues
+  , adAttributeType
     -- ** BaiduChannelRequest
-    , BaiduChannelRequest
-    , baiduChannelRequest
-    , bcrAPIKey
-    , bcrEnabled
-    , bcrSecretKey
-
+  , BaiduChannelRequest
+  , baiduChannelRequest
+  , bcrAPIKey
+  , bcrEnabled
+  , bcrSecretKey
     -- ** BaiduChannelResponse
-    , BaiduChannelResponse
-    , baiduChannelResponse
-    , bcPlatform
-    , bcLastModifiedDate
-    , bcEnabled
-    , bcCredential
-    , bcIsArchived
-    , bcApplicationId
-    , bcVersion
-    , bcId
-    , bcCreationDate
-    , bcLastModifiedBy
-    , bcHasCredential
-
+  , BaiduChannelResponse
+  , baiduChannelResponse
+  , bcPlatform
+  , bcLastModifiedDate
+  , bcEnabled
+  , bcCredential
+  , bcIsArchived
+  , bcApplicationId
+  , bcVersion
+  , bcId
+  , bcCreationDate
+  , bcLastModifiedBy
+  , bcHasCredential
     -- ** BaiduMessage
-    , BaiduMessage
-    , baiduMessage
-    , bmSubstitutions
-    , bmSilentPush
-    , bmImageIconURL
-    , bmRawContent
-    , bmData
-    , bmSmallImageIconURL
-    , bmBody
-    , bmURL
-    , bmSound
-    , bmAction
-    , bmImageURL
-    , bmTitle
-    , bmIconReference
-
+  , BaiduMessage
+  , baiduMessage
+  , bmSubstitutions
+  , bmSilentPush
+  , bmImageIconURL
+  , bmRawContent
+  , bmData
+  , bmSmallImageIconURL
+  , bmBody
+  , bmURL
+  , bmSound
+  , bmAction
+  , bmImageURL
+  , bmTitle
+  , bmIconReference
     -- ** CampaignEmailMessage
-    , CampaignEmailMessage
-    , campaignEmailMessage
-    , cemBody
-    , cemFromAddress
-    , cemHTMLBody
-    , cemTitle
-
+  , CampaignEmailMessage
+  , campaignEmailMessage
+  , cemBody
+  , cemFromAddress
+  , cemHTMLBody
+  , cemTitle
     -- ** CampaignHook
-    , CampaignHook
-    , campaignHook
-    , chLambdaFunctionName
-    , chMode
-    , chWebURL
-
+  , CampaignHook
+  , campaignHook
+  , chLambdaFunctionName
+  , chMode
+  , chWebURL
     -- ** CampaignLimits
-    , CampaignLimits
-    , campaignLimits
-    , clMessagesPerSecond
-    , clDaily
-    , clTotal
-    , clMaximumDuration
-
+  , CampaignLimits
+  , campaignLimits
+  , clMessagesPerSecond
+  , clDaily
+  , clTotal
+  , clMaximumDuration
     -- ** CampaignResponse
-    , CampaignResponse
-    , campaignResponse
-    , cState
-    , cLastModifiedDate
-    , cSchedule
-    , cHook
-    , cTreatmentName
-    , cLimits
-    , cIsPaused
-    , cDefaultState
-    , cApplicationId
-    , cName
-    , cVersion
-    , cHoldoutPercent
-    , cTreatmentDescription
-    , cId
-    , cCreationDate
-    , cMessageConfiguration
-    , cDescription
-    , cSegmentId
-    , cAdditionalTreatments
-    , cSegmentVersion
-
+  , CampaignResponse
+  , campaignResponse
+  , cState
+  , cLastModifiedDate
+  , cSchedule
+  , cHook
+  , cTreatmentName
+  , cLimits
+  , cIsPaused
+  , cDefaultState
+  , cApplicationId
+  , cName
+  , cVersion
+  , cHoldoutPercent
+  , cTreatmentDescription
+  , cId
+  , cCreationDate
+  , cMessageConfiguration
+  , cDescription
+  , cSegmentId
+  , cAdditionalTreatments
+  , cSegmentVersion
     -- ** CampaignSmsMessage
-    , CampaignSmsMessage
-    , campaignSmsMessage
-    , csmBody
-    , csmMessageType
-    , csmSenderId
-
+  , CampaignSmsMessage
+  , campaignSmsMessage
+  , csmBody
+  , csmMessageType
+  , csmSenderId
     -- ** CampaignState
-    , CampaignState
-    , campaignState
-    , csCampaignStatus
-
+  , CampaignState
+  , campaignState
+  , csCampaignStatus
     -- ** CampaignsResponse
-    , CampaignsResponse
-    , campaignsResponse
-    , cNextToken
-    , cItem
-
+  , CampaignsResponse
+  , campaignsResponse
+  , cNextToken
+  , cItem
     -- ** CreateApplicationRequest
-    , CreateApplicationRequest
-    , createApplicationRequest
-    , carName
-
+  , CreateApplicationRequest
+  , createApplicationRequest
+  , carName
     -- ** DefaultMessage
-    , DefaultMessage
-    , defaultMessage
-    , dmSubstitutions
-    , dmBody
-
+  , DefaultMessage
+  , defaultMessage
+  , dmSubstitutions
+  , dmBody
     -- ** DefaultPushNotificationMessage
-    , DefaultPushNotificationMessage
-    , defaultPushNotificationMessage
-    , dpnmSubstitutions
-    , dpnmSilentPush
-    , dpnmData
-    , dpnmBody
-    , dpnmURL
-    , dpnmAction
-    , dpnmTitle
-
+  , DefaultPushNotificationMessage
+  , defaultPushNotificationMessage
+  , dpnmSubstitutions
+  , dpnmSilentPush
+  , dpnmData
+  , dpnmBody
+  , dpnmURL
+  , dpnmAction
+  , dpnmTitle
     -- ** DirectMessageConfiguration
-    , DirectMessageConfiguration
-    , directMessageConfiguration
-    , dmcAPNSMessage
-    , dmcGCMMessage
-    , dmcDefaultMessage
-    , dmcADMMessage
-    , dmcSMSMessage
-    , dmcBaiduMessage
-    , dmcDefaultPushNotificationMessage
-
+  , DirectMessageConfiguration
+  , directMessageConfiguration
+  , dmcAPNSMessage
+  , dmcGCMMessage
+  , dmcDefaultMessage
+  , dmcADMMessage
+  , dmcSMSMessage
+  , dmcBaiduMessage
+  , dmcDefaultPushNotificationMessage
     -- ** EmailChannelRequest
-    , EmailChannelRequest
-    , emailChannelRequest
-    , ecrEnabled
-    , ecrFromAddress
-    , ecrIdentity
-    , ecrRoleARN
-
+  , EmailChannelRequest
+  , emailChannelRequest
+  , ecrEnabled
+  , ecrFromAddress
+  , ecrIdentity
+  , ecrRoleARN
     -- ** EmailChannelResponse
-    , EmailChannelResponse
-    , emailChannelResponse
-    , ecPlatform
-    , ecLastModifiedDate
-    , ecEnabled
-    , ecFromAddress
-    , ecIsArchived
-    , ecApplicationId
-    , ecVersion
-    , ecId
-    , ecCreationDate
-    , ecLastModifiedBy
-    , ecIdentity
-    , ecHasCredential
-    , ecRoleARN
-
+  , EmailChannelResponse
+  , emailChannelResponse
+  , ecPlatform
+  , ecLastModifiedDate
+  , ecEnabled
+  , ecFromAddress
+  , ecIsArchived
+  , ecApplicationId
+  , ecVersion
+  , ecId
+  , ecCreationDate
+  , ecLastModifiedBy
+  , ecIdentity
+  , ecHasCredential
+  , ecRoleARN
     -- ** EndpointBatchItem
-    , EndpointBatchItem
-    , endpointBatchItem
-    , ebiRequestId
-    , ebiMetrics
-    , ebiLocation
-    , ebiDemographic
-    , ebiAddress
-    , ebiEffectiveDate
-    , ebiUser
-    , ebiAttributes
-    , ebiEndpointStatus
-    , ebiOptOut
-    , ebiId
-    , ebiChannelType
-
+  , EndpointBatchItem
+  , endpointBatchItem
+  , ebiRequestId
+  , ebiMetrics
+  , ebiLocation
+  , ebiDemographic
+  , ebiAddress
+  , ebiEffectiveDate
+  , ebiUser
+  , ebiAttributes
+  , ebiEndpointStatus
+  , ebiOptOut
+  , ebiId
+  , ebiChannelType
     -- ** EndpointBatchRequest
-    , EndpointBatchRequest
-    , endpointBatchRequest
-    , ebrItem
-
+  , EndpointBatchRequest
+  , endpointBatchRequest
+  , ebrItem
     -- ** EndpointDemographic
-    , EndpointDemographic
-    , endpointDemographic
-    , edPlatform
-    , edPlatformVersion
-    , edLocale
-    , edAppVersion
-    , edModel
-    , edMake
-    , edModelVersion
-    , edTimezone
-
+  , EndpointDemographic
+  , endpointDemographic
+  , edPlatform
+  , edPlatformVersion
+  , edLocale
+  , edAppVersion
+  , edModel
+  , edMake
+  , edModelVersion
+  , edTimezone
     -- ** EndpointLocation
-    , EndpointLocation
-    , endpointLocation
-    , elPostalCode
-    , elLatitude
-    , elCountry
-    , elCity
-    , elRegion
-    , elLongitude
-
+  , EndpointLocation
+  , endpointLocation
+  , elPostalCode
+  , elLatitude
+  , elCountry
+  , elCity
+  , elRegion
+  , elLongitude
     -- ** EndpointMessageResult
-    , EndpointMessageResult
-    , endpointMessageResult
-    , emrDeliveryStatus
-    , emrAddress
-    , emrStatusMessage
-    , emrUpdatedToken
-    , emrStatusCode
-
+  , EndpointMessageResult
+  , endpointMessageResult
+  , emrDeliveryStatus
+  , emrAddress
+  , emrStatusMessage
+  , emrUpdatedToken
+  , emrStatusCode
     -- ** EndpointRequest
-    , EndpointRequest
-    , endpointRequest
-    , erRequestId
-    , erMetrics
-    , erLocation
-    , erDemographic
-    , erAddress
-    , erEffectiveDate
-    , erUser
-    , erAttributes
-    , erEndpointStatus
-    , erOptOut
-    , erChannelType
-
+  , EndpointRequest
+  , endpointRequest
+  , erRequestId
+  , erMetrics
+  , erLocation
+  , erDemographic
+  , erAddress
+  , erEffectiveDate
+  , erUser
+  , erAttributes
+  , erEndpointStatus
+  , erOptOut
+  , erChannelType
     -- ** EndpointResponse
-    , EndpointResponse
-    , endpointResponse
-    , eRequestId
-    , eMetrics
-    , eLocation
-    , eDemographic
-    , eCohortId
-    , eAddress
-    , eEffectiveDate
-    , eUser
-    , eApplicationId
-    , eAttributes
-    , eEndpointStatus
-    , eOptOut
-    , eId
-    , eCreationDate
-    , eChannelType
-
+  , EndpointResponse
+  , endpointResponse
+  , eRequestId
+  , eMetrics
+  , eLocation
+  , eDemographic
+  , eCohortId
+  , eAddress
+  , eEffectiveDate
+  , eUser
+  , eApplicationId
+  , eAttributes
+  , eEndpointStatus
+  , eOptOut
+  , eId
+  , eCreationDate
+  , eChannelType
     -- ** EndpointSendConfiguration
-    , EndpointSendConfiguration
-    , endpointSendConfiguration
-    , escSubstitutions
-    , escTitleOverride
-    , escContext
-    , escRawContent
-    , escBodyOverride
-
+  , EndpointSendConfiguration
+  , endpointSendConfiguration
+  , escSubstitutions
+  , escTitleOverride
+  , escContext
+  , escRawContent
+  , escBodyOverride
     -- ** EndpointUser
-    , EndpointUser
-    , endpointUser
-    , euUserAttributes
-    , euUserId
-
+  , EndpointUser
+  , endpointUser
+  , euUserAttributes
+  , euUserId
     -- ** EventStream
-    , EventStream
-    , eventStream
-    , esLastUpdatedBy
-    , esLastModifiedDate
-    , esDestinationStreamARN
-    , esApplicationId
-    , esExternalId
-    , esRoleARN
-
+  , EventStream
+  , eventStream
+  , esLastUpdatedBy
+  , esLastModifiedDate
+  , esDestinationStreamARN
+  , esApplicationId
+  , esExternalId
+  , esRoleARN
     -- ** ExportJobRequest
-    , ExportJobRequest
-    , exportJobRequest
-    , eS3URLPrefix
-    , eSegmentId
-    , eRoleARN
-
+  , ExportJobRequest
+  , exportJobRequest
+  , eS3URLPrefix
+  , eSegmentId
+  , eRoleARN
     -- ** ExportJobResource
-    , ExportJobResource
-    , exportJobResource
-    , ejrS3URLPrefix
-    , ejrSegmentId
-    , ejrRoleARN
-
+  , ExportJobResource
+  , exportJobResource
+  , ejrS3URLPrefix
+  , ejrSegmentId
+  , ejrRoleARN
     -- ** ExportJobResponse
-    , ExportJobResponse
-    , exportJobResponse
-    , ejCompletedPieces
-    , ejFailedPieces
-    , ejDefinition
-    , ejTotalProcessed
-    , ejFailures
-    , ejTotalPieces
-    , ejApplicationId
-    , ejId
-    , ejCreationDate
-    , ejType
-    , ejCompletionDate
-    , ejJobStatus
-    , ejTotalFailures
-
+  , ExportJobResponse
+  , exportJobResponse
+  , ejCompletedPieces
+  , ejFailedPieces
+  , ejDefinition
+  , ejTotalProcessed
+  , ejFailures
+  , ejTotalPieces
+  , ejApplicationId
+  , ejId
+  , ejCreationDate
+  , ejType
+  , ejCompletionDate
+  , ejJobStatus
+  , ejTotalFailures
     -- ** ExportJobsResponse
-    , ExportJobsResponse
-    , exportJobsResponse
-    , ejNextToken
-    , ejItem
-
+  , ExportJobsResponse
+  , exportJobsResponse
+  , ejNextToken
+  , ejItem
     -- ** GCMChannelRequest
-    , GCMChannelRequest
-    , gcmChannelRequest
-    , gcrAPIKey
-    , gcrEnabled
-
+  , GCMChannelRequest
+  , gcmChannelRequest
+  , gcrAPIKey
+  , gcrEnabled
     -- ** GCMChannelResponse
-    , GCMChannelResponse
-    , gcmChannelResponse
-    , gcPlatform
-    , gcLastModifiedDate
-    , gcEnabled
-    , gcCredential
-    , gcIsArchived
-    , gcApplicationId
-    , gcVersion
-    , gcId
-    , gcCreationDate
-    , gcLastModifiedBy
-    , gcHasCredential
-
+  , GCMChannelResponse
+  , gcmChannelResponse
+  , gcPlatform
+  , gcLastModifiedDate
+  , gcEnabled
+  , gcCredential
+  , gcIsArchived
+  , gcApplicationId
+  , gcVersion
+  , gcId
+  , gcCreationDate
+  , gcLastModifiedBy
+  , gcHasCredential
     -- ** GCMMessage
-    , GCMMessage
-    , gcmMessage
-    , gmSubstitutions
-    , gmSilentPush
-    , gmImageIconURL
-    , gmPriority
-    , gmRawContent
-    , gmData
-    , gmRestrictedPackageName
-    , gmSmallImageIconURL
-    , gmBody
-    , gmTimeToLive
-    , gmURL
-    , gmSound
-    , gmAction
-    , gmCollapseKey
-    , gmImageURL
-    , gmTitle
-    , gmIconReference
-
+  , GCMMessage
+  , gcmMessage
+  , gmSubstitutions
+  , gmSilentPush
+  , gmImageIconURL
+  , gmPriority
+  , gmRawContent
+  , gmData
+  , gmRestrictedPackageName
+  , gmSmallImageIconURL
+  , gmBody
+  , gmTimeToLive
+  , gmURL
+  , gmSound
+  , gmAction
+  , gmCollapseKey
+  , gmImageURL
+  , gmTitle
+  , gmIconReference
     -- ** ImportJobRequest
-    , ImportJobRequest
-    , importJobRequest
-    , iSegmentName
-    , iFormat
-    , iDefineSegment
-    , iRegisterEndpoints
-    , iExternalId
-    , iS3URL
-    , iSegmentId
-    , iRoleARN
-
+  , ImportJobRequest
+  , importJobRequest
+  , iSegmentName
+  , iFormat
+  , iDefineSegment
+  , iRegisterEndpoints
+  , iExternalId
+  , iS3URL
+  , iSegmentId
+  , iRoleARN
     -- ** ImportJobResource
-    , ImportJobResource
-    , importJobResource
-    , ijrSegmentName
-    , ijrFormat
-    , ijrDefineSegment
-    , ijrRegisterEndpoints
-    , ijrExternalId
-    , ijrS3URL
-    , ijrSegmentId
-    , ijrRoleARN
-
+  , ImportJobResource
+  , importJobResource
+  , ijrSegmentName
+  , ijrFormat
+  , ijrDefineSegment
+  , ijrRegisterEndpoints
+  , ijrExternalId
+  , ijrS3URL
+  , ijrSegmentId
+  , ijrRoleARN
     -- ** ImportJobResponse
-    , ImportJobResponse
-    , importJobResponse
-    , ijCompletedPieces
-    , ijFailedPieces
-    , ijDefinition
-    , ijTotalProcessed
-    , ijFailures
-    , ijTotalPieces
-    , ijApplicationId
-    , ijId
-    , ijCreationDate
-    , ijType
-    , ijCompletionDate
-    , ijJobStatus
-    , ijTotalFailures
-
+  , ImportJobResponse
+  , importJobResponse
+  , ijCompletedPieces
+  , ijFailedPieces
+  , ijDefinition
+  , ijTotalProcessed
+  , ijFailures
+  , ijTotalPieces
+  , ijApplicationId
+  , ijId
+  , ijCreationDate
+  , ijType
+  , ijCompletionDate
+  , ijJobStatus
+  , ijTotalFailures
     -- ** ImportJobsResponse
-    , ImportJobsResponse
-    , importJobsResponse
-    , ijNextToken
-    , ijItem
-
+  , ImportJobsResponse
+  , importJobsResponse
+  , ijNextToken
+  , ijItem
     -- ** Message
-    , Message
-    , message
-    , mSilentPush
-    , mImageIconURL
-    , mRawContent
-    , mBody
-    , mImageSmallIconURL
-    , mJSONBody
-    , mURL
-    , mAction
-    , mImageURL
-    , mMediaURL
-    , mTitle
-
+  , Message
+  , message
+  , mSilentPush
+  , mImageIconURL
+  , mRawContent
+  , mBody
+  , mImageSmallIconURL
+  , mJSONBody
+  , mURL
+  , mAction
+  , mImageURL
+  , mMediaURL
+  , mTitle
     -- ** MessageBody
-    , MessageBody
-    , messageBody
-    , mbRequestId
-    , mbMessage
-
+  , MessageBody
+  , messageBody
+  , mbRequestId
+  , mbMessage
     -- ** MessageConfiguration
-    , MessageConfiguration
-    , messageConfiguration
-    , mcAPNSMessage
-    , mcGCMMessage
-    , mcDefaultMessage
-    , mcADMMessage
-    , mcSMSMessage
-    , mcEmailMessage
-    , mcBaiduMessage
-
+  , MessageConfiguration
+  , messageConfiguration
+  , mcAPNSMessage
+  , mcGCMMessage
+  , mcDefaultMessage
+  , mcADMMessage
+  , mcSMSMessage
+  , mcEmailMessage
+  , mcBaiduMessage
     -- ** MessageRequest
-    , MessageRequest
-    , messageRequest
-    , mrContext
-    , mrAddresses
-    , mrEndpoints
-    , mrMessageConfiguration
-
+  , MessageRequest
+  , messageRequest
+  , mrContext
+  , mrAddresses
+  , mrEndpoints
+  , mrMessageConfiguration
     -- ** MessageResponse
-    , MessageResponse
-    , messageResponse
-    , mRequestId
-    , mResult
-    , mApplicationId
-    , mEndpointResult
-
+  , MessageResponse
+  , messageResponse
+  , mRequestId
+  , mResult
+  , mApplicationId
+  , mEndpointResult
     -- ** MessageResult
-    , MessageResult
-    , messageResult
-    , mrDeliveryStatus
-    , mrStatusMessage
-    , mrUpdatedToken
-    , mrStatusCode
-
+  , MessageResult
+  , messageResult
+  , mrDeliveryStatus
+  , mrStatusMessage
+  , mrUpdatedToken
+  , mrStatusCode
     -- ** QuietTime
-    , QuietTime
-    , quietTime
-    , qtStart
-    , qtEnd
-
+  , QuietTime
+  , quietTime
+  , qtStart
+  , qtEnd
     -- ** RecencyDimension
-    , RecencyDimension
-    , recencyDimension
-    , rdRecencyType
-    , rdDuration
-
+  , RecencyDimension
+  , recencyDimension
+  , rdRecencyType
+  , rdDuration
     -- ** SMSChannelRequest
-    , SMSChannelRequest
-    , sMSChannelRequest
-    , smscrShortCode
-    , smscrEnabled
-    , smscrSenderId
-
+  , SMSChannelRequest
+  , sMSChannelRequest
+  , smscrShortCode
+  , smscrEnabled
+  , smscrSenderId
     -- ** SMSChannelResponse
-    , SMSChannelResponse
-    , sMSChannelResponse
-    , smscPlatform
-    , smscShortCode
-    , smscLastModifiedDate
-    , smscEnabled
-    , smscSenderId
-    , smscIsArchived
-    , smscApplicationId
-    , smscVersion
-    , smscId
-    , smscCreationDate
-    , smscLastModifiedBy
-    , smscHasCredential
-
+  , SMSChannelResponse
+  , sMSChannelResponse
+  , smscPlatform
+  , smscShortCode
+  , smscLastModifiedDate
+  , smscEnabled
+  , smscSenderId
+  , smscIsArchived
+  , smscApplicationId
+  , smscVersion
+  , smscId
+  , smscCreationDate
+  , smscLastModifiedBy
+  , smscHasCredential
     -- ** SMSMessage
-    , SMSMessage
-    , sMSMessage
-    , smsmSubstitutions
-    , smsmOriginationNumber
-    , smsmBody
-    , smsmMessageType
-    , smsmSenderId
-
+  , SMSMessage
+  , sMSMessage
+  , smsmSubstitutions
+  , smsmOriginationNumber
+  , smsmBody
+  , smsmMessageType
+  , smsmSenderId
     -- ** Schedule
-    , Schedule
-    , schedule
-    , sFrequency
-    , sStartTime
-    , sQuietTime
-    , sIsLocalTime
-    , sEndTime
-    , sTimezone
-
+  , Schedule
+  , schedule
+  , sFrequency
+  , sStartTime
+  , sQuietTime
+  , sIsLocalTime
+  , sEndTime
+  , sTimezone
     -- ** SegmentBehaviors
-    , SegmentBehaviors
-    , segmentBehaviors
-    , sbRecency
-
+  , SegmentBehaviors
+  , segmentBehaviors
+  , sbRecency
     -- ** SegmentDemographics
-    , SegmentDemographics
-    , segmentDemographics
-    , sdPlatform
-    , sdAppVersion
-    , sdChannel
-    , sdModel
-    , sdMake
-    , sdDeviceType
-
+  , SegmentDemographics
+  , segmentDemographics
+  , sdPlatform
+  , sdAppVersion
+  , sdChannel
+  , sdModel
+  , sdMake
+  , sdDeviceType
     -- ** SegmentDimensions
-    , SegmentDimensions
-    , segmentDimensions
-    , sdLocation
-    , sdDemographic
-    , sdUserAttributes
-    , sdBehavior
-    , sdAttributes
-
+  , SegmentDimensions
+  , segmentDimensions
+  , sdLocation
+  , sdDemographic
+  , sdUserAttributes
+  , sdBehavior
+  , sdAttributes
     -- ** SegmentImportResource
-    , SegmentImportResource
-    , segmentImportResource
-    , sirSize
-    , sirFormat
-    , sirChannelCounts
-    , sirExternalId
-    , sirS3URL
-    , sirRoleARN
-
+  , SegmentImportResource
+  , segmentImportResource
+  , sirSize
+  , sirFormat
+  , sirChannelCounts
+  , sirExternalId
+  , sirS3URL
+  , sirRoleARN
     -- ** SegmentLocation
-    , SegmentLocation
-    , segmentLocation
-    , slCountry
-
+  , SegmentLocation
+  , segmentLocation
+  , slCountry
     -- ** SegmentResponse
-    , SegmentResponse
-    , segmentResponse
-    , sLastModifiedDate
-    , sSegmentType
-    , sApplicationId
-    , sName
-    , sVersion
-    , sId
-    , sCreationDate
-    , sImportDefinition
-    , sDimensions
-
+  , SegmentResponse
+  , segmentResponse
+  , sLastModifiedDate
+  , sSegmentType
+  , sApplicationId
+  , sName
+  , sVersion
+  , sId
+  , sCreationDate
+  , sImportDefinition
+  , sDimensions
     -- ** SegmentsResponse
-    , SegmentsResponse
-    , segmentsResponse
-    , sNextToken
-    , sItem
-
+  , SegmentsResponse
+  , segmentsResponse
+  , sNextToken
+  , sItem
     -- ** SendUsersMessageRequest
-    , SendUsersMessageRequest
-    , sendUsersMessageRequest
-    , sumrContext
-    , sumrUsers
-    , sumrMessageConfiguration
-
+  , SendUsersMessageRequest
+  , sendUsersMessageRequest
+  , sumrContext
+  , sumrUsers
+  , sumrMessageConfiguration
     -- ** SendUsersMessageResponse
-    , SendUsersMessageResponse
-    , sendUsersMessageResponse
-    , sumRequestId
-    , sumResult
-    , sumApplicationId
-
+  , SendUsersMessageResponse
+  , sendUsersMessageResponse
+  , sumRequestId
+  , sumResult
+  , sumApplicationId
     -- ** SetDimension
-    , SetDimension
-    , setDimension
-    , sdValues
-    , sdDimensionType
-
+  , SetDimension
+  , setDimension
+  , sdValues
+  , sdDimensionType
     -- ** TreatmentResource
-    , TreatmentResource
-    , treatmentResource
-    , trState
-    , trSchedule
-    , trTreatmentName
-    , trSizePercent
-    , trTreatmentDescription
-    , trId
-    , trMessageConfiguration
-
+  , TreatmentResource
+  , treatmentResource
+  , trState
+  , trSchedule
+  , trTreatmentName
+  , trSizePercent
+  , trTreatmentDescription
+  , trId
+  , trMessageConfiguration
     -- ** WriteApplicationSettingsRequest
-    , WriteApplicationSettingsRequest
-    , writeApplicationSettingsRequest
-    , wasrLimits
-    , wasrQuietTime
-    , wasrCampaignHook
-
+  , WriteApplicationSettingsRequest
+  , writeApplicationSettingsRequest
+  , wasrLimits
+  , wasrQuietTime
+  , wasrCampaignHook
     -- ** WriteCampaignRequest
-    , WriteCampaignRequest
-    , writeCampaignRequest
-    , wcrSchedule
-    , wcrHook
-    , wcrTreatmentName
-    , wcrLimits
-    , wcrIsPaused
-    , wcrName
-    , wcrHoldoutPercent
-    , wcrTreatmentDescription
-    , wcrMessageConfiguration
-    , wcrDescription
-    , wcrSegmentId
-    , wcrAdditionalTreatments
-    , wcrSegmentVersion
-
+  , WriteCampaignRequest
+  , writeCampaignRequest
+  , wcrSchedule
+  , wcrHook
+  , wcrTreatmentName
+  , wcrLimits
+  , wcrIsPaused
+  , wcrName
+  , wcrHoldoutPercent
+  , wcrTreatmentDescription
+  , wcrMessageConfiguration
+  , wcrDescription
+  , wcrSegmentId
+  , wcrAdditionalTreatments
+  , wcrSegmentVersion
     -- ** WriteEventStream
-    , WriteEventStream
-    , writeEventStream
-    , wesDestinationStreamARN
-    , wesRoleARN
-
+  , WriteEventStream
+  , writeEventStream
+  , wesDestinationStreamARN
+  , wesRoleARN
     -- ** WriteSegmentRequest
-    , WriteSegmentRequest
-    , writeSegmentRequest
-    , wsrName
-    , wsrDimensions
-
+  , WriteSegmentRequest
+  , writeSegmentRequest
+  , wsrName
+  , wsrDimensions
     -- ** WriteTreatmentResource
-    , WriteTreatmentResource
-    , writeTreatmentResource
-    , wtrSchedule
-    , wtrTreatmentName
-    , wtrSizePercent
-    , wtrTreatmentDescription
-    , wtrMessageConfiguration
-    ) where
+  , WriteTreatmentResource
+  , writeTreatmentResource
+  , wtrSchedule
+  , wtrTreatmentName
+  , wtrSizePercent
+  , wtrTreatmentDescription
+  , wtrMessageConfiguration
+  ) where
 
 import Network.AWS.Pinpoint.CreateApp
 import Network.AWS.Pinpoint.CreateCampaign
@@ -1235,14 +1060,12 @@ import Network.AWS.Pinpoint.UpdateGCMChannel
 import Network.AWS.Pinpoint.UpdateSegment
 import Network.AWS.Pinpoint.UpdateSmsChannel
 import Network.AWS.Pinpoint.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Pinpoint'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -1259,7 +1082,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Pinpoint.PutEventStream
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +18,19 @@
 --
 -- Use to create or update the event stream for an app.
 module Network.AWS.Pinpoint.PutEventStream
-    (
     -- * Creating a Request
-      putEventStream
-    , PutEventStream
+  ( putEventStream
+  , PutEventStream
     -- * Request Lenses
-    , pesApplicationId
-    , pesWriteEventStream
-
+  , pesApplicationId
+  , pesWriteEventStream
     -- * Destructuring the Response
-    , putEventStreamResponse
-    , PutEventStreamResponse
+  , putEventStreamResponse
+  , PutEventStreamResponse
     -- * Response Lenses
-    , pesrsResponseStatus
-    , pesrsEventStream
-    ) where
+  , pesrsResponseStatus
+  , pesrsEventStream
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
@@ -44,11 +40,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putEventStream' smart constructor.
-data PutEventStream = PutEventStream'
-  { _pesApplicationId    :: !Text
-  , _pesWriteEventStream :: !WriteEventStream
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutEventStream =
+  PutEventStream'
+    { _pesApplicationId    :: !Text
+    , _pesWriteEventStream :: !WriteEventStream
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutEventStream' with the minimum fields required to make a request.
 --
@@ -57,65 +54,60 @@ data PutEventStream = PutEventStream'
 -- * 'pesApplicationId' - ApplicationId
 --
 -- * 'pesWriteEventStream' - EventStream to write.
-putEventStream
-    :: Text -- ^ 'pesApplicationId'
-    -> WriteEventStream -- ^ 'pesWriteEventStream'
-    -> PutEventStream
+putEventStream ::
+     Text -- ^ 'pesApplicationId'
+  -> WriteEventStream -- ^ 'pesWriteEventStream'
+  -> PutEventStream
 putEventStream pApplicationId_ pWriteEventStream_ =
   PutEventStream'
     { _pesApplicationId = pApplicationId_
     , _pesWriteEventStream = pWriteEventStream_
     }
 
-
 -- | ApplicationId
 pesApplicationId :: Lens' PutEventStream Text
-pesApplicationId = lens _pesApplicationId (\ s a -> s{_pesApplicationId = a})
+pesApplicationId = lens _pesApplicationId (\s a -> s {_pesApplicationId = a})
 
 -- | EventStream to write.
 pesWriteEventStream :: Lens' PutEventStream WriteEventStream
-pesWriteEventStream = lens _pesWriteEventStream (\ s a -> s{_pesWriteEventStream = a})
+pesWriteEventStream =
+  lens _pesWriteEventStream (\s a -> s {_pesWriteEventStream = a})
 
 instance AWSRequest PutEventStream where
-        type Rs PutEventStream = PutEventStreamResponse
-        request = postJSON pinpoint
-        response
-          = receiveJSON
-              (\ s h x ->
-                 PutEventStreamResponse' <$>
-                   (pure (fromEnum s)) <*> (eitherParseJSON x))
+  type Rs PutEventStream = PutEventStreamResponse
+  request = postJSON pinpoint
+  response =
+    receiveJSON
+      (\s h x ->
+         PutEventStreamResponse' <$> (pure (fromEnum s)) <*> (eitherParseJSON x))
 
-instance Hashable PutEventStream where
+instance Hashable PutEventStream
 
-instance NFData PutEventStream where
+instance NFData PutEventStream
 
 instance ToHeaders PutEventStream where
-        toHeaders
-          = const
-              (mconcat
-                 ["Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON PutEventStream where
-        toJSON PutEventStream'{..}
-          = object
-              (catMaybes
-                 [Just ("WriteEventStream" .= _pesWriteEventStream)])
+  toJSON PutEventStream' {..} =
+    object (catMaybes [Just ("WriteEventStream" .= _pesWriteEventStream)])
 
 instance ToPath PutEventStream where
-        toPath PutEventStream'{..}
-          = mconcat
-              ["/v1/apps/", toBS _pesApplicationId, "/eventstream"]
+  toPath PutEventStream' {..} =
+    mconcat ["/v1/apps/", toBS _pesApplicationId, "/eventstream"]
 
 instance ToQuery PutEventStream where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'putEventStreamResponse' smart constructor.
-data PutEventStreamResponse = PutEventStreamResponse'
-  { _pesrsResponseStatus :: !Int
-  , _pesrsEventStream    :: !EventStream
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutEventStreamResponse =
+  PutEventStreamResponse'
+    { _pesrsResponseStatus :: !Int
+    , _pesrsEventStream    :: !EventStream
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutEventStreamResponse' with the minimum fields required to make a request.
 --
@@ -124,21 +116,21 @@ data PutEventStreamResponse = PutEventStreamResponse'
 -- * 'pesrsResponseStatus' - -- | The response status code.
 --
 -- * 'pesrsEventStream' - Undocumented member.
-putEventStreamResponse
-    :: Int -- ^ 'pesrsResponseStatus'
-    -> EventStream -- ^ 'pesrsEventStream'
-    -> PutEventStreamResponse
+putEventStreamResponse ::
+     Int -- ^ 'pesrsResponseStatus'
+  -> EventStream -- ^ 'pesrsEventStream'
+  -> PutEventStreamResponse
 putEventStreamResponse pResponseStatus_ pEventStream_ =
   PutEventStreamResponse'
     {_pesrsResponseStatus = pResponseStatus_, _pesrsEventStream = pEventStream_}
 
-
 -- | -- | The response status code.
 pesrsResponseStatus :: Lens' PutEventStreamResponse Int
-pesrsResponseStatus = lens _pesrsResponseStatus (\ s a -> s{_pesrsResponseStatus = a})
+pesrsResponseStatus =
+  lens _pesrsResponseStatus (\s a -> s {_pesrsResponseStatus = a})
 
 -- | Undocumented member.
 pesrsEventStream :: Lens' PutEventStreamResponse EventStream
-pesrsEventStream = lens _pesrsEventStream (\ s a -> s{_pesrsEventStream = a})
+pesrsEventStream = lens _pesrsEventStream (\s a -> s {_pesrsEventStream = a})
 
-instance NFData PutEventStreamResponse where
+instance NFData PutEventStreamResponse

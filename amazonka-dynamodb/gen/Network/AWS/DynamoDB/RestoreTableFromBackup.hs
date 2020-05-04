@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DynamoDB.RestoreTableFromBackup
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -40,21 +38,19 @@
 --
 --
 module Network.AWS.DynamoDB.RestoreTableFromBackup
-    (
     -- * Creating a Request
-      restoreTableFromBackup
-    , RestoreTableFromBackup
+  ( restoreTableFromBackup
+  , RestoreTableFromBackup
     -- * Request Lenses
-    , rtfbTargetTableName
-    , rtfbBackupARN
-
+  , rtfbTargetTableName
+  , rtfbBackupARN
     -- * Destructuring the Response
-    , restoreTableFromBackupResponse
-    , RestoreTableFromBackupResponse
+  , restoreTableFromBackupResponse
+  , RestoreTableFromBackupResponse
     -- * Response Lenses
-    , rtfbrsTableDescription
-    , rtfbrsResponseStatus
-    ) where
+  , rtfbrsTableDescription
+  , rtfbrsResponseStatus
+  ) where
 
 import Network.AWS.DynamoDB.Types
 import Network.AWS.DynamoDB.Types.Product
@@ -64,11 +60,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'restoreTableFromBackup' smart constructor.
-data RestoreTableFromBackup = RestoreTableFromBackup'
-  { _rtfbTargetTableName :: !Text
-  , _rtfbBackupARN       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreTableFromBackup =
+  RestoreTableFromBackup'
+    { _rtfbTargetTableName :: !Text
+    , _rtfbBackupARN       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RestoreTableFromBackup' with the minimum fields required to make a request.
 --
@@ -77,66 +74,66 @@ data RestoreTableFromBackup = RestoreTableFromBackup'
 -- * 'rtfbTargetTableName' - The name of the new table to which the backup must be restored.
 --
 -- * 'rtfbBackupARN' - The ARN associated with the backup.
-restoreTableFromBackup
-    :: Text -- ^ 'rtfbTargetTableName'
-    -> Text -- ^ 'rtfbBackupARN'
-    -> RestoreTableFromBackup
+restoreTableFromBackup ::
+     Text -- ^ 'rtfbTargetTableName'
+  -> Text -- ^ 'rtfbBackupARN'
+  -> RestoreTableFromBackup
 restoreTableFromBackup pTargetTableName_ pBackupARN_ =
   RestoreTableFromBackup'
     {_rtfbTargetTableName = pTargetTableName_, _rtfbBackupARN = pBackupARN_}
 
-
 -- | The name of the new table to which the backup must be restored.
 rtfbTargetTableName :: Lens' RestoreTableFromBackup Text
-rtfbTargetTableName = lens _rtfbTargetTableName (\ s a -> s{_rtfbTargetTableName = a})
+rtfbTargetTableName =
+  lens _rtfbTargetTableName (\s a -> s {_rtfbTargetTableName = a})
 
 -- | The ARN associated with the backup.
 rtfbBackupARN :: Lens' RestoreTableFromBackup Text
-rtfbBackupARN = lens _rtfbBackupARN (\ s a -> s{_rtfbBackupARN = a})
+rtfbBackupARN = lens _rtfbBackupARN (\s a -> s {_rtfbBackupARN = a})
 
 instance AWSRequest RestoreTableFromBackup where
-        type Rs RestoreTableFromBackup =
-             RestoreTableFromBackupResponse
-        request = postJSON dynamoDB
-        response
-          = receiveJSON
-              (\ s h x ->
-                 RestoreTableFromBackupResponse' <$>
-                   (x .?> "TableDescription") <*> (pure (fromEnum s)))
+  type Rs RestoreTableFromBackup = RestoreTableFromBackupResponse
+  request = postJSON dynamoDB
+  response =
+    receiveJSON
+      (\s h x ->
+         RestoreTableFromBackupResponse' <$> (x .?> "TableDescription") <*>
+         (pure (fromEnum s)))
 
-instance Hashable RestoreTableFromBackup where
+instance Hashable RestoreTableFromBackup
 
-instance NFData RestoreTableFromBackup where
+instance NFData RestoreTableFromBackup
 
 instance ToHeaders RestoreTableFromBackup where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("DynamoDB_20120810.RestoreTableFromBackup" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.0" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("DynamoDB_20120810.RestoreTableFromBackup" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.0" :: ByteString)
+         ])
 
 instance ToJSON RestoreTableFromBackup where
-        toJSON RestoreTableFromBackup'{..}
-          = object
-              (catMaybes
-                 [Just ("TargetTableName" .= _rtfbTargetTableName),
-                  Just ("BackupArn" .= _rtfbBackupARN)])
+  toJSON RestoreTableFromBackup' {..} =
+    object
+      (catMaybes
+         [ Just ("TargetTableName" .= _rtfbTargetTableName)
+         , Just ("BackupArn" .= _rtfbBackupARN)
+         ])
 
 instance ToPath RestoreTableFromBackup where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery RestoreTableFromBackup where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'restoreTableFromBackupResponse' smart constructor.
-data RestoreTableFromBackupResponse = RestoreTableFromBackupResponse'
-  { _rtfbrsTableDescription :: !(Maybe TableDescription)
-  , _rtfbrsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreTableFromBackupResponse =
+  RestoreTableFromBackupResponse'
+    { _rtfbrsTableDescription :: !(Maybe TableDescription)
+    , _rtfbrsResponseStatus   :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RestoreTableFromBackupResponse' with the minimum fields required to make a request.
 --
@@ -145,22 +142,24 @@ data RestoreTableFromBackupResponse = RestoreTableFromBackupResponse'
 -- * 'rtfbrsTableDescription' - The description of the table created from an existing backup.
 --
 -- * 'rtfbrsResponseStatus' - -- | The response status code.
-restoreTableFromBackupResponse
-    :: Int -- ^ 'rtfbrsResponseStatus'
-    -> RestoreTableFromBackupResponse
+restoreTableFromBackupResponse ::
+     Int -- ^ 'rtfbrsResponseStatus'
+  -> RestoreTableFromBackupResponse
 restoreTableFromBackupResponse pResponseStatus_ =
   RestoreTableFromBackupResponse'
     { _rtfbrsTableDescription = Nothing
     , _rtfbrsResponseStatus = pResponseStatus_
     }
 
-
 -- | The description of the table created from an existing backup.
-rtfbrsTableDescription :: Lens' RestoreTableFromBackupResponse (Maybe TableDescription)
-rtfbrsTableDescription = lens _rtfbrsTableDescription (\ s a -> s{_rtfbrsTableDescription = a})
+rtfbrsTableDescription ::
+     Lens' RestoreTableFromBackupResponse (Maybe TableDescription)
+rtfbrsTableDescription =
+  lens _rtfbrsTableDescription (\s a -> s {_rtfbrsTableDescription = a})
 
 -- | -- | The response status code.
 rtfbrsResponseStatus :: Lens' RestoreTableFromBackupResponse Int
-rtfbrsResponseStatus = lens _rtfbrsResponseStatus (\ s a -> s{_rtfbrsResponseStatus = a})
+rtfbrsResponseStatus =
+  lens _rtfbrsResponseStatus (\s a -> s {_rtfbrsResponseStatus = a})
 
-instance NFData RestoreTableFromBackupResponse where
+instance NFData RestoreTableFromBackupResponse

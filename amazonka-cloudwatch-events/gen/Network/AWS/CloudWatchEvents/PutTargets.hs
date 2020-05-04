@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudWatchEvents.PutTargets
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -80,22 +78,20 @@
 -- This action can partially fail if too many requests are made at the same time. If that happens, @FailedEntryCount@ is non-zero in the response and each entry in @FailedEntries@ provides the ID of the failed target and the error code.
 --
 module Network.AWS.CloudWatchEvents.PutTargets
-    (
     -- * Creating a Request
-      putTargets
-    , PutTargets
+  ( putTargets
+  , PutTargets
     -- * Request Lenses
-    , ptRule
-    , ptTargets
-
+  , ptRule
+  , ptTargets
     -- * Destructuring the Response
-    , putTargetsResponse
-    , PutTargetsResponse
+  , putTargetsResponse
+  , PutTargetsResponse
     -- * Response Lenses
-    , ptrsFailedEntryCount
-    , ptrsFailedEntries
-    , ptrsResponseStatus
-    ) where
+  , ptrsFailedEntryCount
+  , ptrsFailedEntries
+  , ptrsResponseStatus
+  ) where
 
 import Network.AWS.CloudWatchEvents.Types
 import Network.AWS.CloudWatchEvents.Types.Product
@@ -105,11 +101,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putTargets' smart constructor.
-data PutTargets = PutTargets'
-  { _ptRule    :: !Text
-  , _ptTargets :: !(List1 Target)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutTargets =
+  PutTargets'
+    { _ptRule    :: !Text
+    , _ptTargets :: !(List1 Target)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutTargets' with the minimum fields required to make a request.
 --
@@ -118,66 +115,62 @@ data PutTargets = PutTargets'
 -- * 'ptRule' - The name of the rule.
 --
 -- * 'ptTargets' - The targets to update or add to the rule.
-putTargets
-    :: Text -- ^ 'ptRule'
-    -> NonEmpty Target -- ^ 'ptTargets'
-    -> PutTargets
+putTargets ::
+     Text -- ^ 'ptRule'
+  -> NonEmpty Target -- ^ 'ptTargets'
+  -> PutTargets
 putTargets pRule_ pTargets_ =
   PutTargets' {_ptRule = pRule_, _ptTargets = _List1 # pTargets_}
 
-
 -- | The name of the rule.
 ptRule :: Lens' PutTargets Text
-ptRule = lens _ptRule (\ s a -> s{_ptRule = a})
+ptRule = lens _ptRule (\s a -> s {_ptRule = a})
 
 -- | The targets to update or add to the rule.
 ptTargets :: Lens' PutTargets (NonEmpty Target)
-ptTargets = lens _ptTargets (\ s a -> s{_ptTargets = a}) . _List1
+ptTargets = lens _ptTargets (\s a -> s {_ptTargets = a}) . _List1
 
 instance AWSRequest PutTargets where
-        type Rs PutTargets = PutTargetsResponse
-        request = postJSON cloudWatchEvents
-        response
-          = receiveJSON
-              (\ s h x ->
-                 PutTargetsResponse' <$>
-                   (x .?> "FailedEntryCount") <*>
-                     (x .?> "FailedEntries" .!@ mempty)
-                     <*> (pure (fromEnum s)))
+  type Rs PutTargets = PutTargetsResponse
+  request = postJSON cloudWatchEvents
+  response =
+    receiveJSON
+      (\s h x ->
+         PutTargetsResponse' <$> (x .?> "FailedEntryCount") <*>
+         (x .?> "FailedEntries" .!@ mempty) <*>
+         (pure (fromEnum s)))
 
-instance Hashable PutTargets where
+instance Hashable PutTargets
 
-instance NFData PutTargets where
+instance NFData PutTargets
 
 instance ToHeaders PutTargets where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSEvents.PutTargets" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("AWSEvents.PutTargets" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON PutTargets where
-        toJSON PutTargets'{..}
-          = object
-              (catMaybes
-                 [Just ("Rule" .= _ptRule),
-                  Just ("Targets" .= _ptTargets)])
+  toJSON PutTargets' {..} =
+    object
+      (catMaybes [Just ("Rule" .= _ptRule), Just ("Targets" .= _ptTargets)])
 
 instance ToPath PutTargets where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery PutTargets where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'putTargetsResponse' smart constructor.
-data PutTargetsResponse = PutTargetsResponse'
-  { _ptrsFailedEntryCount :: !(Maybe Int)
-  , _ptrsFailedEntries    :: !(Maybe [PutTargetsResultEntry])
-  , _ptrsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutTargetsResponse =
+  PutTargetsResponse'
+    { _ptrsFailedEntryCount :: !(Maybe Int)
+    , _ptrsFailedEntries    :: !(Maybe [PutTargetsResultEntry])
+    , _ptrsResponseStatus   :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutTargetsResponse' with the minimum fields required to make a request.
 --
@@ -188,9 +181,9 @@ data PutTargetsResponse = PutTargetsResponse'
 -- * 'ptrsFailedEntries' - The failed target entries.
 --
 -- * 'ptrsResponseStatus' - -- | The response status code.
-putTargetsResponse
-    :: Int -- ^ 'ptrsResponseStatus'
-    -> PutTargetsResponse
+putTargetsResponse ::
+     Int -- ^ 'ptrsResponseStatus'
+  -> PutTargetsResponse
 putTargetsResponse pResponseStatus_ =
   PutTargetsResponse'
     { _ptrsFailedEntryCount = Nothing
@@ -198,17 +191,20 @@ putTargetsResponse pResponseStatus_ =
     , _ptrsResponseStatus = pResponseStatus_
     }
 
-
 -- | The number of failed entries.
 ptrsFailedEntryCount :: Lens' PutTargetsResponse (Maybe Int)
-ptrsFailedEntryCount = lens _ptrsFailedEntryCount (\ s a -> s{_ptrsFailedEntryCount = a})
+ptrsFailedEntryCount =
+  lens _ptrsFailedEntryCount (\s a -> s {_ptrsFailedEntryCount = a})
 
 -- | The failed target entries.
 ptrsFailedEntries :: Lens' PutTargetsResponse [PutTargetsResultEntry]
-ptrsFailedEntries = lens _ptrsFailedEntries (\ s a -> s{_ptrsFailedEntries = a}) . _Default . _Coerce
+ptrsFailedEntries =
+  lens _ptrsFailedEntries (\s a -> s {_ptrsFailedEntries = a}) .
+  _Default . _Coerce
 
 -- | -- | The response status code.
 ptrsResponseStatus :: Lens' PutTargetsResponse Int
-ptrsResponseStatus = lens _ptrsResponseStatus (\ s a -> s{_ptrsResponseStatus = a})
+ptrsResponseStatus =
+  lens _ptrsResponseStatus (\s a -> s {_ptrsResponseStatus = a})
 
-instance NFData PutTargetsResponse where
+instance NFData PutTargetsResponse

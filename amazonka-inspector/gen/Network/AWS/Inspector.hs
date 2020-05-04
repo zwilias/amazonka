@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Inspector
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,418 +15,332 @@
 -- Amazon Inspector enables you to analyze the behavior of your AWS resources and to identify potential security issues. For more information, see <http://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html Amazon Inspector User Guide> .
 --
 module Network.AWS.Inspector
-    (
     -- * Service Configuration
-      inspector
-
+  ( inspector
     -- * Errors
     -- $errors
-
     -- ** AccessDeniedException
-    , _AccessDeniedException
-
+  , _AccessDeniedException
     -- ** AssessmentRunInProgressException
-    , _AssessmentRunInProgressException
-
+  , _AssessmentRunInProgressException
     -- ** NoSuchEntityException
-    , _NoSuchEntityException
-
+  , _NoSuchEntityException
     -- ** UnsupportedFeatureException
-    , _UnsupportedFeatureException
-
+  , _UnsupportedFeatureException
     -- ** AgentsAlreadyRunningAssessmentException
-    , _AgentsAlreadyRunningAssessmentException
-
+  , _AgentsAlreadyRunningAssessmentException
     -- ** InvalidCrossAccountRoleException
-    , _InvalidCrossAccountRoleException
-
+  , _InvalidCrossAccountRoleException
     -- ** InvalidInputException
-    , _InvalidInputException
-
+  , _InvalidInputException
     -- ** InternalException
-    , _InternalException
-
+  , _InternalException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** GetTelemetryMetadata
-    , module Network.AWS.Inspector.GetTelemetryMetadata
-
+  , module Network.AWS.Inspector.GetTelemetryMetadata
     -- ** ListFindings (Paginated)
-    , module Network.AWS.Inspector.ListFindings
-
+  , module Network.AWS.Inspector.ListFindings
     -- ** ListAssessmentTemplates (Paginated)
-    , module Network.AWS.Inspector.ListAssessmentTemplates
-
+  , module Network.AWS.Inspector.ListAssessmentTemplates
     -- ** SubscribeToEvent
-    , module Network.AWS.Inspector.SubscribeToEvent
-
+  , module Network.AWS.Inspector.SubscribeToEvent
     -- ** ListAssessmentRunAgents (Paginated)
-    , module Network.AWS.Inspector.ListAssessmentRunAgents
-
+  , module Network.AWS.Inspector.ListAssessmentRunAgents
     -- ** StartAssessmentRun
-    , module Network.AWS.Inspector.StartAssessmentRun
-
+  , module Network.AWS.Inspector.StartAssessmentRun
     -- ** DeleteAssessmentTemplate
-    , module Network.AWS.Inspector.DeleteAssessmentTemplate
-
+  , module Network.AWS.Inspector.DeleteAssessmentTemplate
     -- ** CreateAssessmentTemplate
-    , module Network.AWS.Inspector.CreateAssessmentTemplate
-
+  , module Network.AWS.Inspector.CreateAssessmentTemplate
     -- ** ListTagsForResource
-    , module Network.AWS.Inspector.ListTagsForResource
-
+  , module Network.AWS.Inspector.ListTagsForResource
     -- ** SetTagsForResource
-    , module Network.AWS.Inspector.SetTagsForResource
-
+  , module Network.AWS.Inspector.SetTagsForResource
     -- ** DescribeCrossAccountAccessRole
-    , module Network.AWS.Inspector.DescribeCrossAccountAccessRole
-
+  , module Network.AWS.Inspector.DescribeCrossAccountAccessRole
     -- ** DescribeAssessmentTemplates
-    , module Network.AWS.Inspector.DescribeAssessmentTemplates
-
+  , module Network.AWS.Inspector.DescribeAssessmentTemplates
     -- ** DescribeResourceGroups
-    , module Network.AWS.Inspector.DescribeResourceGroups
-
+  , module Network.AWS.Inspector.DescribeResourceGroups
     -- ** CreateAssessmentTarget
-    , module Network.AWS.Inspector.CreateAssessmentTarget
-
+  , module Network.AWS.Inspector.CreateAssessmentTarget
     -- ** ListEventSubscriptions (Paginated)
-    , module Network.AWS.Inspector.ListEventSubscriptions
-
+  , module Network.AWS.Inspector.ListEventSubscriptions
     -- ** RegisterCrossAccountAccessRole
-    , module Network.AWS.Inspector.RegisterCrossAccountAccessRole
-
+  , module Network.AWS.Inspector.RegisterCrossAccountAccessRole
     -- ** ListAssessmentTargets (Paginated)
-    , module Network.AWS.Inspector.ListAssessmentTargets
-
+  , module Network.AWS.Inspector.ListAssessmentTargets
     -- ** CreateResourceGroup
-    , module Network.AWS.Inspector.CreateResourceGroup
-
+  , module Network.AWS.Inspector.CreateResourceGroup
     -- ** DescribeRulesPackages
-    , module Network.AWS.Inspector.DescribeRulesPackages
-
+  , module Network.AWS.Inspector.DescribeRulesPackages
     -- ** StopAssessmentRun
-    , module Network.AWS.Inspector.StopAssessmentRun
-
+  , module Network.AWS.Inspector.StopAssessmentRun
     -- ** PreviewAgents (Paginated)
-    , module Network.AWS.Inspector.PreviewAgents
-
+  , module Network.AWS.Inspector.PreviewAgents
     -- ** DescribeFindings
-    , module Network.AWS.Inspector.DescribeFindings
-
+  , module Network.AWS.Inspector.DescribeFindings
     -- ** AddAttributesToFindings
-    , module Network.AWS.Inspector.AddAttributesToFindings
-
+  , module Network.AWS.Inspector.AddAttributesToFindings
     -- ** UpdateAssessmentTarget
-    , module Network.AWS.Inspector.UpdateAssessmentTarget
-
+  , module Network.AWS.Inspector.UpdateAssessmentTarget
     -- ** DeleteAssessmentTarget
-    , module Network.AWS.Inspector.DeleteAssessmentTarget
-
+  , module Network.AWS.Inspector.DeleteAssessmentTarget
     -- ** DeleteAssessmentRun
-    , module Network.AWS.Inspector.DeleteAssessmentRun
-
+  , module Network.AWS.Inspector.DeleteAssessmentRun
     -- ** ListAssessmentRuns (Paginated)
-    , module Network.AWS.Inspector.ListAssessmentRuns
-
+  , module Network.AWS.Inspector.ListAssessmentRuns
     -- ** GetAssessmentReport
-    , module Network.AWS.Inspector.GetAssessmentReport
-
+  , module Network.AWS.Inspector.GetAssessmentReport
     -- ** ListRulesPackages (Paginated)
-    , module Network.AWS.Inspector.ListRulesPackages
-
+  , module Network.AWS.Inspector.ListRulesPackages
     -- ** DescribeAssessmentRuns
-    , module Network.AWS.Inspector.DescribeAssessmentRuns
-
+  , module Network.AWS.Inspector.DescribeAssessmentRuns
     -- ** UnsubscribeFromEvent
-    , module Network.AWS.Inspector.UnsubscribeFromEvent
-
+  , module Network.AWS.Inspector.UnsubscribeFromEvent
     -- ** RemoveAttributesFromFindings
-    , module Network.AWS.Inspector.RemoveAttributesFromFindings
-
+  , module Network.AWS.Inspector.RemoveAttributesFromFindings
     -- ** DescribeAssessmentTargets
-    , module Network.AWS.Inspector.DescribeAssessmentTargets
-
+  , module Network.AWS.Inspector.DescribeAssessmentTargets
     -- * Types
-
     -- ** AgentHealth
-    , AgentHealth (..)
-
+  , AgentHealth(..)
     -- ** AgentHealthCode
-    , AgentHealthCode (..)
-
+  , AgentHealthCode(..)
     -- ** AssessmentRunNotificationSNSStatusCode
-    , AssessmentRunNotificationSNSStatusCode (..)
-
+  , AssessmentRunNotificationSNSStatusCode(..)
     -- ** AssessmentRunState
-    , AssessmentRunState (..)
-
+  , AssessmentRunState(..)
     -- ** AssetType
-    , AssetType (..)
-
+  , AssetType(..)
     -- ** FailedItemErrorCode
-    , FailedItemErrorCode (..)
-
+  , FailedItemErrorCode(..)
     -- ** InspectorEvent
-    , InspectorEvent (..)
-
+  , InspectorEvent(..)
     -- ** Locale
-    , Locale (..)
-
+  , Locale(..)
     -- ** ReportFileFormat
-    , ReportFileFormat (..)
-
+  , ReportFileFormat(..)
     -- ** ReportStatus
-    , ReportStatus (..)
-
+  , ReportStatus(..)
     -- ** ReportType
-    , ReportType (..)
-
+  , ReportType(..)
     -- ** Severity
-    , Severity (..)
-
+  , Severity(..)
     -- ** StopAction
-    , StopAction (..)
-
+  , StopAction(..)
     -- ** AgentFilter
-    , AgentFilter
-    , agentFilter
-    , afAgentHealths
-    , afAgentHealthCodes
-
+  , AgentFilter
+  , agentFilter
+  , afAgentHealths
+  , afAgentHealthCodes
     -- ** AgentPreview
-    , AgentPreview
-    , agentPreview
-    , apHostname
-    , apAutoScalingGroup
-    , apOperatingSystem
-    , apAgentVersion
-    , apKernelVersion
-    , apAgentHealth
-    , apIpv4Address
-    , apAgentId
-
+  , AgentPreview
+  , agentPreview
+  , apHostname
+  , apAutoScalingGroup
+  , apOperatingSystem
+  , apAgentVersion
+  , apKernelVersion
+  , apAgentHealth
+  , apIpv4Address
+  , apAgentId
     -- ** AssessmentRun
-    , AssessmentRun
-    , assessmentRun
-    , arStartedAt
-    , arCompletedAt
-    , arArn
-    , arName
-    , arAssessmentTemplateARN
-    , arState
-    , arDurationInSeconds
-    , arRulesPackageARNs
-    , arUserAttributesForFindings
-    , arCreatedAt
-    , arStateChangedAt
-    , arDataCollected
-    , arStateChanges
-    , arNotifications
-    , arFindingCounts
-
+  , AssessmentRun
+  , assessmentRun
+  , arStartedAt
+  , arCompletedAt
+  , arArn
+  , arName
+  , arAssessmentTemplateARN
+  , arState
+  , arDurationInSeconds
+  , arRulesPackageARNs
+  , arUserAttributesForFindings
+  , arCreatedAt
+  , arStateChangedAt
+  , arDataCollected
+  , arStateChanges
+  , arNotifications
+  , arFindingCounts
     -- ** AssessmentRunAgent
-    , AssessmentRunAgent
-    , assessmentRunAgent
-    , araAutoScalingGroup
-    , araAgentHealthDetails
-    , araAgentId
-    , araAssessmentRunARN
-    , araAgentHealth
-    , araAgentHealthCode
-    , araTelemetryMetadata
-
+  , AssessmentRunAgent
+  , assessmentRunAgent
+  , araAutoScalingGroup
+  , araAgentHealthDetails
+  , araAgentId
+  , araAssessmentRunARN
+  , araAgentHealth
+  , araAgentHealthCode
+  , araTelemetryMetadata
     -- ** AssessmentRunFilter
-    , AssessmentRunFilter
-    , assessmentRunFilter
-    , arfStates
-    , arfNamePattern
-    , arfStartTimeRange
-    , arfStateChangeTimeRange
-    , arfRulesPackageARNs
-    , arfCompletionTimeRange
-    , arfDurationRange
-
+  , AssessmentRunFilter
+  , assessmentRunFilter
+  , arfStates
+  , arfNamePattern
+  , arfStartTimeRange
+  , arfStateChangeTimeRange
+  , arfRulesPackageARNs
+  , arfCompletionTimeRange
+  , arfDurationRange
     -- ** AssessmentRunNotification
-    , AssessmentRunNotification
-    , assessmentRunNotification
-    , arnSnsTopicARN
-    , arnSnsPublishStatusCode
-    , arnMessage
-    , arnDate
-    , arnEvent
-    , arnError
-
+  , AssessmentRunNotification
+  , assessmentRunNotification
+  , arnSnsTopicARN
+  , arnSnsPublishStatusCode
+  , arnMessage
+  , arnDate
+  , arnEvent
+  , arnError
     -- ** AssessmentRunStateChange
-    , AssessmentRunStateChange
-    , assessmentRunStateChange
-    , arscStateChangedAt
-    , arscState
-
+  , AssessmentRunStateChange
+  , assessmentRunStateChange
+  , arscStateChangedAt
+  , arscState
     -- ** AssessmentTarget
-    , AssessmentTarget
-    , assessmentTarget
-    , aArn
-    , aName
-    , aResourceGroupARN
-    , aCreatedAt
-    , aUpdatedAt
-
+  , AssessmentTarget
+  , assessmentTarget
+  , aArn
+  , aName
+  , aResourceGroupARN
+  , aCreatedAt
+  , aUpdatedAt
     -- ** AssessmentTargetFilter
-    , AssessmentTargetFilter
-    , assessmentTargetFilter
-    , atfAssessmentTargetNamePattern
-
+  , AssessmentTargetFilter
+  , assessmentTargetFilter
+  , atfAssessmentTargetNamePattern
     -- ** AssessmentTemplate
-    , AssessmentTemplate
-    , assessmentTemplate
-    , atLastAssessmentRunARN
-    , atArn
-    , atName
-    , atAssessmentTargetARN
-    , atDurationInSeconds
-    , atRulesPackageARNs
-    , atUserAttributesForFindings
-    , atAssessmentRunCount
-    , atCreatedAt
-
+  , AssessmentTemplate
+  , assessmentTemplate
+  , atLastAssessmentRunARN
+  , atArn
+  , atName
+  , atAssessmentTargetARN
+  , atDurationInSeconds
+  , atRulesPackageARNs
+  , atUserAttributesForFindings
+  , atAssessmentRunCount
+  , atCreatedAt
     -- ** AssessmentTemplateFilter
-    , AssessmentTemplateFilter
-    , assessmentTemplateFilter
-    , atfNamePattern
-    , atfRulesPackageARNs
-    , atfDurationRange
-
+  , AssessmentTemplateFilter
+  , assessmentTemplateFilter
+  , atfNamePattern
+  , atfRulesPackageARNs
+  , atfDurationRange
     -- ** AssetAttributes
-    , AssetAttributes
-    , assetAttributes
-    , aaHostname
-    , aaAutoScalingGroup
-    , aaIpv4Addresses
-    , aaAgentId
-    , aaAmiId
-    , aaSchemaVersion
-
+  , AssetAttributes
+  , assetAttributes
+  , aaHostname
+  , aaAutoScalingGroup
+  , aaIpv4Addresses
+  , aaAgentId
+  , aaAmiId
+  , aaSchemaVersion
     -- ** Attribute
-    , Attribute
-    , attribute
-    , aValue
-    , aKey
-
+  , Attribute
+  , attribute
+  , aValue
+  , aKey
     -- ** DurationRange
-    , DurationRange
-    , durationRange
-    , drMinSeconds
-    , drMaxSeconds
-
+  , DurationRange
+  , durationRange
+  , drMinSeconds
+  , drMaxSeconds
     -- ** EventSubscription
-    , EventSubscription
-    , eventSubscription
-    , esEvent
-    , esSubscribedAt
-
+  , EventSubscription
+  , eventSubscription
+  , esEvent
+  , esSubscribedAt
     -- ** FailedItemDetails
-    , FailedItemDetails
-    , failedItemDetails
-    , fidFailureCode
-    , fidRetryable
-
+  , FailedItemDetails
+  , failedItemDetails
+  , fidFailureCode
+  , fidRetryable
     -- ** Finding
-    , Finding
-    , finding
-    , fService
-    , fSeverity
-    , fSchemaVersion
-    , fConfidence
-    , fAssetAttributes
-    , fServiceAttributes
-    , fId
-    , fNumericSeverity
-    , fAssetType
-    , fTitle
-    , fIndicatorOfCompromise
-    , fDescription
-    , fRecommendation
-    , fArn
-    , fAttributes
-    , fUserAttributes
-    , fCreatedAt
-    , fUpdatedAt
-
+  , Finding
+  , finding
+  , fService
+  , fSeverity
+  , fSchemaVersion
+  , fConfidence
+  , fAssetAttributes
+  , fServiceAttributes
+  , fId
+  , fNumericSeverity
+  , fAssetType
+  , fTitle
+  , fIndicatorOfCompromise
+  , fDescription
+  , fRecommendation
+  , fArn
+  , fAttributes
+  , fUserAttributes
+  , fCreatedAt
+  , fUpdatedAt
     -- ** FindingFilter
-    , FindingFilter
-    , findingFilter
-    , ffAgentIds
-    , ffRuleNames
-    , ffUserAttributes
-    , ffRulesPackageARNs
-    , ffAttributes
-    , ffSeverities
-    , ffCreationTimeRange
-    , ffAutoScalingGroups
-
+  , FindingFilter
+  , findingFilter
+  , ffAgentIds
+  , ffRuleNames
+  , ffUserAttributes
+  , ffRulesPackageARNs
+  , ffAttributes
+  , ffSeverities
+  , ffCreationTimeRange
+  , ffAutoScalingGroups
     -- ** InspectorServiceAttributes
-    , InspectorServiceAttributes
-    , inspectorServiceAttributes
-    , isaRulesPackageARN
-    , isaAssessmentRunARN
-    , isaSchemaVersion
-
+  , InspectorServiceAttributes
+  , inspectorServiceAttributes
+  , isaRulesPackageARN
+  , isaAssessmentRunARN
+  , isaSchemaVersion
     -- ** ResourceGroup
-    , ResourceGroup
-    , resourceGroup
-    , rgArn
-    , rgTags
-    , rgCreatedAt
-
+  , ResourceGroup
+  , resourceGroup
+  , rgArn
+  , rgTags
+  , rgCreatedAt
     -- ** ResourceGroupTag
-    , ResourceGroupTag
-    , resourceGroupTag
-    , rgtValue
-    , rgtKey
-
+  , ResourceGroupTag
+  , resourceGroupTag
+  , rgtValue
+  , rgtKey
     -- ** RulesPackage
-    , RulesPackage
-    , rulesPackage
-    , rpDescription
-    , rpArn
-    , rpName
-    , rpVersion
-    , rpProvider
-
+  , RulesPackage
+  , rulesPackage
+  , rpDescription
+  , rpArn
+  , rpName
+  , rpVersion
+  , rpProvider
     -- ** Subscription
-    , Subscription
-    , subscription
-    , sResourceARN
-    , sTopicARN
-    , sEventSubscriptions
-
+  , Subscription
+  , subscription
+  , sResourceARN
+  , sTopicARN
+  , sEventSubscriptions
     -- ** Tag
-    , Tag
-    , tag
-    , tagValue
-    , tagKey
-
+  , Tag
+  , tag
+  , tagValue
+  , tagKey
     -- ** TelemetryMetadata
-    , TelemetryMetadata
-    , telemetryMetadata
-    , tmDataSize
-    , tmMessageType
-    , tmCount
-
+  , TelemetryMetadata
+  , telemetryMetadata
+  , tmDataSize
+  , tmMessageType
+  , tmCount
     -- ** TimestampRange
-    , TimestampRange
-    , timestampRange
-    , trEndDate
-    , trBeginDate
-    ) where
+  , TimestampRange
+  , timestampRange
+  , trEndDate
+  , trBeginDate
+  ) where
 
 import Network.AWS.Inspector.AddAttributesToFindings
 import Network.AWS.Inspector.CreateAssessmentTarget
@@ -464,14 +377,12 @@ import Network.AWS.Inspector.Types
 import Network.AWS.Inspector.UnsubscribeFromEvent
 import Network.AWS.Inspector.UpdateAssessmentTarget
 import Network.AWS.Inspector.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Inspector'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -488,7 +399,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ELBv2
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -46,437 +45,328 @@
 -- All Elastic Load Balancing operations are idempotent, which means that they complete at most one time. If you repeat an operation, it succeeds.
 --
 module Network.AWS.ELBv2
-    (
     -- * Service Configuration
-      eLBv2
-
+  ( eLBv2
     -- * Errors
     -- $errors
-
     -- ** InvalidConfigurationRequestException
-    , _InvalidConfigurationRequestException
-
+  , _InvalidConfigurationRequestException
     -- ** SubnetNotFoundException
-    , _SubnetNotFoundException
-
+  , _SubnetNotFoundException
     -- ** TooManyTargetsException
-    , _TooManyTargetsException
-
+  , _TooManyTargetsException
     -- ** RuleNotFoundException
-    , _RuleNotFoundException
-
+  , _RuleNotFoundException
     -- ** InvalidSubnetException
-    , _InvalidSubnetException
-
+  , _InvalidSubnetException
     -- ** TooManyRulesException
-    , _TooManyRulesException
-
+  , _TooManyRulesException
     -- ** TooManyTargetGroupsException
-    , _TooManyTargetGroupsException
-
+  , _TooManyTargetGroupsException
     -- ** DuplicateLoadBalancerNameException
-    , _DuplicateLoadBalancerNameException
-
+  , _DuplicateLoadBalancerNameException
     -- ** IncompatibleProtocolsException
-    , _IncompatibleProtocolsException
-
+  , _IncompatibleProtocolsException
     -- ** TooManyCertificatesException
-    , _TooManyCertificatesException
-
+  , _TooManyCertificatesException
     -- ** DuplicateTagKeysException
-    , _DuplicateTagKeysException
-
+  , _DuplicateTagKeysException
     -- ** DuplicateListenerException
-    , _DuplicateListenerException
-
+  , _DuplicateListenerException
     -- ** TooManyTagsException
-    , _TooManyTagsException
-
+  , _TooManyTagsException
     -- ** DuplicateTargetGroupNameException
-    , _DuplicateTargetGroupNameException
-
+  , _DuplicateTargetGroupNameException
     -- ** HealthUnavailableException
-    , _HealthUnavailableException
-
+  , _HealthUnavailableException
     -- ** AllocationIdNotFoundException
-    , _AllocationIdNotFoundException
-
+  , _AllocationIdNotFoundException
     -- ** PriorityInUseException
-    , _PriorityInUseException
-
+  , _PriorityInUseException
     -- ** TooManyLoadBalancersException
-    , _TooManyLoadBalancersException
-
+  , _TooManyLoadBalancersException
     -- ** UnsupportedProtocolException
-    , _UnsupportedProtocolException
-
+  , _UnsupportedProtocolException
     -- ** InvalidTargetException
-    , _InvalidTargetException
-
+  , _InvalidTargetException
     -- ** InvalidSecurityGroupException
-    , _InvalidSecurityGroupException
-
+  , _InvalidSecurityGroupException
     -- ** TargetGroupNotFoundException
-    , _TargetGroupNotFoundException
-
+  , _TargetGroupNotFoundException
     -- ** ListenerNotFoundException
-    , _ListenerNotFoundException
-
+  , _ListenerNotFoundException
     -- ** TooManyRegistrationsForTargetIdException
-    , _TooManyRegistrationsForTargetIdException
-
+  , _TooManyRegistrationsForTargetIdException
     -- ** TooManyListenersException
-    , _TooManyListenersException
-
+  , _TooManyListenersException
     -- ** TargetGroupAssociationLimitException
-    , _TargetGroupAssociationLimitException
-
+  , _TargetGroupAssociationLimitException
     -- ** OperationNotPermittedException
-    , _OperationNotPermittedException
-
+  , _OperationNotPermittedException
     -- ** SSLPolicyNotFoundException
-    , _SSLPolicyNotFoundException
-
+  , _SSLPolicyNotFoundException
     -- ** InvalidSchemeException
-    , _InvalidSchemeException
-
+  , _InvalidSchemeException
     -- ** AvailabilityZoneNotSupportedException
-    , _AvailabilityZoneNotSupportedException
-
+  , _AvailabilityZoneNotSupportedException
     -- ** LoadBalancerNotFoundException
-    , _LoadBalancerNotFoundException
-
+  , _LoadBalancerNotFoundException
     -- ** ResourceInUseException
-    , _ResourceInUseException
-
+  , _ResourceInUseException
     -- ** CertificateNotFoundException
-    , _CertificateNotFoundException
-
+  , _CertificateNotFoundException
     -- * Waiters
     -- $waiters
-
     -- ** LoadBalancersDeleted
-    , loadBalancersDeleted
-
+  , loadBalancersDeleted
     -- ** TargetDeregistered
-    , targetDeregistered
-
+  , targetDeregistered
     -- ** LoadBalancerAvailable
-    , loadBalancerAvailable
-
+  , loadBalancerAvailable
     -- ** TargetInService
-    , targetInService
-
+  , targetInService
     -- ** LoadBalancerExists
-    , loadBalancerExists
-
+  , loadBalancerExists
     -- * Operations
     -- $operations
-
     -- ** DescribeLoadBalancers (Paginated)
-    , module Network.AWS.ELBv2.DescribeLoadBalancers
-
+  , module Network.AWS.ELBv2.DescribeLoadBalancers
     -- ** DescribeTags
-    , module Network.AWS.ELBv2.DescribeTags
-
+  , module Network.AWS.ELBv2.DescribeTags
     -- ** DeleteRule
-    , module Network.AWS.ELBv2.DeleteRule
-
+  , module Network.AWS.ELBv2.DeleteRule
     -- ** RemoveTags
-    , module Network.AWS.ELBv2.RemoveTags
-
+  , module Network.AWS.ELBv2.RemoveTags
     -- ** DeleteTargetGroup
-    , module Network.AWS.ELBv2.DeleteTargetGroup
-
+  , module Network.AWS.ELBv2.DeleteTargetGroup
     -- ** SetSubnets
-    , module Network.AWS.ELBv2.SetSubnets
-
+  , module Network.AWS.ELBv2.SetSubnets
     -- ** CreateRule
-    , module Network.AWS.ELBv2.CreateRule
-
+  , module Network.AWS.ELBv2.CreateRule
     -- ** DescribeListenerCertificates
-    , module Network.AWS.ELBv2.DescribeListenerCertificates
-
+  , module Network.AWS.ELBv2.DescribeListenerCertificates
     -- ** SetSecurityGroups
-    , module Network.AWS.ELBv2.SetSecurityGroups
-
+  , module Network.AWS.ELBv2.SetSecurityGroups
     -- ** SetRulePriorities
-    , module Network.AWS.ELBv2.SetRulePriorities
-
+  , module Network.AWS.ELBv2.SetRulePriorities
     -- ** DescribeTargetGroups (Paginated)
-    , module Network.AWS.ELBv2.DescribeTargetGroups
-
+  , module Network.AWS.ELBv2.DescribeTargetGroups
     -- ** DescribeRules
-    , module Network.AWS.ELBv2.DescribeRules
-
+  , module Network.AWS.ELBv2.DescribeRules
     -- ** DeleteLoadBalancer
-    , module Network.AWS.ELBv2.DeleteLoadBalancer
-
+  , module Network.AWS.ELBv2.DeleteLoadBalancer
     -- ** RegisterTargets
-    , module Network.AWS.ELBv2.RegisterTargets
-
+  , module Network.AWS.ELBv2.RegisterTargets
     -- ** ModifyListener
-    , module Network.AWS.ELBv2.ModifyListener
-
+  , module Network.AWS.ELBv2.ModifyListener
     -- ** ModifyTargetGroup
-    , module Network.AWS.ELBv2.ModifyTargetGroup
-
+  , module Network.AWS.ELBv2.ModifyTargetGroup
     -- ** ModifyTargetGroupAttributes
-    , module Network.AWS.ELBv2.ModifyTargetGroupAttributes
-
+  , module Network.AWS.ELBv2.ModifyTargetGroupAttributes
     -- ** DescribeTargetGroupAttributes
-    , module Network.AWS.ELBv2.DescribeTargetGroupAttributes
-
+  , module Network.AWS.ELBv2.DescribeTargetGroupAttributes
     -- ** DeleteListener
-    , module Network.AWS.ELBv2.DeleteListener
-
+  , module Network.AWS.ELBv2.DeleteListener
     -- ** DescribeSSLPolicies
-    , module Network.AWS.ELBv2.DescribeSSLPolicies
-
+  , module Network.AWS.ELBv2.DescribeSSLPolicies
     -- ** DescribeAccountLimits
-    , module Network.AWS.ELBv2.DescribeAccountLimits
-
+  , module Network.AWS.ELBv2.DescribeAccountLimits
     -- ** DeregisterTargets
-    , module Network.AWS.ELBv2.DeregisterTargets
-
+  , module Network.AWS.ELBv2.DeregisterTargets
     -- ** CreateListener
-    , module Network.AWS.ELBv2.CreateListener
-
+  , module Network.AWS.ELBv2.CreateListener
     -- ** CreateTargetGroup
-    , module Network.AWS.ELBv2.CreateTargetGroup
-
+  , module Network.AWS.ELBv2.CreateTargetGroup
     -- ** ModifyLoadBalancerAttributes
-    , module Network.AWS.ELBv2.ModifyLoadBalancerAttributes
-
+  , module Network.AWS.ELBv2.ModifyLoadBalancerAttributes
     -- ** SetIPAddressType
-    , module Network.AWS.ELBv2.SetIPAddressType
-
+  , module Network.AWS.ELBv2.SetIPAddressType
     -- ** AddTags
-    , module Network.AWS.ELBv2.AddTags
-
+  , module Network.AWS.ELBv2.AddTags
     -- ** DescribeLoadBalancerAttributes
-    , module Network.AWS.ELBv2.DescribeLoadBalancerAttributes
-
+  , module Network.AWS.ELBv2.DescribeLoadBalancerAttributes
     -- ** DescribeListeners (Paginated)
-    , module Network.AWS.ELBv2.DescribeListeners
-
+  , module Network.AWS.ELBv2.DescribeListeners
     -- ** DescribeTargetHealth
-    , module Network.AWS.ELBv2.DescribeTargetHealth
-
+  , module Network.AWS.ELBv2.DescribeTargetHealth
     -- ** CreateLoadBalancer
-    , module Network.AWS.ELBv2.CreateLoadBalancer
-
+  , module Network.AWS.ELBv2.CreateLoadBalancer
     -- ** RemoveListenerCertificates
-    , module Network.AWS.ELBv2.RemoveListenerCertificates
-
+  , module Network.AWS.ELBv2.RemoveListenerCertificates
     -- ** ModifyRule
-    , module Network.AWS.ELBv2.ModifyRule
-
+  , module Network.AWS.ELBv2.ModifyRule
     -- ** AddListenerCertificates
-    , module Network.AWS.ELBv2.AddListenerCertificates
-
+  , module Network.AWS.ELBv2.AddListenerCertificates
     -- * Types
-
     -- ** ActionTypeEnum
-    , ActionTypeEnum (..)
-
+  , ActionTypeEnum(..)
     -- ** IPAddressType
-    , IPAddressType (..)
-
+  , IPAddressType(..)
     -- ** LoadBalancerSchemeEnum
-    , LoadBalancerSchemeEnum (..)
-
+  , LoadBalancerSchemeEnum(..)
     -- ** LoadBalancerStateEnum
-    , LoadBalancerStateEnum (..)
-
+  , LoadBalancerStateEnum(..)
     -- ** LoadBalancerTypeEnum
-    , LoadBalancerTypeEnum (..)
-
+  , LoadBalancerTypeEnum(..)
     -- ** ProtocolEnum
-    , ProtocolEnum (..)
-
+  , ProtocolEnum(..)
     -- ** TargetHealthReasonEnum
-    , TargetHealthReasonEnum (..)
-
+  , TargetHealthReasonEnum(..)
     -- ** TargetHealthStateEnum
-    , TargetHealthStateEnum (..)
-
+  , TargetHealthStateEnum(..)
     -- ** TargetTypeEnum
-    , TargetTypeEnum (..)
-
+  , TargetTypeEnum(..)
     -- ** Action
-    , Action
-    , action
-    , aType
-    , aTargetGroupARN
-
+  , Action
+  , action
+  , aType
+  , aTargetGroupARN
     -- ** AvailabilityZone
-    , AvailabilityZone
-    , availabilityZone
-    , azSubnetId
-    , azZoneName
-    , azLoadBalancerAddresses
-
+  , AvailabilityZone
+  , availabilityZone
+  , azSubnetId
+  , azZoneName
+  , azLoadBalancerAddresses
     -- ** Certificate
-    , Certificate
-    , certificate
-    , cCertificateARN
-    , cIsDefault
-
+  , Certificate
+  , certificate
+  , cCertificateARN
+  , cIsDefault
     -- ** Cipher
-    , Cipher
-    , cipher
-    , cPriority
-    , cName
-
+  , Cipher
+  , cipher
+  , cPriority
+  , cName
     -- ** Limit
-    , Limit
-    , limit
-    , lMax
-    , lName
-
+  , Limit
+  , limit
+  , lMax
+  , lName
     -- ** Listener
-    , Listener
-    , listener
-    , lSSLPolicy
-    , lListenerARN
-    , lProtocol
-    , lDefaultActions
-    , lCertificates
-    , lLoadBalancerARN
-    , lPort
-
+  , Listener
+  , listener
+  , lSSLPolicy
+  , lListenerARN
+  , lProtocol
+  , lDefaultActions
+  , lCertificates
+  , lLoadBalancerARN
+  , lPort
     -- ** LoadBalancer
-    , LoadBalancer
-    , loadBalancer
-    , lbState
-    , lbSecurityGroups
-    , lbLoadBalancerName
-    , lbCreatedTime
-    , lbVPCId
-    , lbCanonicalHostedZoneId
-    , lbAvailabilityZones
-    , lbLoadBalancerARN
-    , lbIPAddressType
-    , lbScheme
-    , lbType
-    , lbDNSName
-
+  , LoadBalancer
+  , loadBalancer
+  , lbState
+  , lbSecurityGroups
+  , lbLoadBalancerName
+  , lbCreatedTime
+  , lbVPCId
+  , lbCanonicalHostedZoneId
+  , lbAvailabilityZones
+  , lbLoadBalancerARN
+  , lbIPAddressType
+  , lbScheme
+  , lbType
+  , lbDNSName
     -- ** LoadBalancerAddress
-    , LoadBalancerAddress
-    , loadBalancerAddress
-    , lbaIPAddress
-    , lbaAllocationId
-
+  , LoadBalancerAddress
+  , loadBalancerAddress
+  , lbaIPAddress
+  , lbaAllocationId
     -- ** LoadBalancerAttribute
-    , LoadBalancerAttribute
-    , loadBalancerAttribute
-    , lbaValue
-    , lbaKey
-
+  , LoadBalancerAttribute
+  , loadBalancerAttribute
+  , lbaValue
+  , lbaKey
     -- ** LoadBalancerState
-    , LoadBalancerState
-    , loadBalancerState
-    , lbsReason
-    , lbsCode
-
+  , LoadBalancerState
+  , loadBalancerState
+  , lbsReason
+  , lbsCode
     -- ** Matcher
-    , Matcher
-    , matcher
-    , mHTTPCode
-
+  , Matcher
+  , matcher
+  , mHTTPCode
     -- ** Rule
-    , Rule
-    , rule
-    , rPriority
-    , rActions
-    , rConditions
-    , rRuleARN
-    , rIsDefault
-
+  , Rule
+  , rule
+  , rPriority
+  , rActions
+  , rConditions
+  , rRuleARN
+  , rIsDefault
     -- ** RuleCondition
-    , RuleCondition
-    , ruleCondition
-    , rcField
-    , rcValues
-
+  , RuleCondition
+  , ruleCondition
+  , rcField
+  , rcValues
     -- ** RulePriorityPair
-    , RulePriorityPair
-    , rulePriorityPair
-    , rppPriority
-    , rppRuleARN
-
+  , RulePriorityPair
+  , rulePriorityPair
+  , rppPriority
+  , rppRuleARN
     -- ** SSLPolicy
-    , SSLPolicy
-    , sslPolicy
-    , spCiphers
-    , spName
-    , spSSLProtocols
-
+  , SSLPolicy
+  , sslPolicy
+  , spCiphers
+  , spName
+  , spSSLProtocols
     -- ** SubnetMapping
-    , SubnetMapping
-    , subnetMapping
-    , smAllocationId
-    , smSubnetId
-
+  , SubnetMapping
+  , subnetMapping
+  , smAllocationId
+  , smSubnetId
     -- ** Tag
-    , Tag
-    , tag
-    , tagValue
-    , tagKey
-
+  , Tag
+  , tag
+  , tagValue
+  , tagKey
     -- ** TagDescription
-    , TagDescription
-    , tagDescription
-    , tdResourceARN
-    , tdTags
-
+  , TagDescription
+  , tagDescription
+  , tdResourceARN
+  , tdTags
     -- ** TargetDescription
-    , TargetDescription
-    , targetDescription
-    , tdAvailabilityZone
-    , tdPort
-    , tdId
-
+  , TargetDescription
+  , targetDescription
+  , tdAvailabilityZone
+  , tdPort
+  , tdId
     -- ** TargetGroup
-    , TargetGroup
-    , targetGroup
-    , tgMatcher
-    , tgHealthCheckPath
-    , tgUnhealthyThresholdCount
-    , tgVPCId
-    , tgTargetGroupARN
-    , tgProtocol
-    , tgHealthCheckIntervalSeconds
-    , tgTargetType
-    , tgHealthyThresholdCount
-    , tgHealthCheckProtocol
-    , tgLoadBalancerARNs
-    , tgHealthCheckTimeoutSeconds
-    , tgHealthCheckPort
-    , tgTargetGroupName
-    , tgPort
-
+  , TargetGroup
+  , targetGroup
+  , tgMatcher
+  , tgHealthCheckPath
+  , tgUnhealthyThresholdCount
+  , tgVPCId
+  , tgTargetGroupARN
+  , tgProtocol
+  , tgHealthCheckIntervalSeconds
+  , tgTargetType
+  , tgHealthyThresholdCount
+  , tgHealthCheckProtocol
+  , tgLoadBalancerARNs
+  , tgHealthCheckTimeoutSeconds
+  , tgHealthCheckPort
+  , tgTargetGroupName
+  , tgPort
     -- ** TargetGroupAttribute
-    , TargetGroupAttribute
-    , targetGroupAttribute
-    , tgaValue
-    , tgaKey
-
+  , TargetGroupAttribute
+  , targetGroupAttribute
+  , tgaValue
+  , tgaKey
     -- ** TargetHealth
-    , TargetHealth
-    , targetHealth
-    , thState
-    , thReason
-    , thDescription
-
+  , TargetHealth
+  , targetHealth
+  , thState
+  , thReason
+  , thDescription
     -- ** TargetHealthDescription
-    , TargetHealthDescription
-    , targetHealthDescription
-    , thdTargetHealth
-    , thdHealthCheckPort
-    , thdTarget
-    ) where
+  , TargetHealthDescription
+  , targetHealthDescription
+  , thdTargetHealth
+  , thdHealthCheckPort
+  , thdTarget
+  ) where
 
 import Network.AWS.ELBv2.AddListenerCertificates
 import Network.AWS.ELBv2.AddTags
@@ -514,14 +404,12 @@ import Network.AWS.ELBv2.SetSecurityGroups
 import Network.AWS.ELBv2.SetSubnets
 import Network.AWS.ELBv2.Types
 import Network.AWS.ELBv2.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'ELBv2'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -538,7 +426,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

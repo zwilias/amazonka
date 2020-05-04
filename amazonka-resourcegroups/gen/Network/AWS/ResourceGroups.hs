@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ResourceGroups
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,106 +33,77 @@
 --
 --
 module Network.AWS.ResourceGroups
-    (
     -- * Service Configuration
-      resourceGroups
-
+  ( resourceGroups
     -- * Errors
     -- $errors
-
     -- ** ForbiddenException
-    , _ForbiddenException
-
+  , _ForbiddenException
     -- ** NotFoundException
-    , _NotFoundException
-
+  , _NotFoundException
     -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
+  , _TooManyRequestsException
     -- ** InternalServerErrorException
-    , _InternalServerErrorException
-
+  , _InternalServerErrorException
     -- ** MethodNotAllowedException
-    , _MethodNotAllowedException
-
+  , _MethodNotAllowedException
     -- ** UnauthorizedException
-    , _UnauthorizedException
-
+  , _UnauthorizedException
     -- ** BadRequestException
-    , _BadRequestException
-
+  , _BadRequestException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** SearchResources (Paginated)
-    , module Network.AWS.ResourceGroups.SearchResources
-
+  , module Network.AWS.ResourceGroups.SearchResources
     -- ** GetTags
-    , module Network.AWS.ResourceGroups.GetTags
-
+  , module Network.AWS.ResourceGroups.GetTags
     -- ** Tag
-    , module Network.AWS.ResourceGroups.Tag
-
+  , module Network.AWS.ResourceGroups.Tag
     -- ** Untag
-    , module Network.AWS.ResourceGroups.Untag
-
+  , module Network.AWS.ResourceGroups.Untag
     -- ** UpdateGroupQuery
-    , module Network.AWS.ResourceGroups.UpdateGroupQuery
-
+  , module Network.AWS.ResourceGroups.UpdateGroupQuery
     -- ** ListGroupResources (Paginated)
-    , module Network.AWS.ResourceGroups.ListGroupResources
-
+  , module Network.AWS.ResourceGroups.ListGroupResources
     -- ** GetGroupQuery
-    , module Network.AWS.ResourceGroups.GetGroupQuery
-
+  , module Network.AWS.ResourceGroups.GetGroupQuery
     -- ** CreateGroup
-    , module Network.AWS.ResourceGroups.CreateGroup
-
+  , module Network.AWS.ResourceGroups.CreateGroup
     -- ** DeleteGroup
-    , module Network.AWS.ResourceGroups.DeleteGroup
-
+  , module Network.AWS.ResourceGroups.DeleteGroup
     -- ** UpdateGroup
-    , module Network.AWS.ResourceGroups.UpdateGroup
-
+  , module Network.AWS.ResourceGroups.UpdateGroup
     -- ** ListGroups (Paginated)
-    , module Network.AWS.ResourceGroups.ListGroups
-
+  , module Network.AWS.ResourceGroups.ListGroups
     -- ** GetGroup
-    , module Network.AWS.ResourceGroups.GetGroup
-
+  , module Network.AWS.ResourceGroups.GetGroup
     -- * Types
-
     -- ** QueryType
-    , QueryType (..)
-
+  , QueryType(..)
     -- ** Group
-    , Group
-    , group'
-    , gDescription
-    , gGroupARN
-    , gName
-
+  , Group
+  , group'
+  , gDescription
+  , gGroupARN
+  , gName
     -- ** GroupQuery
-    , GroupQuery
-    , groupQuery
-    , gqGroupName
-    , gqResourceQuery
-
+  , GroupQuery
+  , groupQuery
+  , gqGroupName
+  , gqResourceQuery
     -- ** ResourceIdentifier
-    , ResourceIdentifier
-    , resourceIdentifier
-    , riResourceType
-    , riResourceARN
-
+  , ResourceIdentifier
+  , resourceIdentifier
+  , riResourceType
+  , riResourceARN
     -- ** ResourceQuery
-    , ResourceQuery
-    , resourceQuery
-    , rqType
-    , rqSearchQuery
-    ) where
+  , ResourceQuery
+  , resourceQuery
+  , rqType
+  , rqSearchQuery
+  ) where
 
 import Network.AWS.ResourceGroups.CreateGroup
 import Network.AWS.ResourceGroups.DeleteGroup
@@ -149,14 +119,12 @@ import Network.AWS.ResourceGroups.Untag
 import Network.AWS.ResourceGroups.UpdateGroup
 import Network.AWS.ResourceGroups.UpdateGroupQuery
 import Network.AWS.ResourceGroups.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'ResourceGroups'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -173,7 +141,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

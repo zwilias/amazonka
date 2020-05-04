@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.GameLift.UpdateAlias
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -38,23 +36,21 @@
 --
 --
 module Network.AWS.GameLift.UpdateAlias
-    (
     -- * Creating a Request
-      updateAlias
-    , UpdateAlias
+  ( updateAlias
+  , UpdateAlias
     -- * Request Lenses
-    , uaRoutingStrategy
-    , uaName
-    , uaDescription
-    , uaAliasId
-
+  , uaRoutingStrategy
+  , uaName
+  , uaDescription
+  , uaAliasId
     -- * Destructuring the Response
-    , updateAliasResponse
-    , UpdateAliasResponse
+  , updateAliasResponse
+  , UpdateAliasResponse
     -- * Response Lenses
-    , uarsAlias
-    , uarsResponseStatus
-    ) where
+  , uarsAlias
+  , uarsResponseStatus
+  ) where
 
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
@@ -68,13 +64,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateAlias' smart constructor.
-data UpdateAlias = UpdateAlias'
-  { _uaRoutingStrategy :: !(Maybe RoutingStrategy)
-  , _uaName            :: !(Maybe Text)
-  , _uaDescription     :: !(Maybe Text)
-  , _uaAliasId         :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAlias =
+  UpdateAlias'
+    { _uaRoutingStrategy :: !(Maybe RoutingStrategy)
+    , _uaName            :: !(Maybe Text)
+    , _uaDescription     :: !(Maybe Text)
+    , _uaAliasId         :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAlias' with the minimum fields required to make a request.
 --
@@ -87,9 +84,9 @@ data UpdateAlias = UpdateAlias'
 -- * 'uaDescription' - Human-readable description of an alias.
 --
 -- * 'uaAliasId' - Unique identifier for a fleet alias. Specify the alias you want to update.
-updateAlias
-    :: Text -- ^ 'uaAliasId'
-    -> UpdateAlias
+updateAlias ::
+     Text -- ^ 'uaAliasId'
+  -> UpdateAlias
 updateAlias pAliasId_ =
   UpdateAlias'
     { _uaRoutingStrategy = Nothing
@@ -98,70 +95,69 @@ updateAlias pAliasId_ =
     , _uaAliasId = pAliasId_
     }
 
-
 -- | Object that specifies the fleet and routing type to use for the alias.
 uaRoutingStrategy :: Lens' UpdateAlias (Maybe RoutingStrategy)
-uaRoutingStrategy = lens _uaRoutingStrategy (\ s a -> s{_uaRoutingStrategy = a})
+uaRoutingStrategy = lens _uaRoutingStrategy (\s a -> s {_uaRoutingStrategy = a})
 
 -- | Descriptive label that is associated with an alias. Alias names do not need to be unique.
 uaName :: Lens' UpdateAlias (Maybe Text)
-uaName = lens _uaName (\ s a -> s{_uaName = a})
+uaName = lens _uaName (\s a -> s {_uaName = a})
 
 -- | Human-readable description of an alias.
 uaDescription :: Lens' UpdateAlias (Maybe Text)
-uaDescription = lens _uaDescription (\ s a -> s{_uaDescription = a})
+uaDescription = lens _uaDescription (\s a -> s {_uaDescription = a})
 
 -- | Unique identifier for a fleet alias. Specify the alias you want to update.
 uaAliasId :: Lens' UpdateAlias Text
-uaAliasId = lens _uaAliasId (\ s a -> s{_uaAliasId = a})
+uaAliasId = lens _uaAliasId (\s a -> s {_uaAliasId = a})
 
 instance AWSRequest UpdateAlias where
-        type Rs UpdateAlias = UpdateAliasResponse
-        request = postJSON gameLift
-        response
-          = receiveJSON
-              (\ s h x ->
-                 UpdateAliasResponse' <$>
-                   (x .?> "Alias") <*> (pure (fromEnum s)))
+  type Rs UpdateAlias = UpdateAliasResponse
+  request = postJSON gameLift
+  response =
+    receiveJSON
+      (\s h x ->
+         UpdateAliasResponse' <$> (x .?> "Alias") <*> (pure (fromEnum s)))
 
-instance Hashable UpdateAlias where
+instance Hashable UpdateAlias
 
-instance NFData UpdateAlias where
+instance NFData UpdateAlias
 
 instance ToHeaders UpdateAlias where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("GameLift.UpdateAlias" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("GameLift.UpdateAlias" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON UpdateAlias where
-        toJSON UpdateAlias'{..}
-          = object
-              (catMaybes
-                 [("RoutingStrategy" .=) <$> _uaRoutingStrategy,
-                  ("Name" .=) <$> _uaName,
-                  ("Description" .=) <$> _uaDescription,
-                  Just ("AliasId" .= _uaAliasId)])
+  toJSON UpdateAlias' {..} =
+    object
+      (catMaybes
+         [ ("RoutingStrategy" .=) <$> _uaRoutingStrategy
+         , ("Name" .=) <$> _uaName
+         , ("Description" .=) <$> _uaDescription
+         , Just ("AliasId" .= _uaAliasId)
+         ])
 
 instance ToPath UpdateAlias where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery UpdateAlias where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Represents the returned data in response to a request action.
 --
 --
 --
 -- /See:/ 'updateAliasResponse' smart constructor.
-data UpdateAliasResponse = UpdateAliasResponse'
-  { _uarsAlias          :: !(Maybe Alias)
-  , _uarsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAliasResponse =
+  UpdateAliasResponse'
+    { _uarsAlias          :: !(Maybe Alias)
+    , _uarsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAliasResponse' with the minimum fields required to make a request.
 --
@@ -170,20 +166,20 @@ data UpdateAliasResponse = UpdateAliasResponse'
 -- * 'uarsAlias' - Object that contains the updated alias configuration.
 --
 -- * 'uarsResponseStatus' - -- | The response status code.
-updateAliasResponse
-    :: Int -- ^ 'uarsResponseStatus'
-    -> UpdateAliasResponse
+updateAliasResponse ::
+     Int -- ^ 'uarsResponseStatus'
+  -> UpdateAliasResponse
 updateAliasResponse pResponseStatus_ =
   UpdateAliasResponse'
     {_uarsAlias = Nothing, _uarsResponseStatus = pResponseStatus_}
 
-
 -- | Object that contains the updated alias configuration.
 uarsAlias :: Lens' UpdateAliasResponse (Maybe Alias)
-uarsAlias = lens _uarsAlias (\ s a -> s{_uarsAlias = a})
+uarsAlias = lens _uarsAlias (\s a -> s {_uarsAlias = a})
 
 -- | -- | The response status code.
 uarsResponseStatus :: Lens' UpdateAliasResponse Int
-uarsResponseStatus = lens _uarsResponseStatus (\ s a -> s{_uarsResponseStatus = a})
+uarsResponseStatus =
+  lens _uarsResponseStatus (\s a -> s {_uarsResponseStatus = a})
 
-instance NFData UpdateAliasResponse where
+instance NFData UpdateAliasResponse

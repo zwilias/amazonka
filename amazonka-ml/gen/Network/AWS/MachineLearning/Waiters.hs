@@ -1,10 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.MachineLearning.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -43,7 +41,6 @@ mLModelAvailable =
         ]
     }
 
-
 -- | Polls 'Network.AWS.MachineLearning.DescribeBatchPredictions' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 batchPredictionAvailable :: Wait DescribeBatchPredictions
 batchPredictionAvailable =
@@ -62,7 +59,6 @@ batchPredictionAvailable =
             (folding (concatOf dbpsrsResults) . bpStatus . _Just . to toTextCI)
         ]
     }
-
 
 -- | Polls 'Network.AWS.MachineLearning.DescribeDataSources' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 dataSourceAvailable :: Wait DescribeDataSources
@@ -83,7 +79,6 @@ dataSourceAvailable =
         ]
     }
 
-
 -- | Polls 'Network.AWS.MachineLearning.DescribeEvaluations' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 evaluationAvailable :: Wait DescribeEvaluations
 evaluationAvailable =
@@ -102,4 +97,3 @@ evaluationAvailable =
             (folding (concatOf desrsResults) . eStatus . _Just . to toTextCI)
         ]
     }
-

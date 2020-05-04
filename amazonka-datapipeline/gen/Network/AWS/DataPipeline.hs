@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DataPipeline
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -19,195 +18,149 @@
 -- AWS Data Pipeline implements two main sets of functionality. Use the first set to create a pipeline and define data sources, schedules, dependencies, and the transforms to be performed on the data. Use the second set in your task runner application to receive the next task ready for processing. The logic for performing the task, such as querying the data, running data analysis, or converting the data from one format to another, is contained within the task runner. The task runner performs the task assigned to it by the web service, reporting progress to the web service as it does so. When the task is done, the task runner reports the final success or failure of the task to the web service.
 --
 module Network.AWS.DataPipeline
-    (
     -- * Service Configuration
-      dataPipeline
-
+  ( dataPipeline
     -- * Errors
     -- $errors
-
     -- ** InvalidRequestException
-    , _InvalidRequestException
-
+  , _InvalidRequestException
     -- ** InternalServiceError
-    , _InternalServiceError
-
+  , _InternalServiceError
     -- ** PipelineDeletedException
-    , _PipelineDeletedException
-
+  , _PipelineDeletedException
     -- ** PipelineNotFoundException
-    , _PipelineNotFoundException
-
+  , _PipelineNotFoundException
     -- ** TaskNotFoundException
-    , _TaskNotFoundException
-
+  , _TaskNotFoundException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** DescribePipelines
-    , module Network.AWS.DataPipeline.DescribePipelines
-
+  , module Network.AWS.DataPipeline.DescribePipelines
     -- ** QueryObjects (Paginated)
-    , module Network.AWS.DataPipeline.QueryObjects
-
+  , module Network.AWS.DataPipeline.QueryObjects
     -- ** RemoveTags
-    , module Network.AWS.DataPipeline.RemoveTags
-
+  , module Network.AWS.DataPipeline.RemoveTags
     -- ** DeletePipeline
-    , module Network.AWS.DataPipeline.DeletePipeline
-
+  , module Network.AWS.DataPipeline.DeletePipeline
     -- ** ListPipelines (Paginated)
-    , module Network.AWS.DataPipeline.ListPipelines
-
+  , module Network.AWS.DataPipeline.ListPipelines
     -- ** EvaluateExpression
-    , module Network.AWS.DataPipeline.EvaluateExpression
-
+  , module Network.AWS.DataPipeline.EvaluateExpression
     -- ** GetPipelineDefinition
-    , module Network.AWS.DataPipeline.GetPipelineDefinition
-
+  , module Network.AWS.DataPipeline.GetPipelineDefinition
     -- ** PollForTask
-    , module Network.AWS.DataPipeline.PollForTask
-
+  , module Network.AWS.DataPipeline.PollForTask
     -- ** DeactivatePipeline
-    , module Network.AWS.DataPipeline.DeactivatePipeline
-
+  , module Network.AWS.DataPipeline.DeactivatePipeline
     -- ** AddTags
-    , module Network.AWS.DataPipeline.AddTags
-
+  , module Network.AWS.DataPipeline.AddTags
     -- ** DescribeObjects (Paginated)
-    , module Network.AWS.DataPipeline.DescribeObjects
-
+  , module Network.AWS.DataPipeline.DescribeObjects
     -- ** ReportTaskRunnerHeartbeat
-    , module Network.AWS.DataPipeline.ReportTaskRunnerHeartbeat
-
+  , module Network.AWS.DataPipeline.ReportTaskRunnerHeartbeat
     -- ** ActivatePipeline
-    , module Network.AWS.DataPipeline.ActivatePipeline
-
+  , module Network.AWS.DataPipeline.ActivatePipeline
     -- ** SetTaskStatus
-    , module Network.AWS.DataPipeline.SetTaskStatus
-
+  , module Network.AWS.DataPipeline.SetTaskStatus
     -- ** SetStatus
-    , module Network.AWS.DataPipeline.SetStatus
-
+  , module Network.AWS.DataPipeline.SetStatus
     -- ** ReportTaskProgress
-    , module Network.AWS.DataPipeline.ReportTaskProgress
-
+  , module Network.AWS.DataPipeline.ReportTaskProgress
     -- ** CreatePipeline
-    , module Network.AWS.DataPipeline.CreatePipeline
-
+  , module Network.AWS.DataPipeline.CreatePipeline
     -- ** PutPipelineDefinition
-    , module Network.AWS.DataPipeline.PutPipelineDefinition
-
+  , module Network.AWS.DataPipeline.PutPipelineDefinition
     -- ** ValidatePipelineDefinition
-    , module Network.AWS.DataPipeline.ValidatePipelineDefinition
-
+  , module Network.AWS.DataPipeline.ValidatePipelineDefinition
     -- * Types
-
     -- ** OperatorType
-    , OperatorType (..)
-
+  , OperatorType(..)
     -- ** TaskStatus
-    , TaskStatus (..)
-
+  , TaskStatus(..)
     -- ** Field
-    , Field
-    , field
-    , fRefValue
-    , fStringValue
-    , fKey
-
+  , Field
+  , field
+  , fRefValue
+  , fStringValue
+  , fKey
     -- ** InstanceIdentity
-    , InstanceIdentity
-    , instanceIdentity
-    , iiSignature
-    , iiDocument
-
+  , InstanceIdentity
+  , instanceIdentity
+  , iiSignature
+  , iiDocument
     -- ** Operator
-    , Operator
-    , operator
-    , oValues
-    , oType
-
+  , Operator
+  , operator
+  , oValues
+  , oType
     -- ** ParameterAttribute
-    , ParameterAttribute
-    , parameterAttribute
-    , paKey
-    , paStringValue
-
+  , ParameterAttribute
+  , parameterAttribute
+  , paKey
+  , paStringValue
     -- ** ParameterObject
-    , ParameterObject
-    , parameterObject
-    , poId
-    , poAttributes
-
+  , ParameterObject
+  , parameterObject
+  , poId
+  , poAttributes
     -- ** ParameterValue
-    , ParameterValue
-    , parameterValue
-    , pvId
-    , pvStringValue
-
+  , ParameterValue
+  , parameterValue
+  , pvId
+  , pvStringValue
     -- ** PipelineDescription
-    , PipelineDescription
-    , pipelineDescription
-    , pdDescription
-    , pdTags
-    , pdPipelineId
-    , pdName
-    , pdFields
-
+  , PipelineDescription
+  , pipelineDescription
+  , pdDescription
+  , pdTags
+  , pdPipelineId
+  , pdName
+  , pdFields
     -- ** PipelineIdName
-    , PipelineIdName
-    , pipelineIdName
-    , pinName
-    , pinId
-
+  , PipelineIdName
+  , pipelineIdName
+  , pinName
+  , pinId
     -- ** PipelineObject
-    , PipelineObject
-    , pipelineObject
-    , pId
-    , pName
-    , pFields
-
+  , PipelineObject
+  , pipelineObject
+  , pId
+  , pName
+  , pFields
     -- ** Query
-    , Query
-    , query
-    , qSelectors
-
+  , Query
+  , query
+  , qSelectors
     -- ** Selector
-    , Selector
-    , selector
-    , sOperator
-    , sFieldName
-
+  , Selector
+  , selector
+  , sOperator
+  , sFieldName
     -- ** Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
     -- ** TaskObject
-    , TaskObject
-    , taskObject
-    , toPipelineId
-    , toAttemptId
-    , toTaskId
-    , toObjects
-
+  , TaskObject
+  , taskObject
+  , toPipelineId
+  , toAttemptId
+  , toTaskId
+  , toObjects
     -- ** ValidationError
-    , ValidationError
-    , validationError
-    , veId
-    , veErrors
-
+  , ValidationError
+  , validationError
+  , veId
+  , veErrors
     -- ** ValidationWarning
-    , ValidationWarning
-    , validationWarning
-    , vwWarnings
-    , vwId
-    ) where
+  , ValidationWarning
+  , validationWarning
+  , vwWarnings
+  , vwId
+  ) where
 
 import Network.AWS.DataPipeline.ActivatePipeline
 import Network.AWS.DataPipeline.AddTags
@@ -230,14 +183,12 @@ import Network.AWS.DataPipeline.SetTaskStatus
 import Network.AWS.DataPipeline.Types
 import Network.AWS.DataPipeline.ValidatePipelineDefinition
 import Network.AWS.DataPipeline.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'DataPipeline'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -254,7 +205,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.EnableVPCClassicLink
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,21 +20,19 @@
 --
 --
 module Network.AWS.EC2.EnableVPCClassicLink
-    (
     -- * Creating a Request
-      enableVPCClassicLink
-    , EnableVPCClassicLink
+  ( enableVPCClassicLink
+  , EnableVPCClassicLink
     -- * Request Lenses
-    , evclDryRun
-    , evclVPCId
-
+  , evclDryRun
+  , evclVPCId
     -- * Destructuring the Response
-    , enableVPCClassicLinkResponse
-    , EnableVPCClassicLinkResponse
+  , enableVPCClassicLinkResponse
+  , EnableVPCClassicLinkResponse
     -- * Response Lenses
-    , evclrsReturn
-    , evclrsResponseStatus
-    ) where
+  , evclrsReturn
+  , evclrsResponseStatus
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -50,11 +46,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'enableVPCClassicLink' smart constructor.
-data EnableVPCClassicLink = EnableVPCClassicLink'
-  { _evclDryRun :: !(Maybe Bool)
-  , _evclVPCId  :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableVPCClassicLink =
+  EnableVPCClassicLink'
+    { _evclDryRun :: !(Maybe Bool)
+    , _evclVPCId  :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableVPCClassicLink' with the minimum fields required to make a request.
 --
@@ -63,58 +60,59 @@ data EnableVPCClassicLink = EnableVPCClassicLink'
 -- * 'evclDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
 -- * 'evclVPCId' - The ID of the VPC.
-enableVPCClassicLink
-    :: Text -- ^ 'evclVPCId'
-    -> EnableVPCClassicLink
+enableVPCClassicLink ::
+     Text -- ^ 'evclVPCId'
+  -> EnableVPCClassicLink
 enableVPCClassicLink pVPCId_ =
   EnableVPCClassicLink' {_evclDryRun = Nothing, _evclVPCId = pVPCId_}
 
-
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 evclDryRun :: Lens' EnableVPCClassicLink (Maybe Bool)
-evclDryRun = lens _evclDryRun (\ s a -> s{_evclDryRun = a})
+evclDryRun = lens _evclDryRun (\s a -> s {_evclDryRun = a})
 
 -- | The ID of the VPC.
 evclVPCId :: Lens' EnableVPCClassicLink Text
-evclVPCId = lens _evclVPCId (\ s a -> s{_evclVPCId = a})
+evclVPCId = lens _evclVPCId (\s a -> s {_evclVPCId = a})
 
 instance AWSRequest EnableVPCClassicLink where
-        type Rs EnableVPCClassicLink =
-             EnableVPCClassicLinkResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 EnableVPCClassicLinkResponse' <$>
-                   (x .@? "return") <*> (pure (fromEnum s)))
+  type Rs EnableVPCClassicLink = EnableVPCClassicLinkResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         EnableVPCClassicLinkResponse' <$> (x .@? "return") <*>
+         (pure (fromEnum s)))
 
-instance Hashable EnableVPCClassicLink where
+instance Hashable EnableVPCClassicLink
 
-instance NFData EnableVPCClassicLink where
+instance NFData EnableVPCClassicLink
 
 instance ToHeaders EnableVPCClassicLink where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath EnableVPCClassicLink where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery EnableVPCClassicLink where
-        toQuery EnableVPCClassicLink'{..}
-          = mconcat
-              ["Action" =: ("EnableVpcClassicLink" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _evclDryRun, "VpcId" =: _evclVPCId]
+  toQuery EnableVPCClassicLink' {..} =
+    mconcat
+      [ "Action" =: ("EnableVpcClassicLink" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "DryRun" =: _evclDryRun
+      , "VpcId" =: _evclVPCId
+      ]
 
 -- | Contains the output of EnableVpcClassicLink.
 --
 --
 --
 -- /See:/ 'enableVPCClassicLinkResponse' smart constructor.
-data EnableVPCClassicLinkResponse = EnableVPCClassicLinkResponse'
-  { _evclrsReturn         :: !(Maybe Bool)
-  , _evclrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableVPCClassicLinkResponse =
+  EnableVPCClassicLinkResponse'
+    { _evclrsReturn         :: !(Maybe Bool)
+    , _evclrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableVPCClassicLinkResponse' with the minimum fields required to make a request.
 --
@@ -123,20 +121,20 @@ data EnableVPCClassicLinkResponse = EnableVPCClassicLinkResponse'
 -- * 'evclrsReturn' - Returns @true@ if the request succeeds; otherwise, it returns an error.
 --
 -- * 'evclrsResponseStatus' - -- | The response status code.
-enableVPCClassicLinkResponse
-    :: Int -- ^ 'evclrsResponseStatus'
-    -> EnableVPCClassicLinkResponse
+enableVPCClassicLinkResponse ::
+     Int -- ^ 'evclrsResponseStatus'
+  -> EnableVPCClassicLinkResponse
 enableVPCClassicLinkResponse pResponseStatus_ =
   EnableVPCClassicLinkResponse'
     {_evclrsReturn = Nothing, _evclrsResponseStatus = pResponseStatus_}
 
-
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 evclrsReturn :: Lens' EnableVPCClassicLinkResponse (Maybe Bool)
-evclrsReturn = lens _evclrsReturn (\ s a -> s{_evclrsReturn = a})
+evclrsReturn = lens _evclrsReturn (\s a -> s {_evclrsReturn = a})
 
 -- | -- | The response status code.
 evclrsResponseStatus :: Lens' EnableVPCClassicLinkResponse Int
-evclrsResponseStatus = lens _evclrsResponseStatus (\ s a -> s{_evclrsResponseStatus = a})
+evclrsResponseStatus =
+  lens _evclrsResponseStatus (\s a -> s {_evclrsResponseStatus = a})
 
-instance NFData EnableVPCClassicLinkResponse where
+instance NFData EnableVPCClassicLinkResponse

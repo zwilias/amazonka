@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.GameLift.CreateAlias
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -42,22 +40,20 @@
 --
 --
 module Network.AWS.GameLift.CreateAlias
-    (
     -- * Creating a Request
-      createAlias
-    , CreateAlias
+  ( createAlias
+  , CreateAlias
     -- * Request Lenses
-    , caDescription
-    , caName
-    , caRoutingStrategy
-
+  , caDescription
+  , caName
+  , caRoutingStrategy
     -- * Destructuring the Response
-    , createAliasResponse
-    , CreateAliasResponse
+  , createAliasResponse
+  , CreateAliasResponse
     -- * Response Lenses
-    , carsAlias
-    , carsResponseStatus
-    ) where
+  , carsAlias
+  , carsResponseStatus
+  ) where
 
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
@@ -71,12 +67,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createAlias' smart constructor.
-data CreateAlias = CreateAlias'
-  { _caDescription     :: !(Maybe Text)
-  , _caName            :: !Text
-  , _caRoutingStrategy :: !RoutingStrategy
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAlias =
+  CreateAlias'
+    { _caDescription     :: !(Maybe Text)
+    , _caName            :: !Text
+    , _caRoutingStrategy :: !RoutingStrategy
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAlias' with the minimum fields required to make a request.
 --
@@ -87,10 +84,10 @@ data CreateAlias = CreateAlias'
 -- * 'caName' - Descriptive label that is associated with an alias. Alias names do not need to be unique.
 --
 -- * 'caRoutingStrategy' - Object that specifies the fleet and routing type to use for the alias.
-createAlias
-    :: Text -- ^ 'caName'
-    -> RoutingStrategy -- ^ 'caRoutingStrategy'
-    -> CreateAlias
+createAlias ::
+     Text -- ^ 'caName'
+  -> RoutingStrategy -- ^ 'caRoutingStrategy'
+  -> CreateAlias
 createAlias pName_ pRoutingStrategy_ =
   CreateAlias'
     { _caDescription = Nothing
@@ -98,65 +95,64 @@ createAlias pName_ pRoutingStrategy_ =
     , _caRoutingStrategy = pRoutingStrategy_
     }
 
-
 -- | Human-readable description of an alias.
 caDescription :: Lens' CreateAlias (Maybe Text)
-caDescription = lens _caDescription (\ s a -> s{_caDescription = a})
+caDescription = lens _caDescription (\s a -> s {_caDescription = a})
 
 -- | Descriptive label that is associated with an alias. Alias names do not need to be unique.
 caName :: Lens' CreateAlias Text
-caName = lens _caName (\ s a -> s{_caName = a})
+caName = lens _caName (\s a -> s {_caName = a})
 
 -- | Object that specifies the fleet and routing type to use for the alias.
 caRoutingStrategy :: Lens' CreateAlias RoutingStrategy
-caRoutingStrategy = lens _caRoutingStrategy (\ s a -> s{_caRoutingStrategy = a})
+caRoutingStrategy = lens _caRoutingStrategy (\s a -> s {_caRoutingStrategy = a})
 
 instance AWSRequest CreateAlias where
-        type Rs CreateAlias = CreateAliasResponse
-        request = postJSON gameLift
-        response
-          = receiveJSON
-              (\ s h x ->
-                 CreateAliasResponse' <$>
-                   (x .?> "Alias") <*> (pure (fromEnum s)))
+  type Rs CreateAlias = CreateAliasResponse
+  request = postJSON gameLift
+  response =
+    receiveJSON
+      (\s h x ->
+         CreateAliasResponse' <$> (x .?> "Alias") <*> (pure (fromEnum s)))
 
-instance Hashable CreateAlias where
+instance Hashable CreateAlias
 
-instance NFData CreateAlias where
+instance NFData CreateAlias
 
 instance ToHeaders CreateAlias where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("GameLift.CreateAlias" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("GameLift.CreateAlias" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateAlias where
-        toJSON CreateAlias'{..}
-          = object
-              (catMaybes
-                 [("Description" .=) <$> _caDescription,
-                  Just ("Name" .= _caName),
-                  Just ("RoutingStrategy" .= _caRoutingStrategy)])
+  toJSON CreateAlias' {..} =
+    object
+      (catMaybes
+         [ ("Description" .=) <$> _caDescription
+         , Just ("Name" .= _caName)
+         , Just ("RoutingStrategy" .= _caRoutingStrategy)
+         ])
 
 instance ToPath CreateAlias where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateAlias where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Represents the returned data in response to a request action.
 --
 --
 --
 -- /See:/ 'createAliasResponse' smart constructor.
-data CreateAliasResponse = CreateAliasResponse'
-  { _carsAlias          :: !(Maybe Alias)
-  , _carsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAliasResponse =
+  CreateAliasResponse'
+    { _carsAlias          :: !(Maybe Alias)
+    , _carsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAliasResponse' with the minimum fields required to make a request.
 --
@@ -165,20 +161,20 @@ data CreateAliasResponse = CreateAliasResponse'
 -- * 'carsAlias' - Object that describes the newly created alias record.
 --
 -- * 'carsResponseStatus' - -- | The response status code.
-createAliasResponse
-    :: Int -- ^ 'carsResponseStatus'
-    -> CreateAliasResponse
+createAliasResponse ::
+     Int -- ^ 'carsResponseStatus'
+  -> CreateAliasResponse
 createAliasResponse pResponseStatus_ =
   CreateAliasResponse'
     {_carsAlias = Nothing, _carsResponseStatus = pResponseStatus_}
 
-
 -- | Object that describes the newly created alias record.
 carsAlias :: Lens' CreateAliasResponse (Maybe Alias)
-carsAlias = lens _carsAlias (\ s a -> s{_carsAlias = a})
+carsAlias = lens _carsAlias (\s a -> s {_carsAlias = a})
 
 -- | -- | The response status code.
 carsResponseStatus :: Lens' CreateAliasResponse Int
-carsResponseStatus = lens _carsResponseStatus (\ s a -> s{_carsResponseStatus = a})
+carsResponseStatus =
+  lens _carsResponseStatus (\s a -> s {_carsResponseStatus = a})
 
-instance NFData CreateAliasResponse where
+instance NFData CreateAliasResponse

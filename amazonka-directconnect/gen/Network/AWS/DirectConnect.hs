@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DirectConnect
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -15,386 +14,307 @@
 --
 --
 module Network.AWS.DirectConnect
-    (
     -- * Service Configuration
-      directConnect
-
+  ( directConnect
     -- * Errors
     -- $errors
-
     -- ** DirectConnectClientException
-    , _DirectConnectClientException
-
+  , _DirectConnectClientException
     -- ** DuplicateTagKeysException
-    , _DuplicateTagKeysException
-
+  , _DuplicateTagKeysException
     -- ** TooManyTagsException
-    , _TooManyTagsException
-
+  , _TooManyTagsException
     -- ** DirectConnectServerException
-    , _DirectConnectServerException
-
+  , _DirectConnectServerException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** DescribeDirectConnectGatewayAssociations
-    , module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAssociations
-
+  , module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAssociations
     -- ** DescribeInterconnects
-    , module Network.AWS.DirectConnect.DescribeInterconnects
-
+  , module Network.AWS.DirectConnect.DescribeInterconnects
     -- ** DescribeTags
-    , module Network.AWS.DirectConnect.DescribeTags
-
+  , module Network.AWS.DirectConnect.DescribeTags
     -- ** DescribeLoa
-    , module Network.AWS.DirectConnect.DescribeLoa
-
+  , module Network.AWS.DirectConnect.DescribeLoa
     -- ** DeleteConnection
-    , module Network.AWS.DirectConnect.DeleteConnection
-
+  , module Network.AWS.DirectConnect.DeleteConnection
     -- ** AssociateConnectionWithLag
-    , module Network.AWS.DirectConnect.AssociateConnectionWithLag
-
+  , module Network.AWS.DirectConnect.AssociateConnectionWithLag
     -- ** CreateConnection
-    , module Network.AWS.DirectConnect.CreateConnection
-
+  , module Network.AWS.DirectConnect.CreateConnection
     -- ** DescribeDirectConnectGateways
-    , module Network.AWS.DirectConnect.DescribeDirectConnectGateways
-
+  , module Network.AWS.DirectConnect.DescribeDirectConnectGateways
     -- ** AssociateVirtualInterface
-    , module Network.AWS.DirectConnect.AssociateVirtualInterface
-
+  , module Network.AWS.DirectConnect.AssociateVirtualInterface
     -- ** DescribeConnections
-    , module Network.AWS.DirectConnect.DescribeConnections
-
+  , module Network.AWS.DirectConnect.DescribeConnections
     -- ** DeleteInterconnect
-    , module Network.AWS.DirectConnect.DeleteInterconnect
-
+  , module Network.AWS.DirectConnect.DeleteInterconnect
     -- ** ConfirmPrivateVirtualInterface
-    , module Network.AWS.DirectConnect.ConfirmPrivateVirtualInterface
-
+  , module Network.AWS.DirectConnect.ConfirmPrivateVirtualInterface
     -- ** DeleteDirectConnectGatewayAssociation
-    , module Network.AWS.DirectConnect.DeleteDirectConnectGatewayAssociation
-
+  , module Network.AWS.DirectConnect.DeleteDirectConnectGatewayAssociation
     -- ** DescribeLocations
-    , module Network.AWS.DirectConnect.DescribeLocations
-
+  , module Network.AWS.DirectConnect.DescribeLocations
     -- ** CreateDirectConnectGatewayAssociation
-    , module Network.AWS.DirectConnect.CreateDirectConnectGatewayAssociation
-
+  , module Network.AWS.DirectConnect.CreateDirectConnectGatewayAssociation
     -- ** CreatePublicVirtualInterface
-    , module Network.AWS.DirectConnect.CreatePublicVirtualInterface
-
+  , module Network.AWS.DirectConnect.CreatePublicVirtualInterface
     -- ** AllocatePrivateVirtualInterface
-    , module Network.AWS.DirectConnect.AllocatePrivateVirtualInterface
-
+  , module Network.AWS.DirectConnect.AllocatePrivateVirtualInterface
     -- ** DescribeLags
-    , module Network.AWS.DirectConnect.DescribeLags
-
+  , module Network.AWS.DirectConnect.DescribeLags
     -- ** ConfirmConnection
-    , module Network.AWS.DirectConnect.ConfirmConnection
-
+  , module Network.AWS.DirectConnect.ConfirmConnection
     -- ** DescribeDirectConnectGatewayAttachments
-    , module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAttachments
-
+  , module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAttachments
     -- ** ConfirmPublicVirtualInterface
-    , module Network.AWS.DirectConnect.ConfirmPublicVirtualInterface
-
+  , module Network.AWS.DirectConnect.ConfirmPublicVirtualInterface
     -- ** DescribeVirtualGateways
-    , module Network.AWS.DirectConnect.DescribeVirtualGateways
-
+  , module Network.AWS.DirectConnect.DescribeVirtualGateways
     -- ** CreateDirectConnectGateway
-    , module Network.AWS.DirectConnect.CreateDirectConnectGateway
-
+  , module Network.AWS.DirectConnect.CreateDirectConnectGateway
     -- ** DeleteDirectConnectGateway
-    , module Network.AWS.DirectConnect.DeleteDirectConnectGateway
-
+  , module Network.AWS.DirectConnect.DeleteDirectConnectGateway
     -- ** DescribeVirtualInterfaces
-    , module Network.AWS.DirectConnect.DescribeVirtualInterfaces
-
+  , module Network.AWS.DirectConnect.DescribeVirtualInterfaces
     -- ** AllocateHostedConnection
-    , module Network.AWS.DirectConnect.AllocateHostedConnection
-
+  , module Network.AWS.DirectConnect.AllocateHostedConnection
     -- ** DeleteVirtualInterface
-    , module Network.AWS.DirectConnect.DeleteVirtualInterface
-
+  , module Network.AWS.DirectConnect.DeleteVirtualInterface
     -- ** CreatePrivateVirtualInterface
-    , module Network.AWS.DirectConnect.CreatePrivateVirtualInterface
-
+  , module Network.AWS.DirectConnect.CreatePrivateVirtualInterface
     -- ** AllocatePublicVirtualInterface
-    , module Network.AWS.DirectConnect.AllocatePublicVirtualInterface
-
+  , module Network.AWS.DirectConnect.AllocatePublicVirtualInterface
     -- ** DisassociateConnectionFromLag
-    , module Network.AWS.DirectConnect.DisassociateConnectionFromLag
-
+  , module Network.AWS.DirectConnect.DisassociateConnectionFromLag
     -- ** TagResource
-    , module Network.AWS.DirectConnect.TagResource
-
+  , module Network.AWS.DirectConnect.TagResource
     -- ** DeleteLag
-    , module Network.AWS.DirectConnect.DeleteLag
-
+  , module Network.AWS.DirectConnect.DeleteLag
     -- ** UpdateLag
-    , module Network.AWS.DirectConnect.UpdateLag
-
+  , module Network.AWS.DirectConnect.UpdateLag
     -- ** UntagResource
-    , module Network.AWS.DirectConnect.UntagResource
-
+  , module Network.AWS.DirectConnect.UntagResource
     -- ** CreateBGPPeer
-    , module Network.AWS.DirectConnect.CreateBGPPeer
-
+  , module Network.AWS.DirectConnect.CreateBGPPeer
     -- ** AssociateHostedConnection
-    , module Network.AWS.DirectConnect.AssociateHostedConnection
-
+  , module Network.AWS.DirectConnect.AssociateHostedConnection
     -- ** CreateInterconnect
-    , module Network.AWS.DirectConnect.CreateInterconnect
-
+  , module Network.AWS.DirectConnect.CreateInterconnect
     -- ** DeleteBGPPeer
-    , module Network.AWS.DirectConnect.DeleteBGPPeer
-
+  , module Network.AWS.DirectConnect.DeleteBGPPeer
     -- ** CreateLag
-    , module Network.AWS.DirectConnect.CreateLag
-
+  , module Network.AWS.DirectConnect.CreateLag
     -- ** DescribeHostedConnections
-    , module Network.AWS.DirectConnect.DescribeHostedConnections
-
+  , module Network.AWS.DirectConnect.DescribeHostedConnections
     -- * Types
-
     -- ** AddressFamily
-    , AddressFamily (..)
-
+  , AddressFamily(..)
     -- ** BGPPeerState
-    , BGPPeerState (..)
-
+  , BGPPeerState(..)
     -- ** BGPStatus
-    , BGPStatus (..)
-
+  , BGPStatus(..)
     -- ** ConnectionState
-    , ConnectionState (..)
-
+  , ConnectionState(..)
     -- ** DirectConnectGatewayAssociationState
-    , DirectConnectGatewayAssociationState (..)
-
+  , DirectConnectGatewayAssociationState(..)
     -- ** DirectConnectGatewayAttachmentState
-    , DirectConnectGatewayAttachmentState (..)
-
+  , DirectConnectGatewayAttachmentState(..)
     -- ** DirectConnectGatewayState
-    , DirectConnectGatewayState (..)
-
+  , DirectConnectGatewayState(..)
     -- ** InterconnectState
-    , InterconnectState (..)
-
+  , InterconnectState(..)
     -- ** LagState
-    , LagState (..)
-
+  , LagState(..)
     -- ** LoaContentType
-    , LoaContentType (..)
-
+  , LoaContentType(..)
     -- ** VirtualInterfaceState
-    , VirtualInterfaceState (..)
-
+  , VirtualInterfaceState(..)
     -- ** BGPPeer
-    , BGPPeer
-    , bgpPeer
-    , bpCustomerAddress
-    , bpAmazonAddress
-    , bpAddressFamily
-    , bpBgpStatus
-    , bpAsn
-    , bpAuthKey
-    , bpBgpPeerState
-
+  , BGPPeer
+  , bgpPeer
+  , bpCustomerAddress
+  , bpAmazonAddress
+  , bpAddressFamily
+  , bpBgpStatus
+  , bpAsn
+  , bpAuthKey
+  , bpBgpPeerState
     -- ** Connection
-    , Connection
-    , connection
-    , cLagId
-    , cVlan
-    , cLocation
-    , cAwsDevice
-    , cConnectionId
-    , cLoaIssueTime
-    , cPartnerName
-    , cConnectionName
-    , cBandwidth
-    , cOwnerAccount
-    , cRegion
-    , cConnectionState
-
+  , Connection
+  , connection
+  , cLagId
+  , cVlan
+  , cLocation
+  , cAwsDevice
+  , cConnectionId
+  , cLoaIssueTime
+  , cPartnerName
+  , cConnectionName
+  , cBandwidth
+  , cOwnerAccount
+  , cRegion
+  , cConnectionState
     -- ** Connections
-    , Connections
-    , connections
-    , cConnections
-
+  , Connections
+  , connections
+  , cConnections
     -- ** DirectConnectGateway
-    , DirectConnectGateway
-    , directConnectGateway
-    , dcgDirectConnectGatewayId
-    , dcgStateChangeError
-    , dcgAmazonSideASN
-    , dcgDirectConnectGatewayName
-    , dcgDirectConnectGatewayState
-    , dcgOwnerAccount
-
+  , DirectConnectGateway
+  , directConnectGateway
+  , dcgDirectConnectGatewayId
+  , dcgStateChangeError
+  , dcgAmazonSideASN
+  , dcgDirectConnectGatewayName
+  , dcgDirectConnectGatewayState
+  , dcgOwnerAccount
     -- ** DirectConnectGatewayAssociation
-    , DirectConnectGatewayAssociation
-    , directConnectGatewayAssociation
-    , dcgaVirtualGatewayId
-    , dcgaDirectConnectGatewayId
-    , dcgaVirtualGatewayOwnerAccount
-    , dcgaStateChangeError
-    , dcgaVirtualGatewayRegion
-    , dcgaAssociationState
-
+  , DirectConnectGatewayAssociation
+  , directConnectGatewayAssociation
+  , dcgaVirtualGatewayId
+  , dcgaDirectConnectGatewayId
+  , dcgaVirtualGatewayOwnerAccount
+  , dcgaStateChangeError
+  , dcgaVirtualGatewayRegion
+  , dcgaAssociationState
     -- ** DirectConnectGatewayAttachment
-    , DirectConnectGatewayAttachment
-    , directConnectGatewayAttachment
-    , dDirectConnectGatewayId
-    , dAttachmentState
-    , dStateChangeError
-    , dVirtualInterfaceRegion
-    , dVirtualInterfaceOwnerAccount
-    , dVirtualInterfaceId
-
+  , DirectConnectGatewayAttachment
+  , directConnectGatewayAttachment
+  , dDirectConnectGatewayId
+  , dAttachmentState
+  , dStateChangeError
+  , dVirtualInterfaceRegion
+  , dVirtualInterfaceOwnerAccount
+  , dVirtualInterfaceId
     -- ** Interconnect
-    , Interconnect
-    , interconnect
-    , iLagId
-    , iInterconnectId
-    , iLocation
-    , iInterconnectName
-    , iAwsDevice
-    , iLoaIssueTime
-    , iBandwidth
-    , iInterconnectState
-    , iRegion
-
+  , Interconnect
+  , interconnect
+  , iLagId
+  , iInterconnectId
+  , iLocation
+  , iInterconnectName
+  , iAwsDevice
+  , iLoaIssueTime
+  , iBandwidth
+  , iInterconnectState
+  , iRegion
     -- ** Lag
-    , Lag
-    , lag
-    , lagLagId
-    , lagConnectionsBandwidth
-    , lagMinimumLinks
-    , lagLagName
-    , lagLocation
-    , lagConnections
-    , lagAwsDevice
-    , lagAllowsHostedConnections
-    , lagNumberOfConnections
-    , lagLagState
-    , lagOwnerAccount
-    , lagRegion
-
+  , Lag
+  , lag
+  , lagLagId
+  , lagConnectionsBandwidth
+  , lagMinimumLinks
+  , lagLagName
+  , lagLocation
+  , lagConnections
+  , lagAwsDevice
+  , lagAllowsHostedConnections
+  , lagNumberOfConnections
+  , lagLagState
+  , lagOwnerAccount
+  , lagRegion
     -- ** Location
-    , Location
-    , location
-    , lLocationName
-    , lLocationCode
-
+  , Location
+  , location
+  , lLocationName
+  , lLocationCode
     -- ** NewBGPPeer
-    , NewBGPPeer
-    , newBGPPeer
-    , nbpCustomerAddress
-    , nbpAmazonAddress
-    , nbpAddressFamily
-    , nbpAsn
-    , nbpAuthKey
-
+  , NewBGPPeer
+  , newBGPPeer
+  , nbpCustomerAddress
+  , nbpAmazonAddress
+  , nbpAddressFamily
+  , nbpAsn
+  , nbpAuthKey
     -- ** NewPrivateVirtualInterface
-    , NewPrivateVirtualInterface
-    , newPrivateVirtualInterface
-    , nVirtualGatewayId
-    , nCustomerAddress
-    , nAmazonAddress
-    , nAddressFamily
-    , nDirectConnectGatewayId
-    , nAuthKey
-    , nVirtualInterfaceName
-    , nVlan
-    , nAsn
-
+  , NewPrivateVirtualInterface
+  , newPrivateVirtualInterface
+  , nVirtualGatewayId
+  , nCustomerAddress
+  , nAmazonAddress
+  , nAddressFamily
+  , nDirectConnectGatewayId
+  , nAuthKey
+  , nVirtualInterfaceName
+  , nVlan
+  , nAsn
     -- ** NewPrivateVirtualInterfaceAllocation
-    , NewPrivateVirtualInterfaceAllocation
-    , newPrivateVirtualInterfaceAllocation
-    , npviaCustomerAddress
-    , npviaAmazonAddress
-    , npviaAddressFamily
-    , npviaAuthKey
-    , npviaVirtualInterfaceName
-    , npviaVlan
-    , npviaAsn
-
+  , NewPrivateVirtualInterfaceAllocation
+  , newPrivateVirtualInterfaceAllocation
+  , npviaCustomerAddress
+  , npviaAmazonAddress
+  , npviaAddressFamily
+  , npviaAuthKey
+  , npviaVirtualInterfaceName
+  , npviaVlan
+  , npviaAsn
     -- ** NewPublicVirtualInterface
-    , NewPublicVirtualInterface
-    , newPublicVirtualInterface
-    , npviRouteFilterPrefixes
-    , npviCustomerAddress
-    , npviAmazonAddress
-    , npviAddressFamily
-    , npviAuthKey
-    , npviVirtualInterfaceName
-    , npviVlan
-    , npviAsn
-
+  , NewPublicVirtualInterface
+  , newPublicVirtualInterface
+  , npviRouteFilterPrefixes
+  , npviCustomerAddress
+  , npviAmazonAddress
+  , npviAddressFamily
+  , npviAuthKey
+  , npviVirtualInterfaceName
+  , npviVlan
+  , npviAsn
     -- ** NewPublicVirtualInterfaceAllocation
-    , NewPublicVirtualInterfaceAllocation
-    , newPublicVirtualInterfaceAllocation
-    , newRouteFilterPrefixes
-    , newCustomerAddress
-    , newAmazonAddress
-    , newAddressFamily
-    , newAuthKey
-    , newVirtualInterfaceName
-    , newVlan
-    , newAsn
-
+  , NewPublicVirtualInterfaceAllocation
+  , newPublicVirtualInterfaceAllocation
+  , newRouteFilterPrefixes
+  , newCustomerAddress
+  , newAmazonAddress
+  , newAddressFamily
+  , newAuthKey
+  , newVirtualInterfaceName
+  , newVlan
+  , newAsn
     -- ** ResourceTag
-    , ResourceTag
-    , resourceTag
-    , rtResourceARN
-    , rtTags
-
+  , ResourceTag
+  , resourceTag
+  , rtResourceARN
+  , rtTags
     -- ** RouteFilterPrefix
-    , RouteFilterPrefix
-    , routeFilterPrefix
-    , rfpCidr
-
+  , RouteFilterPrefix
+  , routeFilterPrefix
+  , rfpCidr
     -- ** Tag
-    , Tag
-    , tag
-    , tagValue
-    , tagKey
-
+  , Tag
+  , tag
+  , tagValue
+  , tagKey
     -- ** VirtualGateway
-    , VirtualGateway
-    , virtualGateway
-    , vgVirtualGatewayId
-    , vgVirtualGatewayState
-
+  , VirtualGateway
+  , virtualGateway
+  , vgVirtualGatewayId
+  , vgVirtualGatewayState
     -- ** VirtualInterface
-    , VirtualInterface
-    , virtualInterface
-    , viBgpPeers
-    , viVirtualGatewayId
-    , viRouteFilterPrefixes
-    , viCustomerAddress
-    , viVlan
-    , viLocation
-    , viAmazonAddress
-    , viAddressFamily
-    , viVirtualInterfaceState
-    , viConnectionId
-    , viDirectConnectGatewayId
-    , viAmazonSideASN
-    , viVirtualInterfaceType
-    , viAsn
-    , viAuthKey
-    , viCustomerRouterConfig
-    , viOwnerAccount
-    , viVirtualInterfaceName
-    , viVirtualInterfaceId
-    ) where
+  , VirtualInterface
+  , virtualInterface
+  , viBgpPeers
+  , viVirtualGatewayId
+  , viRouteFilterPrefixes
+  , viCustomerAddress
+  , viVlan
+  , viLocation
+  , viAmazonAddress
+  , viAddressFamily
+  , viVirtualInterfaceState
+  , viConnectionId
+  , viDirectConnectGatewayId
+  , viAmazonSideASN
+  , viVirtualInterfaceType
+  , viAsn
+  , viAuthKey
+  , viCustomerRouterConfig
+  , viOwnerAccount
+  , viVirtualInterfaceName
+  , viVirtualInterfaceId
+  ) where
 
 import Network.AWS.DirectConnect.AllocateHostedConnection
 import Network.AWS.DirectConnect.AllocatePrivateVirtualInterface
@@ -438,14 +358,12 @@ import Network.AWS.DirectConnect.Types
 import Network.AWS.DirectConnect.UntagResource
 import Network.AWS.DirectConnect.UpdateLag
 import Network.AWS.DirectConnect.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'DirectConnect'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -462,7 +380,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

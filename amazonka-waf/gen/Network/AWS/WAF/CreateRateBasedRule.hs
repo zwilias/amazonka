@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.WAF.CreateRateBasedRule
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -66,25 +64,23 @@
 -- For more information about how to use the AWS WAF API to allow or block HTTP requests, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
 --
 module Network.AWS.WAF.CreateRateBasedRule
-    (
     -- * Creating a Request
-      createRateBasedRule
-    , CreateRateBasedRule
+  ( createRateBasedRule
+  , CreateRateBasedRule
     -- * Request Lenses
-    , crbrName
-    , crbrMetricName
-    , crbrRateKey
-    , crbrRateLimit
-    , crbrChangeToken
-
+  , crbrName
+  , crbrMetricName
+  , crbrRateKey
+  , crbrRateLimit
+  , crbrChangeToken
     -- * Destructuring the Response
-    , createRateBasedRuleResponse
-    , CreateRateBasedRuleResponse
+  , createRateBasedRuleResponse
+  , CreateRateBasedRuleResponse
     -- * Response Lenses
-    , crbrrsRule
-    , crbrrsChangeToken
-    , crbrrsResponseStatus
-    ) where
+  , crbrrsRule
+  , crbrrsChangeToken
+  , crbrrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -94,14 +90,15 @@ import Network.AWS.WAF.Types
 import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'createRateBasedRule' smart constructor.
-data CreateRateBasedRule = CreateRateBasedRule'
-  { _crbrName        :: !Text
-  , _crbrMetricName  :: !Text
-  , _crbrRateKey     :: !RateKey
-  , _crbrRateLimit   :: !Nat
-  , _crbrChangeToken :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRateBasedRule =
+  CreateRateBasedRule'
+    { _crbrName        :: !Text
+    , _crbrMetricName  :: !Text
+    , _crbrRateKey     :: !RateKey
+    , _crbrRateLimit   :: !Nat
+    , _crbrChangeToken :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRateBasedRule' with the minimum fields required to make a request.
 --
@@ -116,13 +113,13 @@ data CreateRateBasedRule = CreateRateBasedRule'
 -- * 'crbrRateLimit' - The maximum number of requests, which have an identical value in the field that is specified by @RateKey@ , allowed in a five-minute period. If the number of requests exceeds the @RateLimit@ and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.
 --
 -- * 'crbrChangeToken' - The @ChangeToken@ that you used to submit the @CreateRateBasedRule@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
-createRateBasedRule
-    :: Text -- ^ 'crbrName'
-    -> Text -- ^ 'crbrMetricName'
-    -> RateKey -- ^ 'crbrRateKey'
-    -> Natural -- ^ 'crbrRateLimit'
-    -> Text -- ^ 'crbrChangeToken'
-    -> CreateRateBasedRule
+createRateBasedRule ::
+     Text -- ^ 'crbrName'
+  -> Text -- ^ 'crbrMetricName'
+  -> RateKey -- ^ 'crbrRateKey'
+  -> Natural -- ^ 'crbrRateLimit'
+  -> Text -- ^ 'crbrChangeToken'
+  -> CreateRateBasedRule
 createRateBasedRule pName_ pMetricName_ pRateKey_ pRateLimit_ pChangeToken_ =
   CreateRateBasedRule'
     { _crbrName = pName_
@@ -132,75 +129,74 @@ createRateBasedRule pName_ pMetricName_ pRateKey_ pRateLimit_ pChangeToken_ =
     , _crbrChangeToken = pChangeToken_
     }
 
-
 -- | A friendly name or description of the 'RateBasedRule' . You can't change the name of a @RateBasedRule@ after you create it.
 crbrName :: Lens' CreateRateBasedRule Text
-crbrName = lens _crbrName (\ s a -> s{_crbrName = a})
+crbrName = lens _crbrName (\s a -> s {_crbrName = a})
 
 -- | A friendly name or description for the metrics for this @RateBasedRule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the @RateBasedRule@ .
 crbrMetricName :: Lens' CreateRateBasedRule Text
-crbrMetricName = lens _crbrMetricName (\ s a -> s{_crbrMetricName = a})
+crbrMetricName = lens _crbrMetricName (\s a -> s {_crbrMetricName = a})
 
 -- | The field that AWS WAF uses to determine if requests are likely arriving from a single source and thus subject to rate monitoring. The only valid value for @RateKey@ is @IP@ . @IP@ indicates that requests that arrive from the same IP address are subject to the @RateLimit@ that is specified in the @RateBasedRule@ .
 crbrRateKey :: Lens' CreateRateBasedRule RateKey
-crbrRateKey = lens _crbrRateKey (\ s a -> s{_crbrRateKey = a})
+crbrRateKey = lens _crbrRateKey (\s a -> s {_crbrRateKey = a})
 
 -- | The maximum number of requests, which have an identical value in the field that is specified by @RateKey@ , allowed in a five-minute period. If the number of requests exceeds the @RateLimit@ and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.
 crbrRateLimit :: Lens' CreateRateBasedRule Natural
-crbrRateLimit = lens _crbrRateLimit (\ s a -> s{_crbrRateLimit = a}) . _Nat
+crbrRateLimit = lens _crbrRateLimit (\s a -> s {_crbrRateLimit = a}) . _Nat
 
 -- | The @ChangeToken@ that you used to submit the @CreateRateBasedRule@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 crbrChangeToken :: Lens' CreateRateBasedRule Text
-crbrChangeToken = lens _crbrChangeToken (\ s a -> s{_crbrChangeToken = a})
+crbrChangeToken = lens _crbrChangeToken (\s a -> s {_crbrChangeToken = a})
 
 instance AWSRequest CreateRateBasedRule where
-        type Rs CreateRateBasedRule =
-             CreateRateBasedRuleResponse
-        request = postJSON waf
-        response
-          = receiveJSON
-              (\ s h x ->
-                 CreateRateBasedRuleResponse' <$>
-                   (x .?> "Rule") <*> (x .?> "ChangeToken") <*>
-                     (pure (fromEnum s)))
+  type Rs CreateRateBasedRule = CreateRateBasedRuleResponse
+  request = postJSON waf
+  response =
+    receiveJSON
+      (\s h x ->
+         CreateRateBasedRuleResponse' <$> (x .?> "Rule") <*>
+         (x .?> "ChangeToken") <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateRateBasedRule where
+instance Hashable CreateRateBasedRule
 
-instance NFData CreateRateBasedRule where
+instance NFData CreateRateBasedRule
 
 instance ToHeaders CreateRateBasedRule where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSWAF_20150824.CreateRateBasedRule" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AWSWAF_20150824.CreateRateBasedRule" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateRateBasedRule where
-        toJSON CreateRateBasedRule'{..}
-          = object
-              (catMaybes
-                 [Just ("Name" .= _crbrName),
-                  Just ("MetricName" .= _crbrMetricName),
-                  Just ("RateKey" .= _crbrRateKey),
-                  Just ("RateLimit" .= _crbrRateLimit),
-                  Just ("ChangeToken" .= _crbrChangeToken)])
+  toJSON CreateRateBasedRule' {..} =
+    object
+      (catMaybes
+         [ Just ("Name" .= _crbrName)
+         , Just ("MetricName" .= _crbrMetricName)
+         , Just ("RateKey" .= _crbrRateKey)
+         , Just ("RateLimit" .= _crbrRateLimit)
+         , Just ("ChangeToken" .= _crbrChangeToken)
+         ])
 
 instance ToPath CreateRateBasedRule where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateRateBasedRule where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'createRateBasedRuleResponse' smart constructor.
-data CreateRateBasedRuleResponse = CreateRateBasedRuleResponse'
-  { _crbrrsRule           :: !(Maybe RateBasedRule)
-  , _crbrrsChangeToken    :: !(Maybe Text)
-  , _crbrrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRateBasedRuleResponse =
+  CreateRateBasedRuleResponse'
+    { _crbrrsRule           :: !(Maybe RateBasedRule)
+    , _crbrrsChangeToken    :: !(Maybe Text)
+    , _crbrrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRateBasedRuleResponse' with the minimum fields required to make a request.
 --
@@ -211,9 +207,9 @@ data CreateRateBasedRuleResponse = CreateRateBasedRuleResponse'
 -- * 'crbrrsChangeToken' - The @ChangeToken@ that you used to submit the @CreateRateBasedRule@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 --
 -- * 'crbrrsResponseStatus' - -- | The response status code.
-createRateBasedRuleResponse
-    :: Int -- ^ 'crbrrsResponseStatus'
-    -> CreateRateBasedRuleResponse
+createRateBasedRuleResponse ::
+     Int -- ^ 'crbrrsResponseStatus'
+  -> CreateRateBasedRuleResponse
 createRateBasedRuleResponse pResponseStatus_ =
   CreateRateBasedRuleResponse'
     { _crbrrsRule = Nothing
@@ -221,17 +217,17 @@ createRateBasedRuleResponse pResponseStatus_ =
     , _crbrrsResponseStatus = pResponseStatus_
     }
 
-
 -- | The 'RateBasedRule' that is returned in the @CreateRateBasedRule@ response.
 crbrrsRule :: Lens' CreateRateBasedRuleResponse (Maybe RateBasedRule)
-crbrrsRule = lens _crbrrsRule (\ s a -> s{_crbrrsRule = a})
+crbrrsRule = lens _crbrrsRule (\s a -> s {_crbrrsRule = a})
 
 -- | The @ChangeToken@ that you used to submit the @CreateRateBasedRule@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 crbrrsChangeToken :: Lens' CreateRateBasedRuleResponse (Maybe Text)
-crbrrsChangeToken = lens _crbrrsChangeToken (\ s a -> s{_crbrrsChangeToken = a})
+crbrrsChangeToken = lens _crbrrsChangeToken (\s a -> s {_crbrrsChangeToken = a})
 
 -- | -- | The response status code.
 crbrrsResponseStatus :: Lens' CreateRateBasedRuleResponse Int
-crbrrsResponseStatus = lens _crbrrsResponseStatus (\ s a -> s{_crbrrsResponseStatus = a})
+crbrrsResponseStatus =
+  lens _crbrrsResponseStatus (\s a -> s {_crbrrsResponseStatus = a})
 
-instance NFData CreateRateBasedRuleResponse where
+instance NFData CreateRateBasedRuleResponse

@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudWatchEvents.PutRule
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,25 +28,23 @@
 -- Most services in AWS treat : or / as the same character in Amazon Resource Names (ARNs). However, CloudWatch Events uses an exact match in event patterns and rules. Be sure to use the correct ARN characters when creating event patterns so that they match the ARN syntax in the event you want to match.
 --
 module Network.AWS.CloudWatchEvents.PutRule
-    (
     -- * Creating a Request
-      putRule
-    , PutRule
+  ( putRule
+  , PutRule
     -- * Request Lenses
-    , prEventPattern
-    , prState
-    , prScheduleExpression
-    , prDescription
-    , prRoleARN
-    , prName
-
+  , prEventPattern
+  , prState
+  , prScheduleExpression
+  , prDescription
+  , prRoleARN
+  , prName
     -- * Destructuring the Response
-    , putRuleResponse
-    , PutRuleResponse
+  , putRuleResponse
+  , PutRuleResponse
     -- * Response Lenses
-    , prrsRuleARN
-    , prrsResponseStatus
-    ) where
+  , prrsRuleARN
+  , prrsResponseStatus
+  ) where
 
 import Network.AWS.CloudWatchEvents.Types
 import Network.AWS.CloudWatchEvents.Types.Product
@@ -58,15 +54,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putRule' smart constructor.
-data PutRule = PutRule'
-  { _prEventPattern       :: !(Maybe Text)
-  , _prState              :: !(Maybe RuleState)
-  , _prScheduleExpression :: !(Maybe Text)
-  , _prDescription        :: !(Maybe Text)
-  , _prRoleARN            :: !(Maybe Text)
-  , _prName               :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutRule =
+  PutRule'
+    { _prEventPattern       :: !(Maybe Text)
+    , _prState              :: !(Maybe RuleState)
+    , _prScheduleExpression :: !(Maybe Text)
+    , _prDescription        :: !(Maybe Text)
+    , _prRoleARN            :: !(Maybe Text)
+    , _prName               :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutRule' with the minimum fields required to make a request.
 --
@@ -83,9 +80,9 @@ data PutRule = PutRule'
 -- * 'prRoleARN' - The Amazon Resource Name (ARN) of the IAM role associated with the rule.
 --
 -- * 'prName' - The name of the rule that you are creating or updating.
-putRule
-    :: Text -- ^ 'prName'
-    -> PutRule
+putRule ::
+     Text -- ^ 'prName'
+  -> PutRule
 putRule pName_ =
   PutRule'
     { _prEventPattern = Nothing
@@ -96,76 +93,75 @@ putRule pName_ =
     , _prName = pName_
     }
 
-
 -- | The event pattern. For more information, see <http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html Events and Event Patterns> in the /Amazon CloudWatch Events User Guide/ .
 prEventPattern :: Lens' PutRule (Maybe Text)
-prEventPattern = lens _prEventPattern (\ s a -> s{_prEventPattern = a})
+prEventPattern = lens _prEventPattern (\s a -> s {_prEventPattern = a})
 
 -- | Indicates whether the rule is enabled or disabled.
 prState :: Lens' PutRule (Maybe RuleState)
-prState = lens _prState (\ s a -> s{_prState = a})
+prState = lens _prState (\s a -> s {_prState = a})
 
 -- | The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5 minutes)".
 prScheduleExpression :: Lens' PutRule (Maybe Text)
-prScheduleExpression = lens _prScheduleExpression (\ s a -> s{_prScheduleExpression = a})
+prScheduleExpression =
+  lens _prScheduleExpression (\s a -> s {_prScheduleExpression = a})
 
 -- | A description of the rule.
 prDescription :: Lens' PutRule (Maybe Text)
-prDescription = lens _prDescription (\ s a -> s{_prDescription = a})
+prDescription = lens _prDescription (\s a -> s {_prDescription = a})
 
 -- | The Amazon Resource Name (ARN) of the IAM role associated with the rule.
 prRoleARN :: Lens' PutRule (Maybe Text)
-prRoleARN = lens _prRoleARN (\ s a -> s{_prRoleARN = a})
+prRoleARN = lens _prRoleARN (\s a -> s {_prRoleARN = a})
 
 -- | The name of the rule that you are creating or updating.
 prName :: Lens' PutRule Text
-prName = lens _prName (\ s a -> s{_prName = a})
+prName = lens _prName (\s a -> s {_prName = a})
 
 instance AWSRequest PutRule where
-        type Rs PutRule = PutRuleResponse
-        request = postJSON cloudWatchEvents
-        response
-          = receiveJSON
-              (\ s h x ->
-                 PutRuleResponse' <$>
-                   (x .?> "RuleArn") <*> (pure (fromEnum s)))
+  type Rs PutRule = PutRuleResponse
+  request = postJSON cloudWatchEvents
+  response =
+    receiveJSON
+      (\s h x -> PutRuleResponse' <$> (x .?> "RuleArn") <*> (pure (fromEnum s)))
 
-instance Hashable PutRule where
+instance Hashable PutRule
 
-instance NFData PutRule where
+instance NFData PutRule
 
 instance ToHeaders PutRule where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSEvents.PutRule" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("AWSEvents.PutRule" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON PutRule where
-        toJSON PutRule'{..}
-          = object
-              (catMaybes
-                 [("EventPattern" .=) <$> _prEventPattern,
-                  ("State" .=) <$> _prState,
-                  ("ScheduleExpression" .=) <$> _prScheduleExpression,
-                  ("Description" .=) <$> _prDescription,
-                  ("RoleArn" .=) <$> _prRoleARN,
-                  Just ("Name" .= _prName)])
+  toJSON PutRule' {..} =
+    object
+      (catMaybes
+         [ ("EventPattern" .=) <$> _prEventPattern
+         , ("State" .=) <$> _prState
+         , ("ScheduleExpression" .=) <$> _prScheduleExpression
+         , ("Description" .=) <$> _prDescription
+         , ("RoleArn" .=) <$> _prRoleARN
+         , Just ("Name" .= _prName)
+         ])
 
 instance ToPath PutRule where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery PutRule where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'putRuleResponse' smart constructor.
-data PutRuleResponse = PutRuleResponse'
-  { _prrsRuleARN        :: !(Maybe Text)
-  , _prrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutRuleResponse =
+  PutRuleResponse'
+    { _prrsRuleARN        :: !(Maybe Text)
+    , _prrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutRuleResponse' with the minimum fields required to make a request.
 --
@@ -174,20 +170,20 @@ data PutRuleResponse = PutRuleResponse'
 -- * 'prrsRuleARN' - The Amazon Resource Name (ARN) of the rule.
 --
 -- * 'prrsResponseStatus' - -- | The response status code.
-putRuleResponse
-    :: Int -- ^ 'prrsResponseStatus'
-    -> PutRuleResponse
+putRuleResponse ::
+     Int -- ^ 'prrsResponseStatus'
+  -> PutRuleResponse
 putRuleResponse pResponseStatus_ =
   PutRuleResponse'
     {_prrsRuleARN = Nothing, _prrsResponseStatus = pResponseStatus_}
 
-
 -- | The Amazon Resource Name (ARN) of the rule.
 prrsRuleARN :: Lens' PutRuleResponse (Maybe Text)
-prrsRuleARN = lens _prrsRuleARN (\ s a -> s{_prrsRuleARN = a})
+prrsRuleARN = lens _prrsRuleARN (\s a -> s {_prrsRuleARN = a})
 
 -- | -- | The response status code.
 prrsResponseStatus :: Lens' PutRuleResponse Int
-prrsResponseStatus = lens _prrsResponseStatus (\ s a -> s{_prrsResponseStatus = a})
+prrsResponseStatus =
+  lens _prrsResponseStatus (\s a -> s {_prrsResponseStatus = a})
 
-instance NFData PutRuleResponse where
+instance NFData PutRuleResponse

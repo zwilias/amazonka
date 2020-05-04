@@ -3,13 +3,11 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
-
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SES.DeleteCustomVerificationEmailTemplate
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,17 +24,15 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.DeleteCustomVerificationEmailTemplate
-    (
     -- * Creating a Request
-      deleteCustomVerificationEmailTemplate
-    , DeleteCustomVerificationEmailTemplate
+  ( deleteCustomVerificationEmailTemplate
+  , DeleteCustomVerificationEmailTemplate
     -- * Request Lenses
-    , dcvetTemplateName
-
+  , dcvetTemplateName
     -- * Destructuring the Response
-    , deleteCustomVerificationEmailTemplateResponse
-    , DeleteCustomVerificationEmailTemplateResponse
-    ) where
+  , deleteCustomVerificationEmailTemplateResponse
+  , DeleteCustomVerificationEmailTemplateResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -50,78 +46,60 @@ import Network.AWS.SES.Types.Product
 --
 --
 -- /See:/ 'deleteCustomVerificationEmailTemplate' smart constructor.
-newtype DeleteCustomVerificationEmailTemplate = DeleteCustomVerificationEmailTemplate'
-  { _dcvetTemplateName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteCustomVerificationEmailTemplate =
+  DeleteCustomVerificationEmailTemplate'
+    { _dcvetTemplateName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteCustomVerificationEmailTemplate' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dcvetTemplateName' - The name of the custom verification email template that you want to delete.
-deleteCustomVerificationEmailTemplate
-    :: Text -- ^ 'dcvetTemplateName'
-    -> DeleteCustomVerificationEmailTemplate
+deleteCustomVerificationEmailTemplate ::
+     Text -- ^ 'dcvetTemplateName'
+  -> DeleteCustomVerificationEmailTemplate
 deleteCustomVerificationEmailTemplate pTemplateName_ =
   DeleteCustomVerificationEmailTemplate' {_dcvetTemplateName = pTemplateName_}
 
-
 -- | The name of the custom verification email template that you want to delete.
 dcvetTemplateName :: Lens' DeleteCustomVerificationEmailTemplate Text
-dcvetTemplateName = lens _dcvetTemplateName (\ s a -> s{_dcvetTemplateName = a})
+dcvetTemplateName = lens _dcvetTemplateName (\s a -> s {_dcvetTemplateName = a})
 
-instance AWSRequest
-           DeleteCustomVerificationEmailTemplate
-         where
-        type Rs DeleteCustomVerificationEmailTemplate =
-             DeleteCustomVerificationEmailTemplateResponse
-        request = postQuery ses
-        response
-          = receiveNull
-              DeleteCustomVerificationEmailTemplateResponse'
+instance AWSRequest DeleteCustomVerificationEmailTemplate where
+  type Rs DeleteCustomVerificationEmailTemplate = DeleteCustomVerificationEmailTemplateResponse
+  request = postQuery ses
+  response = receiveNull DeleteCustomVerificationEmailTemplateResponse'
 
-instance Hashable
-           DeleteCustomVerificationEmailTemplate
-         where
+instance Hashable DeleteCustomVerificationEmailTemplate
 
 instance NFData DeleteCustomVerificationEmailTemplate
-         where
 
-instance ToHeaders
-           DeleteCustomVerificationEmailTemplate
-         where
-        toHeaders = const mempty
+instance ToHeaders DeleteCustomVerificationEmailTemplate where
+  toHeaders = const mempty
 
-instance ToPath DeleteCustomVerificationEmailTemplate
-         where
-        toPath = const "/"
+instance ToPath DeleteCustomVerificationEmailTemplate where
+  toPath = const "/"
 
-instance ToQuery
-           DeleteCustomVerificationEmailTemplate
-         where
-        toQuery DeleteCustomVerificationEmailTemplate'{..}
-          = mconcat
-              ["Action" =:
-                 ("DeleteCustomVerificationEmailTemplate" ::
-                    ByteString),
-               "Version" =: ("2010-12-01" :: ByteString),
-               "TemplateName" =: _dcvetTemplateName]
+instance ToQuery DeleteCustomVerificationEmailTemplate where
+  toQuery DeleteCustomVerificationEmailTemplate' {..} =
+    mconcat
+      [ "Action" =: ("DeleteCustomVerificationEmailTemplate" :: ByteString)
+      , "Version" =: ("2010-12-01" :: ByteString)
+      , "TemplateName" =: _dcvetTemplateName
+      ]
 
 -- | /See:/ 'deleteCustomVerificationEmailTemplateResponse' smart constructor.
 data DeleteCustomVerificationEmailTemplateResponse =
   DeleteCustomVerificationEmailTemplateResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'DeleteCustomVerificationEmailTemplateResponse' with the minimum fields required to make a request.
 --
-deleteCustomVerificationEmailTemplateResponse
-    :: DeleteCustomVerificationEmailTemplateResponse
+deleteCustomVerificationEmailTemplateResponse ::
+     DeleteCustomVerificationEmailTemplateResponse
 deleteCustomVerificationEmailTemplateResponse =
   DeleteCustomVerificationEmailTemplateResponse'
 
-
-instance NFData
-           DeleteCustomVerificationEmailTemplateResponse
-         where
+instance NFData DeleteCustomVerificationEmailTemplateResponse

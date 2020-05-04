@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudHSMv2.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,81 +10,70 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.CloudHSMv2.Types
-    (
     -- * Service Configuration
-      cloudHSMv2
-
+  ( cloudHSMv2
     -- * Errors
-    , _CloudHSMInternalFailureException
-    , _CloudHSMServiceException
-    , _CloudHSMInvalidRequestException
-    , _CloudHSMAccessDeniedException
-    , _CloudHSMResourceNotFoundException
-
+  , _CloudHSMInternalFailureException
+  , _CloudHSMServiceException
+  , _CloudHSMInvalidRequestException
+  , _CloudHSMAccessDeniedException
+  , _CloudHSMResourceNotFoundException
     -- * BackupPolicy
-    , BackupPolicy (..)
-
+  , BackupPolicy(..)
     -- * BackupState
-    , BackupState (..)
-
+  , BackupState(..)
     -- * ClusterState
-    , ClusterState (..)
-
+  , ClusterState(..)
     -- * HSMState
-    , HSMState (..)
-
+  , HSMState(..)
     -- * Backup
-    , Backup
-    , backup
-    , bClusterId
-    , bCreateTimestamp
-    , bBackupState
-    , bBackupId
-
+  , Backup
+  , backup
+  , bClusterId
+  , bCreateTimestamp
+  , bBackupState
+  , bBackupId
     -- * Certificates
-    , Certificates
-    , certificates
-    , cManufacturerHardwareCertificate
-    , cClusterCSR
-    , cHSMCertificate
-    , cClusterCertificate
-    , cAWSHardwareCertificate
-
+  , Certificates
+  , certificates
+  , cManufacturerHardwareCertificate
+  , cClusterCSR
+  , cHSMCertificate
+  , cClusterCertificate
+  , cAWSHardwareCertificate
     -- * Cluster
-    , Cluster
-    , cluster
-    , cPreCoPassword
-    , cStateMessage
-    , cState
-    , cSubnetMapping
-    , cHSMs
-    , cVPCId
-    , cSourceBackupId
-    , cCertificates
-    , cSecurityGroup
-    , cClusterId
-    , cCreateTimestamp
-    , cBackupPolicy
-    , cHSMType
-
+  , Cluster
+  , cluster
+  , cPreCoPassword
+  , cStateMessage
+  , cState
+  , cSubnetMapping
+  , cHSMs
+  , cVPCId
+  , cSourceBackupId
+  , cCertificates
+  , cSecurityGroup
+  , cClusterId
+  , cCreateTimestamp
+  , cBackupPolicy
+  , cHSMType
     -- * HSM
-    , HSM
-    , hsm
-    , hsmStateMessage
-    , hsmState
-    , hsmEniId
-    , hsmSubnetId
-    , hsmAvailabilityZone
-    , hsmClusterId
-    , hsmEniIP
-    , hsmHSMId
-
+  , HSM
+  , hsm
+  , hsmStateMessage
+  , hsmState
+  , hsmEniId
+  , hsmSubnetId
+  , hsmAvailabilityZone
+  , hsmClusterId
+  , hsmEniIP
+  , hsmHSMId
     -- * Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-    ) where
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
+  ) where
 
 import Network.AWS.CloudHSMv2.Types.Product
 import Network.AWS.CloudHSMv2.Types.Sum
@@ -131,43 +119,42 @@ cloudHSMv2 =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The request was rejected because of an AWS CloudHSM internal failure. The request can be retried.
 --
 --
-_CloudHSMInternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMInternalFailureException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _CloudHSMInternalFailureException =
   _MatchServiceError cloudHSMv2 "CloudHsmInternalFailureException"
-
 
 -- | The request was rejected because an error occurred.
 --
 --
-_CloudHSMServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMServiceException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _CloudHSMServiceException =
   _MatchServiceError cloudHSMv2 "CloudHsmServiceException"
-
 
 -- | The request was rejected because it is not a valid request.
 --
 --
-_CloudHSMInvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMInvalidRequestException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _CloudHSMInvalidRequestException =
   _MatchServiceError cloudHSMv2 "CloudHsmInvalidRequestException"
-
 
 -- | The request was rejected because the requester does not have permission to perform the requested operation.
 --
 --
-_CloudHSMAccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMAccessDeniedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _CloudHSMAccessDeniedException =
   _MatchServiceError cloudHSMv2 "CloudHsmAccessDeniedException"
-
 
 -- | The request was rejected because it refers to a resource that cannot be found.
 --
 --
-_CloudHSMResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMResourceNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _CloudHSMResourceNotFoundException =
   _MatchServiceError cloudHSMv2 "CloudHsmResourceNotFoundException"
-

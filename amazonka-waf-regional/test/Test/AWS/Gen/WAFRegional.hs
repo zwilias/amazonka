@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.WAFRegional
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -248,7 +246,6 @@ import Test.Tasty
 --             updateSqlInjectionMatchSet
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseListActivatedRulesInRuleGroup $
 --             listActivatedRulesInRuleGroupResponse
@@ -471,882 +468,859 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
-requestListActivatedRulesInRuleGroup :: ListActivatedRulesInRuleGroup -> TestTree
-requestListActivatedRulesInRuleGroup = req
+requestListActivatedRulesInRuleGroup ::
+     ListActivatedRulesInRuleGroup -> TestTree
+requestListActivatedRulesInRuleGroup =
+  req
     "ListActivatedRulesInRuleGroup"
     "fixture/ListActivatedRulesInRuleGroup.yaml"
 
 requestListRateBasedRules :: ListRateBasedRules -> TestTree
-requestListRateBasedRules = req
-    "ListRateBasedRules"
-    "fixture/ListRateBasedRules.yaml"
+requestListRateBasedRules =
+  req "ListRateBasedRules" "fixture/ListRateBasedRules.yaml"
 
 requestGetSizeConstraintSet :: GetSizeConstraintSet -> TestTree
-requestGetSizeConstraintSet = req
-    "GetSizeConstraintSet"
-    "fixture/GetSizeConstraintSet.yaml"
+requestGetSizeConstraintSet =
+  req "GetSizeConstraintSet" "fixture/GetSizeConstraintSet.yaml"
 
 requestDeleteRateBasedRule :: DeleteRateBasedRule -> TestTree
-requestDeleteRateBasedRule = req
-    "DeleteRateBasedRule"
-    "fixture/DeleteRateBasedRule.yaml"
+requestDeleteRateBasedRule =
+  req "DeleteRateBasedRule" "fixture/DeleteRateBasedRule.yaml"
 
 requestUpdateRateBasedRule :: UpdateRateBasedRule -> TestTree
-requestUpdateRateBasedRule = req
-    "UpdateRateBasedRule"
-    "fixture/UpdateRateBasedRule.yaml"
+requestUpdateRateBasedRule =
+  req "UpdateRateBasedRule" "fixture/UpdateRateBasedRule.yaml"
 
 requestUpdateRule :: UpdateRule -> TestTree
-requestUpdateRule = req
-    "UpdateRule"
-    "fixture/UpdateRule.yaml"
+requestUpdateRule = req "UpdateRule" "fixture/UpdateRule.yaml"
 
 requestDeleteRule :: DeleteRule -> TestTree
-requestDeleteRule = req
-    "DeleteRule"
-    "fixture/DeleteRule.yaml"
+requestDeleteRule = req "DeleteRule" "fixture/DeleteRule.yaml"
 
 requestCreateIPSet :: CreateIPSet -> TestTree
-requestCreateIPSet = req
-    "CreateIPSet"
-    "fixture/CreateIPSet.yaml"
+requestCreateIPSet = req "CreateIPSet" "fixture/CreateIPSet.yaml"
 
 requestGetRuleGroup :: GetRuleGroup -> TestTree
-requestGetRuleGroup = req
-    "GetRuleGroup"
-    "fixture/GetRuleGroup.yaml"
+requestGetRuleGroup = req "GetRuleGroup" "fixture/GetRuleGroup.yaml"
 
 requestGetChangeTokenStatus :: GetChangeTokenStatus -> TestTree
-requestGetChangeTokenStatus = req
-    "GetChangeTokenStatus"
-    "fixture/GetChangeTokenStatus.yaml"
+requestGetChangeTokenStatus =
+  req "GetChangeTokenStatus" "fixture/GetChangeTokenStatus.yaml"
 
 requestDeleteWebACL :: DeleteWebACL -> TestTree
-requestDeleteWebACL = req
-    "DeleteWebACL"
-    "fixture/DeleteWebACL.yaml"
+requestDeleteWebACL = req "DeleteWebACL" "fixture/DeleteWebACL.yaml"
 
 requestUpdateWebACL :: UpdateWebACL -> TestTree
-requestUpdateWebACL = req
-    "UpdateWebACL"
-    "fixture/UpdateWebACL.yaml"
+requestUpdateWebACL = req "UpdateWebACL" "fixture/UpdateWebACL.yaml"
 
 requestListWebACLs :: ListWebACLs -> TestTree
-requestListWebACLs = req
-    "ListWebACLs"
-    "fixture/ListWebACLs.yaml"
+requestListWebACLs = req "ListWebACLs" "fixture/ListWebACLs.yaml"
 
 requestListRules :: ListRules -> TestTree
-requestListRules = req
-    "ListRules"
-    "fixture/ListRules.yaml"
+requestListRules = req "ListRules" "fixture/ListRules.yaml"
 
 requestCreateRule :: CreateRule -> TestTree
-requestCreateRule = req
-    "CreateRule"
-    "fixture/CreateRule.yaml"
+requestCreateRule = req "CreateRule" "fixture/CreateRule.yaml"
 
 requestCreateWebACL :: CreateWebACL -> TestTree
-requestCreateWebACL = req
-    "CreateWebACL"
-    "fixture/CreateWebACL.yaml"
+requestCreateWebACL = req "CreateWebACL" "fixture/CreateWebACL.yaml"
 
 requestGetGeoMatchSet :: GetGeoMatchSet -> TestTree
-requestGetGeoMatchSet = req
-    "GetGeoMatchSet"
-    "fixture/GetGeoMatchSet.yaml"
+requestGetGeoMatchSet = req "GetGeoMatchSet" "fixture/GetGeoMatchSet.yaml"
 
 requestListByteMatchSets :: ListByteMatchSets -> TestTree
-requestListByteMatchSets = req
-    "ListByteMatchSets"
-    "fixture/ListByteMatchSets.yaml"
+requestListByteMatchSets =
+  req "ListByteMatchSets" "fixture/ListByteMatchSets.yaml"
 
 requestListGeoMatchSets :: ListGeoMatchSets -> TestTree
-requestListGeoMatchSets = req
-    "ListGeoMatchSets"
-    "fixture/ListGeoMatchSets.yaml"
+requestListGeoMatchSets = req "ListGeoMatchSets" "fixture/ListGeoMatchSets.yaml"
 
 requestCreateRuleGroup :: CreateRuleGroup -> TestTree
-requestCreateRuleGroup = req
-    "CreateRuleGroup"
-    "fixture/CreateRuleGroup.yaml"
+requestCreateRuleGroup = req "CreateRuleGroup" "fixture/CreateRuleGroup.yaml"
 
 requestDeleteRegexMatchSet :: DeleteRegexMatchSet -> TestTree
-requestDeleteRegexMatchSet = req
-    "DeleteRegexMatchSet"
-    "fixture/DeleteRegexMatchSet.yaml"
+requestDeleteRegexMatchSet =
+  req "DeleteRegexMatchSet" "fixture/DeleteRegexMatchSet.yaml"
 
 requestUpdateRegexMatchSet :: UpdateRegexMatchSet -> TestTree
-requestUpdateRegexMatchSet = req
-    "UpdateRegexMatchSet"
-    "fixture/UpdateRegexMatchSet.yaml"
+requestUpdateRegexMatchSet =
+  req "UpdateRegexMatchSet" "fixture/UpdateRegexMatchSet.yaml"
 
 requestGetIPSet :: GetIPSet -> TestTree
-requestGetIPSet = req
-    "GetIPSet"
-    "fixture/GetIPSet.yaml"
+requestGetIPSet = req "GetIPSet" "fixture/GetIPSet.yaml"
 
 requestGetWebACL :: GetWebACL -> TestTree
-requestGetWebACL = req
-    "GetWebACL"
-    "fixture/GetWebACL.yaml"
+requestGetWebACL = req "GetWebACL" "fixture/GetWebACL.yaml"
 
 requestGetRule :: GetRule -> TestTree
-requestGetRule = req
-    "GetRule"
-    "fixture/GetRule.yaml"
+requestGetRule = req "GetRule" "fixture/GetRule.yaml"
 
 requestDeleteXSSMatchSet :: DeleteXSSMatchSet -> TestTree
-requestDeleteXSSMatchSet = req
-    "DeleteXSSMatchSet"
-    "fixture/DeleteXSSMatchSet.yaml"
+requestDeleteXSSMatchSet =
+  req "DeleteXSSMatchSet" "fixture/DeleteXSSMatchSet.yaml"
 
 requestUpdateXSSMatchSet :: UpdateXSSMatchSet -> TestTree
-requestUpdateXSSMatchSet = req
-    "UpdateXSSMatchSet"
-    "fixture/UpdateXSSMatchSet.yaml"
+requestUpdateXSSMatchSet =
+  req "UpdateXSSMatchSet" "fixture/UpdateXSSMatchSet.yaml"
 
 requestListXSSMatchSets :: ListXSSMatchSets -> TestTree
-requestListXSSMatchSets = req
-    "ListXSSMatchSets"
-    "fixture/ListXSSMatchSets.yaml"
+requestListXSSMatchSets = req "ListXSSMatchSets" "fixture/ListXSSMatchSets.yaml"
 
 requestCreateGeoMatchSet :: CreateGeoMatchSet -> TestTree
-requestCreateGeoMatchSet = req
-    "CreateGeoMatchSet"
-    "fixture/CreateGeoMatchSet.yaml"
+requestCreateGeoMatchSet =
+  req "CreateGeoMatchSet" "fixture/CreateGeoMatchSet.yaml"
 
 requestGetChangeToken :: GetChangeToken -> TestTree
-requestGetChangeToken = req
-    "GetChangeToken"
-    "fixture/GetChangeToken.yaml"
+requestGetChangeToken = req "GetChangeToken" "fixture/GetChangeToken.yaml"
 
 requestListSizeConstraintSets :: ListSizeConstraintSets -> TestTree
-requestListSizeConstraintSets = req
-    "ListSizeConstraintSets"
-    "fixture/ListSizeConstraintSets.yaml"
+requestListSizeConstraintSets =
+  req "ListSizeConstraintSets" "fixture/ListSizeConstraintSets.yaml"
 
 requestListResourcesForWebACL :: ListResourcesForWebACL -> TestTree
-requestListResourcesForWebACL = req
-    "ListResourcesForWebACL"
-    "fixture/ListResourcesForWebACL.yaml"
+requestListResourcesForWebACL =
+  req "ListResourcesForWebACL" "fixture/ListResourcesForWebACL.yaml"
 
 requestGetSampledRequests :: GetSampledRequests -> TestTree
-requestGetSampledRequests = req
-    "GetSampledRequests"
-    "fixture/GetSampledRequests.yaml"
+requestGetSampledRequests =
+  req "GetSampledRequests" "fixture/GetSampledRequests.yaml"
 
 requestGetSqlInjectionMatchSet :: GetSqlInjectionMatchSet -> TestTree
-requestGetSqlInjectionMatchSet = req
-    "GetSqlInjectionMatchSet"
-    "fixture/GetSqlInjectionMatchSet.yaml"
+requestGetSqlInjectionMatchSet =
+  req "GetSqlInjectionMatchSet" "fixture/GetSqlInjectionMatchSet.yaml"
 
 requestGetWebACLForResource :: GetWebACLForResource -> TestTree
-requestGetWebACLForResource = req
-    "GetWebACLForResource"
-    "fixture/GetWebACLForResource.yaml"
+requestGetWebACLForResource =
+  req "GetWebACLForResource" "fixture/GetWebACLForResource.yaml"
 
 requestDisassociateWebACL :: DisassociateWebACL -> TestTree
-requestDisassociateWebACL = req
-    "DisassociateWebACL"
-    "fixture/DisassociateWebACL.yaml"
+requestDisassociateWebACL =
+  req "DisassociateWebACL" "fixture/DisassociateWebACL.yaml"
 
 requestListSubscribedRuleGroups :: ListSubscribedRuleGroups -> TestTree
-requestListSubscribedRuleGroups = req
-    "ListSubscribedRuleGroups"
-    "fixture/ListSubscribedRuleGroups.yaml"
+requestListSubscribedRuleGroups =
+  req "ListSubscribedRuleGroups" "fixture/ListSubscribedRuleGroups.yaml"
 
 requestCreateSqlInjectionMatchSet :: CreateSqlInjectionMatchSet -> TestTree
-requestCreateSqlInjectionMatchSet = req
-    "CreateSqlInjectionMatchSet"
-    "fixture/CreateSqlInjectionMatchSet.yaml"
+requestCreateSqlInjectionMatchSet =
+  req "CreateSqlInjectionMatchSet" "fixture/CreateSqlInjectionMatchSet.yaml"
 
 requestGetXSSMatchSet :: GetXSSMatchSet -> TestTree
-requestGetXSSMatchSet = req
-    "GetXSSMatchSet"
-    "fixture/GetXSSMatchSet.yaml"
+requestGetXSSMatchSet = req "GetXSSMatchSet" "fixture/GetXSSMatchSet.yaml"
 
 requestCreateByteMatchSet :: CreateByteMatchSet -> TestTree
-requestCreateByteMatchSet = req
-    "CreateByteMatchSet"
-    "fixture/CreateByteMatchSet.yaml"
+requestCreateByteMatchSet =
+  req "CreateByteMatchSet" "fixture/CreateByteMatchSet.yaml"
 
 requestUpdateByteMatchSet :: UpdateByteMatchSet -> TestTree
-requestUpdateByteMatchSet = req
-    "UpdateByteMatchSet"
-    "fixture/UpdateByteMatchSet.yaml"
+requestUpdateByteMatchSet =
+  req "UpdateByteMatchSet" "fixture/UpdateByteMatchSet.yaml"
 
 requestDeleteByteMatchSet :: DeleteByteMatchSet -> TestTree
-requestDeleteByteMatchSet = req
-    "DeleteByteMatchSet"
-    "fixture/DeleteByteMatchSet.yaml"
+requestDeleteByteMatchSet =
+  req "DeleteByteMatchSet" "fixture/DeleteByteMatchSet.yaml"
 
 requestPutPermissionPolicy :: PutPermissionPolicy -> TestTree
-requestPutPermissionPolicy = req
-    "PutPermissionPolicy"
-    "fixture/PutPermissionPolicy.yaml"
+requestPutPermissionPolicy =
+  req "PutPermissionPolicy" "fixture/PutPermissionPolicy.yaml"
 
 requestGetRateBasedRuleManagedKeys :: GetRateBasedRuleManagedKeys -> TestTree
-requestGetRateBasedRuleManagedKeys = req
-    "GetRateBasedRuleManagedKeys"
-    "fixture/GetRateBasedRuleManagedKeys.yaml"
+requestGetRateBasedRuleManagedKeys =
+  req "GetRateBasedRuleManagedKeys" "fixture/GetRateBasedRuleManagedKeys.yaml"
 
 requestAssociateWebACL :: AssociateWebACL -> TestTree
-requestAssociateWebACL = req
-    "AssociateWebACL"
-    "fixture/AssociateWebACL.yaml"
+requestAssociateWebACL = req "AssociateWebACL" "fixture/AssociateWebACL.yaml"
 
 requestDeletePermissionPolicy :: DeletePermissionPolicy -> TestTree
-requestDeletePermissionPolicy = req
-    "DeletePermissionPolicy"
-    "fixture/DeletePermissionPolicy.yaml"
+requestDeletePermissionPolicy =
+  req "DeletePermissionPolicy" "fixture/DeletePermissionPolicy.yaml"
 
 requestGetRegexMatchSet :: GetRegexMatchSet -> TestTree
-requestGetRegexMatchSet = req
-    "GetRegexMatchSet"
-    "fixture/GetRegexMatchSet.yaml"
+requestGetRegexMatchSet = req "GetRegexMatchSet" "fixture/GetRegexMatchSet.yaml"
 
 requestDeleteIPSet :: DeleteIPSet -> TestTree
-requestDeleteIPSet = req
-    "DeleteIPSet"
-    "fixture/DeleteIPSet.yaml"
+requestDeleteIPSet = req "DeleteIPSet" "fixture/DeleteIPSet.yaml"
 
 requestUpdateIPSet :: UpdateIPSet -> TestTree
-requestUpdateIPSet = req
-    "UpdateIPSet"
-    "fixture/UpdateIPSet.yaml"
+requestUpdateIPSet = req "UpdateIPSet" "fixture/UpdateIPSet.yaml"
 
 requestListIPSets :: ListIPSets -> TestTree
-requestListIPSets = req
-    "ListIPSets"
-    "fixture/ListIPSets.yaml"
+requestListIPSets = req "ListIPSets" "fixture/ListIPSets.yaml"
 
 requestListRegexMatchSets :: ListRegexMatchSets -> TestTree
-requestListRegexMatchSets = req
-    "ListRegexMatchSets"
-    "fixture/ListRegexMatchSets.yaml"
+requestListRegexMatchSets =
+  req "ListRegexMatchSets" "fixture/ListRegexMatchSets.yaml"
 
 requestCreateXSSMatchSet :: CreateXSSMatchSet -> TestTree
-requestCreateXSSMatchSet = req
-    "CreateXSSMatchSet"
-    "fixture/CreateXSSMatchSet.yaml"
+requestCreateXSSMatchSet =
+  req "CreateXSSMatchSet" "fixture/CreateXSSMatchSet.yaml"
 
 requestDeleteGeoMatchSet :: DeleteGeoMatchSet -> TestTree
-requestDeleteGeoMatchSet = req
-    "DeleteGeoMatchSet"
-    "fixture/DeleteGeoMatchSet.yaml"
+requestDeleteGeoMatchSet =
+  req "DeleteGeoMatchSet" "fixture/DeleteGeoMatchSet.yaml"
 
 requestUpdateGeoMatchSet :: UpdateGeoMatchSet -> TestTree
-requestUpdateGeoMatchSet = req
-    "UpdateGeoMatchSet"
-    "fixture/UpdateGeoMatchSet.yaml"
+requestUpdateGeoMatchSet =
+  req "UpdateGeoMatchSet" "fixture/UpdateGeoMatchSet.yaml"
 
 requestGetByteMatchSet :: GetByteMatchSet -> TestTree
-requestGetByteMatchSet = req
-    "GetByteMatchSet"
-    "fixture/GetByteMatchSet.yaml"
+requestGetByteMatchSet = req "GetByteMatchSet" "fixture/GetByteMatchSet.yaml"
 
 requestGetPermissionPolicy :: GetPermissionPolicy -> TestTree
-requestGetPermissionPolicy = req
-    "GetPermissionPolicy"
-    "fixture/GetPermissionPolicy.yaml"
+requestGetPermissionPolicy =
+  req "GetPermissionPolicy" "fixture/GetPermissionPolicy.yaml"
 
 requestListRuleGroups :: ListRuleGroups -> TestTree
-requestListRuleGroups = req
-    "ListRuleGroups"
-    "fixture/ListRuleGroups.yaml"
+requestListRuleGroups = req "ListRuleGroups" "fixture/ListRuleGroups.yaml"
 
 requestDeleteRuleGroup :: DeleteRuleGroup -> TestTree
-requestDeleteRuleGroup = req
-    "DeleteRuleGroup"
-    "fixture/DeleteRuleGroup.yaml"
+requestDeleteRuleGroup = req "DeleteRuleGroup" "fixture/DeleteRuleGroup.yaml"
 
 requestUpdateRuleGroup :: UpdateRuleGroup -> TestTree
-requestUpdateRuleGroup = req
-    "UpdateRuleGroup"
-    "fixture/UpdateRuleGroup.yaml"
+requestUpdateRuleGroup = req "UpdateRuleGroup" "fixture/UpdateRuleGroup.yaml"
 
 requestCreateRegexMatchSet :: CreateRegexMatchSet -> TestTree
-requestCreateRegexMatchSet = req
-    "CreateRegexMatchSet"
-    "fixture/CreateRegexMatchSet.yaml"
+requestCreateRegexMatchSet =
+  req "CreateRegexMatchSet" "fixture/CreateRegexMatchSet.yaml"
 
 requestGetRateBasedRule :: GetRateBasedRule -> TestTree
-requestGetRateBasedRule = req
-    "GetRateBasedRule"
-    "fixture/GetRateBasedRule.yaml"
+requestGetRateBasedRule = req "GetRateBasedRule" "fixture/GetRateBasedRule.yaml"
 
 requestCreateRegexPatternSet :: CreateRegexPatternSet -> TestTree
-requestCreateRegexPatternSet = req
-    "CreateRegexPatternSet"
-    "fixture/CreateRegexPatternSet.yaml"
+requestCreateRegexPatternSet =
+  req "CreateRegexPatternSet" "fixture/CreateRegexPatternSet.yaml"
 
 requestDeleteSizeConstraintSet :: DeleteSizeConstraintSet -> TestTree
-requestDeleteSizeConstraintSet = req
-    "DeleteSizeConstraintSet"
-    "fixture/DeleteSizeConstraintSet.yaml"
+requestDeleteSizeConstraintSet =
+  req "DeleteSizeConstraintSet" "fixture/DeleteSizeConstraintSet.yaml"
 
 requestUpdateSizeConstraintSet :: UpdateSizeConstraintSet -> TestTree
-requestUpdateSizeConstraintSet = req
-    "UpdateSizeConstraintSet"
-    "fixture/UpdateSizeConstraintSet.yaml"
+requestUpdateSizeConstraintSet =
+  req "UpdateSizeConstraintSet" "fixture/UpdateSizeConstraintSet.yaml"
 
 requestDeleteRegexPatternSet :: DeleteRegexPatternSet -> TestTree
-requestDeleteRegexPatternSet = req
-    "DeleteRegexPatternSet"
-    "fixture/DeleteRegexPatternSet.yaml"
+requestDeleteRegexPatternSet =
+  req "DeleteRegexPatternSet" "fixture/DeleteRegexPatternSet.yaml"
 
 requestUpdateRegexPatternSet :: UpdateRegexPatternSet -> TestTree
-requestUpdateRegexPatternSet = req
-    "UpdateRegexPatternSet"
-    "fixture/UpdateRegexPatternSet.yaml"
+requestUpdateRegexPatternSet =
+  req "UpdateRegexPatternSet" "fixture/UpdateRegexPatternSet.yaml"
 
 requestCreateSizeConstraintSet :: CreateSizeConstraintSet -> TestTree
-requestCreateSizeConstraintSet = req
-    "CreateSizeConstraintSet"
-    "fixture/CreateSizeConstraintSet.yaml"
+requestCreateSizeConstraintSet =
+  req "CreateSizeConstraintSet" "fixture/CreateSizeConstraintSet.yaml"
 
 requestListRegexPatternSets :: ListRegexPatternSets -> TestTree
-requestListRegexPatternSets = req
-    "ListRegexPatternSets"
-    "fixture/ListRegexPatternSets.yaml"
+requestListRegexPatternSets =
+  req "ListRegexPatternSets" "fixture/ListRegexPatternSets.yaml"
 
 requestListSqlInjectionMatchSets :: ListSqlInjectionMatchSets -> TestTree
-requestListSqlInjectionMatchSets = req
-    "ListSqlInjectionMatchSets"
-    "fixture/ListSqlInjectionMatchSets.yaml"
+requestListSqlInjectionMatchSets =
+  req "ListSqlInjectionMatchSets" "fixture/ListSqlInjectionMatchSets.yaml"
 
 requestGetRegexPatternSet :: GetRegexPatternSet -> TestTree
-requestGetRegexPatternSet = req
-    "GetRegexPatternSet"
-    "fixture/GetRegexPatternSet.yaml"
+requestGetRegexPatternSet =
+  req "GetRegexPatternSet" "fixture/GetRegexPatternSet.yaml"
 
 requestCreateRateBasedRule :: CreateRateBasedRule -> TestTree
-requestCreateRateBasedRule = req
-    "CreateRateBasedRule"
-    "fixture/CreateRateBasedRule.yaml"
+requestCreateRateBasedRule =
+  req "CreateRateBasedRule" "fixture/CreateRateBasedRule.yaml"
 
 requestDeleteSqlInjectionMatchSet :: DeleteSqlInjectionMatchSet -> TestTree
-requestDeleteSqlInjectionMatchSet = req
-    "DeleteSqlInjectionMatchSet"
-    "fixture/DeleteSqlInjectionMatchSet.yaml"
+requestDeleteSqlInjectionMatchSet =
+  req "DeleteSqlInjectionMatchSet" "fixture/DeleteSqlInjectionMatchSet.yaml"
 
 requestUpdateSqlInjectionMatchSet :: UpdateSqlInjectionMatchSet -> TestTree
-requestUpdateSqlInjectionMatchSet = req
-    "UpdateSqlInjectionMatchSet"
-    "fixture/UpdateSqlInjectionMatchSet.yaml"
+requestUpdateSqlInjectionMatchSet =
+  req "UpdateSqlInjectionMatchSet" "fixture/UpdateSqlInjectionMatchSet.yaml"
 
 -- Responses
-
-responseListActivatedRulesInRuleGroup :: ListActivatedRulesInRuleGroupResponse -> TestTree
-responseListActivatedRulesInRuleGroup = res
+responseListActivatedRulesInRuleGroup ::
+     ListActivatedRulesInRuleGroupResponse -> TestTree
+responseListActivatedRulesInRuleGroup =
+  res
     "ListActivatedRulesInRuleGroupResponse"
     "fixture/ListActivatedRulesInRuleGroupResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListActivatedRulesInRuleGroup)
 
 responseListRateBasedRules :: ListRateBasedRulesResponse -> TestTree
-responseListRateBasedRules = res
+responseListRateBasedRules =
+  res
     "ListRateBasedRulesResponse"
     "fixture/ListRateBasedRulesResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListRateBasedRules)
 
 responseGetSizeConstraintSet :: GetSizeConstraintSetResponse -> TestTree
-responseGetSizeConstraintSet = res
+responseGetSizeConstraintSet =
+  res
     "GetSizeConstraintSetResponse"
     "fixture/GetSizeConstraintSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetSizeConstraintSet)
 
 responseDeleteRateBasedRule :: DeleteRateBasedRuleResponse -> TestTree
-responseDeleteRateBasedRule = res
+responseDeleteRateBasedRule =
+  res
     "DeleteRateBasedRuleResponse"
     "fixture/DeleteRateBasedRuleResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteRateBasedRule)
 
 responseUpdateRateBasedRule :: UpdateRateBasedRuleResponse -> TestTree
-responseUpdateRateBasedRule = res
+responseUpdateRateBasedRule =
+  res
     "UpdateRateBasedRuleResponse"
     "fixture/UpdateRateBasedRuleResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateRateBasedRule)
 
 responseUpdateRule :: UpdateRuleResponse -> TestTree
-responseUpdateRule = res
+responseUpdateRule =
+  res
     "UpdateRuleResponse"
     "fixture/UpdateRuleResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateRule)
 
 responseDeleteRule :: DeleteRuleResponse -> TestTree
-responseDeleteRule = res
+responseDeleteRule =
+  res
     "DeleteRuleResponse"
     "fixture/DeleteRuleResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteRule)
 
 responseCreateIPSet :: CreateIPSetResponse -> TestTree
-responseCreateIPSet = res
+responseCreateIPSet =
+  res
     "CreateIPSetResponse"
     "fixture/CreateIPSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateIPSet)
 
 responseGetRuleGroup :: GetRuleGroupResponse -> TestTree
-responseGetRuleGroup = res
+responseGetRuleGroup =
+  res
     "GetRuleGroupResponse"
     "fixture/GetRuleGroupResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetRuleGroup)
 
 responseGetChangeTokenStatus :: GetChangeTokenStatusResponse -> TestTree
-responseGetChangeTokenStatus = res
+responseGetChangeTokenStatus =
+  res
     "GetChangeTokenStatusResponse"
     "fixture/GetChangeTokenStatusResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetChangeTokenStatus)
 
 responseDeleteWebACL :: DeleteWebACLResponse -> TestTree
-responseDeleteWebACL = res
+responseDeleteWebACL =
+  res
     "DeleteWebACLResponse"
     "fixture/DeleteWebACLResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteWebACL)
 
 responseUpdateWebACL :: UpdateWebACLResponse -> TestTree
-responseUpdateWebACL = res
+responseUpdateWebACL =
+  res
     "UpdateWebACLResponse"
     "fixture/UpdateWebACLResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateWebACL)
 
 responseListWebACLs :: ListWebACLsResponse -> TestTree
-responseListWebACLs = res
+responseListWebACLs =
+  res
     "ListWebACLsResponse"
     "fixture/ListWebACLsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListWebACLs)
 
 responseListRules :: ListRulesResponse -> TestTree
-responseListRules = res
+responseListRules =
+  res
     "ListRulesResponse"
     "fixture/ListRulesResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListRules)
 
 responseCreateRule :: CreateRuleResponse -> TestTree
-responseCreateRule = res
+responseCreateRule =
+  res
     "CreateRuleResponse"
     "fixture/CreateRuleResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateRule)
 
 responseCreateWebACL :: CreateWebACLResponse -> TestTree
-responseCreateWebACL = res
+responseCreateWebACL =
+  res
     "CreateWebACLResponse"
     "fixture/CreateWebACLResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateWebACL)
 
 responseGetGeoMatchSet :: GetGeoMatchSetResponse -> TestTree
-responseGetGeoMatchSet = res
+responseGetGeoMatchSet =
+  res
     "GetGeoMatchSetResponse"
     "fixture/GetGeoMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetGeoMatchSet)
 
 responseListByteMatchSets :: ListByteMatchSetsResponse -> TestTree
-responseListByteMatchSets = res
+responseListByteMatchSets =
+  res
     "ListByteMatchSetsResponse"
     "fixture/ListByteMatchSetsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListByteMatchSets)
 
 responseListGeoMatchSets :: ListGeoMatchSetsResponse -> TestTree
-responseListGeoMatchSets = res
+responseListGeoMatchSets =
+  res
     "ListGeoMatchSetsResponse"
     "fixture/ListGeoMatchSetsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListGeoMatchSets)
 
 responseCreateRuleGroup :: CreateRuleGroupResponse -> TestTree
-responseCreateRuleGroup = res
+responseCreateRuleGroup =
+  res
     "CreateRuleGroupResponse"
     "fixture/CreateRuleGroupResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateRuleGroup)
 
 responseDeleteRegexMatchSet :: DeleteRegexMatchSetResponse -> TestTree
-responseDeleteRegexMatchSet = res
+responseDeleteRegexMatchSet =
+  res
     "DeleteRegexMatchSetResponse"
     "fixture/DeleteRegexMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteRegexMatchSet)
 
 responseUpdateRegexMatchSet :: UpdateRegexMatchSetResponse -> TestTree
-responseUpdateRegexMatchSet = res
+responseUpdateRegexMatchSet =
+  res
     "UpdateRegexMatchSetResponse"
     "fixture/UpdateRegexMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateRegexMatchSet)
 
 responseGetIPSet :: GetIPSetResponse -> TestTree
-responseGetIPSet = res
+responseGetIPSet =
+  res
     "GetIPSetResponse"
     "fixture/GetIPSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetIPSet)
 
 responseGetWebACL :: GetWebACLResponse -> TestTree
-responseGetWebACL = res
+responseGetWebACL =
+  res
     "GetWebACLResponse"
     "fixture/GetWebACLResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetWebACL)
 
 responseGetRule :: GetRuleResponse -> TestTree
-responseGetRule = res
+responseGetRule =
+  res
     "GetRuleResponse"
     "fixture/GetRuleResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetRule)
 
 responseDeleteXSSMatchSet :: DeleteXSSMatchSetResponse -> TestTree
-responseDeleteXSSMatchSet = res
+responseDeleteXSSMatchSet =
+  res
     "DeleteXSSMatchSetResponse"
     "fixture/DeleteXSSMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteXSSMatchSet)
 
 responseUpdateXSSMatchSet :: UpdateXSSMatchSetResponse -> TestTree
-responseUpdateXSSMatchSet = res
+responseUpdateXSSMatchSet =
+  res
     "UpdateXSSMatchSetResponse"
     "fixture/UpdateXSSMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateXSSMatchSet)
 
 responseListXSSMatchSets :: ListXSSMatchSetsResponse -> TestTree
-responseListXSSMatchSets = res
+responseListXSSMatchSets =
+  res
     "ListXSSMatchSetsResponse"
     "fixture/ListXSSMatchSetsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListXSSMatchSets)
 
 responseCreateGeoMatchSet :: CreateGeoMatchSetResponse -> TestTree
-responseCreateGeoMatchSet = res
+responseCreateGeoMatchSet =
+  res
     "CreateGeoMatchSetResponse"
     "fixture/CreateGeoMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateGeoMatchSet)
 
 responseGetChangeToken :: GetChangeTokenResponse -> TestTree
-responseGetChangeToken = res
+responseGetChangeToken =
+  res
     "GetChangeTokenResponse"
     "fixture/GetChangeTokenResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetChangeToken)
 
 responseListSizeConstraintSets :: ListSizeConstraintSetsResponse -> TestTree
-responseListSizeConstraintSets = res
+responseListSizeConstraintSets =
+  res
     "ListSizeConstraintSetsResponse"
     "fixture/ListSizeConstraintSetsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListSizeConstraintSets)
 
 responseListResourcesForWebACL :: ListResourcesForWebACLResponse -> TestTree
-responseListResourcesForWebACL = res
+responseListResourcesForWebACL =
+  res
     "ListResourcesForWebACLResponse"
     "fixture/ListResourcesForWebACLResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListResourcesForWebACL)
 
 responseGetSampledRequests :: GetSampledRequestsResponse -> TestTree
-responseGetSampledRequests = res
+responseGetSampledRequests =
+  res
     "GetSampledRequestsResponse"
     "fixture/GetSampledRequestsResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetSampledRequests)
 
 responseGetSqlInjectionMatchSet :: GetSqlInjectionMatchSetResponse -> TestTree
-responseGetSqlInjectionMatchSet = res
+responseGetSqlInjectionMatchSet =
+  res
     "GetSqlInjectionMatchSetResponse"
     "fixture/GetSqlInjectionMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetSqlInjectionMatchSet)
 
 responseGetWebACLForResource :: GetWebACLForResourceResponse -> TestTree
-responseGetWebACLForResource = res
+responseGetWebACLForResource =
+  res
     "GetWebACLForResourceResponse"
     "fixture/GetWebACLForResourceResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetWebACLForResource)
 
 responseDisassociateWebACL :: DisassociateWebACLResponse -> TestTree
-responseDisassociateWebACL = res
+responseDisassociateWebACL =
+  res
     "DisassociateWebACLResponse"
     "fixture/DisassociateWebACLResponse.proto"
     wAFRegional
     (Proxy :: Proxy DisassociateWebACL)
 
 responseListSubscribedRuleGroups :: ListSubscribedRuleGroupsResponse -> TestTree
-responseListSubscribedRuleGroups = res
+responseListSubscribedRuleGroups =
+  res
     "ListSubscribedRuleGroupsResponse"
     "fixture/ListSubscribedRuleGroupsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListSubscribedRuleGroups)
 
-responseCreateSqlInjectionMatchSet :: CreateSqlInjectionMatchSetResponse -> TestTree
-responseCreateSqlInjectionMatchSet = res
+responseCreateSqlInjectionMatchSet ::
+     CreateSqlInjectionMatchSetResponse -> TestTree
+responseCreateSqlInjectionMatchSet =
+  res
     "CreateSqlInjectionMatchSetResponse"
     "fixture/CreateSqlInjectionMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateSqlInjectionMatchSet)
 
 responseGetXSSMatchSet :: GetXSSMatchSetResponse -> TestTree
-responseGetXSSMatchSet = res
+responseGetXSSMatchSet =
+  res
     "GetXSSMatchSetResponse"
     "fixture/GetXSSMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetXSSMatchSet)
 
 responseCreateByteMatchSet :: CreateByteMatchSetResponse -> TestTree
-responseCreateByteMatchSet = res
+responseCreateByteMatchSet =
+  res
     "CreateByteMatchSetResponse"
     "fixture/CreateByteMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateByteMatchSet)
 
 responseUpdateByteMatchSet :: UpdateByteMatchSetResponse -> TestTree
-responseUpdateByteMatchSet = res
+responseUpdateByteMatchSet =
+  res
     "UpdateByteMatchSetResponse"
     "fixture/UpdateByteMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateByteMatchSet)
 
 responseDeleteByteMatchSet :: DeleteByteMatchSetResponse -> TestTree
-responseDeleteByteMatchSet = res
+responseDeleteByteMatchSet =
+  res
     "DeleteByteMatchSetResponse"
     "fixture/DeleteByteMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteByteMatchSet)
 
 responsePutPermissionPolicy :: PutPermissionPolicyResponse -> TestTree
-responsePutPermissionPolicy = res
+responsePutPermissionPolicy =
+  res
     "PutPermissionPolicyResponse"
     "fixture/PutPermissionPolicyResponse.proto"
     wAFRegional
     (Proxy :: Proxy PutPermissionPolicy)
 
-responseGetRateBasedRuleManagedKeys :: GetRateBasedRuleManagedKeysResponse -> TestTree
-responseGetRateBasedRuleManagedKeys = res
+responseGetRateBasedRuleManagedKeys ::
+     GetRateBasedRuleManagedKeysResponse -> TestTree
+responseGetRateBasedRuleManagedKeys =
+  res
     "GetRateBasedRuleManagedKeysResponse"
     "fixture/GetRateBasedRuleManagedKeysResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetRateBasedRuleManagedKeys)
 
 responseAssociateWebACL :: AssociateWebACLResponse -> TestTree
-responseAssociateWebACL = res
+responseAssociateWebACL =
+  res
     "AssociateWebACLResponse"
     "fixture/AssociateWebACLResponse.proto"
     wAFRegional
     (Proxy :: Proxy AssociateWebACL)
 
 responseDeletePermissionPolicy :: DeletePermissionPolicyResponse -> TestTree
-responseDeletePermissionPolicy = res
+responseDeletePermissionPolicy =
+  res
     "DeletePermissionPolicyResponse"
     "fixture/DeletePermissionPolicyResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeletePermissionPolicy)
 
 responseGetRegexMatchSet :: GetRegexMatchSetResponse -> TestTree
-responseGetRegexMatchSet = res
+responseGetRegexMatchSet =
+  res
     "GetRegexMatchSetResponse"
     "fixture/GetRegexMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetRegexMatchSet)
 
 responseDeleteIPSet :: DeleteIPSetResponse -> TestTree
-responseDeleteIPSet = res
+responseDeleteIPSet =
+  res
     "DeleteIPSetResponse"
     "fixture/DeleteIPSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteIPSet)
 
 responseUpdateIPSet :: UpdateIPSetResponse -> TestTree
-responseUpdateIPSet = res
+responseUpdateIPSet =
+  res
     "UpdateIPSetResponse"
     "fixture/UpdateIPSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateIPSet)
 
 responseListIPSets :: ListIPSetsResponse -> TestTree
-responseListIPSets = res
+responseListIPSets =
+  res
     "ListIPSetsResponse"
     "fixture/ListIPSetsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListIPSets)
 
 responseListRegexMatchSets :: ListRegexMatchSetsResponse -> TestTree
-responseListRegexMatchSets = res
+responseListRegexMatchSets =
+  res
     "ListRegexMatchSetsResponse"
     "fixture/ListRegexMatchSetsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListRegexMatchSets)
 
 responseCreateXSSMatchSet :: CreateXSSMatchSetResponse -> TestTree
-responseCreateXSSMatchSet = res
+responseCreateXSSMatchSet =
+  res
     "CreateXSSMatchSetResponse"
     "fixture/CreateXSSMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateXSSMatchSet)
 
 responseDeleteGeoMatchSet :: DeleteGeoMatchSetResponse -> TestTree
-responseDeleteGeoMatchSet = res
+responseDeleteGeoMatchSet =
+  res
     "DeleteGeoMatchSetResponse"
     "fixture/DeleteGeoMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteGeoMatchSet)
 
 responseUpdateGeoMatchSet :: UpdateGeoMatchSetResponse -> TestTree
-responseUpdateGeoMatchSet = res
+responseUpdateGeoMatchSet =
+  res
     "UpdateGeoMatchSetResponse"
     "fixture/UpdateGeoMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateGeoMatchSet)
 
 responseGetByteMatchSet :: GetByteMatchSetResponse -> TestTree
-responseGetByteMatchSet = res
+responseGetByteMatchSet =
+  res
     "GetByteMatchSetResponse"
     "fixture/GetByteMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetByteMatchSet)
 
 responseGetPermissionPolicy :: GetPermissionPolicyResponse -> TestTree
-responseGetPermissionPolicy = res
+responseGetPermissionPolicy =
+  res
     "GetPermissionPolicyResponse"
     "fixture/GetPermissionPolicyResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetPermissionPolicy)
 
 responseListRuleGroups :: ListRuleGroupsResponse -> TestTree
-responseListRuleGroups = res
+responseListRuleGroups =
+  res
     "ListRuleGroupsResponse"
     "fixture/ListRuleGroupsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListRuleGroups)
 
 responseDeleteRuleGroup :: DeleteRuleGroupResponse -> TestTree
-responseDeleteRuleGroup = res
+responseDeleteRuleGroup =
+  res
     "DeleteRuleGroupResponse"
     "fixture/DeleteRuleGroupResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteRuleGroup)
 
 responseUpdateRuleGroup :: UpdateRuleGroupResponse -> TestTree
-responseUpdateRuleGroup = res
+responseUpdateRuleGroup =
+  res
     "UpdateRuleGroupResponse"
     "fixture/UpdateRuleGroupResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateRuleGroup)
 
 responseCreateRegexMatchSet :: CreateRegexMatchSetResponse -> TestTree
-responseCreateRegexMatchSet = res
+responseCreateRegexMatchSet =
+  res
     "CreateRegexMatchSetResponse"
     "fixture/CreateRegexMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateRegexMatchSet)
 
 responseGetRateBasedRule :: GetRateBasedRuleResponse -> TestTree
-responseGetRateBasedRule = res
+responseGetRateBasedRule =
+  res
     "GetRateBasedRuleResponse"
     "fixture/GetRateBasedRuleResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetRateBasedRule)
 
 responseCreateRegexPatternSet :: CreateRegexPatternSetResponse -> TestTree
-responseCreateRegexPatternSet = res
+responseCreateRegexPatternSet =
+  res
     "CreateRegexPatternSetResponse"
     "fixture/CreateRegexPatternSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateRegexPatternSet)
 
 responseDeleteSizeConstraintSet :: DeleteSizeConstraintSetResponse -> TestTree
-responseDeleteSizeConstraintSet = res
+responseDeleteSizeConstraintSet =
+  res
     "DeleteSizeConstraintSetResponse"
     "fixture/DeleteSizeConstraintSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteSizeConstraintSet)
 
 responseUpdateSizeConstraintSet :: UpdateSizeConstraintSetResponse -> TestTree
-responseUpdateSizeConstraintSet = res
+responseUpdateSizeConstraintSet =
+  res
     "UpdateSizeConstraintSetResponse"
     "fixture/UpdateSizeConstraintSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateSizeConstraintSet)
 
 responseDeleteRegexPatternSet :: DeleteRegexPatternSetResponse -> TestTree
-responseDeleteRegexPatternSet = res
+responseDeleteRegexPatternSet =
+  res
     "DeleteRegexPatternSetResponse"
     "fixture/DeleteRegexPatternSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteRegexPatternSet)
 
 responseUpdateRegexPatternSet :: UpdateRegexPatternSetResponse -> TestTree
-responseUpdateRegexPatternSet = res
+responseUpdateRegexPatternSet =
+  res
     "UpdateRegexPatternSetResponse"
     "fixture/UpdateRegexPatternSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy UpdateRegexPatternSet)
 
 responseCreateSizeConstraintSet :: CreateSizeConstraintSetResponse -> TestTree
-responseCreateSizeConstraintSet = res
+responseCreateSizeConstraintSet =
+  res
     "CreateSizeConstraintSetResponse"
     "fixture/CreateSizeConstraintSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateSizeConstraintSet)
 
 responseListRegexPatternSets :: ListRegexPatternSetsResponse -> TestTree
-responseListRegexPatternSets = res
+responseListRegexPatternSets =
+  res
     "ListRegexPatternSetsResponse"
     "fixture/ListRegexPatternSetsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListRegexPatternSets)
 
-responseListSqlInjectionMatchSets :: ListSqlInjectionMatchSetsResponse -> TestTree
-responseListSqlInjectionMatchSets = res
+responseListSqlInjectionMatchSets ::
+     ListSqlInjectionMatchSetsResponse -> TestTree
+responseListSqlInjectionMatchSets =
+  res
     "ListSqlInjectionMatchSetsResponse"
     "fixture/ListSqlInjectionMatchSetsResponse.proto"
     wAFRegional
     (Proxy :: Proxy ListSqlInjectionMatchSets)
 
 responseGetRegexPatternSet :: GetRegexPatternSetResponse -> TestTree
-responseGetRegexPatternSet = res
+responseGetRegexPatternSet =
+  res
     "GetRegexPatternSetResponse"
     "fixture/GetRegexPatternSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy GetRegexPatternSet)
 
 responseCreateRateBasedRule :: CreateRateBasedRuleResponse -> TestTree
-responseCreateRateBasedRule = res
+responseCreateRateBasedRule =
+  res
     "CreateRateBasedRuleResponse"
     "fixture/CreateRateBasedRuleResponse.proto"
     wAFRegional
     (Proxy :: Proxy CreateRateBasedRule)
 
-responseDeleteSqlInjectionMatchSet :: DeleteSqlInjectionMatchSetResponse -> TestTree
-responseDeleteSqlInjectionMatchSet = res
+responseDeleteSqlInjectionMatchSet ::
+     DeleteSqlInjectionMatchSetResponse -> TestTree
+responseDeleteSqlInjectionMatchSet =
+  res
     "DeleteSqlInjectionMatchSetResponse"
     "fixture/DeleteSqlInjectionMatchSetResponse.proto"
     wAFRegional
     (Proxy :: Proxy DeleteSqlInjectionMatchSet)
 
-responseUpdateSqlInjectionMatchSet :: UpdateSqlInjectionMatchSetResponse -> TestTree
-responseUpdateSqlInjectionMatchSet = res
+responseUpdateSqlInjectionMatchSet ::
+     UpdateSqlInjectionMatchSetResponse -> TestTree
+responseUpdateSqlInjectionMatchSet =
+  res
     "UpdateSqlInjectionMatchSetResponse"
     "fixture/UpdateSqlInjectionMatchSetResponse.proto"
     wAFRegional

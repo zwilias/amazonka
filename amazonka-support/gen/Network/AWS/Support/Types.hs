@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Support.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,147 +10,129 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Support.Types
-    (
     -- * Service Configuration
-      support
-
+  ( support
     -- * Errors
-    , _AttachmentSetExpired
-    , _AttachmentLimitExceeded
-    , _DescribeAttachmentLimitExceeded
-    , _CaseIdNotFound
-    , _AttachmentSetIdNotFound
-    , _AttachmentSetSizeLimitExceeded
-    , _AttachmentIdNotFound
-    , _InternalServerError
-    , _CaseCreationLimitExceeded
-
+  , _AttachmentSetExpired
+  , _AttachmentLimitExceeded
+  , _DescribeAttachmentLimitExceeded
+  , _CaseIdNotFound
+  , _AttachmentSetIdNotFound
+  , _AttachmentSetSizeLimitExceeded
+  , _AttachmentIdNotFound
+  , _InternalServerError
+  , _CaseCreationLimitExceeded
     -- * Attachment
-    , Attachment
-    , attachment
-    , aData
-    , aFileName
-
+  , Attachment
+  , attachment
+  , aData
+  , aFileName
     -- * AttachmentDetails
-    , AttachmentDetails
-    , attachmentDetails
-    , adAttachmentId
-    , adFileName
-
+  , AttachmentDetails
+  , attachmentDetails
+  , adAttachmentId
+  , adFileName
     -- * CaseDetails
-    , CaseDetails
-    , caseDetails
-    , cdSubject
-    , cdStatus
-    , cdRecentCommunications
-    , cdSeverityCode
-    , cdCaseId
-    , cdCcEmailAddresses
-    , cdDisplayId
-    , cdSubmittedBy
-    , cdLanguage
-    , cdTimeCreated
-    , cdCategoryCode
-    , cdServiceCode
-
+  , CaseDetails
+  , caseDetails
+  , cdSubject
+  , cdStatus
+  , cdRecentCommunications
+  , cdSeverityCode
+  , cdCaseId
+  , cdCcEmailAddresses
+  , cdDisplayId
+  , cdSubmittedBy
+  , cdLanguage
+  , cdTimeCreated
+  , cdCategoryCode
+  , cdServiceCode
     -- * Category
-    , Category
-    , category
-    , cName
-    , cCode
-
+  , Category
+  , category
+  , cName
+  , cCode
     -- * Communication
-    , Communication
-    , communication
-    , cBody
-    , cCaseId
-    , cSubmittedBy
-    , cTimeCreated
-    , cAttachmentSet
-
+  , Communication
+  , communication
+  , cBody
+  , cCaseId
+  , cSubmittedBy
+  , cTimeCreated
+  , cAttachmentSet
     -- * RecentCaseCommunications
-    , RecentCaseCommunications
-    , recentCaseCommunications
-    , rccNextToken
-    , rccCommunications
-
+  , RecentCaseCommunications
+  , recentCaseCommunications
+  , rccNextToken
+  , rccCommunications
     -- * SeverityLevel
-    , SeverityLevel
-    , severityLevel
-    , slName
-    , slCode
-
+  , SeverityLevel
+  , severityLevel
+  , slName
+  , slCode
     -- * SupportService
-    , SupportService
-    , supportService
-    , ssCategories
-    , ssName
-    , ssCode
-
+  , SupportService
+  , supportService
+  , ssCategories
+  , ssName
+  , ssCode
     -- * TrustedAdvisorCategorySpecificSummary
-    , TrustedAdvisorCategorySpecificSummary
-    , trustedAdvisorCategorySpecificSummary
-    , tacssCostOptimizing
-
+  , TrustedAdvisorCategorySpecificSummary
+  , trustedAdvisorCategorySpecificSummary
+  , tacssCostOptimizing
     -- * TrustedAdvisorCheckDescription
-    , TrustedAdvisorCheckDescription
-    , trustedAdvisorCheckDescription
-    , tacdId
-    , tacdName
-    , tacdDescription
-    , tacdCategory
-    , tacdMetadata
-
+  , TrustedAdvisorCheckDescription
+  , trustedAdvisorCheckDescription
+  , tacdId
+  , tacdName
+  , tacdDescription
+  , tacdCategory
+  , tacdMetadata
     -- * TrustedAdvisorCheckRefreshStatus
-    , TrustedAdvisorCheckRefreshStatus
-    , trustedAdvisorCheckRefreshStatus
-    , tacrsCheckId
-    , tacrsStatus
-    , tacrsMillisUntilNextRefreshable
-
+  , TrustedAdvisorCheckRefreshStatus
+  , trustedAdvisorCheckRefreshStatus
+  , tacrsCheckId
+  , tacrsStatus
+  , tacrsMillisUntilNextRefreshable
     -- * TrustedAdvisorCheckResult
-    , TrustedAdvisorCheckResult
-    , trustedAdvisorCheckResult
-    , tacrCheckId
-    , tacrTimestamp
-    , tacrStatus
-    , tacrResourcesSummary
-    , tacrCategorySpecificSummary
-    , tacrFlaggedResources
-
+  , TrustedAdvisorCheckResult
+  , trustedAdvisorCheckResult
+  , tacrCheckId
+  , tacrTimestamp
+  , tacrStatus
+  , tacrResourcesSummary
+  , tacrCategorySpecificSummary
+  , tacrFlaggedResources
     -- * TrustedAdvisorCheckSummary
-    , TrustedAdvisorCheckSummary
-    , trustedAdvisorCheckSummary
-    , tacsHasFlaggedResources
-    , tacsCheckId
-    , tacsTimestamp
-    , tacsStatus
-    , tacsResourcesSummary
-    , tacsCategorySpecificSummary
-
+  , TrustedAdvisorCheckSummary
+  , trustedAdvisorCheckSummary
+  , tacsHasFlaggedResources
+  , tacsCheckId
+  , tacsTimestamp
+  , tacsStatus
+  , tacsResourcesSummary
+  , tacsCategorySpecificSummary
     -- * TrustedAdvisorCostOptimizingSummary
-    , TrustedAdvisorCostOptimizingSummary
-    , trustedAdvisorCostOptimizingSummary
-    , tacosEstimatedMonthlySavings
-    , tacosEstimatedPercentMonthlySavings
-
+  , TrustedAdvisorCostOptimizingSummary
+  , trustedAdvisorCostOptimizingSummary
+  , tacosEstimatedMonthlySavings
+  , tacosEstimatedPercentMonthlySavings
     -- * TrustedAdvisorResourceDetail
-    , TrustedAdvisorResourceDetail
-    , trustedAdvisorResourceDetail
-    , tardIsSuppressed
-    , tardRegion
-    , tardStatus
-    , tardResourceId
-    , tardMetadata
-
+  , TrustedAdvisorResourceDetail
+  , trustedAdvisorResourceDetail
+  , tardIsSuppressed
+  , tardRegion
+  , tardStatus
+  , tardResourceId
+  , tardMetadata
     -- * TrustedAdvisorResourcesSummary
-    , TrustedAdvisorResourcesSummary
-    , trustedAdvisorResourcesSummary
-    , tarsResourcesProcessed
-    , tarsResourcesFlagged
-    , tarsResourcesIgnored
-    , tarsResourcesSuppressed
-    ) where
+  , TrustedAdvisorResourcesSummary
+  , trustedAdvisorResourcesSummary
+  , tarsResourcesProcessed
+  , tarsResourcesFlagged
+  , tarsResourcesIgnored
+  , tarsResourcesSuppressed
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -197,28 +178,27 @@ support =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The expiration time of the attachment set has passed. The set expires 1 hour after it is created.
 --
 --
-_AttachmentSetExpired :: AsError a => Getting (First ServiceError) a ServiceError
+_AttachmentSetExpired ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _AttachmentSetExpired = _MatchServiceError support "AttachmentSetExpired"
-
 
 -- | The limit for the number of attachment sets created in a short period of time has been exceeded.
 --
 --
-_AttachmentLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_AttachmentLimitExceeded ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _AttachmentLimitExceeded = _MatchServiceError support "AttachmentLimitExceeded"
-
 
 -- | The limit for the number of 'DescribeAttachment' requests in a short period of time has been exceeded.
 --
 --
-_DescribeAttachmentLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_DescribeAttachmentLimitExceeded ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _DescribeAttachmentLimitExceeded =
   _MatchServiceError support "DescribeAttachmentLimitExceeded"
-
 
 -- | The requested @caseId@ could not be located.
 --
@@ -226,28 +206,27 @@ _DescribeAttachmentLimitExceeded =
 _CaseIdNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _CaseIdNotFound = _MatchServiceError support "CaseIdNotFound"
 
-
 -- | An attachment set with the specified ID could not be found.
 --
 --
-_AttachmentSetIdNotFound :: AsError a => Getting (First ServiceError) a ServiceError
+_AttachmentSetIdNotFound ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _AttachmentSetIdNotFound = _MatchServiceError support "AttachmentSetIdNotFound"
-
 
 -- | A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.
 --
 --
-_AttachmentSetSizeLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_AttachmentSetSizeLimitExceeded ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _AttachmentSetSizeLimitExceeded =
   _MatchServiceError support "AttachmentSetSizeLimitExceeded"
-
 
 -- | An attachment with the specified ID could not be found.
 --
 --
-_AttachmentIdNotFound :: AsError a => Getting (First ServiceError) a ServiceError
+_AttachmentIdNotFound ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _AttachmentIdNotFound = _MatchServiceError support "AttachmentIdNotFound"
-
 
 -- | An internal server error occurred.
 --
@@ -255,11 +234,10 @@ _AttachmentIdNotFound = _MatchServiceError support "AttachmentIdNotFound"
 _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerError = _MatchServiceError support "InternalServerError"
 
-
 -- | The case creation limit for the account has been exceeded.
 --
 --
-_CaseCreationLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
+_CaseCreationLimitExceeded ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _CaseCreationLimitExceeded =
   _MatchServiceError support "CaseCreationLimitExceeded"
-
