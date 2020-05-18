@@ -43,7 +43,8 @@ typeImports l = sort $
 
 sumImports :: Library -> [NS]
 sumImports l = sort $
-      "Network.AWS.Prelude"
+      "Data.CaseInsensitive"
+    : "Network.AWS.Prelude"
     : l ^. typeModules
 
 productImports :: Library -> Prod -> [NS]

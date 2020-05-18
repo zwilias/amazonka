@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,4 +16,4 @@ module {{ moduleName }} where
 import {{ import.value }}
 {% endfor %}
   
-{% include "_include/sum.ede" with shape = shape %}
+{% include "_include/sum.ede" %}

@@ -151,9 +151,9 @@ sumData p s i vs = Sum s <$> mk <*> (Map.keys <$> insts)
         <$> pp Print decl
         <*> pure bs
 
-    decl = dataD n (map f . sort $ Map.keys bs) (derivingOf s)
+    decl = dataD n [newt] (derivingOf s)
       where
-        f x = conD (Exts.ConDecl () (ident x) [])
+        newt = conD (Exts.ConDecl () ((ident . typeId) n) [tyapp (tycon "CI") (tycon "Text")])
 
     insts = renderInsts p n $ shapeInsts p (s ^. relMode) []
 

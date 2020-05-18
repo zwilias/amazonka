@@ -3,19 +3,22 @@
 {% endif %}
 {{ shape.declaration }}
 
+{% for ctor in shape.constructors %}
+pattern {{ ctor.key }} :: {{ shape.name }}
+pattern {{ ctor.key }} = {{ shape.name }} "{{ ctor.value }}"
+
+{% endfor %}
+{-# COMPLETE
+{% for ctor in shape.constructors %}
+  {{ ctor.key }},
+{% endfor %}
+  {{ shape.name }} #-}
+
 instance FromText {{ shape.name }} where
-    parser = takeLowerText >>= \case
-      {% for ctor in shape.constructors %}
-        "{{ ctor.value | toLower }}" -> pure {{ ctor.key }}
-      {% endfor %}
-        e -> fromTextError $ "Failure parsing {{ shape.name }} from value: '" <> e
-           <> "'. Accepted values: {% for c in shape.constructors %}{{ c.value | toLower }}{% if !c.last %}, {% endif %}{%endfor %}"
+    parser = ({{ shape.name}} . mk) <$> takeText
 
 instance ToText {{ shape.name }} where
-    toText = \case
-      {% for ctor in shape.constructors %}
-        {{ ctor.key }} -> "{{ ctor.value }}"
-      {% endfor %}
+    toText ({{ shape.name }} ci) = original ci
 
 instance Hashable     {{ shape.name }}
 instance NFData       {{ shape.name }}
