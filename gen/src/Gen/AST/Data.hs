@@ -47,14 +47,14 @@ import Language.Haskell.Exts.Pretty (Pretty)
 import qualified Data.ByteString.Builder      as Build
 import qualified Data.ByteString.Char8        as BS8
 import qualified Data.HashMap.Strict          as Map
+import qualified Data.Set                     as Set
 import qualified Data.Text                    as Text
 import qualified Data.Text.Encoding           as Text
 import qualified Data.Text.Lazy               as LText
 import qualified Data.Text.Lazy.Encoding      as LText
 import qualified HIndent
 import qualified HIndent.Types                as HIndent
-import qualified Language.Haskell.Exts.Pretty as Exts
-import qualified Language.Haskell.Exts.Syntax as Exts
+import qualified Language.Haskell.Exts        as Exts
 
 operationData :: HasMetadata a Identity
               => Config
@@ -173,6 +173,7 @@ prodData m s st = (,fields) <$> mk
         <$> pp Indent decl
         <*> mkCtor
         <*> traverse mkLens fields
+        <*> pure dependencies
 
     decl = dataD n [recordD m n fields] (derivingOf s)
 
@@ -207,6 +208,20 @@ prodData m s st = (,fields) <$> mk
         rel (Just p) t = t <> " -- ^ '" <> LText.fromStrict (fieldLens p) <> "'"
 
         ps = map Just (filter fieldIsParam fs) ++ repeat Nothing
+
+    dependencies = foldMap go fields
+      where
+        go :: TypeOf a => a -> Set.Set Text
+        go f = case (typeOf f) of
+          TType      x _ -> if (x /= typeId n) then Set.singleton x else Set.empty
+          TLit       _   -> Set.empty
+          TNatural       -> Set.empty
+          TStream        -> Set.empty
+          TMaybe     x   -> go x
+          TSensitive x   -> go x
+          TList      x   -> go x
+          TList1     x   -> go x
+          TMap       k v -> go k <> go v
 
     n = s ^. annId
 
