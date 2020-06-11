@@ -211,17 +211,24 @@ prodData m s st = (,fields) <$> mk
 
     dependencies = foldMap go fields
       where
+        tTypeDep :: Text -> Set.Set Text
+
         go :: TypeOf a => a -> Set.Set Text
         go f = case (typeOf f) of
-          TType      x _ -> if (x /= typeId n) then Set.singleton x else Set.empty
-          TLit       _   -> Set.empty
-          TNatural       -> Set.empty
-          TStream        -> Set.empty
-          TMaybe     x   -> go x
-          TSensitive x   -> go x
-          TList      x   -> go x
-          TList1     x   -> go x
-          TMap       k v -> go k <> go v
+            TType      x _ -> tTypeDep x
+            TLit       _   -> Set.empty
+            TNatural       -> Set.empty
+            TStream        -> Set.empty
+            TMaybe     x   -> go x
+            TSensitive x   -> go x
+            TList      x   -> go x
+            TList1     x   -> go x
+            TMap       k v -> go k <> go v
+
+        tTypeDep x = if (stripped /= typeId n)
+                     then Set.singleton stripped
+                     else Set.empty
+          where stripped = fromMaybe x $ Text.stripPrefix "(Maybe " =<< Text.stripSuffix ")" x
 
     n = s ^. annId
 

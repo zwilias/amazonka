@@ -51,9 +51,11 @@ productImports l p = sort $
       "Network.AWS.Lens"
     : "Network.AWS.Prelude"
     : l ^. typeModules
-   ++ dependencies
+   ++ (Set.toList $ Set.map (l ^. typesNS <>) moduleDependencies)
   where
-    dependencies = ((l ^. typesNS <>) . mkNS) <$> Set.toList (_prodDeps p)
+    moduleDependencies = Set.intersection dependencies moduleShapes
+    dependencies = Set.map mkNS $ _prodDeps p
+    moduleShapes = Set.fromList (mkNS . typeId . identifier <$> l ^.. shapes . each)
 
 waiterImports :: Library -> [NS]
 waiterImports l = sort $
