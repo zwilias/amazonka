@@ -30,7 +30,7 @@ module {{ moduleName }}
     {% when "product" %}
 
     -- * {{ shape.value.name }}
-    , {{ shape.value.name }}
+    , {{ shape.value.name }} (..)
     , {{ shape.value.constructor.name }}
       {% for lens in shape.value.lenses %}
     , {{ lens.value.name }}
@@ -45,6 +45,14 @@ module {{ moduleName }}
 
 {% for import in moduleImports %}
 import {{ import.value }}
+{% endfor %}
+{% for shape in shapes %}
+{% case shape.value.type %}
+{% when "product" %}
+import {{moduleName}}.{{ shape.value.name }}
+{% when "sum" %}
+import {{moduleName}}.{{ shape.value.name }}
+{% endcase %}  
 {% endfor %}
 
 {% include "_include/function.ede" with function = serviceInstance %}
